@@ -25,6 +25,9 @@ on:
 permissions:
   contents: read
 
+env:
+  ZILF_COMMIT: d3b79f348b692647ab7ee3b13e5ac7c99b70f471
+
 jobs:
   preservation-audit:
     runs-on: ubuntu-latest
@@ -58,4 +61,77 @@ jobs:
             optimized/build/src/STAGING-RECEIPT.json
             optimized/build/smell-report.json
             optimized/build/baseline-story-report.json
+          if-no-files-found: warn
+
+  optimized-build:
+    needs: preservation-audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Zork I
+        uses: actions/checkout@v4
+
+      - name: Check out pinned ZILF compiler
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.ZILF_COMMIT }}
+          path: .tooling/zilf
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Build pinned ZILF
+        run: |
+          dotnet build .tooling/zilf/src/Zilf/Zilf.csproj \
+            --configuration Release \
+            --property:PortableTarget=true \
+            --nologo
+          zilf_dll="$(find .tooling/zilf/src/Zilf/bin/Release -path '*/net10.0/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Stage and compile optimized edition
+        run: |
+          make -C optimized compile ZILF="dotnet $ZILF_DLL"
+
+      - name: Verify optimized story file
+        run: |
+          python optimized/tools/verify_story.py optimized/build/zork1-optimized.z3 \
+            --expect-version 3 \
+            --baseline COMPILED/zork1.z3 \
+            --json optimized/build/optimized-story-report.json
+
+      - name: Install Frotz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y frotz
+          command -v dfrotz
+
+      - name: Run deterministic opening transcript
+        run: |
+          python optimized/tools/run_smoke.py optimized/build/zork1-optimized.z3 \
+            --interpreter "$(command -v dfrotz)" \
+            --commands optimized/tests/smoke_commands.txt \
+            --expect optimized/tests/smoke_expectations.txt \
+            | tee optimized/build/smoke-transcript.txt
+
+      - name: Upload runnable optimized edition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: optimized-zork1-build
+          path: |
+            optimized/build/zork1-optimized.z3
+            optimized/build/optimized-story-report.json
+            optimized/build/smoke-transcript.txt
+            optimized/build/smell-report.json
+            optimized/build/src/STAGING-RECEIPT.json
           if-no-files-found: warn
