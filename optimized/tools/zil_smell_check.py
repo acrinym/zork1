@@ -20,37 +20,87 @@ MARKER_RE = re.compile(r"\b(TODO|FIXME|XXX|HACK)\b", re.IGNORECASE)
 ALLOW_DUPLICATE_DEFINITIONS = {"PERFORM"}
 
 
-def strip_strings_and_comments(text: str) -> str:
-    out: list[str] = []
-    in_string = False
+def blank_range(chars: list[str], start: int, end: int) -> None:
+    """Blank a span while preserving newlines for useful diagnostics."""
+    for index in range(start, min(end, len(chars))):
+        if chars[index] != "\n":
+            chars[index] = " "
+
+
+def string_end(text: str, start: int) -> int:
+    """Return the index after a ZIL string, tolerating an unfinished string."""
+    index = start + 1
     escaped = False
-    in_comment = False
-    for char in text:
-        if in_comment:
-            if char == "\n":
-                in_comment = False
-                out.append(char)
-            else:
-                out.append(" ")
+    while index < len(text):
+        char = text[index]
+        if escaped:
+            escaped = False
+        elif char == "\\":
+            escaped = True
+        elif char == '"':
+            return index + 1
+        index += 1
+    return len(text)
+
+
+def form_end(text: str, start: int) -> int:
+    """Return the index after one balanced <...> form, ignoring strings."""
+    depth = 0
+    index = start
+    while index < len(text):
+        char = text[index]
+        if char == '"':
+            index = string_end(text, index)
             continue
-        if in_string:
-            if escaped:
-                escaped = False
-            elif char == "\\":
-                escaped = True
-            elif char == '"':
-                in_string = False
-            out.append(" ")
+        if char == "<":
+            depth += 1
+        elif char == ">":
+            depth -= 1
+            if depth == 0:
+                return index + 1
+        index += 1
+    return len(text)
+
+
+def ignored_object_end(text: str, semicolon: int) -> int:
+    """Find the end of the object suppressed by ZIL's semicolon read macro.
+
+    Historical Infocom source commonly uses ;"comment" and ;<FORM ...>.
+    The latter can span many lines, so treating semicolon as an end-of-line
+    comment produces false bracket errors and false definitions.
+    """
+    index = semicolon + 1
+    while index < len(text) and text[index].isspace():
+        index += 1
+    if index >= len(text):
+        return len(text)
+    if text[index] == '"':
+        return string_end(text, index)
+    if text[index] == "<":
+        return form_end(text, index)
+    while index < len(text) and text[index] != "\n":
+        index += 1
+    return index
+
+
+def strip_strings_and_comments(text: str) -> str:
+    """Blank strings and semicolon-suppressed objects, preserving layout."""
+    chars = list(text)
+    index = 0
+    while index < len(text):
+        char = text[index]
+        if char == '"':
+            end = string_end(text, index)
+            blank_range(chars, index, end)
+            index = end
             continue
         if char == ";":
-            in_comment = True
-            out.append(" ")
-        elif char == '"':
-            in_string = True
-            out.append(" ")
-        else:
-            out.append(char)
-    return "".join(out)
+            end = ignored_object_end(text, index)
+            blank_range(chars, index, end)
+            index = end
+            continue
+        index += 1
+    return "".join(chars)
 
 
 def structural_balance(path: Path, text: str) -> list[str]:
@@ -135,12 +185,12 @@ def main() -> int:
         metrics["trailing_whitespace_lines"] += sum(
             1 for line in lines if line.rstrip() != line
         )
-        markers = list(MARKER_RE.finditer(strip_strings_and_comments(text)))
+        cleaned = strip_strings_and_comments(text)
+        markers = list(MARKER_RE.finditer(cleaned))
         metrics["unfinished_markers"] += len(markers)
         for marker in markers:
             warnings.append(f"{path.name}: unfinished marker {marker.group(1)}")
         errors.extend(structural_balance(path, text))
-        cleaned = strip_strings_and_comments(text)
         for kind, name in DEFINITION_RE.findall(cleaned):
             definitions[name.upper()].append(f"{path.name}:{kind.upper()}")
         for include in INCLUDE_RE.findall(cleaned):
