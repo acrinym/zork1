@@ -40,6 +40,23 @@ and another > line"
         self.assertIn("REAL", cleaned)
         self.assertEqual([], zil_smell_check.structural_balance(Path("sample.zil"), source))
 
+    def test_semicolon_suppresses_only_one_atom(self) -> None:
+        source = "<COND (<VERB? ;AGAIN SAVE RESTORE> <RTRUE>)>\n"
+        cleaned = zil_smell_check.strip_strings_and_comments(source)
+        self.assertNotIn("AGAIN", cleaned)
+        self.assertIn("SAVE", cleaned)
+        self.assertIn("RESTORE", cleaned)
+        self.assertEqual([], zil_smell_check.structural_balance(Path("sample.zil"), source))
+
+    def test_character_quote_does_not_begin_string(self) -> None:
+        source = r'<SETG WBREAKS <STRING !\" !,WBREAKS>>' + "\n"
+        self.assertEqual([], zil_smell_check.structural_balance(Path("sample.zil"), source))
+
+    def test_active_include_strings_are_preserved(self) -> None:
+        source = '<INSERT-FILE "gmacros" T>\n;<INSERT-FILE "dead" T>\n'
+        active = zil_smell_check.sanitize_source(source, blank_strings=False)
+        self.assertEqual(["gmacros"], zil_smell_check.INCLUDE_RE.findall(active))
+
     def test_include_resolution_is_case_exact(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -68,6 +85,10 @@ class StagingTests(unittest.TestCase):
             self.assertEqual("Z1-BUG-001", receipt[0]["id"])
             self.assertIn("<ROUTINE OPT-DESCENDANT?", patched)
             self.assertIn("<OPT-DESCENDANT? ,PRSI ,PRSO>", patched)
+            self.assertEqual(
+                [],
+                zil_smell_check.structural_balance(Path("gverbs.zil"), patched),
+            )
 
     def test_exact_patch_refuses_source_drift(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

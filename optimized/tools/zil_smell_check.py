@@ -16,7 +16,9 @@ DEFINITION_RE = re.compile(
     r"<(ROUTINE|OBJECT|GLOBAL|CONSTANT|DEFINE)\s+([^\s()<>]+)", re.IGNORECASE
 )
 INCLUDE_RE = re.compile(r'<INSERT-FILE\s+"([^"]+)"', re.IGNORECASE)
-MARKER_RE = re.compile(r"\b(TODO|FIXME|XXX|HACK)\b", re.IGNORECASE)
+MARKER_RE = re.compile(
+    r"(?<![A-Z0-9-])(TODO|FIXME|XXX)(?![A-Z0-9-])", re.IGNORECASE
+)
 ALLOW_DUPLICATE_DEFINITIONS = {"PERFORM"}
 
 
@@ -25,6 +27,19 @@ def blank_range(chars: list[str], start: int, end: int) -> None:
     for index in range(start, min(end, len(chars))):
         if chars[index] != "\n":
             chars[index] = " "
+
+
+def character_end(text: str, start: int) -> int:
+    """Return the index after a ZIL ! character literal.
+
+    Infocom source uses forms such as !\" for a quote character. A raw quote
+    inside that literal must not begin a string in the structural scanner.
+    """
+    if start + 1 >= len(text):
+        return len(text)
+    if text[start + 1] == "\\" and start + 2 < len(text):
+        return start + 3
+    return start + 2
 
 
 def string_end(text: str, start: int) -> int:
@@ -43,18 +58,35 @@ def string_end(text: str, start: int) -> int:
     return len(text)
 
 
-def form_end(text: str, start: int) -> int:
-    """Return the index after one balanced <...> form, ignoring strings."""
+def token_end(text: str, start: int) -> int:
+    """Return the end of one non-collection reader object."""
+    index = start
+    while index < len(text):
+        char = text[index]
+        if char.isspace() or char in "()<>;":
+            break
+        index += 1
+    return max(index, start + 1)
+
+
+def collection_end(text: str, start: int, opening: str, closing: str) -> int:
+    """Return the end of one balanced form/list, respecting reader syntax."""
     depth = 0
     index = start
     while index < len(text):
         char = text[index]
+        if char == "!":
+            index = character_end(text, index)
+            continue
         if char == '"':
             index = string_end(text, index)
             continue
-        if char == "<":
+        if char == ";":
+            index = ignored_object_end(text, index)
+            continue
+        if char == opening:
             depth += 1
-        elif char == ">":
+        elif char == closing:
             depth -= 1
             if depth == 0:
                 return index + 1
@@ -62,36 +94,52 @@ def form_end(text: str, start: int) -> int:
     return len(text)
 
 
-def ignored_object_end(text: str, semicolon: int) -> int:
-    """Find the end of the object suppressed by ZIL's semicolon read macro.
-
-    Historical Infocom source commonly uses ;"comment" and ;<FORM ...>.
-    The latter can span many lines, so treating semicolon as an end-of-line
-    comment produces false bracket errors and false definitions.
-    """
-    index = semicolon + 1
+def reader_object_end(text: str, start: int) -> int:
+    """Return the end of the next ZIL reader object."""
+    index = start
     while index < len(text) and text[index].isspace():
         index += 1
     if index >= len(text):
         return len(text)
-    if text[index] == '"':
+    char = text[index]
+    if char == "'":
+        return reader_object_end(text, index + 1)
+    if char == '"':
         return string_end(text, index)
-    if text[index] == "<":
-        return form_end(text, index)
-    while index < len(text) and text[index] != "\n":
-        index += 1
-    return index
+    if char == "!":
+        return character_end(text, index)
+    if char == "<":
+        return collection_end(text, index, "<", ">")
+    if char == "(":
+        return collection_end(text, index, "(", ")")
+    return token_end(text, index)
 
 
-def strip_strings_and_comments(text: str) -> str:
-    """Blank strings and semicolon-suppressed objects, preserving layout."""
+def ignored_object_end(text: str, semicolon: int) -> int:
+    """Find the end of the one object suppressed by ZIL's semicolon macro."""
+    return reader_object_end(text, semicolon + 1)
+
+
+def sanitize_source(text: str, *, blank_strings: bool = True) -> str:
+    """Blank comments and character literals; optionally blank strings.
+
+    Layout and newlines are retained so diagnostics remain useful. With
+    ``blank_strings=False``, active include strings remain available to the
+    include checker while semicolons inside strings are still ignored.
+    """
     chars = list(text)
     index = 0
     while index < len(text):
         char = text[index]
+        if char == "!":
+            end = character_end(text, index)
+            blank_range(chars, index, end)
+            index = end
+            continue
         if char == '"':
             end = string_end(text, index)
-            blank_range(chars, index, end)
+            if blank_strings:
+                blank_range(chars, index, end)
             index = end
             continue
         if char == ";":
@@ -103,8 +151,13 @@ def strip_strings_and_comments(text: str) -> str:
     return "".join(chars)
 
 
+def strip_strings_and_comments(text: str) -> str:
+    """Backward-compatible name used by tests and callers."""
+    return sanitize_source(text, blank_strings=True)
+
+
 def structural_balance(path: Path, text: str) -> list[str]:
-    cleaned = strip_strings_and_comments(text)
+    cleaned = sanitize_source(text, blank_strings=True)
     depth = 0
     errors: list[str] = []
     line = 1
@@ -185,15 +238,16 @@ def main() -> int:
         metrics["trailing_whitespace_lines"] += sum(
             1 for line in lines if line.rstrip() != line
         )
-        cleaned = strip_strings_and_comments(text)
-        markers = list(MARKER_RE.finditer(cleaned))
+        cleaned = sanitize_source(text, blank_strings=True)
+        active_with_strings = sanitize_source(text, blank_strings=False)
+        markers = list(MARKER_RE.finditer(text))
         metrics["unfinished_markers"] += len(markers)
         for marker in markers:
             warnings.append(f"{path.name}: unfinished marker {marker.group(1)}")
         errors.extend(structural_balance(path, text))
         for kind, name in DEFINITION_RE.findall(cleaned):
             definitions[name.upper()].append(f"{path.name}:{kind.upper()}")
-        for include in INCLUDE_RE.findall(cleaned):
+        for include in INCLUDE_RE.findall(active_with_strings):
             resolved = resolve_include(source, include)
             record = {"from": path.name, "include": include}
             if resolved is None:
