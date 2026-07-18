@@ -5,8 +5,8 @@
   "replacements": [
     {
       "expected_count": 1,
-      "old": "      (ACTION CANDLES-FCN)",
-      "new": "      (DESCFCN CANDLES-D)\n      (ACTION CANDLES-FCN)"
+      "old": "\t(ACTION CANDLES-FCN)",
+      "new": "\t(DESCFCN CANDLES-D)\n\t(ACTION CANDLES-FCN)"
     }
   ]
 }
