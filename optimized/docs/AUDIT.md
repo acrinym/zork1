@@ -1,79 +1,112 @@
-# Initial Code and Build Audit
+# Code, Behavior, and Build Audit
 
 ## Scope
 
-This audit covers the repository’s Release 119 / serial 880429 final-development snapshot and its historical build records. It does not assume that Release 119 is identical to the commercially distributed Release 88.
+This audit covers the repository’s Release 119 / serial 880429 final-development snapshot, its historical build records, and the isolated project-local Release 120 optimized edition. It does not assume Release 119 is identical to the commonly distributed Release 88.
 
 ## Confirmed findings
 
 ### 1. Historical and generated material are mixed at the repository root
 
-Source, compiler records, frequency data, intermediate output, and compiled story files sit together. This makes it easy for a modern build to overwrite historical evidence.
+Source, compiler records, frequency data, intermediate output, and compiled story files sit together. A modern build could easily overwrite historical evidence.
 
-**Treatment:** all optimized-edition staging and output is confined to `optimized/build`.
+**Treatment:** optimized staging and generated output are confined to `optimized/build`. The repository-root files are verified and copied, never edited in place.
 
-### 2. The original entrypoint uses uppercase include names while the files are lowercase
+### 2. Include casing is not portable
 
-The root `zork1.zil` asks for `GMACROS`, `GSYNTAX`, `1DUNGEON`, and related names, while the repository files use lowercase names. Filesystems and compilers differ in how forgiving they are about case.
+The historical entrypoint requests uppercase include names while the repository files are lowercase. Case-sensitive environments are not required to resolve those names as the same files.
 
-**Treatment:** the isolated overlay uses exact lowercase include names. No game logic changes.
+**Treatment:** the isolated overlay uses the exact lowercase filenames. Game logic is unchanged.
 
-### 3. There is no reproducible source receipt
+### 3. Historical inputs lacked a reproducible receipt
 
-Without an integrity check, a build can unknowingly combine source files from different revisions.
+Without integrity checks, a build can accidentally combine files from different revisions.
 
-**Treatment:** `source-manifest.json` records the branch-head commit and Git blob identity of every staged input. Staging fails on drift.
+**Treatment:** `source-manifest.json` records the source commit and Git blob identity of every staged input. Staging stops on drift and writes a receipt listing every override and exact patch.
 
 ### 4. Generic `PUT` permits recursive containment
 
-`V-PUT` checks direct self-containment and duplicate placement, then calls `MOVE`. It does not determine whether the target container is already below the moved object in the parent chain. A successful cyclic move violates the object-tree invariant and can make objects disappear from normal traversal.
+`V-PUT` checks direct self-containment and duplicate placement, then calls `MOVE`. It did not determine whether the destination was already below the moved object in the parent chain. A successful cyclic move violates the object-tree invariant and can make objects disappear from normal traversal.
 
-**Treatment:** exact patch `Z1-BUG-001` adds an ancestry guard without changing legitimate nesting, capacity, weight, scoring, parser behavior, or prose beyond reusing the existing impossible-action response. Runtime transcript validation remains required.
+**Treatment:** `Z1-BUG-001` adds an ancestry guard without changing legitimate nesting, capacity, weight, scoring, parser behavior, or prose beyond reusing the existing impossible-action response.
 
-### 5. The old compiler report lists unused symbols, but deletion is not yet justified
+**Proof:** exact patch application, structural validation, full compilation, valid Release 120 story, and passing opening smoke. A dedicated containment transcript remains pending.
 
-The historical report names `UNTIE-FROM`, `BREATHE`, `CYCLOPS-MELEE`, `TROLL-MELEE`, `P-DIRECTION`, `DEF2A`, `DEF3C`, and `THIEF-MELEE` as unused. In this codebase, unused can mean dormant, version-conditional, compatibility-oriented, generated, or genuinely dead.
+### 5. Candle state and candle description disagree
 
-**Treatment:** report, do not delete. Each symbol requires call-site and behavior evidence first.
+The candle routine clears `ONBIT`, but the object’s static first-description always says the candles are burning.
 
-### 6. The clock scheduler has a fixed implicit capacity
+**Treatment:** `Z1-BUG-002` adds a state-aware description callback. It preserves the original sentence while lit and removes only `burning` while extinguished.
+
+**Proof:** exact patch application, structural validation, full compilation, valid Release 120 story, and passing opening smoke. A dedicated temple transcript remains pending.
+
+### 6. Two printed tab characters are unsafe for Z-machine version 3
+
+Modern ZILF identified literal tabs in the Flood Control Dam guidebook heading and All-Purpose Gunk label. Version 3 cannot reliably encode them as printed ZSCII characters.
+
+**Treatment:** `Z1-PORT-001` replaces those two characters with spaces while preserving the words.
+
+**Proof:** the exact replacements apply once, and CI fails if modern ZILF emits the corresponding `ZIL0410` warning. The validated build passes.
+
+### 7. The compiler report’s unused symbols are not safe deletion targets
+
+The historical report names `UNTIE-FROM`, `BREATHE`, `CYCLOPS-MELEE`, `TROLL-MELEE`, `P-DIRECTION`, `DEF2A`, `DEF3C`, and `THIEF-MELEE` as unused. In this source family, unused can mean dormant, conditional, generated, compatibility-oriented, or genuinely dead.
+
+**Treatment:** report, do not delete. Each symbol requires call-site, build-size, and behavior evidence.
+
+### 8. Duplicate globals are composition seams, not automatic defects
+
+The structural audit finds duplicate definitions of `LUCKY` and `WON-FLAG` across generic and game-specific source layers. The entrypoint enables redefinition, and modern ZILF builds the complete game successfully.
+
+**Treatment:** retain them as visible warnings. Do not delete or suppress them until their exact generic-versus-game-specific role is proven.
+
+### 9. The clock scheduler has a fixed implicit capacity
 
 `C-TABLELEN` is 180 words and each entry is 6 words, yielding 30 interrupt slots. Allocation works backward through the table and has no obvious player-facing diagnostic for exhaustion.
 
-**Treatment:** expose the capacity in the audit report. Do not alter the scheduler until tests establish whether exhaustion is reachable and what the historical compiler/runtime expected.
+**Treatment:** report the capacity. Do not increase it without a reachable exhaustion case and memory-layout analysis.
 
-### 7. Global state and magic values are pervasive by design
+### 10. Global state and magic values are part of the original architecture
 
-The parser, action dispatcher, object model, clock, and world logic communicate through globals, bit flags, table offsets, and numeric return conventions. Replacing this architecture would create a new engine rather than optimize Zork I.
+The parser, action dispatcher, object model, clock, and world logic communicate through globals, bit flags, table offsets, and numeric return conventions. Replacing this architecture wholesale would create a new engine instead of optimizing Zork I.
 
-**Treatment:** add names, reports, and tests around the architecture; do not refactor it wholesale.
+**Treatment:** surround the architecture with receipts, names, reports, and regression tests rather than translating it into a different design.
 
-### 8. Exact transcript comparison is unsafe for every route
+### 11. Exact transcript comparison is unsafe for every route
 
-Combat, randomized messages, timed events, and thief behavior can vary. Interpreter banners and formatting also differ.
+Combat, random messages, timed events, and thief behavior can vary. Interpreter banners and formatting also differ.
 
-**Treatment:** smoke tests use deterministic opening commands and assert meaningful output fragments. Later gameplay tests should normalize only known nondeterministic text, not hide arbitrary differences.
+**Treatment:** deterministic routes assert meaningful fragments. Randomized systems need state-aware or bounded tests rather than globally normalized transcripts that could conceal regressions.
 
-## Smell categories to investigate next
+## Validated build
 
-- commented-out historical branches that may no longer be reachable;
-- duplicate conditional implementations selected by compiler environment;
-- implicit assumptions about table lengths and object counts;
-- parser pronoun state (`IT`) across nested or synthetic `PERFORM` calls;
-- timer queue exhaustion and demon/interrupt partitioning;
-- text or vocabulary typos that alter command recognition;
-- behavior differences between Release 88 and Release 119;
-- generated-file dependencies that are not documented by the entrypoint.
+The pinned modern toolchain successfully produced and ran the optimized edition:
+
+- ZILF/ZAPF 1.9 from commit `d3b79f348b692647ab7ee3b13e5ac7c99b70f471`
+- Z-machine version 3
+- Release 120 / serial 260718
+- 87,012 bytes
+- valid checksum 41,234
+- Frotz opening route passed
+
+The original Release 119 / serial 880429 story also passes independent header, length, address, and checksum verification.
 
 ## Deliberately not changed
 
 - parser grammar and object resolution;
-- puzzles and room graph;
-- object properties and starting locations;
+- puzzle requirements and room graph;
+- object starting locations, weights, capacities, and treasure values;
 - scoring and maximum score;
-- thief, troll, cyclops, or combat behavior;
+- thief, troll, cyclops, and combat behavior;
 - clock timing and randomness;
-- player-visible prose except an existing rejection message reused by the cycle guard;
-- historical root files.
+- historical root files;
+- classic prose except state-correcting removal of `burning` and replacement of two nonportable tab characters with spaces.
 
-The next safe step is to run this pipeline under ZILF/ZAPF, capture baseline command transcripts, and then investigate one behavior family at a time.
+## Next evidence-driven investigations
+
+1. targeted recursive-container transcript and post-rejection save/restore checks;
+2. lit-versus-extinguished candle transcript in South Temple;
+3. Release 88 versus Release 119 behavior map;
+4. reachable clock-slot pressure analysis;
+5. call-site and conditional-build classification of historical unused symbols;
+6. parser pronoun state across nested `PERFORM` calls.
