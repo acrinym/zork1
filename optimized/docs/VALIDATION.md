@@ -1,17 +1,21 @@
 # Validation Record
 
-## Validated revision
+## Validated revisions
 
 - Repository: `acrinym/zork1`
 - Branch: `agent/preservation-first-optimized-edition`
-- Source head validated: `24ca7ba22135e30d45ec76ee359e5bc91b82cfad`
-- GitHub Actions run: `29647010355`
+- Code-bearing source head: `24ca7ba22135e30d45ec76ee359e5bc91b82cfad`
+- Code validation run: `29647010355`
+- Documentation head revalidated: `f9e72bd229d9cd4006d8773111d6ec6734d80880`
+- Documentation-head validation run: `29647169081`
 - Validation date: 2026-07-18
 
-Both workflow jobs passed:
+Both workflow jobs passed in both runs:
 
 1. `preservation-audit`
 2. `optimized-build`
+
+The rebuilt story was byte-for-byte identical across those runs.
 
 ## Historical input proof
 
@@ -142,11 +146,12 @@ Proven:
 - modern ZILF no longer emits the unsafe ZSCII tab warning;
 - the complete story compiles and passes runtime smoke.
 
-## Artifact
+## Workflow artifacts
 
-The workflow artifact archive contains the runnable story, reports, receipts, transcript, and compiler logs.
+Each successful workflow run packages the runnable story, reports, receipts, transcript, and compiler logs. GitHub’s ZIP packaging is run-specific, so the archive hash may change because of packaging metadata even when the contained story is identical.
 
-- Archive SHA-256: `6c92ff8752bd014bc3e9fbb48d04cd7978685c610fb7e700ca69a2d1e720d77b`
-- Archive size: 68,258 bytes
+The stable reproducibility identifier is the story-file SHA-256:
 
-The archive is build evidence, not a replacement for the preserved repository-root Release 119 files.
+`7e38f3a949a67ed0ab9e38923b89537d875fc80f3fbb9bf268c86cf0d325b107`
+
+The workflow archive is build evidence, not a replacement for the preserved repository-root Release 119 files.
