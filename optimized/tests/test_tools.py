@@ -52,6 +52,12 @@ and another > line"
         source = r'<SETG WBREAKS <STRING !\" !,WBREAKS>>' + "\n"
         self.assertEqual([], zil_smell_check.structural_balance(Path("sample.zil"), source))
 
+    def test_splice_prefix_preserves_following_form(self) -> None:
+        source = "<FORM PROG () !<MAPF ,LIST <FUNCTION () <RTRUE>>>>\n"
+        cleaned = zil_smell_check.strip_strings_and_comments(source)
+        self.assertIn("<MAPF", cleaned)
+        self.assertEqual([], zil_smell_check.structural_balance(Path("sample.zil"), source))
+
     def test_active_include_strings_are_preserved(self) -> None:
         source = '<INSERT-FILE "gmacros" T>\n;<INSERT-FILE "dead" T>\n'
         active = zil_smell_check.sanitize_source(source, blank_strings=False)

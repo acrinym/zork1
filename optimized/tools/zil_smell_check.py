@@ -29,17 +29,16 @@ def blank_range(chars: list[str], start: int, end: int) -> None:
             chars[index] = " "
 
 
-def character_end(text: str, start: int) -> int:
-    """Return the index after a ZIL ! character literal.
+def is_character_literal(text: str, start: int) -> bool:
+    """Return true only for ZIL's !\x character-literal syntax."""
+    return start + 1 < len(text) and text[start + 1] == "\\"
 
-    Infocom source uses forms such as !\" for a quote character. A raw quote
-    inside that literal must not begin a string in the structural scanner.
-    """
-    if start + 1 >= len(text):
-        return len(text)
-    if text[start + 1] == "\\" and start + 2 < len(text):
-        return start + 3
-    return start + 2
+
+def character_end(text: str, start: int) -> int:
+    """Return the index after a ZIL !\x character literal."""
+    if not is_character_literal(text, start):
+        return min(start + 1, len(text))
+    return min(start + 3, len(text))
 
 
 def string_end(text: str, start: int) -> int:
@@ -75,7 +74,7 @@ def collection_end(text: str, start: int, opening: str, closing: str) -> int:
     index = start
     while index < len(text):
         char = text[index]
-        if char == "!":
+        if char == "!" and is_character_literal(text, index):
             index = character_end(text, index)
             continue
         if char == '"':
@@ -107,7 +106,9 @@ def reader_object_end(text: str, start: int) -> int:
     if char == '"':
         return string_end(text, index)
     if char == "!":
-        return character_end(text, index)
+        if is_character_literal(text, index):
+            return character_end(text, index)
+        return reader_object_end(text, index + 1)
     if char == "<":
         return collection_end(text, index, "<", ">")
     if char == "(":
@@ -131,7 +132,7 @@ def sanitize_source(text: str, *, blank_strings: bool = True) -> str:
     index = 0
     while index < len(text):
         char = text[index]
-        if char == "!":
+        if char == "!" and is_character_literal(text, index):
             end = character_end(text, index)
             blank_range(chars, index, end)
             index = end
