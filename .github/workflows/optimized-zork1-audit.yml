@@ -1,0 +1,61 @@
+name: Optimized Zork I Audit
+
+on:
+  push:
+    branches:
+      - agent/preservation-first-optimized-edition
+    paths:
+      - "optimized/**"
+      - "*.zil"
+      - "zork1.serial"
+      - "zork1freq.xzap"
+      - "zork1.errors"
+      - "COMPILED/zork1.z3"
+      - ".github/workflows/optimized-zork1-audit.yml"
+  pull_request:
+    paths:
+      - "optimized/**"
+      - "*.zil"
+      - "zork1.serial"
+      - "zork1freq.xzap"
+      - "zork1.errors"
+      - "COMPILED/zork1.z3"
+      - ".github/workflows/optimized-zork1-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  preservation-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test modernization tools
+        run: make -C optimized selftest
+
+      - name: Verify and audit staged historical source
+        run: make -C optimized audit
+
+      - name: Verify preserved Release 119 story file
+        run: |
+          python optimized/tools/verify_story.py COMPILED/zork1.z3 \
+            --expect-version 3 \
+            --json optimized/build/baseline-story-report.json
+
+      - name: Upload audit receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: optimized-zork1-audit
+          path: |
+            optimized/build/STAGING-RECEIPT.json
+            optimized/build/smell-report.json
+            optimized/build/baseline-story-report.json
+          if-no-files-found: warn
