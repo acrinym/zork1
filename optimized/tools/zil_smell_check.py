@@ -30,12 +30,12 @@ def blank_range(chars: list[str], start: int, end: int) -> None:
 
 
 def is_character_literal(text: str, start: int) -> bool:
-    """Return true only for ZIL's !\x character-literal syntax."""
+    """Return true only for ZIL character literals beginning with ! and backslash."""
     return start + 1 < len(text) and text[start + 1] == "\\"
 
 
 def character_end(text: str, start: int) -> int:
-    """Return the index after a ZIL !\x character literal."""
+    """Return the index after one ZIL character literal."""
     if not is_character_literal(text, start):
         return min(start + 1, len(text))
     return min(start + 3, len(text))
