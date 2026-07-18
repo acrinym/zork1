@@ -88,12 +88,27 @@ jobs:
         with:
           dotnet-version: "10.0.x"
 
-      - name: Build pinned ZILF
+      - name: Install ZILF build prerequisites
         run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+          pushd .tooling/zilf
+          pwsh ./tools/setup-glazer.ps1
+          popd
+
+      - name: Build pinned ZILF
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p optimized/build
+          dotnet restore .tooling/zilf/src/Zilf/Zilf.csproj --nologo \
+            2>&1 | tee optimized/build/zilf-restore.log
           dotnet build .tooling/zilf/src/Zilf/Zilf.csproj \
             --configuration Release \
             --property:PortableTarget=true \
-            --nologo
+            --no-restore \
+            --nologo \
+            2>&1 | tee optimized/build/zilf-build.log
           zilf_dll="$(find .tooling/zilf/src/Zilf/bin/Release -path '*/net10.0/zilf.dll' -print -quit)"
           test -n "$zilf_dll"
           echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
@@ -111,7 +126,6 @@ jobs:
 
       - name: Install Frotz
         run: |
-          sudo apt-get update
           sudo apt-get install -y frotz
           command -v dfrotz
 
@@ -134,4 +148,6 @@ jobs:
             optimized/build/smoke-transcript.txt
             optimized/build/smell-report.json
             optimized/build/src/STAGING-RECEIPT.json
+            optimized/build/zilf-restore.log
+            optimized/build/zilf-build.log
           if-no-files-found: warn
