@@ -9,9 +9,12 @@ WORK_DIR := $(BUILD_DIR)/src
 STORY := $(BUILD_DIR)/zork1-optimized.z3
 BASELINE := $(REPO_ROOT)/COMPILED/zork1.z3
 
-.PHONY: all stage audit compile verify smoke clean
+.PHONY: all selftest stage audit compile verify smoke clean
 
-all: audit compile verify
+all: selftest audit compile verify
+
+selftest:
+	$(PYTHON) -m unittest discover -s tests -p 'test_*.py' -v
 
 stage:
 	$(PYTHON) tools/stage_source.py \
@@ -25,13 +28,17 @@ audit: stage
 		--json "$(BUILD_DIR)/smell-report.json"
 
 compile: audit
-	cd "$(WORK_DIR)" && "$(ZILF)" zork1.zil
-	"$(ZAPF)" "$(WORK_DIR)/zork1.zap" "$(STORY)"
+	$(PYTHON) tools/build_story.py \
+		--source "$(WORK_DIR)" \
+		--output "$(STORY)" \
+		--zilf "$(ZILF)" \
+		--zapf "$(ZAPF)"
 
 verify: compile
 	$(PYTHON) tools/verify_story.py "$(STORY)" \
 		--expect-version 3 \
-		--baseline "$(BASELINE)"
+		--baseline "$(BASELINE)" \
+		--json "$(BUILD_DIR)/story-report.json"
 
 smoke: verify
 	$(PYTHON) tools/run_smoke.py "$(STORY)" \

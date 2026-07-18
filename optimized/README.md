@@ -20,22 +20,24 @@ The goal is to:
 ## First-pass fixes
 
 1. **Case-sensitive include portability** — the optimized `zork1.zil` entrypoint uses lowercase include names that exactly match the repository filenames. This avoids a build failure class on case-sensitive filesystems while preserving game logic.
-2. **Build output isolation** — generated `.zap`, `.z3`, reports, and staged sources live under `optimized/build`; historical root artifacts are not replaced.
-3. **Source-drift protection** — staging verifies each root file against its recorded Git blob SHA before copying it.
-4. **Structural smell checks** — the checker validates balanced ZIL forms, case-correct includes, duplicate definitions, unfinished markers, and clock-table capacity metadata.
-5. **Z-machine verification** — the output verifier checks the story-file header, declared length, important addresses, and checksum.
+2. **Old and new ZILF compatibility** — the build accepts either a modern direct `.z3` output or the older `.zap` plus ZAPF flow.
+3. **Build output isolation** — generated `.zap`, `.z3`, reports, and staged sources live under `optimized/build`; historical root artifacts are not replaced.
+4. **Source-drift protection** — staging verifies each root file against its recorded Git blob SHA before copying it.
+5. **Structural smell checks** — the checker understands ZIL’s semicolon-suppressed forms and validates balanced forms, case-correct includes, duplicate definitions, unfinished markers, and clock-table capacity metadata.
+6. **Z-machine verification** — the output verifier checks the story-file header, declared length, important addresses, and checksum.
 
 ## Requirements
 
-- Python 3.9+
+- Python 3.10+
 - ZILF (`zilf`)
-- ZAPF (`zapf`)
+- ZAPF (`zapf`) when using a legacy ZILF version that emits `.zap`
 - A Z-machine interpreter such as Frotz for smoke tests
 
 ## Build
 
 ```sh
 cd optimized
+make selftest
 make audit
 make compile
 make verify
@@ -63,7 +65,7 @@ make all ZILF=/path/to/zilf ZAPF=/path/to/zapf PYTHON=python3
 
 - `overrides/` — intentional replacements layered over staged historical files
 - `tools/` — staging, linting, story verification, and smoke-test utilities
-- `tests/` — command routes and expected output fragments
+- `tests/` — tool regressions, command routes, and expected output fragments
 - `docs/` — audit findings and preservation rules
 - `build/` — generated locally; ignored by Git
 
