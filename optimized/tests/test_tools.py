@@ -52,6 +52,13 @@ and another > line"
         source = r'<SETG WBREAKS <STRING !\" !,WBREAKS>>' + "\n"
         self.assertEqual([], zil_smell_check.structural_balance(Path("sample.zil"), source))
 
+    def test_escaped_quote_token_does_not_begin_string(self) -> None:
+        source = r'<BUZZ A EXCEPT \. \, \" YES NO>' + "\n"
+        cleaned = zil_smell_check.strip_strings_and_comments(source)
+        self.assertIn("YES", cleaned)
+        self.assertIn("NO", cleaned)
+        self.assertEqual([], zil_smell_check.structural_balance(Path("sample.zil"), source))
+
     def test_splice_prefix_preserves_following_form(self) -> None:
         source = "<FORM PROG () !<MAPF ,LIST <FUNCTION () <RTRUE>>>>\n"
         cleaned = zil_smell_check.strip_strings_and_comments(source)

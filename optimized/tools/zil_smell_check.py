@@ -41,6 +41,13 @@ def character_end(text: str, start: int) -> int:
     return min(start + 3, len(text))
 
 
+def escaped_token_character_end(text: str, start: int) -> int:
+    """Return the index after one backslash-escaped token character."""
+    if start + 1 >= len(text):
+        return len(text)
+    return start + 2
+
+
 def string_end(text: str, start: int) -> int:
     """Return the index after a ZIL string, tolerating an unfinished string."""
     index = start + 1
@@ -62,6 +69,9 @@ def token_end(text: str, start: int) -> int:
     index = start
     while index < len(text):
         char = text[index]
+        if char == "\\" and index + 1 < len(text):
+            index = escaped_token_character_end(text, index)
+            continue
         if char.isspace() or char in "()<>;":
             break
         index += 1
@@ -74,6 +84,9 @@ def collection_end(text: str, start: int, opening: str, closing: str) -> int:
     index = start
     while index < len(text):
         char = text[index]
+        if char == "\\":
+            index = escaped_token_character_end(text, index)
+            continue
         if char == "!" and is_character_literal(text, index):
             index = character_end(text, index)
             continue
@@ -132,6 +145,9 @@ def sanitize_source(text: str, *, blank_strings: bool = True) -> str:
     index = 0
     while index < len(text):
         char = text[index]
+        if char == "\\":
+            index = escaped_token_character_end(text, index)
+            continue
         if char == "!" and is_character_literal(text, index):
             end = character_end(text, index)
             blank_range(chars, index, end)
