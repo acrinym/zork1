@@ -2,7 +2,7 @@
 
 This directory is an isolated modernization workspace for the microcomputer version of **Zork I** in the repository root.
 
-The historical source at the root is never overwritten. Every build begins by verifying and staging a known source snapshot into `optimized/build/src`, then applying narrowly scoped overlays from `optimized/overrides`.
+The historical source at the root is never overwritten. Every build begins by verifying and staging a known source snapshot into `optimized/build/src`, then applying narrowly scoped overlays and exact-match patches.
 
 ## What “optimized” means here
 
@@ -19,12 +19,14 @@ The goal is to:
 
 ## First-pass fixes
 
-1. **Case-sensitive include portability** — the optimized `zork1.zil` entrypoint uses lowercase include names that exactly match the repository filenames. This avoids a build failure class on case-sensitive filesystems while preserving game logic.
-2. **Old and new ZILF compatibility** — the build accepts either a modern direct `.z3` output or the older `.zap` plus ZAPF flow.
-3. **Build output isolation** — generated `.zap`, `.z3`, reports, and staged sources live under `optimized/build`; historical root artifacts are not replaced.
-4. **Source-drift protection** — staging verifies each root file against its recorded Git blob SHA before copying it.
-5. **Structural smell checks** — the checker understands ZIL’s semicolon-suppressed forms and validates balanced forms, case-correct includes, duplicate definitions, unfinished markers, and clock-table capacity metadata.
-6. **Z-machine verification** — the output verifier checks the story-file header, declared length, important addresses, and checksum.
+1. **Recursive-container corruption** — `PUT` now rejects moves that would place an object inside one of its own descendants, preventing cycles in the Z-machine object tree while preserving legitimate nesting.
+2. **Case-sensitive include portability** — the optimized `zork1.zil` entrypoint uses lowercase include names that exactly match the repository filenames.
+3. **Old and new ZILF compatibility** — the build accepts either a modern direct `.z3` output or the older `.zap` plus ZAPF flow.
+4. **Build output isolation** — generated `.zap`, `.z3`, reports, and staged sources live under `optimized/build`; historical root artifacts are not replaced.
+5. **Source-drift protection** — staging verifies each root file against its recorded Git blob SHA before copying it.
+6. **Exact behavioral patching** — gameplay fixes use verified source anchors, fail when text drifts, and are listed in the staging receipt.
+7. **Structural smell checks** — the checker understands ZIL’s semicolon-suppressed forms and validates balanced forms, case-correct includes, duplicate definitions, unfinished markers, and clock-table capacity metadata.
+8. **Z-machine verification** — the output verifier checks the story-file header, declared length, important addresses, and checksum.
 
 ## Requirements
 
@@ -63,10 +65,11 @@ make all ZILF=/path/to/zilf ZAPF=/path/to/zapf PYTHON=python3
 
 ## Directory map
 
-- `overrides/` — intentional replacements layered over staged historical files
+- `overrides/` — intentional complete-file replacements layered over staged historical files
+- `patches/` — narrowly scoped, exact-match source changes with defect IDs
 - `tools/` — staging, linting, story verification, and smoke-test utilities
 - `tests/` — tool regressions, command routes, and expected output fragments
-- `docs/` — audit findings and preservation rules
+- `docs/` — audit findings, behavioral bug ledger, and preservation rules
 - `build/` — generated locally; ignored by Git
 
 ## Behavioral rule

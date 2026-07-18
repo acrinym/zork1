@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import shutil
 import sys
 import tempfile
 import unittest
@@ -7,6 +8,7 @@ from pathlib import Path
 
 
 OPTIMIZED_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = OPTIMIZED_ROOT.parent
 sys.path.insert(0, str(OPTIMIZED_ROOT / "tools"))
 
 import stage_source  # noqa: E402
@@ -54,6 +56,34 @@ class StagingTests(unittest.TestCase):
             "b6fc4c620b67d95f953a5c1c1230aaab5db5a1b0",
             stage_source.git_blob_sha(b"hello"),
         )
+
+    def test_containment_patch_applies_to_verified_root_shape(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory)
+            shutil.copy2(REPO_ROOT / "gverbs.zil", destination / "gverbs.zil")
+            receipt = stage_source.apply_patches(
+                OPTIMIZED_ROOT / "patches", destination
+            )
+            patched = (destination / "gverbs.zil").read_text(encoding="utf-8")
+            self.assertEqual("Z1-BUG-001", receipt[0]["id"])
+            self.assertIn("<ROUTINE OPT-DESCENDANT?", patched)
+            self.assertIn("<OPT-DESCENDANT? ,PRSI ,PRSO>", patched)
+
+    def test_exact_patch_refuses_source_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            destination = root / "source"
+            patches = root / "patches"
+            destination.mkdir()
+            patches.mkdir()
+            (destination / "sample.zil").write_text("changed", encoding="utf-8")
+            (patches / "001.json").write_text(
+                '{"path":"sample.zil","replacements":['
+                '{"old":"original","new":"fixed","expected_count":1}]}',
+                encoding="utf-8",
+            )
+            with self.assertRaises(RuntimeError):
+                stage_source.apply_patches(patches, destination)
 
 
 class StoryVerificationTests(unittest.TestCase):
