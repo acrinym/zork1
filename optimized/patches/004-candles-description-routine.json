@@ -1,0 +1,12 @@
+{
+  "id": "Z1-BUG-002",
+  "path": "1actions.zil",
+  "description": "Describe temple candles as burning only while their ONBIT is set",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE CANDLES-FCN ()",
+      "new": "<ROUTINE CANDLES-D (RARG)\n\t <COND (<EQUAL? .RARG ,M-OBJDESC>\n\t\t<TELL \"On the two ends of the altar are \">\n\t\t<COND (<FSET? ,CANDLES ,ONBIT>\n\t\t       <TELL \"burning \">)>\n\t\t<TELL \"candles.\" CR>\n\t\t<RTRUE>)>>\n\n<ROUTINE CANDLES-FCN ()"
+    }
+  ]
+}

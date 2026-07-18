@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate core Z-machine header invariants and the story checksum."""
+"""Validate core Z-machine header invariants, identity, and checksum."""
 
 from __future__ import annotations
 
@@ -51,13 +51,22 @@ def inspect(path: Path) -> dict[str, Any]:
     }
 
 
-def validate(info: dict[str, Any], expect_version: int | None) -> list[str]:
+def validate(
+    info: dict[str, Any],
+    expect_version: int | None = None,
+    expect_release: int | None = None,
+    expect_serial: str | None = None,
+) -> list[str]:
     errors: list[str] = []
     size = info["actual_bytes"]
     if expect_version is not None and info["version"] != expect_version:
         errors.append(
             f"expected Z-machine version {expect_version}, got {info['version']}"
         )
+    if expect_release is not None and info["release"] != expect_release:
+        errors.append(f"expected release {expect_release}, got {info['release']}")
+    if expect_serial is not None and info["serial"] != expect_serial:
+        errors.append(f"expected serial {expect_serial}, got {info['serial']}")
     if info["declared_bytes"] and info["declared_bytes"] != size:
         errors.append(
             f"header declares {info['declared_bytes']} bytes, file has {size}"
@@ -87,6 +96,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("story", type=Path)
     parser.add_argument("--expect-version", type=int)
+    parser.add_argument("--expect-release", type=int)
+    parser.add_argument("--expect-serial")
     parser.add_argument("--baseline", type=Path)
     parser.add_argument("--json", type=Path)
     args = parser.parse_args()
@@ -96,7 +107,12 @@ def main() -> int:
     except (OSError, ValueError) as exc:
         print(f"verify_story: {exc}", file=sys.stderr)
         return 2
-    errors = validate(story, args.expect_version)
+    errors = validate(
+        story,
+        expect_version=args.expect_version,
+        expect_release=args.expect_release,
+        expect_serial=args.expect_serial,
+    )
     report: dict[str, Any] = {"story": story, "errors": errors}
 
     if args.baseline and args.baseline.is_file():

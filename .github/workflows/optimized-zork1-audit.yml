@@ -50,6 +50,8 @@ jobs:
         run: |
           python optimized/tools/verify_story.py COMPILED/zork1.z3 \
             --expect-version 3 \
+            --expect-release 119 \
+            --expect-serial 880429 \
             --json optimized/build/baseline-story-report.json
 
       - name: Upload audit receipts
@@ -123,16 +125,6 @@ jobs:
           zapf_dll="$tool_dir/zapf.dll"
           test -f "$zilf_dll"
           test -f "$zapf_dll"
-
-          if [[ ! -x "$tool_dir/zapf" ]]; then
-            cat > "$tool_dir/zapf" <<'EOF'
-          #!/usr/bin/env bash
-          SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-          exec dotnet "$SCRIPT_DIR/zapf.dll" "$@"
-          EOF
-            chmod +x "$tool_dir/zapf"
-          fi
-
           echo "ZILF_DLL=$zilf_dll" >> "$GITHUB_ENV"
           echo "ZAPF_DLL=$zapf_dll" >> "$GITHUB_ENV"
 
@@ -143,12 +135,20 @@ jobs:
           make -C optimized compile \
             ZILF="dotnet $ZILF_DLL" \
             ZAPF="dotnet $ZAPF_DLL" \
+            RELEASE=120 \
+            SERIAL=260718 \
             2>&1 | tee optimized/build/zork-compile.log
+          if grep -q "ZIL0410" optimized/build/zork-compile.log; then
+            echo "Unsafe ZSCII character warning remains in optimized source." >&2
+            exit 1
+          fi
 
       - name: Verify optimized story file
         run: |
           python optimized/tools/verify_story.py optimized/build/zork1-optimized.z3 \
             --expect-version 3 \
+            --expect-release 120 \
+            --expect-serial 260718 \
             --baseline COMPILED/zork1.z3 \
             --json optimized/build/optimized-story-report.json
 

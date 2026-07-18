@@ -1,0 +1,12 @@
+{
+  "id": "Z1-BUG-002",
+  "path": "1dungeon.zil",
+  "description": "Route the temple candles through a state-aware room-description callback",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (ACTION CANDLES-FCN)",
+      "new": "      (DESCFCN CANDLES-D)\n      (ACTION CANDLES-FCN)"
+    }
+  ]
+}

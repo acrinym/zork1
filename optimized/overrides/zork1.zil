@@ -2,11 +2,13 @@
 	        Zork I: The Great Underground Empire
 	(c) Copyright 1983 Infocom, Inc.  All Rights Reserved."
 
-;"Preservation-first portability overlay.
-  Include names now match the lowercase repository filenames exactly.
-  No game rules, parser rules, world data, scoring, or prose are changed."
+;"Preservation-first optimized-edition overlay.
+  Include names match the lowercase repository filenames exactly.
+  RELEASEID 120 identifies this project-local edition based on Release 119;
+  it is not presented as an official Infocom release."
 
 <VERSION ZIP>
+<CONSTANT RELEASEID 120>
 
 <SETG ZORK-NUMBER 1>
 

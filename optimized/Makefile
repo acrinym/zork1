@@ -2,6 +2,8 @@ PYTHON ?= python3
 ZILF ?= zilf
 ZAPF ?= zapf
 INTERPRETER ?= dfrotz
+RELEASE ?= 120
+SERIAL ?= 260718
 
 REPO_ROOT := $(abspath ..)
 BUILD_DIR := $(CURDIR)/build
@@ -32,11 +34,15 @@ compile: audit
 		--source "$(WORK_DIR)" \
 		--output "$(STORY)" \
 		--zilf "$(ZILF)" \
-		--zapf "$(ZAPF)"
+		--zapf "$(ZAPF)" \
+		--release "$(RELEASE)" \
+		--serial "$(SERIAL)"
 
 verify: compile
 	$(PYTHON) tools/verify_story.py "$(STORY)" \
 		--expect-version 3 \
+		--expect-release "$(RELEASE)" \
+		--expect-serial "$(SERIAL)" \
 		--baseline "$(BASELINE)" \
 		--json "$(BUILD_DIR)/story-report.json"
 
