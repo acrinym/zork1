@@ -114,8 +114,11 @@ jobs:
           echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
 
       - name: Stage and compile optimized edition
+        shell: bash
         run: |
-          make -C optimized compile ZILF="dotnet $ZILF_DLL"
+          set -o pipefail
+          make -C optimized compile ZILF="dotnet $ZILF_DLL" \
+            2>&1 | tee optimized/build/zork-compile.log
 
       - name: Verify optimized story file
         run: |
@@ -150,4 +153,5 @@ jobs:
             optimized/build/src/STAGING-RECEIPT.json
             optimized/build/zilf-restore.log
             optimized/build/zilf-build.log
+            optimized/build/zork-compile.log
           if-no-files-found: warn
