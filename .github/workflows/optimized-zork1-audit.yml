@@ -55,7 +55,7 @@ jobs:
         with:
           name: optimized-zork1-audit
           path: |
-            optimized/build/STAGING-RECEIPT.json
+            optimized/build/src/STAGING-RECEIPT.json
             optimized/build/smell-report.json
             optimized/build/baseline-story-report.json
           if-no-files-found: warn
