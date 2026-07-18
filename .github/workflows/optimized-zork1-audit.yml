@@ -96,28 +96,53 @@ jobs:
           pwsh ./tools/setup-glazer.ps1
           popd
 
-      - name: Build pinned ZILF
+      - name: Build pinned ZILF and ZAPF
         shell: bash
         run: |
           set -o pipefail
           mkdir -p optimized/build
           dotnet restore .tooling/zilf/src/Zilf/Zilf.csproj --nologo \
             2>&1 | tee optimized/build/zilf-restore.log
+          dotnet restore .tooling/zilf/src/Zapf/Zapf.csproj --nologo \
+            2>&1 | tee optimized/build/zapf-restore.log
           dotnet build .tooling/zilf/src/Zilf/Zilf.csproj \
             --configuration Release \
             --property:PortableTarget=true \
             --no-restore \
             --nologo \
             2>&1 | tee optimized/build/zilf-build.log
-          zilf_dll="$(find .tooling/zilf/bin/Release -path '*/net10.0/zilf.dll' -print -quit)"
-          test -n "$zilf_dll"
-          echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+          dotnet build .tooling/zilf/src/Zapf/Zapf.csproj \
+            --configuration Release \
+            --property:PortableTarget=true \
+            --no-restore \
+            --nologo \
+            2>&1 | tee optimized/build/zapf-build.log
+
+          tool_dir="$(realpath .tooling/zilf/bin/Release/net10.0)"
+          zilf_dll="$tool_dir/zilf.dll"
+          zapf_dll="$tool_dir/zapf.dll"
+          test -f "$zilf_dll"
+          test -f "$zapf_dll"
+
+          if [[ ! -x "$tool_dir/zapf" ]]; then
+            cat > "$tool_dir/zapf" <<'EOF'
+          #!/usr/bin/env bash
+          SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+          exec dotnet "$SCRIPT_DIR/zapf.dll" "$@"
+          EOF
+            chmod +x "$tool_dir/zapf"
+          fi
+
+          echo "ZILF_DLL=$zilf_dll" >> "$GITHUB_ENV"
+          echo "ZAPF_DLL=$zapf_dll" >> "$GITHUB_ENV"
 
       - name: Stage and compile optimized edition
         shell: bash
         run: |
           set -o pipefail
-          make -C optimized compile ZILF="dotnet $ZILF_DLL" \
+          make -C optimized compile \
+            ZILF="dotnet $ZILF_DLL" \
+            ZAPF="dotnet $ZAPF_DLL" \
             2>&1 | tee optimized/build/zork-compile.log
 
       - name: Verify optimized story file
@@ -152,6 +177,8 @@ jobs:
             optimized/build/smell-report.json
             optimized/build/src/STAGING-RECEIPT.json
             optimized/build/zilf-restore.log
+            optimized/build/zapf-restore.log
             optimized/build/zilf-build.log
+            optimized/build/zapf-build.log
             optimized/build/zork-compile.log
           if-no-files-found: warn
