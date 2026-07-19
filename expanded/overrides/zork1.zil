@@ -38,4 +38,5 @@
 <INSERT-FILE "gverbs" T>
 <INSERT-FILE "1actions" T>
 <INSERT-FILE "expansions" T>
+<INSERT-FILE "absurd_grammar" T>
 <INSERT-FILE "absurdities" T>
