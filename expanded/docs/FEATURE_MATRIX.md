@@ -9,8 +9,8 @@
 | Expanded | `.z3` | Release 121 / `260719` | Qualified as a complete build with broad deterministic routes |
 | Unchanged upstream Glulx | `.ulx` | Release 1 / `251203` | Qualified against Tara McGrew's exact source commit and archived reference |
 | Unofficial Optimized Glulx | `.ulx` | Release 1201 / `260719` | Qualified conservative corrections and native regressions |
-| Unofficial Assisted Glulx | `.ulx` | Release 1211 / `260719` | Qualified action hooks and assistance with cross-VM semantic parity |
-| Unofficial Reactive Surface Glulx | `.ulx` | Release 1212 / `260719` | Qualified white-house surface reactions without optional geography |
+| Unofficial Assisted Glulx | `.ulx` | Release 1211 / `260719` | Qualified action hooks and assistance with `.z3`/`.ulx` semantic parity |
+| Unofficial Reactive Surface Glulx | `.ulx` | Release 1212 / `260719` | Qualified proximity-safe white-house surface reactions without optional geography |
 | Deeper Reactive Glulx | `.ulx` | not assigned yet | Dam, ritual, and object feedback is the controlling next layer |
 
 ## Shipped interaction foundation
@@ -19,7 +19,7 @@
 |---|---|---|
 | Edition separation | Independent build, receipt, audit, verification, and artifact | Historical Release 119 and optimized Release 120 remain separate |
 | Player orientation | `GOALS`, `EXITS`, tiered `HINT`, `RECAP`, `WHY`, and `USE <object>` | Traditional parser play remains available; assistance is optional |
-| White house | Repeated knocking, listening, roof-climb explanation, structural responses | Original entry route and house navigation |
+| White house | Repeated knocking, listening, roof-climb explanation, structural responses | Original entry route, house navigation, and proximity rules |
 | Boards and boarded windows | Tool-sensitive scarring, persistent splinter, sound and visibility responses | Boards remain secured; no front-door bypass |
 | Kitchen window | Knocking and listening reactions | Original open, close, examine, and traversal behavior |
 | Mailbox | Hidden maintenance slip after leaflet removal | Original leaflet and mailbox sequence |
@@ -37,20 +37,14 @@
 
 ### Release 1211
 
-Ports and proves:
-
-- global state-neutral action hook;
-- canonical goals and exits;
-- three progressive hint levels;
-- canonical persistent-state recap;
-- contextual failure explanations;
-- object affordance guidance.
+Ports and proves the state-neutral action hook, goals, exits, three hint levels, canonical-state recap, contextual failure explanations, and object affordance guidance.
 
 ### Release 1212
 
 Adds and proves:
 
-- white-house and front-door reactions;
+- adjacent white-house and front-door reactions;
+- rejection of remote house knocking, listening, and climbing from forest local-global rooms;
 - board and boarded-window responses;
 - persistent board scarring and painted splinter;
 - kitchen-window reactions with original traversal;
@@ -59,7 +53,7 @@ Adds and proves:
 - songbird listening and greeting;
 - surface-state recap entries.
 
-The real-map route passes under Expanded Release 121 `.z3` and Reactive Surface Release 1212 `.ulx`. A native boundary route proves `FOLLOW SONGBIRD` is still refused and Hidden Glade is absent.
+The real-map route passes under Expanded Release 121 `.z3` and Reactive Surface Release 1212 `.ulx`. A native boundary route proves proximity enforcement, `FOLLOW SONGBIRD` refusal, and Hidden Glade exclusion.
 
 Release 1212 does **not** include optional geography, alternate NPC solutions, deeper dam/ritual/tool reactions, or comedy. Those remain in Release 121 `.z3` until their isolated Glulx layers qualify.
 
@@ -74,6 +68,7 @@ Release 1212 does **not** include optional geography, alternate NPC solutions, d
 - Release 1201 contains no Release 121 behavior.
 - Release 1211 contains assistance but no reactive scenery.
 - Release 1212 contains surface reactivity but no new room or alternate solution.
+- Local-global noun visibility does not grant remote physical interaction with the house.
 
 ## Validation coverage
 
@@ -90,8 +85,9 @@ Release 1212 does **not** include optional geography, alternate NPC solutions, d
 | Optimized Glulx | Exact four-path stage, artifact pin, containment and candle regressions |
 | Assisted Glulx | Exact six-path stage, Release 1201 base pin, artifact pin, assistance parity |
 | Reactive surface staging | Exact seven-path stage and qualified Release 1211 base pin |
-| Reactive surface artifact | Fail-closed 189,184-byte artifact, checksum `0xec1c9be9`, and SHA-256 |
+| Reactive surface artifact | Fail-closed 189,440-byte artifact, checksum `0x01ea5062`, and SHA-256 |
 | Surface semantic parity | Real-map `.z3`/`.ulx` house, mailbox, window, board, recap, forest, and bird route |
+| Proximity regression | Native forest route rejects remote house knock, listen, and climb actions |
 | Optional-geography exclusion | Native canonical FOLLOW refusal and absence of Hidden Glade |
 | Beadtrain integrity | Every recorded completed train is validated against canonical plus sharded issue ledgers |
 
