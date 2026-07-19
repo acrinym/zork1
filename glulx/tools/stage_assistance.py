@@ -60,7 +60,12 @@ def validate_base_manifest(manifest: dict[str, Any], manifest_path: Path) -> dic
     expected_release = manifest.get("base_release")
     expected_sha = manifest.get("base_artifact_sha256")
     actual_release = base.get("release")
-    actual_sha = base.get("expected_artifact", {}).get("sha256")
+    expected_artifact = base.get("expected_artifact")
+    actual_sha = (
+        expected_artifact.get("sha256")
+        if isinstance(expected_artifact, dict)
+        else None
+    )
     if actual_release != expected_release:
         raise RuntimeError(
             f"base release drift: expected {expected_release}, got {actual_release}"
@@ -76,6 +81,16 @@ def validate_base_manifest(manifest: dict[str, Any], manifest_path: Path) -> dic
         "release": actual_release,
         "artifact_sha256": actual_sha,
     }
+
+
+def remove_destination(destination: Path) -> None:
+    """Remove a prior staging target whether it is a directory, file, or symlink."""
+    if not destination.exists() and not destination.is_symlink():
+        return
+    if destination.is_dir() and not destination.is_symlink():
+        shutil.rmtree(destination)
+    else:
+        destination.unlink()
 
 
 def main() -> int:
@@ -110,14 +125,13 @@ def main() -> int:
             f"upstream tree drift: expected {expected_tree}, got {tree}"
         )
 
-    if destination.exists():
-        shutil.rmtree(destination)
+    remove_destination(destination)
     destination.mkdir(parents=True)
 
     try:
         tracked = copy_tracked(upstream, destination)
         overrides: list[dict[str, Any]] = []
-        for item in manifest.get("overrides", []):
+        for item in manifest.get("overrides") or []:
             if not isinstance(item, dict):
                 raise RuntimeError("each assistance override must be an object")
             if item.get("allow_new") is True:
@@ -127,19 +141,19 @@ def main() -> int:
 
         patch_paths = [
             (manifest_path.parent / value).resolve()
-            for value in manifest.get("patches", [])
+            for value in manifest.get("patches") or []
         ]
         patches = [apply_patch(path, destination) for path in patch_paths]
 
         changed = {item["path"] for item in overrides}
         changed.update(item["path"] for item in patches)
-        expected_changed = set(manifest.get("expected_changed_paths", []))
+        expected_changed = set(manifest.get("expected_changed_paths") or [])
         if changed != expected_changed:
             raise RuntimeError(
                 f"changed-path mismatch: expected {sorted(expected_changed)}, got {sorted(changed)}"
             )
     except Exception:
-        shutil.rmtree(destination, ignore_errors=True)
+        remove_destination(destination)
         raise
 
     receipt = {
