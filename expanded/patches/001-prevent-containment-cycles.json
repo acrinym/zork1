@@ -1,0 +1,17 @@
+{
+  "id": "Z1-BUG-001",
+  "path": "gverbs.zil",
+  "description": "Prevent an object from being moved into one of its own descendants",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-PUT ()",
+      "new": "<ROUTINE OPT-DESCENDANT? (OBJ ANCESTOR \"AUX\" (COUNT 0))\n\t<REPEAT ()\n\t\t<SET OBJ <LOC .OBJ>>\n\t\t<COND (<NOT .OBJ> <RFALSE>)\n\t\t      (<EQUAL? .OBJ .ANCESTOR> <RTRUE>)\n\t\t      (<G? <SET COUNT <+ .COUNT 1>> 255>\n\t\t       ;\"A pre-existing malformed cycle must not be extended.\"\n\t\t       <RTRUE>)>>>\n\n<ROUTINE V-PUT ()"
+    },
+    {
+      "expected_count": 1,
+      "old": "(<EQUAL? ,PRSI ,PRSO>\n\t\t<TELL \"How can you do that?\" CR>)",
+      "new": "(<OR <EQUAL? ,PRSI ,PRSO>\n\t\t    <OPT-DESCENDANT? ,PRSI ,PRSO>>\n\t\t<TELL \"How can you do that?\" CR>)"
+    }
+  ]
+}
