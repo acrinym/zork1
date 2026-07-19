@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edition": {
+    "name": "Zork I Glulx upstream baseline",
+    "status": "unofficial repository-local additive edition",
+    "source_release": 1,
+    "source_serial": "251203",
+    "artifact_extension": ".ulx"
+  },
+  "source": {
+    "repository": "https://github.com/taradinoc/zork1",
+    "branch": "glulx",
+    "commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+    "default_branch": "master",
+    "default_branch_commit": "97b7b3d68c075dd9af7da499c3e9690ada3471fd",
+    "merge_base": "97b7b3d68c075dd9af7da499c3e9690ada3471fd",
+    "ahead_by": 1,
+    "changed_paths": [
+      "1actions.zil",
+      "1dungeon.zil",
+      "gclock.zil",
+      "gmacros.zil",
+      "gparser.zil",
+      "gverbs.zil",
+      "zork1.zil"
+    ],
+    "local_modifications": []
+  },
+  "toolchain": {
+    "zilf": {
+      "repository": "https://github.com/taradinoc/zilf",
+      "release": "1.8",
+      "commit": "45c60f1e37651f266ac92d49ae01748bb4909fa5"
+    },
+    "glazer": {
+      "source": "built from the pinned ZILF 1.8 tree",
+      "commit": "45c60f1e37651f266ac92d49ae01748bb4909fa5"
+    },
+    "glulxe": {
+      "repository": "https://github.com/erkyrath/glulxe",
+      "commit": "56ab8743bab565de307bd892c555d8d8897ed517"
+    },
+    "glk": {
+      "implementation": "CheapGlk",
+      "repository": "https://github.com/erkyrath/cheapglk",
+      "commit": "14d8aaf6e4150669762bd4646a5368e75c1eeee6"
+    }
+  },
+  "licenses": {
+    "zork_source": "MIT; retain upstream LICENSE",
+    "zilf_and_glazer": "GPL-3.0 and repository component licenses; build tools are not redistributed in story artifacts",
+    "glulxe": "MIT",
+    "cheapglk": "see pinned upstream license files",
+    "branding": "No Microsoft, Activision, Xbox, or Infocom endorsement is implied"
+  },
+  "archive_reference": {
+    "url": "https://ifarchive.org/if-archive/games/glulx/zork1-glulx.zip",
+    "inspection_status": "reference recorded; CI-produced baseline is authoritative for this repository"
+  }
+}
