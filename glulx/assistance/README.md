@@ -1,6 +1,6 @@
 # Unofficial Assisted Glulx Release 121 layer
 
-This directory contains the first Release 121 semantic-parity layer built on the qualified Optimized Glulx Release 1201 artifact.
+This directory contains the first qualified Release 121 semantic-parity layer built on the Optimized Glulx Release 1201 artifact.
 
 ## Scope
 
@@ -33,6 +33,15 @@ It intentionally excludes:
 - base: qualified Unofficial Optimized Glulx Release `1201`
 
 Release `1211` is a repository-local migration identity, not an official Infocom release.
+
+## Qualified artifact
+
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `185,600` bytes
+- checksum: `0xd3e2209e`, valid
+- SHA-256: `cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777`
+
+The workflow fails closed if the source layer, compiler inputs, size, checksum, or SHA-256 changes without an intentional provenance update.
 
 ## Layer derivation
 
@@ -67,6 +76,8 @@ The hook:
 
 Later Release 121 layers may call `ASSIST-REMEMBER-FAIL` or extend the hook through separately reviewed patches.
 
+Tara's Glulx grammar does not expose a `PULL` action constant. A separate exact vocabulary patch therefore limits the control-panel failure context to `PUSH`, `MOVE`, and `TURN` rather than inventing a new parser action in this layer.
+
 ## Assistance behavior
 
 ### `GOALS`
@@ -93,13 +104,25 @@ Explains selected immediately preceding failed experiments without changing the 
 
 Describes plausible affordances while requiring the player to issue a concrete action.
 
-## Semantic parity route
+## Qualified semantic parity route
 
 The same command script runs against:
 
 - Expanded Release 121 `.z3` under `dfrotz`;
 - Assisted Release 1211 `.ulx` under pinned Glulxe and CheapGlk.
 
-Qualification compares stable prose markers for goals, exits, all three hint tiers, recap, object use, and contextual `WHY`. It does not require identical whitespace, status presentation, or every sentence between formats.
+Both routes prove stable markers for:
 
-The artifact hash will be committed after the first deterministic candidate run succeeds.
+- canonical goals;
+- opening exits;
+- all three opening hint tiers;
+- an initial recap;
+- generic object-use guidance;
+- a failed `CLIMB HOUSE` followed by contextual `WHY`;
+- normal quitting after nine moves.
+
+The two formats deliberately retain different edition-specific prose around those markers. Qualification compares semantic milestones and required text rather than whitespace-identical transcripts.
+
+## Next layer
+
+The controlling next Glulx layer ports reactive scenery and persistent world state in focused groups. It begins with the white house exterior, doors, boards, windows, and mailbox while retaining Release 1211 as a separately reproducible artifact.
