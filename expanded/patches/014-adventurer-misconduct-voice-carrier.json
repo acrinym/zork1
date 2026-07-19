@@ -1,0 +1,12 @@
+{
+  "id": "Z1-FOLLY-007",
+  "description": "Use the lightweight BLESSINGS global object as the zero-slot carrier for VOICE and WORDS nouns.",
+  "path": "absurdities.zil",
+  "replacements": [
+    {
+      "old": "(<EQUAL? ,PRSI ,LUNGS>",
+      "new": "(<EQUAL? ,PRSI ,BLESSINGS>",
+      "expected_count": 1
+    }
+  ]
+}
