@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a deterministic optimized Zork I story with ZILF and ZAPF."""
+"""Build a deterministic optimized or expanded Zork I story with ZILF and ZAPF."""
 
 from __future__ import annotations
 
@@ -23,9 +23,19 @@ def run(command: list[str], cwd: Path) -> None:
         )
 
 
-def split_command(value: str) -> list[str]:
-    """Split a command string without treating Windows path separators as escapes."""
-    return shlex.split(value, posix=sys.platform != "win32")
+def split_command(value: str, *, platform: str | None = None) -> list[str]:
+    """Split a command while preserving Windows separators and removing wrapper quotes."""
+    platform = sys.platform if platform is None else platform
+    windows = platform == "win32"
+    tokens = shlex.split(value, posix=not windows)
+    if windows:
+        tokens = [
+            token[1:-1]
+            if len(token) >= 2 and token[0] == token[-1] and token[0] in {'"', "'"}
+            else token
+            for token in tokens
+        ]
+    return tokens
 
 
 def remove_generated(source: Path, output: Path) -> None:
