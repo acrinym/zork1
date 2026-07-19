@@ -1,7 +1,13 @@
 goals
 exits
-knock on house
-knock on house
+throw self at house
+throw voice at mailbox
+throw fit
+eat house
+hug house
+marry house
+headbutt house
+folly
 knock on house
 open mailbox
 take leaflet
@@ -9,10 +15,44 @@ look in mailbox
 take slip
 read slip
 west
+eat tree
+hug tree
+throw self at tree
+marry tree
+headbutt tree
+cut down tree with leaflet
 follow bird
 look
 take feather
 recap
 out
+west
+north
+north
+up
+eat nest
+wear nest
+sleep in nest
+lick nest
+hug nest
+folly
+down
+south
+southeast
+open window
+west
+take sack
+west
+take lamp
+turn on lamp
+move rug
+open trap door
+down
+north
+sack troll
+put troll in sack
+throw troll at lamp
+kill troll with self
+folly
 quit
 y
