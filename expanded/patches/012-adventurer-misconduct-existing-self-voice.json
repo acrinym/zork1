@@ -1,11 +1,11 @@
 {
   "id": "Z1-FOLLY-005",
-  "description": "Reuse the original global ME and LUNGS objects for natural SELF and VOICE commands without adding object-table entries.",
+  "description": "Reuse the original global ME and BLESSINGS objects for natural SELF and VOICE commands without adding object-table entries or removing original synonyms.",
   "path": "gglobals.zil",
   "replacements": [
     {
-      "old": "<OBJECT LUNGS\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM LUNGS AIR MOUTH BREATH)\n\t(DESC \"blast of air\")\n\t(FLAGS NDESCBIT)>",
-      "new": "<OBJECT LUNGS\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM LUNGS AIR MOUTH BREATH VOICE WORDS)\n\t(DESC \"your voice\")\n\t(FLAGS NDESCBIT)\n\t(ACTION ABS-VOICE-F)>",
+      "old": "<OBJECT BLESSINGS\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM BLESSINGS GRACES)\n\t(DESC \"blessings\")\n\t(FLAGS NDESCBIT)>",
+      "new": "<OBJECT BLESSINGS\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM BLESSINGS GRACES VOICE WORDS)\n\t(DESC \"your voice\")\n\t(FLAGS NDESCBIT)\n\t(ACTION ABS-VOICE-F)>",
       "expected_count": 1
     },
     {
