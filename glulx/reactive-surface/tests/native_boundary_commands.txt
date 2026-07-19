@@ -1,8 +1,8 @@
 west
 examine forest
 examine tree
-listen tree
-listen bird
+listen to tree
+listen to bird
 hello bird
 follow bird
 look
