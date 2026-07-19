@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1211-VOCAB",
+  "path": "assistance.zil",
+  "description": "Remove the unavailable PULL action constant from the state-neutral control-panel hook while retaining PUSH, MOVE, and TURN",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<VERB? PUSH PULL MOVE TURN>",
+      "new": "<VERB? PUSH MOVE TURN>"
+    }
+  ]
+}

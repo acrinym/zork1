@@ -1,0 +1,46 @@
+{
+  "edition": "Unofficial Assisted Glulx",
+  "release": 1211,
+  "serial": "260719",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../optimized/patch-series.json",
+  "base_release": 1201,
+  "base_artifact_sha256": "f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain Tara's Glulx compatibility block and Release 120 corrections while assigning Release 1211 and loading the assistance layer"
+    },
+    {
+      "path": "assistance.zil",
+      "source": "overrides/assistance.zil",
+      "allow_new": true,
+      "description": "Add only state-neutral action hooks and optional GOALS, EXITS, HINT, RECAP, WHY, and USE commands"
+    }
+  ],
+  "patches": [
+    "../../optimized/patches/001-prevent-containment-cycles.json",
+    "../../optimized/patches/002-replace-unsafe-zscii-tabs.json",
+    "../optimized/patches/003-candles-dynamic-description.json",
+    "../../optimized/patches/004-candles-description-routine.json",
+    "patches/001-global-action-hook.json",
+    "patches/002-glulx-action-vocabulary.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "assistance.zil",
+    "gmain.zil",
+    "gverbs.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-assisted.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 185600,
+    "checksum_hex": "0xd3e2209e",
+    "sha256": "cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777"
+  }
+}

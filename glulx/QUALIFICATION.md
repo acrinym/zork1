@@ -2,16 +2,17 @@
 
 ## Scope
 
-This record qualifies two additive Glulx layers:
+This record qualifies three additive Glulx layers:
 
 1. Tara McGrew's unchanged Zork I Glulx source at commit `1ada70e58ac4933446b907d67949d9cab3119c0e`;
-2. the repository's conservative Optimized Glulx Release `1201` port.
+2. the repository's conservative Optimized Glulx Release `1201` port;
+3. the repository's Release 121 action-and-assistance layer, Release `1211`.
 
-It does not qualify Expanded Release 121 behavior on Glulx.
+Reactive scenery, optional geography, alternate NPC solutions, and Adventurer Misconduct are not yet qualified on Glulx.
 
 ## Upstream reconciliation
 
-Tara's `glulx` branch is one commit ahead of current `master`, with merge base `97b7b3d68c075dd9af7da499c3e9690ada3471fd`.
+Tara's `glulx` branch is one commit ahead of its reconciled `master`, with merge base `97b7b3d68c075dd9af7da499c3e9690ada3471fd`.
 
 The complete upstream source delta is limited to:
 
@@ -23,7 +24,7 @@ The complete upstream source delta is limited to:
 - `gverbs.zil`
 - `zork1.zil`
 
-The unchanged baseline checks out Tara's commit directly. The optimized layer stages its exact tree `02b34128649bbb7fcddf99136e03fb67c032b089` before applying reviewed patches.
+Every staged layer begins at Tara's exact tree `02b34128649bbb7fcddf99136e03fb67c032b089`.
 
 ## Toolchain lock
 
@@ -72,52 +73,68 @@ The archived story has a valid Glulx checksum, identifies itself as Release 1 / 
 | Checksum | `0xaa478295`, valid |
 | SHA-256 | `f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051` |
 
-The optimized staging gate permits changes only to:
+The optimized staging gate permits changes only to `1actions.zil`, `1dungeon.zil`, `gverbs.zil`, and `zork1.zil`. It contains recursive-containment protection, printed-character corrections, dynamic candle descriptions, lowercase include paths, and the Release `1201` identity.
+
+Native routes prove opening identity, recursive-containment rejection, and extinguished-candle behavior.
+
+## Qualified Release 121 action and assistance layer
+
+| Field | Value |
+|---|---|
+| File | `zork1-glulx-assisted.ulx` |
+| Identity | Release 1211 / serial `260719` |
+| Glulx version | 3.1.3 / `0x00030103` |
+| Size | 185,600 bytes |
+| Checksum | `0xd3e2209e`, valid |
+| SHA-256 | `cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777` |
+| Qualified base | Release 1201 / SHA-256 `f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051` |
+
+The Release 1211 staging gate permits changes only to:
 
 - `1actions.zil`
 - `1dungeon.zil`
+- `assistance.zil`
+- `gmain.zil`
 - `gverbs.zil`
 - `zork1.zil`
 
-The source layer contains only:
+The new `assistance.zil` is a reviewed source addition with a recorded source hash. Both `PERFORM` implementations receive an exact state-neutral action-hook call after `PRSA`, `PRSO`, and `PRSI` are established.
 
-- recursive-containment protection;
-- two printed-character portability replacements;
-- a Glulx-specific dynamic candle room description;
-- state-aware candle prose;
-- exact lowercase include paths;
-- the repository-local Release `1201` identity.
+This layer contains only:
 
-Every patch is exact-count and every changed target has recorded before-and-after hashes.
+- `GOALS`;
+- `EXITS`;
+- three-tier `HINT`;
+- canonical-state `RECAP`;
+- contextual `WHY`;
+- `USE <object>` affordance guidance;
+- state-neutral latest-action recording.
 
-## Native qualification routes
+It does not change scenery behavior, add rooms or objects, introduce alternate NPC solutions, or add comedy grammar.
 
-### Both production artifacts
+## Cross-VM semantic qualification
 
-The unchanged and optimized repository builds must:
+The same nine-move command script runs against:
 
-- start under pinned Glulxe linked to pinned CheapGlk;
-- print their committed release and serial identities;
-- reach West of House;
-- expose the mailbox;
-- accept ordinary commands;
-- exit normally.
+- Expanded Release 121 `.z3` under `dfrotz`;
+- Assisted Release 1211 `.ulx` under pinned Glulxe and CheapGlk.
 
-### Optimized recursive-containment route
+Both routes prove:
 
-The optimized story must reject placing a containing sack into the open bottle already inside it. The route must print `How can you do that?`, remain live, and retain the valid one-way bottle-inside-sack state.
+- the canonical Great Underground Empire goal;
+- opening visible exits;
+- all three opening hint tiers;
+- an initial recap;
+- generic `USE MAILBOX` affordance guidance;
+- a failed `CLIMB HOUSE` action;
+- contextual roof explanation through `WHY`;
+- normal score and exit handling after nine moves.
 
-### Optimized extinguished-candle route
-
-A separately staged test-only story begins at South Temple with `ONBIT` and `FLAMEBIT` cleared before the first room description.
-
-It must print `On the two ends of the altar are candles.` and must not claim that the extinguished candles are burning.
-
-The production artifact never receives the test-only startup patch.
+The parity gate compares stable semantic markers rather than identical wrapping or edition-specific prose.
 
 ## Existing-edition preservation gate
 
-The separate optimized-and-expanded workflow must continue to prove:
+The separate optimized-and-expanded workflow continues to prove:
 
 - preserved historical Release 119;
 - optimized Release 120 `.z3`;
@@ -127,17 +144,17 @@ The separate optimized-and-expanded workflow must continue to prove:
 
 The Glulx line is additive. A passing Glulx workflow cannot compensate for a failing `.z3` preservation gate.
 
-## Exact Release 121 action and assistance layer
+## Exact reactive-surface next layer
 
-The next train ports only:
+The next train ports reactive surface-world behavior in isolated groups:
 
-1. Release 121 action hooks;
-2. `GOALS`;
-3. `EXITS`;
-4. tiered `HINT`;
-5. `RECAP`;
-6. contextual `WHY`;
-7. `USE <object>` affordance guidance;
-8. opening and assistance semantic parity routes between `.z3` and `.ulx`.
+1. white house and roof attempts;
+2. front door;
+3. boards and boarded windows;
+4. kitchen window;
+5. mailbox;
+6. forest nouns without optional geography;
+7. persistent state needed by those reactions;
+8. focused `.z3` versus `.ulx` semantic routes for each group.
 
-Reactive scenery, songbird and Hidden Glade, troll/cyclops/thief alternatives, Adventurer Misconduct, `FOLLY`, troll bemusement, and version 3 object-slot cleanup remain later layers.
+Hidden Glade geography, troll/cyclops/thief alternatives, Adventurer Misconduct, `FOLLY`, troll bemusement, and version 3 object-slot cleanup remain later layers.

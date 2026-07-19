@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1211-HOOK",
+  "path": "gmain.zil",
+  "description": "Invoke the state-neutral Release 121 assistance hook after PRSA, PRSO, and PRSI are established in both PERFORM variants",
+  "replacements": [
+    {
+      "expected_count": 2,
+      "old": "\t<SETG PRSI .I>\n\t<COND (<AND <EQUAL? ,NOT-HERE-OBJECT ,PRSO ,PRSI>",
+      "new": "\t<SETG PRSI .I>\n\t<ASSIST-ACTION-HOOK>\n\t<COND (<AND <EQUAL? ,NOT-HERE-OBJECT ,PRSO ,PRSI>"
+    }
+  ]
+}

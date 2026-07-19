@@ -1,0 +1,360 @@
+name: Zork I Glulx Release 121 Assistance
+
+on:
+  push:
+    branches:
+      - agent/glulx-release121-assistance
+    paths:
+      - "glulx/assistance/**"
+      - "glulx/tools/**"
+      - "glulx/optimized/patch-series.json"
+      - "glulx/optimized/patches/**"
+      - "optimized/patches/**"
+      - "optimized/tools/**"
+      - "expanded/**"
+      - ".github/workflows/glulx-release121-assistance.yml"
+  pull_request:
+    paths:
+      - "glulx/assistance/**"
+      - "glulx/tools/**"
+      - "glulx/optimized/patch-series.json"
+      - "glulx/optimized/patches/**"
+      - "optimized/patches/**"
+      - "optimized/tools/**"
+      - "expanded/**"
+      - ".github/workflows/glulx-release121-assistance.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1201"
+  BASE_ARTIFACT_SHA256: f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051
+  ASSISTED_RELEASE: "1211"
+  ASSISTED_SERIAL: "260719"
+  ASSISTED_SIZE: "185600"
+  ASSISTED_CHECKSUM: "0xd3e2209e"
+  ASSISTED_SHA256: cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777
+
+jobs:
+  assisted-glulx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.ZILF_COMMIT }}
+          path: .tooling/zilf
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl frotz
+
+      - name: Validate immutable layer and base pins
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          layer = json.loads(Path('glulx/assistance/patch-series.json').read_text())
+          base = json.loads(Path('glulx/optimized/patch-series.json').read_text())
+          assert layer['release'] == int(os.environ['ASSISTED_RELEASE'])
+          assert layer['serial'] == os.environ['ASSISTED_SERIAL']
+          assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
+          assert layer['upstream_tree'] == os.environ['ZORK_GLULX_TREE']
+          assert layer['base_release'] == int(os.environ['BASE_RELEASE'])
+          assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert base['release'] == int(os.environ['BASE_RELEASE'])
+          assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          expected = layer['expected_artifact']
+          assert expected['size_bytes'] == int(os.environ['ASSISTED_SIZE'])
+          assert expected['checksum_hex'] == os.environ['ASSISTED_CHECKSUM']
+          assert expected['sha256'] == os.environ['ASSISTED_SHA256']
+          assert layer['expected_changed_paths'] == [
+              '1actions.zil',
+              '1dungeon.zil',
+              'assistance.zil',
+              'gmain.zil',
+              'gverbs.zil',
+              'zork1.zil',
+          ]
+          PY
+
+      - name: Build pinned ZILF and ZAPF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p glulx/build/assistance
+          pushd .tooling/zilf
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/assistance/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/assistance/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          zapf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zapf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          test -n "$zapf_dll"
+          echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+          echo "ZAPF_DLL=$(realpath "$zapf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build exactly pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/assistance/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/assistance/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/assistance/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/assistance/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version | tee glulx/build/assistance/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/assistance/glazer-version.txt
+
+      - name: Stage exact Release 121 assistance source
+        run: |
+          python glulx/tools/stage_assistance.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/assistance/src \
+            --allowed-root glulx/build/assistance \
+            --manifest glulx/assistance/patch-series.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('glulx/build/assistance/src/STAGING-RECEIPT.json').read_text())
+          assert receipt['base']['release'] == 1201
+          assert receipt['base']['artifact_sha256'] == 'f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051'
+          assert receipt['changed_paths'] == [
+              '1actions.zil',
+              '1dungeon.zil',
+              'assistance.zil',
+              'gmain.zil',
+              'gverbs.zil',
+              'zork1.zil',
+          ]
+          created = [item for item in receipt['overrides'] if item.get('created')]
+          assert [item['path'] for item in created] == ['assistance.zil']
+          PY
+
+      - name: Audit staged assistance source
+        run: |
+          python optimized/tools/zil_smell_check.py \
+            --source glulx/build/assistance/src \
+            --json glulx/build/assistance/smell-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('glulx/build/assistance/smell-report.json').read_text())
+          if report['errors']:
+              raise SystemExit(report['errors'])
+          unresolved = [item for item in report['includes'] if not item['resolved']]
+          if unresolved:
+              raise SystemExit(f'unresolved includes: {unresolved}')
+          PY
+
+      - name: Compile assisted Glulx assembly
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/assistance/zork1-glulx-assisted.asm"
+          pushd glulx/build/assistance/src
+          dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/assistance/zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$ASSISTED_SERIAL" \
+            --receipt glulx/build/assistance/SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/assistance/zork1-glulx-assisted.ulx \
+            2>&1 | tee glulx/build/assistance/glazer-assemble.log
+
+      - name: Verify fail-closed assisted Glulx artifact
+        run: |
+          python glulx/tools/verify_ulx.py glulx/build/assistance/zork1-glulx-assisted.ulx \
+            --expect-sha256 "$ASSISTED_SHA256" \
+            --json glulx/build/assistance/story-report.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/assistance/story-report.json').read_text())
+          assert story['version_hex'] == '0x00030103'
+          assert story['size_bytes'] == int(os.environ['ASSISTED_SIZE'])
+          assert story['checksum_hex'] == os.environ['ASSISTED_CHECKSUM']
+          assert story['sha256'] == os.environ['ASSISTED_SHA256']
+          PY
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/assistance/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/assistance/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+          echo "GLULXE_BIN=$(realpath .tooling/glulxe/glulxe)" >> "$GITHUB_ENV"
+
+      - name: Run assisted Glulx opening route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/assistance/zork1-glulx-assisted.ulx \
+            < glulx/assistance/tests/opening_assistance_commands.txt \
+            2>&1 | tee glulx/build/assistance/glulx-assistance-transcript.txt
+          grep -F "Release $ASSISTED_RELEASE / Serial number $ASSISTED_SERIAL" \
+            glulx/build/assistance/glulx-assistance-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F "$marker" glulx/build/assistance/glulx-assistance-transcript.txt
+          done < glulx/assistance/tests/opening_assistance_expectations.txt
+
+      - name: Compile Expanded Release 121 compatibility story
+        shell: bash
+        run: |
+          set -o pipefail
+          make -C expanded compile \
+            ZILF="dotnet $ZILF_DLL" \
+            ZAPF="dotnet $ZAPF_DLL" \
+            RELEASE=121 \
+            SERIAL=260719 \
+            2>&1 | tee glulx/build/assistance/z3-compile.log
+          python optimized/tools/verify_story.py expanded/build/zork1-expanded.z3 \
+            --expect-version 3 \
+            --expect-release 121 \
+            --expect-serial 260719 \
+            --baseline COMPILED/zork1.z3 \
+            --json glulx/build/assistance/z3-story-report.json
+
+      - name: Run Expanded Release 121 semantic parity route
+        shell: bash
+        run: |
+          set -o pipefail
+          python optimized/tools/run_smoke.py expanded/build/zork1-expanded.z3 \
+            --interpreter "$(command -v dfrotz)" \
+            --commands glulx/assistance/tests/opening_assistance_commands.txt \
+            --expect glulx/assistance/tests/opening_assistance_expectations.txt \
+            | tee glulx/build/assistance/z3-assistance-transcript.txt
+
+      - name: Write qualified assistance receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          layer = json.loads(Path('glulx/assistance/patch-series.json').read_text())
+          stage = json.loads(Path('glulx/build/assistance/src/STAGING-RECEIPT.json').read_text())
+          story = json.loads(Path('glulx/build/assistance/story-report.json').read_text())
+          z3_story = json.loads(Path('glulx/build/assistance/z3-story-report.json').read_text())
+          serial = json.loads(Path('glulx/build/assistance/SERIAL-NORMALIZATION.json').read_text())
+          artifact_pin_matched = story['sha256'] == layer['expected_artifact']['sha256']
+          if not artifact_pin_matched:
+              raise SystemExit('assisted Glulx artifact did not match the committed pin')
+          receipt = {
+              'qualification_status': 'qualified Release 121 action and assistance layer',
+              'identity': {'release': 1211, 'serial': '260719'},
+              'base': stage['base'],
+              'upstream_commit': stage['upstream_commit'],
+              'upstream_tree': stage['upstream_tree'],
+              'changed_paths': stage['changed_paths'],
+              'patches': stage['patches'],
+              'overrides': stage['overrides'],
+              'serial_normalization': serial,
+              'artifact': story,
+              'artifact_pin_matched': artifact_pin_matched,
+              'comparison_artifact': z3_story,
+              'semantic_routes': {
+                  'goals': 'passed on .z3 and .ulx',
+                  'exits': 'passed on .z3 and .ulx',
+                  'tiered_hint': 'passed three levels on .z3 and .ulx',
+                  'recap': 'passed on .z3 and .ulx',
+                  'use': 'passed on .z3 and .ulx',
+                  'contextual_why': 'passed after CLIMB HOUSE on .z3 and .ulx',
+              },
+              'excluded_layers': [
+                  'reactive scenery',
+                  'Hidden Glade',
+                  'alternate NPC solutions',
+                  'Adventurer Misconduct',
+                  'FOLLY',
+              ],
+          }
+          Path('glulx/build/assistance/BUILD-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2) + '\n'
+          )
+          PY
+
+      - name: Upload qualified assisted Glulx edition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-release121-assistance
+          path: |
+            glulx/build/assistance/zork1-glulx-assisted.ulx
+            glulx/build/assistance/zork1-glulx-assisted.asm
+            glulx/build/assistance/story-report.json
+            glulx/build/assistance/z3-story-report.json
+            glulx/build/assistance/BUILD-RECEIPT.json
+            glulx/build/assistance/SERIAL-NORMALIZATION.json
+            glulx/build/assistance/src/STAGING-RECEIPT.json
+            glulx/build/assistance/smell-report.json
+            glulx/build/assistance/glulx-assistance-transcript.txt
+            glulx/build/assistance/z3-assistance-transcript.txt
+            glulx/build/assistance/zilf-restore.log
+            glulx/build/assistance/zilf-build.log
+            glulx/build/assistance/zilf-compile.log
+            glulx/build/assistance/glazer-build.log
+            glulx/build/assistance/glazer-version.txt
+            glulx/build/assistance/glazer-assemble.log
+            glulx/build/assistance/cheapglk-build.log
+            glulx/build/assistance/glulxe-build.log
+            glulx/build/assistance/z3-compile.log
+            glulx/assistance/patch-series.json
+          if-no-files-found: warn
