@@ -1,0 +1,39 @@
+name: Zork I Glulx Assistance Beadtrain
+
+on:
+  push:
+    branches:
+      - agent/glulx-release121-assistance
+    paths:
+      - ".beads/issues*.jsonl"
+      - ".beads/onyx_zork_glulx_assistance.beadtrain"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/glulx-assistance-beadtrain.yml"
+  pull_request:
+    paths:
+      - ".beads/issues*.jsonl"
+      - ".beads/onyx_zork_glulx_assistance.beadtrain"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/glulx-assistance-beadtrain.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-assistance-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate sharded Release 121 assistance train
+        run: |
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
+            .beads/onyx_zork_glulx_assistance.beadtrain
