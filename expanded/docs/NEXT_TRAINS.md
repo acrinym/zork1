@@ -1,27 +1,60 @@
 # Expansion frontier
 
-Release 121 establishes the architecture and first broad implementation wave. The next controlling train is now the Glulx upstream reconciliation. Gameplay-deepening trains remain valid, but should follow a reproducible Glulx baseline and parity harness rather than increasing the version 3 migration burden first.
+Release 121 establishes the architecture and first broad implementation wave. The unchanged upstream Glulx baseline is now reproducible and qualified. The controlling next train is the conservative Release 120 port onto that baseline.
 
-## 0. Glulx upstream reconciliation train — controlling next train
+Gameplay-deepening trains remain valid, but must follow Release 120 and Release 121 Glulx parity rather than increasing the version 3 migration burden first.
 
-Reconcile this project with Tara McGrew's existing Zork I Glulx port and a current pinned ZILF/Glazer toolchain.
+## 0. Glulx upstream reconciliation train — complete
+
+The first Glulx train now provides:
+
+- exact reconciliation of Tara McGrew's `glulx` branch with current upstream;
+- a complete seven-file upstream diff;
+- pinned ZILF 1.8, Glazer 1.2.0, Glulxe, and CheapGlk;
+- source-tarball, license, archive, and story checksums;
+- deterministic normalization of ZILF's wall-clock Glulx serial metadata;
+- a fail-closed repository artifact;
+- inspection and native execution of `zork1-glulx.zip`;
+- native identity and opening smoke routes for both stories;
+- independent preservation of all historical and `.z3` project editions.
+
+Controlling qualification records:
+
+- [`../../glulx/README.md`](../../glulx/README.md)
+- [`../../glulx/QUALIFICATION.md`](../../glulx/QUALIFICATION.md)
+- [`GLULX_UPSTREAM_MIGRATION.md`](GLULX_UPSTREAM_MIGRATION.md)
+- [`GLULX_LICENSING.md`](GLULX_LICENSING.md)
+
+## 0.1 Release 120 Glulx port — controlling next train
+
+Create a new Glulx staging layer from the qualified unchanged baseline and port only the conservative optimized-edition corrections:
+
+1. recursive-containment protection;
+2. candle object and description-routine corrections;
+3. unsafe printed-character replacements;
+4. case-sensitive include and portability auditing;
+5. deterministic repository-local identity and artifact verification.
 
 The train must:
 
-- resolve the exact live `taradinoc/zork1` `glulx` branch and compare it with current upstream;
-- record licensing and provenance before importing code;
-- compile the unchanged upstream Glulx baseline first;
-- add deterministic native-interpreter smoke testing and artifact verification;
-- port Release 120 fixes before Release 121 expansion layers;
-- build semantic and required-prose parity routes between `.z3` and `.ulx`;
-- retain all historical, optimized, and expanded `.z3` artifacts;
-- avoid new gameplay features until the expanded Glulx artifact is reproducible and meaningfully qualified.
+- preserve Tara's seven Glulx compatibility changes exactly;
+- apply each Release 120 change through an exact, fail-closed patch or override;
+- assign a clearly unofficial Glulx identity distinct from Tara's Release 1 baseline and the `.z3` Release 120 artifact;
+- retain the qualified unchanged baseline as a separately buildable artifact;
+- run native regression routes for recursive containment and extinguished candles;
+- prove the historical Release 119, optimized Release 120 `.z3`, and expanded Release 121 `.z3` gates still pass;
+- document the next Release 121 action-hook layer without implementing expanded gameplay in the same train.
 
-Controlling documents:
+No assistance commands, reactive scenery, optional geography, NPC alternatives, or Adventurer Misconduct code enters this train.
 
-- [`GLULX_UPSTREAM_MIGRATION.md`](GLULX_UPSTREAM_MIGRATION.md)
-- [`GLULX_LICENSING.md`](GLULX_LICENSING.md)
-- [`../../docs/planning/ZORK_GLULX_UPSTREAM_CONTINUATION_HANDOFF_2026_07_19.md`](../../docs/planning/ZORK_GLULX_UPSTREAM_CONTINUATION_HANDOFF_2026_07_19.md)
+## 0.2 Release 121 Glulx action and assistance layer
+
+After the conservative Release 120 port is qualified:
+
+- port the action-hook architecture;
+- port `GOALS`, `EXITS`, `HINT`, `RECAP`, `WHY`, and `USE`;
+- add semantic `.z3` versus `.ulx` routes for opening navigation and assistance;
+- keep scenery, optional geography, alternate NPC solutions, and comedy reactions for later isolated layers.
 
 ## 1. Long-form verification train
 
