@@ -25,7 +25,8 @@
     "../../optimized/patches/002-replace-unsafe-zscii-tabs.json",
     "../optimized/patches/003-candles-dynamic-description.json",
     "../../optimized/patches/004-candles-description-routine.json",
-    "patches/001-global-action-hook.json"
+    "patches/001-global-action-hook.json",
+    "patches/002-glulx-action-vocabulary.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
