@@ -1,4 +1,7 @@
 west
+knock on house
+listen to house
+climb house
 examine forest
 examine tree
 listen to tree
