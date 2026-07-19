@@ -52,9 +52,15 @@ Release 121 is assembled by:
 
 The historical root files are never rewritten by this process.
 
+## Upstream migration direction
+
+The long-term expanded lineage will reconcile with Tara McGrew's existing Zork I Glulx port and a modern pinned ZILF/Glazer toolchain. The current `.z3` editions remain supported and immutable in identity; Glulx will be introduced as an additional repository-local artifact after an unchanged upstream baseline and parity harness exist.
+
+No new virtual-machine implementation or ZIL-to-Glulx backend should be invented unless a specific upstream defect proves unavoidable.
+
 ## Beadtrains
 
-The implementation is tracked by three v1.3 beadtrains:
+The implementation is tracked by three completed v1.3 beadtrains:
 
 - `.beads/onyx_zork_reactive_world.beadtrain`
 - `.beads/onyx_zork_living_underground.beadtrain`
@@ -69,3 +75,6 @@ See:
 - [`docs/ADVENTURER_MISCONDUCT.md`](docs/ADVENTURER_MISCONDUCT.md)
 - [`docs/VALIDATION.md`](docs/VALIDATION.md)
 - [`docs/NEXT_TRAINS.md`](docs/NEXT_TRAINS.md)
+- [`docs/GLULX_UPSTREAM_MIGRATION.md`](docs/GLULX_UPSTREAM_MIGRATION.md)
+- [`docs/GLULX_LICENSING.md`](docs/GLULX_LICENSING.md)
+- [`../docs/planning/ZORK_GLULX_UPSTREAM_CONTINUATION_HANDOFF_2026_07_19.md`](../docs/planning/ZORK_GLULX_UPSTREAM_CONTINUATION_HANDOFF_2026_07_19.md)
