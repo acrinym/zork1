@@ -1,0 +1,358 @@
+name: Zork I Glulx Release 121 Reactive Surface
+
+on:
+  push:
+    branches:
+      - agent/glulx-release121-reactive-surface
+    paths:
+      - "glulx/reactive-surface/**"
+      - "glulx/tools/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "optimized/**"
+      - "expanded/**"
+      - ".github/workflows/glulx-release121-reactive-surface.yml"
+  pull_request:
+    paths:
+      - "glulx/reactive-surface/**"
+      - "glulx/tools/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "optimized/**"
+      - "expanded/**"
+      - ".github/workflows/glulx-release121-reactive-surface.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1211"
+  BASE_ARTIFACT_SHA256: cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777
+  SURFACE_RELEASE: "1212"
+  SURFACE_SERIAL: "260719"
+
+jobs:
+  reactive-surface-glulx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.ZILF_COMMIT }}
+          path: .tooling/zilf
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl frotz
+
+      - name: Validate candidate layer and qualified base
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          layer = json.loads(Path('glulx/reactive-surface/patch-series.json').read_text())
+          base = json.loads(Path('glulx/assistance/patch-series.json').read_text())
+          assert layer['release'] == int(os.environ['SURFACE_RELEASE'])
+          assert layer['serial'] == os.environ['SURFACE_SERIAL']
+          assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
+          assert layer['upstream_tree'] == os.environ['ZORK_GLULX_TREE']
+          assert layer['base_release'] == int(os.environ['BASE_RELEASE'])
+          assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert base['release'] == int(os.environ['BASE_RELEASE'])
+          assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert layer['expected_changed_paths'] == [
+              '1actions.zil',
+              '1dungeon.zil',
+              'assistance.zil',
+              'gmain.zil',
+              'gverbs.zil',
+              'reactive_surface.zil',
+              'zork1.zil',
+          ]
+          PY
+
+      - name: Build pinned ZILF and ZAPF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p glulx/build/reactive-surface
+          pushd .tooling/zilf
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/reactive-surface/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/reactive-surface/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          zapf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zapf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          test -n "$zapf_dll"
+          echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+          echo "ZAPF_DLL=$(realpath "$zapf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build exactly pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/reactive-surface/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/reactive-surface/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/reactive-surface/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/reactive-surface/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version | tee glulx/build/reactive-surface/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/reactive-surface/glazer-version.txt
+
+      - name: Stage exact Release 1212 source
+        run: |
+          python glulx/tools/stage_reactive_surface.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/reactive-surface/src \
+            --allowed-root glulx/build/reactive-surface \
+            --manifest glulx/reactive-surface/patch-series.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('glulx/build/reactive-surface/src/STAGING-RECEIPT.json').read_text())
+          assert receipt['base']['release'] == 1211
+          assert receipt['base']['artifact_sha256'] == 'cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777'
+          assert receipt['changed_paths'] == [
+              '1actions.zil',
+              '1dungeon.zil',
+              'assistance.zil',
+              'gmain.zil',
+              'gverbs.zil',
+              'reactive_surface.zil',
+              'zork1.zil',
+          ]
+          created = sorted(item['path'] for item in receipt['overrides'] if item.get('created'))
+          assert created == ['assistance.zil', 'reactive_surface.zil']
+          PY
+
+      - name: Audit staged reactive surface source
+        run: |
+          python optimized/tools/zil_smell_check.py \
+            --source glulx/build/reactive-surface/src \
+            --json glulx/build/reactive-surface/smell-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('glulx/build/reactive-surface/smell-report.json').read_text())
+          if report['errors']:
+              raise SystemExit(report['errors'])
+          unresolved = [item for item in report['includes'] if not item['resolved']]
+          if unresolved:
+              raise SystemExit(f'unresolved includes: {unresolved}')
+          PY
+
+      - name: Compile reactive surface Glulx candidate
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/reactive-surface/zork1-glulx-reactive-surface.asm"
+          pushd glulx/build/reactive-surface/src
+          dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/reactive-surface/zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$SURFACE_SERIAL" \
+            --receipt glulx/build/reactive-surface/SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/reactive-surface/zork1-glulx-reactive-surface.ulx \
+            2>&1 | tee glulx/build/reactive-surface/glazer-assemble.log
+
+      - name: Verify reactive surface candidate
+        run: |
+          python glulx/tools/verify_ulx.py glulx/build/reactive-surface/zork1-glulx-reactive-surface.ulx \
+            --json glulx/build/reactive-surface/story-report.json
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/reactive-surface/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/reactive-surface/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+          echo "GLULXE_BIN=$(realpath .tooling/glulxe/glulxe)" >> "$GITHUB_ENV"
+
+      - name: Run reactive surface Glulx parity route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/reactive-surface/zork1-glulx-reactive-surface.ulx \
+            < glulx/reactive-surface/tests/surface_parity_commands.txt \
+            2>&1 | tee glulx/build/reactive-surface/glulx-surface-parity-transcript.txt
+          grep -F "Release $SURFACE_RELEASE / Serial number $SURFACE_SERIAL" \
+            glulx/build/reactive-surface/glulx-surface-parity-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F "$marker" glulx/build/reactive-surface/glulx-surface-parity-transcript.txt
+          done < glulx/reactive-surface/tests/surface_parity_expectations.txt
+
+      - name: Run native exclusion and forest boundary route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/reactive-surface/zork1-glulx-reactive-surface.ulx \
+            < glulx/reactive-surface/tests/native_boundary_commands.txt \
+            2>&1 | tee glulx/build/reactive-surface/glulx-native-boundary-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F "$marker" glulx/build/reactive-surface/glulx-native-boundary-transcript.txt
+          done < glulx/reactive-surface/tests/native_boundary_expectations.txt
+          if grep -F "Hidden Glade" glulx/build/reactive-surface/glulx-native-boundary-transcript.txt; then
+            echo "Excluded Hidden Glade geography appeared in Release 1212" >&2
+            exit 1
+          fi
+
+      - name: Compile Expanded Release 121 comparison story
+        shell: bash
+        run: |
+          set -o pipefail
+          make -C expanded compile \
+            ZILF="dotnet $ZILF_DLL" \
+            ZAPF="dotnet $ZAPF_DLL" \
+            RELEASE=121 \
+            SERIAL=260719 \
+            2>&1 | tee glulx/build/reactive-surface/z3-compile.log
+          python optimized/tools/verify_story.py expanded/build/zork1-expanded.z3 \
+            --expect-version 3 \
+            --expect-release 121 \
+            --expect-serial 260719 \
+            --baseline COMPILED/zork1.z3 \
+            --json glulx/build/reactive-surface/z3-story-report.json
+
+      - name: Run Expanded Release 121 surface parity route
+        shell: bash
+        run: |
+          set -o pipefail
+          python optimized/tools/run_smoke.py expanded/build/zork1-expanded.z3 \
+            --interpreter "$(command -v dfrotz)" \
+            --commands glulx/reactive-surface/tests/surface_parity_commands.txt \
+            --expect glulx/reactive-surface/tests/surface_parity_expectations.txt \
+            | tee glulx/build/reactive-surface/z3-surface-parity-transcript.txt
+
+      - name: Write candidate reactive surface receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          stage = json.loads(Path('glulx/build/reactive-surface/src/STAGING-RECEIPT.json').read_text())
+          story = json.loads(Path('glulx/build/reactive-surface/story-report.json').read_text())
+          z3_story = json.loads(Path('glulx/build/reactive-surface/z3-story-report.json').read_text())
+          serial = json.loads(Path('glulx/build/reactive-surface/SERIAL-NORMALIZATION.json').read_text())
+          receipt = {
+              'qualification_status': 'candidate; lock artifact after deterministic route passes',
+              'identity': {'release': 1212, 'serial': '260719'},
+              'base': stage['base'],
+              'upstream_commit': stage['upstream_commit'],
+              'upstream_tree': stage['upstream_tree'],
+              'changed_paths': stage['changed_paths'],
+              'patches': stage['patches'],
+              'overrides': stage['overrides'],
+              'serial_normalization': serial,
+              'artifact': story,
+              'comparison_artifact': z3_story,
+              'semantic_routes': {
+                  'house_and_door': 'passed on .z3 and .ulx',
+                  'mailbox_and_slip': 'passed on .z3 and .ulx',
+                  'kitchen_window': 'passed on .z3 and .ulx',
+                  'board_damage_and_splinter': 'passed on .z3 and .ulx',
+                  'surface_recap': 'passed on .ulx with shared recap entry point',
+                  'forest_and_songbird': 'shared and native routes passed',
+                  'hidden_glade_exclusion': 'passed on .ulx',
+              },
+              'excluded_layers': [
+                  'Hidden Glade',
+                  'brass feather',
+                  'troll bribe',
+                  'cyclops lullaby',
+                  'thief bargain',
+                  'deep dam and ritual reactions',
+                  'Adventurer Misconduct',
+                  'FOLLY',
+              ],
+          }
+          Path('glulx/build/reactive-surface/BUILD-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2) + '\n'
+          )
+          PY
+
+      - name: Upload reactive surface candidate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-release121-reactive-surface
+          path: |
+            glulx/build/reactive-surface/zork1-glulx-reactive-surface.ulx
+            glulx/build/reactive-surface/zork1-glulx-reactive-surface.asm
+            glulx/build/reactive-surface/story-report.json
+            glulx/build/reactive-surface/z3-story-report.json
+            glulx/build/reactive-surface/BUILD-RECEIPT.json
+            glulx/build/reactive-surface/SERIAL-NORMALIZATION.json
+            glulx/build/reactive-surface/src/STAGING-RECEIPT.json
+            glulx/build/reactive-surface/smell-report.json
+            glulx/build/reactive-surface/glulx-surface-parity-transcript.txt
+            glulx/build/reactive-surface/glulx-native-boundary-transcript.txt
+            glulx/build/reactive-surface/z3-surface-parity-transcript.txt
+            glulx/build/reactive-surface/zilf-restore.log
+            glulx/build/reactive-surface/zilf-build.log
+            glulx/build/reactive-surface/zilf-compile.log
+            glulx/build/reactive-surface/glazer-build.log
+            glulx/build/reactive-surface/glazer-version.txt
+            glulx/build/reactive-surface/glazer-assemble.log
+            glulx/build/reactive-surface/cheapglk-build.log
+            glulx/build/reactive-surface/glulxe-build.log
+            glulx/build/reactive-surface/z3-compile.log
+            glulx/reactive-surface/patch-series.json
+          if-no-files-found: warn
