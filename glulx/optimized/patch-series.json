@@ -1,0 +1,26 @@
+{
+  "edition": "Unofficial Optimized Glulx",
+  "release": 1201,
+  "serial": "260719",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Assign repository-local Release 1201 identity and exact lowercase include paths while retaining Tara's Glulx WORD-SIZE compatibility block"
+    }
+  ],
+  "patches": [
+    "../../optimized/patches/001-prevent-containment-cycles.json",
+    "../../optimized/patches/002-replace-unsafe-zscii-tabs.json",
+    "../../optimized/patches/003-candles-description-object.json",
+    "../../optimized/patches/004-candles-description-routine.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "gverbs.zil",
+    "zork1.zil"
+  ]
+}
