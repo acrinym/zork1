@@ -5,11 +5,13 @@ on:
     branches:
       - agent/preservation-first-optimized-edition
     paths:
-      - "glulx/**"
+      - "glulx/provenance.json"
+      - "glulx/tools/**"
       - ".github/workflows/glulx-upstream-baseline.yml"
   pull_request:
     paths:
-      - "glulx/**"
+      - "glulx/provenance.json"
+      - "glulx/tools/**"
       - ".github/workflows/glulx-upstream-baseline.yml"
 
 permissions:
@@ -26,6 +28,9 @@ env:
   CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
   UPSTREAM_RELEASE: "1"
   UPSTREAM_SERIAL: "251203"
+  EXPECTED_ARTIFACT_SHA256: 15dd2b654693e4f1c63e09a2308de1f366913c13be080baa33af3f76c5679ac8
+  EXPECTED_ARCHIVE_SHA256: 6e9879f36d7d15ddebee1333244be016a9f3a40756718292264815e8881c51ad
+  EXPECTED_ARCHIVE_STORY_SHA256: 42b74ce1ce32e9f483418409642b1be425e66e93c7741961e90917e2bb30b129
 
 jobs:
   unchanged-upstream-glulx:
@@ -99,6 +104,9 @@ jobs:
           assert p['toolchain']['glk']['commit'] == '${{ env.CHEAPGLK_COMMIT }}'
           assert p['edition']['source_release'] == int('${{ env.UPSTREAM_RELEASE }}')
           assert p['edition']['source_serial'] == '${{ env.UPSTREAM_SERIAL }}'
+          assert p['expected_artifact']['sha256'] == '${{ env.EXPECTED_ARTIFACT_SHA256 }}'
+          assert p['archive_reference']['archive_sha256'] == '${{ env.EXPECTED_ARCHIVE_SHA256 }}'
+          assert p['archive_reference']['story_sha256'] == '${{ env.EXPECTED_ARCHIVE_STORY_SHA256 }}'
           assert p['source']['local_modifications'] == []
           PY
 
@@ -132,7 +140,7 @@ jobs:
           "$glazer_binary" --version 2>&1 | tee glulx/build/glazer-version.txt
           grep -Fx "glazer 1.2.0" glulx/build/glazer-version.txt
 
-      - name: Inspect archived zork1-glulx.zip
+      - name: Inspect pinned archived zork1-glulx.zip
         shell: bash
         run: |
           set -euxo pipefail
@@ -140,11 +148,12 @@ jobs:
             'https://ifarchive.org/if-archive/games/glulx/zork1-glulx.zip' \
             --output glulx/build/zork1-glulx-archive.zip
           python - <<'PY'
-          import hashlib, json, zipfile
+          import hashlib, json, os, zipfile
           from pathlib import Path
           archive = Path('glulx/build/zork1-glulx-archive.zip')
-          output = Path('glulx/build/archive')
-          output.mkdir(parents=True, exist_ok=True)
+          archive_sha = hashlib.sha256(archive.read_bytes()).hexdigest()
+          if archive_sha != os.environ['EXPECTED_ARCHIVE_SHA256']:
+              raise SystemExit(f'archive SHA-256 drift: {archive_sha}')
           entries = []
           ulx_members = []
           with zipfile.ZipFile(archive) as zf:
@@ -152,19 +161,22 @@ jobs:
                   if info.is_dir():
                       continue
                   data = zf.read(info.filename)
-                  entries.append({
+                  entry = {
                       'name': info.filename,
                       'size_bytes': len(data),
                       'sha256': hashlib.sha256(data).hexdigest(),
-                  })
+                  }
+                  entries.append(entry)
                   if info.filename.lower().endswith('.ulx'):
-                      ulx_members.append((info.filename, data))
+                      ulx_members.append((info.filename, data, entry))
           if len(ulx_members) != 1:
               raise SystemExit(f'expected exactly one .ulx member, found {len(ulx_members)}')
-          member_name, member_data = ulx_members[0]
+          member_name, member_data, member_entry = ulx_members[0]
+          if member_entry['sha256'] != os.environ['EXPECTED_ARCHIVE_STORY_SHA256']:
+              raise SystemExit(f'archive story SHA-256 drift: {member_entry["sha256"]}')
           Path('glulx/build/zork1-glulx-archive.ulx').write_bytes(member_data)
           manifest = {
-              'archive_sha256': hashlib.sha256(archive.read_bytes()).hexdigest(),
+              'archive_sha256': archive_sha,
               'archive_size_bytes': archive.stat().st_size,
               'story_member': member_name,
               'entries': entries,
@@ -172,6 +184,7 @@ jobs:
           Path('glulx/build/archive-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
           PY
           python glulx/tools/verify_ulx.py glulx/build/zork1-glulx-archive.ulx \
+            --expect-sha256 "$EXPECTED_ARCHIVE_STORY_SHA256" \
             --json glulx/build/archive-story-report.json
 
       - name: Compile unchanged source and normalize published serial
@@ -210,9 +223,10 @@ jobs:
             2>&1 | tee glulx/build/glazer-assemble.log
           test -s glulx/build/zork1-glulx-upstream.ulx
 
-      - name: Verify repository-built Glulx artifact
+      - name: Verify fail-closed repository artifact
         run: |
           python glulx/tools/verify_ulx.py glulx/build/zork1-glulx-upstream.ulx \
+            --expect-sha256 "$EXPECTED_ARTIFACT_SHA256" \
             --json glulx/build/glulx-story-report.json
 
       - name: Build pinned native Glulxe with CheapGlk
@@ -240,7 +254,7 @@ jobs:
           grep -F "Release $UPSTREAM_RELEASE / Serial number $UPSTREAM_SERIAL" glulx/build/archive-smoke-transcript.txt
           grep -F "West of House" glulx/build/archive-smoke-transcript.txt
 
-      - name: Write licensing and build receipts
+      - name: Write licensing and qualified build receipts
         run: |
           python - <<'PY'
           import hashlib, json
@@ -257,7 +271,7 @@ jobs:
           story = json.loads(Path('glulx/build/glulx-story-report.json').read_text())
           archive_story = json.loads(Path('glulx/build/archive-story-report.json').read_text())
           receipt = {
-              'qualification_status': 'pinned unchanged-upstream candidate; pin expected artifact SHA-256 after this deterministic run',
+              'qualification_status': 'qualified unchanged-upstream baseline',
               'identity': {'release': 1, 'serial': '251203'},
               'source_commit': manifest['source']['commit'],
               'zilf_commit': manifest['toolchain']['zilf']['commit'],
@@ -267,9 +281,12 @@ jobs:
               'source_modified': False,
               'generated_assembly_normalization': json.loads(Path('glulx/build/SERIAL-NORMALIZATION.json').read_text()),
               'artifact': story,
+              'artifact_pin_matched': story['sha256'] == manifest['expected_artifact']['sha256'],
               'archive_artifact': archive_story,
               'archive': archive,
           }
+          if not receipt['artifact_pin_matched']:
+              raise SystemExit('qualified artifact did not match provenance pin')
           Path('glulx/build/BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
           licenses = {
               'zork_source': license_entry(Path('.upstream/zork1-glulx')),
@@ -281,7 +298,7 @@ jobs:
           Path('glulx/build/LICENSE-MANIFEST.json').write_text(json.dumps(licenses, indent=2) + '\n')
           PY
 
-      - name: Upload unchanged upstream qualification candidate
+      - name: Upload qualified unchanged upstream baseline
         if: always()
         uses: actions/upload-artifact@v4
         with:
