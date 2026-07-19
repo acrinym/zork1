@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1212-SURFACE-RECAP",
+  "path": "assistance.zil",
+  "description": "Extend qualified assistance RECAP with only persistent surface-world state",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (,WON-FLAG\n\t       <SET SEEN T>\n\t       <TELL \"- Your discoveries have opened the final path southwest of the house.\" CR>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (,WON-FLAG\n\t       <SET SEEN T>\n\t       <TELL \"- Your discoveries have opened the final path southwest of the house.\" CR>)>\n\t<COND (<SURFACE-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
