@@ -1,0 +1,96 @@
+[train]
+name        = "onyx_zork_glulx_upstream"
+title       = "Zork Glulx unchanged-upstream qualification"
+description = """
+Reconcile Tara McGrew's existing Glulx port, lock the complete toolchain and
+provenance chain, reproduce the unchanged upstream story, inspect the archived
+release, and qualify both artifacts with native Glulxe execution while preserving
+all historical and project-local Z-machine editions.
+"""
+created     = "2026-07-19"
+status      = "complete"
+
+[[cars]]
+id = "upstream"
+bead = "zork1-glulx-001"
+title = "Resolve exact upstream state"
+parallel_start = true
+depends_on = []
+summary = "Resolve Tara's Glulx head, current master, merge base, and complete seven-file source delta."
+
+[[cars]]
+id = "toolchain"
+bead = "zork1-glulx-002"
+title = "Lock the Glulx toolchain"
+parallel_start = true
+depends_on = ["upstream"]
+summary = "Pin ZILF, Glazer, Glulxe, and CheapGlk to immutable commits and source hashes."
+
+[[cars]]
+id = "provenance"
+bead = "zork1-glulx-003"
+title = "Create provenance and licensing gates"
+parallel_start = true
+depends_on = ["upstream", "toolchain"]
+summary = "Record source lineage, imported paths, local-modification status, licenses, branding limits, and tool pins before qualification."
+
+[[cars]]
+id = "archive"
+bead = "zork1-glulx-004"
+title = "Inspect the archived Glulx release"
+parallel_start = true
+depends_on = ["provenance"]
+summary = "Download zork1-glulx.zip, inventory every member, verify hashes and header integrity, and retain an inspection receipt."
+
+[[cars]]
+id = "build"
+bead = "zork1-glulx-005"
+title = "Build Tara's unchanged Glulx source"
+parallel_start = true
+depends_on = ["toolchain", "provenance"]
+summary = "Compile Tara's exact source commit without Release 120 or Release 121 source changes."
+
+[[cars]]
+id = "identity"
+bead = "zork1-glulx-006"
+title = "Normalize deterministic upstream identity"
+parallel_start = false
+depends_on = ["build"]
+summary = "Replace exactly one generated wall-clock serial in Glazer assembly with Tara's published 251203 identity without modifying upstream ZIL."
+
+[[cars]]
+id = "verify"
+bead = "zork1-glulx-007"
+title = "Verify the Glulx artifact"
+parallel_start = false
+depends_on = ["identity"]
+summary = "Verify magic, VM version, memory map, checksum, size, and fail-closed SHA-256 for the repository artifact."
+
+[[cars]]
+id = "native"
+bead = "zork1-glulx-008"
+title = "Run native Glulxe qualification"
+parallel_start = false
+depends_on = ["archive", "verify"]
+summary = "Build pinned Glulxe with CheapGlk and run deterministic identity and opening routes against repository and archived stories."
+
+[[cars]]
+id = "preservation"
+bead = "zork1-glulx-009"
+title = "Preserve every Z-machine edition"
+parallel_start = false
+depends_on = ["native"]
+summary = "Prove Historical 119, Optimized 120, and Expanded 121 remain independently buildable and validated as .z3 artifacts."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx-010"
+title = "Publish qualification and Release 120 frontier"
+parallel_start = false
+depends_on = ["preservation"]
+summary = "Publish locked receipts, qualification documentation, artifact uploads, and the exact conservative Release 120 Glulx port boundary."
+
+[meta]
+one_liner = "Tara's unchanged Glulx Zork now builds reproducibly, runs natively, and coexists with all three .z3 editions."
+couples_with = []
+watch = ["glulx", ".github/workflows/glulx-upstream-baseline.yml", "expanded/docs/GLULX_UPSTREAM_MIGRATION.md", "expanded/docs/GLULX_LICENSING.md"]
