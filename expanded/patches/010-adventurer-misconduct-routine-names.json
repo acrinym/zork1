@@ -1,0 +1,17 @@
+{
+  "id": "Z1-FOLLY-004",
+  "description": "Give the final troll and cyclops misconduct wrappers unique routine identities.",
+  "path": "absurdities.zil",
+  "replacements": [
+    {
+      "old": "<ROUTINE EXP-TROLL-F (\"OPTIONAL\" (MODE <>))",
+      "new": "<ROUTINE ABS-TROLL-F (\"OPTIONAL\" (MODE <>))",
+      "expected_count": 1
+    },
+    {
+      "old": "<ROUTINE EXP-CYCLOPS-F ()",
+      "new": "<ROUTINE ABS-CYCLOPS-F ()",
+      "expected_count": 1
+    }
+  ]
+}
