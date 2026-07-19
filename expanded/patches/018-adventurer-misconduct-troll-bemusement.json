@@ -1,0 +1,17 @@
+{
+  "id": "Z1-FOLLY-011",
+  "description": "Suppress the troll's immediate random counterattack for the same turn as a misconduct action while he tries to understand it.",
+  "path": "absurdities.zil",
+  "replacements": [
+    {
+      "old": "\t      (<AND <NOT .MODE>\n\t            <VERB? ABS-THROW ABS-KILL ABS-PUT ABS-HUG ABS-LICK\n\t                   ABS-RIDE ABS-MARRY ABS-APOLOGIZE ABS-INSULT\n\t                   ABS-COMPLIMENT ABS-DANCE ABS-JUGGLE ABS-HEADBUTT\n\t                   ABS-SACK ABS-SLEEP ABS-YELL ABS-KISS ABS-EAT>>\n\t       <RFALSE>)",
+      "new": "\t      (<AND <NOT .MODE>\n\t            <VERB? ABS-THROW ABS-KILL ABS-PUT ABS-HUG ABS-LICK\n\t                   ABS-RIDE ABS-MARRY ABS-APOLOGIZE ABS-INSULT\n\t                   ABS-COMPLIMENT ABS-DANCE ABS-JUGGLE ABS-HEADBUTT\n\t                   ABS-SACK ABS-SLEEP ABS-YELL ABS-KISS ABS-EAT>>\n\t       <SETG CLOCK-WAIT T>\n\t       <RFALSE>)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t      (<AND <NOT .MODE> <VERB? WEAR>>\n\t       <TELL \"The troll is not available in your size, temperament, or price range.\" CR>)",
+      "new": "\t      (<AND <NOT .MODE> <VERB? WEAR>>\n\t       <SETG CLOCK-WAIT T>\n\t       <TELL \"The troll is not available in your size, temperament, or price range.\" CR>)",
+      "expected_count": 1
+    }
+  ]
+}
