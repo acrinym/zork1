@@ -1,5 +1,6 @@
 goals
 exits
+throw self
 throw self at house
 throw voice at mailbox
 throw fit
@@ -37,6 +38,7 @@ wear nest
 sleep in nest
 lick nest
 hug nest
+take egg
 folly
 down
 south
@@ -55,6 +57,7 @@ sack troll
 put troll in sack
 throw troll at lamp
 kill troll with self
+give egg to troll
 folly
 quit
 y
