@@ -1,5 +1,16 @@
 # Release 121 feature matrix
 
+## Edition and format status
+
+| Edition | Format | Identity | Status |
+|---|---|---:|---|
+| Historical | `.z3` | Release 119 / `880429` | Preserved and verified |
+| Optimized | `.z3` | Release 120 / `260718` | Qualified |
+| Expanded | `.z3` | Release 121 / `260719` | Qualified as a complete build with broad deterministic routes |
+| Unchanged upstream Glulx | `.ulx` | Release 1 / `251203` | Qualified against Tara McGrew's exact source commit and archived reference |
+| Unofficial Optimized Glulx | `.ulx` | Release 1201 / `260719` | Qualified with conservative Release 120 corrections and focused native regressions |
+| Expanded Glulx | `.ulx` | not assigned yet | Not yet implemented; action hooks and assistance are the controlling next layer |
+
 ## Shipped interaction foundation
 
 | Area | New behavior | Original behavior retained |
@@ -33,6 +44,7 @@
 - It does not claim every possible verb/object pairing has bespoke prose yet.
 - It does not present new prose as recovered Infocom authorship.
 - Comedy actions do not manufacture treasure, remove enemies, award points, or become required puzzle steps.
+- The qualified Release 1201 Glulx artifact contains no Release 121 gameplay or assistance code.
 
 ## Validation coverage
 
@@ -41,22 +53,26 @@
 | Historical source identity | Git-blob manifest verification before staging |
 | Expansion application | Exact-match patches with required match counts |
 | ZIL structure | Reader-aware structural and include audit |
-| Compiler compatibility | Pinned ZILF and ZAPF build in GitHub Actions |
-| Story identity | Header, length, addresses, Release 121, serial, and checksum verification |
+| Z-machine compiler compatibility | Pinned ZILF and ZAPF build in GitHub Actions |
+| Release 121 story identity | Header, length, addresses, release, serial, and checksum verification |
 | Opening reactivity | Deterministic Frotz transcript covering assistance, house, mailbox, songbird, optional room, collectible, and recap |
 | Misconduct journey | Long deterministic Frotz route covering SELF, VOICE, FIT, house, tree, nest, sack, troll storage, troll ballistics, weaponized self, treasure bribery, and `FOLLY` |
-| Optimized regression | Release 120 continues to compile, verify, and run its original smoke route |
-| Beadtrain integrity | All three v1.3 train files are validated in CI against live bead records |
+| Optimized `.z3` regression | Release 120 continues to compile, verify, and run its original smoke route |
+| Upstream Glulx provenance | Exact Tara commit/tree, complete seven-file diff, archive checksums, toolchain pins, and license receipts |
+| Upstream Glulx runtime | Pinned Glulxe/CheapGlk identity and opening routes against repository and archived stories |
+| Optimized Glulx staging | Exact four-path changed-set gate with patch, overlay, and before/after hashes |
+| Optimized Glulx artifact | Fail-closed Glulx header, memory map, checksum, size, and SHA-256 |
+| Optimized Glulx behavior | Native opening, recursive-containment, and extinguished-candle routes |
+| Beadtrain integrity | Every completed v1.3 train is validated in CI against live bead records |
 
 ## Still requiring dedicated long-form transcripts
 
-The implementation is compiled as a whole, but these routes deserve dedicated scripted journeys rather than relying only on structural or mixed-route validation:
+The Release 121 `.z3` implementation is compiled as a whole, but these routes still deserve dedicated scripted journeys rather than relying only on structural or mixed-route validation:
 
 - three-turn cyclops lullaby under the existing impatience timer;
 - thief bargain with a carried treasure;
-- bell/candle/book ritual before and after altered object descriptions;
+- complete bell/candle/book ceremony timing;
 - dam feedback across both water-level states;
-- save and restore after expanded persistent-state changes;
-- recursive-container rejection and extinguished-candle regression from Release 120.
+- save and restore after expanded persistent-state changes.
 
-Those routes are the next verification train, not hidden claims of already-complete coverage.
+Recursive-container rejection and extinguished-candle behavior are now isolated and transcript-proven in the optimized Glulx layer. Semantic `.z3` versus `.ulx` assistance routes begin with the next train.
