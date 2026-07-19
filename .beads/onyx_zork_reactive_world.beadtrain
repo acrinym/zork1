@@ -7,7 +7,7 @@ notice more player ideas before adding broad new geography. Preserve Release 119
 and Release 120 as separate historical and optimized products.
 """
 created     = "2026-07-19"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "edition-split"
