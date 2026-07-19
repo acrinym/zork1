@@ -1,0 +1,12 @@
+{
+  "id": "Z1-FOLLY-010",
+  "description": "Recognize genuine treasure bribery before the original troll gift-eating branch regardless of object-action phase.",
+  "path": "absurdities.zil",
+  "replacements": [
+    {
+      "old": "<COND (<AND <NOT .MODE>\n\t            <OR <VERB? GIVE> <VERB? THROW>>\n\t            <EQUAL? ,PRSI ,TROLL>\n\t            ,PRSO\n\t            <G? <GETP ,PRSO ,P?VALUE> 0>>",
+      "new": "<COND (<AND <OR <VERB? GIVE> <VERB? THROW>>\n\t            <EQUAL? ,PRSI ,TROLL>\n\t            ,PRSO\n\t            <OR <EQUAL? ,PRSO ,EGG>\n\t                <G? <GETP ,PRSO ,P?VALUE> 0>\n\t                <G? <GETP ,PRSO ,P?TVALUE> 0>>>",
+      "expected_count": 1
+    }
+  ]
+}
