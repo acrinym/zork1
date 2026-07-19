@@ -9,7 +9,6 @@ on:
       - "glulx/tools/**"
       - "optimized/patches/001-prevent-containment-cycles.json"
       - "optimized/patches/002-replace-unsafe-zscii-tabs.json"
-      - "optimized/patches/003-candles-description-object.json"
       - "optimized/patches/004-candles-description-routine.json"
       - "optimized/tools/zil_smell_check.py"
       - ".github/workflows/glulx-release120.yml"
@@ -19,7 +18,6 @@ on:
       - "glulx/tools/**"
       - "optimized/patches/001-prevent-containment-cycles.json"
       - "optimized/patches/002-replace-unsafe-zscii-tabs.json"
-      - "optimized/patches/003-candles-description-object.json"
       - "optimized/patches/004-candles-description-routine.json"
       - "optimized/tools/zil_smell_check.py"
       - ".github/workflows/glulx-release120.yml"
@@ -29,6 +27,7 @@ permissions:
 
 env:
   ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
   ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
   GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
   GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
@@ -36,6 +35,9 @@ env:
   CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
   RELEASE120_GLULX_RELEASE: "1201"
   RELEASE120_GLULX_SERIAL: "260719"
+  RELEASE120_GLULX_SIZE: "180992"
+  RELEASE120_GLULX_CHECKSUM: "0xaa478295"
+  RELEASE120_GLULX_SHA256: f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051
 
 jobs:
   optimized-glulx-release120:
@@ -93,6 +95,26 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential libncurses-dev curl
 
+      - name: Validate immutable Release 120 pins
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          manifest = json.loads(Path('glulx/optimized/patch-series.json').read_text())
+          assert manifest['release'] == int(os.environ['RELEASE120_GLULX_RELEASE'])
+          assert manifest['serial'] == os.environ['RELEASE120_GLULX_SERIAL']
+          assert manifest['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
+          assert manifest['upstream_tree'] == os.environ['ZORK_GLULX_TREE']
+          expected = manifest['expected_artifact']
+          assert expected['size_bytes'] == int(os.environ['RELEASE120_GLULX_SIZE'])
+          assert expected['checksum_hex'] == os.environ['RELEASE120_GLULX_CHECKSUM']
+          assert expected['sha256'] == os.environ['RELEASE120_GLULX_SHA256']
+          assert manifest['expected_changed_paths'] == [
+              '1actions.zil', '1dungeon.zil', 'gverbs.zil', 'zork1.zil'
+          ]
+          PY
+
       - name: Build pinned ZILF
         shell: bash
         run: |
@@ -130,6 +152,16 @@ jobs:
             --destination glulx/build/release120/src \
             --allowed-root glulx/build/release120 \
             --manifest glulx/optimized/patch-series.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('glulx/build/release120/src/STAGING-RECEIPT.json').read_text())
+          assert receipt['upstream_tree_pin_enforced'] is True
+          assert receipt['upstream_tree'] == '02b34128649bbb7fcddf99136e03fb67c032b089'
+          assert receipt['changed_paths'] == [
+              '1actions.zil', '1dungeon.zil', 'gverbs.zil', 'zork1.zil'
+          ]
+          PY
 
       - name: Audit staged Release 120 Glulx source
         run: |
@@ -142,8 +174,7 @@ jobs:
           report = json.loads(Path('glulx/build/release120/smell-report.json').read_text())
           if report['errors']:
               raise SystemExit(report['errors'])
-          includes = report['includes']
-          unresolved = [item for item in includes if not item['resolved']]
+          unresolved = [item for item in report['includes'] if not item['resolved']]
           if unresolved:
               raise SystemExit(f'unresolved includes: {unresolved}')
           PY
@@ -163,10 +194,21 @@ jobs:
           "$GLAZER_BIN" "$assembly" -o glulx/build/release120/zork1-glulx-optimized.ulx \
             2>&1 | tee glulx/build/release120/glazer-assemble.log
 
-      - name: Verify optimized Glulx candidate
+      - name: Verify fail-closed optimized Glulx artifact
         run: |
           python glulx/tools/verify_ulx.py glulx/build/release120/zork1-glulx-optimized.ulx \
+            --expect-sha256 "$RELEASE120_GLULX_SHA256" \
             --json glulx/build/release120/story-report.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/release120/story-report.json').read_text())
+          assert story['version_hex'] == '0x00030103'
+          assert story['size_bytes'] == int(os.environ['RELEASE120_GLULX_SIZE'])
+          assert story['checksum_hex'] == os.environ['RELEASE120_GLULX_CHECKSUM']
+          assert story['sha256'] == os.environ['RELEASE120_GLULX_SHA256']
+          PY
 
       - name: Build pinned native Glulxe with CheapGlk
         shell: bash
@@ -199,7 +241,8 @@ jobs:
             < glulx/optimized/tests/containment_commands.txt \
             2>&1 | tee glulx/build/release120/containment-transcript.txt
           grep -F "How can you do that?" glulx/build/release120/containment-transcript.txt
-          grep -F "brown sack" glulx/build/release120/containment-transcript.txt
+          grep -F "The brown sack contains:" glulx/build/release120/containment-transcript.txt
+          grep -F "A glass bottle" glulx/build/release120/containment-transcript.txt
 
       - name: Stage extinguished-candle test harness
         run: |
@@ -232,28 +275,34 @@ jobs:
             exit 1
           fi
 
-      - name: Write candidate build receipt
+      - name: Write qualified build receipt
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          manifest = json.loads(Path('glulx/optimized/patch-series.json').read_text())
           stage = json.loads(Path('glulx/build/release120/src/STAGING-RECEIPT.json').read_text())
           story = json.loads(Path('glulx/build/release120/story-report.json').read_text())
           serial = json.loads(Path('glulx/build/release120/SERIAL-NORMALIZATION.json').read_text())
+          artifact_pin_matched = story['sha256'] == manifest['expected_artifact']['sha256']
+          if not artifact_pin_matched:
+              raise SystemExit('optimized Glulx artifact did not match the committed pin')
           receipt = {
-              'qualification_status': 'candidate; lock upstream tree and artifact SHA-256 after this run',
+              'qualification_status': 'qualified conservative Release 120 Glulx port',
               'identity': {'release': 1201, 'serial': '260719'},
               'upstream_commit': stage['upstream_commit'],
               'upstream_tree': stage['upstream_tree'],
+              'upstream_tree_pin_enforced': stage['upstream_tree_pin_enforced'],
               'changed_paths': stage['changed_paths'],
               'patches': stage['patches'],
               'overrides': stage['overrides'],
               'serial_normalization': serial,
               'artifact': story,
+              'artifact_pin_matched': artifact_pin_matched,
               'native_routes': {
                   'opening': 'passed',
                   'recursive_containment': 'passed',
-                  'extinguished_candles': 'passed with test-only startup patch',
+                  'extinguished_candles': 'passed with isolated test-only startup patch',
               },
           }
           Path('glulx/build/release120/BUILD-RECEIPT.json').write_text(
@@ -261,7 +310,7 @@ jobs:
           )
           PY
 
-      - name: Upload optimized Glulx candidate
+      - name: Upload qualified optimized Glulx edition
         if: always()
         uses: actions/upload-artifact@v4
         with:
