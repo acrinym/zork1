@@ -12,6 +12,7 @@ REPO_ROOT = OPTIMIZED_ROOT.parent
 sys.path.insert(0, str(OPTIMIZED_ROOT / "tools"))
 
 import build_story  # noqa: E402
+import run_smoke  # noqa: E402
 import stage_source  # noqa: E402
 import verify_story  # noqa: E402
 import zil_smell_check  # noqa: E402
@@ -87,11 +88,48 @@ and another > line"
                 root / "gmacros.zil",
                 zil_smell_check.resolve_include(root, "gmacros"),
             )
+            self.assertIsNone(zil_smell_check.resolve_include(root, "GMACROS"))
+
+    def test_clock_metadata_ignores_suppressed_constants(self) -> None:
+        source = """;<CONSTANT C-TABLELEN 12>
+<CONSTANT C-TABLELEN 180>
+;<CONSTANT C-INTLEN 3>
+<CONSTANT C-INTLEN 6>
+"""
+        metadata = zil_smell_check.clock_metadata({Path("gclock.zil"): source})
+        self.assertIsNotNone(metadata)
+        assert metadata is not None
+        self.assertEqual(180, metadata["table_words"])
+        self.assertEqual(6, metadata["entry_words"])
+        self.assertEqual(30, metadata["maximum_interrupt_slots"])
+
+
+class CommandParsingTests(unittest.TestCase):
+    def test_windows_compiler_command_preserves_path_and_removes_quotes(self) -> None:
+        value = r'"C:\Program Files\ZILF\zilf.exe" -S'
+        self.assertEqual(
+            [r"C:\Program Files\ZILF\zilf.exe", "-S"],
+            build_story.split_command(value, platform="win32"),
+        )
+
+    def test_windows_interpreter_command_preserves_backslashes(self) -> None:
+        value = r'C:\Tools\Frotz\dfrotz.exe -p'
+        self.assertEqual(
+            [r"C:\Tools\Frotz\dfrotz.exe", "-p"],
+            run_smoke.split_command(value, platform="win32"),
+        )
+
+    def test_posix_command_keeps_quoted_executable_together(self) -> None:
+        self.assertEqual(
+            ["/opt/ZIL F/zilf", "-S"],
+            build_story.split_command("'/opt/ZIL F/zilf' -S", platform="linux"),
+        )
 
 
 class BuildIdentityTests(unittest.TestCase):
     def test_accepts_project_identity(self) -> None:
         build_story.validate_identity(120, "260718")
+        build_story.validate_identity(121, "260719")
 
     def test_rejects_zero_release(self) -> None:
         with self.assertRaises(RuntimeError):
@@ -108,6 +146,17 @@ class StagingTests(unittest.TestCase):
             "b6fc4c620b67d95f953a5c1c1230aaab5db5a1b0",
             stage_source.git_blob_sha(b"hello"),
         )
+
+    def test_explicit_allowed_root_accepts_only_its_descendants(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            allowed = root / "expanded" / "build"
+            destination = allowed / "src"
+            stage_source.ensure_safe_destination(destination, allowed)
+            with self.assertRaises(RuntimeError):
+                stage_source.ensure_safe_destination(root / "historical", allowed)
+            with self.assertRaises(RuntimeError):
+                stage_source.ensure_safe_destination(allowed, allowed)
 
     def test_all_exact_patches_apply_to_verified_root_shape(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
