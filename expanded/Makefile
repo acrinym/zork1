@@ -20,6 +20,7 @@ stage:
 	$(PYTHON) $(TOOLS_DIR)/stage_source.py \
 		--repo-root "$(REPO_ROOT)" \
 		--destination "$(WORK_DIR)" \
+		--allowed-root "$(BUILD_DIR)" \
 		--overrides "$(CURDIR)/overrides" \
 		--patches "$(CURDIR)/patches"
 
