@@ -42,13 +42,19 @@ The parser also recognizes a broader family of absurd social actions:
 - headbutting;
 - yelling at things.
 
-## Zero-slot parser phrases
+## Zero-slot noun reuse
 
-`SELF`, `MYSELF`, `VOICE`, `WORDS`, `FIT`, and `TANTRUM` are fixed grammatical phrases, not world objects.
+Z-machine version 3 permits only 255 objects, and the expanded world already uses the complete table. Release 121 therefore does not add fake SELF, VOICE, or FIT inventory objects.
 
-That distinction matters because Z-machine version 3 permits only 255 objects and the expanded world already uses the full table. The comedy layer therefore recognizes commands such as `THROW SELF AT TREE` and `EAT WORDS` without deleting a real object or inventing fake inventory.
+Instead it extends three existing global parser objects without removing their original vocabulary:
 
-These phrases cannot be dropped into the world, sold, scored, placed inside containers, or used to corrupt containment. Dedicated grammar routes them directly to deliberate responses.
+- the original `ME` object already recognizes `ME`, `SELF`, and `MYSELF`;
+- the lightweight blessings object additionally recognizes `VOICE` and `WORDS`;
+- the existing hands object additionally recognizes `FIT`.
+
+Their misconduct-aware action wrappers respond only to the relevant absurd verbs and otherwise fall back to original behavior. This preserves every real world object and every original synonym while allowing natural commands such as `THROW SELF AT TREE`, `THROW VOICE AT MAILBOX`, and `THROW FIT`.
+
+These noun carriers cannot become collectible comedy items. They cannot be sold, scored, used to manufacture treasure, or inserted into the object tree as new inventory.
 
 ## Harmlessness boundary
 
@@ -107,7 +113,7 @@ Tracked findings include:
 - self-propelled ammunition;
 - troll ballistics;
 - thrown voice;
-- thrown tantrum;
+- thrown fit;
 - bulk troll storage;
 - using oneself as a weapon;
 - nest cuisine;
