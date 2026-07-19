@@ -48,8 +48,8 @@
   "expected_artifact": {
     "file": "zork1-glulx-reactive-surface.ulx",
     "glulx_version_hex": "0x00030103",
-    "size_bytes": 189184,
-    "checksum_hex": "0xec1c9be9",
-    "sha256": "409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab"
+    "size_bytes": 189440,
+    "checksum_hex": "0x01ea5062",
+    "sha256": "78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002"
   }
 }
