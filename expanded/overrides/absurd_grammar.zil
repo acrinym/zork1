@@ -1,9 +1,10 @@
 "Fallback grammar for Adventurer Misconduct."
 
 ;"Canonical syntax remains defined in gsyntax.zil. The original game already
-  provides a global ME object with SELF and MYSELF synonyms. Release 121 also
-  extends the existing LUNGS object with VOICE and WORDS. These fallback entries
-  therefore support natural absurd commands without consuming object slots."
+  provides a global ME object with SELF and MYSELF synonyms. Release 121 reuses
+  the lightweight BLESSINGS global object for VOICE and WORDS while preserving
+  its original nouns. These fallback entries support natural absurd commands
+  without consuming object slots or deleting original vocabulary."
 
 <SYNTAX EAT OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-ABS-EAT>
 
