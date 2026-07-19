@@ -37,6 +37,9 @@ env:
   BASE_ARTIFACT_SHA256: cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777
   SURFACE_RELEASE: "1212"
   SURFACE_SERIAL: "260719"
+  SURFACE_SIZE: "189184"
+  SURFACE_CHECKSUM: "0xec1c9be9"
+  SURFACE_SHA256: 409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab
 
 jobs:
   reactive-surface-glulx:
@@ -94,7 +97,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential libncurses-dev curl frotz
 
-      - name: Validate candidate layer and qualified base
+      - name: Validate immutable layer and qualified base
         run: |
           python - <<'PY'
           import json, os
@@ -109,6 +112,11 @@ jobs:
           assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
           assert base['release'] == int(os.environ['BASE_RELEASE'])
           assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          expected = layer['expected_artifact']
+          assert expected['glulx_version_hex'] == '0x00030103'
+          assert expected['size_bytes'] == int(os.environ['SURFACE_SIZE'])
+          assert expected['checksum_hex'] == os.environ['SURFACE_CHECKSUM']
+          assert expected['sha256'] == os.environ['SURFACE_SHA256']
           assert layer['expected_changed_paths'] == [
               '1actions.zil',
               '1dungeon.zil',
@@ -195,7 +203,7 @@ jobs:
               raise SystemExit(f'unresolved includes: {unresolved}')
           PY
 
-      - name: Compile reactive surface Glulx candidate
+      - name: Compile reactive surface Glulx assembly
         shell: bash
         run: |
           set -euxo pipefail
@@ -210,10 +218,20 @@ jobs:
           "$GLAZER_BIN" "$assembly" -o glulx/build/reactive-surface/zork1-glulx-reactive-surface.ulx \
             2>&1 | tee glulx/build/reactive-surface/glazer-assemble.log
 
-      - name: Verify reactive surface candidate
+      - name: Verify fail-closed reactive surface artifact
         run: |
           python glulx/tools/verify_ulx.py glulx/build/reactive-surface/zork1-glulx-reactive-surface.ulx \
+            --expect-sha256 "$SURFACE_SHA256" \
             --json glulx/build/reactive-surface/story-report.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/reactive-surface/story-report.json').read_text())
+          assert story['version_hex'] == '0x00030103'
+          assert story['size_bytes'] == int(os.environ['SURFACE_SIZE'])
+          assert story['checksum_hex'] == os.environ['SURFACE_CHECKSUM']
+          assert story['sha256'] == os.environ['SURFACE_SHA256']
+          PY
 
       - name: Build pinned native Glulxe with CheapGlk
         shell: bash
@@ -282,17 +300,21 @@ jobs:
             --expect glulx/reactive-surface/tests/surface_parity_expectations.txt \
             | tee glulx/build/reactive-surface/z3-surface-parity-transcript.txt
 
-      - name: Write candidate reactive surface receipt
+      - name: Write qualified reactive surface receipt
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          layer = json.loads(Path('glulx/reactive-surface/patch-series.json').read_text())
           stage = json.loads(Path('glulx/build/reactive-surface/src/STAGING-RECEIPT.json').read_text())
           story = json.loads(Path('glulx/build/reactive-surface/story-report.json').read_text())
           z3_story = json.loads(Path('glulx/build/reactive-surface/z3-story-report.json').read_text())
           serial = json.loads(Path('glulx/build/reactive-surface/SERIAL-NORMALIZATION.json').read_text())
+          artifact_pin_matched = story['sha256'] == layer['expected_artifact']['sha256']
+          if not artifact_pin_matched:
+              raise SystemExit('reactive surface artifact did not match the committed pin')
           receipt = {
-              'qualification_status': 'candidate; lock artifact after deterministic route passes',
+              'qualification_status': 'qualified Release 121 reactive surface layer',
               'identity': {'release': 1212, 'serial': '260719'},
               'base': stage['base'],
               'upstream_commit': stage['upstream_commit'],
@@ -302,6 +324,7 @@ jobs:
               'overrides': stage['overrides'],
               'serial_normalization': serial,
               'artifact': story,
+              'artifact_pin_matched': artifact_pin_matched,
               'comparison_artifact': z3_story,
               'semantic_routes': {
                   'house_and_door': 'passed on .z3 and .ulx',
@@ -328,7 +351,7 @@ jobs:
           )
           PY
 
-      - name: Upload reactive surface candidate
+      - name: Upload qualified reactive surface edition
         if: always()
         uses: actions/upload-artifact@v4
         with:
