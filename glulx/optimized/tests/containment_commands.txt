@@ -8,7 +8,7 @@ take all from sack
 drop lunch
 drop garlic
 take bottle
-empty bottle
+open bottle
 put bottle in sack
 put sack in bottle
 inventory
