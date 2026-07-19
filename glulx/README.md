@@ -9,7 +9,7 @@ Four layers are now qualified:
 | Unchanged upstream baseline | Release 1 / serial `251203` | Reproduce and qualify Tara McGrew's existing Glulx port without project changes |
 | Unofficial Optimized Glulx | Release 1201 / serial `260719` | Port only the conservative corrections from project Release 120 |
 | Unofficial Assisted Glulx | Release 1211 / serial `260719` | Port Release 121 action hooks and optional assistance with cross-VM semantic parity |
-| Unofficial Reactive Surface Glulx | Release 1212 / serial `260719` | Port white-house, door, board, window, mailbox, forest, tree, and songbird reactions without optional geography |
+| Unofficial Reactive Surface Glulx | Release 1212 / serial `260719` | Port proximity-safe white-house, door, board, window, mailbox, forest, tree, and songbird reactions without optional geography |
 
 Historical Release 119, Optimized Release 120, and Expanded Release 121 remain supported `.z3` editions and are not replaced or relabeled.
 
@@ -79,6 +79,7 @@ See [`assistance/README.md`](assistance/README.md).
 The fourth layer derives explicitly from the Release 1211 manifest and artifact hash. It adds only:
 
 - repeated white-house and front-door reactions;
+- proximity checks preventing remote physical or auditory house actions;
 - board and boarded-window behavior;
 - persistent damage and a painted splinter;
 - kitchen-window reactions while preserving traversal;
@@ -92,11 +93,11 @@ The fourth layer derives explicitly from the Release 1211 manifest and artifact 
 - output: `zork1-glulx-reactive-surface.ulx`
 - identity: Release `1212` / serial `260719`
 - Glulx version: `3.1.3` / `0x00030103`
-- size: `189,184` bytes
-- checksum: `0xec1c9be9`, valid
-- SHA-256: `409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab`
+- size: `189,440` bytes
+- checksum: `0x01ea5062`, valid
+- SHA-256: `78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002`
 
-A real-map route passes in Expanded Release 121 `.z3` and Release 1212 `.ulx`. A separate native route proves forest/tree behavior, canonical `FOLLOW SONGBIRD` refusal, and the absence of Hidden Glade.
+A real-map route passes in Expanded Release 121 `.z3` and Release 1212 `.ulx`. A separate native route proves distant house actions are rejected, forest/tree behavior works, `FOLLOW SONGBIRD` remains refused, and Hidden Glade is absent.
 
 See [`reactive-surface/README.md`](reactive-surface/README.md).
 
