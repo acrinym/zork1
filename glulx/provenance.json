@@ -33,8 +33,10 @@
       "commit": "45c60f1e37651f266ac92d49ae01748bb4909fa5"
     },
     "glazer": {
-      "source": "built from the pinned ZILF 1.8 tree",
-      "commit": "45c60f1e37651f266ac92d49ae01748bb4909fa5"
+      "repository": "https://gitlab.com/andwj/glazer",
+      "resolution": "GitLab latest-release discovery",
+      "pin_status": "pending exact tag, commit, and source SHA-256 from discovery receipt",
+      "qualification_status": "blocked until the discovered release is committed as an immutable pin"
     },
     "glulxe": {
       "repository": "https://github.com/erkyrath/glulxe",
@@ -48,13 +50,14 @@
   },
   "licenses": {
     "zork_source": "MIT; retain upstream LICENSE",
-    "zilf_and_glazer": "GPL-3.0 and repository component licenses; build tools are not redistributed in story artifacts",
+    "zilf": "GPL-3.0-or-later; build tool is not redistributed in story artifacts",
+    "glazer": "license file and checksum must be captured from the exact pinned release before qualification",
     "glulxe": "MIT",
     "cheapglk": "see pinned upstream license files",
     "branding": "No Microsoft, Activision, Xbox, or Infocom endorsement is implied"
   },
   "archive_reference": {
     "url": "https://ifarchive.org/if-archive/games/glulx/zork1-glulx.zip",
-    "inspection_status": "reference recorded; CI-produced baseline is authoritative for this repository"
+    "inspection_status": "reference recorded; archive checksum and contents still require committed inspection receipt"
   }
 }
