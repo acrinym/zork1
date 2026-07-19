@@ -35,5 +35,12 @@
     "gmain.zil",
     "gverbs.zil",
     "zork1.zil"
-  ]
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-assisted.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 185600,
+    "checksum_hex": "0xd3e2209e",
+    "sha256": "cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777"
+  }
 }
