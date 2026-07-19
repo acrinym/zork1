@@ -14,7 +14,7 @@
   "patches": [
     "../../optimized/patches/001-prevent-containment-cycles.json",
     "../../optimized/patches/002-replace-unsafe-zscii-tabs.json",
-    "../../optimized/patches/003-candles-description-object.json",
+    "patches/003-candles-dynamic-description.json",
     "../../optimized/patches/004-candles-description-routine.json"
   ],
   "expected_changed_paths": [
