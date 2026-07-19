@@ -1,8 +1,8 @@
 # Unofficial Reactive Surface Glulx Release 121 layer
 
-This directory contains the focused surface-world layer built on qualified Assisted Glulx Release `1211`.
+This directory contains the qualified focused surface-world layer built on Assisted Glulx Release `1211`.
 
-## Candidate identity
+## Identity
 
 - edition: Unofficial Reactive Surface Glulx
 - release: `1212`
@@ -11,6 +11,15 @@ This directory contains the focused surface-world layer built on qualified Assis
 - base: qualified Unofficial Assisted Glulx Release `1211`
 
 Release `1212` is a repository-local migration identity, not an official Infocom release.
+
+## Qualified artifact
+
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `189,184` bytes
+- checksum: `0xec1c9be9`, valid
+- SHA-256: `409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab`
+
+The workflow fails closed if the source layer, qualified base, compiler inputs, size, checksum, or SHA-256 changes without an intentional provenance update.
 
 ## Included behavior
 
@@ -45,7 +54,7 @@ This layer does not include:
 - `FOLLY` or troll bemusement;
 - removal of version 3 object-slot workarounds.
 
-`FOLLOW SONGBIRD` must continue to receive Tara's canonical refusal, and qualification fails if `Hidden Glade` appears in the native boundary transcript.
+`FOLLOW SONGBIRD` continues to receive Tara's canonical refusal, and qualification fails if `Hidden Glade` appears in the native boundary transcript.
 
 ## Layer derivation
 
@@ -77,11 +86,11 @@ Three new globals persist through the normal save model:
 
 The painted splinter and maintenance slip are normal world objects. They can be taken, dropped, burned where canonical flags allow, saved, and restored.
 
-## Qualification routes
+## Qualified routes
 
 ### Shared `.z3` and `.ulx` route
 
-The route walks the actual map. It:
+The route walks the actual map using canonical parser grammar. It:
 
 1. knocks on the house and door;
 2. listens at the door;
@@ -96,7 +105,7 @@ The route walks the actual map. It:
 11. checks `RECAP`;
 12. enters the forest and exercises shared forest/songbird reactions.
 
-Stable semantic markers are compared between Expanded Release 121 `.z3` and Release 1212 `.ulx`; interpreter wrapping and edition-only recap lines are not required to match byte-for-byte.
+Stable semantic markers pass under Expanded Release 121 `.z3` and Release 1212 `.ulx`; interpreter wrapping and edition-only recap lines are not required to match byte-for-byte.
 
 ### Native boundary route
 
@@ -108,6 +117,29 @@ A separate Glulx route proves:
 - canonical refusal of `FOLLOW SONGBIRD`;
 - absence of Hidden Glade.
 
-## Qualification status
+## Parser grammar evidence
 
-The artifact remains a candidate until the deterministic build, native execution, shared semantic route, exclusion route, and exact artifact lock all pass at the final PR head.
+The initial candidate transcript deliberately exposed that classic Zork requires prepositional forms for these verbs. Qualification therefore uses the game’s shipped grammar:
+
+- `KNOCK ON HOUSE`
+- `KNOCK ON DOOR`
+- `LISTEN TO DOOR`
+- `KNOCK ON WINDOW`
+- `LISTEN TO WINDOW`
+- `LISTEN TO FOREST`
+- `LISTEN TO BIRD`
+
+No parser aliases were added merely to make the test easier.
+
+## Next layer
+
+The next isolated Glulx layer moves underground and ports deeper mechanism and ritual feedback:
+
+1. dam and control-panel examination/listening;
+2. bell resonance;
+3. candle-state examination beyond the Release 120 correction;
+4. optional black-book pages;
+5. rope, mirror, water, wrench, shovel, and axe reactions;
+6. focused semantic routes for each group.
+
+Optional geography, alternate NPC solutions, and Adventurer Misconduct remain later layers.
