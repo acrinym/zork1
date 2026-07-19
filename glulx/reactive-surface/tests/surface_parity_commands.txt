@@ -1,6 +1,6 @@
-knock house
-knock door
-listen door
+knock on house
+knock on door
+listen to door
 climb house
 why
 open mailbox
@@ -10,8 +10,8 @@ take slip
 read slip
 north
 east
-knock window
-listen window
+knock on window
+listen to window
 open window
 west
 west
@@ -24,8 +24,8 @@ attack boards with sword
 look
 recap
 west
-listen forest
-listen bird
+listen to forest
+listen to bird
 hello bird
 quit
 y
