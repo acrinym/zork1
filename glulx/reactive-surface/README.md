@@ -15,9 +15,9 @@ Release `1212` is a repository-local migration identity, not an official Infocom
 ## Qualified artifact
 
 - Glulx version: `3.1.3` / `0x00030103`
-- size: `189,184` bytes
-- checksum: `0xec1c9be9`, valid
-- SHA-256: `409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab`
+- size: `189,440` bytes
+- checksum: `0x01ea5062`, valid
+- SHA-256: `78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002`
 
 The workflow fails closed if the source layer, qualified base, compiler inputs, size, checksum, or SHA-256 changes without an intentional provenance update.
 
@@ -38,6 +38,8 @@ The layer adds only:
 - surface state surfaced through `RECAP`.
 
 Every wrapper delegates unhandled actions to the canonical Tara routine. Original routes, scoring, door behavior, window traversal, and puzzle outcomes remain authoritative.
+
+Physical and auditory white-house reactions require the player to be at one of the four adjacent exterior rooms. From distant local-global rooms such as the forest, knocking, listening, and climbing receive proximity failures rather than acting on the house remotely. Interior references continue to delegate to Tara's canonical routine.
 
 ## Explicit exclusions
 
@@ -80,11 +82,11 @@ Exactly seven source paths may differ from Tara's pinned tree:
 
 Three new globals persist through the normal save model:
 
-- number of house knocks;
+- number of adjacent house knocks;
 - whether the boards have been scarred;
 - whether the maintenance slip has been discovered.
 
-The painted splinter and maintenance slip are normal world objects. They can be taken, dropped, burned where canonical flags allow, saved, and restored.
+Distant knock attempts do not increment the house-knock counter. The painted splinter and maintenance slip are normal world objects that can be taken, dropped, burned where canonical flags allow, saved, and restored.
 
 ## Qualified routes
 
@@ -109,8 +111,11 @@ Stable semantic markers pass under Expanded Release 121 `.z3` and Release 1212 `
 
 ### Native boundary route
 
-A separate Glulx route proves:
+A separate Glulx route begins in the forest and proves:
 
+- distant `KNOCK ON HOUSE` is rejected;
+- distant `LISTEN TO HOUSE` is rejected;
+- distant `CLIMB HOUSE` is rejected;
 - forest examination;
 - tree examination and listening;
 - songbird listening and greeting;
@@ -119,7 +124,7 @@ A separate Glulx route proves:
 
 ## Parser grammar evidence
 
-The initial candidate transcript deliberately exposed that classic Zork requires prepositional forms for these verbs. Qualification therefore uses the game’s shipped grammar:
+The initial candidate transcript exposed that classic Zork requires prepositional forms for these verbs. Qualification therefore uses the game's shipped grammar:
 
 - `KNOCK ON HOUSE`
 - `KNOCK ON DOOR`
