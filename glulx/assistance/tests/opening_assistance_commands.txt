@@ -1,0 +1,11 @@
+goals
+exits
+hint
+hint
+hint
+recap
+use mailbox
+climb house
+why
+quit
+y
