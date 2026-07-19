@@ -42,11 +42,13 @@ The parser also recognizes a broader family of absurd social actions:
 - headbutting;
 - yelling at things.
 
-## Pseudo-objects
+## Zero-slot parser phrases
 
-`SELF`, `MYSELF`, `ME`, `VOICE`, `WORDS`, `FIT`, and `TANTRUM` are parser-visible pseudo-objects.
+`SELF`, `MYSELF`, `VOICE`, `WORDS`, `FIT`, and `TANTRUM` are fixed grammatical phrases, not world objects.
 
-They are not inventory items. They cannot be dropped into the world, sold, scored, or used to corrupt containment. They exist so commands such as `THROW SELF AT TREE` and `EAT WORDS` can reach deliberate responses.
+That distinction matters because Z-machine version 3 permits only 255 objects and the expanded world already uses the full table. The comedy layer therefore recognizes commands such as `THROW SELF AT TREE` and `EAT WORDS` without deleting a real object or inventing fake inventory.
+
+These phrases cannot be dropped into the world, sold, scored, placed inside containers, or used to corrupt containment. Dedicated grammar routes them directly to deliberate responses.
 
 ## Harmlessness boundary
 
