@@ -1,4 +1,4 @@
-name: Optimized Zork I Audit
+name: Zork I Optimized and Expanded Audit
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
       - agent/preservation-first-optimized-edition
     paths:
       - "optimized/**"
+      - "expanded/**"
+      - ".beads/**"
       - "*.zil"
       - "zork1.serial"
       - "zork1freq.xzap"
@@ -15,6 +17,8 @@ on:
   pull_request:
     paths:
       - "optimized/**"
+      - "expanded/**"
+      - ".beads/**"
       - "*.zil"
       - "zork1.serial"
       - "zork1freq.xzap"
@@ -45,6 +49,11 @@ jobs:
       - name: Test modernization tools
         run: make -C optimized selftest
 
+      - name: Validate coupled beadtrains
+        run: |
+          python .beads/beadtrains/scripts/validate_beadtrain.py .beads/onyx_zork_reactive_world.beadtrain
+          python .beads/beadtrains/scripts/validate_beadtrain.py .beads/onyx_zork_living_underground.beadtrain
+
       - name: Verify and audit staged historical source
         run: make -C optimized audit
 
@@ -67,7 +76,7 @@ jobs:
             optimized/build/baseline-story-report.json
           if-no-files-found: warn
 
-  optimized-build:
+  optimized-and-expanded-build:
     needs: preservation-audit
     runs-on: ubuntu-latest
     steps:
@@ -106,7 +115,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          mkdir -p optimized/build
+          mkdir -p optimized/build expanded/build
           dotnet restore .tooling/zilf/src/Zilf/Zilf.csproj --nologo \
             2>&1 | tee optimized/build/zilf-restore.log
           dotnet restore .tooling/zilf/src/Zapf/Zapf.csproj --nologo \
@@ -156,18 +165,50 @@ jobs:
             --baseline COMPILED/zork1.z3 \
             --json optimized/build/optimized-story-report.json
 
+      - name: Stage and compile expanded edition
+        shell: bash
+        run: |
+          set -o pipefail
+          make -C expanded compile \
+            ZILF="dotnet $ZILF_DLL" \
+            ZAPF="dotnet $ZAPF_DLL" \
+            RELEASE=121 \
+            SERIAL=260719 \
+            2>&1 | tee expanded/build/zork-compile.log
+          if grep -q "ZIL0410" expanded/build/zork-compile.log; then
+            echo "Unsafe ZSCII character warning remains in expanded source." >&2
+            exit 1
+          fi
+
+      - name: Verify expanded story file
+        run: |
+          python optimized/tools/verify_story.py expanded/build/zork1-expanded.z3 \
+            --expect-version 3 \
+            --expect-release 121 \
+            --expect-serial 260719 \
+            --baseline COMPILED/zork1.z3 \
+            --json expanded/build/expanded-story-report.json
+
       - name: Install Frotz
         run: |
           sudo apt-get install -y frotz
           command -v dfrotz
 
-      - name: Run deterministic opening transcript
+      - name: Run deterministic optimized transcript
         run: |
           python optimized/tools/run_smoke.py optimized/build/zork1-optimized.z3 \
             --interpreter "$(command -v dfrotz)" \
             --commands optimized/tests/smoke_commands.txt \
             --expect optimized/tests/smoke_expectations.txt \
             | tee optimized/build/smoke-transcript.txt
+
+      - name: Run deterministic expanded transcript
+        run: |
+          python optimized/tools/run_smoke.py expanded/build/zork1-expanded.z3 \
+            --interpreter "$(command -v dfrotz)" \
+            --commands expanded/tests/smoke_commands.txt \
+            --expect expanded/tests/smoke_expectations.txt \
+            | tee expanded/build/smoke-transcript.txt
 
       - name: Upload runnable optimized edition
         if: always()
@@ -185,4 +226,18 @@ jobs:
             optimized/build/zilf-build.log
             optimized/build/zapf-build.log
             optimized/build/zork-compile.log
+          if-no-files-found: warn
+
+      - name: Upload runnable expanded edition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expanded-zork1-build
+          path: |
+            expanded/build/zork1-expanded.z3
+            expanded/build/expanded-story-report.json
+            expanded/build/smoke-transcript.txt
+            expanded/build/smell-report.json
+            expanded/build/src/STAGING-RECEIPT.json
+            expanded/build/zork-compile.log
           if-no-files-found: warn
