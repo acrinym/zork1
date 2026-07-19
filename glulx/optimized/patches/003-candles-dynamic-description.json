@@ -1,0 +1,12 @@
+{
+  "id": "Z1-BUG-002-GLULX",
+  "path": "1dungeon.zil",
+  "description": "Replace the static first-sighting candle FDESC with the state-aware room-description callback on Glulx",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t(ACTION CANDLES-FCN)\n\t(FDESC \"On the two ends of the altar are burning candles.\")",
+      "new": "\t(DESCFCN CANDLES-D)\n\t(ACTION CANDLES-FCN)"
+    }
+  ]
+}
