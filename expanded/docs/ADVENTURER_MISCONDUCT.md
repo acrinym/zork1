@@ -83,6 +83,22 @@ Examples:
 - throwing the troll never makes him portable;
 - throwing yourself never moves or injures the player.
 
+## Troll bemusement
+
+Classic Zork combat allows the troll to counterattack randomly after nearly every turn in his room. That is appropriate after ordinary adventuring, but it can erase a comedy response immediately and makes a sequence of deliberately foolish experiments depend on luck.
+
+When a troll-targeted misconduct action succeeds as a parsed joke, Release 121 sets the existing one-turn `CLOCK-WAIT` gate. In-world, the troll spends that turn trying to understand what the player just attempted.
+
+This does **not**:
+
+- remove the troll;
+- lower his strength;
+- open his guarded passages;
+- count as defeating, stunning, or bribing him;
+- protect the player on the following ordinary turn.
+
+It only suppresses the same-turn random combat clock after the absurd response. Normal combat resumes immediately afterward unless the next action is another recognized piece of misconduct or a real solution such as treasure bribery succeeds.
+
 ## Voice
 
 The prose remains dry, material, and bureaucratic. It should sound like the Great Underground Empire has a department responsible for documenting the player's misconduct.
