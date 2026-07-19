@@ -9,7 +9,8 @@
 | Expanded | `.z3` | Release 121 / `260719` | Qualified as a complete build with broad deterministic routes |
 | Unchanged upstream Glulx | `.ulx` | Release 1 / `251203` | Qualified against Tara McGrew's exact source commit and archived reference |
 | Unofficial Optimized Glulx | `.ulx` | Release 1201 / `260719` | Qualified with conservative Release 120 corrections and focused native regressions |
-| Expanded Glulx | `.ulx` | not assigned yet | Not yet implemented; action hooks and assistance are the controlling next layer |
+| Unofficial Assisted Glulx | `.ulx` | Release 1211 / `260719` | Qualified action hooks and assistance with `.z3`/`.ulx` semantic parity |
+| Reactive Expanded Glulx | `.ulx` | not assigned yet | Surface-world reactivity is the controlling next layer |
 
 ## Shipped interaction foundation
 
@@ -21,7 +22,7 @@
 | Boards and boarded windows | Tool-sensitive scarring, persistent splinter, specific sound and visibility responses | Boards remain secured; no trivial front-door bypass |
 | Kitchen window | Knocking and listening reactions | Original open, close, examine, and traversal behavior |
 | Mailbox | Hidden maintenance slip discovered after the leaflet is removed | Original leaflet and mailbox sequence |
-| Forest songbird | Followable optional trail, hidden glade, brass feather, remembered discovery | Original forest graph and egg/canary puzzle |
+| Forest songbird | Followable optional trail, Hidden Glade, brass feather, remembered discovery | Original forest graph and egg/canary puzzle |
 | Troll | Genuine-treasure bribe as a noncombat route; social responses | Original combat, disarming, gifts, and weapon interactions |
 | Cyclops | Repeated lullaby route; more greetings, food reactions, and state feedback | Original pepper/water and Odysseus solutions |
 | Thief | One-time bargaining command that consumes real treasure and leaves a clue | Existing roaming, theft, combat, and treasure behavior |
@@ -34,6 +35,22 @@
 | Folly ledger | `FOLLY`, `NONSENSE`, and `MISCHIEF` report only discovered categories of misconduct | No unseen jokes or puzzle information are spoiled |
 | Troll bemusement | A troll-targeted misconduct action suppresses only his immediate same-turn random counterattack while he processes the idea | The troll remains present, blocking, dangerous, and governed by normal combat on subsequent ordinary turns |
 
+## Glulx parity reached
+
+Release 1211 now ports and proves:
+
+- a global state-neutral action hook;
+- canonical goals;
+- visible-exit orientation;
+- three progressive hint levels;
+- canonical persistent-state recap;
+- contextual explanation after selected failures;
+- object affordance guidance.
+
+The same nine-move route passes under Expanded Release 121 `.z3` and Assisted Release 1211 `.ulx`.
+
+Release 1211 does **not** yet include the expanded scenery, geography, NPC alternatives, or comedy rows listed above. Those remain present only in Release 121 `.z3` until their isolated Glulx layers qualify.
+
 ## Deliberate constraints
 
 - Release 121 does not alter historical root files.
@@ -44,7 +61,8 @@
 - It does not claim every possible verb/object pairing has bespoke prose yet.
 - It does not present new prose as recovered Infocom authorship.
 - Comedy actions do not manufacture treasure, remove enemies, award points, or become required puzzle steps.
-- The qualified Release 1201 Glulx artifact contains no Release 121 gameplay or assistance code.
+- Release 1201 contains no Release 121 code.
+- Release 1211 contains assistance but no reactive scenery or expanded gameplay outcomes.
 
 ## Validation coverage
 
@@ -63,16 +81,16 @@
 | Optimized Glulx staging | Exact four-path changed-set gate with patch, overlay, and before/after hashes |
 | Optimized Glulx artifact | Fail-closed Glulx header, memory map, checksum, size, and SHA-256 |
 | Optimized Glulx behavior | Native opening, recursive-containment, and extinguished-candle routes |
-| Beadtrain integrity | Every completed v1.3 train is validated in CI against live bead records |
+| Assisted Glulx staging | Exact six-path boundary, qualified Release 1201 base hash, and reviewed added module |
+| Assisted Glulx artifact | Fail-closed 185,600-byte artifact, checksum `0xd3e2209e`, and SHA-256 |
+| Assistance semantic parity | Shared `.z3`/`.ulx` route for goals, exits, three hint tiers, recap, use, and why |
+| Beadtrain integrity | Every completed recorded v1.3 train is validated in CI against live bead records |
 
 ## Still requiring dedicated long-form transcripts
-
-The Release 121 `.z3` implementation is compiled as a whole, but these routes still deserve dedicated scripted journeys rather than relying only on structural or mixed-route validation:
 
 - three-turn cyclops lullaby under the existing impatience timer;
 - thief bargain with a carried treasure;
 - complete bell/candle/book ceremony timing;
 - dam feedback across both water-level states;
-- save and restore after expanded persistent-state changes.
-
-Recursive-container rejection and extinguished-candle behavior are now isolated and transcript-proven in the optimized Glulx layer. Semantic `.z3` versus `.ulx` assistance routes begin with the next train.
+- save and restore after expanded persistent-state changes;
+- focused surface-world `.z3` versus `.ulx` routes for house, boards, windows, mailbox, and forest nouns.
