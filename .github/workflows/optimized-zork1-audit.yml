@@ -53,6 +53,7 @@ jobs:
         run: |
           python .beads/beadtrains/scripts/validate_beadtrain.py .beads/onyx_zork_reactive_world.beadtrain
           python .beads/beadtrains/scripts/validate_beadtrain.py .beads/onyx_zork_living_underground.beadtrain
+          python .beads/beadtrains/scripts/validate_beadtrain.py .beads/onyx_zork_adventurer_misconduct.beadtrain
 
       - name: Verify and audit staged historical source
         run: make -C optimized audit
