@@ -18,8 +18,14 @@ permissions:
 env:
   ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
   ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_TAG: v1.2.0
+  GLAZER_COMMIT: 1cc80bcdefb4b4125185e1170eb1ee178e97ff5a
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
   GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
   CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  UPSTREAM_RELEASE: "1"
+  UPSTREAM_SERIAL: "251203"
 
 jobs:
   unchanged-upstream-glulx:
@@ -85,8 +91,14 @@ jobs:
           p = json.loads(Path('glulx/provenance.json').read_text())
           assert p['source']['commit'] == '${{ env.ZORK_GLULX_COMMIT }}'
           assert p['toolchain']['zilf']['commit'] == '${{ env.ZILF_COMMIT }}'
+          assert p['toolchain']['glazer']['release'] == '${{ env.GLAZER_TAG }}'
+          assert p['toolchain']['glazer']['commit'] == '${{ env.GLAZER_COMMIT }}'
+          assert p['toolchain']['glazer']['source_url'] == '${{ env.GLAZER_SOURCE_URL }}'
+          assert p['toolchain']['glazer']['source_sha256'] == '${{ env.GLAZER_SOURCE_SHA256 }}'
           assert p['toolchain']['glulxe']['commit'] == '${{ env.GLULXE_COMMIT }}'
           assert p['toolchain']['glk']['commit'] == '${{ env.CHEAPGLK_COMMIT }}'
+          assert p['edition']['source_release'] == int('${{ env.UPSTREAM_RELEASE }}')
+          assert p['edition']['source_serial'] == '${{ env.UPSTREAM_SERIAL }}'
           assert p['source']['local_modifications'] == []
           PY
 
@@ -102,80 +114,106 @@ jobs:
           popd
           zilf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zilf.dll' -print -quit)"
           test -n "$zilf_dll"
-          tool_dir="$(dirname "$(realpath "$zilf_dll")")"
           echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
-          echo "ZILF_TOOL_DIR=$tool_dir" >> "$GITHUB_ENV"
 
-      - name: Discover and build current Glazer release
+      - name: Build exactly pinned Glazer
         shell: bash
         run: |
           set -euxo pipefail
-          release_json="glulx/build/glazer-release.json"
-          curl --fail --location --silent --show-error \
-            'https://gitlab.com/api/v4/projects/andwj%2Fglazer/releases/permalink/latest' \
-            --output "$release_json"
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          release = json.loads(Path('glulx/build/glazer-release.json').read_text())
-          sources = release.get('assets', {}).get('sources', [])
-          source = next((item for item in sources if item.get('format') == 'tar.gz'), None)
-          if source is None:
-              raise SystemExit('latest Glazer release has no tar.gz source asset')
-          resolved = {
-              'tag_name': release['tag_name'],
-              'commit': release.get('commit', {}).get('id'),
-              'released_at': release.get('released_at'),
-              'source_url': source['url'],
-          }
-          Path('glulx/build/glazer-resolved.json').write_text(json.dumps(resolved, indent=2) + '\n')
-          Path('glulx/build/glazer-source-url.txt').write_text(source['url'] + '\n')
-          PY
-          source_url="$(cat glulx/build/glazer-source-url.txt)"
-          curl --fail --location --silent --show-error "$source_url" \
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
             --output glulx/build/glazer-source.tar.gz
-          sha256sum glulx/build/glazer-source.tar.gz | tee glulx/build/glazer-source.sha256
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/glazer-source.tar.gz" | sha256sum --check
           mkdir -p .tooling/glazer-source
           tar -xf glulx/build/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
           make -C .tooling/glazer-source 2>&1 | tee glulx/build/glazer-build.log
           glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
           test -n "$glazer_binary"
-          install -m 0755 "$glazer_binary" "$ZILF_TOOL_DIR/glazer"
-          test -x "$ZILF_TOOL_DIR/glazer"
-          "$ZILF_TOOL_DIR/glazer" --version 2>&1 | tee glulx/build/glazer-version.txt || true
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version 2>&1 | tee glulx/build/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/glazer-version.txt
 
-      - name: Build unchanged upstream Glulx story
+      - name: Inspect archived zork1-glulx.zip
         shell: bash
         run: |
           set -euxo pipefail
+          curl --fail --location --silent --show-error \
+            'https://ifarchive.org/if-archive/games/glulx/zork1-glulx.zip' \
+            --output glulx/build/zork1-glulx-archive.zip
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+          archive = Path('glulx/build/zork1-glulx-archive.zip')
+          output = Path('glulx/build/archive')
+          output.mkdir(parents=True, exist_ok=True)
+          entries = []
+          ulx_members = []
+          with zipfile.ZipFile(archive) as zf:
+              for info in zf.infolist():
+                  if info.is_dir():
+                      continue
+                  data = zf.read(info.filename)
+                  entries.append({
+                      'name': info.filename,
+                      'size_bytes': len(data),
+                      'sha256': hashlib.sha256(data).hexdigest(),
+                  })
+                  if info.filename.lower().endswith('.ulx'):
+                      ulx_members.append((info.filename, data))
+          if len(ulx_members) != 1:
+              raise SystemExit(f'expected exactly one .ulx member, found {len(ulx_members)}')
+          member_name, member_data = ulx_members[0]
+          Path('glulx/build/zork1-glulx-archive.ulx').write_bytes(member_data)
+          manifest = {
+              'archive_sha256': hashlib.sha256(archive.read_bytes()).hexdigest(),
+              'archive_size_bytes': archive.stat().st_size,
+              'story_member': member_name,
+              'entries': entries,
+          }
+          Path('glulx/build/archive-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+          PY
+          python glulx/tools/verify_ulx.py glulx/build/zork1-glulx-archive.ulx \
+            --json glulx/build/archive-story-report.json
+
+      - name: Compile unchanged source and normalize published serial
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/zork1-glulx-upstream.asm"
           pushd .upstream/zork1-glulx
-          dotnet "$ZILF_DLL" build --glulx zork1.zil "${GITHUB_WORKSPACE}/glulx/build/zork1-glulx-upstream.ulx" \
-            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/zork1-glulx-build.log"
+          dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/zork1-glulx-compile.log"
           popd
+          python - <<'PY'
+          import json, re
+          from pathlib import Path
+          path = Path('glulx/build/zork1-glulx-upstream.asm')
+          text = path.read_text()
+          pattern = re.compile(r'(metadata_serial:\s*\n\s*db\s+")([0-9]{6})(")')
+          match = pattern.search(text)
+          if match is None:
+              raise SystemExit('generated Glulx metadata serial was not found')
+          before = match.group(2)
+          text, count = pattern.subn(r'\g<1>251203\g<3>', text)
+          if count != 1:
+              raise SystemExit(f'expected one metadata serial replacement, got {count}')
+          path.write_text(text)
+          receipt = {
+              'generated_serial_before': before,
+              'generated_serial_after': '251203',
+              'replacement_count': count,
+              'source_modified': False,
+              'generated_assembly_modified': True,
+          }
+          Path('glulx/build/SERIAL-NORMALIZATION.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          PY
+          "$GLAZER_BIN" "$assembly" -o glulx/build/zork1-glulx-upstream.ulx \
+            2>&1 | tee glulx/build/glazer-assemble.log
           test -s glulx/build/zork1-glulx-upstream.ulx
 
-      - name: Verify Glulx artifact and write discovery receipt
+      - name: Verify repository-built Glulx artifact
         run: |
           python glulx/tools/verify_ulx.py glulx/build/zork1-glulx-upstream.ulx \
             --json glulx/build/glulx-story-report.json
-          python - <<'PY'
-          import hashlib, json
-          from pathlib import Path
-          manifest = json.loads(Path('glulx/provenance.json').read_text())
-          glazer = json.loads(Path('glulx/build/glazer-resolved.json').read_text())
-          glazer['source_sha256'] = hashlib.sha256(Path('glulx/build/glazer-source.tar.gz').read_bytes()).hexdigest()
-          receipt = {
-              'qualification_status': 'discovery build; commit resolved Glazer pin before declaring baseline qualified',
-              'source_commit': manifest['source']['commit'],
-              'zilf_commit': manifest['toolchain']['zilf']['commit'],
-              'glazer': glazer,
-              'glulxe_commit': manifest['toolchain']['glulxe']['commit'],
-              'cheapglk_commit': manifest['toolchain']['glk']['commit'],
-              'source_modified': False,
-              'artifact_sha256': hashlib.sha256(Path('glulx/build/zork1-glulx-upstream.ulx').read_bytes()).hexdigest(),
-          }
-          Path('glulx/build/BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
-          PY
 
       - name: Build pinned native Glulxe with CheapGlk
         shell: bash
@@ -188,34 +226,85 @@ jobs:
             2>&1 | tee glulx/build/glulxe-build.log
           test -x .tooling/glulxe/glulxe
 
-      - name: Run deterministic native smoke transcript
+      - name: Run native baseline and archive identity smoke tests
         shell: bash
         run: |
           set -o pipefail
           printf 'look\ninventory\nquit\ny\n' | .tooling/glulxe/glulxe glulx/build/zork1-glulx-upstream.ulx \
             2>&1 | tee glulx/build/smoke-transcript.txt
+          grep -F "Release $UPSTREAM_RELEASE / Serial number $UPSTREAM_SERIAL" glulx/build/smoke-transcript.txt
           grep -F "West of House" glulx/build/smoke-transcript.txt
           grep -F "mailbox" glulx/build/smoke-transcript.txt
+          printf 'look\nquit\ny\n' | .tooling/glulxe/glulxe glulx/build/zork1-glulx-archive.ulx \
+            2>&1 | tee glulx/build/archive-smoke-transcript.txt
+          grep -F "Release $UPSTREAM_RELEASE / Serial number $UPSTREAM_SERIAL" glulx/build/archive-smoke-transcript.txt
+          grep -F "West of House" glulx/build/archive-smoke-transcript.txt
 
-      - name: Upload unchanged upstream discovery baseline
+      - name: Write licensing and build receipts
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          def digest(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+          def license_entry(root):
+              matches = sorted(p for p in root.rglob('*') if p.is_file() and p.name.lower().startswith(('license', 'copying')))
+              if not matches:
+                  raise SystemExit(f'no license file found under {root}')
+              return [{'path': str(p), 'sha256': digest(p)} for p in matches]
+          manifest = json.loads(Path('glulx/provenance.json').read_text())
+          archive = json.loads(Path('glulx/build/archive-manifest.json').read_text())
+          story = json.loads(Path('glulx/build/glulx-story-report.json').read_text())
+          archive_story = json.loads(Path('glulx/build/archive-story-report.json').read_text())
+          receipt = {
+              'qualification_status': 'pinned unchanged-upstream candidate; pin expected artifact SHA-256 after this deterministic run',
+              'identity': {'release': 1, 'serial': '251203'},
+              'source_commit': manifest['source']['commit'],
+              'zilf_commit': manifest['toolchain']['zilf']['commit'],
+              'glazer': manifest['toolchain']['glazer'],
+              'glulxe_commit': manifest['toolchain']['glulxe']['commit'],
+              'cheapglk_commit': manifest['toolchain']['glk']['commit'],
+              'source_modified': False,
+              'generated_assembly_normalization': json.loads(Path('glulx/build/SERIAL-NORMALIZATION.json').read_text()),
+              'artifact': story,
+              'archive_artifact': archive_story,
+              'archive': archive,
+          }
+          Path('glulx/build/BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          licenses = {
+              'zork_source': license_entry(Path('.upstream/zork1-glulx')),
+              'zilf': license_entry(Path('.tooling/zilf')),
+              'glazer': license_entry(Path('.tooling/glazer-source')),
+              'glulxe': license_entry(Path('.tooling/glulxe')),
+              'cheapglk': license_entry(Path('.tooling/cheapglk')),
+          }
+          Path('glulx/build/LICENSE-MANIFEST.json').write_text(json.dumps(licenses, indent=2) + '\n')
+          PY
+
+      - name: Upload unchanged upstream qualification candidate
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: zork1-glulx-unchanged-upstream
           path: |
             glulx/build/zork1-glulx-upstream.ulx
+            glulx/build/zork1-glulx-upstream.asm
             glulx/build/glulx-story-report.json
             glulx/build/BUILD-RECEIPT.json
+            glulx/build/LICENSE-MANIFEST.json
+            glulx/build/SERIAL-NORMALIZATION.json
             glulx/build/smoke-transcript.txt
-            glulx/build/zork1-glulx-build.log
+            glulx/build/zork1-glulx-compile.log
+            glulx/build/glazer-assemble.log
             glulx/build/zilf-restore.log
             glulx/build/zilf-build.log
-            glulx/build/glazer-release.json
-            glulx/build/glazer-resolved.json
-            glulx/build/glazer-source.sha256
             glulx/build/glazer-build.log
             glulx/build/glazer-version.txt
             glulx/build/cheapglk-build.log
             glulx/build/glulxe-build.log
+            glulx/build/zork1-glulx-archive.zip
+            glulx/build/archive-manifest.json
+            glulx/build/archive-story-report.json
+            glulx/build/archive-smoke-transcript.txt
             glulx/provenance.json
           if-no-files-found: warn
