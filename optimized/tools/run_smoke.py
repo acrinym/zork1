@@ -18,6 +18,11 @@ def useful_lines(path: Path) -> list[str]:
     ]
 
 
+def split_command(value: str) -> list[str]:
+    """Split a command string without treating Windows path separators as escapes."""
+    return shlex.split(value, posix=sys.platform != "win32")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("story", type=Path)
@@ -27,7 +32,7 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=20)
     args = parser.parse_args()
 
-    command = shlex.split(args.interpreter) + [str(args.story)]
+    command = split_command(args.interpreter) + [str(args.story)]
     input_text = "\n".join(useful_lines(args.commands)) + "\n"
     try:
         completed = subprocess.run(
