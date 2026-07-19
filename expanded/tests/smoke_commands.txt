@@ -1,0 +1,16 @@
+goals
+exits
+knock on house
+open mailbox
+take leaflet
+look in mailbox
+take slip
+read slip
+west
+follow bird
+look
+take feather
+recap
+out
+quit
+y
