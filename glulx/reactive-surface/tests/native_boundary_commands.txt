@@ -1,0 +1,10 @@
+west
+examine forest
+examine tree
+listen tree
+listen bird
+hello bird
+follow bird
+look
+quit
+y
