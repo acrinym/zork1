@@ -1,20 +1,23 @@
-# Zork I Glulx upstream baseline
+# Zork I Glulx lineage
 
 This directory defines the additive, unofficial Glulx lineage for this repository.
 
-The baseline builds Tara McGrew's unchanged `taradinoc/zork1` `glulx` source at commit `1ada70e58ac4933446b907d67949d9cab3119c0e`. It does not contain Release 120 fixes or Release 121 gameplay changes.
+Two layers are now qualified:
 
-## Identity
-
-- upstream source identity: Release 1 / serial `251203`
-- repository output: `zork1-glulx-upstream.ulx`
-- status: unofficial repository-local baseline
-- relationship to existing editions: additive only
+| Layer | Identity | Purpose |
+|---|---:|---|
+| Unchanged upstream baseline | Release 1 / serial `251203` | Reproduce and qualify Tara McGrew's existing Glulx port without project changes |
+| Unofficial Optimized Glulx | Release 1201 / serial `260719` | Port only the conservative corrections from project Release 120 |
 
 Historical Release 119, Optimized Release 120, and Expanded Release 121 remain supported `.z3` editions and are not replaced or relabeled.
 
-## Locked repository artifact
+## Unchanged upstream baseline
 
+The baseline builds Tara McGrew's unchanged `taradinoc/zork1` `glulx` source at commit `1ada70e58ac4933446b907d67949d9cab3119c0e`.
+
+### Locked repository artifact
+
+- output: `zork1-glulx-upstream.ulx`
 - Glulx version: `3.1.3` / `0x00030103`
 - size: `180,736` bytes
 - checksum: `0xad5a809b`, valid
@@ -22,7 +25,7 @@ Historical Release 119, Optimized Release 120, and Expanded Release 121 remain s
 
 The repository artifact is not expected to be byte-identical to Tara's archived December 2025 binary because it is rebuilt with the current pinned ZILF 1.8 toolchain. Both artifacts are independently verified and run through the same pinned native interpreter.
 
-## Archived reference
+### Archived reference
 
 The IF Archive `zork1-glulx.zip` is inspected as an external reference:
 
@@ -35,44 +38,57 @@ The IF Archive `zork1-glulx.zip` is inspected as an external reference:
 
 Both stories identify themselves as Release 1 / serial `251203`, open at West of House, and run successfully with pinned Glulxe and CheapGlk.
 
-## Reproducibility contract
+See [`QUALIFICATION.md`](QUALIFICATION.md) for the unchanged-upstream gate.
 
-`provenance.json` pins:
+## Unofficial Optimized Glulx
 
-- Tara's exact Glulx source commit, default-branch commit, merge base, and seven-file branch diff;
-- ZILF 1.8;
-- Glazer 1.2.0, including its GitLab commit, source URL, and source tarball SHA-256;
-- Glulxe;
-- CheapGlk;
-- the repository artifact checksum and SHA-256;
-- the archived ZIP and archived story checksums;
-- licensing and branding boundaries.
+The second layer stages Tara's exact source tree and ports only:
 
-CI obtains every pinned input, verifies the downloaded hashes, compiles the unchanged source, verifies the Glulx header and checksum, runs both the repository and archived artifacts natively, records license-file hashes, and uploads the complete qualification bundle.
+- recursive-containment protection;
+- two printed-character portability corrections;
+- fully state-aware temple-candle room descriptions;
+- exact lowercase include portability;
+- a separate repository-local identity.
+
+### Locked optimized artifact
+
+- output: `zork1-glulx-optimized.ulx`
+- identity: Release `1201` / serial `260719`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `180,992` bytes
+- checksum: `0xaa478295`, valid
+- SHA-256: `f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051`
+
+The optimized staging gate permits changes to exactly four paths and records every overlay, patch hash, and before/after target hash. Native qualification proves opening identity, recursive-containment rejection, and extinguished-candle behavior.
+
+See [`optimized/README.md`](optimized/README.md) for the complete source boundary and route details.
+
+## Locked toolchain
+
+Both layers use:
+
+- ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
+- Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
+- Glazer source SHA-256: `a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482`
+- Glulxe: `56ab8743bab565de307bd892c555d8d8897ed517`
+- CheapGlk: `14d8aaf6e4150669762bd4646a5368e75c1eeee6`
 
 ## Deterministic serial normalization
 
-Pinned ZILF 1.8 currently emits Glulx metadata serial using `DateTime.Now`. That would make the same unchanged source identify itself differently on every build date.
+Pinned ZILF 1.8 emits Glulx metadata serial using `DateTime.Now`. Each pipeline therefore compiles unchanged or staged ZIL to Glazer assembly, replaces exactly one generated metadata serial with the edition's committed six-digit serial, and assembles the normalized output.
 
-The pipeline therefore:
+No upstream ZIL source is modified by this normalization. The replacement count and final artifact SHA-256 are fail-closed.
 
-1. compiles Tara's unchanged ZIL source to Glazer assembly;
-2. replaces exactly one generated `metadata_serial` value with the published upstream serial `251203`;
-3. assembles the normalized output with pinned Glazer 1.2.0;
-4. fails if the replacement count or final artifact SHA-256 changes.
+## Next porting boundary: Release 121 action and assistance layer
 
-No upstream ZIL source is modified by this normalization.
+The next layer ports only:
 
-## Next porting boundary: Release 120 only
+- the Release 121 action-hook foundation;
+- `GOALS`;
+- `EXITS`;
+- tiered `HINT`;
+- `RECAP`;
+- contextual `WHY`;
+- `USE <object>` affordance guidance.
 
-The next layer ports only the conservative optimized-edition work:
-
-1. recursive-containment protection;
-2. candle description corrections;
-3. unsafe printed-character corrections;
-4. case-sensitive include and portability auditing;
-5. deterministic identity and verification behavior.
-
-No Release 121 action hooks, assistance, scenery, optional geography, NPC alternatives, or comedy reactions belong in that layer.
-
-See [`QUALIFICATION.md`](QUALIFICATION.md) for the baseline gate and exact next-layer acceptance criteria.
+Reactive scenery, songbird and Hidden Glade, troll/cyclops/thief alternatives, Adventurer Misconduct, `FOLLY`, troll bemusement, semantic parity expansion, and version 3 object-slot cleanup remain later isolated layers.
