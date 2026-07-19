@@ -2,13 +2,14 @@
 
 This directory defines the additive, unofficial Glulx lineage for this repository.
 
-Three layers are now qualified:
+Four layers are now qualified:
 
 | Layer | Identity | Purpose |
 |---|---:|---|
 | Unchanged upstream baseline | Release 1 / serial `251203` | Reproduce and qualify Tara McGrew's existing Glulx port without project changes |
 | Unofficial Optimized Glulx | Release 1201 / serial `260719` | Port only the conservative corrections from project Release 120 |
 | Unofficial Assisted Glulx | Release 1211 / serial `260719` | Port Release 121 action hooks and optional assistance with cross-VM semantic parity |
+| Unofficial Reactive Surface Glulx | Release 1212 / serial `260719` | Port white-house, door, board, window, mailbox, forest, tree, and songbird reactions without optional geography |
 
 Historical Release 119, Optimized Release 120, and Expanded Release 121 remain supported `.z3` editions and are not replaced or relabeled.
 
@@ -41,13 +42,7 @@ Both stories identify themselves as Release 1 / serial `251203`, open at West of
 
 ## Unofficial Optimized Glulx
 
-The second layer stages Tara's exact source tree and ports only:
-
-- recursive-containment protection;
-- two printed-character portability corrections;
-- fully state-aware temple-candle room descriptions;
-- exact lowercase include portability;
-- a separate repository-local identity.
+The second layer stages Tara's exact source tree and ports recursive-containment protection, printed-character portability corrections, dynamic temple-candle descriptions, lowercase include portability, and a separate repository-local identity.
 
 ### Locked optimized artifact
 
@@ -58,22 +53,13 @@ The second layer stages Tara's exact source tree and ports only:
 - checksum: `0xaa478295`, valid
 - SHA-256: `f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051`
 
-The optimized staging gate permits changes to exactly four paths and records every overlay, patch hash, and before/after target hash. Native qualification proves opening identity, recursive-containment rejection, and extinguished-candle behavior.
+The staging gate permits changes to exactly four paths. Native qualification proves opening identity, recursive-containment rejection, and extinguished-candle behavior.
 
-See [`optimized/README.md`](optimized/README.md) for the complete source boundary and route details.
+See [`optimized/README.md`](optimized/README.md).
 
 ## Unofficial Assisted Glulx
 
-The third layer derives explicitly from the committed Release 1201 manifest and artifact hash. It adds only:
-
-- a state-neutral action hook;
-- `GOALS`;
-- `EXITS`;
-- three-tier `HINT`;
-- `RECAP`;
-- contextual `WHY`;
-- `USE <object>` guidance;
-- equivalent semantic routes against Expanded Release 121 `.z3`.
+The third layer derives explicitly from the Release 1201 manifest and artifact hash. It adds a state-neutral action hook, `GOALS`, `EXITS`, three-tier `HINT`, `RECAP`, contextual `WHY`, `USE <object>` guidance, and equivalent semantic routes against Expanded Release 121 `.z3`.
 
 ### Locked assisted artifact
 
@@ -84,13 +70,39 @@ The third layer derives explicitly from the committed Release 1201 manifest and 
 - checksum: `0xd3e2209e`, valid
 - SHA-256: `cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777`
 
-The same command route runs under `dfrotz` for Expanded Release 121 and pinned Glulxe/CheapGlk for Release 1211. Both formats prove goals, exits, three hint tiers, recap, use guidance, and contextual `WHY` while retaining VM- and edition-specific presentation.
+The shared route proves every assistance command under `dfrotz` and pinned Glulxe/CheapGlk.
 
-See [`assistance/README.md`](assistance/README.md) for the exact six-path boundary and parity evidence.
+See [`assistance/README.md`](assistance/README.md).
+
+## Unofficial Reactive Surface Glulx
+
+The fourth layer derives explicitly from the Release 1211 manifest and artifact hash. It adds only:
+
+- repeated white-house and front-door reactions;
+- board and boarded-window behavior;
+- persistent damage and a painted splinter;
+- kitchen-window reactions while preserving traversal;
+- mailbox reactions and the maintenance slip;
+- ordinary forest and tree reactions;
+- songbird listening and greeting without following;
+- surface-state entries in `RECAP`.
+
+### Locked reactive-surface artifact
+
+- output: `zork1-glulx-reactive-surface.ulx`
+- identity: Release `1212` / serial `260719`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `189,184` bytes
+- checksum: `0xec1c9be9`, valid
+- SHA-256: `409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab`
+
+A real-map route passes in Expanded Release 121 `.z3` and Release 1212 `.ulx`. A separate native route proves forest/tree behavior, canonical `FOLLOW SONGBIRD` refusal, and the absence of Hidden Glade.
+
+See [`reactive-surface/README.md`](reactive-surface/README.md).
 
 ## Locked toolchain
 
-All three layers use:
+All four layers use:
 
 - ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
 - Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
@@ -102,16 +114,17 @@ All three layers use:
 
 Pinned ZILF 1.8 emits Glulx metadata serial using `DateTime.Now`. Each pipeline compiles ZIL to Glazer assembly, replaces exactly one generated metadata serial with the edition's committed serial, and assembles the normalized output.
 
-No upstream ZIL source is modified by this normalization. The replacement count and final artifact SHA-256 are fail-closed.
+No upstream ZIL source is modified. The replacement count and final artifact SHA-256 are fail-closed.
 
-## Next porting boundary: reactive surface world
+## Next porting boundary: deeper mechanisms and ritual objects
 
-The next Glulx layer ports focused reactive scenery and persistent world state in this order:
+The next isolated layer ports:
 
-1. white house exterior and roof attempts;
-2. front door, boards, and boarded windows;
-3. kitchen window and mailbox;
-4. forest nouns without Hidden Glade geography;
-5. semantic `.z3` versus `.ulx` routes for each group.
+1. dam and control-panel examination and listening;
+2. bell resonance;
+3. candle-state examination beyond the Release 120 correction;
+4. optional black-book pages;
+5. rope, mirror, water, wrench, shovel, axe, and related object reactions;
+6. focused semantic `.z3` versus `.ulx` routes for each group.
 
 Songbird geography, Hidden Glade, troll/cyclops/thief alternatives, Adventurer Misconduct, `FOLLY`, troll bemusement, and version 3 object-slot cleanup remain later isolated layers.
