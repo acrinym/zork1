@@ -23,6 +23,11 @@ def run(command: list[str], cwd: Path) -> None:
         )
 
 
+def split_command(value: str) -> list[str]:
+    """Split a command string without treating Windows path separators as escapes."""
+    return shlex.split(value, posix=sys.platform != "win32")
+
+
 def remove_generated(source: Path, output: Path) -> None:
     for candidate in (
         source / "zork1.z3",
@@ -71,14 +76,14 @@ def main() -> int:
         # Always stop after ZIL generation, then invoke ZAPF ourselves. This
         # keeps release and serial metadata explicit and avoids whichever
         # assembler happens to sit beside a local ZILF executable.
-        run(shlex.split(args.zilf) + ["-S", entrypoint.name], cwd=source)
+        run(split_command(args.zilf) + ["-S", entrypoint.name], cwd=source)
         if not assembly.is_file():
             raise RuntimeError(
                 f"ZILF completed without producing expected assembly: {assembly}"
             )
 
         run(
-            shlex.split(args.zapf)
+            split_command(args.zapf)
             + [
                 "--release",
                 str(args.release),
