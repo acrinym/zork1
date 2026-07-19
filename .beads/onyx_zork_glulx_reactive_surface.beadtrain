@@ -1,0 +1,96 @@
+[train]
+name        = "onyx_zork_glulx_reactive_surface"
+title       = "Zork Release 121 Glulx reactive surface world"
+description = """
+Derive from qualified Release 1211, port only white-house, door, board, window,
+mailbox, ordinary forest, tree, and songbird reactivity, and prove semantic
+parity without importing optional geography, alternate NPC solutions, or comedy.
+"""
+created     = "2026-07-19"
+status      = "complete"
+
+[[cars]]
+id = "base"
+bead = "zork1-glulx121s-001"
+title = "Qualified Release 1211 base"
+parallel_start = true
+depends_on = []
+summary = "Pin Tara's tree and the Release 1211 manifest and artifact hash before surface changes."
+
+[[cars]]
+id = "house"
+bead = "zork1-glulx121s-002"
+title = "White house and front door"
+parallel_start = true
+depends_on = ["base"]
+summary = "Port repeated knocking, listening, climbing, and physical responses while preserving entry routes."
+
+[[cars]]
+id = "boards"
+bead = "zork1-glulx121s-003"
+title = "Boards and painted splinter"
+parallel_start = true
+depends_on = ["house"]
+summary = "Port persistent board damage and the recoverable splinter without creating a bypass."
+
+[[cars]]
+id = "window"
+bead = "zork1-glulx121s-004"
+title = "Kitchen window reactions"
+parallel_start = true
+depends_on = ["house"]
+summary = "Port knocking and listening while preserving canonical window traversal."
+
+[[cars]]
+id = "mailbox"
+bead = "zork1-glulx121s-005"
+title = "Mailbox maintenance slip"
+parallel_start = true
+depends_on = ["house"]
+summary = "Port mailbox reactions and the hidden maintenance-slip discovery sequence."
+
+[[cars]]
+id = "forest"
+bead = "zork1-glulx121s-006"
+title = "Ordinary forest and tree reactions"
+parallel_start = true
+depends_on = ["base"]
+summary = "Port visible forest and tree responses without changing the room graph."
+
+[[cars]]
+id = "songbird"
+bead = "zork1-glulx121s-007"
+title = "Songbird without geography"
+parallel_start = true
+depends_on = ["forest"]
+summary = "Port listening and greeting while retaining canonical FOLLOW refusal."
+
+[[cars]]
+id = "recap"
+bead = "zork1-glulx121s-008"
+title = "Surface-state recap"
+parallel_start = false
+depends_on = ["boards", "mailbox"]
+summary = "Surface only established house, board, and mailbox state through qualified RECAP."
+
+[[cars]]
+id = "parity"
+bead = "zork1-glulx121s-009"
+title = "Cross-VM surface qualification"
+parallel_start = false
+depends_on = ["window", "songbird", "recap"]
+summary = "Run canonical-grammar real-map and native exclusion routes under both story formats."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx121s-010"
+title = "Release 1212 qualification capstone"
+parallel_start = false
+depends_on = ["parity"]
+summary = "Lock the artifact, publish qualification records, and define the deeper underground next layer."
+
+[meta]
+one_liner = "Zork's reactive white-house surface now runs natively in Glulx without opening Hidden Glade early."
+prior_car = "onyx_zork_glulx_assistance"
+couples_with = []
+watch = ["glulx/reactive-surface", "glulx/tools/stage_reactive_surface.py", ".github/workflows/glulx-release121-reactive-surface.yml"]
