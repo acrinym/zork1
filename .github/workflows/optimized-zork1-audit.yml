@@ -195,7 +195,9 @@ jobs:
           command -v dfrotz
 
       - name: Run deterministic optimized transcript
+        shell: bash
         run: |
+          set -o pipefail
           python optimized/tools/run_smoke.py optimized/build/zork1-optimized.z3 \
             --interpreter "$(command -v dfrotz)" \
             --commands optimized/tests/smoke_commands.txt \
@@ -203,7 +205,9 @@ jobs:
             | tee optimized/build/smoke-transcript.txt
 
       - name: Run deterministic expanded transcript
+        shell: bash
         run: |
+          set -o pipefail
           python optimized/tools/run_smoke.py expanded/build/zork1-expanded.z3 \
             --interpreter "$(command -v dfrotz)" \
             --commands expanded/tests/smoke_commands.txt \
