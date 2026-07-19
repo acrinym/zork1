@@ -1,0 +1,17 @@
+{
+  "id": "Z1-FOLLY-005",
+  "description": "Reuse the original global ME and BLESSINGS objects for natural SELF and VOICE commands without adding object-table entries or removing original synonyms.",
+  "path": "gglobals.zil",
+  "replacements": [
+    {
+      "old": "<OBJECT BLESSINGS\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM BLESSINGS GRACES)\n\t(DESC \"blessings\")\n\t(FLAGS NDESCBIT)>",
+      "new": "<OBJECT BLESSINGS\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM BLESSINGS GRACES VOICE WORDS)\n\t(DESC \"your voice\")\n\t(FLAGS NDESCBIT)\n\t(ACTION ABS-VOICE-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF CRETIN)\n\t(DESC \"you\")\n\t(FLAGS ACTORBIT)\n\t(ACTION CRETIN-FCN)>",
+      "new": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF CRETIN)\n\t(DESC \"you\")\n\t(FLAGS ACTORBIT)\n\t(ACTION ABS-ME-F)>",
+      "expected_count": 1
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "Z1-EXP-PORT-001",
+  "description": "Use only defined action constants and standard ZSCII in the expanded overlay.",
+  "path": "expansions.zil",
+  "replacements": [
+    {
+      "old": " — T",
+      "new": " - T",
+      "expected_count": 1
+    },
+    {
+      "old": "<VERB? PUSH PULL MOVE>",
+      "new": "<VERB? PUSH MOVE>",
+      "expected_count": 2
+    }
+  ]
+}

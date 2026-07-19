@@ -1,0 +1,17 @@
+{
+  "id": "Z1-FOLLY-003",
+  "description": "Route troll and cyclops objects through the final misconduct-aware wrappers without redefining earlier expansion routines.",
+  "path": "1dungeon.zil",
+  "replacements": [
+    {
+      "old": "\t(ACTION EXP-TROLL-F)",
+      "new": "\t(ACTION ABS-TROLL-F)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION EXP-CYCLOPS-F)",
+      "new": "\t(ACTION ABS-CYCLOPS-F)",
+      "expected_count": 1
+    }
+  ]
+}

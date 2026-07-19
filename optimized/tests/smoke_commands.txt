@@ -1,0 +1,7 @@
+# A deterministic opening route. Keep it short and avoid randomized combat.
+look
+open mailbox
+read leaflet
+inventory
+quit
+y

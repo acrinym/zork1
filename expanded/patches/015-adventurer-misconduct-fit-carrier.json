@@ -1,0 +1,12 @@
+{
+  "id": "Z1-FOLLY-008",
+  "description": "Reuse the original HANDS global object as the zero-slot noun carrier for FIT while preserving normal hand behavior.",
+  "path": "gglobals.zil",
+  "replacements": [
+    {
+      "old": "<OBJECT HANDS\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM PAIR HANDS HAND)\n\t(ADJECTIVE BARE)\n\t(DESC \"pair of hands\")\n\t(FLAGS NDESCBIT TOOLBIT)>",
+      "new": "<OBJECT HANDS\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM PAIR HANDS HAND FIT)\n\t(ADJECTIVE BARE)\n\t(DESC \"pair of hands\")\n\t(FLAGS NDESCBIT TOOLBIT)\n\t(ACTION ABS-HANDS-F)>",
+      "expected_count": 1
+    }
+  ]
+}

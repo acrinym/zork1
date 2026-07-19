@@ -1,0 +1,339 @@
+name: Zork I Glulx Optimized Release 120 Port
+
+on:
+  push:
+    branches:
+      - agent/preservation-first-optimized-edition
+    paths:
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - "optimized/patches/001-prevent-containment-cycles.json"
+      - "optimized/patches/002-replace-unsafe-zscii-tabs.json"
+      - "optimized/patches/004-candles-description-routine.json"
+      - "optimized/tools/zil_smell_check.py"
+      - ".github/workflows/glulx-release120.yml"
+  pull_request:
+    paths:
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - "optimized/patches/001-prevent-containment-cycles.json"
+      - "optimized/patches/002-replace-unsafe-zscii-tabs.json"
+      - "optimized/patches/004-candles-description-routine.json"
+      - "optimized/tools/zil_smell_check.py"
+      - ".github/workflows/glulx-release120.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  RELEASE120_GLULX_RELEASE: "1201"
+  RELEASE120_GLULX_SERIAL: "260719"
+  RELEASE120_GLULX_SIZE: "180992"
+  RELEASE120_GLULX_CHECKSUM: "0xaa478295"
+  RELEASE120_GLULX_SHA256: f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051
+
+jobs:
+  optimized-glulx-release120:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.ZILF_COMMIT }}
+          path: .tooling/zilf
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+
+      - name: Validate immutable Release 120 pins
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          manifest = json.loads(Path('glulx/optimized/patch-series.json').read_text())
+          assert manifest['release'] == int(os.environ['RELEASE120_GLULX_RELEASE'])
+          assert manifest['serial'] == os.environ['RELEASE120_GLULX_SERIAL']
+          assert manifest['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
+          assert manifest['upstream_tree'] == os.environ['ZORK_GLULX_TREE']
+          expected = manifest['expected_artifact']
+          assert expected['size_bytes'] == int(os.environ['RELEASE120_GLULX_SIZE'])
+          assert expected['checksum_hex'] == os.environ['RELEASE120_GLULX_CHECKSUM']
+          assert expected['sha256'] == os.environ['RELEASE120_GLULX_SHA256']
+          assert manifest['expected_changed_paths'] == [
+              '1actions.zil', '1dungeon.zil', 'gverbs.zil', 'zork1.zil'
+          ]
+          PY
+
+      - name: Build pinned ZILF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p glulx/build/release120
+          pushd .tooling/zilf
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/release120/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/release120/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build exactly pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/release120/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/release120/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/release120/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/release120/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version | tee glulx/build/release120/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/release120/glazer-version.txt
+
+      - name: Stage exact Release 120 Glulx source
+        run: |
+          python glulx/tools/stage_release120.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/release120/src \
+            --allowed-root glulx/build/release120 \
+            --manifest glulx/optimized/patch-series.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('glulx/build/release120/src/STAGING-RECEIPT.json').read_text())
+          assert receipt['upstream_tree_pin_enforced'] is True
+          assert receipt['upstream_tree'] == '02b34128649bbb7fcddf99136e03fb67c032b089'
+          assert receipt['changed_paths'] == [
+              '1actions.zil', '1dungeon.zil', 'gverbs.zil', 'zork1.zil'
+          ]
+          PY
+
+      - name: Audit staged Release 120 Glulx source
+        run: |
+          python optimized/tools/zil_smell_check.py \
+            --source glulx/build/release120/src \
+            --json glulx/build/release120/smell-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('glulx/build/release120/smell-report.json').read_text())
+          if report['errors']:
+              raise SystemExit(report['errors'])
+          unresolved = [item for item in report['includes'] if not item['resolved']]
+          if unresolved:
+              raise SystemExit(f'unresolved includes: {unresolved}')
+          PY
+
+      - name: Compile optimized Glulx assembly
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/release120/zork1-glulx-optimized.asm"
+          pushd glulx/build/release120/src
+          dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/release120/zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$RELEASE120_GLULX_SERIAL" \
+            --receipt glulx/build/release120/SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/release120/zork1-glulx-optimized.ulx \
+            2>&1 | tee glulx/build/release120/glazer-assemble.log
+
+      - name: Verify fail-closed optimized Glulx artifact
+        run: |
+          python glulx/tools/verify_ulx.py glulx/build/release120/zork1-glulx-optimized.ulx \
+            --expect-sha256 "$RELEASE120_GLULX_SHA256" \
+            --json glulx/build/release120/story-report.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/release120/story-report.json').read_text())
+          assert story['version_hex'] == '0x00030103'
+          assert story['size_bytes'] == int(os.environ['RELEASE120_GLULX_SIZE'])
+          assert story['checksum_hex'] == os.environ['RELEASE120_GLULX_CHECKSUM']
+          assert story['sha256'] == os.environ['RELEASE120_GLULX_SHA256']
+          PY
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/release120/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/release120/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+          echo "GLULXE_BIN=$(realpath .tooling/glulxe/glulxe)" >> "$GITHUB_ENV"
+
+      - name: Run identity and opening smoke route
+        shell: bash
+        run: |
+          set -o pipefail
+          printf 'look\ninventory\nquit\ny\n' | "$GLULXE_BIN" glulx/build/release120/zork1-glulx-optimized.ulx \
+            2>&1 | tee glulx/build/release120/opening-transcript.txt
+          grep -F "Release $RELEASE120_GLULX_RELEASE / Serial number $RELEASE120_GLULX_SERIAL" \
+            glulx/build/release120/opening-transcript.txt
+          grep -F "West of House" glulx/build/release120/opening-transcript.txt
+          grep -F "mailbox" glulx/build/release120/opening-transcript.txt
+
+      - name: Run recursive-containment regression
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/release120/zork1-glulx-optimized.ulx \
+            < glulx/optimized/tests/containment_commands.txt \
+            2>&1 | tee glulx/build/release120/containment-transcript.txt
+          grep -F "How can you do that?" glulx/build/release120/containment-transcript.txt
+          grep -F "The brown sack contains:" glulx/build/release120/containment-transcript.txt
+          grep -F "A glass bottle" glulx/build/release120/containment-transcript.txt
+
+      - name: Stage extinguished-candle test harness
+        run: |
+          python glulx/tools/stage_release120.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/release120/candle-test-src \
+            --allowed-root glulx/build/release120 \
+            --manifest glulx/optimized/patch-series.json \
+            --extra-patch glulx/optimized/tests/001-start-in-extinguished-temple.json
+
+      - name: Compile and run extinguished-candle regression
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/release120/candle-test.asm"
+          pushd glulx/build/release120/candle-test-src
+          dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/release120/candle-test-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$RELEASE120_GLULX_SERIAL" \
+            --receipt glulx/build/release120/CANDLE-TEST-SERIAL.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/release120/candle-test.ulx \
+            2>&1 | tee glulx/build/release120/candle-test-assemble.log
+          printf 'look\nquit\ny\n' | "$GLULXE_BIN" glulx/build/release120/candle-test.ulx \
+            2>&1 | tee glulx/build/release120/candle-transcript.txt
+          grep -F "On the two ends of the altar are candles." glulx/build/release120/candle-transcript.txt
+          if grep -F "On the two ends of the altar are burning candles." glulx/build/release120/candle-transcript.txt; then
+            echo "Extinguished candles were still described as burning." >&2
+            exit 1
+          fi
+
+      - name: Write qualified build receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('glulx/optimized/patch-series.json').read_text())
+          stage = json.loads(Path('glulx/build/release120/src/STAGING-RECEIPT.json').read_text())
+          story = json.loads(Path('glulx/build/release120/story-report.json').read_text())
+          serial = json.loads(Path('glulx/build/release120/SERIAL-NORMALIZATION.json').read_text())
+          artifact_pin_matched = story['sha256'] == manifest['expected_artifact']['sha256']
+          if not artifact_pin_matched:
+              raise SystemExit('optimized Glulx artifact did not match the committed pin')
+          receipt = {
+              'qualification_status': 'qualified conservative Release 120 Glulx port',
+              'identity': {'release': 1201, 'serial': '260719'},
+              'upstream_commit': stage['upstream_commit'],
+              'upstream_tree': stage['upstream_tree'],
+              'upstream_tree_pin_enforced': stage['upstream_tree_pin_enforced'],
+              'changed_paths': stage['changed_paths'],
+              'patches': stage['patches'],
+              'overrides': stage['overrides'],
+              'serial_normalization': serial,
+              'artifact': story,
+              'artifact_pin_matched': artifact_pin_matched,
+              'native_routes': {
+                  'opening': 'passed',
+                  'recursive_containment': 'passed',
+                  'extinguished_candles': 'passed with isolated test-only startup patch',
+              },
+          }
+          Path('glulx/build/release120/BUILD-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2) + '\n'
+          )
+          PY
+
+      - name: Upload qualified optimized Glulx edition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-optimized-release120
+          path: |
+            glulx/build/release120/zork1-glulx-optimized.ulx
+            glulx/build/release120/zork1-glulx-optimized.asm
+            glulx/build/release120/story-report.json
+            glulx/build/release120/BUILD-RECEIPT.json
+            glulx/build/release120/SERIAL-NORMALIZATION.json
+            glulx/build/release120/src/STAGING-RECEIPT.json
+            glulx/build/release120/candle-test-src/STAGING-RECEIPT.json
+            glulx/build/release120/smell-report.json
+            glulx/build/release120/opening-transcript.txt
+            glulx/build/release120/containment-transcript.txt
+            glulx/build/release120/candle-transcript.txt
+            glulx/build/release120/zilf-restore.log
+            glulx/build/release120/zilf-build.log
+            glulx/build/release120/zilf-compile.log
+            glulx/build/release120/glazer-build.log
+            glulx/build/release120/glazer-version.txt
+            glulx/build/release120/glazer-assemble.log
+            glulx/build/release120/cheapglk-build.log
+            glulx/build/release120/glulxe-build.log
+            glulx/optimized/patch-series.json
+          if-no-files-found: warn

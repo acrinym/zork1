@@ -1,0 +1,20 @@
+{
+  "source_commit": "97b7b3d68c075dd9af7da499c3e9690ada3471fd",
+  "source_release": 119,
+  "source_serial": "880429",
+  "files": [
+    {"path": "1actions.zil", "git_blob_sha": "9c0f3fc86f736f479e089d2f06747189c284eab2"},
+    {"path": "1dungeon.zil", "git_blob_sha": "7486f21e3e37b14d646fed350b643ad794fa4e60"},
+    {"path": "gclock.zil", "git_blob_sha": "3bc1f0d6f339be6d5d6bf8d1341131dc32f5b2d8"},
+    {"path": "gglobals.zil", "git_blob_sha": "0955cc586112709920f5f6657faa08d0475d8d96"},
+    {"path": "gmacros.zil", "git_blob_sha": "78733280cb165bd74eb8a8ae5e34bbcc4c77520d"},
+    {"path": "gmain.zil", "git_blob_sha": "965fe1dce3699488ac6f6a1dde37a5082bbfaf9a"},
+    {"path": "gparser.zil", "git_blob_sha": "65180d3784c31d9d2555553f52c385dec4d1ffe2"},
+    {"path": "gsyntax.zil", "git_blob_sha": "d5681ab185105ab41118dc28ffed34af270e6ad7"},
+    {"path": "gverbs.zil", "git_blob_sha": "309103ac9f351b4d0e3abdd3ad4b24bd8a470ada"},
+    {"path": "zork1.zil", "git_blob_sha": "6d0a7f249d9f5788c162599966c949027a767899"},
+    {"path": "zork1.serial", "git_blob_sha": "d00491fd7e5bb6fa28c517a0bb32b8b506539d4d"},
+    {"path": "zork1freq.xzap", "git_blob_sha": "0d2ab6ff1958dfb6f9e5b6c1d2be2169387d48a1"},
+    {"path": "zork1.errors", "git_blob_sha": "a4be01f0ae30ecf084c0057f07577b84b2f5ad57"}
+  ]
+}

@@ -1,0 +1,95 @@
+[train]
+name        = "onyx_zork_living_underground"
+title       = "Zork living underground expansion"
+description = """
+Couple character, alternate-solution, machinery, ritual, object, memory, and
+documentation work onto the validated reactive-world foundation.
+"""
+created     = "2026-07-19"
+status      = "complete"
+
+[[cars]]
+id = "start"
+bead = "zork1-live-001"
+title = "Troll social route"
+parallel_start = true
+depends_on = []
+summary = "Add treasure bribery as an optional noncombat troll solution."
+
+[[cars]]
+id = "cyclops"
+bead = "zork1-live-002"
+title = "Cyclops lullaby route"
+parallel_start = true
+depends_on = ["start"]
+summary = "Add a risky three-turn song solution that competes with impatience."
+
+[[cars]]
+id = "thief"
+bead = "zork1-live-003"
+title = "Thief bargaining"
+parallel_start = true
+depends_on = []
+summary = "Add a one-time negotiated exchange and characteristic clue."
+
+[[cars]]
+id = "dam"
+bead = "zork1-live-004"
+title = "Dam feedback"
+parallel_start = true
+depends_on = []
+summary = "Deepen dam and control-panel state feedback."
+
+[[cars]]
+id = "ritual"
+bead = "zork1-live-005"
+title = "Ritual depth"
+parallel_start = true
+depends_on = []
+summary = "Deepen bell, candles, and black-book behavior without replacing the ceremony."
+
+[[cars]]
+id = "objects"
+bead = "zork1-live-006"
+title = "Secondary object reactions"
+parallel_start = true
+depends_on = ["dam", "ritual"]
+summary = "Give rope, mirrors, tools, food, and ritual objects more believable uses and responses."
+
+[[cars]]
+id = "solution-rules"
+bead = "zork1-live-007"
+title = "Alternate-solution charter"
+parallel_start = true
+depends_on = ["start", "cyclops"]
+summary = "Document how new solutions preserve canonical puzzle logic and difficulty."
+
+[[cars]]
+id = "memory"
+bead = "zork1-live-008"
+title = "Living world memory"
+parallel_start = false
+depends_on = ["start", "cyclops", "thief", "dam", "ritual"]
+summary = "Surface character and mechanism outcomes through persistent state and RECAP."
+
+[[cars]]
+id = "matrix"
+bead = "zork1-live-009"
+title = "Feature matrix and backlog"
+parallel_start = false
+depends_on = ["objects", "solution-rules", "memory"]
+summary = "Document shipped depth, test coverage, and the next room-by-room expansion frontier."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-live-010"
+title = "Living underground capstone"
+parallel_start = false
+depends_on = ["matrix"]
+summary = "Compile, verify, smoke-test, document, and close the coupled train."
+
+[meta]
+one_liner = "The underground now supports conversation, bargaining, alternate reasoning, ritual texture, and remembered consequences."
+prior_car = "onyx_zork_reactive_world"
+couples_with = ["onyx_zork_reactive_world"]
+watch = ["expanded/overrides/expansions.zil", "expanded/docs", "expanded/tests"]

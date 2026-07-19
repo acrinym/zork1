@@ -1,0 +1,22 @@
+{
+  "id": "Z1-FOLLY-001",
+  "description": "Route selected verbs through permissive comedy handlers while preserving canonical action identities and delegation.",
+  "path": "gsyntax.zil",
+  "replacements": [
+    {
+      "old": "<SYNTAX ATTACK OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM)\n\tWITH OBJECT (FIND WEAPONBIT) (HELD CARRIED HAVE) = V-ATTACK>",
+      "new": "<SYNTAX ATTACK OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM)\n\tWITH OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-ABS-KILL>",
+      "expected_count": 1
+    },
+    {
+      "old": "<SYNTAX KILL OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM)\n\tWITH OBJECT (FIND WEAPONBIT) (HELD CARRIED HAVE) = V-ATTACK>",
+      "new": "<SYNTAX KILL OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM)\n\tWITH OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-ABS-KILL>",
+      "expected_count": 1
+    },
+    {
+      "old": "<SYNTAX PUT OBJECT (HELD MANY HAVE) IN OBJECT = V-PUT PRE-PUT>",
+      "new": "<SYNTAX PUT OBJECT (HELD CARRIED ON-GROUND IN-ROOM MANY) IN OBJECT = V-ABS-PUT>",
+      "expected_count": 1
+    }
+  ]
+}

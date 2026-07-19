@@ -1,0 +1,96 @@
+[train]
+name        = "onyx_zork_adventurer_misconduct"
+title       = "Zork adventurer misconduct comedy layer"
+description = """
+Reward deliberately foolish but linguistically reasonable player ideas with
+specific, state-aware Zork responses. Preserve canonical puzzle behavior and
+keep absurd actions harmless unless an existing original command already has a
+real consequence.
+"""
+created     = "2026-07-19"
+status      = "complete"
+
+[[cars]]
+id = "grammar"
+bead = "zork1-folly-001"
+title = "Absurd-action grammar"
+parallel_start = true
+depends_on = []
+summary = "Open selected grammar constraints so non-food, non-weapons, actors, SELF, and VOICE can reach comedy handlers."
+
+[[cars]]
+id = "self"
+bead = "zork1-folly-002"
+title = "Self ballistics"
+parallel_start = true
+depends_on = ["grammar"]
+summary = "Reuse the original ME object so SELF and MYSELF can be thrown, hurled, examined, and proposed as weapons without consuming object slots."
+
+[[cars]]
+id = "troll"
+bead = "zork1-folly-003"
+title = "Troll ballistics and sacking"
+parallel_start = true
+depends_on = ["grammar", "self"]
+summary = "Add SACK TROLL, THROW TROLL AT, PUT TROLL IN SACK, KILL TROLL WITH SELF, and a one-turn bemusement rule."
+
+[[cars]]
+id = "nest"
+bead = "zork1-folly-004"
+title = "Nest cuisine and apparel"
+parallel_start = true
+depends_on = ["grammar"]
+summary = "Recognize eating, wearing, sleeping in, licking, hugging, and juggling the bird's nest."
+
+[[cars]]
+id = "tree"
+bead = "zork1-folly-005"
+title = "Experimental forestry"
+parallel_start = true
+depends_on = ["grammar", "self"]
+summary = "Deepen attempts to cut down, eat, hug, shake, ride, marry, headbutt, and collide with trees."
+
+[[cars]]
+id = "social"
+bead = "zork1-folly-006"
+title = "Absurd social verbs"
+parallel_start = true
+depends_on = ["grammar"]
+summary = "Add object-aware hugging, licking, wearing, riding, marrying, apologizing, insulting, complimenting, dancing, juggling, and headbutting."
+
+[[cars]]
+id = "idioms"
+bead = "zork1-folly-007"
+title = "Throwable voice and fit"
+parallel_start = true
+depends_on = ["grammar", "self"]
+summary = "Literalize THROW VOICE and THROW FIT by reusing existing global parser objects without adding fake inventory."
+
+[[cars]]
+id = "ledger"
+bead = "zork1-folly-008"
+title = "Folly ledger"
+parallel_start = false
+depends_on = ["self", "troll", "nest", "tree", "social", "idioms"]
+summary = "Remember discovered ridiculous actions and report only completed misconduct through FOLLY."
+
+[[cars]]
+id = "catalog"
+bead = "zork1-folly-009"
+title = "Misconduct catalog"
+parallel_start = false
+depends_on = ["ledger"]
+summary = "Document supported absurd commands, harmlessness rules, prose rules, noun reuse, and extension patterns."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-folly-010"
+title = "Comedy-reactivity capstone"
+parallel_start = false
+depends_on = ["catalog"]
+summary = "Validate the train, compile and verify Release 121, and exercise self, voice, fit, nest, tree, sack, troll nonsense, and treasure bribery in Frotz."
+
+[meta]
+one_liner = "Zork now rewards the exact kind of magnificently stupid idea players have been trying since 1980."
+couples_with = []
+watch = ["expanded/overrides/absurdities.zil", "expanded/patches", "expanded/tests", "expanded/docs/ADVENTURER_MISCONDUCT.md"]

@@ -1,0 +1,22 @@
+{
+  "id": "Z1-FOLLY-009",
+  "description": "Make FIT executable through the reused HANDS object, allow ME as the indirect weapon, and distinguish explicit troll storage from SACK TROLL.",
+  "path": "absurdities.zil",
+  "replacements": [
+    {
+      "old": "<ROUTINE ABS-ME-F ()",
+      "new": "<ROUTINE ABS-HANDS-F ()\n\t<COND (<VERB? ABS-THROW>\n\t       <SETG ABS-THREW-FIT T>\n\t       <TELL \"You throw a magnificent fit. It bounces once, frightens no one, and is immediately assessed a littering fee.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE ABS-ME-F ()",
+      "expected_count": 1
+    },
+    {
+      "old": "\t      (<VERB? ABS-KILL>\n\t       <TELL \"You decline to become both assailant and paperwork.\" CR>)",
+      "new": "\t      (<VERB? ABS-KILL>\n\t       <COND (<EQUAL? ,PRSO ,ME>\n\t              <TELL \"You decline to become both assailant and paperwork.\" CR>)\n\t             (T <RFALSE>)>)",
+      "expected_count": 1
+    },
+    {
+      "old": "<ROUTINE V-ABS-PUT ()\n\t<COND (<AND <EQUAL? ,PRSO ,TROLL> <EQUAL? ,PRSI ,SANDWICH-BAG>>\n\t       <SETG ABS-SACKED-TROLL T>\n\t       <SETG ABS-TROLL-SACKS <+ ,ABS-TROLL-SACKS 1>>\n\t       <COND (<EQUAL? ,ABS-TROLL-SACKS 1>\n\t              <TELL \"You open the brown sack and attempt to insert the troll. The sack can accommodate lunch. The troll can accommodate a sack, several lunches, and the person holding them.\" CR>)\n\t             (T\n\t              <TELL \"The troll recognizes the sack and asks whether you have obtained a larger troll since the previous attempt.\" CR>)>)",
+      "new": "<ROUTINE V-ABS-PUT ()\n\t<COND (<AND <EQUAL? ,PRSO ,TROLL> <EQUAL? ,PRSI ,SANDWICH-BAG>>\n\t       <SETG ABS-SACKED-TROLL T>\n\t       <TELL \"You open the brown sack and attempt to insert the troll. The sack can accommodate lunch. The troll can accommodate a sack, several lunches, and the person holding them.\" CR>)",
+      "expected_count": 1
+    }
+  ]
+}

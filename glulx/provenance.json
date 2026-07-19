@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "edition": {
+    "name": "Zork I Glulx upstream baseline",
+    "status": "unofficial repository-local additive edition",
+    "source_release": 1,
+    "source_serial": "251203",
+    "artifact_extension": ".ulx"
+  },
+  "source": {
+    "repository": "https://github.com/taradinoc/zork1",
+    "branch": "glulx",
+    "commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+    "default_branch": "master",
+    "default_branch_commit": "97b7b3d68c075dd9af7da499c3e9690ada3471fd",
+    "merge_base": "97b7b3d68c075dd9af7da499c3e9690ada3471fd",
+    "ahead_by": 1,
+    "changed_paths": [
+      "1actions.zil",
+      "1dungeon.zil",
+      "gclock.zil",
+      "gmacros.zil",
+      "gparser.zil",
+      "gverbs.zil",
+      "zork1.zil"
+    ],
+    "local_modifications": []
+  },
+  "toolchain": {
+    "zilf": {
+      "repository": "https://github.com/taradinoc/zilf",
+      "release": "1.8",
+      "commit": "45c60f1e37651f266ac92d49ae01748bb4909fa5"
+    },
+    "glazer": {
+      "repository": "https://gitlab.com/andwj/glazer",
+      "release": "v1.2.0",
+      "commit": "1cc80bcdefb4b4125185e1170eb1ee178e97ff5a",
+      "released_at": "2025-12-11T10:42:22.496Z",
+      "source_url": "https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz",
+      "source_sha256": "a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482"
+    },
+    "glulxe": {
+      "repository": "https://github.com/erkyrath/glulxe",
+      "commit": "56ab8743bab565de307bd892c555d8d8897ed517"
+    },
+    "glk": {
+      "implementation": "CheapGlk",
+      "repository": "https://github.com/erkyrath/cheapglk",
+      "commit": "14d8aaf6e4150669762bd4646a5368e75c1eeee6"
+    }
+  },
+  "build_normalization": {
+    "reason": "Pinned ZILF 1.8 emits Glulx metadata serial from the wall clock through DateTime.Now.",
+    "method": "Compile unchanged upstream source to Glazer assembly, replace only the generated metadata_serial value with 251203, then assemble with pinned Glazer.",
+    "source_modified": false,
+    "generated_assembly_modified": true,
+    "expected_replacements": 1
+  },
+  "expected_artifact": {
+    "file": "zork1-glulx-upstream.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 180736,
+    "checksum_hex": "0xad5a809b",
+    "sha256": "15dd2b654693e4f1c63e09a2308de1f366913c13be080baa33af3f76c5679ac8"
+  },
+  "licenses": {
+    "zork_source": "MIT; retain upstream LICENSE",
+    "zilf": "GPL-3.0-or-later; build tool is not redistributed in story artifacts",
+    "glazer": "GPL-2.0-or-later; retain exact pinned source license checksum in the build receipt",
+    "glulxe": "MIT",
+    "cheapglk": "see pinned upstream license files",
+    "branding": "No Microsoft, Activision, Xbox, or Infocom endorsement is implied"
+  },
+  "archive_reference": {
+    "url": "https://ifarchive.org/if-archive/games/glulx/zork1-glulx.zip",
+    "archive_size_bytes": 83407,
+    "archive_sha256": "6e9879f36d7d15ddebee1333244be016a9f3a40756718292264815e8881c51ad",
+    "license_sha256": "820ff92d890bd6b411c38249f050d652ffb76c1bc750268be23fd75f4fc67f29",
+    "story_member": "zork1.ulx",
+    "story_size_bytes": 167424,
+    "story_checksum_hex": "0xde2ebee4",
+    "story_sha256": "42b74ce1ce32e9f483418409642b1be425e66e93c7741961e90917e2bb30b129",
+    "inspection_status": "verified and run with pinned native Glulxe and CheapGlk"
+  }
+}

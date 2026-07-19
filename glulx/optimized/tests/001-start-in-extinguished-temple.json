@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-TEST-CANDLES",
+  "path": "1dungeon.zil",
+  "description": "Test-only startup in South Temple with the candles extinguished",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<SETG HERE ,WEST-OF-HOUSE>\n\t<THIS-IS-IT ,MAILBOX>",
+      "new": "\t<SETG HERE ,SOUTH-TEMPLE>\n\t<FCLEAR ,CANDLES ,ONBIT>\n\t<FCLEAR ,CANDLES ,FLAMEBIT>\n\t<THIS-IS-IT ,CANDLES>"
+    }
+  ]
+}
