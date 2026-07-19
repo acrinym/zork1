@@ -1,18 +1,40 @@
 # Expansion frontier
 
-Release 121 establishes the architecture and first broad implementation wave. The next trains should deepen coverage rather than immediately add a second continent.
+Release 121 establishes the architecture and first broad implementation wave. The next controlling train is now the Glulx upstream reconciliation. Gameplay-deepening trains remain valid, but should follow a reproducible Glulx baseline and parity harness rather than increasing the version 3 migration burden first.
+
+## 0. Glulx upstream reconciliation train — controlling next train
+
+Reconcile this project with Tara McGrew's existing Zork I Glulx port and a current pinned ZILF/Glazer toolchain.
+
+The train must:
+
+- resolve the exact live `taradinoc/zork1` `glulx` branch and compare it with current upstream;
+- record licensing and provenance before importing code;
+- compile the unchanged upstream Glulx baseline first;
+- add deterministic native-interpreter smoke testing and artifact verification;
+- port Release 120 fixes before Release 121 expansion layers;
+- build semantic and required-prose parity routes between `.z3` and `.ulx`;
+- retain all historical, optimized, and expanded `.z3` artifacts;
+- avoid new gameplay features until the expanded Glulx artifact is reproducible and meaningfully qualified.
+
+Controlling documents:
+
+- [`GLULX_UPSTREAM_MIGRATION.md`](GLULX_UPSTREAM_MIGRATION.md)
+- [`GLULX_LICENSING.md`](GLULX_LICENSING.md)
+- [`../../docs/planning/ZORK_GLULX_UPSTREAM_CONTINUATION_HANDOFF_2026_07_19.md`](../../docs/planning/ZORK_GLULX_UPSTREAM_CONTINUATION_HANDOFF_2026_07_19.md)
 
 ## 1. Long-form verification train
 
 Script deterministic routes for:
 
-- troll treasure bribery;
 - cyclops lullaby timing;
 - thief bargaining;
 - the complete exorcism ceremony;
 - dam high/low water states;
 - save and restore after new persistent changes;
 - recursive-container and candle regressions inherited from Release 120.
+
+The troll treasure bribe already has broad transcript coverage, but should receive an isolated semantic parity route during the Glulx migration.
 
 ## 2. Room-density train
 
