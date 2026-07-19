@@ -15,15 +15,7 @@ Optional geography, alternate NPC solutions, deeper underground reactions, and A
 
 Tara's `glulx` branch is one commit ahead of its reconciled `master`, with merge base `97b7b3d68c075dd9af7da499c3e9690ada3471fd`.
 
-The complete upstream source delta is limited to:
-
-- `1actions.zil`
-- `1dungeon.zil`
-- `gclock.zil`
-- `gmacros.zil`
-- `gparser.zil`
-- `gverbs.zil`
-- `zork1.zil`
+The complete upstream source delta is limited to `1actions.zil`, `1dungeon.zil`, `gclock.zil`, `gmacros.zil`, `gparser.zil`, `gverbs.zil`, and `zork1.zil`.
 
 Every staged layer begins at Tara's exact tree `02b34128649bbb7fcddf99136e03fb67c032b089`.
 
@@ -44,7 +36,7 @@ Every staged layer begins at Tara's exact tree `02b34128649bbb7fcddf99136e03fb67
 | Unchanged upstream | `zork1-glulx-upstream.ulx` | Release 1 / `251203` | 180,736 | `0xad5a809b` | `15dd2b654693e4f1c63e09a2308de1f366913c13be080baa33af3f76c5679ac8` |
 | Optimized | `zork1-glulx-optimized.ulx` | Release 1201 / `260719` | 180,992 | `0xaa478295` | `f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051` |
 | Assisted | `zork1-glulx-assisted.ulx` | Release 1211 / `260719` | 185,600 | `0xd3e2209e` | `cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777` |
-| Reactive surface | `zork1-glulx-reactive-surface.ulx` | Release 1212 / `260719` | 189,184 | `0xec1c9be9` | `409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab` |
+| Reactive surface | `zork1-glulx-reactive-surface.ulx` | Release 1212 / `260719` | 189,440 | `0x01ea5062` | `78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002` |
 
 All four artifacts target Glulx 3.1.3 (`0x00030103`) and have valid header checksums.
 
@@ -62,14 +54,7 @@ Native routes prove opening identity, recursive-containment rejection, and extin
 
 ## Release 1211 assistance qualification
 
-Release 1211 derives from the committed Release 1201 artifact and permits changes only to:
-
-- `1actions.zil`
-- `1dungeon.zil`
-- `assistance.zil`
-- `gmain.zil`
-- `gverbs.zil`
-- `zork1.zil`
+Release 1211 derives from the committed Release 1201 artifact and permits changes only to `1actions.zil`, `1dungeon.zil`, `assistance.zil`, `gmain.zil`, `gverbs.zil`, and `zork1.zil`.
 
 It adds a reviewed assistance module, state-neutral action hook, `GOALS`, `EXITS`, three-tier `HINT`, canonical-state `RECAP`, contextual `WHY`, and `USE <object>` guidance.
 
@@ -91,7 +76,7 @@ Its staging gate permits changes only to:
 
 The layer adds only:
 
-- white-house and front-door reactions;
+- proximity-safe white-house and front-door reactions;
 - board and boarded-window reactions;
 - persistent board scarring and the painted splinter;
 - kitchen-window reactions while retaining canonical traversal;
@@ -118,10 +103,13 @@ The shared route uses classic parser grammar and walks the actual world. Under b
 - surface-state `RECAP` entry point;
 - forest and songbird reactions.
 
-### Native exclusion route
+### Native boundary route
 
-A separate pinned Glulxe route proves:
+A separate pinned Glulxe route begins in `FOREST-1` and proves:
 
+- distant `KNOCK ON HOUSE` receives `You're not close enough to the house to do that.`;
+- distant `LISTEN TO HOUSE` receives `You are too far away to hear anything from the house.`;
+- distant `CLIMB HOUSE` is rejected without changing house state;
 - forest examination;
 - tree examination and listening;
 - songbird listening and greeting;
@@ -132,13 +120,7 @@ The initial candidate route used unsupported shorthand such as `KNOCK HOUSE` and
 
 ## Existing-edition preservation gate
 
-The separate optimized-and-expanded workflow continues to prove:
-
-- preserved historical Release 119;
-- optimized Release 120 `.z3`;
-- expanded Release 121 `.z3`;
-- completed beadtrain validation;
-- deterministic Frotz transcripts.
+The separate optimized-and-expanded workflow continues to prove preserved historical Release 119, optimized Release 120 `.z3`, expanded Release 121 `.z3`, completed beadtrain validation, and deterministic Frotz transcripts.
 
 The Glulx line is additive. A passing Glulx workflow cannot compensate for a failing `.z3` preservation gate.
 
