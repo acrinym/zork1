@@ -34,9 +34,11 @@
     },
     "glazer": {
       "repository": "https://gitlab.com/andwj/glazer",
-      "resolution": "GitLab latest-release discovery",
-      "pin_status": "pending exact tag, commit, and source SHA-256 from discovery receipt",
-      "qualification_status": "blocked until the discovered release is committed as an immutable pin"
+      "release": "v1.2.0",
+      "commit": "1cc80bcdefb4b4125185e1170eb1ee178e97ff5a",
+      "released_at": "2025-12-11T10:42:22.496Z",
+      "source_url": "https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz",
+      "source_sha256": "a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482"
     },
     "glulxe": {
       "repository": "https://github.com/erkyrath/glulxe",
@@ -48,16 +50,23 @@
       "commit": "14d8aaf6e4150669762bd4646a5368e75c1eeee6"
     }
   },
+  "build_normalization": {
+    "reason": "Pinned ZILF 1.8 emits Glulx metadata serial from the wall clock through DateTime.Now.",
+    "method": "Compile unchanged upstream source to Glazer assembly, replace only the generated metadata_serial value with 251203, then assemble with pinned Glazer.",
+    "source_modified": false,
+    "generated_assembly_modified": true,
+    "expected_replacements": 1
+  },
   "licenses": {
     "zork_source": "MIT; retain upstream LICENSE",
     "zilf": "GPL-3.0-or-later; build tool is not redistributed in story artifacts",
-    "glazer": "license file and checksum must be captured from the exact pinned release before qualification",
+    "glazer": "GPL-2.0-or-later; retain exact pinned source license checksum in the build receipt",
     "glulxe": "MIT",
     "cheapglk": "see pinned upstream license files",
     "branding": "No Microsoft, Activision, Xbox, or Infocom endorsement is implied"
   },
   "archive_reference": {
     "url": "https://ifarchive.org/if-archive/games/glulx/zork1-glulx.zip",
-    "inspection_status": "reference recorded; archive checksum and contents still require committed inspection receipt"
+    "inspection_status": "CI downloads and records archive and member checksums; the repository build remains independently reproducible"
   }
 }
