@@ -196,8 +196,12 @@ def structural_balance(path: Path, text: str) -> list[str]:
 def resolve_include(source: Path, include: str) -> Path | None:
     candidates = [source / include, source / f"{include}.zil"]
     for candidate in candidates:
-        if candidate.is_file():
-            return candidate
+        try:
+            for entry in candidate.parent.iterdir():
+                if entry.name == candidate.name and entry.is_file():
+                    return entry
+        except OSError:
+            continue
     return None
 
 
@@ -205,8 +209,13 @@ def clock_metadata(files: dict[Path, str]) -> dict[str, Any] | None:
     for path, text in files.items():
         if path.name.lower() != "gclock.zil":
             continue
-        table = re.search(r"<CONSTANT\s+C-TABLELEN\s+(\d+)>", text, re.IGNORECASE)
-        entry = re.search(r"<CONSTANT\s+C-INTLEN\s+(\d+)>", text, re.IGNORECASE)
+        cleaned = sanitize_source(text, blank_strings=True)
+        table = re.search(
+            r"<CONSTANT\s+C-TABLELEN\s+(\d+)>", cleaned, re.IGNORECASE
+        )
+        entry = re.search(
+            r"<CONSTANT\s+C-INTLEN\s+(\d+)>", cleaned, re.IGNORECASE
+        )
         if not table or not entry:
             return None
         table_len = int(table.group(1))
