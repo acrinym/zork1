@@ -102,6 +102,7 @@ def apply_override(spec: dict[str, Any], manifest_path: Path, destination: Path)
         "source_sha256": digest(after),
         "before_sha256": digest(before),
         "after_sha256": digest(after),
+        "description": spec.get("description"),
     }
 
 
@@ -179,9 +180,10 @@ def main() -> int:
             f"upstream commit drift: expected {expected_commit}, got {actual_commit}"
         )
     tree = git(upstream, "rev-parse", "HEAD^{tree}")
-    if tree != str(manifest.get("upstream_tree", "")):
+    expected_tree = str(manifest.get("upstream_tree", ""))
+    if expected_tree and tree != expected_tree:
         raise RuntimeError(
-            f"upstream tree drift: expected {manifest.get('upstream_tree')}, got {tree}"
+            f"upstream tree drift: expected {expected_tree}, got {tree}"
         )
 
     if destination.exists():
@@ -221,6 +223,7 @@ def main() -> int:
         "serial": manifest.get("serial"),
         "upstream_commit": actual_commit,
         "upstream_tree": tree,
+        "upstream_tree_pin_enforced": bool(expected_tree),
         "tracked_file_count": len(tracked),
         "tracked_files": tracked,
         "overrides": overrides,
