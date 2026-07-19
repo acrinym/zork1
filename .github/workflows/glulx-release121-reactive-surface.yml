@@ -37,9 +37,9 @@ env:
   BASE_ARTIFACT_SHA256: cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777
   SURFACE_RELEASE: "1212"
   SURFACE_SERIAL: "260719"
-  SURFACE_SIZE: "189184"
-  SURFACE_CHECKSUM: "0xec1c9be9"
-  SURFACE_SHA256: 409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab
+  SURFACE_SIZE: "189440"
+  SURFACE_CHECKSUM: "0x01ea5062"
+  SURFACE_SHA256: 78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002
 
 jobs:
   reactive-surface-glulx:
@@ -333,6 +333,7 @@ jobs:
                   'board_damage_and_splinter': 'passed on .z3 and .ulx',
                   'surface_recap': 'passed on .ulx with shared recap entry point',
                   'forest_and_songbird': 'shared and native routes passed',
+                  'remote_house_proximity': 'passed in native forest route',
                   'hidden_glade_exclusion': 'passed on .ulx',
               },
               'excluded_layers': [
