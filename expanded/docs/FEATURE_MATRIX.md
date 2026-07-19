@@ -18,6 +18,10 @@
 | Exorcism | Bell resonance, candle-state detail, optional black-book pages | Original timed bell/candles/book ceremony |
 | Objects | Additional affordance guidance and reactions for rope, mirrors, water, wrench, shovel, axe, bell, and candles | Existing puzzle-specific actions remain authoritative |
 | World memory | House damage, discoveries, bargains, NPC outcomes, dam, ritual, and victory surfaced through `RECAP` | Existing state flags and save model |
+| Absurd physical actions | Nest cuisine and headwear, tree abuse, self ballistics, troll ballistics, troll storage, throwable voice and fit | Canonical eating, wearing, throwing, putting, and combat remain authoritative for normal uses |
+| Absurd social actions | Hug, lick, ride, marry, apologize, insult, compliment, dance, juggle, headbutt, and yell at representative targets | NPC puzzle roles and combat state remain intact |
+| Folly ledger | `FOLLY`, `NONSENSE`, and `MISCHIEF` report only discovered categories of misconduct | No unseen jokes or puzzle information are spoiled |
+| Troll bemusement | A troll-targeted misconduct action suppresses only his immediate same-turn random counterattack while he processes the idea | The troll remains present, blocking, dangerous, and governed by normal combat on subsequent ordinary turns |
 
 ## Deliberate constraints
 
@@ -28,6 +32,7 @@
 - It does not make every scenery noun portable.
 - It does not claim every possible verb/object pairing has bespoke prose yet.
 - It does not present new prose as recovered Infocom authorship.
+- Comedy actions do not manufacture treasure, remove enemies, award points, or become required puzzle steps.
 
 ## Validation coverage
 
@@ -39,13 +44,14 @@
 | Compiler compatibility | Pinned ZILF and ZAPF build in GitHub Actions |
 | Story identity | Header, length, addresses, Release 121, serial, and checksum verification |
 | Opening reactivity | Deterministic Frotz transcript covering assistance, house, mailbox, songbird, optional room, collectible, and recap |
+| Misconduct journey | Long deterministic Frotz route covering SELF, VOICE, FIT, house, tree, nest, sack, troll storage, troll ballistics, weaponized self, treasure bribery, and `FOLLY` |
 | Optimized regression | Release 120 continues to compile, verify, and run its original smoke route |
+| Beadtrain integrity | All three v1.3 train files are validated in CI against live bead records |
 
 ## Still requiring dedicated long-form transcripts
 
-The implementation is compiled as a whole, but these routes deserve dedicated scripted journeys rather than relying only on structural and opening-route validation:
+The implementation is compiled as a whole, but these routes deserve dedicated scripted journeys rather than relying only on structural or mixed-route validation:
 
-- treasure bribery of the troll;
 - three-turn cyclops lullaby under the existing impatience timer;
 - thief bargain with a carried treasure;
 - bell/candle/book ritual before and after altered object descriptions;
