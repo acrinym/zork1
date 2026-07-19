@@ -57,6 +57,13 @@
     "generated_assembly_modified": true,
     "expected_replacements": 1
   },
+  "expected_artifact": {
+    "file": "zork1-glulx-upstream.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 180736,
+    "checksum_hex": "0xad5a809b",
+    "sha256": "15dd2b654693e4f1c63e09a2308de1f366913c13be080baa33af3f76c5679ac8"
+  },
   "licenses": {
     "zork_source": "MIT; retain upstream LICENSE",
     "zilf": "GPL-3.0-or-later; build tool is not redistributed in story artifacts",
@@ -67,6 +74,13 @@
   },
   "archive_reference": {
     "url": "https://ifarchive.org/if-archive/games/glulx/zork1-glulx.zip",
-    "inspection_status": "CI downloads and records archive and member checksums; the repository build remains independently reproducible"
+    "archive_size_bytes": 83407,
+    "archive_sha256": "6e9879f36d7d15ddebee1333244be016a9f3a40756718292264815e8881c51ad",
+    "license_sha256": "820ff92d890bd6b411c38249f050d652ffb76c1bc750268be23fd75f4fc67f29",
+    "story_member": "zork1.ulx",
+    "story_size_bytes": 167424,
+    "story_checksum_hex": "0xde2ebee4",
+    "story_sha256": "42b74ce1ce32e9f483418409642b1be425e66e93c7741961e90917e2bb30b129",
+    "inspection_status": "verified and run with pinned native Glulxe and CheapGlk"
   }
 }
