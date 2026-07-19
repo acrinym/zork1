@@ -1,0 +1,96 @@
+[train]
+name        = "onyx_zork_glulx_assistance"
+title       = "Zork Release 121 Glulx action and assistance parity"
+description = """
+Derive from the qualified Release 1201 Glulx artifact, add only state-neutral
+action hooks and optional player-assistance commands, and prove semantic parity
+against Expanded Release 121 without importing reactive scenery or gameplay.
+"""
+created     = "2026-07-19"
+status      = "complete"
+
+[[cars]]
+id = "base"
+bead = "zork1-glulx121a-001"
+title = "Qualified base derivation"
+parallel_start = true
+depends_on = []
+summary = "Pin Tara's tree and the Release 1201 manifest and artifact hash before applying assistance changes."
+
+[[cars]]
+id = "hook"
+bead = "zork1-glulx121a-002"
+title = "State-neutral action hook"
+parallel_start = false
+depends_on = ["base"]
+summary = "Invoke assistance context recording after parser action and objects are established without replacing normal dispatch."
+
+[[cars]]
+id = "orientation"
+bead = "zork1-glulx121a-003"
+title = "Goals and exits"
+parallel_start = true
+depends_on = ["hook"]
+summary = "Port canonical GOALS and EXITS orientation commands."
+
+[[cars]]
+id = "hints"
+bead = "zork1-glulx121a-004"
+title = "Tiered hints"
+parallel_start = true
+depends_on = ["orientation"]
+summary = "Port room-resetting three-tier canonical HINT behavior."
+
+[[cars]]
+id = "recap"
+bead = "zork1-glulx121a-005"
+title = "Canonical recap"
+parallel_start = true
+depends_on = ["hook"]
+summary = "Port RECAP using canonical persistent state only."
+
+[[cars]]
+id = "why"
+bead = "zork1-glulx121a-006"
+title = "Contextual why"
+parallel_start = true
+depends_on = ["hook"]
+summary = "Explain selected immediately preceding failures without replacing their original responses."
+
+[[cars]]
+id = "use"
+bead = "zork1-glulx121a-007"
+title = "Object affordance guidance"
+parallel_start = true
+depends_on = ["orientation"]
+summary = "Port USE guidance while requiring concrete follow-up commands."
+
+[[cars]]
+id = "vocabulary"
+bead = "zork1-glulx121a-008"
+title = "Glulx vocabulary reconciliation"
+parallel_start = true
+depends_on = ["hook"]
+summary = "Reconcile unavailable Tara Glulx action constants through an exact reviewed patch."
+
+[[cars]]
+id = "parity"
+bead = "zork1-glulx121a-009"
+title = "Cross-VM semantic parity"
+parallel_start = false
+depends_on = ["hints", "recap", "why", "use", "vocabulary"]
+summary = "Run the same assistance route under Expanded Release 121 .z3 and Assisted Release 1211 .ulx."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx121a-010"
+title = "Assistance qualification capstone"
+parallel_start = false
+depends_on = ["parity"]
+summary = "Lock the artifact, publish qualification records, and define the reactive-surface next layer."
+
+[meta]
+one_liner = "Zork's Release 121 assistance commands now run natively in Glulx with cross-VM semantic parity."
+prior_car = "onyx_zork_glulx_release120"
+couples_with = []
+watch = ["glulx/assistance", "glulx/tools/stage_assistance.py", ".github/workflows/glulx-release121-assistance.yml"]
