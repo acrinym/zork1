@@ -34,6 +34,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -71,6 +73,8 @@ jobs:
     steps:
       - name: Check out Zork I
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Check out pinned ZILF compiler
         uses: actions/checkout@v4
