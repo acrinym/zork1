@@ -39,8 +39,26 @@
 	<COND (.SEEN <RTRUE>)>
 	<RFALSE>>
 
+<ROUTINE SURFACE-AT-HOUSE? ()
+	<COND (<OR <EQUAL? ,HERE ,WEST-OF-HOUSE ,NORTH-OF-HOUSE>
+	           <EQUAL? ,HERE ,SOUTH-OF-HOUSE ,EAST-OF-HOUSE>>
+	       <RTRUE>)>
+	<RFALSE>>
+
+<ROUTINE SURFACE-INSIDE-HOUSE? ()
+	<COND (<EQUAL? ,HERE ,KITCHEN ,LIVING-ROOM ,ATTIC> <RTRUE>)>
+	<RFALSE>>
+
 <ROUTINE SURFACE-WHITE-HOUSE-F ()
-	<COND (<VERB? KNOCK>
+	<COND (<AND <NOT <SURFACE-AT-HOUSE?>>
+	            <NOT <SURFACE-INSIDE-HOUSE?>>
+	            <VERB? KNOCK CLIMB-UP CLIMB-FOO PUSH MOVE>>
+	       <TELL "You're not close enough to the house to do that." CR>)
+	      (<AND <NOT <SURFACE-AT-HOUSE?>>
+	            <NOT <SURFACE-INSIDE-HOUSE?>>
+	            <VERB? LISTEN>>
+	       <TELL "You are too far away to hear anything from the house." CR>)
+	      (<VERB? KNOCK>
 	       <SETG SURFACE-HOUSE-KNOCKS <+ ,SURFACE-HOUSE-KNOCKS 1>>
 	       <COND (<EQUAL? ,SURFACE-HOUSE-KNOCKS 1>
 	              <TELL "Your knock travels through the house. Somewhere inside, something small falls over." CR>)
