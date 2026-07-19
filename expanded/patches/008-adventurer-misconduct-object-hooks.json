@@ -1,0 +1,22 @@
+{
+  "id": "Z1-FOLLY-002",
+  "description": "Attach additive comedy action routines to the tree, bird's nest, and brown sack.",
+  "path": "1dungeon.zil",
+  "replacements": [
+    {
+      "old": "<OBJECT TREE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM TREE BRANCH)\n\t(ADJECTIVE LARGE STORM ;\"-TOSSED\")\n\t(DESC \"tree\")\n\t(FLAGS NDESCBIT CLIMBBIT)>",
+      "new": "<OBJECT TREE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM TREE BRANCH)\n\t(ADJECTIVE LARGE STORM ;\"-TOSSED\")\n\t(DESC \"tree\")\n\t(FLAGS NDESCBIT CLIMBBIT)\n\t(ACTION ABS-TREE-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(FLAGS TAKEBIT BURNBIT CONTBIT OPENBIT SEARCHBIT)\n\t(FDESC \"Beside you on the branch is a small bird's nest.\")",
+      "new": "\t(FLAGS TAKEBIT BURNBIT CONTBIT OPENBIT SEARCHBIT)\n\t(ACTION ABS-NEST-F)\n\t(FDESC \"Beside you on the branch is a small bird's nest.\")",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION SANDWICH-BAG-FCN)>",
+      "new": "\t(ACTION ABS-SACK-F)>",
+      "expected_count": 1
+    }
+  ]
+}
