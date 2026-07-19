@@ -3,7 +3,7 @@
   "release": 1201,
   "serial": "260719",
   "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
-  "upstream_tree": "",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
   "overrides": [
     {
       "path": "zork1.zil",
@@ -22,5 +22,12 @@
     "1dungeon.zil",
     "gverbs.zil",
     "zork1.zil"
-  ]
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-optimized.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 180992,
+    "checksum_hex": "0xaa478295",
+    "sha256": "f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051"
+  }
 }
