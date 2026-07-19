@@ -39,7 +39,7 @@ The qualified surface layer provides:
 
 - exact derivation from Release 1211;
 - a seven-path boundary;
-- white-house and front-door reactions;
+- proximity-safe white-house and front-door reactions;
 - boards, boarded windows, persistent scarring, and the painted splinter;
 - kitchen-window reactions with canonical traversal retained;
 - mailbox reactions and maintenance-slip discovery;
@@ -47,9 +47,9 @@ The qualified surface layer provides:
 - songbird listening and greeting without optional geography;
 - surface-state recap entries;
 - Release `1212` / serial `260719`;
-- a locked 189,184-byte artifact with checksum `0xec1c9be9` and SHA-256 `409cbf1602bd88b3d83a88f2a3d682907950aa5bc87b25b70fc2fabce947e1ab`;
+- a locked 189,440-byte artifact with checksum `0x01ea5062` and SHA-256 `78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002`;
 - real-map `.z3`/`.ulx` parity;
-- native proof that `FOLLOW SONGBIRD` remains refused and Hidden Glade is absent.
+- native proof that distant house actions fail, `FOLLOW SONGBIRD` remains refused, and Hidden Glade is absent.
 
 Controlling qualification records:
 
@@ -100,15 +100,7 @@ Port in this order:
 
 ## 1. Long-form verification train
 
-Script deterministic routes for:
-
-- cyclops lullaby timing;
-- thief bargaining;
-- the complete exorcism ceremony;
-- dam high/low water states;
-- save and restore after new persistent changes;
-- recursive-container and candle regressions inherited from Release 120;
-- assistance and recap after meaningful persistent changes.
+Script deterministic routes for cyclops lullaby timing, thief bargaining, the complete exorcism ceremony, dam high/low water states, save and restore after new persistent changes, inherited Release 120 regressions, and assistance/recap after meaningful persistent changes.
 
 The troll treasure bribe already has broad `.z3` transcript coverage, but should receive an isolated semantic parity route during its Glulx layer.
 
