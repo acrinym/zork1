@@ -8,7 +8,7 @@ keep absurd actions harmless unless an existing original command already has a
 real consequence.
 """
 created     = "2026-07-19"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "grammar"
@@ -24,7 +24,7 @@ bead = "zork1-folly-002"
 title = "Self ballistics"
 parallel_start = true
 depends_on = ["grammar"]
-summary = "Make SELF and MYSELF throwable, hurlable, examinable, and unsuitable as weapons."
+summary = "Reuse the original ME object so SELF and MYSELF can be thrown, hurled, examined, and proposed as weapons without consuming object slots."
 
 [[cars]]
 id = "troll"
@@ -32,7 +32,7 @@ bead = "zork1-folly-003"
 title = "Troll ballistics and sacking"
 parallel_start = true
 depends_on = ["grammar", "self"]
-summary = "Add SACK TROLL, THROW TROLL AT, PUT TROLL IN SACK, and KILL TROLL WITH SELF."
+summary = "Add SACK TROLL, THROW TROLL AT, PUT TROLL IN SACK, KILL TROLL WITH SELF, and a one-turn bemusement rule."
 
 [[cars]]
 id = "nest"
@@ -61,10 +61,10 @@ summary = "Add object-aware hugging, licking, wearing, riding, marrying, apologi
 [[cars]]
 id = "idioms"
 bead = "zork1-folly-007"
-title = "Throwable voice and tantrums"
+title = "Throwable voice and fit"
 parallel_start = true
 depends_on = ["grammar", "self"]
-summary = "Literalize THROW VOICE, THROW A FIT, and related pseudo-object experiments."
+summary = "Literalize THROW VOICE and THROW FIT by reusing existing global parser objects without adding fake inventory."
 
 [[cars]]
 id = "ledger"
@@ -80,7 +80,7 @@ bead = "zork1-folly-009"
 title = "Misconduct catalog"
 parallel_start = false
 depends_on = ["ledger"]
-summary = "Document supported absurd commands, harmlessness rules, prose rules, and extension patterns."
+summary = "Document supported absurd commands, harmlessness rules, prose rules, noun reuse, and extension patterns."
 
 [[cars]]
 id = "capstone"
@@ -88,7 +88,7 @@ bead = "zork1-folly-010"
 title = "Comedy-reactivity capstone"
 parallel_start = false
 depends_on = ["catalog"]
-summary = "Validate the train, compile and verify Release 121, and exercise self, voice, nest, tree, sack, and troll nonsense in Frotz."
+summary = "Validate the train, compile and verify Release 121, and exercise self, voice, fit, nest, tree, sack, troll nonsense, and treasure bribery in Frotz."
 
 [meta]
 one_liner = "Zork now rewards the exact kind of magnificently stupid idea players have been trying since 1980."
