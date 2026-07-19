@@ -39,6 +39,9 @@ env:
   BASE_ARTIFACT_SHA256: f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051
   ASSISTED_RELEASE: "1211"
   ASSISTED_SERIAL: "260719"
+  ASSISTED_SIZE: "185600"
+  ASSISTED_CHECKSUM: "0xd3e2209e"
+  ASSISTED_SHA256: cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777
 
 jobs:
   assisted-glulx:
@@ -96,7 +99,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential libncurses-dev curl frotz
 
-      - name: Validate layer and base pins
+      - name: Validate immutable layer and base pins
         run: |
           python - <<'PY'
           import json, os
@@ -111,6 +114,10 @@ jobs:
           assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
           assert base['release'] == int(os.environ['BASE_RELEASE'])
           assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          expected = layer['expected_artifact']
+          assert expected['size_bytes'] == int(os.environ['ASSISTED_SIZE'])
+          assert expected['checksum_hex'] == os.environ['ASSISTED_CHECKSUM']
+          assert expected['sha256'] == os.environ['ASSISTED_SHA256']
           assert layer['expected_changed_paths'] == [
               '1actions.zil',
               '1dungeon.zil',
@@ -210,10 +217,20 @@ jobs:
           "$GLAZER_BIN" "$assembly" -o glulx/build/assistance/zork1-glulx-assisted.ulx \
             2>&1 | tee glulx/build/assistance/glazer-assemble.log
 
-      - name: Verify assisted Glulx candidate
+      - name: Verify fail-closed assisted Glulx artifact
         run: |
           python glulx/tools/verify_ulx.py glulx/build/assistance/zork1-glulx-assisted.ulx \
+            --expect-sha256 "$ASSISTED_SHA256" \
             --json glulx/build/assistance/story-report.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/assistance/story-report.json').read_text())
+          assert story['version_hex'] == '0x00030103'
+          assert story['size_bytes'] == int(os.environ['ASSISTED_SIZE'])
+          assert story['checksum_hex'] == os.environ['ASSISTED_CHECKSUM']
+          assert story['sha256'] == os.environ['ASSISTED_SHA256']
+          PY
 
       - name: Build pinned native Glulxe with CheapGlk
         shell: bash
@@ -267,17 +284,21 @@ jobs:
             --expect glulx/assistance/tests/opening_assistance_expectations.txt \
             | tee glulx/build/assistance/z3-assistance-transcript.txt
 
-      - name: Write candidate assistance receipt
+      - name: Write qualified assistance receipt
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          layer = json.loads(Path('glulx/assistance/patch-series.json').read_text())
           stage = json.loads(Path('glulx/build/assistance/src/STAGING-RECEIPT.json').read_text())
           story = json.loads(Path('glulx/build/assistance/story-report.json').read_text())
           z3_story = json.loads(Path('glulx/build/assistance/z3-story-report.json').read_text())
           serial = json.loads(Path('glulx/build/assistance/SERIAL-NORMALIZATION.json').read_text())
+          artifact_pin_matched = story['sha256'] == layer['expected_artifact']['sha256']
+          if not artifact_pin_matched:
+              raise SystemExit('assisted Glulx artifact did not match the committed pin')
           receipt = {
-              'qualification_status': 'candidate; lock artifact SHA-256 after this deterministic run',
+              'qualification_status': 'qualified Release 121 action and assistance layer',
               'identity': {'release': 1211, 'serial': '260719'},
               'base': stage['base'],
               'upstream_commit': stage['upstream_commit'],
@@ -287,6 +308,7 @@ jobs:
               'overrides': stage['overrides'],
               'serial_normalization': serial,
               'artifact': story,
+              'artifact_pin_matched': artifact_pin_matched,
               'comparison_artifact': z3_story,
               'semantic_routes': {
                   'goals': 'passed on .z3 and .ulx',
@@ -309,7 +331,7 @@ jobs:
           )
           PY
 
-      - name: Upload assisted Glulx candidate
+      - name: Upload qualified assisted Glulx edition
         if: always()
         uses: actions/upload-artifact@v4
         with:
