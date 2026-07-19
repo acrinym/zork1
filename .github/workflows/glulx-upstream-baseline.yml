@@ -1,0 +1,174 @@
+name: Zork I Glulx Upstream Baseline
+
+on:
+  push:
+    branches:
+      - agent/preservation-first-optimized-edition
+    paths:
+      - "glulx/**"
+      - ".github/workflows/glulx-upstream-baseline.yml"
+  pull_request:
+    paths:
+      - "glulx/**"
+      - ".github/workflows/glulx-upstream-baseline.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+
+jobs:
+  unchanged-upstream-glulx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned upstream Zork Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned ZILF and Glazer source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.ZILF_COMMIT }}
+          path: .tooling/zilf
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install native build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev
+
+      - name: Validate provenance pins
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('glulx/provenance.json').read_text())
+          assert p['source']['commit'] == '${{ env.ZORK_GLULX_COMMIT }}'
+          assert p['toolchain']['zilf']['commit'] == '${{ env.ZILF_COMMIT }}'
+          assert p['toolchain']['glulxe']['commit'] == '${{ env.GLULXE_COMMIT }}'
+          assert p['toolchain']['glk']['commit'] == '${{ env.CHEAPGLK_COMMIT }}'
+          assert p['source']['local_modifications'] == []
+          PY
+
+      - name: Build pinned ZILF and Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p glulx/build
+          pushd .tooling/zilf
+          pwsh ./tools/setup-glazer.ps1
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build unchanged upstream Glulx story
+        shell: bash
+        run: |
+          set -euxo pipefail
+          pushd .upstream/zork1-glulx
+          dotnet "$ZILF_DLL" build --glulx zork1.zil "${GITHUB_WORKSPACE}/glulx/build/zork1-glulx-upstream.ulx" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/zork1-glulx-build.log"
+          popd
+          test -s glulx/build/zork1-glulx-upstream.ulx
+
+      - name: Verify Glulx artifact
+        run: |
+          python glulx/tools/verify_ulx.py glulx/build/zork1-glulx-upstream.ulx \
+            --json glulx/build/glulx-story-report.json
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          manifest = json.loads(Path('glulx/provenance.json').read_text())
+          receipt = {
+              'source_commit': manifest['source']['commit'],
+              'zilf_commit': manifest['toolchain']['zilf']['commit'],
+              'glazer_commit': manifest['toolchain']['glazer']['commit'],
+              'glulxe_commit': manifest['toolchain']['glulxe']['commit'],
+              'cheapglk_commit': manifest['toolchain']['glk']['commit'],
+              'source_modified': False,
+              'artifact_sha256': hashlib.sha256(Path('glulx/build/zork1-glulx-upstream.ulx').read_bytes()).hexdigest(),
+          }
+          Path('glulx/build/BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          PY
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+
+      - name: Run deterministic native smoke transcript
+        shell: bash
+        run: |
+          set -o pipefail
+          printf 'look\ninventory\nquit\ny\n' | .tooling/glulxe/glulxe glulx/build/zork1-glulx-upstream.ulx \
+            2>&1 | tee glulx/build/smoke-transcript.txt
+          grep -F "West of House" glulx/build/smoke-transcript.txt
+          grep -F "mailbox" glulx/build/smoke-transcript.txt
+
+      - name: Upload unchanged upstream baseline
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-unchanged-upstream
+          path: |
+            glulx/build/zork1-glulx-upstream.ulx
+            glulx/build/glulx-story-report.json
+            glulx/build/BUILD-RECEIPT.json
+            glulx/build/smoke-transcript.txt
+            glulx/build/zork1-glulx-build.log
+            glulx/build/zilf-restore.log
+            glulx/build/zilf-build.log
+            glulx/build/cheapglk-build.log
+            glulx/build/glulxe-build.log
+            glulx/provenance.json
+          if-no-files-found: warn
