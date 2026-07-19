@@ -1,0 +1,104 @@
+[train]
+name        = "onyx_zork_reactive_world"
+title       = "Zork reactive world foundation"
+description = """
+Create a distinct Release 121 expansion that makes the existing Zork world
+notice more player ideas before adding broad new geography. Preserve Release 119
+and Release 120 as separate historical and optimized products.
+"""
+created     = "2026-07-19"
+status      = "in_progress"
+
+[[cars]]
+id = "edition-split"
+bead = "zork1-react-001"
+title = "Separate expanded edition"
+parallel_start = true
+depends_on = []
+summary = "Add a separately identified Release 121 build and staging boundary."
+
+[[cars]]
+id = "assistance"
+bead = "zork1-react-002"
+title = "Contextual assistance"
+parallel_start = true
+depends_on = ["edition-split"]
+summary = "Add GOALS, EXITS, HINT, RECAP, WHY, and USE."
+
+[[cars]]
+id = "house"
+bead = "zork1-react-003"
+title = "White house reactivity"
+parallel_start = true
+depends_on = ["edition-split"]
+summary = "Deepen house, door, boards, climbing, knocking, and listening."
+
+[[cars]]
+id = "mail-window"
+bead = "zork1-react-004"
+title = "Mailbox and windows"
+parallel_start = false
+depends_on = ["house"]
+summary = "Add hidden paperwork and state-aware window and mailbox responses."
+
+[[cars]]
+id = "songbird"
+bead = "zork1-react-005"
+title = "Songbird discovery"
+parallel_start = true
+depends_on = ["house"]
+summary = "Following the songbird reveals an optional glade and brass feather."
+
+[[cars]]
+id = "affordances"
+bead = "zork1-react-006"
+title = "Object affordances"
+parallel_start = true
+depends_on = ["assistance"]
+summary = "Explain plausible object uses without replacing concrete commands."
+
+[[cars]]
+id = "failures"
+bead = "zork1-react-007"
+title = "Explainable failures"
+parallel_start = true
+depends_on = ["assistance", "house"]
+summary = "Remember selected failed experiments so WHY can explain them."
+
+[[cars]]
+id = "memory"
+bead = "zork1-react-008"
+title = "Exploration memory"
+parallel_start = true
+depends_on = ["assistance", "songbird"]
+summary = "Use RECAP to surface meaningful changes already witnessed."
+
+[[cars]]
+id = "voice"
+bead = "zork1-react-009"
+title = "Zork voice pass"
+parallel_start = false
+depends_on = ["house", "mail-window", "songbird"]
+summary = "Keep new prose dry, bureaucratic, specific, and period-compatible."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-react-010"
+title = "Reactive world capstone"
+parallel_start = false
+depends_on = ["affordances", "failures", "memory", "voice"]
+summary = "Validate train structure, patches, compilation, identity, and transcript."
+
+[meta]
+one_liner = "Zork's surface world now notices experimentation and teaches without taking over."
+couples_with = ["onyx_zork_living_underground"]
+watch = ["expanded/overrides/expansions.zil", "expanded/patches", "expanded/tests"]
+
+[[couplers]]
+id = "reactive-to-living"
+from_train = "onyx_zork_reactive_world"
+from_car = "capstone"
+to_train = "onyx_zork_living_underground"
+to_car = "start"
+mode = "after"
+note = "Living characters build only after the additive interaction layer validates."
