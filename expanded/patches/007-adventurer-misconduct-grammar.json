@@ -17,11 +17,6 @@
       "old": "<SYNTAX PUT OBJECT (HELD MANY HAVE) IN OBJECT = V-PUT PRE-PUT>",
       "new": "<SYNTAX PUT OBJECT (HELD CARRIED ON-GROUND IN-ROOM MANY) IN OBJECT = V-ABS-PUT>",
       "expected_count": 1
-    },
-    {
-      "old": "<SYNTAX WEAR OBJECT = V-WEAR>",
-      "new": "<SYNTAX WEAR OBJECT = V-ABS-WEAR>",
-      "expected_count": 1
     }
   ]
 }
