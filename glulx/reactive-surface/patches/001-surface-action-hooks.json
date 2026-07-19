@@ -1,0 +1,52 @@
+{
+  "id": "Z1-GLULX-1212-SURFACE-HOOKS",
+  "path": "1dungeon.zil",
+  "description": "Route only house, door, board, window, mailbox, forest, tree, and songbird nouns through reactive-surface wrappers",
+  "replacements": [
+    {
+      "old": "\t(ACTION BOARD-F)>",
+      "new": "\t(ACTION SURFACE-BOARD-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION SONGBIRD-F)>",
+      "new": "\t(ACTION SURFACE-SONGBIRD-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION WHITE-HOUSE-F)>",
+      "new": "\t(ACTION SURFACE-WHITE-HOUSE-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION FOREST-F)>",
+      "new": "\t(ACTION SURFACE-FOREST-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "<OBJECT TREE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM TREE BRANCH)\n\t(ADJECTIVE LARGE STORM ;\"-TOSSED\")\n\t(DESC \"tree\")\n\t(FLAGS NDESCBIT CLIMBBIT)>",
+      "new": "<OBJECT TREE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM TREE BRANCH)\n\t(ADJECTIVE LARGE STORM ;\"-TOSSED\")\n\t(DESC \"tree\")\n\t(FLAGS NDESCBIT CLIMBBIT)\n\t(ACTION SURFACE-TREE-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION KITCHEN-WINDOW-F)>",
+      "new": "\t(ACTION SURFACE-KITCHEN-WINDOW-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "<OBJECT FRONT-DOOR\n\t(IN WEST-OF-HOUSE)\n\t(SYNONYM DOOR)\n\t(ADJECTIVE FRONT BOARDED)\n\t(DESC \"door\")\n\t(FLAGS DOORBIT NDESCBIT)\n\t(ACTION FRONT-DOOR-FCN)>",
+      "new": "<OBJECT FRONT-DOOR\n\t(IN WEST-OF-HOUSE)\n\t(SYNONYM DOOR)\n\t(ADJECTIVE FRONT BOARDED)\n\t(DESC \"door\")\n\t(FLAGS DOORBIT NDESCBIT)\n\t(ACTION SURFACE-FRONT-DOOR-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION BOARDED-WINDOW-FCN)>",
+      "new": "\t(ACTION SURFACE-BOARDED-WINDOW-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION MAILBOX-F)>",
+      "new": "\t(ACTION SURFACE-MAILBOX-F)>",
+      "expected_count": 1
+    }
+  ]
+}
