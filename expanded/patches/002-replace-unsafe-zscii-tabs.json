@@ -1,0 +1,17 @@
+{
+  "id": "Z1-PORT-001",
+  "path": "1dungeon.zil",
+  "description": "Replace two player-facing tab characters that are unsafe in Z-machine version 3 with equivalent spaces",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"\tFlood Control Dam #3|",
+      "new": "\"        Flood Control Dam #3|"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t  All-Purpose Gunk",
+      "new": "          All-Purpose Gunk"
+    }
+  ]
+}
