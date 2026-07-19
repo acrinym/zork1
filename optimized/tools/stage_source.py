@@ -38,8 +38,9 @@ def load_manifest(path: Path) -> dict[str, Any]:
     return value
 
 
-def ensure_safe_destination(destination: Path) -> None:
-    build_root = DEFAULT_BUILD_ROOT.resolve()
+def ensure_safe_destination(destination: Path, allowed_root: Path = DEFAULT_BUILD_ROOT) -> None:
+    """Permit destructive staging only beneath an explicitly selected build root."""
+    build_root = allowed_root.resolve()
     resolved = destination.resolve()
     if resolved == build_root or build_root not in resolved.parents:
         raise RuntimeError(
@@ -158,6 +159,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", type=Path, required=True)
     parser.add_argument("--destination", type=Path, required=True)
+    parser.add_argument("--allowed-root", type=Path, default=DEFAULT_BUILD_ROOT)
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--overrides", type=Path, default=DEFAULT_OVERRIDES)
     parser.add_argument("--patches", type=Path, default=DEFAULT_PATCHES)
@@ -165,7 +167,7 @@ def main() -> int:
 
     repo_root = args.repo_root.resolve()
     destination = args.destination.resolve()
-    ensure_safe_destination(destination)
+    ensure_safe_destination(destination, args.allowed_root.resolve())
     manifest = load_manifest(args.manifest.resolve())
 
     if destination.exists():
