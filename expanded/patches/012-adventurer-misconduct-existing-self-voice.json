@@ -9,8 +9,8 @@
       "expected_count": 1
     },
     {
-      "old": "\t(ACTION CRETIN-FCN)>",
-      "new": "\t(ACTION ABS-ME-F)>",
+      "old": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF CRETIN)\n\t(DESC \"you\")\n\t(FLAGS ACTORBIT)\n\t(ACTION CRETIN-FCN)>",
+      "new": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF CRETIN)\n\t(DESC \"you\")\n\t(FLAGS ACTORBIT)\n\t(ACTION ABS-ME-F)>",
       "expected_count": 1
     }
   ]
