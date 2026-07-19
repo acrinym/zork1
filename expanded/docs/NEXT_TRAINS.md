@@ -1,6 +1,6 @@
 # Expansion frontier
 
-Release 121 establishes the architecture and first broad implementation wave. The unchanged upstream and conservative Release 120 Glulx layers are now reproducible and qualified. The controlling next train is Release 121 action hooks and optional assistance.
+Release 121 establishes the architecture and first broad implementation wave. The unchanged upstream, conservative Release 120, and Release 121 assistance Glulx layers are now reproducible and qualified. The controlling next train is focused reactive surface-world parity.
 
 Gameplay-deepening trains remain valid, but must follow layered Release 121 Glulx parity rather than increasing the version 3 migration burden first.
 
@@ -20,7 +20,7 @@ The first Glulx train provides:
 
 ## 0.1 Release 120 Glulx port — complete
 
-The conservative optimized layer now provides:
+The conservative optimized layer provides:
 
 - an exact staging boundary rooted at Tara's pinned tree;
 - fail-closed changes to only `1actions.zil`, `1dungeon.zil`, `gverbs.zil`, and `zork1.zil`;
@@ -30,52 +30,71 @@ The conservative optimized layer now provides:
 - exact lowercase include paths;
 - unofficial Release `1201` / serial `260719` identity;
 - a locked 180,992-byte artifact with valid checksum and SHA-256;
-- native opening, recursive-containment, and extinguished-candle routes;
-- continued independent qualification of Historical 119, Optimized 120 `.z3`, and Expanded 121 `.z3`.
+- native opening, recursive-containment, and extinguished-candle routes.
+
+## 0.2 Release 121 Glulx action and assistance layer — complete
+
+The qualified assistance layer provides:
+
+- explicit derivation from the committed Release 1201 manifest and artifact hash;
+- an exact six-path staging boundary;
+- a reviewed `assistance.zil` source addition;
+- a state-neutral global action hook in both `PERFORM` variants;
+- `GOALS`;
+- `EXITS`;
+- three-tier `HINT`;
+- canonical-state `RECAP`;
+- contextual `WHY`;
+- `USE <object>` affordance guidance;
+- unofficial Release `1211` / serial `260719` identity;
+- a locked 185,600-byte artifact with checksum `0xd3e2209e` and SHA-256 `cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777`;
+- a shared nine-move `.z3` versus `.ulx` semantic route proving every assistance command.
 
 Controlling qualification records:
 
 - [`../../glulx/README.md`](../../glulx/README.md)
 - [`../../glulx/QUALIFICATION.md`](../../glulx/QUALIFICATION.md)
 - [`../../glulx/optimized/README.md`](../../glulx/optimized/README.md)
+- [`../../glulx/assistance/README.md`](../../glulx/assistance/README.md)
 - [`GLULX_UPSTREAM_MIGRATION.md`](GLULX_UPSTREAM_MIGRATION.md)
 - [`GLULX_LICENSING.md`](GLULX_LICENSING.md)
 
-## 0.2 Release 121 Glulx action and assistance layer — controlling next train
+## 0.3 Release 121 reactive surface-world layer — controlling next train
 
-Port only the foundation needed for optional player orientation:
+Port reactive behavior in small, independently testable groups:
 
-1. Release 121 action-hook architecture;
-2. `GOALS`;
-3. `EXITS`;
-4. tiered `HINT`;
-5. `RECAP`;
-6. contextual `WHY`;
-7. `USE <object>` affordance guidance.
+1. white house and roof attempts;
+2. front door;
+3. boards and boarded windows;
+4. kitchen window;
+5. mailbox and maintenance-paper discovery;
+6. forest nouns without songbird geography;
+7. persistent state required by those reactions.
 
 The train must:
 
-- stage from the qualified Release 1201 Glulx layer;
-- apply Release 121 hooks and assistance through exact, reviewable patches and overlays;
-- assign a new clearly unofficial Glulx identity;
-- retain both the unchanged baseline and Release 1201 as separately reproducible artifacts;
-- add semantic `.z3` versus `.ulx` routes for opening navigation and each assistance command;
-- compare rooms, exits, score, moves where stable, state changes, and required prose markers rather than whitespace-identical transcripts;
+- stage from qualified Release 1211;
+- retain Releases 1, 1201, and 1211 as separately reproducible artifacts;
+- apply every behavior group through exact patches and reviewed source additions;
+- assign a new unofficial Glulx identity;
+- add focused `.z3` versus `.ulx` semantic routes after each group;
+- preserve every canonical route and score outcome;
 - prove all historical and `.z3` gates still pass;
-- document the exact reactive-scenery layer without including it here.
+- keep optional geography, NPC alternatives, and comedy out.
 
-Do not port reactive scenery, songbird and Hidden Glade, troll/cyclops/thief alternatives, Adventurer Misconduct, `FOLLY`, or troll bemusement in this train.
+Do not port the songbird-follow route, Hidden Glade, brass feather, troll bribe, cyclops lullaby, thief bargain, Adventurer Misconduct, `FOLLY`, or troll bemusement in this train.
 
-## 0.3 Release 121 reactive scenery and world-state layer
+## 0.4 Deeper reactive world layer
 
-After assistance parity:
+After the surface-world layer:
 
-- port house, boards, doors, windows, mailbox, forest, dam, ritual, rope, mirror, water, and tool reactions;
+- port dam and control-panel feedback;
+- port bell, candles, book, and ritual reactions beyond the Release 120 candle fix;
+- port rope, mirror, water, wrench, shovel, axe, and other object affordances beyond `USE` guidance;
 - preserve persistent expanded state;
-- add focused semantic parity routes after each group;
-- leave optional geography and NPC alternatives for later isolated layers.
+- add focused semantic parity routes after each group.
 
-## 0.4 Optional geography and living-character layers
+## 0.5 Optional geography and living-character layers
 
 Port in this order:
 
@@ -96,9 +115,10 @@ Script deterministic routes for:
 - the complete exorcism ceremony;
 - dam high/low water states;
 - save and restore after new persistent changes;
-- recursive-container and candle regressions inherited from Release 120.
+- recursive-container and candle regressions inherited from Release 120;
+- assistance commands after meaningful persistent-state changes.
 
-The troll treasure bribe already has broad transcript coverage, but should receive an isolated semantic parity route during the Glulx migration.
+The troll treasure bribe already has broad `.z3` transcript coverage, but should receive an isolated semantic parity route during the Glulx migration.
 
 ## 2. Room-density train
 
