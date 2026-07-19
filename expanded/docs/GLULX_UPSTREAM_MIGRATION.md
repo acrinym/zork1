@@ -2,101 +2,180 @@
 
 ## Decision
 
-The long-term expanded lineage will migrate from Z-machine version 3 to Glulx by reconciling with the existing upstream work in Tara McGrew's `taradinoc/zork1` branch `glulx` and a modern ZILF/Glazer toolchain.
+The long-term expanded lineage is migrating from Z-machine version 3 to Glulx by reconciling with Tara McGrew's existing `taradinoc/zork1` branch `glulx` and a pinned ZILF/Glazer toolchain.
 
-This replaces the earlier repository assumption that Glulx support was only a future concept. A playable and winnable Zork I Glulx port was published in December 2025, and ZILF gained experimental Glulx output through Glazer.
+This is an **upstream reconciliation and semantic-parity project**, not a greenfield virtual-machine or compiler-backend project.
 
-The migration is therefore an **upstream reconciliation and parity project**, not a greenfield virtual-machine or compiler-backend project.
+## Current migration status
 
-## Product line after migration
+| Train | Identity | Status |
+|---|---:|---|
+| A — unchanged upstream baseline | Release 1 / serial `251203` | Qualified |
+| B — conservative optimized parity | Release 1201 / serial `260719` | Qualified |
+| C1 — Release 121 action hooks and assistance | not assigned | Controlling next train |
+| C2 — reactive scenery and world state | not assigned | Planned after C1 |
+| C3 — optional geography and living characters | not assigned | Planned after C2 |
+| D — remove version 3 compromises | not assigned | Planned after Release 121 parity |
+| E — standard Glulx product capabilities | not assigned | Later product work |
+
+## Product line
 
 | Line | Artifact | Role |
 |---|---|---|
 | Historical | Release 119 / `.z3` | Untouched preservation artifact |
 | Optimized | Release 120 / `.z3` | Conservative corrected Z-machine edition |
-| Expanded compatibility | Release 121 / `.z3` | Current reactive and comedic edition, retained as a compact compatibility build |
-| Expanded Glulx | New repository-local release / `.ulx` or `.gblorb` | Long-term expanded platform with parity first and additional capacity later |
+| Expanded compatibility | Release 121 / `.z3` | Reactive and comedic compatibility edition |
+| Unchanged upstream Glulx | Release 1 / `.ulx` | Qualified Tara baseline and archive reference |
+| Optimized Glulx | Release 1201 / `.ulx` | Qualified conservative Release 120 port |
+| Expanded Glulx | future repository-local `.ulx` | Long-term expanded platform, migrated in isolated parity layers |
 
-The Glulx edition must not replace or rewrite the three existing identities.
+No Glulx artifact replaces or relabels an existing `.z3` identity.
 
 ## Why Glulx
 
-The current Release 121 occupies the complete Z-machine version 3 object table and must reuse unrelated parser globals to recognize concepts such as `VOICE` and `FIT`. Glulx provides 32-bit values and addresses, substantially larger memory, Glk I/O, heap allocation, Unicode, and established native and browser interpreters.
+Release 121 occupies the complete Z-machine version 3 object table and must reuse unrelated parser globals for concepts such as `VOICE` and `FIT`. Glulx provides 32-bit values and addresses, substantially larger memory, Glk I/O, heap allocation, Unicode, and established native and browser interpreters.
 
-That removes the architectural pressure that forced the zero-slot noun design while preserving the compiled, portable interactive-fiction artifact model.
+That removes the pressure that forced the zero-slot noun design while preserving the compiled, portable interactive-fiction artifact model.
 
-## Existing upstream foundation
+## Resolved upstream foundation
 
-The first implementation train must resolve and pin, rather than assume:
+The repository now pins:
 
-- `taradinoc/zork1`, branch `glulx`, exact live head;
-- its merge base and complete diff against Tara's current `master`;
-- the archived `zork1-glulx.zip`, Release 1 / serial `251203`;
-- the current stable ZILF release and exact commit selected for this repository;
-- the matching Glazer assembler version and exact commit;
-- a deterministic command-line Glulx interpreter for CI, preferably Glulxe with a suitable Glk implementation;
-- an optional browser interpreter baseline such as Quixe for later product work.
+- Tara Zork Glulx commit `1ada70e58ac4933446b907d67949d9cab3119c0e`;
+- Tara Glulx tree `02b34128649bbb7fcddf99136e03fb67c032b089`;
+- upstream `master` and merge base `97b7b3d68c075dd9af7da499c3e9690ada3471fd`;
+- the complete seven-file upstream delta;
+- ZILF 1.8 commit `45c60f1e37651f266ac92d49ae01748bb4909fa5`;
+- Glazer 1.2.0 commit `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a` and source tarball SHA-256;
+- Glulxe commit `56ab8743bab565de307bd892c555d8d8897ed517`;
+- CheapGlk commit `14d8aaf6e4150669762bd4646a5368e75c1eeee6`;
+- the IF Archive ZIP and archived story checksums.
 
-Do not trust release numbers, branch heads, or tool versions frozen in this document. Re-resolve them at train start.
+Future trains must still check for upstream drift before intentionally changing any pin.
 
 ## Controlling migration rules
 
-1. **Parity before expansion.** Do not add new rooms, puzzles, media, or runtime extensions until the upstream Glulx baseline builds deterministically and Release 121 behavior has a credible parity harness.
+1. **Parity before expansion.** Add no unrelated rooms, puzzles, media, or runtime extensions during a parity layer.
 2. **Preservation remains immutable.** Repository-root historical files and Release 119 remain untouched.
-3. **Existing `.z3` editions remain first-class.** The Glulx train adds a new artifact; it does not silently relabel or replace Release 121.
-4. **Source changes must be reviewable.** Prefer explicit overlays, manifests, or clearly documented source forks over opaque generated rewrites.
-5. **No invented compiler backend.** Use modern ZILF and Glazer unless a specific upstream defect directly blocks the migration.
-6. **No custom VM fork at the start.** Target standard Glulx and standard Glk first. Host extensions belong after portable baseline success.
-7. **Determinism is a release requirement.** Pin upstream commits, verify checksums, control RNG in transcripts where supported, and fail closed when expected source no longer matches.
-8. **Licensing and provenance are build inputs.** Follow [`GLULX_LICENSING.md`](GLULX_LICENSING.md) and record every imported upstream component.
+3. **Existing `.z3` editions remain first-class.** Glulx adds artifacts; it does not silently replace Release 120 or 121.
+4. **Source changes must be reviewable.** Use exact overlays, patch manifests, changed-path gates, and before/after hashes.
+5. **No invented compiler backend.** Use pinned ZILF and Glazer unless a specific upstream defect directly blocks migration.
+6. **No custom VM fork.** Target standard Glulx and standard Glk first.
+7. **Determinism is a release requirement.** Pin upstreams, downloaded source hashes, generated identity normalization, and final artifact hashes.
+8. **Licensing and provenance are build inputs.** Follow [`GLULX_LICENSING.md`](GLULX_LICENSING.md).
+9. **Every layer remains separately reproducible.** The unchanged baseline and optimized port continue building after expanded layers begin.
+10. **A passing Glulx gate cannot excuse a failing `.z3` gate.** Every edition keeps its own qualification boundary.
 
-## Train A — upstream baseline
+## Train A — unchanged upstream baseline — complete
 
-Deliverables:
+The completed baseline provides:
 
-- provenance manifest for Tara's branch, ZILF, Glazer, and interpreter;
-- repository-local tool bootstrap with exact pins;
-- an unchanged upstream Glulx build;
-- verification of Glulx header, version, checksum, release, serial, and story identity;
-- a deterministic smoke transcript proving startup, movement, object handling, save/restore, and clean exit;
-- CI artifact containing the baseline `.ulx`, build receipt, compiler log, verifier report, and transcript.
+- exact upstream reconciliation and provenance;
+- pinned compiler, assembler, interpreter, and Glk implementation;
+- unchanged upstream compilation;
+- deterministic normalization of ZILF's wall-clock metadata serial;
+- Glulx header, memory-map, checksum, size, and SHA verification;
+- archive ZIP inspection and member checksums;
+- native execution of repository and archived stories;
+- license and build receipts;
+- artifact upload.
 
-This stage must not carry Release 120 or 121 changes yet.
+Qualified repository artifact:
 
-## Train B — optimized parity
+- `zork1-glulx-upstream.ulx`;
+- Release 1 / serial `251203`;
+- 180,736 bytes;
+- checksum `0xad5a809b`;
+- SHA-256 `15dd2b654693e4f1c63e09a2308de1f366913c13be080baa33af3f76c5679ac8`.
 
-Port the conservative Release 120 changes onto the Glulx source path:
+## Train B — optimized parity — complete
+
+The optimized layer stages Tara's exact commit and tree and allows only four changed paths:
+
+- `1actions.zil`;
+- `1dungeon.zil`;
+- `gverbs.zil`;
+- `zork1.zil`.
+
+It ports:
 
 - recursive-containment prevention;
-- state-aware candle descriptions;
-- unsafe output-character correction;
-- include and path portability;
-- structural auditing appropriate to Glulx output;
-- deterministic build and artifact verification.
+- printed-character portability corrections;
+- a Glulx-specific fully dynamic candle room description;
+- state-aware candle prose;
+- exact lowercase includes;
+- structural auditing;
+- repository-local Release `1201` identity.
 
-Prove that the optimized Glulx edition retains canonical puzzle behavior before proceeding.
+Qualified artifact:
 
-## Train C — expanded parity
+- `zork1-glulx-optimized.ulx`;
+- Release 1201 / serial `260719`;
+- 180,992 bytes;
+- checksum `0xaa478295`;
+- SHA-256 `f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051`.
 
-Port Release 121 in coherent layers:
+Focused native routes prove:
 
-1. expanded action hooks and contextual assistance;
-2. reactive house, forest, dam, ritual, rope, mirror, and tool behavior;
-3. optional songbird and Hidden Glade path;
-4. troll bribe, cyclops lullaby, and thief bargain;
-5. Adventurer Misconduct grammar, reactions, `FOLLY`, and troll bemusement.
+- opening identity and normal command handling;
+- recursive-container rejection while preserving valid nesting;
+- extinguished candles are never described by the stale static burning sentence.
 
-Each layer should compile and pass focused transcripts before the next layer lands.
+## Train C1 — action hooks and assistance — controlling next train
+
+Port only:
+
+1. Release 121 action-hook foundation;
+2. `GOALS`;
+3. `EXITS`;
+4. tiered `HINT`;
+5. `RECAP`;
+6. contextual `WHY`;
+7. `USE <object>` affordance guidance.
+
+Requirements:
+
+- stage from qualified Release 1201;
+- use exact changed-path and patch boundaries;
+- assign a new unofficial Glulx identity;
+- retain baseline and Release 1201 artifacts;
+- run equivalent opening and assistance routes on `.z3` and `.ulx`;
+- compare semantic milestones and required prose markers rather than whitespace-identical transcripts;
+- prove every historical and `.z3` gate still passes;
+- leave reactive scenery and gameplay expansion out of this train.
+
+## Train C2 — reactive scenery and world state
+
+After assistance parity, port:
+
+- house, boards, doors, windows, and mailbox;
+- forest behavior;
+- dam and control panel;
+- ritual objects;
+- rope, mirror, water, and tool reactions;
+- persistent expanded state.
+
+Compile and run focused semantic routes after each group.
+
+## Train C3 — optional geography and living characters
+
+Port in this order:
+
+1. songbird and Hidden Glade;
+2. troll bribe;
+3. cyclops lullaby;
+4. thief bargain;
+5. Adventurer Misconduct actions;
+6. `FOLLY` and troll bemusement.
 
 ## Train D — remove version 3 compromises
 
-Only after parity:
+Only after Release 121 semantic parity:
 
-- replace `VOICE`, `WORDS`, and `FIT` carrier reuse with honest dedicated objects or parser concepts;
-- remove any version 3-only object-slot workarounds;
+- replace `VOICE`, `WORDS`, and `FIT` carrier reuse with dedicated Glulx concepts or objects;
+- remove version 3-only object-slot workarounds from the Glulx lineage;
 - model additional persistent character and world state directly;
-- increase scenery density where it improves understandable interaction;
-- keep old `.z3` behavior and architecture documented rather than pretending the compromises never existed.
+- keep the `.z3` architecture intact and documented.
 
 ## Train E — standard Glulx product capabilities
 
@@ -109,15 +188,15 @@ Use standard Glk capabilities before inventing custom host contracts:
 - browser packaging through a standard interpreter;
 - accessible window and input behavior.
 
-Any richer structured-event or companion-runtime protocol must be optional, capability-detected, documented separately, and unable to corrupt ordinary Glulx play.
+Any richer host protocol must be optional, capability-detected, documented separately, and unable to break ordinary Glulx play.
 
-## Parity strategy
+## Semantic parity strategy
 
-Exact transcript equality is not always realistic across VMs because wrapping, status presentation, RNG behavior, and interpreter messages may differ. Qualification should therefore use three levels:
+Exact transcript equality is not required across VMs because wrapping, status presentation, RNG behavior, and interpreter messages may differ.
 
-### Semantic parity
+### Stable facts
 
-Assert stable facts:
+Assert:
 
 - room reached;
 - object acquired, moved, consumed, or preserved;
@@ -133,37 +212,39 @@ Assert key canonical and expanded lines without requiring identical whitespace o
 
 ### Differential routes
 
-Run equivalent command scripts against `.z3` and `.ulx`, normalize interpreter-only differences, and compare resulting milestones and required prose markers.
+Run equivalent command scripts against `.z3` and `.ulx`, normalize interpreter-only differences, and compare milestones and required markers.
 
-## Required first qualification routes
+## Qualification route backlog
 
-- opening house and cellar path;
+Already isolated on optimized Glulx:
+
+- recursive-container rejection;
+- extinguished-candle descriptions.
+
+Required during Release 121 layers:
+
+- opening assistance commands;
+- house and cellar path;
 - troll canonical confrontation and treasure bribe;
 - cyclops canonical routes and lullaby timing;
 - thief bargain and later state;
 - complete bell/candles/book ceremony;
 - dam high- and low-water states;
 - save and restore after expanded persistent changes;
-- recursive-container rejection;
-- extinguished-candle descriptions;
 - representative `SELF`, `VOICE`, `FIT`, nest, tree, and troll misconduct;
 - `FOLLY` discovered-only behavior;
-- full-score or broad canonical walkthrough when the focused suite is stable.
-
-## Naming
-
-Do not assign the Glulx artifact an official-looking Infocom release identity. Select a repository-local release number and serial only after the baseline is reproducible. Documentation must state plainly that it is an unofficial expanded edition derived from the MIT-licensed source.
+- broad canonical or full-score route after focused suites stabilize.
 
 ## Definition of migration success
 
-The migration is successful when:
+The full migration succeeds when:
 
 - all historical and Z-machine artifacts still build and verify;
-- the Glulx artifact builds from pinned, documented sources in CI;
-- the baseline and expanded parity suites pass;
+- every Glulx layer builds from pinned, documented sources;
+- Release 121 semantic parity suites pass;
 - save/restore and persistent expanded state are qualified;
 - the Glulx source no longer depends on version 3 object-slot tricks;
-- licensing and provenance records ship with the artifact;
+- licensing and provenance records ship with artifacts;
 - the game runs in at least one native and one browser-capable standard Glulx interpreter;
 - no custom runtime is required for ordinary play.
 
