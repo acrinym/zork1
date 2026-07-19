@@ -1,12 +1,12 @@
 # Expansion frontier
 
-Release 121 establishes the architecture and first broad implementation wave. The unchanged upstream Glulx baseline is now reproducible and qualified. The controlling next train is the conservative Release 120 port onto that baseline.
+Release 121 establishes the architecture and first broad implementation wave. The unchanged upstream and conservative Release 120 Glulx layers are now reproducible and qualified. The controlling next train is Release 121 action hooks and optional assistance.
 
-Gameplay-deepening trains remain valid, but must follow Release 120 and Release 121 Glulx parity rather than increasing the version 3 migration burden first.
+Gameplay-deepening trains remain valid, but must follow layered Release 121 Glulx parity rather than increasing the version 3 migration burden first.
 
 ## 0. Glulx upstream reconciliation train — complete
 
-The first Glulx train now provides:
+The first Glulx train provides:
 
 - exact reconciliation of Tara McGrew's `glulx` branch with current upstream;
 - a complete seven-file upstream diff;
@@ -15,46 +15,77 @@ The first Glulx train now provides:
 - deterministic normalization of ZILF's wall-clock Glulx serial metadata;
 - a fail-closed repository artifact;
 - inspection and native execution of `zork1-glulx.zip`;
-- native identity and opening smoke routes for both stories;
+- native identity and opening routes for both stories;
 - independent preservation of all historical and `.z3` project editions.
+
+## 0.1 Release 120 Glulx port — complete
+
+The conservative optimized layer now provides:
+
+- an exact staging boundary rooted at Tara's pinned tree;
+- fail-closed changes to only `1actions.zil`, `1dungeon.zil`, `gverbs.zil`, and `zork1.zil`;
+- recursive-containment protection;
+- printed-character portability corrections;
+- a Glulx-specific fully dynamic candle room description;
+- exact lowercase include paths;
+- unofficial Release `1201` / serial `260719` identity;
+- a locked 180,992-byte artifact with valid checksum and SHA-256;
+- native opening, recursive-containment, and extinguished-candle routes;
+- continued independent qualification of Historical 119, Optimized 120 `.z3`, and Expanded 121 `.z3`.
 
 Controlling qualification records:
 
 - [`../../glulx/README.md`](../../glulx/README.md)
 - [`../../glulx/QUALIFICATION.md`](../../glulx/QUALIFICATION.md)
+- [`../../glulx/optimized/README.md`](../../glulx/optimized/README.md)
 - [`GLULX_UPSTREAM_MIGRATION.md`](GLULX_UPSTREAM_MIGRATION.md)
 - [`GLULX_LICENSING.md`](GLULX_LICENSING.md)
 
-## 0.1 Release 120 Glulx port — controlling next train
+## 0.2 Release 121 Glulx action and assistance layer — controlling next train
 
-Create a new Glulx staging layer from the qualified unchanged baseline and port only the conservative optimized-edition corrections:
+Port only the foundation needed for optional player orientation:
 
-1. recursive-containment protection;
-2. candle object and description-routine corrections;
-3. unsafe printed-character replacements;
-4. case-sensitive include and portability auditing;
-5. deterministic repository-local identity and artifact verification.
+1. Release 121 action-hook architecture;
+2. `GOALS`;
+3. `EXITS`;
+4. tiered `HINT`;
+5. `RECAP`;
+6. contextual `WHY`;
+7. `USE <object>` affordance guidance.
 
 The train must:
 
-- preserve Tara's seven Glulx compatibility changes exactly;
-- apply each Release 120 change through an exact, fail-closed patch or override;
-- assign a clearly unofficial Glulx identity distinct from Tara's Release 1 baseline and the `.z3` Release 120 artifact;
-- retain the qualified unchanged baseline as a separately buildable artifact;
-- run native regression routes for recursive containment and extinguished candles;
-- prove the historical Release 119, optimized Release 120 `.z3`, and expanded Release 121 `.z3` gates still pass;
-- document the next Release 121 action-hook layer without implementing expanded gameplay in the same train.
+- stage from the qualified Release 1201 Glulx layer;
+- apply Release 121 hooks and assistance through exact, reviewable patches and overlays;
+- assign a new clearly unofficial Glulx identity;
+- retain both the unchanged baseline and Release 1201 as separately reproducible artifacts;
+- add semantic `.z3` versus `.ulx` routes for opening navigation and each assistance command;
+- compare rooms, exits, score, moves where stable, state changes, and required prose markers rather than whitespace-identical transcripts;
+- prove all historical and `.z3` gates still pass;
+- document the exact reactive-scenery layer without including it here.
 
-No assistance commands, reactive scenery, optional geography, NPC alternatives, or Adventurer Misconduct code enters this train.
+Do not port reactive scenery, songbird and Hidden Glade, troll/cyclops/thief alternatives, Adventurer Misconduct, `FOLLY`, or troll bemusement in this train.
 
-## 0.2 Release 121 Glulx action and assistance layer
+## 0.3 Release 121 reactive scenery and world-state layer
 
-After the conservative Release 120 port is qualified:
+After assistance parity:
 
-- port the action-hook architecture;
-- port `GOALS`, `EXITS`, `HINT`, `RECAP`, `WHY`, and `USE`;
-- add semantic `.z3` versus `.ulx` routes for opening navigation and assistance;
-- keep scenery, optional geography, alternate NPC solutions, and comedy reactions for later isolated layers.
+- port house, boards, doors, windows, mailbox, forest, dam, ritual, rope, mirror, water, and tool reactions;
+- preserve persistent expanded state;
+- add focused semantic parity routes after each group;
+- leave optional geography and NPC alternatives for later isolated layers.
+
+## 0.4 Optional geography and living-character layers
+
+Port in this order:
+
+1. songbird and Hidden Glade;
+2. troll bribe;
+3. cyclops lullaby;
+4. thief bargain;
+5. Adventurer Misconduct actions;
+6. `FOLLY` and troll bemusement;
+7. removal of version 3 object-slot workarounds from the Glulx edition.
 
 ## 1. Long-form verification train
 
