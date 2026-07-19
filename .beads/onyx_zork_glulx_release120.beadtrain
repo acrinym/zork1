@@ -1,0 +1,97 @@
+[train]
+name        = "onyx_zork_glulx_release120"
+title       = "Zork optimized Glulx Release 120 port"
+description = """
+Port only the conservative Release 120 corrections onto Tara McGrew's qualified
+unchanged Glulx baseline, assign a separate unofficial identity, and prove the
+result through fail-closed staging, artifact verification, and focused native
+recursive-container and extinguished-candle routes.
+"""
+created     = "2026-07-19"
+status      = "complete"
+
+[[cars]]
+id = "boundary"
+bead = "zork1-glulx120-001"
+title = "Lock the Release 120 staging boundary"
+parallel_start = true
+depends_on = []
+summary = "Stage Tara's exact commit and tree and reject every changed path outside the reviewed four-file set."
+
+[[cars]]
+id = "containment"
+bead = "zork1-glulx120-002"
+title = "Port recursive-containment protection"
+parallel_start = true
+depends_on = ["boundary"]
+summary = "Apply the exact Release 120 container-cycle guards without changing normal capacity or containment behavior."
+
+[[cars]]
+id = "characters"
+bead = "zork1-glulx120-003"
+title = "Port printed-character corrections"
+parallel_start = true
+depends_on = ["boundary"]
+summary = "Replace the two player-facing tab characters through the reviewed exact patch."
+
+[[cars]]
+id = "candles"
+bead = "zork1-glulx120-004"
+title = "Port dynamic candle descriptions"
+parallel_start = true
+depends_on = ["boundary"]
+summary = "Remove the static Glulx burning FDESC and use the state-aware callback as the sole room description."
+
+[[cars]]
+id = "identity"
+bead = "zork1-glulx120-005"
+title = "Assign unofficial optimized Glulx identity"
+parallel_start = false
+depends_on = ["containment", "characters", "candles"]
+summary = "Retain Tara's WORD-SIZE compatibility work, use exact lowercase includes, and assign Release 1201 / serial 260719."
+
+[[cars]]
+id = "audit"
+bead = "zork1-glulx120-006"
+title = "Audit the staged optimized source"
+parallel_start = false
+depends_on = ["identity"]
+summary = "Run structural and case-sensitive include auditing and preserve patch, overlay, and target hashes."
+
+[[cars]]
+id = "artifact"
+bead = "zork1-glulx120-007"
+title = "Build and lock the optimized ULX"
+parallel_start = false
+depends_on = ["audit"]
+summary = "Compile with pinned ZILF and Glazer and fail closed on Glulx header, checksum, size, and SHA-256."
+
+[[cars]]
+id = "containment-route"
+bead = "zork1-glulx120-008"
+title = "Prove recursive-containment rejection natively"
+parallel_start = false
+depends_on = ["artifact"]
+summary = "Run a real kitchen route that attempts to place a containing sack into the bottle already inside it."
+
+[[cars]]
+id = "candle-route"
+bead = "zork1-glulx120-009"
+title = "Prove extinguished-candle behavior natively"
+parallel_start = false
+depends_on = ["artifact"]
+summary = "Use an isolated test-only startup patch to prove extinguished candles never receive the static burning description."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx120-010"
+title = "Publish Release 120 qualification"
+parallel_start = false
+depends_on = ["containment-route", "candle-route"]
+summary = "Publish receipts, documentation, artifacts, preserved .z3 gates, and the exact Release 121 assistance frontier."
+
+[meta]
+one_liner = "Release 120's conservative corrections now have a locked, native, separately identified Glulx edition."
+prior_car = "onyx_zork_glulx_upstream"
+couples_with = []
+watch = ["glulx/optimized", "glulx/tools", ".github/workflows/glulx-release120.yml", "optimized/patches"]
