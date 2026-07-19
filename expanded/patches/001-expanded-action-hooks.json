@@ -1,0 +1,87 @@
+{
+  "id": "Z1-EXP-001",
+  "description": "Route selected original objects through additive expanded-edition action wrappers.",
+  "path": "1dungeon.zil",
+  "replacements": [
+    {
+      "old": "\t(ACTION BOARD-F)>",
+      "new": "\t(ACTION EXP-BOARD-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION SONGBIRD-F)>",
+      "new": "\t(ACTION EXP-SONGBIRD-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION WHITE-HOUSE-F)>",
+      "new": "\t(ACTION EXP-WHITE-HOUSE-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION KITCHEN-WINDOW-F)>",
+      "new": "\t(ACTION EXP-KITCHEN-WINDOW-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "<OBJECT FRONT-DOOR\n\t(IN WEST-OF-HOUSE)\n\t(SYNONYM DOOR)\n\t(ADJECTIVE FRONT BOARDED)\n\t(DESC \"door\")\n\t(FLAGS DOORBIT NDESCBIT)\n\t(ACTION FRONT-DOOR-FCN)>",
+      "new": "<OBJECT FRONT-DOOR\n\t(IN WEST-OF-HOUSE)\n\t(SYNONYM DOOR)\n\t(ADJECTIVE FRONT BOARDED)\n\t(DESC \"door\")\n\t(FLAGS DOORBIT NDESCBIT)\n\t(ACTION EXP-FRONT-DOOR-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION BOARDED-WINDOW-FCN)>",
+      "new": "\t(ACTION EXP-BOARDED-WINDOW-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION MAILBOX-F)>",
+      "new": "\t(ACTION EXP-MAILBOX-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION TROLL-FCN)",
+      "new": "\t(ACTION EXP-TROLL-F)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION CYCLOPS-FCN)",
+      "new": "\t(ACTION EXP-CYCLOPS-F)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION BLACK-BOOK)",
+      "new": "\t(ACTION EXP-BLACK-BOOK-F)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION BELL-F)>",
+      "new": "\t(ACTION EXP-BELL-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION CANDLES-FCN)",
+      "new": "\t(ACTION EXP-CANDLES-F)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION ROPE-FUNCTION)",
+      "new": "\t(ACTION EXP-ROPE-F)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION MIRROR-MIRROR)>",
+      "new": "\t(ACTION EXP-MIRROR-F)>",
+      "expected_count": 2
+    },
+    {
+      "old": "\t(ACTION DAM-FUNCTION)>",
+      "new": "\t(ACTION EXP-DAM-F)>",
+      "expected_count": 1
+    },
+    {
+      "old": "<OBJECT CONTROL-PANEL\n\t(IN DAM-ROOM)\n\t(SYNONYM PANEL)\n\t(ADJECTIVE CONTROL)\n\t(DESC \"control panel\")\n\t(FLAGS NDESCBIT)>",
+      "new": "<OBJECT CONTROL-PANEL\n\t(IN DAM-ROOM)\n\t(SYNONYM PANEL)\n\t(ADJECTIVE CONTROL)\n\t(DESC \"control panel\")\n\t(FLAGS NDESCBIT)\n\t(ACTION EXP-CONTROL-PANEL-F)>",
+      "expected_count": 1
+    }
+  ]
+}
