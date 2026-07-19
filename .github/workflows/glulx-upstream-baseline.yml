@@ -38,7 +38,7 @@ jobs:
           path: .upstream/zork1-glulx
           persist-credentials: false
 
-      - name: Check out pinned ZILF and Glazer source
+      - name: Check out pinned ZILF source
         uses: actions/checkout@v4
         with:
           repository: taradinoc/zilf
@@ -75,9 +75,9 @@ jobs:
       - name: Install native build prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential libncurses-dev
+          sudo apt-get install -y build-essential libncurses-dev curl unzip
 
-      - name: Validate provenance pins
+      - name: Validate immutable provenance pins
         run: |
           python - <<'PY'
           import json
@@ -90,20 +90,59 @@ jobs:
           assert p['source']['local_modifications'] == []
           PY
 
-      - name: Build pinned ZILF and Glazer
+      - name: Build pinned ZILF
         shell: bash
         run: |
           set -euxo pipefail
           mkdir -p glulx/build
           pushd .tooling/zilf
-          pwsh ./tools/setup-glazer.ps1
           dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/zilf-restore.log
           dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
             2>&1 | tee ../../glulx/build/zilf-build.log
           popd
           zilf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zilf.dll' -print -quit)"
           test -n "$zilf_dll"
+          tool_dir="$(dirname "$(realpath "$zilf_dll")")"
           echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+          echo "ZILF_TOOL_DIR=$tool_dir" >> "$GITHUB_ENV"
+
+      - name: Discover and build current Glazer release
+        shell: bash
+        run: |
+          set -euxo pipefail
+          release_json="glulx/build/glazer-release.json"
+          curl --fail --location --silent --show-error \
+            'https://gitlab.com/api/v4/projects/andwj%2Fglazer/releases/permalink/latest' \
+            --output "$release_json"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          release = json.loads(Path('glulx/build/glazer-release.json').read_text())
+          sources = release.get('assets', {}).get('sources', [])
+          source = next((item for item in sources if item.get('format') == 'tar.gz'), None)
+          if source is None:
+              raise SystemExit('latest Glazer release has no tar.gz source asset')
+          resolved = {
+              'tag_name': release['tag_name'],
+              'commit': release.get('commit', {}).get('id'),
+              'released_at': release.get('released_at'),
+              'source_url': source['url'],
+          }
+          Path('glulx/build/glazer-resolved.json').write_text(json.dumps(resolved, indent=2) + '\n')
+          Path('glulx/build/glazer-source-url.txt').write_text(source['url'] + '\n')
+          PY
+          source_url="$(cat glulx/build/glazer-source-url.txt)"
+          curl --fail --location --silent --show-error "$source_url" \
+            --output glulx/build/glazer-source.tar.gz
+          sha256sum glulx/build/glazer-source.tar.gz | tee glulx/build/glazer-source.sha256
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          install -m 0755 "$glazer_binary" "$ZILF_TOOL_DIR/glazer"
+          test -x "$ZILF_TOOL_DIR/glazer"
+          "$ZILF_TOOL_DIR/glazer" --version 2>&1 | tee glulx/build/glazer-version.txt || true
 
       - name: Build unchanged upstream Glulx story
         shell: bash
@@ -115,7 +154,7 @@ jobs:
           popd
           test -s glulx/build/zork1-glulx-upstream.ulx
 
-      - name: Verify Glulx artifact
+      - name: Verify Glulx artifact and write discovery receipt
         run: |
           python glulx/tools/verify_ulx.py glulx/build/zork1-glulx-upstream.ulx \
             --json glulx/build/glulx-story-report.json
@@ -123,10 +162,13 @@ jobs:
           import hashlib, json
           from pathlib import Path
           manifest = json.loads(Path('glulx/provenance.json').read_text())
+          glazer = json.loads(Path('glulx/build/glazer-resolved.json').read_text())
+          glazer['source_sha256'] = hashlib.sha256(Path('glulx/build/glazer-source.tar.gz').read_bytes()).hexdigest()
           receipt = {
+              'qualification_status': 'discovery build; commit resolved Glazer pin before declaring baseline qualified',
               'source_commit': manifest['source']['commit'],
               'zilf_commit': manifest['toolchain']['zilf']['commit'],
-              'glazer_commit': manifest['toolchain']['glazer']['commit'],
+              'glazer': glazer,
               'glulxe_commit': manifest['toolchain']['glulxe']['commit'],
               'cheapglk_commit': manifest['toolchain']['glk']['commit'],
               'source_modified': False,
@@ -155,7 +197,7 @@ jobs:
           grep -F "West of House" glulx/build/smoke-transcript.txt
           grep -F "mailbox" glulx/build/smoke-transcript.txt
 
-      - name: Upload unchanged upstream baseline
+      - name: Upload unchanged upstream discovery baseline
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -168,6 +210,11 @@ jobs:
             glulx/build/zork1-glulx-build.log
             glulx/build/zilf-restore.log
             glulx/build/zilf-build.log
+            glulx/build/glazer-release.json
+            glulx/build/glazer-resolved.json
+            glulx/build/glazer-source.sha256
+            glulx/build/glazer-build.log
+            glulx/build/glazer-version.txt
             glulx/build/cheapglk-build.log
             glulx/build/glulxe-build.log
             glulx/provenance.json
