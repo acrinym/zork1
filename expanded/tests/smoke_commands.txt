@@ -9,6 +9,8 @@ marry house
 headbutt house
 folly
 knock on house
+knock on house
+knock on house
 open mailbox
 take leaflet
 look in mailbox
