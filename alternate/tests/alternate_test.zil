@@ -1,7 +1,10 @@
-"Test-only setup verbs for Release 122 nest-fire qualification."
+"Test-only setup verbs for Release 122 qualification."
 
 <SYNTAX ALTSAFE = V-ALT-SAFE>
 <SYNTAX ALTBREAK = V-ALT-BREAK>
+<SYNTAX ALTCANON = V-ALT-CANON>
+<SYNTAX ALTTROLL = V-ALT-TROLL-SETUP>
+<SYNTAX ALTSTATUS = V-ALT-STATUS>
 
 <ROUTINE ALT-TEST-NEST-BASE ()
 	<MOVE ,TORCH ,WINNER>
@@ -22,3 +25,34 @@
 	<ALT-TEST-NEST-BASE>
 	<MOVE ,SANDWICH-BAG ,KITCHEN-TABLE>
 	<TELL "[Test-only unprepared-fall scenario.]" CR>>
+
+<ROUTINE V-ALT-CANON ()
+	<MOVE ,NEST ,PATH>
+	<MOVE ,EGG ,NEST>
+	<MOVE ,CANARY ,EGG>
+	<MOVE ,CANDLES ,WINNER>
+	<FSET ,CANDLES ,ONBIT>
+	<FSET ,CANDLES ,FLAMEBIT>
+	<GOTO ,PATH>
+	<TELL "[Test-only canonical nest-burning scenario.]" CR>>
+
+<ROUTINE V-ALT-TROLL-SETUP ()
+	<MOVE ,ROPE ,WINNER>
+	<MOVE ,LAMP ,WINNER>
+	<FSET ,LAMP ,ONBIT>
+	<FSET ,LAMP ,LIGHTBIT>
+	<FSET ,TROLL ,FIGHTBIT>
+	<SETG ALT-TROLL-DISTRACTED <>>
+	<SETG ALT-TROLL-TRICK-USED <>>
+	<SETG ALT-TROLL-BOUND <>>
+	<SETG TROLL-FLAG <>>
+	<GOTO ,TROLL-ROOM>
+	<TELL "[Test-only troll recovery scenario.]" CR>>
+
+<ROUTINE V-ALT-STATUS ()
+	<COND (<AND <FSET? ,TROLL ,FIGHTBIT>
+	            <NOT ,ALT-TROLL-DISTRACTED>
+	            <NOT ,ALT-TROLL-BOUND>>
+	       <TELL "[Test-only troll hostility restored.]" CR>)
+	      (T
+	       <TELL "[Test-only troll hostility NOT restored.]" CR>)>>
