@@ -1,7 +1,0 @@
-alttroll
-trick troll
-south
-wait
-altstatus
-quit
-y
