@@ -11,6 +11,7 @@ alttroll
 trick troll
 south
 wait
+look
 altstatus
 quit
 y
