@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only Shadow Logic setup verbs into a separately compiled qualification story",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"shadow_logic\" T>",
+      "new": "<INSERT-FILE \"shadow_logic\" T>\n<INSERT-FILE \"shadow_test\" T>"
+    }
+  ]
+}
