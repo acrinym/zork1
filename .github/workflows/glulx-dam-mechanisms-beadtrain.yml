@@ -7,13 +7,13 @@ on:
     paths:
       - ".beads/onyx_zork_glulx_dam_mechanisms.beadtrain"
       - ".beads/issues*.jsonl"
-      - "glulx/tools/validate_sharded_beadtrain.py"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
       - ".github/workflows/glulx-dam-mechanisms-beadtrain.yml"
   pull_request:
     paths:
       - ".beads/onyx_zork_glulx_dam_mechanisms.beadtrain"
       - ".beads/issues*.jsonl"
-      - "glulx/tools/validate_sharded_beadtrain.py"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
       - ".github/workflows/glulx-dam-mechanisms-beadtrain.yml"
 
 permissions:
@@ -35,5 +35,5 @@ jobs:
 
       - name: Validate sharded Release 1215 train
         run: |
-          python glulx/tools/validate_sharded_beadtrain.py \
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
             .beads/onyx_zork_glulx_dam_mechanisms.beadtrain
