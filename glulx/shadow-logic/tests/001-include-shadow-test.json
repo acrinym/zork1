@@ -1,12 +1,12 @@
 {
-  "id": "Z1-GLULX-1213-TEST-INCLUDE",
-  "path": "zork1.zil",
-  "description": "Load test-only Shadow Logic setup verbs into a separately compiled qualification story",
+  "id": "Z1-GLULX-1213-TEST-STARTUP",
+  "path": "1dungeon.zil",
+  "description": "Test-only startup at West of House with the real Shadow Logic laboratory objects visible for explicit player pickup",
   "replacements": [
     {
       "expected_count": 1,
-      "old": "<INSERT-FILE \"shadow_logic\" T>",
-      "new": "<INSERT-FILE \"shadow_logic\" T>\n<INSERT-FILE \"shadow_test\" T>"
+      "old": "\t<SETG HERE ,WEST-OF-HOUSE>\n\t<THIS-IS-IT ,MAILBOX>",
+      "new": "\t<SETG HERE ,WEST-OF-HOUSE>\n\t<MOVE ,TORCH ,WEST-OF-HOUSE>\n\t<MOVE ,BOTTLE ,WEST-OF-HOUSE>\n\t<FSET ,BOTTLE ,OPENBIT>\n\t<MOVE ,SWORD ,WEST-OF-HOUSE>\n\t<MOVE ,ROPE ,WEST-OF-HOUSE>\n\t<MOVE ,GARLIC ,WEST-OF-HOUSE>\n\t<MOVE ,OWNERS-MANUAL ,WEST-OF-HOUSE>\n\t<MOVE ,MIRROR-1 ,WEST-OF-HOUSE>\n\t<THIS-IS-IT ,TORCH>"
     }
   ]
 }
