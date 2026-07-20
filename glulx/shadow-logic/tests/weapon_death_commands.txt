@@ -1,4 +1,4 @@
-shadowlab
+shlab
 use sword on self
 quit
 y
