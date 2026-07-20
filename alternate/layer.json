@@ -12,6 +12,13 @@
     "gsyntax.zil",
     "zork1.zil"
   ],
+  "expected_artifact": {
+    "file": "zork1-absurd-alternates.z3",
+    "zmachine_version": 3,
+    "size_bytes": 107880,
+    "checksum_hex": "0xf13d",
+    "sha256": "98320cd2c11a963b3f23c9a36782f31887279798c26958942ef48ba6ff939a28"
+  },
   "excluded_scope": [
     "Wizard of Frobozz",
     "new rooms",
