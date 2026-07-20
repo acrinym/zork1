@@ -140,7 +140,7 @@
 	       <GLULX-ALT-TRICK-TROLL>)
 	      (<AND <NOT .MODE> <VERB? TIE-UP>>
 	       <GLULX-ALT-BIND-TROLL>)
-	      (T <TROLL-F .MODE>)>>
+	      (T <TROLL-FCN .MODE>)>>
 
 <ROUTINE GLULX-ALT-PREPARE-SACK ()
 	<COND (<NOT <IN? ,SANDWICH-BAG ,WINNER>>
@@ -211,4 +211,4 @@
 	            <EQUAL? ,HERE ,UP-A-TREE>
 	            <IN? ,NEST ,UP-A-TREE>>
 	       <GLULX-ALT-BURN-NEST>)
-	      (T <NEST-F .MODE>)>>
+	      (T <RFALSE>)>>
