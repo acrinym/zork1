@@ -46,4 +46,5 @@
 	<SETG ALT-TROLL-BOUND <>>
 	<SETG TROLL-FLAG <>>
 	<GOTO ,TROLL-ROOM>
+	<SETG CLOCK-WAIT T>
 	<TELL "[Test-only troll recovery scenario.]" CR>>
