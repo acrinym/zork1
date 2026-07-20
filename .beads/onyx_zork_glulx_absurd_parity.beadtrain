@@ -7,7 +7,7 @@ Release 122 troll-restraint and prepared nest-fire outcomes with real objects,
 canonical consequences, persistent state, and cross-VM semantic qualification.
 """
 created     = "2026-07-20"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "base"
