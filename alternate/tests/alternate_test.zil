@@ -5,6 +5,7 @@
 <SYNTAX ALTBREAK = V-ALT-BREAK>
 <SYNTAX ALTCANON = V-ALT-CANON>
 <SYNTAX ALTTROLL = V-ALT-TROLL-SETUP>
+<SYNTAX ALTCHECK = V-ALT-CHECK-RECOVERY>
 <SYNTAX ALTUNARM = V-ALT-UNARMED-TROLL-SETUP>
 
 <ROUTINE ALT-TEST-NEST-BASE ()
@@ -61,6 +62,16 @@
 	<GOTO ,TROLL-ROOM>
 	<SETG CLOCK-WAIT T>
 	<TELL "[Test-only troll recovery scenario.]" CR>>
+
+<ROUTINE V-ALT-CHECK-RECOVERY ()
+	<COND (<OR ,ALT-TROLL-DISTRACTED
+	           <NOT <FSET? ,TROLL ,FIGHTBIT>>>
+	       <TELL "[Test-only failure: troll hostility was not restored after the abandoned opportunity.]" CR>)
+	      (T
+	       <TELL "[Test-only confirmed troll hostility restored after the abandoned opportunity.]" CR>
+	       <FCLEAR ,TROLL ,FIGHTBIT>
+	       <GOTO ,TROLL-ROOM>
+	       <SETG CLOCK-WAIT T>)>>
 
 <ROUTINE V-ALT-UNARMED-TROLL-SETUP ()
 	<MOVE ,ROPE ,WINNER>
