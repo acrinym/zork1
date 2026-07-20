@@ -1,0 +1,58 @@
+{
+  "edition": "Unofficial Absurd Alternate Glulx",
+  "release": 1214,
+  "serial": "260720",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../shadow-logic/patch-series.json",
+  "base_release": 1213,
+  "base_artifact_sha256": "3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain qualified Shadow Logic, assign Release 1214, and load the isolated absurd-alternate parity module"
+    },
+    {
+      "path": "absurd_alternates.zil",
+      "source": "overrides/absurd_alternates.zil",
+      "allow_new": true,
+      "description": "Port earned troll-restraint and prepared nest-fire outcomes semantically to Glulx"
+    }
+  ],
+  "patches": [
+    "patches/001-alternate-object-hooks.json",
+    "patches/002-alternate-recap.json",
+    "patches/003-rope-restraint-grammar.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "absurd_alternates.zil",
+    "assistance.zil",
+    "gsyntax.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-absurd-alternates.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 0,
+    "checksum_hex": "DISCOVERY",
+    "sha256": "DISCOVERY"
+  },
+  "semantic_reference": {
+    "edition": "Absurd Alternate Zork I",
+    "release": 122,
+    "artifact_sha256": "58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db"
+  },
+  "excluded_scope": [
+    "Hidden Glade",
+    "songbird-follow geography",
+    "troll bribe",
+    "cyclops lullaby",
+    "thief bargain",
+    "full Adventurer Misconduct surface",
+    "broad room fire propagation",
+    "generalized spell system",
+    "Wizard of Frobozz"
+  ]
+}
