@@ -29,7 +29,7 @@
       "path": "shadow_logic.zil",
       "source": "overrides/shadow_logic.zil",
       "allow_new": true,
-      "description": "Add self-targeted use, material responses, light ecology, spoken maintenance knowledge, threat escalation, and mortal-folly tracking"
+      "description": "Add player-directed use, material responses, light ecology, spoken maintenance knowledge, state escalation, and folly tracking"
     }
   ],
   "patches": [
@@ -57,5 +57,12 @@
     "reactive_surface.zil",
     "shadow_logic.zil",
     "zork1.zil"
-  ]
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-shadow-logic.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 197376,
+    "checksum_hex": "0xeb7138e8",
+    "sha256": "af71704cf8c0aca091a4fb26a5f18dd31f94181fffb801578a2f1d63ae79232f"
+  }
 }
