@@ -1,0 +1,12 @@
+{
+  "id": "Z1-ALT-TEST-001",
+  "description": "Load nest scenario setup verbs only in separately compiled qualification stories",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "<INSERT-FILE \"absurd_alternates\" T>",
+      "new": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"alternate_test\" T>",
+      "expected_count": 1
+    }
+  ]
+}
