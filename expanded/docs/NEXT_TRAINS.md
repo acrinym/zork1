@@ -1,6 +1,6 @@
 # Expansion frontier
 
-Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified **earned absurd alternate solutions** while preserving Release 121 as an independent edition. The Glulx lineage is qualified through Shadow Logic Release `1213`, and PR #6 implements isolated Release `1214` semantic parity for the Release 122 outcomes.
+Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified **earned absurd alternate solutions** while preserving Release 121 as an independent edition. The Glulx lineage is now qualified through isolated Absurd Alternate Release `1214` semantic parity for the Release 122 outcomes.
 
 Two distinct frontiers must remain separate:
 
@@ -27,9 +27,9 @@ Qualified Release `1212` includes proximity-safe house and door reactions, board
 
 Qualified Release `1213` adds native object-on-object experimentation, direct player targeting, recoverable rope restraint, telegraphed personal fire, physically validated bottled-water rescue, material responses, qualitative light reporting, learned `MELZAR`, mirror shadow diagnostics, mortal-folly reports, and persistent recap state.
 
-## 0.5 Release 122 absurd-alternate Glulx parity — active in PR #6
+## 0.5 Release 122 absurd-alternate Glulx parity — complete
 
-Release `1214` is an isolated layer above the exact qualified Release `1213` source and artifact hash. It ports only:
+Qualified Release `1214` is an isolated layer above the exact qualified Release `1213` source and artifact hash. It ports only:
 
 1. alert troll restraint failure;
 2. one-use timed troll distraction;
@@ -47,7 +47,15 @@ Release `1214` is an isolated layer above the exact qualified Release `1213` sou
 14. canonical non-torch burning;
 15. persistent recap state.
 
-The qualification pipeline rebuilds the locked Release `122` `.z3` reference and Release `1214` `.ulx`, runs native interpreters, and compares semantic outcomes. Byte identity and identical transcript wrapping are not required.
+The qualification pipeline rebuilds the locked Release `122` `.z3` reference and locked Release `1214` `.ulx`, runs native interpreters, and compares semantic outcomes. Every shared category passed. Byte identity and identical transcript wrapping are not required.
+
+### Qualified artifact
+
+- Release `1214` / serial `260720`;
+- Glulx version `3.1.3` / `0x00030103`;
+- 202,240 bytes;
+- checksum `0x53f5066d`;
+- SHA-256 `10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628`.
 
 This layer explicitly excludes Hidden Glade, songbird-follow geography, troll bribe, cyclops lullaby, thief bargain, the full Adventurer Misconduct surface, broad fire propagation, generalized spells, Version 3 object-slot cleanup, and the Wizard of Frobozz.
 
@@ -78,7 +86,7 @@ After mechanism work, port separately and deliberately:
 6. `FOLLY` and troll bemusement;
 7. Version 3 object-slot cleanup where Glulx no longer needs the workaround.
 
-Release 122 parity is no longer part of this backlog because it has its own isolated Release `1214` train.
+Release 122 parity is no longer part of this backlog because it has its own qualified Release `1214` layer.
 
 ## 1. Absurd Alternate Zork I Release 122 — complete
 
@@ -113,7 +121,7 @@ Controlling record: [`../../alternate/README.md`](../../alternate/README.md).
 
 The Wizard of Frobozz remains Zork II scope.
 
-## 1.1 Further earned alternate solutions — after current parity and mechanism priorities
+## 1.1 Further earned alternate solutions — after mechanism priorities
 
 Candidate actions must satisfy all of these:
 
