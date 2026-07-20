@@ -5,3 +5,10 @@ There is a somewhat ruined egg here.
 What you currently remember:
 shortest and most
 destructive route.
+[Test-only canonical nest-burning scenario.]
+The bird's nest catches fire and is consumed.
+[Test-only troll recovery scenario.]
+You gasp and point behind the troll.
+Cellar
+Time passes...
+[Test-only troll hostility restored.]
