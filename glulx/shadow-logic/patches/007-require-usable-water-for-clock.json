@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-USABLE-WATER-CLOCK",
+  "path": "shadow_logic.zil",
+  "description": "Allow a player-directed extinguishing action to pause threat escalation only when the carried bottle is open and actually contains water",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<AND <VERB? SHADOW-USE-ON>\n\t            <EQUAL? ,PRSI ,ME>\n\t            <EQUAL? ,PRSO ,WATER ,BOTTLE>>",
+      "new": "\t<COND (<AND <VERB? SHADOW-USE-ON>\n\t            <EQUAL? ,PRSI ,ME>\n\t            <EQUAL? ,PRSO ,WATER ,BOTTLE>\n\t            <SHADOW-HAS-BOTTLED-WATER?>>"
+    }
+  ]
+}
