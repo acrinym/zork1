@@ -130,4 +130,4 @@ if __name__ == "__main__":
         raise SystemExit(main())
     except RuntimeError as exc:
         print(f"stage_alternates: {exc}", file=sys.stderr)
-        raise SystemExit(2)
+        raise SystemExit(2) from exc
