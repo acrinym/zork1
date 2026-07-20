@@ -46,7 +46,8 @@
     "patches/003-melzar-manual.json",
     "patches/004-material-rub-action.json",
     "patches/005-review-hardening.json",
-    "patches/006-say-melzar.json"
+    "patches/006-say-melzar.json",
+    "patches/007-melzar-word-object.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
