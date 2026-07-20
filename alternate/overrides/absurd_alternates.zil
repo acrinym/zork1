@@ -66,6 +66,11 @@
 	       <TELL "You approach the alert, armed troll with the rope arranged confidently. He inserts the axe into the negotiation, and you retreat with the original number of limbs." CR>)
 	      (T
 	       <DISABLE <INT I-ALT-TROLL-RECOVER>>
+	       <COND (,ALT-TROLL-DISTRACTED
+	              <TELL "While the troll is still examining the nonexistent emergency behind him, you loop the rope ">)
+	             (T
+	              <TELL "You seize the troll's present disadvantage and loop the rope ">)>
+	       <TELL "around his arms, knees, and several opinions about personal dignity.">
 	       <SETG ALT-TROLL-DISTRACTED <>>
 	       <SETG ALT-TROLL-BOUND T>
 	       <SETG TROLL-FLAG T>
@@ -73,13 +78,14 @@
 	       <COND (<IN? ,AXE ,TROLL>
 	              <MOVE ,AXE ,HERE>
 	              <FCLEAR ,AXE ,NDESCBIT>
-	              <FSET ,AXE ,WEAPONBIT>)>
+	              <FSET ,AXE ,WEAPONBIT>
+	              <TELL " His axe clatters to the floor.">)>
 	       <MOVE ,ROPE ,TROLL>
 	       <FSET ,ROPE ,NDESCBIT>
 	       <PUTP ,TROLL ,P?LDESC
 "A nasty-looking troll is tied securely with the rope and wedged resentfully against the wall. All passages are open.">
 	       <SETG CLOCK-WAIT T>
-	       <TELL "While the troll is still examining the nonexistent emergency behind him, you loop the rope around his arms, knees, and several opinions about personal dignity. His axe clatters to the floor. The bound troll remains alive, furious, and no longer able to block the passages." CR>)>
+	       <TELL " The bound troll remains alive, furious, and no longer able to block the passages." CR>)>
 	<RTRUE>>
 
 <ROUTINE ALT-UNTIE-TROLL ()
@@ -105,6 +111,8 @@
 	              <ALT-UNTIE-TROLL>)
 	             (<VERB? TIE-UP>
 	              <ALT-BIND-TROLL>)
+	             (<VERB? ALT-TRICK>
+	              <ALT-TRICK-TROLL>)
 	             (<VERB? LISTEN>
 	              <TELL "The troll is explaining the knots in a language containing very few vowels and many legal threats." CR>)
 	             (<VERB? HELLO>
@@ -150,13 +158,19 @@
 	      (T
 	       <SETG ALT-NEST-BURNED T>
 	       <COND (<IN? ,EGG ,NEST>
-	              <COND (<IN? ,SANDWICH-BAG ,PATH>
+	              <COND (<AND ,ALT-SACK-PREPARED
+	                           <IN? ,SANDWICH-BAG ,PATH>>
 	                     <SETG ALT-EGG-CAUGHT T>
 	                     <MOVE ,EGG ,SANDWICH-BAG>
 	                     <ROB ,NEST ,PATH>
 	                     <REMOVE-CAREFULLY ,NEST>
 	                     <THIS-IS-IT ,EGG>
-	                     <TELL "The nest flashes into flame with alarming enthusiasm. The jewel-encrusted egg drops through the smoke and lands in the prepared brown sack. The sack folds around it, while the hot-pepper sandwich contributes the first useful cushioning of its career." CR>)
+	                     <TELL "The nest flashes into flame with alarming enthusiasm. The jewel-encrusted egg drops through the smoke and lands in the prepared brown sack. The sack folds around it">
+	                     <COND (<IN? ,LUNCH ,SANDWICH-BAG>
+	                            <TELL ", while the hot-pepper sandwich contributes the first useful cushioning of its career">)
+	                           (T
+	                            <TELL ", relying entirely on canvas, luck, and questionable preparation">)>
+	                     <TELL "." CR>)
 	                    (T
 	                     <SETG ALT-EGG-CAUGHT <>>
 	                     <MOVE ,EGG ,PATH>
