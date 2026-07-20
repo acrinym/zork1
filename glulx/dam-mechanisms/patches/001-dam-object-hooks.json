@@ -1,7 +1,7 @@
 {
   "id": "Z1-GLULX-1215-DAM-OBJECT-HOOKS",
   "path": "1dungeon.zil",
-  "description": "Route the canonical bolt, bubble, maintenance buttons, and control panel through additive dam-mechanism wrappers",
+  "description": "Route the canonical bolt, bubble, maintenance buttons, control panel, and putty intent through additive dam-mechanism behavior",
   "replacements": [
     {
       "expected_count": 1,
@@ -22,6 +22,11 @@
       "expected_count": 1,
       "old": "<OBJECT CONTROL-PANEL\n\t(IN DAM-ROOM)\n\t(SYNONYM PANEL)\n\t(ADJECTIVE CONTROL)\n\t(DESC \"control panel\")\n\t(FLAGS NDESCBIT)>",
       "new": "<OBJECT CONTROL-PANEL\n\t(IN DAM-ROOM)\n\t(SYNONYM PANEL)\n\t(ADJECTIVE CONTROL)\n\t(DESC \"control panel\")\n\t(FLAGS NDESCBIT)\n\t(ACTION DAM-MECH-PANEL-F)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t(SYNONYM MATERIAL GUNK)",
+      "new": "\t(SYNONYM MATERIAL GUNK PUTTY)"
     }
   ]
 }
