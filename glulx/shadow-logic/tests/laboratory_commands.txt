@@ -8,7 +8,7 @@ read manual
 words
 say melzar
 touch sword
-knock sword
+knock on sword
 touch bottle
 use torch on mirror
 lights
