@@ -13,6 +13,7 @@ south
 south
 north
 look
+look
 altcheck
 tie up troll with rope
 altunarm
