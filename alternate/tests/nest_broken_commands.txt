@@ -11,8 +11,7 @@ alttroll
 trick troll
 south
 south
-north
-north
+altcheck
 tie up troll with rope
 altunarm
 tie up troll with rope
