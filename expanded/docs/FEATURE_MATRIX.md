@@ -12,8 +12,9 @@
 | Unofficial Optimized Glulx | `.ulx` | Release 1201 / `260719` | Qualified conservative corrections and native regressions |
 | Unofficial Assisted Glulx | `.ulx` | Release 1211 / `260719` | Qualified action hooks and assistance parity |
 | Unofficial Reactive Surface Glulx | `.ulx` | Release 1212 / `260719` | Qualified proximity-safe white-house surface reactions |
-| Deeper Reactive Glulx | `.ulx` | not assigned | Dam, ritual, and object feedback remains the next Glulx layer |
-| Absurd Alternate Glulx | `.ulx` | not assigned | Release 122 parity remains a later isolated layer |
+| Unofficial Shadow Logic Glulx | `.ulx` | Release 1213 / `260720` | Qualified native experimentation, player consequences, diagnostics, and folly ledger |
+| Unofficial Absurd Alternate Glulx | `.ulx` | Release 1214 / `260720` | Release 122 semantic parity implemented; exact artifact qualification active in PR #6 |
+| Deeper Shadow Logic Glulx | `.ulx` | not assigned | Dam, ritual, and controlled mechanism interactions remain a separate future layer |
 
 ## Release 121 interaction foundation
 
@@ -75,7 +76,27 @@ Adds and proves:
 - ordinary forest, tree, and songbird reactions;
 - canonical `FOLLOW SONGBIRD` refusal and Hidden Glade exclusion.
 
-Release 1212 does not yet include optional geography, deeper mechanisms, alternate NPC solutions, Adventurer Misconduct, or Release 122's earned alternates.
+### Release 1213
+
+Adds and proves native `USE <object> ON/WITH <object>`, direct `ME` targeting, recoverable self-restraint, telegraphed clothing fire, physically validated bottled-water rescue, material responses, qualitative `LIGHTS`, learned `MELZAR`, mirror shadow diagnostics, mortal-folly reporting, and persistent Shadow Logic recap state.
+
+### Release 1214
+
+Ports only the earned Release 122 outcomes above qualified Release 1213:
+
+- alert troll restraint failure;
+- one-use timed troll distraction;
+- real-rope living restraint and conditional real axe drop;
+- east/west passage opening;
+- `UNTIE TROLL` threat restoration;
+- bound-troll reactions;
+- deliberate real-sack preparation;
+- intact prepared egg catch with sandwich-aware and empty-sack narration;
+- unprepared canonical `BAD-EGG`;
+- canonical non-torch burning;
+- persistent parity state.
+
+Release 1214 rebuilds Release 122 and compares named semantic outcomes across `dfrotz` and pinned native Glulxe. It does not require byte parity or identical transcript wrapping.
 
 ## Validation coverage
 
@@ -84,19 +105,20 @@ Release 1212 does not yet include optional geography, deeper mechanisms, alterna
 | Historical source identity | Git-blob manifest verification before staging |
 | Release 121 | Exact staging, pinned ZILF/ZAPF build, story verification, and deterministic Frotz routes |
 | Release 122 staging | Complete Release 121 stage followed by an exact five-path changed-set gate |
-| Release 122 artifact | Fail-closed 107,880-byte `.z3`, checksum `0xf13d`, and SHA-256 `98320cd2c11a963b3f23c9a36782f31887279798c26958942ef48ba6ff939a28` |
-| Troll alternate | Real-map rope acquisition, alert failure, trick, restraint, axe drop, passage travel, description, and recap |
-| Prepared nest alternate | Test-only setup story exercises production mechanics and proves intact accessible egg and corrected prose |
+| Release 122 artifact | Fail-closed 107,992-byte `.z3`, checksum `0x3ab5`, and SHA-256 `58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db` |
+| Troll alternate | Real-map rope acquisition, alert failure, trick, restraint, conditional axe drop, passage travel, description, untie restoration, and recap |
+| Prepared nest alternate | Test-only setup story exercises production mechanics and proves intact accessible egg, both cushioning narrations, and corrected prose |
 | Destructive nest alternate | Canonical `BAD-EGG` produces the existing ruined egg and broken canary |
-| Preservation fallbacks | Canonical non-torch nest burning and restored troll hostility after leaving and returning |
+| Preservation fallbacks | Canonical non-torch nest burning, no phantom axe drop, and restored troll hostility after leaving or untying |
 | Production/test isolation | Production source and artifact contain no qualification setup verbs or setup module |
-| Glulx lineage | Separate pinned artifact and semantic-route gates for Releases 1, 1201, 1211, and 1212 |
-| Beadtrain integrity | Completed trains validate against canonical and sharded issue ledgers |
+| Glulx lineage | Separate pinned artifact and semantic-route gates through Release 1213, with Release 1214 exact-head qualification in PR #6 |
+| Cross-VM parity | Rebuild both artifacts, run their native interpreters, and compare shared outcome categories |
+| Beadtrain integrity | Completed and active trains validate against canonical and sharded issue ledgers |
 
 ## Still requiring dedicated work
 
-- Release 122 Glulx parity;
 - deeper Glulx dam, ritual, rope, mirror, water, and tool reactions;
 - dedicated cyclops-lullaby and thief-bargain long routes;
-- save/restore after expanded persistent-state changes;
-- additional earned alternate solutions that use real objects, preparation, risk, and canonical consequences.
+- save/restore after expanded and parity persistent-state changes;
+- additional earned alternate solutions that use real objects, preparation, risk, and canonical consequences;
+- optional geography and broader character-layer Glulx ports kept separate from Release 1214.
