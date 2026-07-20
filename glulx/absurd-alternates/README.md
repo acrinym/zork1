@@ -10,12 +10,16 @@ It builds above the exact qualified Shadow Logic Release `1213` source and artif
 - release: `1214`
 - serial: `260720`
 - artifact: `zork1-glulx-absurd-alternates.ulx`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `202,240` bytes
+- checksum: `0x53f5066d`, valid
+- SHA-256: `10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628`
 - base: qualified Unofficial Shadow Logic Glulx Release `1213`
 - semantic reference: qualified Absurd Alternate Zork I Release `122`
 
 Release `1214` is a repository-local migration identity, not an official Infocom release.
 
-The exact deterministic artifact size, checksum, and SHA-256 are measured by the first complete qualification run and then committed as a fail-closed lock in this same train.
+The artifact identity was measured by the complete dual-VM qualification run, independently matched against the actual `.ulx`, committed to the manifest, and enforced fail-closed in CI.
 
 ## Player-facing outcomes
 
@@ -87,9 +91,9 @@ The new module is reviewed source. Setup verbs live only in the separate qualifi
 
 ## Cross-VM semantic qualification
 
-The workflow rebuilds the locked Release `122` `.z3` reference and the Release `1214` `.ulx` candidate in one run with their separately pinned toolchains.
+The workflow rebuilds the locked Release `122` `.z3` reference and the locked Release `1214` `.ulx` in one run with their separately pinned toolchains.
 
-The shared contract proves outcomes rather than byte identity or identical line wrapping:
+The shared contract passed on both virtual machines and proves outcomes rather than byte identity or identical line wrapping:
 
 - alert troll restraint failure;
 - one-use timed distraction;
