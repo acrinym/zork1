@@ -1,0 +1,21 @@
+shadowlab
+read manual
+words
+say melzar
+touch sword
+knock sword
+touch bottle
+use torch on mirror
+lights
+use rope on self
+west
+untie self
+use garlic on self
+examine self
+use torch on self
+look
+use bottle on self
+follies
+recap
+quit
+y
