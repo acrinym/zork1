@@ -18,8 +18,8 @@ Release `1213` is a repository-local migration identity, not an official Infocom
 
 - Glulx version: `3.1.3` / `0x00030103`
 - size: `197,376` bytes
-- checksum: `0xeb7138e8`, valid
-- SHA-256: `af71704cf8c0aca091a4fb26a5f18dd31f94181fffb801578a2f1d63ae79232f`
+- checksum: `0x2b0521e4`, valid
+- SHA-256: `3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e`
 
 The workflow fails closed if the pinned upstream tree, qualified Release `1212` base, reviewed source boundary, toolchain, story size, checksum, or SHA-256 changes unexpectedly.
 
@@ -54,7 +54,7 @@ The clothing-fire route is not an unannounced parser joke:
 3. available bottled water extinguishes the state and is consumed;
 4. continued inaction reaches the terminal outcome.
 
-Informational commands such as `LIGHTS`, `WORDS`, and `FOLLIES` do not secretly advance the threat clock.
+Informational commands such as `LIGHTS`, `WORDS`, and `FOLLIES` do not secretly advance the threat clock. A failed extinguishing attempt with an empty, closed, or unavailable bottle also does not freeze the clock: only genuinely usable bottled water suppresses escalation while the extinguishing action is processed.
 
 ### Material responses
 
@@ -117,7 +117,7 @@ The pinned native Glulxe/CheapGlk pipeline proves:
 4. a separate held-weapon consequence route;
 5. absence of every test-only startup mutation from the production source and artifact.
 
-All five Gemini review findings were implemented before qualification: canonical `PERFORM` return propagation, physical water availability, water consumption, and consistent water checks for player, flame, and metal targets.
+All six actionable review findings were implemented before merge: canonical `PERFORM` return propagation, physical water availability, water consumption, consistent water checks for player, flame, and metal targets, and the requirement that only genuinely usable water may pause the clothing-fire clock.
 
 ## Explicit exclusions
 
