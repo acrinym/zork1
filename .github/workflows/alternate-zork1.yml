@@ -25,9 +25,9 @@ env:
   SERIAL121: "260719"
   RELEASE122: "122"
   SERIAL122: "260720"
-  RELEASE122_SIZE: "107880"
-  RELEASE122_CHECKSUM: "0xf13d"
-  RELEASE122_SHA256: 98320cd2c11a963b3f23c9a36782f31887279798c26958942ef48ba6ff939a28
+  RELEASE122_SIZE: "107992"
+  RELEASE122_CHECKSUM: "0x3ab5"
+  RELEASE122_SHA256: 58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db
 
 jobs:
   qualify-release122:
@@ -201,6 +201,10 @@ jobs:
             --commands alternate/tests/nest_broken_commands.txt \
             --expect alternate/tests/nest_broken_expectations.txt \
             | tee alternate/build/nest-broken-transcript.txt
+          if grep -F "His axe clatters to the floor." alternate/build/nest-broken-transcript.txt; then
+            echo "Unarmed troll route falsely reported an axe drop" >&2
+            exit 1
+          fi
 
       - name: Write qualified Release 122 receipt
         run: |
@@ -225,8 +229,12 @@ jobs:
                   'alert_tie_failure': 'passed in real-map production story',
                   'timed_troll_trick': 'passed in real-map production story',
                   'living_troll_restraint': 'passed in real-map production story',
+                  'bound_troll_trick_rejection': 'passed in real-map production story',
+                  'unarmed_troll_narration': 'passed without phantom axe drop',
                   'passage_opening': 'passed east and west in production story',
                   'prepared_nest_catcher': 'passed in test-only scenario story using production mechanics',
+                  'prepared_empty_sack_catcher': 'passed with non-sandwich narration',
+                  'unprepared_sack_does_not_catch': 'passed through canonical BAD-EGG despite sack location',
                   'unprepared_bad_egg': 'passed through canonical BAD-EGG',
                   'canonical_non_torch_burning': 'passed through canonical V-BURN',
                   'troll_hostility_after_return': 'passed through attack and alert tie failure',
