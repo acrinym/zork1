@@ -7,7 +7,7 @@ Control Dam #3 physically legible and experimentally useful while preserving
 its canonical buttons, wrench, bolt, leak, reservoir timers, and consequences.
 """
 created     = "2026-07-20"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "base"
