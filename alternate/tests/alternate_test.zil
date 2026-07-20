@@ -4,7 +4,6 @@
 <SYNTAX ALTBREAK = V-ALT-BREAK>
 <SYNTAX ALTCANON = V-ALT-CANON>
 <SYNTAX ALTTROLL = V-ALT-TROLL-SETUP>
-<SYNTAX ALTSTATUS = V-ALT-STATUS>
 
 <ROUTINE ALT-TEST-NEST-BASE ()
 	<MOVE ,TORCH ,WINNER>
@@ -48,11 +47,3 @@
 	<SETG TROLL-FLAG <>>
 	<GOTO ,TROLL-ROOM>
 	<TELL "[Test-only troll recovery scenario.]" CR>>
-
-<ROUTINE V-ALT-STATUS ()
-	<COND (<AND <FSET? ,TROLL ,FIGHTBIT>
-	            <NOT ,ALT-TROLL-DISTRACTED>
-	            <NOT ,ALT-TROLL-BOUND>>
-	       <TELL "[Test-only troll hostility restored.]" CR>)
-	      (T
-	       <TELL "[Test-only troll hostility NOT restored.]" CR>)>>
