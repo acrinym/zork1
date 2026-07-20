@@ -1,0 +1,12 @@
+{
+  "id": "Z1-ALT-005",
+  "description": "Treat the brown sack as physically spread open while it is positioned beneath the tree so the caught egg remains accessible",
+  "path": "absurd_alternates.zil",
+  "replacements": [
+    {
+      "old": "\t       <MOVE ,SANDWICH-BAG ,PATH>\n\t       <SETG ALT-SACK-PREPARED T>",
+      "new": "\t       <MOVE ,SANDWICH-BAG ,PATH>\n\t       <FSET ,SANDWICH-BAG ,OPENBIT>\n\t       <FSET ,SANDWICH-BAG ,SEARCHBIT>\n\t       <SETG ALT-SACK-PREPARED T>",
+      "expected_count": 1
+    }
+  ]
+}
