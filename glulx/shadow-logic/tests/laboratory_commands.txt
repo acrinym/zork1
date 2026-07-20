@@ -1,4 +1,4 @@
-shadowlab
+shlab
 read manual
 words
 say melzar
