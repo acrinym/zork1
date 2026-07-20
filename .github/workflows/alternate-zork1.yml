@@ -1,0 +1,232 @@
+name: Zork I Absurd Alternate Solutions
+
+on:
+  push:
+    branches:
+      - agent/zork-absurd-alternate-solutions
+    paths:
+      - "alternate/**"
+      - "expanded/**"
+      - "optimized/**"
+      - ".github/workflows/alternate-zork1.yml"
+  pull_request:
+    paths:
+      - "alternate/**"
+      - "expanded/**"
+      - "optimized/**"
+      - ".github/workflows/alternate-zork1.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZILF_COMMIT: d3b79f348b692647ab7ee3b13e5ac7c99b70f471
+  RELEASE121: "121"
+  SERIAL121: "260719"
+  RELEASE122: "122"
+  SERIAL122: "260720"
+
+jobs:
+  qualify-release122:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned ZILF compiler
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.ZILF_COMMIT }}
+          path: .tooling/zilf
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential frotz
+          pushd .tooling/zilf
+          pwsh ./tools/setup-glazer.ps1
+          popd
+
+      - name: Build pinned ZILF and ZAPF
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p alternate/build expanded/build
+          dotnet restore .tooling/zilf/src/Zilf/Zilf.csproj --nologo \
+            2>&1 | tee alternate/build/zilf-restore.log
+          dotnet restore .tooling/zilf/src/Zapf/Zapf.csproj --nologo \
+            2>&1 | tee alternate/build/zapf-restore.log
+          dotnet build .tooling/zilf/src/Zilf/Zilf.csproj \
+            --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee alternate/build/zilf-build.log
+          dotnet build .tooling/zilf/src/Zapf/Zapf.csproj \
+            --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee alternate/build/zapf-build.log
+          tool_dir="$(realpath .tooling/zilf/bin/Release/net10.0)"
+          test -f "$tool_dir/zilf.dll"
+          test -f "$tool_dir/zapf.dll"
+          echo "ZILF_DLL=$tool_dir/zilf.dll" >> "$GITHUB_ENV"
+          echo "ZAPF_DLL=$tool_dir/zapf.dll" >> "$GITHUB_ENV"
+
+      - name: Rebuild and verify unchanged Expanded Release 121
+        shell: bash
+        run: |
+          set -o pipefail
+          make -C expanded compile \
+            ZILF="dotnet $ZILF_DLL" ZAPF="dotnet $ZAPF_DLL" \
+            RELEASE="$RELEASE121" SERIAL="$SERIAL121" \
+            2>&1 | tee alternate/build/release121-compile.log
+          python optimized/tools/verify_story.py expanded/build/zork1-expanded.z3 \
+            --expect-version 3 --expect-release "$RELEASE121" --expect-serial "$SERIAL121" \
+            --baseline COMPILED/zork1.z3 \
+            --json alternate/build/release121-story-report.json
+
+      - name: Stage, audit, compile, and verify Release 122
+        shell: bash
+        run: |
+          set -o pipefail
+          make -C alternate compile \
+            ZILF="dotnet $ZILF_DLL" ZAPF="dotnet $ZAPF_DLL" \
+            RELEASE="$RELEASE122" SERIAL="$SERIAL122" \
+            2>&1 | tee alternate/build/release122-compile.log
+          python optimized/tools/verify_story.py alternate/build/zork1-absurd-alternates.z3 \
+            --expect-version 3 --expect-release "$RELEASE122" --expect-serial "$SERIAL122" \
+            --baseline COMPILED/zork1.z3 \
+            --json alternate/build/release122-story-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('alternate/build/src/STAGING-RECEIPT.json').read_text())
+          assert receipt['base_release'] == 121
+          assert receipt['release'] == 122
+          assert receipt['changed_paths'] == [
+              '1dungeon.zil',
+              'absurd_alternates.zil',
+              'expansions.zil',
+              'gsyntax.zil',
+              'zork1.zil',
+          ]
+          source = Path('alternate/build/src')
+          assert not any('ALTSAFE' in p.read_text(errors='ignore') for p in source.glob('*.zil'))
+          assert not (source / 'alternate_test.zil').exists()
+          PY
+
+      - name: Run real-map troll restraint route
+        shell: bash
+        run: |
+          set -o pipefail
+          python optimized/tools/run_smoke.py alternate/build/zork1-absurd-alternates.z3 \
+            --interpreter "$(command -v dfrotz)" \
+            --commands alternate/tests/troll_commands.txt \
+            --expect alternate/tests/troll_expectations.txt \
+            | tee alternate/build/troll-transcript.txt
+
+      - name: Build test-only nest qualification story
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm -rf alternate/build/nest-test-src
+          cp -a alternate/build/src alternate/build/nest-test-src
+          cp alternate/tests/alternate_test.zil alternate/build/nest-test-src/alternate_test.zil
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('optimized/tools').resolve()))
+          from stage_source import apply_patch_file
+          apply_patch_file(
+              Path('alternate/tests/001-include-test-module.json').resolve(),
+              Path('alternate/build/nest-test-src').resolve(),
+          )
+          PY
+          python optimized/tools/build_story.py \
+            --source alternate/build/nest-test-src \
+            --output alternate/build/zork1-absurd-alternates-test.z3 \
+            --zilf "dotnet $ZILF_DLL" --zapf "dotnet $ZAPF_DLL" \
+            --release "$RELEASE122" --serial "$SERIAL122" \
+            2>&1 | tee alternate/build/nest-test-compile.log
+
+      - name: Run prepared catcher route
+        shell: bash
+        run: |
+          set -o pipefail
+          python optimized/tools/run_smoke.py alternate/build/zork1-absurd-alternates-test.z3 \
+            --interpreter "$(command -v dfrotz)" \
+            --commands alternate/tests/nest_safe_commands.txt \
+            --expect alternate/tests/nest_safe_expectations.txt \
+            | tee alternate/build/nest-safe-transcript.txt
+
+      - name: Run unprepared canonical breakage route
+        shell: bash
+        run: |
+          set -o pipefail
+          python optimized/tools/run_smoke.py alternate/build/zork1-absurd-alternates-test.z3 \
+            --interpreter "$(command -v dfrotz)" \
+            --commands alternate/tests/nest_broken_commands.txt \
+            --expect alternate/tests/nest_broken_expectations.txt \
+            | tee alternate/build/nest-broken-transcript.txt
+
+      - name: Write candidate Release 122 receipt
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          artifact = Path('alternate/build/zork1-absurd-alternates.z3')
+          story = json.loads(Path('alternate/build/release122-story-report.json').read_text())
+          receipt = {
+              'qualification_status': 'candidate; lock artifact after deterministic qualification',
+              'edition': 'Absurd Alternate Zork I',
+              'identity': {'release': 122, 'serial': '260720'},
+              'size_bytes': artifact.stat().st_size,
+              'sha256': hashlib.sha256(artifact.read_bytes()).hexdigest(),
+              'story_report': story,
+              'routes': {
+                  'alert_tie_failure': 'passed',
+                  'timed_troll_trick': 'passed',
+                  'living_troll_restraint': 'passed',
+                  'prepared_nest_catcher': 'passed in test-only scenario story',
+                  'unprepared_bad_egg': 'passed through canonical BAD-EGG',
+              },
+              'production_contains_test_setup': False,
+              'wizard_of_frobozz': 'excluded; Zork II scope',
+          }
+          Path('alternate/build/BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          PY
+
+      - name: Upload Release 122 candidate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-release122-absurd-alternates
+          path: |
+            alternate/build/zork1-absurd-alternates.z3
+            alternate/build/release122-story-report.json
+            alternate/build/release121-story-report.json
+            alternate/build/BUILD-RECEIPT.json
+            alternate/build/src/STAGING-RECEIPT.json
+            alternate/build/smell-report.json
+            alternate/build/troll-transcript.txt
+            alternate/build/nest-safe-transcript.txt
+            alternate/build/nest-broken-transcript.txt
+            alternate/build/release121-compile.log
+            alternate/build/release122-compile.log
+            alternate/build/nest-test-compile.log
+            alternate/build/zilf-restore.log
+            alternate/build/zilf-build.log
+            alternate/build/zapf-restore.log
+            alternate/build/zapf-build.log
+            alternate/layer.json
+          if-no-files-found: warn
