@@ -10,8 +10,7 @@ look
 alttroll
 trick troll
 south
-wait
-look
+south
 altstatus
 quit
 y
