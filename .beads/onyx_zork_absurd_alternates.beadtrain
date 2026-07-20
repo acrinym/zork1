@@ -1,0 +1,96 @@
+[train]
+name        = "onyx_zork_absurd_alternates"
+title       = "Zork I Release 122 earned absurd alternate solutions"
+description = """
+Derive an additive Release 122 from qualified Release 121 and turn a tightly
+bounded set of ridiculous ideas into real stateful outcomes only when objects,
+preparation, timing, vulnerability, and canonical consequences support them.
+"""
+created     = "2026-07-20"
+status      = "complete"
+
+[[cars]]
+id = "base"
+bead = "zork1-alt122-001"
+title = "Qualified Release 121 base"
+parallel_start = true
+depends_on = []
+summary = "Stage complete Release 121 and reject any Release 122 change outside the reviewed five-path boundary."
+
+[[cars]]
+id = "trick"
+bead = "zork1-alt122-002"
+title = "One-use troll deception"
+parallel_start = true
+depends_on = ["base"]
+summary = "Create one immediate tactical opening without permanently disabling the troll."
+
+[[cars]]
+id = "bind"
+bead = "zork1-alt122-003"
+title = "Living troll restraint"
+parallel_start = false
+depends_on = ["trick"]
+summary = "Use the real rope during genuine vulnerability to bind the troll alive, drop the axe, and open the passages."
+
+[[cars]]
+id = "recover"
+bead = "zork1-alt122-004"
+title = "Troll danger restoration"
+parallel_start = false
+depends_on = ["bind"]
+summary = "Prove abandoning the opportunity or untying the troll restores live hostile behavior."
+
+[[cars]]
+id = "catcher"
+bead = "zork1-alt122-005"
+title = "Prepared brown-sack catcher"
+parallel_start = true
+depends_on = ["base"]
+summary = "Spread the real sack beneath the tree as an open searchable catcher."
+
+[[cars]]
+id = "fire"
+bead = "zork1-alt122-006"
+title = "Ivory-torch nest fire"
+parallel_start = false
+depends_on = ["catcher"]
+summary = "Limit the special falling-egg outcome to the held lit torch, nest in tree, and player beside it."
+
+[[cars]]
+id = "safe"
+bead = "zork1-alt122-007"
+title = "Prepared intact-egg outcome"
+parallel_start = true
+depends_on = ["fire"]
+summary = "Catch the real egg intact in the real sack and retire stale nest-specific prose."
+
+[[cars]]
+id = "broken"
+bead = "zork1-alt122-008"
+title = "Canonical destructive outcome"
+parallel_start = true
+depends_on = ["fire"]
+summary = "Invoke BAD-EGG without preparation and preserve ordinary V-BURN behavior elsewhere."
+
+[[cars]]
+id = "routes"
+bead = "zork1-alt122-009"
+title = "Production and scenario qualification"
+parallel_start = false
+depends_on = ["recover", "safe", "broken"]
+summary = "Run real-map troll and isolated nest routes while proving test setup never enters production."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-alt122-010"
+title = "Release 122 qualification capstone"
+parallel_start = false
+depends_on = ["routes"]
+summary = "Lock the artifact, publish documentation, and preserve separate Glulx and Zork II frontiers."
+
+[meta]
+one_liner = "Zork now rewards prepared ridiculousness with real consequences instead of arbitrary parser wishes."
+prior_car = "onyx_zork_adventurer_misconduct"
+couples_with = []
+watch = ["alternate", ".github/workflows/alternate-zork1.yml", "expanded/overrides/absurdities.zil"]

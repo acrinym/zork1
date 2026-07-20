@@ -1,0 +1,12 @@
+{
+  "id": "Z1-ALT-003",
+  "description": "Append Release 122 troll-restraint and nest-fire outcomes to the existing persistent-state recap",
+  "path": "expansions.zil",
+  "replacements": [
+    {
+      "old": "\t<COND (,WON-FLAG\n\t       <TELL \"- Your discoveries have opened the final path southwest of the house.\" CR>)>>",
+      "new": "\t<COND (,WON-FLAG\n\t       <TELL \"- Your discoveries have opened the final path southwest of the house.\" CR>)>\n\t<ALT-RECAP>>",
+      "expected_count": 1
+    }
+  ]
+}

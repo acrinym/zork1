@@ -1,4 +1,4 @@
-# Release 121 feature matrix
+# Zork I project-edition feature matrix
 
 ## Edition and format status
 
@@ -6,32 +6,56 @@
 |---|---|---:|---|
 | Historical | `.z3` | Release 119 / `880429` | Preserved and verified |
 | Optimized | `.z3` | Release 120 / `260718` | Qualified |
-| Expanded | `.z3` | Release 121 / `260719` | Qualified as a complete build with broad deterministic routes |
-| Unchanged upstream Glulx | `.ulx` | Release 1 / `251203` | Qualified against Tara McGrew's exact source commit and archived reference |
+| Expanded | `.z3` | Release 121 / `260719` | Qualified reactive world, assistance, alternate characters, and misconduct |
+| Absurd Alternate | `.z3` | Release 122 / `260720` | Qualified earned troll-restraint and nest-fire outcomes |
+| Unchanged upstream Glulx | `.ulx` | Release 1 / `251203` | Qualified against Tara McGrew's exact source and archived reference |
 | Unofficial Optimized Glulx | `.ulx` | Release 1201 / `260719` | Qualified conservative corrections and native regressions |
-| Unofficial Assisted Glulx | `.ulx` | Release 1211 / `260719` | Qualified action hooks and assistance with `.z3`/`.ulx` semantic parity |
-| Unofficial Reactive Surface Glulx | `.ulx` | Release 1212 / `260719` | Qualified proximity-safe white-house surface reactions without optional geography |
-| Deeper Reactive Glulx | `.ulx` | not assigned yet | Dam, ritual, and object feedback is the controlling next layer |
+| Unofficial Assisted Glulx | `.ulx` | Release 1211 / `260719` | Qualified action hooks and assistance parity |
+| Unofficial Reactive Surface Glulx | `.ulx` | Release 1212 / `260719` | Qualified proximity-safe white-house surface reactions |
+| Deeper Reactive Glulx | `.ulx` | not assigned | Dam, ritual, and object feedback remains the next Glulx layer |
+| Absurd Alternate Glulx | `.ulx` | not assigned | Release 122 parity remains a later isolated layer |
 
-## Shipped interaction foundation
+## Release 121 interaction foundation
 
-| Area | Expanded Release 121 behavior | Original behavior retained |
+| Area | Expanded behavior | Canonical behavior retained |
 |---|---|---|
-| Edition separation | Independent build, receipt, audit, verification, and artifact | Historical Release 119 and optimized Release 120 remain separate |
 | Player orientation | `GOALS`, `EXITS`, tiered `HINT`, `RECAP`, `WHY`, and `USE <object>` | Traditional parser play remains available; assistance is optional |
-| White house | Repeated knocking, listening, roof-climb explanation, structural responses | Original entry route, house navigation, and proximity rules |
-| Boards and boarded windows | Tool-sensitive scarring, persistent splinter, sound and visibility responses | Boards remain secured; no front-door bypass |
-| Kitchen window | Knocking and listening reactions | Original open, close, examine, and traversal behavior |
+| White house | Repeated knocking, listening, roof-climb explanation, structural responses | Original entry route, navigation, and proximity rules |
+| Boards and windows | Tool-sensitive scarring, painted splinter, sound and visibility responses | Boards remain secured; kitchen-window traversal remains canonical |
 | Mailbox | Hidden maintenance slip after leaflet removal | Original leaflet and mailbox sequence |
-| Forest songbird | Followable optional trail, Hidden Glade, brass feather, remembered discovery | Original forest graph and egg/canary puzzle |
+| Forest songbird | Followable trail, Hidden Glade, brass feather, remembered discovery | Original forest graph and egg/canary puzzle |
 | Troll | Genuine-treasure bribe as a noncombat route | Original combat, disarming, gifts, and weapons |
 | Cyclops | Repeated lullaby route and richer feedback | Original pepper/water and Odysseus solutions |
 | Thief | One-time bargain consuming real treasure | Existing roaming, theft, combat, and treasure behavior |
-| Dam | State-aware listening, examination, and control-panel guidance | Original bubble, wrench, gates, reservoir, and timer logic |
-| Exorcism | Bell resonance, candle-state detail, optional black-book pages | Original timed bell/candles/book ceremony |
-| Objects | Additional reactions for rope, mirrors, water, wrench, shovel, axe, bell, and candles | Existing puzzle-specific actions remain authoritative |
-| World memory | House damage, discoveries, bargains, NPC outcomes, dam, ritual, and victory through `RECAP` | Existing state flags and save model |
-| Adventurer Misconduct | Absurd physical/social actions, `FOLLY`, and troll bemusement | Canonical eating, combat, throwing, containers, NPC roles, and scoring |
+| Dam and ritual | State-aware mechanism and ceremony feedback | Original dam and exorcism solutions |
+| Adventurer Misconduct | Absurd physical/social actions, `FOLLY`, and one-turn troll bemusement | Canonical combat, containers, NPC roles, and scoring |
+
+## Release 122 earned absurd outcomes
+
+Release 122 distinguishes harmless folly from ridiculous actions that can alter the world.
+
+### Troll restraint
+
+- Alert `TIE UP TROLL WITH ROPE` fails.
+- `TRICK TROLL` creates a one-use immediate opportunity.
+- Immediate rope restraint leaves the troll alive, drops the real axe, consumes the real rope into the restraint, and opens the passages through `TROLL-FLAG`.
+- `UNTIE TROLL` restores the rope and troll danger.
+- Leaving instead of tying him wastes the opportunity; returning proves he attacks and rejects the rope as alert and armed.
+
+### Burning the nest
+
+- `PUT SACK UNDER TREE` spreads the real brown sack beneath the branch.
+- `BURN NEST WITH TORCH` requires the held, lit ivory torch and the nest still in the tree.
+- With preparation, the real jewel-encrusted egg lands intact in the real sack.
+- Without preparation, the real egg invokes canonical `BAD-EGG`, producing the existing broken egg and broken canary values.
+- Ordinary burning with another valid flame continues through canonical `V-BURN`.
+- No treasure or puzzle object is duplicated.
+
+### Explicit boundary
+
+- The Wizard of Frobozz is not imported into Zork I; Wizard gifts, restraint, and beard ignition belong to a future Zork II train.
+- Release 122 adds no room, treasure, universal actor trick, or automatic puzzle completion.
+- Release 121 remains independently reproducible.
 
 ## Glulx parity reached
 
@@ -44,58 +68,35 @@ Ports and proves the state-neutral action hook, goals, exits, three hint levels,
 Adds and proves:
 
 - adjacent white-house and front-door reactions;
-- rejection of remote house knocking, listening, and climbing from forest local-global rooms;
-- board and boarded-window responses;
+- rejection of remote house knocking, listening, and climbing;
+- board and window responses;
 - persistent board scarring and painted splinter;
-- kitchen-window reactions with original traversal;
-- mailbox reactions and maintenance-slip discovery;
-- ordinary forest and tree reactions;
-- songbird listening and greeting;
-- surface-state recap entries.
+- mailbox and maintenance-slip behavior;
+- ordinary forest, tree, and songbird reactions;
+- canonical `FOLLOW SONGBIRD` refusal and Hidden Glade exclusion.
 
-The real-map route passes under Expanded Release 121 `.z3` and Reactive Surface Release 1212 `.ulx`. A native boundary route proves proximity enforcement, `FOLLOW SONGBIRD` refusal, and Hidden Glade exclusion.
-
-Release 1212 does **not** include optional geography, alternate NPC solutions, deeper dam/ritual/tool reactions, or comedy. Those remain in Release 121 `.z3` until their isolated Glulx layers qualify.
-
-## Deliberate constraints
-
-- Historical root files remain unchanged.
-- Original solutions remain valid.
-- Hints do not execute commands.
-- New scenery objects do not become universal portable puzzle tools.
-- New prose is not presented as recovered Infocom authorship.
-- Comedy actions do not manufacture treasure, remove enemies, award points, or become required.
-- Release 1201 contains no Release 121 behavior.
-- Release 1211 contains assistance but no reactive scenery.
-- Release 1212 contains surface reactivity but no new room or alternate solution.
-- Local-global noun visibility does not grant remote physical interaction with the house.
+Release 1212 does not yet include optional geography, deeper mechanisms, alternate NPC solutions, Adventurer Misconduct, or Release 122's earned alternates.
 
 ## Validation coverage
 
 | Coverage | Method |
 |---|---|
 | Historical source identity | Git-blob manifest verification before staging |
-| Expansion application | Exact-match patches with required counts |
-| ZIL structure | Reader-aware structural and include audit |
-| Z-machine compatibility | Pinned ZILF/ZAPF build and deterministic Frotz routes |
-| Release 121 identity | Header, length, addresses, release, serial, and checksum verification |
-| Misconduct journey | Long Frotz route covering flagship comedy and canonical preservation |
-| Upstream Glulx provenance | Tara commit/tree, complete diff, archive checksums, toolchain pins, and license receipts |
-| Upstream Glulx runtime | Pinned Glulxe/CheapGlk repository and archive routes |
-| Optimized Glulx | Exact four-path stage, artifact pin, containment and candle regressions |
-| Assisted Glulx | Exact six-path stage, Release 1201 base pin, artifact pin, assistance parity |
-| Reactive surface staging | Exact seven-path stage and qualified Release 1211 base pin |
-| Reactive surface artifact | Fail-closed 189,440-byte artifact, checksum `0x01ea5062`, and SHA-256 |
-| Surface semantic parity | Real-map `.z3`/`.ulx` house, mailbox, window, board, recap, forest, and bird route |
-| Proximity regression | Native forest route rejects remote house knock, listen, and climb actions |
-| Optional-geography exclusion | Native canonical FOLLOW refusal and absence of Hidden Glade |
-| Beadtrain integrity | Every recorded completed train is validated against canonical plus sharded issue ledgers |
+| Release 121 | Exact staging, pinned ZILF/ZAPF build, story verification, and deterministic Frotz routes |
+| Release 122 staging | Complete Release 121 stage followed by an exact five-path changed-set gate |
+| Release 122 artifact | Fail-closed 107,880-byte `.z3`, checksum `0xf13d`, and SHA-256 `98320cd2c11a963b3f23c9a36782f31887279798c26958942ef48ba6ff939a28` |
+| Troll alternate | Real-map rope acquisition, alert failure, trick, restraint, axe drop, passage travel, description, and recap |
+| Prepared nest alternate | Test-only setup story exercises production mechanics and proves intact accessible egg and corrected prose |
+| Destructive nest alternate | Canonical `BAD-EGG` produces the existing ruined egg and broken canary |
+| Preservation fallbacks | Canonical non-torch nest burning and restored troll hostility after leaving and returning |
+| Production/test isolation | Production source and artifact contain no qualification setup verbs or setup module |
+| Glulx lineage | Separate pinned artifact and semantic-route gates for Releases 1, 1201, 1211, and 1212 |
+| Beadtrain integrity | Completed trains validate against canonical and sharded issue ledgers |
 
-## Still requiring dedicated long-form transcripts
+## Still requiring dedicated work
 
-- dam feedback across high and low water states;
-- complete bell/candle/book ceremony timing;
-- rope, mirror, water, and tool reaction groups;
-- three-turn cyclops lullaby under the impatience timer;
-- thief bargain with carried treasure;
-- save and restore after expanded persistent-state changes.
+- Release 122 Glulx parity;
+- deeper Glulx dam, ritual, rope, mirror, water, and tool reactions;
+- dedicated cyclops-lullaby and thief-bargain long routes;
+- save/restore after expanded persistent-state changes;
+- additional earned alternate solutions that use real objects, preparation, risk, and canonical consequences.

@@ -1,0 +1,39 @@
+name: Zork I Absurd Alternate Beadtrain
+
+on:
+  push:
+    branches:
+      - agent/zork-absurd-alternate-solutions
+    paths:
+      - ".beads/issues*.jsonl"
+      - ".beads/onyx_zork_absurd_alternates.beadtrain"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/absurd-alternates-beadtrain.yml"
+  pull_request:
+    paths:
+      - ".beads/issues*.jsonl"
+      - ".beads/onyx_zork_absurd_alternates.beadtrain"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/absurd-alternates-beadtrain.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-absurd-alternate-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate sharded Release 122 train
+        run: |
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
+            .beads/onyx_zork_absurd_alternates.beadtrain

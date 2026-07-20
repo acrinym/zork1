@@ -1,0 +1,12 @@
+{
+  "id": "Z1-ALT-004",
+  "description": "Allow TIE UP actor WITH any held object so the canonical rope can reach the existing TIE-UP action despite lacking TOOLBIT",
+  "path": "gsyntax.zil",
+  "replacements": [
+    {
+      "old": "<SYNTAX TIE UP OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM) WITH OBJECT\n\t(FIND TOOLBIT) (ON-GROUND IN-ROOM HELD CARRIED HAVE) = V-TIE-UP>",
+      "new": "<SYNTAX TIE UP OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM) WITH OBJECT\n\t(ON-GROUND IN-ROOM HELD CARRIED HAVE) = V-TIE-UP>",
+      "expected_count": 1
+    }
+  ]
+}

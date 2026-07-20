@@ -1,0 +1,17 @@
+{
+  "id": "Z1-ALT-001",
+  "description": "Assign the additive Release 122 identity and load the stateful absurd-alternate module after Release 121 expansions and misconduct",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "<CONSTANT RELEASEID 121>",
+      "new": "<CONSTANT RELEASEID 122>",
+      "expected_count": 1
+    },
+    {
+      "old": "<INSERT-FILE \"absurdities\" T>",
+      "new": "<INSERT-FILE \"absurdities\" T>\n<INSERT-FILE \"absurd_alternates\" T>",
+      "expected_count": 1
+    }
+  ]
+}

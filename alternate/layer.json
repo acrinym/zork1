@@ -1,0 +1,29 @@
+{
+  "edition": "Absurd Alternate Zork I",
+  "release": 122,
+  "serial": "260720",
+  "base_edition": "Expanded Zork I",
+  "base_release": 121,
+  "base_serial": "260719",
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "absurd_alternates.zil",
+    "expansions.zil",
+    "gsyntax.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-absurd-alternates.z3",
+    "zmachine_version": 3,
+    "size_bytes": 107992,
+    "checksum_hex": "0x3ab5",
+    "sha256": "58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db"
+  },
+  "excluded_scope": [
+    "Wizard of Frobozz",
+    "new rooms",
+    "new treasure objects",
+    "automatic puzzle completion",
+    "Glulx parity"
+  ]
+}
