@@ -1,0 +1,31 @@
+knock on house
+knock on door
+listen to door
+climb house
+why
+open mailbox
+take leaflet
+look in mailbox
+take slip
+read slip
+north
+east
+knock on window
+listen to window
+open window
+west
+west
+take sword
+east
+east
+north
+west
+attack boards with sword
+look
+recap
+west
+listen to forest
+listen to bird
+hello bird
+quit
+y

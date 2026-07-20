@@ -1,0 +1,13 @@
+west
+knock on house
+listen to house
+climb house
+examine forest
+examine tree
+listen to tree
+listen to bird
+hello bird
+follow bird
+look
+quit
+y

@@ -1,0 +1,55 @@
+{
+  "edition": "Unofficial Reactive Surface Glulx",
+  "release": 1212,
+  "serial": "260719",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../assistance/patch-series.json",
+  "base_release": 1211,
+  "base_artifact_sha256": "cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified earlier Glulx layer, assign Release 1212, and load the reactive-surface module"
+    },
+    {
+      "path": "assistance.zil",
+      "source": "../assistance/overrides/assistance.zil",
+      "allow_new": true,
+      "description": "Replay the exact qualified Release 1211 assistance source before applying the surface recap extension"
+    },
+    {
+      "path": "reactive_surface.zil",
+      "source": "overrides/reactive_surface.zil",
+      "allow_new": true,
+      "description": "Add only white-house, door, board, window, mailbox, ordinary forest, tree, and songbird reactions"
+    }
+  ],
+  "patches": [
+    "../../optimized/patches/001-prevent-containment-cycles.json",
+    "../../optimized/patches/002-replace-unsafe-zscii-tabs.json",
+    "../optimized/patches/003-candles-dynamic-description.json",
+    "../../optimized/patches/004-candles-description-routine.json",
+    "../assistance/patches/001-global-action-hook.json",
+    "../assistance/patches/002-glulx-action-vocabulary.json",
+    "patches/001-surface-action-hooks.json",
+    "patches/002-surface-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "assistance.zil",
+    "gmain.zil",
+    "gverbs.zil",
+    "reactive_surface.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-reactive-surface.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 189440,
+    "checksum_hex": "0x01ea5062",
+    "sha256": "78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002"
+  }
+}
