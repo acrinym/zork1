@@ -31,6 +31,7 @@ permissions:
 
 env:
   ZILF_COMMIT: d3b79f348b692647ab7ee3b13e5ac7c99b70f471
+  EXPANDED_FROTZ_SEED: "1"
 
 jobs:
   preservation-audit:
@@ -212,7 +213,7 @@ jobs:
         run: |
           set -o pipefail
           python optimized/tools/run_smoke.py expanded/build/zork1-expanded.z3 \
-            --interpreter "$(command -v dfrotz)" \
+            --interpreter "$(command -v dfrotz) -s $EXPANDED_FROTZ_SEED" \
             --commands expanded/tests/smoke_commands.txt \
             --expect expanded/tests/smoke_expectations.txt \
             | tee expanded/build/smoke-transcript.txt
