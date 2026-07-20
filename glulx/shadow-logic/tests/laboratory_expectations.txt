@@ -1,4 +1,3 @@
-[Test-only Shadow Logic laboratory prepared.]
 Emergency diagnostic word: MELZAR.
 MELZAR: an obsolete Great Underground Empire maintenance diagnostic.
 PRIMARY ENTRANCE INACCESSIBLE.
