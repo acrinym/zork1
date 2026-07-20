@@ -17,6 +17,7 @@ north
 tie up troll with rope
 trick troll
 tie up troll with rope
+trick troll
 examine troll
 east
 west
