@@ -48,7 +48,7 @@
 	       <SETG DAM-MECH-BOLT-ATTEMPTED T>
 	       <TELL "The large metal bolt is the panel's actual mechanical actuator. It will turn only with the wrench while the yellow interlock is armed." CR>
 	       <RTRUE>)
-	      (<VERB? TOUCH>
+	      (<VERB? RUB>
 	       <TELL "The bolt is cold, slightly corroded, and connected to machinery substantial enough to resent improvisation." CR>
 	       <RTRUE>)
 	      (<VERB? KNOCK STRIKE LISTEN>
@@ -74,7 +74,7 @@
 	             (T <TELL "dark because the turning circuit is disarmed">)>
 	       <TELL "." CR>
 	       <RTRUE>)
-	      (<VERB? TOUCH>
+	      (<VERB? RUB>
 	       <TELL "The bubble is smooth plastic. ">
 	       <COND (,GATE-FLAG <TELL "A faint vibration accompanies the glow.">)
 	             (T <TELL "It is inert and cool.">)>
@@ -97,13 +97,13 @@
 	             (T <TELL "The closed sluices leave only the reservoir's distant pressure.">)>
 	       <CRLF>
 	       <RTRUE>)
-	      (<VERB? TOUCH RUB>
+	      (<VERB? RUB>
 	       <TELL "The panel is cold metal with a faint vibration near the bolt and none near the decorative parts." CR>
 	       <RTRUE>)
 	      (<VERB? KNOCK STRIKE>
 	       <TELL "The panel rings broadly; the bolt answers at a lower pitch, identifying itself as the part connected to something serious." CR>
 	       <RTRUE>)
-	      (<VERB? TAKE MOVE PULL>
+	      (<VERB? TAKE MOVE>
 	       <INTEGRAL-PART>
 	       <RTRUE>)>
 	<RFALSE>>
