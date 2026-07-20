@@ -2,7 +2,7 @@
 
 This directory defines the additive, unofficial Glulx lineage for this repository.
 
-Four layers are now qualified:
+Five layers are now qualified:
 
 | Layer | Identity | Purpose |
 |---|---:|---|
@@ -10,6 +10,7 @@ Four layers are now qualified:
 | Unofficial Optimized Glulx | Release 1201 / serial `260719` | Port only the conservative corrections from project Release 120 |
 | Unofficial Assisted Glulx | Release 1211 / serial `260719` | Port Release 121 action hooks and optional assistance with cross-VM semantic parity |
 | Unofficial Reactive Surface Glulx | Release 1212 / serial `260719` | Port proximity-safe white-house, door, board, window, mailbox, forest, tree, and songbird reactions without optional geography |
+| Unofficial Shadow Logic Glulx | Release 1213 / serial `260720` | Add native object-on-object experimentation, player-state consequences, material responses, light reporting, learned maintenance knowledge, and a discovered-folly ledger |
 
 Historical Release 119, Optimized Release 120, and Expanded Release 121 remain supported `.z3` editions and are not replaced or relabeled.
 
@@ -101,9 +102,38 @@ A real-map route passes in Expanded Release 121 `.z3` and Release 1212 `.ulx`. A
 
 See [`reactive-surface/README.md`](reactive-surface/README.md).
 
+## Unofficial Shadow Logic Glulx
+
+The fifth layer derives explicitly from the Release 1212 manifest and artifact hash. It adds:
+
+- `USE <object> ON/WITH <object>` routing that delegates established effects to canonical actions;
+- native targeting of the player through the real Glulx `ME` object;
+- rope restraint and recoverable movement blocking;
+- telegraphed multi-turn clothing-fire state with bottled-water recovery;
+- failed empty or closed bottle attempts that no longer pause fire escalation;
+- material-specific touch and knock responses;
+- qualitative `LIGHTS` reporting;
+- the learned bare maintenance word `MELZAR` and `WORDS` report;
+- mirror/light delayed-shadow behavior;
+- `FOLLIES`, `MORTAL FOLLIES`, and `DEATHS` discovery reports;
+- Shadow Logic state in `RECAP`.
+
+### Locked Shadow Logic artifact
+
+- output: `zork1-glulx-shadow-logic.ulx`
+- identity: Release `1213` / serial `260720`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `197,376` bytes
+- checksum: `0x2b0521e4`, valid
+- SHA-256: `3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e`
+
+Qualification includes a real-map production route, an isolated startup-state laboratory using production logic, and separate terminal consequence routes. The production artifact contains no setup verb or test-only world mutation.
+
+See [`shadow-logic/README.md`](shadow-logic/README.md).
+
 ## Locked toolchain
 
-All four layers use:
+All five layers use:
 
 - ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
 - Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
@@ -117,15 +147,15 @@ Pinned ZILF 1.8 emits Glulx metadata serial using `DateTime.Now`. Each pipeline 
 
 No upstream ZIL source is modified. The replacement count and final artifact SHA-256 are fail-closed.
 
-## Next porting boundary: deeper mechanisms and ritual objects
+## Next porting boundary: deeper Shadow Logic
 
-The next isolated layer ports:
+The next isolated layer should extend the qualified foundation into:
 
-1. dam and control-panel examination and listening;
-2. bell resonance;
-3. candle-state examination beyond the Release 120 correction;
-4. optional black-book pages;
-5. rope, mirror, water, wrench, shovel, axe, and related object reactions;
-6. focused semantic `.z3` versus `.ulx` routes for each group.
+1. dam and control-panel experimentation;
+2. bell resonance and candle-state combinations;
+3. black-book knowledge and additional learned words where justified;
+4. deeper mirror, rope, water, wrench, shovel, axe, and tool interactions;
+5. controlled multi-object consequence chains;
+6. focused semantic routes proving canonical puzzle solutions remain valid.
 
-Songbird geography, Hidden Glade, troll/cyclops/thief alternatives, Adventurer Misconduct, `FOLLY`, troll bemusement, and version 3 object-slot cleanup remain later isolated layers.
+Songbird geography, Hidden Glade, troll/cyclops/thief alternatives, the full Adventurer Misconduct surface, and Version 3 object-slot cleanup remain later isolated layers.

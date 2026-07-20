@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-MATERIAL-RUB",
+  "path": "shadow_logic.zil",
+  "description": "Route TOUCH, FEEL, PAT, PET, and RUB material interactions through the canonical V-RUB action constant",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t      (<VERB? TOUCH>",
+      "new": "\t      (<VERB? RUB>"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+take sword
+use sword on self
+quit
+y

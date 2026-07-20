@@ -1,0 +1,69 @@
+{
+  "edition": "Unofficial Shadow Logic Glulx",
+  "release": 1213,
+  "serial": "260720",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../reactive-surface/patch-series.json",
+  "base_release": 1212,
+  "base_artifact_sha256": "78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified earlier Glulx layer, assign Release 1213, and load the Shadow Logic foundation"
+    },
+    {
+      "path": "assistance.zil",
+      "source": "../assistance/overrides/assistance.zil",
+      "allow_new": true,
+      "description": "Replay the exact qualified Release 1211 assistance module before applying surface and Shadow Logic recap extensions"
+    },
+    {
+      "path": "reactive_surface.zil",
+      "source": "../reactive-surface/overrides/reactive_surface.zil",
+      "allow_new": true,
+      "description": "Replay the exact qualified Release 1212 reactive-surface module"
+    },
+    {
+      "path": "shadow_logic.zil",
+      "source": "overrides/shadow_logic.zil",
+      "allow_new": true,
+      "description": "Add player-directed use, material responses, light ecology, spoken maintenance knowledge, state escalation, and folly tracking"
+    }
+  ],
+  "patches": [
+    "../../optimized/patches/001-prevent-containment-cycles.json",
+    "../../optimized/patches/002-replace-unsafe-zscii-tabs.json",
+    "../optimized/patches/003-candles-dynamic-description.json",
+    "../../optimized/patches/004-candles-description-routine.json",
+    "../assistance/patches/001-global-action-hook.json",
+    "../assistance/patches/002-glulx-action-vocabulary.json",
+    "../reactive-surface/patches/001-surface-action-hooks.json",
+    "../reactive-surface/patches/002-surface-recap.json",
+    "patches/001-shadow-action-hook.json",
+    "patches/002-shadow-recap.json",
+    "patches/003-melzar-manual.json",
+    "patches/004-material-rub-action.json",
+    "patches/005-review-hardening.json",
+    "patches/006-bare-melzar.json",
+    "patches/007-require-usable-water-for-clock.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "assistance.zil",
+    "gmain.zil",
+    "gverbs.zil",
+    "reactive_surface.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-shadow-logic.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 197376,
+    "checksum_hex": "0x2b0521e4",
+    "sha256": "3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e"
+  }
+}

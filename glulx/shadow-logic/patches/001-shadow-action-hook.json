@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-SHADOW-HOOK",
+  "path": "gmain.zil",
+  "description": "Run the stateful Shadow Logic hook after assistance records the action and before normal object dispatch in both PERFORM variants",
+  "replacements": [
+    {
+      "expected_count": 2,
+      "old": "\t<ASSIST-ACTION-HOOK>\n\t<COND (<AND <EQUAL? ,NOT-HERE-OBJECT ,PRSO ,PRSI>",
+      "new": "\t<ASSIST-ACTION-HOOK>\n\t<COND (<SHADOW-ACTION-HOOK> <RTRUE>)>\n\t<COND (<AND <EQUAL? ,NOT-HERE-OBJECT ,PRSO ,PRSI>"
+    }
+  ]
+}

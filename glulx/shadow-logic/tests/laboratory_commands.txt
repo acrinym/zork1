@@ -1,0 +1,26 @@
+take torch
+take bottle
+take sword
+take rope
+take garlic
+take manual
+read manual
+words
+melzar
+touch sword
+knock on sword
+touch bottle
+use torch on mirror
+lights
+use rope on me
+west
+untie me
+use garlic on me
+examine me
+use torch on me
+look
+use bottle on me
+follies
+recap
+quit
+y

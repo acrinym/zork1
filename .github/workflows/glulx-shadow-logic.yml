@@ -1,0 +1,366 @@
+name: Zork I Glulx Shadow Logic
+
+on:
+  push:
+    branches:
+      - agent/glulx-shadow-logic
+    paths:
+      - "glulx/shadow-logic/**"
+      - "glulx/tools/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "optimized/**"
+      - ".github/workflows/glulx-shadow-logic.yml"
+  pull_request:
+    paths:
+      - "glulx/shadow-logic/**"
+      - "glulx/tools/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "optimized/**"
+      - ".github/workflows/glulx-shadow-logic.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1212"
+  BASE_ARTIFACT_SHA256: 78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002
+  SHADOW_RELEASE: "1213"
+  SHADOW_SERIAL: "260720"
+  SHADOW_SIZE: "197376"
+  SHADOW_CHECKSUM: "0x2b0521e4"
+  SHADOW_SHA256: 3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e
+
+jobs:
+  shadow-logic-glulx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.ZILF_COMMIT }}
+          path: .tooling/zilf
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+
+      - name: Validate locked layer and qualified base
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          layer = json.loads(Path('glulx/shadow-logic/patch-series.json').read_text())
+          base = json.loads(Path('glulx/reactive-surface/patch-series.json').read_text())
+          expected_paths = [
+              '1actions.zil', '1dungeon.zil', 'assistance.zil', 'gmain.zil',
+              'gverbs.zil', 'reactive_surface.zil', 'shadow_logic.zil', 'zork1.zil',
+          ]
+          artifact = layer['expected_artifact']
+          assert layer['release'] == int(os.environ['SHADOW_RELEASE'])
+          assert layer['serial'] == os.environ['SHADOW_SERIAL']
+          assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
+          assert layer['upstream_tree'] == os.environ['ZORK_GLULX_TREE']
+          assert layer['base_release'] == int(os.environ['BASE_RELEASE'])
+          assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert base['release'] == int(os.environ['BASE_RELEASE'])
+          assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert layer['expected_changed_paths'] == expected_paths
+          assert artifact['file'] == 'zork1-glulx-shadow-logic.ulx'
+          assert artifact['glulx_version_hex'] == '0x00030103'
+          assert artifact['size_bytes'] == int(os.environ['SHADOW_SIZE'])
+          assert artifact['checksum_hex'] == os.environ['SHADOW_CHECKSUM']
+          assert artifact['sha256'] == os.environ['SHADOW_SHA256']
+          PY
+
+      - name: Build pinned ZILF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p glulx/build/shadow-logic
+          pushd .tooling/zilf
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/shadow-logic/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/shadow-logic/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build exactly pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/shadow-logic/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/shadow-logic/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/shadow-logic/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/shadow-logic/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version | tee glulx/build/shadow-logic/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/shadow-logic/glazer-version.txt
+
+      - name: Stage and audit exact Release 1213 source
+        run: |
+          python glulx/tools/stage_shadow_logic.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/shadow-logic/src \
+            --allowed-root glulx/build/shadow-logic \
+            --manifest glulx/shadow-logic/patch-series.json
+          python optimized/tools/zil_smell_check.py \
+            --source glulx/build/shadow-logic/src \
+            --json glulx/build/shadow-logic/smell-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected_paths = [
+              '1actions.zil', '1dungeon.zil', 'assistance.zil', 'gmain.zil',
+              'gverbs.zil', 'reactive_surface.zil', 'shadow_logic.zil', 'zork1.zil',
+          ]
+          receipt = json.loads(Path('glulx/build/shadow-logic/src/STAGING-RECEIPT.json').read_text())
+          report = json.loads(Path('glulx/build/shadow-logic/smell-report.json').read_text())
+          assert receipt['base']['release'] == 1212
+          assert receipt['base']['artifact_sha256'] == '78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002'
+          assert receipt['changed_paths'] == expected_paths
+          assert sorted(item['path'] for item in receipt['overrides'] if item.get('created')) == [
+              'assistance.zil', 'reactive_surface.zil', 'shadow_logic.zil'
+          ]
+          assert not report['errors']
+          assert not [item for item in report['includes'] if not item['resolved']]
+          source = Path('glulx/build/shadow-logic/src')
+          assert not (source / 'shadow_test.zil').exists()
+          assert not any('SHLAB' in path.read_text(errors='ignore') for path in source.glob('*.zil'))
+          PY
+
+      - name: Compile locked Shadow Logic artifact
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/shadow-logic/zork1-glulx-shadow-logic.asm"
+          pushd glulx/build/shadow-logic/src
+          dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/shadow-logic/zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$SHADOW_SERIAL" \
+            --receipt glulx/build/shadow-logic/SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/shadow-logic/zork1-glulx-shadow-logic.ulx \
+            2>&1 | tee glulx/build/shadow-logic/glazer-assemble.log
+
+      - name: Verify fail-closed Shadow Logic artifact
+        run: |
+          python glulx/tools/verify_ulx.py glulx/build/shadow-logic/zork1-glulx-shadow-logic.ulx \
+            --expect-sha256 "$SHADOW_SHA256" \
+            --json glulx/build/shadow-logic/story-report.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/shadow-logic/story-report.json').read_text())
+          assert story['version_hex'] == '0x00030103'
+          assert story['size_bytes'] == int(os.environ['SHADOW_SIZE'])
+          assert story['checksum_hex'] == os.environ['SHADOW_CHECKSUM']
+          assert story['sha256'] == os.environ['SHADOW_SHA256']
+          PY
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/shadow-logic/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/shadow-logic/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+          echo "GLULXE_BIN=$(realpath .tooling/glulxe/glulxe)" >> "$GITHUB_ENV"
+
+      - name: Run real-map production route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/shadow-logic/zork1-glulx-shadow-logic.ulx \
+            < glulx/shadow-logic/tests/production_commands.txt \
+            2>&1 | tee glulx/build/shadow-logic/production-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F "$marker" glulx/build/shadow-logic/production-transcript.txt
+          done < glulx/shadow-logic/tests/production_expectations.txt
+
+      - name: Build test-only startup-state story
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm -rf glulx/build/shadow-logic/test-src
+          cp -a glulx/build/shadow-logic/src glulx/build/shadow-logic/test-src
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('glulx/tools').resolve()))
+          from stage_release120 import apply_patch
+          apply_patch(
+              Path('glulx/shadow-logic/tests/001-include-shadow-test.json').resolve(),
+              Path('glulx/build/shadow-logic/test-src').resolve(),
+          )
+          PY
+          assembly="${GITHUB_WORKSPACE}/glulx/build/shadow-logic/zork1-glulx-shadow-logic-test.asm"
+          pushd glulx/build/shadow-logic/test-src
+          dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/shadow-logic/test-zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$SHADOW_SERIAL" \
+            --receipt glulx/build/shadow-logic/TEST-SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/shadow-logic/zork1-glulx-shadow-logic-test.ulx \
+            2>&1 | tee glulx/build/shadow-logic/test-glazer-assemble.log
+
+      - name: Run laboratory route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/shadow-logic/zork1-glulx-shadow-logic-test.ulx \
+            < glulx/shadow-logic/tests/laboratory_commands.txt \
+            2>&1 | tee glulx/build/shadow-logic/laboratory-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F "$marker" glulx/build/shadow-logic/laboratory-transcript.txt
+          done < glulx/shadow-logic/tests/laboratory_expectations.txt
+
+      - name: Run telegraphed fire outcome route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/shadow-logic/zork1-glulx-shadow-logic-test.ulx \
+            < glulx/shadow-logic/tests/fire_death_commands.txt \
+            2>&1 | tee glulx/build/shadow-logic/fire-death-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F "$marker" glulx/build/shadow-logic/fire-death-transcript.txt
+          done < glulx/shadow-logic/tests/fire_death_expectations.txt
+
+      - name: Run weapon consequence route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/shadow-logic/zork1-glulx-shadow-logic-test.ulx \
+            < glulx/shadow-logic/tests/weapon_death_commands.txt \
+            2>&1 | tee glulx/build/shadow-logic/weapon-death-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F "$marker" glulx/build/shadow-logic/weapon-death-transcript.txt
+          done < glulx/shadow-logic/tests/weapon_death_expectations.txt
+
+      - name: Write qualification receipt
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          stage = json.loads(Path('glulx/build/shadow-logic/src/STAGING-RECEIPT.json').read_text())
+          story = json.loads(Path('glulx/build/shadow-logic/story-report.json').read_text())
+          serial = json.loads(Path('glulx/build/shadow-logic/SERIAL-NORMALIZATION.json').read_text())
+          receipt = {
+              'qualification_status': 'qualified; exact artifact identity locked and rebuilt',
+              'identity': {
+                  'release': int(os.environ['SHADOW_RELEASE']),
+                  'serial': os.environ['SHADOW_SERIAL'],
+              },
+              'base': stage['base'],
+              'changed_paths': stage['changed_paths'],
+              'artifact': story,
+              'serial_normalization': serial,
+              'routes': {
+                  'real_map_restraint': 'passed',
+                  'materials': 'passed',
+                  'light_inventory': 'passed',
+                  'learned_melzar': 'passed in startup-state test story',
+                  'mirror_light': 'passed in startup-state test story',
+                  'fire_rescue': 'passed in startup-state test story',
+                  'telegraphed_fire_outcome': 'passed',
+                  'weapon_consequence': 'passed',
+              },
+              'production_contains_test_setup': False,
+              'shadowgate_ip_imported': False,
+          }
+          Path('glulx/build/shadow-logic/BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          PY
+
+      - name: Upload qualified Shadow Logic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-shadow-logic
+          path: |
+            glulx/build/shadow-logic/zork1-glulx-shadow-logic.ulx
+            glulx/build/shadow-logic/zork1-glulx-shadow-logic.asm
+            glulx/build/shadow-logic/story-report.json
+            glulx/build/shadow-logic/BUILD-RECEIPT.json
+            glulx/build/shadow-logic/SERIAL-NORMALIZATION.json
+            glulx/build/shadow-logic/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/shadow-logic/src/STAGING-RECEIPT.json
+            glulx/build/shadow-logic/smell-report.json
+            glulx/build/shadow-logic/production-transcript.txt
+            glulx/build/shadow-logic/laboratory-transcript.txt
+            glulx/build/shadow-logic/fire-death-transcript.txt
+            glulx/build/shadow-logic/weapon-death-transcript.txt
+            glulx/build/shadow-logic/zilf-restore.log
+            glulx/build/shadow-logic/zilf-build.log
+            glulx/build/shadow-logic/zilf-compile.log
+            glulx/build/shadow-logic/test-zilf-compile.log
+            glulx/build/shadow-logic/glazer-build.log
+            glulx/build/shadow-logic/glazer-version.txt
+            glulx/build/shadow-logic/glazer-assemble.log
+            glulx/build/shadow-logic/test-glazer-assemble.log
+            glulx/build/shadow-logic/cheapglk-build.log
+            glulx/build/shadow-logic/glulxe-build.log
+            glulx/shadow-logic/patch-series.json
+          if-no-files-found: warn

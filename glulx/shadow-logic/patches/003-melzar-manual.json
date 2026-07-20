@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-MELZAR-MANUAL",
+  "path": "1dungeon.zil",
+  "description": "Append the original Great Underground Empire maintenance word MELZAR to the existing owner's manual so spoken knowledge is learned from readable world text",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "ZORK\nwill provide many months of trouble-free operation.\")>",
+      "new": "ZORK\nwill provide many months of trouble-free operation.|\n|\nEmergency diagnostic word: MELZAR. Speak it only after reading this manual.\")>"
+    }
+  ]
+}
