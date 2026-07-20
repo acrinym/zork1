@@ -1,0 +1,23 @@
+version
+open mailbox
+take leaflet
+touch leaflet
+knock leaflet
+north
+east
+open window
+west
+west
+take lamp
+turn on lamp
+lights
+up
+take rope
+use rope on self
+down
+untie self
+down
+use lamp on self
+follies
+quit
+y
