@@ -149,9 +149,16 @@ The sixth layer derives explicitly from the Release 1213 manifest and artifact h
 - canonical non-torch burning everywhere else;
 - persistent parity state in `RECAP`.
 
-Qualification rebuilds the locked Release 122 `.z3` artifact and compares semantic outcome categories against the native Glulxe routes. Byte-level parity and identical transcript wrapping are explicitly not required.
+### Locked absurd-alternate artifact
 
-The exact Release 1214 `.ulx` size, checksum, and SHA-256 are discovered and committed as a fail-closed lock by the same pull request that introduces this layer.
+- output: `zork1-glulx-absurd-alternates.ulx`
+- identity: Release `1214` / serial `260720`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `202,240` bytes
+- checksum: `0x53f5066d`, valid
+- SHA-256: `10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628`
+
+Qualification rebuilds the locked Release 122 `.z3` artifact and proves every shared semantic outcome category against the native Glulxe routes. Byte-level parity and identical transcript wrapping are explicitly not required.
 
 See [`absurd-alternates/README.md`](absurd-alternates/README.md).
 
