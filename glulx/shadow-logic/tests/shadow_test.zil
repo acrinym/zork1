@@ -1,15 +1,1 @@
-"Test-only setup verb for Shadow Logic qualification."
-
-<SYNTAX SHLAB = V-SHADOW-LAB>
-
-<ROUTINE V-SHADOW-LAB ()
-	<MOVE ,TORCH ,WINNER>
-	<MOVE ,BOTTLE ,WINNER>
-	<FSET ,BOTTLE ,OPENBIT>
-	<MOVE ,SWORD ,WINNER>
-	<MOVE ,ROPE ,WINNER>
-	<MOVE ,GARLIC ,WINNER>
-	<MOVE ,OWNERS-MANUAL ,WINNER>
-	<MOVE ,MIRROR-1 ,WEST-OF-HOUSE>
-	<SETG CLOCK-WAIT T>
-	<TELL "[Test-only Shadow Logic laboratory prepared.]" CR>>
+"Reserved test-only file. Shadow Logic qualification now uses an exact startup-state patch and defines no setup verbs or routines."
