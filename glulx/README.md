@@ -110,6 +110,7 @@ The fifth layer derives explicitly from the Release 1212 manifest and artifact h
 - native targeting of the player through the real Glulx `ME` object;
 - rope restraint and recoverable movement blocking;
 - telegraphed multi-turn clothing-fire state with bottled-water recovery;
+- failed empty or closed bottle attempts that no longer pause fire escalation;
 - material-specific touch and knock responses;
 - qualitative `LIGHTS` reporting;
 - the learned bare maintenance word `MELZAR` and `WORDS` report;
@@ -123,8 +124,8 @@ The fifth layer derives explicitly from the Release 1212 manifest and artifact h
 - identity: Release `1213` / serial `260720`
 - Glulx version: `3.1.3` / `0x00030103`
 - size: `197,376` bytes
-- checksum: `0xeb7138e8`, valid
-- SHA-256: `af71704cf8c0aca091a4fb26a5f18dd31f94181fffb801578a2f1d63ae79232f`
+- checksum: `0x2b0521e4`, valid
+- SHA-256: `3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e`
 
 Qualification includes a real-map production route, an isolated startup-state laboratory using production logic, and separate terminal consequence routes. The production artifact contains no setup verb or test-only world mutation.
 
