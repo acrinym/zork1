@@ -141,11 +141,17 @@
 <ROUTINE DAM-MECH-USE-ON ()
 	<COND (<AND <EQUAL? ,PRSI ,BOLT> <EQUAL? ,PRSO ,WRENCH>>
 	       <SETG DAM-MECH-TOOL-PROBED T>
-	       <SHADOW-PERFORM ,V?TURN ,BOLT ,WRENCH>
+	       <COND (<NOT <SHADOW-HELD? ,WRENCH>>
+	              <TELL "You would first need to be holding the wrench." CR>)
+	             (T
+	              <SHADOW-PERFORM ,V?TURN ,BOLT ,WRENCH>)>
 	       <RTRUE>)
 	      (<AND <EQUAL? ,PRSI ,BOLT> <EQUAL? ,PRSO ,SCREWDRIVER>>
 	       <SETG DAM-MECH-TOOL-PROBED T>
-	       <TELL "The screwdriver fits neither the bolt nor the scale of the mechanism. The wrench is the mechanically honest choice." CR>
+	       <COND (<NOT <SHADOW-HELD? ,SCREWDRIVER>>
+	              <TELL "You would first need to be holding the screwdriver." CR>)
+	             (T
+	              <TELL "The screwdriver fits neither the bolt nor the scale of the mechanism. The wrench is the mechanically honest choice." CR>)>
 	       <RTRUE>)
 	      (<AND <EQUAL? ,PRSI ,CONTROL-PANEL> <EQUAL? ,PRSO ,WRENCH>>
 	       <SETG DAM-MECH-TOOL-PROBED T>
@@ -163,7 +169,10 @@
 	              <TELL "The visible seams are riveted and sealed. The screwdriver confirms that this panel was designed by engineers who distrusted future engineers." CR>)>
 	       <RTRUE>)
 	      (<AND <EQUAL? ,PRSI ,CONTROL-PANEL> <EQUAL? ,PRSO ,GUIDE>>
-	       <TELL "The tour guidebook describes the dam's grandeur, workforce, and funding, then becomes mysteriously unhelpful at the point where operating instructions would begin." CR>
+	       <COND (<NOT <SHADOW-HELD? ,GUIDE>>
+	              <TELL "You would first need to be holding the tour guidebook." CR>)
+	             (T
+	              <TELL "The tour guidebook describes the dam's grandeur, workforce, and funding, then becomes mysteriously unhelpful at the point where operating instructions would begin." CR>)>
 	       <RTRUE>)
 	      (<AND <EQUAL? ,PRSI ,CONTROL-PANEL> <EQUAL? ,PRSO ,WATER ,BOTTLE>>
 	       <COND (<NOT <SHADOW-HAS-BOTTLED-WATER?>>
@@ -184,7 +193,10 @@
 	      (<AND <EQUAL? ,PRSI ,LEAK>
 	            <EQUAL? ,PRSO ,WRENCH ,SCREWDRIVER>>
 	       <SETG DAM-MECH-TOOL-PROBED T>
-	       <TELL "The tool can interrogate the pipe, but it cannot replace the missing material. Something that seals rather than turns is required." CR>
+	       <COND (<NOT <SHADOW-HELD? ,PRSO>>
+	              <TELL "You would first need to be holding the tool." CR>)
+	             (T
+	              <TELL "The tool can interrogate the pipe, but it cannot replace the missing material. Something that seals rather than turns is required." CR>)>
 	       <RTRUE>)>
 	<RFALSE>>
 
