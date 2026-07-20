@@ -10,5 +10,4 @@ The bird's nest catches fire and is consumed.
 [Test-only troll recovery scenario.]
 You gasp and point behind the troll.
 Cellar
-Time passes...
 [Test-only troll hostility restored.]
