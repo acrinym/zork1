@@ -103,8 +103,7 @@ jobs:
           base = json.loads(Path('glulx/reactive-surface/patch-series.json').read_text())
           expected_paths = [
               '1actions.zil', '1dungeon.zil', 'assistance.zil', 'gmain.zil',
-              'gsyntax.zil', 'gverbs.zil', 'reactive_surface.zil',
-              'shadow_logic.zil', 'zork1.zil',
+              'gverbs.zil', 'reactive_surface.zil', 'shadow_logic.zil', 'zork1.zil',
           ]
           assert layer['release'] == int(os.environ['SHADOW_RELEASE'])
           assert layer['serial'] == os.environ['SHADOW_SERIAL']
@@ -162,8 +161,7 @@ jobs:
           from pathlib import Path
           expected_paths = [
               '1actions.zil', '1dungeon.zil', 'assistance.zil', 'gmain.zil',
-              'gsyntax.zil', 'gverbs.zil', 'reactive_surface.zil',
-              'shadow_logic.zil', 'zork1.zil',
+              'gverbs.zil', 'reactive_surface.zil', 'shadow_logic.zil', 'zork1.zil',
           ]
           receipt = json.loads(Path('glulx/build/shadow-logic/src/STAGING-RECEIPT.json').read_text())
           report = json.loads(Path('glulx/build/shadow-logic/smell-report.json').read_text())
@@ -299,7 +297,7 @@ jobs:
                   'real_map_self_restraint': 'passed',
                   'materials': 'passed',
                   'light_inventory': 'passed',
-                  'learned_melzar_and_say': 'passed in startup-state test story',
+                  'learned_melzar_and_chant': 'passed in startup-state test story',
                   'mirror_light': 'passed in startup-state test story',
                   'self_fire_rescue': 'passed in startup-state test story',
                   'telegraphed_fire_death': 'passed',
