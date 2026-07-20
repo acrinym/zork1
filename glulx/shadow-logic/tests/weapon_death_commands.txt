@@ -1,0 +1,4 @@
+shadowlab
+use sword on self
+quit
+y
