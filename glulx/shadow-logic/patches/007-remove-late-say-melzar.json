@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-REMOVE-LATE-SAY-MELZAR",
+  "path": "shadow_logic.zil",
+  "description": "Remove the later duplicate SAY MELZAR form after ordering the fixed grammar before generic SAY in gsyntax",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX MELZAR = V-SHADOW-MELZAR>\n<SYNTAX SAY MELZAR = V-SHADOW-MELZAR>",
+      "new": "<SYNTAX MELZAR = V-SHADOW-MELZAR>"
+    }
+  ]
+}
