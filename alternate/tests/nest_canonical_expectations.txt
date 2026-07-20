@@ -1,0 +1,3 @@
+[Test-only canonical nest-burning scenario.]
+The bird's nest catches fire and is consumed.
+Forest Path
