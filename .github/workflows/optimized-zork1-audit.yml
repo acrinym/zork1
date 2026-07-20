@@ -31,7 +31,7 @@ permissions:
 
 env:
   ZILF_COMMIT: d3b79f348b692647ab7ee3b13e5ac7c99b70f471
-  EXPANDED_FROTZ_SEEDS: "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32"
+  EXPANDED_FROTZ_SEED: "2"
 
 jobs:
   preservation-audit:
@@ -208,25 +208,15 @@ jobs:
             --expect optimized/tests/smoke_expectations.txt \
             | tee optimized/build/smoke-transcript.txt
 
-      - name: Discover stable expanded transcript seed
+      - name: Run deterministic expanded transcript
         shell: bash
         run: |
           set -o pipefail
-          for seed in $EXPANDED_FROTZ_SEEDS; do
-            transcript="expanded/build/smoke-seed-${seed}.txt"
-            echo "Trying deterministic Frotz seed ${seed}"
-            if python optimized/tools/run_smoke.py expanded/build/zork1-expanded.z3 \
-              --interpreter "$(command -v dfrotz) -s ${seed}" \
-              --commands expanded/tests/smoke_commands.txt \
-              --expect expanded/tests/smoke_expectations.txt \
-              | tee "$transcript"; then
-              cp "$transcript" expanded/build/smoke-transcript.txt
-              printf '%s\n' "$seed" | tee expanded/build/selected-frotz-seed.txt
-              exit 0
-            fi
-          done
-          echo "No candidate seed completed the expanded route." >&2
-          exit 1
+          python optimized/tools/run_smoke.py expanded/build/zork1-expanded.z3 \
+            --interpreter "$(command -v dfrotz) -s $EXPANDED_FROTZ_SEED" \
+            --commands expanded/tests/smoke_commands.txt \
+            --expect expanded/tests/smoke_expectations.txt \
+            | tee expanded/build/smoke-transcript.txt
 
       - name: Upload runnable optimized edition
         if: always()
@@ -255,8 +245,6 @@ jobs:
             expanded/build/zork1-expanded.z3
             expanded/build/expanded-story-report.json
             expanded/build/smoke-transcript.txt
-            expanded/build/smoke-seed-*.txt
-            expanded/build/selected-frotz-seed.txt
             expanded/build/smell-report.json
             expanded/build/src/STAGING-RECEIPT.json
             expanded/build/zork-compile.log
