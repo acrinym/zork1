@@ -5,13 +5,13 @@
   "replacements": [
     {
       "expected_count": 1,
-      "old": "\t(ACTION TROLL-F)",
+      "old": "\t(ACTION TROLL-FCN)",
       "new": "\t(ACTION GLULX-ALT-TROLL-F)"
     },
     {
       "expected_count": 1,
-      "old": "\t(ACTION NEST-F)",
-      "new": "\t(ACTION GLULX-ALT-NEST-F)"
+      "old": "\t(FDESC \"Beside you on the branch is a small bird's nest.\")\n\t(CAPACITY 20)>",
+      "new": "\t(FDESC \"Beside you on the branch is a small bird's nest.\")\n\t(ACTION GLULX-ALT-NEST-F)\n\t(CAPACITY 20)>"
     },
     {
       "expected_count": 1,
