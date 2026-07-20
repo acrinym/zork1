@@ -1,0 +1,145 @@
+name: Shadow Logic Test Story Diagnostic
+
+on:
+  push:
+    branches:
+      - agent/glulx-shadow-logic
+    paths:
+      - ".github/workflows/glulx-shadow-logic-test-debug.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  SHADOW_SERIAL: "260720"
+
+jobs:
+  diagnose-test-story:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.ZILF_COMMIT }}
+          path: .tooling/zilf
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential curl
+
+      - name: Build pinned ZILF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p glulx/build/shadow-test-debug
+          pushd .tooling/zilf
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/shadow-test-debug/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/shadow-test-debug/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/shadow-test-debug/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/shadow-test-debug/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/shadow-test-debug/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/shadow-test-debug/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+
+      - name: Stage production source and apply test startup patch
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python glulx/tools/stage_shadow_logic.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/shadow-test-debug/src \
+            --allowed-root glulx/build/shadow-test-debug \
+            --manifest glulx/shadow-logic/patch-series.json \
+            2>&1 | tee glulx/build/shadow-test-debug/stage.log
+          cp glulx/shadow-logic/tests/shadow_test.zil glulx/build/shadow-test-debug/src/shadow_test.zil
+          python - <<'PY' 2>&1 | tee glulx/build/shadow-test-debug/test-patch.log
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('glulx/tools').resolve()))
+          from stage_release120 import apply_patch
+          receipt = apply_patch(
+              Path('glulx/shadow-logic/tests/001-include-shadow-test.json').resolve(),
+              Path('glulx/build/shadow-test-debug/src').resolve(),
+          )
+          print(receipt)
+          PY
+
+      - name: Compile and assemble diagnostic test story
+        shell: bash
+        run: |
+          set -o pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/shadow-test-debug/test.asm"
+          pushd glulx/build/shadow-test-debug/src
+          dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/shadow-test-debug/test-zilf-compile.log"
+          compile_status=${PIPESTATUS[0]}
+          popd
+          if [ "$compile_status" -ne 0 ]; then
+            exit "$compile_status"
+          fi
+          python glulx/tools/normalize_serial.py "$assembly" --serial "$SHADOW_SERIAL" \
+            2>&1 | tee glulx/build/shadow-test-debug/normalize.log
+          "$GLAZER_BIN" "$assembly" -o glulx/build/shadow-test-debug/test.ulx \
+            2>&1 | tee glulx/build/shadow-test-debug/test-glazer.log
+
+      - name: Upload diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shadow-logic-test-debug
+          path: |
+            glulx/build/shadow-test-debug/stage.log
+            glulx/build/shadow-test-debug/test-patch.log
+            glulx/build/shadow-test-debug/test-zilf-compile.log
+            glulx/build/shadow-test-debug/normalize.log
+            glulx/build/shadow-test-debug/test-glazer.log
+            glulx/build/shadow-test-debug/test.asm
+            glulx/build/shadow-test-debug/test.ulx
+            glulx/build/shadow-test-debug/src/1dungeon.zil
+            glulx/build/shadow-test-debug/src/zork1.zil
+            glulx/build/shadow-test-debug/src/shadow_test.zil
+          if-no-files-found: warn
