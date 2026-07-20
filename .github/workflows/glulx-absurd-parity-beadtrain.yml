@@ -1,0 +1,39 @@
+name: Zork I Glulx Absurd Parity Beadtrain
+
+on:
+  push:
+    branches:
+      - agent/glulx-absurd-alternate-parity
+    paths:
+      - ".beads/issues*.jsonl"
+      - ".beads/onyx_zork_glulx_absurd_parity.beadtrain"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/glulx-absurd-parity-beadtrain.yml"
+  pull_request:
+    paths:
+      - ".beads/issues*.jsonl"
+      - ".beads/onyx_zork_glulx_absurd_parity.beadtrain"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/glulx-absurd-parity-beadtrain.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-glulx-absurd-parity-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate sharded Release 1214 train
+        run: |
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
+            .beads/onyx_zork_glulx_absurd_parity.beadtrain
