@@ -35,9 +35,9 @@
   "expected_artifact": {
     "file": "zork1-glulx-dam-mechanisms.ulx",
     "glulx_version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "DISCOVERY",
-    "sha256": "DISCOVERY"
+    "size_bytes": 207360,
+    "checksum_hex": "0x3d135bb8",
+    "sha256": "ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed"
   },
   "preserved_canonical_state": [
     "GATE-FLAG remains the yellow/brown turning interlock",
