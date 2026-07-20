@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-BARE-MELZAR",
+  "path": "shadow_logic.zil",
+  "description": "Keep MELZAR as a classic Zork-style bare magic word and remove the unsupported SAY alias",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX MELZAR = V-SHADOW-MELZAR>\n<SYNTAX SAY MELZAR = V-SHADOW-MELZAR>",
+      "new": "<SYNTAX MELZAR = V-SHADOW-MELZAR>"
+    }
+  ]
+}
