@@ -79,7 +79,9 @@ def evaluate(route: str, text: str) -> dict[str, Any]:
     if route == "broken":
         unarmed = text.split("[Test-only unarmed troll scenario.]", 1)
         if len(unarmed) == 2:
-            segment = unarmed[1].split("[Test-only bound troll restoration scenario.]", 1)[0]
+            segment = unarmed[1].split(
+                "[Test-only bound troll restoration scenario.]", 1
+            )[0]
             phantom = "His axe clatters to the floor." in segment
         else:
             phantom = True
@@ -118,7 +120,9 @@ def main() -> int:
         parity[route] = {}
         for category in categories:
             v3_passed = report["virtual_machines"]["v3"][route][category]["passed"]
-            glulx_passed = report["virtual_machines"]["glulx"][route][category]["passed"]
+            glulx_passed = report["virtual_machines"]["glulx"][route][category][
+                "passed"
+            ]
             parity[route][category] = {
                 "v3": v3_passed,
                 "glulx": glulx_passed,
@@ -128,7 +132,9 @@ def main() -> int:
     report["passed"] = not failures
     report["failures"] = failures
     args.json.parent.mkdir(parents=True, exist_ok=True)
-    args.json.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
+    args.json.write_text(
+        json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
     if failures:
         raise SystemExit("semantic parity failures: " + ", ".join(failures))
     print("Release 122 and Glulx Release 1214 satisfy the shared outcome contract.")
