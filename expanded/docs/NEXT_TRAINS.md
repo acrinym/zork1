@@ -1,11 +1,11 @@
 # Expansion frontier
 
-Release 121 established the broad reactive and assistance architecture. Release 122 now adds the first qualified **earned absurd alternate solutions** while preserving Release 121 as an independent edition. The Glulx lineage remains qualified through Release 1212.
+Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified **earned absurd alternate solutions** while preserving Release 121 as an independent edition. The Glulx lineage is qualified through Shadow Logic Release `1213`, and PR #6 implements isolated Release `1214` semantic parity for the Release 122 outcomes.
 
 Two distinct frontiers must remain separate:
 
-1. deepen Glulx parity in small migration layers;
-2. add further Release 122-style alternate solutions only when real objects, preparation, risk, and canonical consequences justify them.
+1. deepen Shadow Logic mechanisms and ritual interactions in small Glulx layers;
+2. add further earned alternate solutions only when real objects, preparation, risk, and canonical consequences justify them.
 
 ## 0. Glulx upstream reconciliation — complete
 
@@ -23,24 +23,52 @@ Qualified Release `1211` includes the state-neutral action hook, `GOALS`, `EXITS
 
 Qualified Release `1212` includes proximity-safe house and door reactions, boards and painted splinter, kitchen window, mailbox maintenance slip, ordinary forest/tree/songbird reactions, and native proof that Hidden Glade remains excluded.
 
-## 0.4 Deeper reactive Glulx layer — controlling Glulx train
+## 0.4 Shadow Logic Glulx foundation — complete
+
+Qualified Release `1213` adds native object-on-object experimentation, direct player targeting, recoverable rope restraint, telegraphed personal fire, physically validated bottled-water rescue, material responses, qualitative light reporting, learned `MELZAR`, mirror shadow diagnostics, mortal-folly reports, and persistent recap state.
+
+## 0.5 Release 122 absurd-alternate Glulx parity — active in PR #6
+
+Release `1214` is an isolated layer above the exact qualified Release `1213` source and artifact hash. It ports only:
+
+1. alert troll restraint failure;
+2. one-use timed troll distraction;
+3. immediate real-rope restraint;
+4. living bound troll state;
+5. conditional real axe drop;
+6. east/west passage opening;
+7. `UNTIE TROLL` threat restoration;
+8. bound-troll custom reactions;
+9. deliberate sack-under-tree preparation;
+10. prepared intact-egg catch;
+11. empty prepared-sack narration;
+12. unprepared sack failure;
+13. canonical `BAD-EGG` consequences;
+14. canonical non-torch burning;
+15. persistent recap state.
+
+The qualification pipeline rebuilds the locked Release `122` `.z3` reference and Release `1214` `.ulx`, runs native interpreters, and compares semantic outcomes. Byte identity and identical transcript wrapping are not required.
+
+This layer explicitly excludes Hidden Glade, songbird-follow geography, troll bribe, cyclops lullaby, thief bargain, the full Adventurer Misconduct surface, broad fire propagation, generalized spells, Version 3 object-slot cleanup, and the Wizard of Frobozz.
+
+## 0.6 Deeper Shadow Logic mechanisms — next separate Glulx train
 
 Port, in isolated groups:
 
-1. dam and control-panel examination and listening;
+1. dam and control-panel experimentation;
 2. bell resonance and knocking;
-3. candle-state examination beyond the Release 120 description correction;
-4. optional black-book page turning and listening;
-5. rope reactions;
-6. mirror reactions beyond canonical mirror behavior;
-7. water, wrench, shovel, axe, and related tool responses;
+3. candle-state combinations beyond the Release 120 description correction;
+4. black-book knowledge and additional learned words only where justified;
+5. deeper mirror and rope interactions;
+6. water, wrench, shovel, axe, and related tool responses;
+7. controlled multi-object consequence chains;
 8. persistent state required by those reactions.
 
-The train must stage from qualified Release 1212, preserve every earlier artifact, assign a new unofficial Glulx identity, add focused semantic routes, and keep optional geography, NPC alternatives, and comedy out.
+The train must stage from the latest qualified Glulx artifact, preserve every earlier artifact, assign a new unofficial identity, add focused semantic routes, and keep optional geography, character alternatives, and broad comedy out.
 
-## 0.5 Optional geography and living-character Glulx layers
+## 0.7 Optional geography and character Glulx layers
 
-Port in this order:
+After mechanism work, port separately and deliberately:
 
 1. songbird and Hidden Glade;
 2. troll bribe;
@@ -48,10 +76,9 @@ Port in this order:
 4. thief bargain;
 5. Adventurer Misconduct;
 6. `FOLLY` and troll bemusement;
-7. Release 122 earned alternate solutions;
-8. removal of version 3 object-slot workarounds.
+7. Version 3 object-slot cleanup where Glulx no longer needs the workaround.
 
-Release 122 parity must be its own layer. It must not be smuggled into a scenery, character, or misconduct migration.
+Release 122 parity is no longer part of this backlog because it has its own isolated Release `1214` train.
 
 ## 1. Absurd Alternate Zork I Release 122 — complete
 
@@ -61,7 +88,7 @@ Release 122 derives from the complete qualified Release 121 source and changes e
 
 - alert rope restraint fails;
 - `TRICK TROLL` creates one immediate opportunity;
-- immediate `TIE UP TROLL WITH ROPE` leaves him alive, drops the axe, consumes the rope into the restraint, and opens the passages;
+- immediate `TIE UP TROLL WITH ROPE` leaves him alive, drops the axe only when carried, consumes the rope into the restraint, and opens the passages;
 - `UNTIE TROLL` restores the rope and danger;
 - leaving instead of acting wastes the opportunity, and returning proves normal hostile behavior.
 
@@ -78,15 +105,15 @@ Release 122 derives from the complete qualified Release 121 source and changes e
 
 - Release `122` / serial `260720`;
 - Z-machine version 3;
-- 107,880 bytes;
-- checksum `0xf13d`;
-- SHA-256 `98320cd2c11a963b3f23c9a36782f31887279798c26958942ef48ba6ff939a28`.
+- 107,992 bytes;
+- checksum `0x3ab5`;
+- SHA-256 `58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db`.
 
 Controlling record: [`../../alternate/README.md`](../../alternate/README.md).
 
 The Wizard of Frobozz remains Zork II scope.
 
-## 1.1 Further earned alternate solutions — next `.z3` product train after parity priorities
+## 1.1 Further earned alternate solutions — after current parity and mechanism priorities
 
 Candidate actions must satisfy all of these:
 
@@ -114,7 +141,7 @@ Add deterministic routes for:
 - dam high/low water states;
 - cyclops lullaby under impatience timing;
 - thief bargain with carried treasure;
-- save and restore after Release 121 and 122 persistent changes;
+- save and restore after Release 121, 122, 1213, and 1214 persistent changes;
 - tie, untie, save, restore, and revisit of the bound troll;
 - safe and broken egg states across save/restore.
 
