@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1214-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load isolated startup-state setup verbs only in the qualification story",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"absurd_alternates\" T>",
+      "new": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"absurd_alt_test\" T>"
+    }
+  ]
+}
