@@ -90,7 +90,8 @@
 
 <ROUTINE DAM-MECH-PANEL-F ()
 	<COND (<VERB? EXAMINE DIAGNOSE SEARCH LOOK-INSIDE>
-	       <DAM-MECH-PANEL-STATUS>)
+	       <DAM-MECH-PANEL-STATUS>
+	       <RTRUE>)
 	      (<VERB? LISTEN>
 	       <TELL "Behind the panel, gears hold a patient mechanical tension. ">
 	       <COND (,GATES-OPEN <TELL "The open sluices add a continuous low vibration.">)
