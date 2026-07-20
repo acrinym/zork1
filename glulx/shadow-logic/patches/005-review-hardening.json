@@ -1,0 +1,32 @@
+{
+  "id": "Z1-GLULX-1213-REVIEW-HARDENING",
+  "path": "shadow_logic.zil",
+  "description": "Propagate canonical PERFORM results and require physically available bottled water for every self, flame, and metal use path",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE SHADOW-PERFORM (ACTION OBJ \"OPTIONAL\" (IOBJ <>))\n\t<SETG SHADOW-INTERNAL-ACTION T>\n\t<COND (.IOBJ <PERFORM .ACTION .OBJ .IOBJ>)\n\t      (T <PERFORM .ACTION .OBJ>)>\n\t<SETG SHADOW-INTERNAL-ACTION <>>\n\t<RTRUE>>",
+      "new": "<ROUTINE SHADOW-PERFORM (ACTION OBJ \"OPTIONAL\" (IOBJ <>) \"AUX\" RES)\n\t<SETG SHADOW-INTERNAL-ACTION T>\n\t<COND (.IOBJ <SET RES <PERFORM .ACTION .OBJ .IOBJ>>)\n\t      (T <SET RES <PERFORM .ACTION .OBJ>>)>\n\t<SETG SHADOW-INTERNAL-ACTION <>>\n\t.RES>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t       <COND (<AND <EQUAL? .SOURCE ,BOTTLE> <IN? ,WATER ,BOTTLE>>\n\t              <REMOVE-CAREFULLY ,WATER>)>",
+      "new": "\t       <COND (<IN? ,WATER ,BOTTLE>\n\t              <REMOVE-CAREFULLY ,WATER>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<EQUAL? ,PRSO ,WATER>\n\t       <SHADOW-EXTINGUISH-SELF ,WATER>)",
+      "new": "\t      (<EQUAL? ,PRSO ,WATER>\n\t       <COND (<NOT <SHADOW-HAS-BOTTLED-WATER?>>\n\t              <TELL \"You don't have any water you can readily use.\" CR>)\n\t             (T\n\t              <SHADOW-EXTINGUISH-SELF ,WATER>)>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<AND <EQUAL? ,PRSO ,WATER ,BOTTLE>\n\t            <EQUAL? ,PRSI ,TORCH ,CANDLES>>\n\t       <COND (<AND <EQUAL? ,PRSO ,BOTTLE> <NOT <SHADOW-HAS-BOTTLED-WATER?>>>\n\t              <TELL \"The bottle must be open and contain water first.\" CR>)\n\t             (T\n\t              <SHADOW-PERFORM ,V?LAMP-OFF ,PRSI>)>)",
+      "new": "\t      (<AND <EQUAL? ,PRSO ,WATER ,BOTTLE>\n\t            <EQUAL? ,PRSI ,TORCH ,CANDLES>>\n\t       <COND (<NOT <SHADOW-HAS-BOTTLED-WATER?>>\n\t              <TELL \"You don't have any water you can readily use.\" CR>)\n\t             (T\n\t              <REMOVE-CAREFULLY ,WATER>\n\t              <SHADOW-PERFORM ,V?LAMP-OFF ,PRSI>)>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<AND <EQUAL? ,PRSO ,WATER ,BOTTLE>\n\t            <EQUAL? <SET MAT <SHADOW-MATERIAL-OF ,PRSI>> ,SHADOW-MAT-METAL>>\n\t       <TELL \"Water runs over the metal, briefly darkening dust and accomplishing no mechanical reform.\" CR>)",
+      "new": "\t      (<AND <EQUAL? ,PRSO ,WATER ,BOTTLE>\n\t            <EQUAL? <SET MAT <SHADOW-MATERIAL-OF ,PRSI>> ,SHADOW-MAT-METAL>>\n\t       <COND (<NOT <SHADOW-HAS-BOTTLED-WATER?>>\n\t              <TELL \"You don't have any water you can readily use.\" CR>)\n\t             (T\n\t              <REMOVE-CAREFULLY ,WATER>\n\t              <TELL \"Water runs over the metal, briefly darkening dust and accomplishing no mechanical reform.\" CR>)>)"
+    }
+  ]
+}
