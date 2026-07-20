@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-SHADOW-RECAP",
+  "path": "assistance.zil",
+  "description": "Append persistent Shadow Logic discoveries and current danger state to the qualified recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<SURFACE-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<SURFACE-RECAP> <SET SEEN T>)>\n\t<COND (<SHADOW-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
