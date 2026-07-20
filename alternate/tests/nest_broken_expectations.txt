@@ -15,5 +15,6 @@ The Troll Room
 You approach the alert, armed troll with the rope arranged confidently.
 [Test-only unarmed troll scenario.]
 You seize the troll's present disadvantage and loop the rope
-The bound troll remains alive, furious, and no longer able to block the passages.
+The bound troll remains
+alive, furious, and no longer able to block the passages.
 The troll is not presently available for further tactical deception.
