@@ -42,6 +42,9 @@ env:
   DAM_RELEASE: "1215"
   DAM_SERIAL: "260720"
   DAM_TEST_SERIAL: "990215"
+  DAM_SIZE: "207360"
+  DAM_CHECKSUM: "0x3d135bb8"
+  DAM_SHA256: ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed
 
 jobs:
   qualify-dam-mechanisms:
@@ -100,7 +103,7 @@ jobs:
           sudo apt-get install -y build-essential libncurses-dev curl
           mkdir -p glulx/build/dam-mechanisms
 
-      - name: Validate Release 1215 layer and qualified base
+      - name: Validate locked Release 1215 layer and qualified base
         run: |
           python - <<'PY'
           import json, os
@@ -122,9 +125,9 @@ jobs:
           ]
           assert artifact['file'] == 'zork1-glulx-dam-mechanisms.ulx'
           assert artifact['glulx_version_hex'] == '0x00030103'
-          assert artifact['size_bytes'] == 0
-          assert artifact['checksum_hex'] == 'DISCOVERY'
-          assert artifact['sha256'] == 'DISCOVERY'
+          assert artifact['size_bytes'] == int(os.environ['DAM_SIZE'])
+          assert artifact['checksum_hex'] == os.environ['DAM_CHECKSUM']
+          assert artifact['sha256'] == os.environ['DAM_SHA256']
           PY
 
       - name: Build pinned ZILF
@@ -185,7 +188,7 @@ jobs:
           assert not any('DAMRESET' in path.read_text(errors='ignore') for path in source.glob('*.zil'))
           PY
 
-      - name: Compile discovery Release 1215 artifact
+      - name: Compile locked Release 1215 artifact
         shell: bash
         run: |
           set -euxo pipefail
@@ -200,17 +203,20 @@ jobs:
           "$GLAZER_BIN" "$assembly" -o glulx/build/dam-mechanisms/zork1-glulx-dam-mechanisms.ulx \
             2>&1 | tee glulx/build/dam-mechanisms/glazer-assemble.log
 
-      - name: Measure discovery artifact identity
+      - name: Verify exact Release 1215 artifact identity
         run: |
           python glulx/tools/verify_ulx.py glulx/build/dam-mechanisms/zork1-glulx-dam-mechanisms.ulx \
+            --expect-sha256 "$DAM_SHA256" \
             --json glulx/build/dam-mechanisms/story-report.json
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
           story = json.loads(Path('glulx/build/dam-mechanisms/story-report.json').read_text(encoding='utf-8'))
           assert story['version_hex'] == '0x00030103'
           assert story['checksum_valid'] is True
-          print('DISCOVERED_DAM_IDENTITY=' + json.dumps(story, sort_keys=True))
+          assert story['size_bytes'] == int(os.environ['DAM_SIZE'])
+          assert story['checksum_hex'] == os.environ['DAM_CHECKSUM']
+          assert story['sha256'] == os.environ['DAM_SHA256']
           PY
 
       - name: Build pinned native Glulxe with CheapGlk
@@ -253,7 +259,7 @@ jobs:
           "$GLAZER_BIN" "$assembly" -o glulx/build/dam-mechanisms/zork1-glulx-dam-mechanisms-test.ulx \
             2>&1 | tee glulx/build/dam-mechanisms/test-glazer-assemble.log
 
-      - name: Run dam mechanism and consequence route
+      - name: Run qualified dam mechanism and consequence route
         shell: bash
         run: |
           set -o pipefail
@@ -261,10 +267,10 @@ jobs:
             < glulx/dam-mechanisms/tests/mechanism_commands.txt \
             2>&1 | tee glulx/build/dam-mechanisms/mechanism-transcript.txt
           while IFS= read -r marker; do
-            test -z "$marker" || grep -F "$marker" glulx/build/dam-mechanisms/mechanism-transcript.txt
+            test -z "$marker" || grep -F -- "$marker" glulx/build/dam-mechanisms/mechanism-transcript.txt
           done < glulx/dam-mechanisms/tests/mechanism_expectations.txt
 
-      - name: Write discovery qualification receipt
+      - name: Write qualified Release 1215 receipt
         run: |
           python - <<'PY'
           import json, os
@@ -272,8 +278,11 @@ jobs:
           stage = json.loads(Path('glulx/build/dam-mechanisms/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
           story = json.loads(Path('glulx/build/dam-mechanisms/story-report.json').read_text(encoding='utf-8'))
           serial = json.loads(Path('glulx/build/dam-mechanisms/SERIAL-NORMALIZATION.json').read_text(encoding='utf-8'))
+          assert story['size_bytes'] == int(os.environ['DAM_SIZE'])
+          assert story['checksum_hex'] == os.environ['DAM_CHECKSUM']
+          assert story['sha256'] == os.environ['DAM_SHA256']
           receipt = {
-              'qualification_status': 'discovery routes passed; artifact identity awaits committed lock',
+              'qualification_status': 'qualified and fail-closed',
               'identity': {'release': int(os.environ['DAM_RELEASE']), 'serial': os.environ['DAM_SERIAL']},
               'base': stage['base'],
               'changed_paths': stage['changed_paths'],
@@ -284,7 +293,8 @@ jobs:
                   'button_interlock': 'passed',
                   'canonical_wrench_and_bolt_gate_cycle': 'passed',
                   'melzar_dam_diagnostic': 'passed',
-                  'red_light_control': 'passed',
+                  'closed_bottle_rejection': 'passed',
+                  'red_light_off_and_on': 'passed',
                   'blue_button_real_leak': 'passed',
                   'wrong_tool_leak_feedback': 'passed',
                   'real_putty_repair': 'passed',
@@ -298,11 +308,11 @@ jobs:
           )
           PY
 
-      - name: Upload discovery artifact and evidence
+      - name: Upload qualified artifact and evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zork1-glulx-dam-mechanisms-discovery
+          name: zork1-glulx-dam-mechanisms-qualified
           path: |
             glulx/build/dam-mechanisms/zork1-glulx-dam-mechanisms.ulx
             glulx/build/dam-mechanisms/zork1-glulx-dam-mechanisms.asm
