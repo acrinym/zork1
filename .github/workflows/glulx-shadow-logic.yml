@@ -37,6 +37,9 @@ env:
   BASE_ARTIFACT_SHA256: 78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002
   SHADOW_RELEASE: "1213"
   SHADOW_SERIAL: "260720"
+  SHADOW_SIZE: "197376"
+  SHADOW_CHECKSUM: "0xeb7138e8"
+  SHADOW_SHA256: af71704cf8c0aca091a4fb26a5f18dd31f94181fffb801578a2f1d63ae79232f
 
 jobs:
   shadow-logic-glulx:
@@ -94,7 +97,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential libncurses-dev curl
 
-      - name: Validate candidate layer and qualified base
+      - name: Validate locked layer and qualified base
         run: |
           python - <<'PY'
           import json, os
@@ -105,6 +108,7 @@ jobs:
               '1actions.zil', '1dungeon.zil', 'assistance.zil', 'gmain.zil',
               'gverbs.zil', 'reactive_surface.zil', 'shadow_logic.zil', 'zork1.zil',
           ]
+          artifact = layer['expected_artifact']
           assert layer['release'] == int(os.environ['SHADOW_RELEASE'])
           assert layer['serial'] == os.environ['SHADOW_SERIAL']
           assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
@@ -114,6 +118,11 @@ jobs:
           assert base['release'] == int(os.environ['BASE_RELEASE'])
           assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
           assert layer['expected_changed_paths'] == expected_paths
+          assert artifact['file'] == 'zork1-glulx-shadow-logic.ulx'
+          assert artifact['glulx_version_hex'] == '0x00030103'
+          assert artifact['size_bytes'] == int(os.environ['SHADOW_SIZE'])
+          assert artifact['checksum_hex'] == os.environ['SHADOW_CHECKSUM']
+          assert artifact['sha256'] == os.environ['SHADOW_SHA256']
           PY
 
       - name: Build pinned ZILF
@@ -178,7 +187,7 @@ jobs:
           assert not any('SHLAB' in path.read_text(errors='ignore') for path in source.glob('*.zil'))
           PY
 
-      - name: Compile and verify Shadow Logic candidate
+      - name: Compile locked Shadow Logic artifact
         shell: bash
         run: |
           set -euxo pipefail
@@ -192,8 +201,21 @@ jobs:
             --receipt glulx/build/shadow-logic/SERIAL-NORMALIZATION.json
           "$GLAZER_BIN" "$assembly" -o glulx/build/shadow-logic/zork1-glulx-shadow-logic.ulx \
             2>&1 | tee glulx/build/shadow-logic/glazer-assemble.log
+
+      - name: Verify fail-closed Shadow Logic artifact
+        run: |
           python glulx/tools/verify_ulx.py glulx/build/shadow-logic/zork1-glulx-shadow-logic.ulx \
+            --expect-sha256 "$SHADOW_SHA256" \
             --json glulx/build/shadow-logic/story-report.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/shadow-logic/story-report.json').read_text())
+          assert story['version_hex'] == '0x00030103'
+          assert story['size_bytes'] == int(os.environ['SHADOW_SIZE'])
+          assert story['checksum_hex'] == os.environ['SHADOW_CHECKSUM']
+          assert story['sha256'] == os.environ['SHADOW_SHA256']
+          PY
 
       - name: Build pinned native Glulxe with CheapGlk
         shell: bash
@@ -256,7 +278,7 @@ jobs:
             test -z "$marker" || grep -F "$marker" glulx/build/shadow-logic/laboratory-transcript.txt
           done < glulx/shadow-logic/tests/laboratory_expectations.txt
 
-      - name: Run telegraphed fire death route
+      - name: Run telegraphed fire outcome route
         shell: bash
         run: |
           set -o pipefail
@@ -267,7 +289,7 @@ jobs:
             test -z "$marker" || grep -F "$marker" glulx/build/shadow-logic/fire-death-transcript.txt
           done < glulx/shadow-logic/tests/fire_death_expectations.txt
 
-      - name: Run weapon-on-self death route
+      - name: Run weapon consequence route
         shell: bash
         run: |
           set -o pipefail
@@ -278,7 +300,7 @@ jobs:
             test -z "$marker" || grep -F "$marker" glulx/build/shadow-logic/weapon-death-transcript.txt
           done < glulx/shadow-logic/tests/weapon_death_expectations.txt
 
-      - name: Write candidate receipt
+      - name: Write qualification receipt
         run: |
           python - <<'PY'
           import json
@@ -287,21 +309,21 @@ jobs:
           story = json.loads(Path('glulx/build/shadow-logic/story-report.json').read_text())
           serial = json.loads(Path('glulx/build/shadow-logic/SERIAL-NORMALIZATION.json').read_text())
           receipt = {
-              'qualification_status': 'candidate; lock after exact-head review and deterministic rebuild',
+              'qualification_status': 'qualified; exact artifact identity locked and rebuilt',
               'identity': {'release': 1213, 'serial': '260720'},
               'base': stage['base'],
               'changed_paths': stage['changed_paths'],
               'artifact': story,
               'serial_normalization': serial,
               'routes': {
-                  'real_map_self_restraint': 'passed',
+                  'real_map_restraint': 'passed',
                   'materials': 'passed',
                   'light_inventory': 'passed',
-                  'learned_melzar_and_chant': 'passed in startup-state test story',
+                  'learned_melzar': 'passed in startup-state test story',
                   'mirror_light': 'passed in startup-state test story',
-                  'self_fire_rescue': 'passed in startup-state test story',
-                  'telegraphed_fire_death': 'passed',
-                  'weapon_self_death': 'passed',
+                  'fire_rescue': 'passed in startup-state test story',
+                  'telegraphed_fire_outcome': 'passed',
+                  'weapon_consequence': 'passed',
               },
               'production_contains_test_setup': False,
               'shadowgate_ip_imported': False,
@@ -309,7 +331,7 @@ jobs:
           Path('glulx/build/shadow-logic/BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
           PY
 
-      - name: Upload Shadow Logic candidate
+      - name: Upload qualified Shadow Logic artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
