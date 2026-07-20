@@ -1,0 +1,10 @@
+altsafe
+put sack under tree
+up
+burn nest with torch
+down
+take egg from sack
+inventory
+recap
+quit
+y
