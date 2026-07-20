@@ -45,6 +45,9 @@ env:
   GLULX_RELEASE: "1214"
   GLULX_SERIAL: "260720"
   GLULX_TEST_SERIAL: "990214"
+  GLULX_SIZE: "202240"
+  GLULX_CHECKSUM: "0x53f5066d"
+  GLULX_SHA256: 10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628
   V3_RELEASE: "122"
   V3_SERIAL: "260720"
   V3_TEST_SERIAL: "990122"
@@ -117,14 +120,26 @@ jobs:
           sudo apt-get install -y build-essential libncurses-dev curl frotz
           mkdir -p glulx/build/absurd-alternates alternate/build
 
-      - name: Validate parity layer and exact qualified bases
+      - name: Validate locked layer and qualified bases
         run: |
           python - <<'PY'
-          import json, os
+          import json
+          import os
           from pathlib import Path
-          layer = json.loads(Path('glulx/absurd-alternates/patch-series.json').read_text())
-          base = json.loads(Path('glulx/shadow-logic/patch-series.json').read_text())
-          reference = json.loads(Path('alternate/layer.json').read_text())
+
+          layer = json.loads(
+              Path('glulx/absurd-alternates/patch-series.json').read_text(
+                  encoding='utf-8'
+              )
+          )
+          base = json.loads(
+              Path('glulx/shadow-logic/patch-series.json').read_text(
+                  encoding='utf-8'
+              )
+          )
+          reference = json.loads(
+              Path('alternate/layer.json').read_text(encoding='utf-8')
+          )
           assert layer['release'] == int(os.environ['GLULX_RELEASE'])
           assert layer['serial'] == os.environ['GLULX_SERIAL']
           assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
@@ -137,15 +152,18 @@ jobs:
           assert reference['expected_artifact']['sha256'] == os.environ['V3_SHA256']
           assert layer['semantic_reference']['artifact_sha256'] == os.environ['V3_SHA256']
           assert layer['expected_changed_paths'] == [
-              '1dungeon.zil', 'absurd_alternates.zil', 'assistance.zil',
-              'gsyntax.zil', 'zork1.zil',
+              '1dungeon.zil',
+              'absurd_alternates.zil',
+              'assistance.zil',
+              'gsyntax.zil',
+              'zork1.zil',
           ]
           artifact = layer['expected_artifact']
           assert artifact['file'] == 'zork1-glulx-absurd-alternates.ulx'
           assert artifact['glulx_version_hex'] == '0x00030103'
-          assert artifact['size_bytes'] == 0
-          assert artifact['checksum_hex'] == 'DISCOVERY'
-          assert artifact['sha256'] == 'DISCOVERY'
+          assert artifact['size_bytes'] == int(os.environ['GLULX_SIZE'])
+          assert artifact['checksum_hex'] == os.environ['GLULX_CHECKSUM']
+          assert artifact['sha256'] == os.environ['GLULX_SHA256']
           PY
 
       - name: Build pinned Glulx ZILF
@@ -153,8 +171,10 @@ jobs:
         run: |
           set -euxo pipefail
           pushd .tooling/zilf-glulx
-          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/absurd-alternates/zilf-restore.log
-          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+          dotnet restore Zilf.sln --nologo \
+            2>&1 | tee ../../glulx/build/absurd-alternates/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release \
+            --property:PortableTarget=true --no-restore --nologo \
             2>&1 | tee ../../glulx/build/absurd-alternates/zilf-build.log
           popd
           zilf_dll="$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)"
@@ -167,15 +187,20 @@ jobs:
           set -euxo pipefail
           curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
             --output glulx/build/absurd-alternates/glazer-source.tar.gz
-          echo "$GLAZER_SOURCE_SHA256  glulx/build/absurd-alternates/glazer-source.tar.gz" | sha256sum --check
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/absurd-alternates/glazer-source.tar.gz" \
+            | sha256sum --check
           mkdir -p .tooling/glazer-source
-          tar -xf glulx/build/absurd-alternates/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
-          make -C .tooling/glazer-source 2>&1 | tee glulx/build/absurd-alternates/glazer-build.log
+          tar -xf glulx/build/absurd-alternates/glazer-source.tar.gz \
+            --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source \
+            2>&1 | tee glulx/build/absurd-alternates/glazer-build.log
           glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
           test -n "$glazer_binary"
           echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
-          "$glazer_binary" --version | tee glulx/build/absurd-alternates/glazer-version.txt
-          grep -Fx "glazer 1.2.0" glulx/build/absurd-alternates/glazer-version.txt
+          "$glazer_binary" --version \
+            | tee glulx/build/absurd-alternates/glazer-version.txt
+          grep -Fx "glazer 1.2.0" \
+            glulx/build/absurd-alternates/glazer-version.txt
 
       - name: Stage and audit exact Glulx parity source
         run: |
@@ -190,55 +215,85 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          receipt = json.loads(Path('glulx/build/absurd-alternates/src/STAGING-RECEIPT.json').read_text())
-          report = json.loads(Path('glulx/build/absurd-alternates/smell-report.json').read_text())
+
+          receipt = json.loads(
+              Path(
+                  'glulx/build/absurd-alternates/src/STAGING-RECEIPT.json'
+              ).read_text(encoding='utf-8')
+          )
+          report = json.loads(
+              Path(
+                  'glulx/build/absurd-alternates/smell-report.json'
+              ).read_text(encoding='utf-8')
+          )
           assert receipt['base']['release'] == 1213
-          assert receipt['base']['artifact_sha256'] == '3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e'
+          assert receipt['base']['artifact_sha256'] == (
+              '3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e'
+          )
           assert receipt['changed_paths'] == [
-              '1dungeon.zil', 'absurd_alternates.zil', 'assistance.zil',
-              'gsyntax.zil', 'zork1.zil',
+              '1dungeon.zil',
+              'absurd_alternates.zil',
+              'assistance.zil',
+              'gsyntax.zil',
+              'zork1.zil',
           ]
           assert not report['errors']
           assert not [item for item in report['includes'] if not item['resolved']]
           source = Path('glulx/build/absurd-alternates/src')
           assert (source / 'absurd_alternates.zil').is_file()
           assert not (source / 'absurd_alt_test.zil').exists()
-          assert not any('ALTSAFE' in path.read_text(errors='ignore') for path in source.glob('*.zil'))
+          assert not any(
+              'ALTSAFE' in path.read_text(encoding='utf-8', errors='ignore')
+              for path in source.glob('*.zil')
+          )
           PY
 
-      - name: Compile discovery Glulx parity artifact
+      - name: Compile locked Glulx Release 1214 artifact
         shell: bash
         run: |
           set -euxo pipefail
           assembly="${GITHUB_WORKSPACE}/glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.asm"
           pushd glulx/build/absurd-alternates/src
-          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile \
+            zork1.zil "$assembly" \
             2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/absurd-alternates/zilf-compile.log"
           popd
           python glulx/tools/normalize_serial.py "$assembly" \
             --serial "$GLULX_SERIAL" \
             --receipt glulx/build/absurd-alternates/SERIAL-NORMALIZATION.json
-          "$GLAZER_BIN" "$assembly" -o glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.ulx \
+          "$GLAZER_BIN" "$assembly" \
+            -o glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.ulx \
             2>&1 | tee glulx/build/absurd-alternates/glazer-assemble.log
 
-      - name: Measure discovery artifact identity
+      - name: Verify exact Release 1214 artifact identity
         run: |
-          python glulx/tools/verify_ulx.py glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.ulx \
+          python glulx/tools/verify_ulx.py \
+            glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.ulx \
+            --expect-sha256 "$GLULX_SHA256" \
             --json glulx/build/absurd-alternates/story-report.json
           python - <<'PY'
           import json
+          import os
           from pathlib import Path
-          story = json.loads(Path('glulx/build/absurd-alternates/story-report.json').read_text())
+
+          story = json.loads(
+              Path(
+                  'glulx/build/absurd-alternates/story-report.json'
+              ).read_text(encoding='utf-8')
+          )
           assert story['version_hex'] == '0x00030103'
           assert story['checksum_valid'] is True
-          print('DISCOVERED_GLULX_IDENTITY=' + json.dumps(story, sort_keys=True))
+          assert story['size_bytes'] == int(os.environ['GLULX_SIZE'])
+          assert story['checksum_hex'] == os.environ['GLULX_CHECKSUM']
+          assert story['sha256'] == os.environ['GLULX_SHA256']
           PY
 
       - name: Build pinned native Glulxe with CheapGlk
         shell: bash
         run: |
           set -euxo pipefail
-          make -C .tooling/cheapglk 2>&1 | tee glulx/build/absurd-alternates/cheapglk-build.log
+          make -C .tooling/cheapglk \
+            2>&1 | tee glulx/build/absurd-alternates/cheapglk-build.log
           make -C .tooling/glulxe \
             GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
             GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
@@ -250,11 +305,13 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          "$GLULXE_BIN" glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.ulx \
+          "$GLULXE_BIN" \
+            glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.ulx \
             < glulx/absurd-alternates/tests/troll_commands.txt \
             2>&1 | tee glulx/build/absurd-alternates/glulx-troll-transcript.txt
           while IFS= read -r marker; do
-            test -z "$marker" || grep -F "$marker" glulx/build/absurd-alternates/glulx-troll-transcript.txt
+            test -z "$marker" || grep -F "$marker" \
+              glulx/build/absurd-alternates/glulx-troll-transcript.txt
           done < glulx/absurd-alternates/tests/troll_expectations.txt
 
       - name: Build test-only Glulx scenario story
@@ -262,54 +319,73 @@ jobs:
         run: |
           set -euxo pipefail
           rm -rf glulx/build/absurd-alternates/test-src
-          cp -a glulx/build/absurd-alternates/src glulx/build/absurd-alternates/test-src
-          cp glulx/absurd-alternates/tests/absurd_alt_test.zil glulx/build/absurd-alternates/test-src/absurd_alt_test.zil
+          cp -a glulx/build/absurd-alternates/src \
+            glulx/build/absurd-alternates/test-src
+          cp glulx/absurd-alternates/tests/absurd_alt_test.zil \
+            glulx/build/absurd-alternates/test-src/absurd_alt_test.zil
           python - <<'PY'
           import sys
           from pathlib import Path
+
           sys.path.insert(0, str(Path('glulx/tools').resolve()))
           from stage_release120 import apply_patch
+
           apply_patch(
-              Path('glulx/absurd-alternates/tests/001-include-alt-test.json').resolve(),
+              Path(
+                  'glulx/absurd-alternates/tests/001-include-alt-test.json'
+              ).resolve(),
               Path('glulx/build/absurd-alternates/test-src').resolve(),
           )
           PY
           assembly="${GITHUB_WORKSPACE}/glulx/build/absurd-alternates/zork1-glulx-absurd-alternates-test.asm"
           pushd glulx/build/absurd-alternates/test-src
-          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile \
+            zork1.zil "$assembly" \
             2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/absurd-alternates/test-zilf-compile.log"
           popd
           python glulx/tools/normalize_serial.py "$assembly" \
             --serial "$GLULX_TEST_SERIAL" \
             --receipt glulx/build/absurd-alternates/TEST-SERIAL-NORMALIZATION.json
-          "$GLAZER_BIN" "$assembly" -o glulx/build/absurd-alternates/zork1-glulx-absurd-alternates-test.ulx \
+          "$GLAZER_BIN" "$assembly" \
+            -o glulx/build/absurd-alternates/zork1-glulx-absurd-alternates-test.ulx \
             2>&1 | tee glulx/build/absurd-alternates/test-glazer-assemble.log
 
       - name: Run prepared Glulx catcher routes
         shell: bash
         run: |
           set -o pipefail
-          "$GLULXE_BIN" glulx/build/absurd-alternates/zork1-glulx-absurd-alternates-test.ulx \
+          "$GLULXE_BIN" \
+            glulx/build/absurd-alternates/zork1-glulx-absurd-alternates-test.ulx \
             < glulx/absurd-alternates/tests/nest_safe_commands.txt \
             2>&1 | tee glulx/build/absurd-alternates/glulx-safe-transcript.txt
           while IFS= read -r marker; do
-            test -z "$marker" || grep -F "$marker" glulx/build/absurd-alternates/glulx-safe-transcript.txt
+            test -z "$marker" || grep -F "$marker" \
+              glulx/build/absurd-alternates/glulx-safe-transcript.txt
           done < glulx/absurd-alternates/tests/nest_safe_expectations.txt
 
       - name: Run destructive and restoration Glulx routes
         shell: bash
         run: |
           set -o pipefail
-          "$GLULXE_BIN" glulx/build/absurd-alternates/zork1-glulx-absurd-alternates-test.ulx \
+          "$GLULXE_BIN" \
+            glulx/build/absurd-alternates/zork1-glulx-absurd-alternates-test.ulx \
             < glulx/absurd-alternates/tests/nest_broken_commands.txt \
             2>&1 | tee glulx/build/absurd-alternates/glulx-broken-transcript.txt
           while IFS= read -r marker; do
-            test -z "$marker" || grep -F "$marker" glulx/build/absurd-alternates/glulx-broken-transcript.txt
+            test -z "$marker" || grep -F "$marker" \
+              glulx/build/absurd-alternates/glulx-broken-transcript.txt
           done < glulx/absurd-alternates/tests/nest_broken_expectations.txt
           python - <<'PY'
           from pathlib import Path
-          text = Path('glulx/build/absurd-alternates/glulx-broken-transcript.txt').read_text(errors='replace')
-          segment = text.split('[Test-only unarmed troll scenario.]', 1)[1].split('[Test-only bound troll restoration scenario.]', 1)[0]
+
+          text = Path(
+              'glulx/build/absurd-alternates/glulx-broken-transcript.txt'
+          ).read_text(encoding='utf-8', errors='replace')
+          segment = text.split(
+              '[Test-only unarmed troll scenario.]', 1
+          )[1].split(
+              '[Test-only bound troll restoration scenario.]', 1
+          )[0]
           assert 'His axe clatters to the floor.' not in segment
           PY
 
@@ -325,10 +401,12 @@ jobs:
           dotnet restore .tooling/zilf-v3/src/Zapf/Zapf.csproj --nologo \
             2>&1 | tee glulx/build/absurd-alternates/v3-zapf-restore.log
           dotnet build .tooling/zilf-v3/src/Zilf/Zilf.csproj \
-            --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            --configuration Release --property:PortableTarget=true \
+            --no-restore --nologo \
             2>&1 | tee glulx/build/absurd-alternates/v3-zilf-build.log
           dotnet build .tooling/zilf-v3/src/Zapf/Zapf.csproj \
-            --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            --configuration Release --property:PortableTarget=true \
+            --no-restore --nologo \
             2>&1 | tee glulx/build/absurd-alternates/v3-zapf-build.log
           tool_dir="$(realpath .tooling/zilf-v3/bin/Release/net10.0)"
           test -f "$tool_dir/zilf.dll"
@@ -341,16 +419,22 @@ jobs:
         run: |
           set -o pipefail
           make -C alternate compile \
-            ZILF="dotnet $V3_ZILF_DLL" ZAPF="dotnet $V3_ZAPF_DLL" \
+            ZILF="dotnet $V3_ZILF_DLL" \
+            ZAPF="dotnet $V3_ZAPF_DLL" \
             RELEASE="$V3_RELEASE" SERIAL="$V3_SERIAL" \
             2>&1 | tee glulx/build/absurd-alternates/v3-release122-compile.log
-          python optimized/tools/verify_story.py alternate/build/zork1-absurd-alternates.z3 \
-            --expect-version 3 --expect-release "$V3_RELEASE" --expect-serial "$V3_SERIAL" \
+          python optimized/tools/verify_story.py \
+            alternate/build/zork1-absurd-alternates.z3 \
+            --expect-version 3 \
+            --expect-release "$V3_RELEASE" \
+            --expect-serial "$V3_SERIAL" \
             --baseline COMPILED/zork1.z3 \
             --json glulx/build/absurd-alternates/v3-story-report.json
           python - <<'PY'
-          import hashlib, os
+          import hashlib
+          import os
           from pathlib import Path
+
           artifact = Path('alternate/build/zork1-absurd-alternates.z3')
           data = artifact.read_bytes()
           stored = int.from_bytes(data[0x1C:0x1E], 'big')
@@ -366,39 +450,49 @@ jobs:
           set -euxo pipefail
           rm -rf alternate/build/parity-test-src
           cp -a alternate/build/src alternate/build/parity-test-src
-          cp alternate/tests/alternate_test.zil alternate/build/parity-test-src/alternate_test.zil
+          cp alternate/tests/alternate_test.zil \
+            alternate/build/parity-test-src/alternate_test.zil
           python - <<'PY'
           import sys
           from pathlib import Path
+
           sys.path.insert(0, str(Path('optimized/tools').resolve()))
           from stage_source import apply_patch_file
+
           apply_patch_file(
-              Path('alternate/tests/001-include-test-module.json').resolve(),
+              Path(
+                  'alternate/tests/001-include-test-module.json'
+              ).resolve(),
               Path('alternate/build/parity-test-src').resolve(),
           )
           PY
           python optimized/tools/build_story.py \
             --source alternate/build/parity-test-src \
             --output alternate/build/zork1-absurd-alternates-parity-test.z3 \
-            --zilf "dotnet $V3_ZILF_DLL" --zapf "dotnet $V3_ZAPF_DLL" \
-            --release "$V3_RELEASE" --serial "$V3_TEST_SERIAL" \
+            --zilf "dotnet $V3_ZILF_DLL" \
+            --zapf "dotnet $V3_ZAPF_DLL" \
+            --release "$V3_RELEASE" \
+            --serial "$V3_TEST_SERIAL" \
             2>&1 | tee glulx/build/absurd-alternates/v3-test-compile.log
 
       - name: Run Version 3 semantic reference routes
         shell: bash
         run: |
           set -o pipefail
-          python optimized/tools/run_smoke.py alternate/build/zork1-absurd-alternates.z3 \
+          python optimized/tools/run_smoke.py \
+            alternate/build/zork1-absurd-alternates.z3 \
             --interpreter "$(command -v dfrotz)" \
             --commands alternate/tests/troll_commands.txt \
             --expect alternate/tests/troll_expectations.txt \
             | tee glulx/build/absurd-alternates/v3-troll-transcript.txt
-          python optimized/tools/run_smoke.py alternate/build/zork1-absurd-alternates-parity-test.z3 \
+          python optimized/tools/run_smoke.py \
+            alternate/build/zork1-absurd-alternates-parity-test.z3 \
             --interpreter "$(command -v dfrotz)" \
             --commands alternate/tests/nest_safe_commands.txt \
             --expect alternate/tests/nest_safe_expectations.txt \
             | tee glulx/build/absurd-alternates/v3-safe-transcript.txt
-          python optimized/tools/run_smoke.py alternate/build/zork1-absurd-alternates-parity-test.z3 \
+          python optimized/tools/run_smoke.py \
+            alternate/build/zork1-absurd-alternates-parity-test.z3 \
             --interpreter "$(command -v dfrotz)" \
             --commands alternate/tests/nest_broken_commands.txt \
             --expect alternate/tests/nest_broken_expectations.txt \
@@ -415,39 +509,56 @@ jobs:
             --glulx-broken glulx/build/absurd-alternates/glulx-broken-transcript.txt \
             --json glulx/build/absurd-alternates/SEMANTIC-PARITY.json
 
-      - name: Write discovery qualification receipt
+      - name: Write qualified Release 1214 receipt
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          story = json.loads(Path('glulx/build/absurd-alternates/story-report.json').read_text())
-          parity = json.loads(Path('glulx/build/absurd-alternates/SEMANTIC-PARITY.json').read_text())
-          stage = json.loads(Path('glulx/build/absurd-alternates/src/STAGING-RECEIPT.json').read_text())
+
+          story = json.loads(
+              Path(
+                  'glulx/build/absurd-alternates/story-report.json'
+              ).read_text(encoding='utf-8')
+          )
+          parity = json.loads(
+              Path(
+                  'glulx/build/absurd-alternates/SEMANTIC-PARITY.json'
+              ).read_text(encoding='utf-8')
+          )
+          stage = json.loads(
+              Path(
+                  'glulx/build/absurd-alternates/src/STAGING-RECEIPT.json'
+              ).read_text(encoding='utf-8')
+          )
           assert parity['passed'] is True
           receipt = {
-              'qualification_status': 'discovery build passed; artifact identity awaits committed lock',
+              'qualification_status': 'qualified and artifact identity locked',
               'identity': {'release': 1214, 'serial': '260720'},
               'base': stage['base'],
               'changed_paths': stage['changed_paths'],
               'artifact': story,
               'semantic_reference': {
                   'release': 122,
-                  'sha256': '58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db',
+                  'sha256': (
+                      '58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db'
+                  ),
               },
               'semantic_parity': parity,
               'production_contains_test_setup': False,
               'wizard_of_frobozz': 'excluded; Zork II scope',
           }
-          Path('glulx/build/absurd-alternates/BUILD-RECEIPT.json').write_text(
-              json.dumps(receipt, indent=2) + '\n'
+          Path(
+              'glulx/build/absurd-alternates/BUILD-RECEIPT.json'
+          ).write_text(
+              json.dumps(receipt, indent=2) + '\n', encoding='utf-8'
           )
           PY
 
-      - name: Upload discovery and semantic evidence
+      - name: Upload qualified artifact and semantic evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zork1-glulx-absurd-alternates-discovery
+          name: zork1-glulx-absurd-alternates-qualified
           path: |
             glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.ulx
             glulx/build/absurd-alternates/zork1-glulx-absurd-alternates.asm
