@@ -2,7 +2,7 @@
 
 This directory defines the additive, unofficial Glulx lineage for this repository.
 
-Five layers are now qualified:
+Six layers are now represented, with the newest layer qualifying semantic parity against project Release `122`:
 
 | Layer | Identity | Purpose |
 |---|---:|---|
@@ -11,8 +11,9 @@ Five layers are now qualified:
 | Unofficial Assisted Glulx | Release 1211 / serial `260719` | Port Release 121 action hooks and optional assistance with cross-VM semantic parity |
 | Unofficial Reactive Surface Glulx | Release 1212 / serial `260719` | Port proximity-safe white-house, door, board, window, mailbox, forest, tree, and songbird reactions without optional geography |
 | Unofficial Shadow Logic Glulx | Release 1213 / serial `260720` | Add native object-on-object experimentation, player-state consequences, material responses, light reporting, learned maintenance knowledge, and a discovered-folly ledger |
+| Unofficial Absurd Alternate Glulx | Release 1214 / serial `260720` | Port the earned Release 122 troll-restraint and prepared nest-fire outcomes without importing broader comedy or optional geography |
 
-Historical Release 119, Optimized Release 120, and Expanded Release 121 remain supported `.z3` editions and are not replaced or relabeled.
+Historical Release 119, Optimized Release 120, Expanded Release 121, and Absurd Alternate Release 122 remain supported `.z3` editions and are not replaced or relabeled.
 
 ## Unchanged upstream baseline
 
@@ -131,15 +132,40 @@ Qualification includes a real-map production route, an isolated startup-state la
 
 See [`shadow-logic/README.md`](shadow-logic/README.md).
 
+## Unofficial Absurd Alternate Glulx
+
+The sixth layer derives explicitly from the Release 1213 manifest and artifact hash. It ports the earned Release 122 outcomes as an isolated semantic layer:
+
+- alert troll restraint failure;
+- a one-use, timed `TRICK TROLL` opening;
+- living restraint with the real rope;
+- conditional drop of the real axe;
+- east/west passage opening through existing world state;
+- `UNTIE TROLL` restoration of rope, hostility, and danger;
+- bound-troll reactions;
+- deliberate `PUT SACK UNDER TREE` preparation;
+- intact catch of the real egg with sandwich-aware or empty-sack narration;
+- unprepared descent through canonical `BAD-EGG`;
+- canonical non-torch burning everywhere else;
+- persistent parity state in `RECAP`.
+
+Qualification rebuilds the locked Release 122 `.z3` artifact and compares semantic outcome categories against the native Glulxe routes. Byte-level parity and identical transcript wrapping are explicitly not required.
+
+The exact Release 1214 `.ulx` size, checksum, and SHA-256 are discovered and committed as a fail-closed lock by the same pull request that introduces this layer.
+
+See [`absurd-alternates/README.md`](absurd-alternates/README.md).
+
 ## Locked toolchain
 
-All five layers use:
+All six layers use:
 
 - ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
 - Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
 - Glazer source SHA-256: `a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482`
 - Glulxe: `56ab8743bab565de307bd892c555d8d8897ed517`
 - CheapGlk: `14d8aaf6e4150669762bd4646a5368e75c1eeee6`
+
+The Release 122 semantic reference uses its separately pinned Version 3 ZILF/ZAPF and `dfrotz` route pipeline.
 
 ## Deterministic serial normalization
 
@@ -149,7 +175,7 @@ No upstream ZIL source is modified. The replacement count and final artifact SHA
 
 ## Next porting boundary: deeper Shadow Logic
 
-The next isolated layer should extend the qualified foundation into:
+Release 122 parity is now isolated from the mechanism and ritual frontier. The next separate layer may extend the qualified foundation into:
 
 1. dam and control-panel experimentation;
 2. bell resonance and candle-state combinations;
@@ -158,4 +184,4 @@ The next isolated layer should extend the qualified foundation into:
 5. controlled multi-object consequence chains;
 6. focused semantic routes proving canonical puzzle solutions remain valid.
 
-Songbird geography, Hidden Glade, troll/cyclops/thief alternatives, the full Adventurer Misconduct surface, and Version 3 object-slot cleanup remain later isolated layers.
+Songbird geography, Hidden Glade, troll bribes, cyclops lullabies, thief bargains, the full Adventurer Misconduct surface, and Version 3 object-slot cleanup remain later isolated layers.
