@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1213-CHANT-MELZAR",
+  "path": "shadow_logic.zil",
+  "description": "Replace the unsupported SAY form with a parser-native CHANT MELZAR form while preserving bare MELZAR",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX MELZAR = V-SHADOW-MELZAR>\n<SYNTAX SAY MELZAR = V-SHADOW-MELZAR>",
+      "new": "<SYNTAX MELZAR = V-SHADOW-MELZAR>\n<SYNTAX CHANT MELZAR = V-SHADOW-MELZAR>"
+    }
+  ]
+}
