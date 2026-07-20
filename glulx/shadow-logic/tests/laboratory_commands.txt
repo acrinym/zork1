@@ -6,20 +6,20 @@ take garlic
 take manual
 read manual
 words
-say melzar
+chant melzar
 touch sword
 knock on sword
 touch bottle
 use torch on mirror
 lights
-use rope on self
+use rope on me
 west
-untie self
-use garlic on self
-examine self
-use torch on self
+untie me
+use garlic on me
+examine me
+use torch on me
 look
-use bottle on self
+use bottle on me
 follies
 recap
 quit
