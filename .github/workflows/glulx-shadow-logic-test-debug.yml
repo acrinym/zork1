@@ -6,6 +6,9 @@ on:
       - agent/glulx-shadow-logic
     paths:
       - ".github/workflows/glulx-shadow-logic-test-debug.yml"
+  pull_request:
+    paths:
+      - ".github/workflows/glulx-shadow-logic-test-debug.yml"
 
 permissions:
   contents: read
