@@ -25,6 +25,7 @@ env:
   SERIAL121: "260719"
   RELEASE122: "122"
   SERIAL122: "260720"
+  TEST_SERIAL122: "990122"
   RELEASE122_SIZE: "107992"
   RELEASE122_CHECKSUM: "0x3ab5"
   RELEASE122_SHA256: 58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db
@@ -68,7 +69,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          mkdir -p alternate/build expanded/build
+          mkdir -p alternate/build expanded/build alternate/build/route-status
           dotnet restore .tooling/zilf/src/Zilf/Zilf.csproj --nologo \
             2>&1 | tee alternate/build/zilf-restore.log
           dotnet restore .tooling/zilf/src/Zapf/Zapf.csproj --nologo \
@@ -157,6 +158,20 @@ jobs:
             --commands alternate/tests/troll_commands.txt \
             --expect alternate/tests/troll_expectations.txt \
             | tee alternate/build/troll-transcript.txt
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          status = {
+              'alert_tie_failure': 'passed in real-map production story',
+              'timed_troll_trick': 'passed in real-map production story',
+              'living_troll_restraint': 'passed in real-map production story',
+              'bound_troll_trick_rejection': 'passed in real-map production story',
+              'passage_opening': 'passed east and west in production story',
+          }
+          Path('alternate/build/route-status/production-troll.json').write_text(
+              json.dumps(status, indent=2) + '\n'
+          )
+          PY
 
       - name: Build test-only nest qualification story
         shell: bash
@@ -179,7 +194,7 @@ jobs:
             --source alternate/build/nest-test-src \
             --output alternate/build/zork1-absurd-alternates-test.z3 \
             --zilf "dotnet $ZILF_DLL" --zapf "dotnet $ZAPF_DLL" \
-            --release "$RELEASE122" --serial "$SERIAL122" \
+            --release "$RELEASE122" --serial "$TEST_SERIAL122" \
             2>&1 | tee alternate/build/nest-test-compile.log
 
       - name: Run prepared catcher route
@@ -191,6 +206,18 @@ jobs:
             --commands alternate/tests/nest_safe_commands.txt \
             --expect alternate/tests/nest_safe_expectations.txt \
             | tee alternate/build/nest-safe-transcript.txt
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          status = {
+              'prepared_nest_catcher': 'passed in test-only scenario story using production mechanics',
+              'prepared_empty_sack_catcher': 'passed with non-sandwich narration',
+              'caught_egg_description': 'passed without stale bird-nest prose',
+          }
+          Path('alternate/build/route-status/prepared-catcher.json').write_text(
+              json.dumps(status, indent=2) + '\n'
+          )
+          PY
 
       - name: Run destructive and preservation route
         shell: bash
@@ -205,6 +232,20 @@ jobs:
             echo "Unarmed troll route falsely reported an axe drop" >&2
             exit 1
           fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          status = {
+              'unarmed_troll_narration': 'passed without phantom axe drop',
+              'unprepared_sack_does_not_catch': 'passed through canonical BAD-EGG despite sack location',
+              'unprepared_bad_egg': 'passed through canonical BAD-EGG',
+              'canonical_non_torch_burning': 'passed through canonical V-BURN',
+              'troll_hostility_after_return': 'passed through attack and alert tie failure',
+          }
+          Path('alternate/build/route-status/destructive-preservation.json').write_text(
+              json.dumps(status, indent=2) + '\n'
+          )
+          PY
 
       - name: Write qualified Release 122 receipt
         run: |
@@ -218,28 +259,49 @@ jobs:
           artifact_pin_matched = sha256 == layer['expected_artifact']['sha256']
           if not artifact_pin_matched:
               raise SystemExit('Release 122 artifact did not match the committed pin')
+
+          status_dir = Path('alternate/build/route-status')
+          status_files = [
+              status_dir / 'production-troll.json',
+              status_dir / 'prepared-catcher.json',
+              status_dir / 'destructive-preservation.json',
+          ]
+          missing = [str(path) for path in status_files if not path.is_file()]
+          if missing:
+              raise SystemExit(f'missing route evidence: {missing}')
+          routes = {}
+          for path in status_files:
+              routes.update(json.loads(path.read_text()))
+          expected_routes = {
+              'alert_tie_failure',
+              'timed_troll_trick',
+              'living_troll_restraint',
+              'bound_troll_trick_rejection',
+              'unarmed_troll_narration',
+              'passage_opening',
+              'prepared_nest_catcher',
+              'prepared_empty_sack_catcher',
+              'unprepared_sack_does_not_catch',
+              'unprepared_bad_egg',
+              'canonical_non_torch_burning',
+              'troll_hostility_after_return',
+              'caught_egg_description',
+          }
+          if set(routes) != expected_routes:
+              raise SystemExit(
+                  f'route evidence mismatch: expected {sorted(expected_routes)}, got {sorted(routes)}'
+              )
+
           receipt = {
               'qualification_status': 'qualified Absurd Alternate Zork I Release 122',
               'edition': 'Absurd Alternate Zork I',
               'identity': {'release': 122, 'serial': '260720'},
+              'test_identity': {'release': 122, 'serial': '990122'},
               'artifact': layer['expected_artifact'],
               'artifact_pin_matched': artifact_pin_matched,
               'story_report': story,
-              'routes': {
-                  'alert_tie_failure': 'passed in real-map production story',
-                  'timed_troll_trick': 'passed in real-map production story',
-                  'living_troll_restraint': 'passed in real-map production story',
-                  'bound_troll_trick_rejection': 'passed in real-map production story',
-                  'unarmed_troll_narration': 'passed without phantom axe drop',
-                  'passage_opening': 'passed east and west in production story',
-                  'prepared_nest_catcher': 'passed in test-only scenario story using production mechanics',
-                  'prepared_empty_sack_catcher': 'passed with non-sandwich narration',
-                  'unprepared_sack_does_not_catch': 'passed through canonical BAD-EGG despite sack location',
-                  'unprepared_bad_egg': 'passed through canonical BAD-EGG',
-                  'canonical_non_torch_burning': 'passed through canonical V-BURN',
-                  'troll_hostility_after_return': 'passed through attack and alert tie failure',
-                  'caught_egg_description': 'passed without stale bird-nest prose',
-              },
+              'routes': routes,
+              'route_evidence_files': [str(path) for path in status_files],
               'production_contains_test_setup': False,
               'wizard_of_frobozz': 'excluded; Zork II scope',
           }
@@ -256,6 +318,7 @@ jobs:
             alternate/build/release122-story-report.json
             alternate/build/release121-story-report.json
             alternate/build/BUILD-RECEIPT.json
+            alternate/build/route-status/*.json
             alternate/build/src/STAGING-RECEIPT.json
             alternate/build/smell-report.json
             alternate/build/troll-transcript.txt
