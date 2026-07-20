@@ -1,0 +1,25 @@
+altbreak
+up
+burn nest with torch
+down
+look
+recap
+altcanon
+burn nest with candles
+look
+alttroll
+trick troll
+south
+south
+north
+north
+tie up troll with rope
+altunarm
+tie up troll with rope
+trick troll
+altbound
+untie troll
+take rope
+tie up troll with rope
+quit
+y
