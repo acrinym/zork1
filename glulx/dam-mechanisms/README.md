@@ -10,9 +10,13 @@ It does not replace the original Flood Control Dam #3 puzzle. It makes the exist
 - release: `1215`
 - serial: `260720`
 - artifact: `zork1-glulx-dam-mechanisms.ulx`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `207,360` bytes
+- checksum: `0x3d135bb8`
+- SHA-256: `ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed`
 - base: qualified Unofficial Absurd Alternate Glulx Release `1214`
 
-The first complete qualification run measures the deterministic artifact identity. The same pull request then commits the exact size, checksum, and SHA-256 as a fail-closed lock.
+The artifact identity is committed in the manifest and enforced fail-closed by the qualification workflow.
 
 ## What players can try
 
@@ -49,13 +53,14 @@ Reasonable Shadow Logic combinations route into the real mechanisms:
 - `USE GUIDE ON PANEL` exposes the suspicious absence of operating instructions;
 - `USE WATER ON PANEL` produces a sealed-panel response without inventing damage.
 
-The wrench must still be carried. The bolt still refuses to move while the yellow interlock is disarmed.
+The wrench, screwdriver, guidebook, bottle, and repair material must actually be carried where their use requires possession. Water experiments require the real open bottle with real water. The bolt still refuses to move while the yellow interlock is disarmed.
 
 ### Cause and repair the maintenance leak
 
 The blue button retains its canonical consequence. Water begins rising through the original `I-MAINT-ROOM` interrupt and remains lethal if ignored.
 
 - wrench or screwdriver probing acknowledges the physical problem but cannot repair it;
+- both `PUTTY` and the canonical `GUNK` noun identify the real all-purpose material;
 - `USE PUTTY ON LEAK` routes into the canonical `PLUG LEAK WITH PUTTY` solution;
 - the real `FIX-MAINT-LEAK` state stops the real flood clock.
 
@@ -100,6 +105,21 @@ The staging tool first reconstructs exact qualified Release `1214`, inventories 
 - `zork1.zil`
 
 Test-only positioning verbs are injected into a separate qualification story and are rejected if they appear in production.
+
+## Qualification coverage
+
+The native route proves:
+
+- panel, bubble, and button explanations;
+- rejection of an unheld wrench;
+- canonical open and close gate cycles;
+- complete `MELZAR` diagnostics;
+- closed-bottle rejection and open bottled-water handling;
+- red-button light shutdown and restoration while carrying the canonical lamp;
+- the real blue-button leak and rising water clock;
+- wrong-tool repair failure;
+- real `PUTTY` synonym recognition and canonical repair;
+- persistent recap state.
 
 ## Explicit exclusions
 
