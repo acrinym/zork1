@@ -11,6 +11,9 @@ alttroll
 trick troll
 south
 south
+north
+north
 altstatus
+tie up troll with rope
 quit
 y
