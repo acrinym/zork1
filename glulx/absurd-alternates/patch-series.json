@@ -35,9 +35,9 @@
   "expected_artifact": {
     "file": "zork1-glulx-absurd-alternates.ulx",
     "glulx_version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "DISCOVERY",
-    "sha256": "DISCOVERY"
+    "size_bytes": 202240,
+    "checksum_hex": "0x53f5066d",
+    "sha256": "10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628"
   },
   "semantic_reference": {
     "edition": "Absurd Alternate Zork I",
