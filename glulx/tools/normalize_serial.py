@@ -14,7 +14,14 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("assembly", type=Path)
     parser.add_argument("--serial", required=True)
-    parser.add_argument("--receipt", type=Path, required=True)
+    parser.add_argument(
+        "--receipt",
+        type=Path,
+        help=(
+            "receipt path; defaults deterministically beside the assembly as "
+            "<assembly>.serial-normalization.json"
+        ),
+    )
     args = parser.parse_args()
 
     if not re.fullmatch(r"[0-9]{6}", args.serial):
@@ -36,8 +43,11 @@ def main() -> int:
         "source_modified": False,
         "generated_assembly_modified": True,
     }
-    args.receipt.parent.mkdir(parents=True, exist_ok=True)
-    args.receipt.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    receipt_path = args.receipt or args.assembly.with_name(
+        args.assembly.name + ".serial-normalization.json"
+    )
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(receipt, indent=2))
     return 0
 
