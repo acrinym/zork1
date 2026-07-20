@@ -16,9 +16,9 @@ Release 122 is a repository-local identity, not an official Infocom release.
 
 ## Qualified artifact
 
-- size: `107,880` bytes
-- checksum: `0xf13d`, valid
-- SHA-256: `98320cd2c11a963b3f23c9a36782f31887279798c26958942ef48ba6ff939a28`
+- size: `107,992` bytes
+- checksum: `0x3ab5`, valid
+- SHA-256: `58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db`
 
 The qualification workflow fails closed if the source boundary, header identity, file size, checksum, or SHA-256 changes without an intentional update.
 
@@ -54,13 +54,15 @@ The player must use that opportunity immediately. Leaving and later returning re
 `TRICK TROLL` followed immediately by `TIE UP TROLL WITH ROPE`:
 
 - leaves the troll alive;
-- drops the real axe into the room;
+- drops the real axe into the room when he is carrying it;
 - moves the real rope into the restraint;
 - opens the passages through the canonical `TROLL-FLAG` route;
 - changes the troll's persistent description;
 - records the outcome through `RECAP`.
 
-The bound troll remains present, angry, and interactive. Attacking a helpless bound troll is rejected as ordinary villainy rather than tactical misconduct.
+The same restraint machinery can bind a troll who is already unarmed or otherwise genuinely vulnerable, but it does not falsely narrate a distraction or an axe drop that did not occur.
+
+The bound troll remains present, angry, and interactive. `TRICK TROLL` receives the bound-state rejection instead of falling through to generic actor handling. Attacking a helpless bound troll is rejected as ordinary villainy rather than tactical misconduct.
 
 ### Releasing him
 
@@ -87,7 +89,7 @@ At the Forest Path:
 
 `PUT SACK UNDER TREE`
 
-This spreads the real brown sack beneath the branch and makes it open and searchable.
+This spreads the real brown sack beneath the branch, marks the deliberate preparation, and makes the sack open and searchable.
 
 Then, from Up a Tree:
 
@@ -95,11 +97,13 @@ Then, from Up a Tree:
 
 The nest burns and is consumed. The real jewel-encrusted egg falls into the real sack intact. Its fixed description is updated so it no longer claims to remain in a nest that has burned away.
 
+If the lunch remains in the sack, the narration credits the hot-pepper sandwich with cushioning. If the sack is empty, the catch still works but uses accurate canvas-and-luck prose.
+
 No treasure, egg, canary, container, or score value is duplicated.
 
 ### Unprepared fall
 
-Without the sack below, burning the nest drops the real egg to the Forest Path and invokes Zork's existing `BAD-EGG` routine.
+Merely placing or moving the sack to the Forest Path is not sufficient. Unless the player deliberately performs `PUT SACK UNDER TREE`, burning the nest drops the real egg and invokes Zork's existing `BAD-EGG` routine—even if the sack happens to occupy the same room.
 
 That produces the canonical:
 
@@ -134,7 +138,8 @@ A real route from West of House:
 - enters the cellar and Troll Room;
 - proves alert restraint failure;
 - tricks and binds the troll;
-- proves the axe drops;
+- proves the real axe drops;
+- proves `TRICK TROLL` receives the bound-state rejection;
 - traverses east and west through the opened passages;
 - verifies the persistent description and recap.
 
@@ -142,14 +147,29 @@ A real route from West of House:
 
 A separately compiled qualification story adds setup verbs that never enter the production artifact. It proves:
 
-- prepared sack catches the intact egg;
-- intact egg remains accessible and correctly described;
+- a deliberately prepared sack catches the intact egg;
+- both sandwich-filled and empty prepared-sack narration;
+- a physically present but unprepared sack does not catch the egg;
 - unprepared fall invokes canonical `BAD-EGG`;
 - ordinary nest burning with lit candles still invokes canonical `V-BURN`;
 - leaving during the troll trick and returning restores live hostile behavior;
-- the restored troll attacks and rejects the rope as alert and armed.
+- the restored troll attacks and rejects the rope as alert and armed;
+- an unarmed troll can be restrained without phantom distraction or axe-drop narration;
+- a bound troll rejects another trick attempt through the alternate handler.
 
 The production source and artifact are checked to contain none of the setup verbs or the setup module.
+
+## Review hardening
+
+Before merge, all actionable review findings were implemented:
+
+- offscreen troll recovery restores `FIGHTBIT` regardless of the player's location;
+- canonical non-torch nest burning remains delegated;
+- wrapper routines preserve the original optional-mode contract;
+- troll binding narration reflects actual distraction and axe state;
+- bound-troll `TRICK` reaches the custom rejection;
+- catches require deliberate sack preparation;
+- sandwich cushioning prose depends on the sandwich actually being present.
 
 ## Explicit exclusions
 
