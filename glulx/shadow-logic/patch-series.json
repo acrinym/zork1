@@ -63,7 +63,7 @@
     "file": "zork1-glulx-shadow-logic.ulx",
     "glulx_version_hex": "0x00030103",
     "size_bytes": 197376,
-    "checksum_hex": "0xeb7138e8",
-    "sha256": "af71704cf8c0aca091a4fb26a5f18dd31f94181fffb801578a2f1d63ae79232f"
+    "checksum_hex": "0x2b0521e4",
+    "sha256": "3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e"
   }
 }
