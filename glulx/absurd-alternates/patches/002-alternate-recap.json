@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1214-ALT-RECAP",
+  "path": "assistance.zil",
+  "description": "Append persistent troll, prepared sack, and nest outcomes after qualified Shadow Logic recap state",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<SHADOW-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<SHADOW-RECAP> <SET SEEN T>)>\n\t<COND (<GLULX-ALT-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
