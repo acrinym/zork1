@@ -1,0 +1,25 @@
+north
+east
+open window
+west
+west
+take lamp
+turn on lamp
+east
+up
+take rope
+down
+west
+move rug
+open trap door
+down
+north
+tie up troll with rope
+trick troll
+tie up troll with rope
+examine troll
+east
+west
+recap
+quit
+y
