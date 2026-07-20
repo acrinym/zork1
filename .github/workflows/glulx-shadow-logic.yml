@@ -303,14 +303,17 @@ jobs:
       - name: Write qualification receipt
         run: |
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
           stage = json.loads(Path('glulx/build/shadow-logic/src/STAGING-RECEIPT.json').read_text())
           story = json.loads(Path('glulx/build/shadow-logic/story-report.json').read_text())
           serial = json.loads(Path('glulx/build/shadow-logic/SERIAL-NORMALIZATION.json').read_text())
           receipt = {
               'qualification_status': 'qualified; exact artifact identity locked and rebuilt',
-              'identity': {'release': 1213, 'serial': '260720'},
+              'identity': {
+                  'release': int(os.environ['SHADOW_RELEASE']),
+                  'serial': os.environ['SHADOW_SERIAL'],
+              },
               'base': stage['base'],
               'changed_paths': stage['changed_paths'],
               'artifact': story,
