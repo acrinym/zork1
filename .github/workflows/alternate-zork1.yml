@@ -25,6 +25,9 @@ env:
   SERIAL121: "260719"
   RELEASE122: "122"
   SERIAL122: "260720"
+  RELEASE122_SIZE: "107880"
+  RELEASE122_CHECKSUM: "0xf13d"
+  RELEASE122_SHA256: 98320cd2c11a963b3f23c9a36782f31887279798c26958942ef48ba6ff939a28
 
 jobs:
   qualify-release122:
@@ -95,7 +98,7 @@ jobs:
             --baseline COMPILED/zork1.z3 \
             --json alternate/build/release121-story-report.json
 
-      - name: Stage, audit, compile, and verify Release 122
+      - name: Stage, audit, compile, and verify fail-closed Release 122
         shell: bash
         run: |
           set -o pipefail
@@ -108,9 +111,29 @@ jobs:
             --baseline COMPILED/zork1.z3 \
             --json alternate/build/release122-story-report.json
           python - <<'PY'
-          import json
+          import hashlib, json, os
           from pathlib import Path
+
+          layer = json.loads(Path('alternate/layer.json').read_text())
           receipt = json.loads(Path('alternate/build/src/STAGING-RECEIPT.json').read_text())
+          artifact = Path('alternate/build/zork1-absurd-alternates.z3')
+          data = artifact.read_bytes()
+          stored_checksum = int.from_bytes(data[0x1C:0x1E], 'big')
+          computed_checksum = sum(data[0x40:]) & 0xFFFF
+          sha256 = hashlib.sha256(data).hexdigest()
+
+          assert layer['release'] == int(os.environ['RELEASE122'])
+          assert layer['serial'] == os.environ['SERIAL122']
+          expected = layer['expected_artifact']
+          assert expected['zmachine_version'] == 3
+          assert expected['size_bytes'] == int(os.environ['RELEASE122_SIZE'])
+          assert expected['checksum_hex'] == os.environ['RELEASE122_CHECKSUM']
+          assert expected['sha256'] == os.environ['RELEASE122_SHA256']
+          assert artifact.stat().st_size == int(os.environ['RELEASE122_SIZE'])
+          assert f'0x{stored_checksum:04x}' == os.environ['RELEASE122_CHECKSUM']
+          assert computed_checksum == stored_checksum
+          assert sha256 == os.environ['RELEASE122_SHA256']
+
           assert receipt['base_release'] == 121
           assert receipt['release'] == 122
           assert receipt['changed_paths'] == [
@@ -169,7 +192,7 @@ jobs:
             --expect alternate/tests/nest_safe_expectations.txt \
             | tee alternate/build/nest-safe-transcript.txt
 
-      - name: Run unprepared canonical breakage route
+      - name: Run destructive and preservation route
         shell: bash
         run: |
           set -o pipefail
@@ -179,26 +202,35 @@ jobs:
             --expect alternate/tests/nest_broken_expectations.txt \
             | tee alternate/build/nest-broken-transcript.txt
 
-      - name: Write candidate Release 122 receipt
+      - name: Write qualified Release 122 receipt
         run: |
           python - <<'PY'
           import hashlib, json
           from pathlib import Path
+          layer = json.loads(Path('alternate/layer.json').read_text())
           artifact = Path('alternate/build/zork1-absurd-alternates.z3')
           story = json.loads(Path('alternate/build/release122-story-report.json').read_text())
+          sha256 = hashlib.sha256(artifact.read_bytes()).hexdigest()
+          artifact_pin_matched = sha256 == layer['expected_artifact']['sha256']
+          if not artifact_pin_matched:
+              raise SystemExit('Release 122 artifact did not match the committed pin')
           receipt = {
-              'qualification_status': 'candidate; lock artifact after deterministic qualification',
+              'qualification_status': 'qualified Absurd Alternate Zork I Release 122',
               'edition': 'Absurd Alternate Zork I',
               'identity': {'release': 122, 'serial': '260720'},
-              'size_bytes': artifact.stat().st_size,
-              'sha256': hashlib.sha256(artifact.read_bytes()).hexdigest(),
+              'artifact': layer['expected_artifact'],
+              'artifact_pin_matched': artifact_pin_matched,
               'story_report': story,
               'routes': {
-                  'alert_tie_failure': 'passed',
-                  'timed_troll_trick': 'passed',
-                  'living_troll_restraint': 'passed',
-                  'prepared_nest_catcher': 'passed in test-only scenario story',
+                  'alert_tie_failure': 'passed in real-map production story',
+                  'timed_troll_trick': 'passed in real-map production story',
+                  'living_troll_restraint': 'passed in real-map production story',
+                  'passage_opening': 'passed east and west in production story',
+                  'prepared_nest_catcher': 'passed in test-only scenario story using production mechanics',
                   'unprepared_bad_egg': 'passed through canonical BAD-EGG',
+                  'canonical_non_torch_burning': 'passed through canonical V-BURN',
+                  'troll_hostility_after_return': 'passed through attack and alert tie failure',
+                  'caught_egg_description': 'passed without stale bird-nest prose',
               },
               'production_contains_test_setup': False,
               'wizard_of_frobozz': 'excluded; Zork II scope',
@@ -206,7 +238,7 @@ jobs:
           Path('alternate/build/BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
           PY
 
-      - name: Upload Release 122 candidate
+      - name: Upload qualified Release 122 edition
         if: always()
         uses: actions/upload-artifact@v4
         with:
