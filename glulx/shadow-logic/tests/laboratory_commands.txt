@@ -6,7 +6,7 @@ take garlic
 take manual
 read manual
 words
-chant melzar
+melzar
 touch sword
 knock on sword
 touch bottle
