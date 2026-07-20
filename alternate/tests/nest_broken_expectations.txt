@@ -11,5 +11,4 @@ The bird's nest catches fire and is consumed.
 You gasp and point behind the troll.
 Cellar
 The Troll Room
-[Test-only troll hostility restored.]
 You approach the alert, armed troll with the rope arranged confidently.
