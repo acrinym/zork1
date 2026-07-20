@@ -46,15 +46,13 @@
     "patches/003-melzar-manual.json",
     "patches/004-material-rub-action.json",
     "patches/005-review-hardening.json",
-    "patches/006-say-melzar-grammar.json",
-    "patches/007-remove-late-say-melzar.json"
+    "patches/006-chant-melzar.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
     "1dungeon.zil",
     "assistance.zil",
     "gmain.zil",
-    "gsyntax.zil",
     "gverbs.zil",
     "reactive_surface.zil",
     "shadow_logic.zil",
