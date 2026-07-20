@@ -48,8 +48,8 @@
 <ROUTINE I-ALT-TROLL-RECOVER ()
 	<COND (<AND ,ALT-TROLL-DISTRACTED <NOT ,ALT-TROLL-BOUND>>
 	       <SETG ALT-TROLL-DISTRACTED <>>
+	       <FSET ,TROLL ,FIGHTBIT>
 	       <COND (<IN? ,TROLL ,HERE>
-	              <FSET ,TROLL ,FIGHTBIT>
 	              <TELL "The troll turns back, discovers that reality has not improved, and resumes guarding it." CR>)>)>>
 
 <ROUTINE ALT-BIND-TROLL ()
@@ -130,8 +130,9 @@
 	       <TELL "You spread the brown sack beneath the branch like a fragrant, badly underfunded safety net." CR>)>
 	<RTRUE>>
 
-<ROUTINE ALT-TREE-F ()
-	<COND (<AND <VERB? PUT-UNDER>
+<ROUTINE ALT-TREE-F ("OPTIONAL" (MODE <>))
+	<COND (<AND <NOT .MODE>
+	            <VERB? PUT-UNDER>
 	            <EQUAL? ,PRSO ,SANDWICH-BAG>
 	            <EQUAL? ,PRSI ,TREE>>
 	       <ALT-PREPARE-SACK>)
@@ -171,7 +172,11 @@
 	              <TELL "The empty nest burns quickly and falls apart in a brief shower of sparks and administrative regret." CR>)>)>
 	<RTRUE>>
 
-<ROUTINE ALT-NEST-F ()
-	<COND (<VERB? BURN>
+<ROUTINE ALT-NEST-F ("OPTIONAL" (MODE <>))
+	<COND (<AND <NOT .MODE>
+	            <VERB? BURN>
+	            <EQUAL? ,PRSI ,TORCH>
+	            <EQUAL? ,HERE ,UP-A-TREE>
+	            <IN? ,NEST ,UP-A-TREE>>
 	       <ALT-BURN-NEST>)
 	      (T <ABS-NEST-F>)>>
