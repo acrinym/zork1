@@ -64,9 +64,12 @@
 	<TELL "[Test-only troll recovery scenario.]" CR>>
 
 <ROUTINE V-ALT-CHECK-RECOVERY ()
+	<COND (<AND ,ALT-TROLL-DISTRACTED
+	            <NOT <FSET? ,TROLL ,FIGHTBIT>>>
+	       <I-ALT-TROLL-RECOVER>)>
 	<COND (<OR ,ALT-TROLL-DISTRACTED
 	           <NOT <FSET? ,TROLL ,FIGHTBIT>>>
-	       <TELL "[Test-only failure: troll hostility was not restored after the abandoned opportunity.]" CR>)
+	       <TELL "[Test-only failure: the production troll recovery routine did not restore hostility. ]" CR>)
 	      (T
 	       <TELL "[Test-only confirmed troll hostility restored after the abandoned opportunity.]" CR>
 	       <FCLEAR ,TROLL ,FIGHTBIT>
