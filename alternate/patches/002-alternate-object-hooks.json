@@ -1,0 +1,22 @@
+{
+  "id": "Z1-ALT-002",
+  "description": "Layer stateful alternate-solution wrappers over the completed misconduct-aware troll, nest, and tree routines",
+  "path": "1dungeon.zil",
+  "replacements": [
+    {
+      "old": "\t(ACTION ABS-TROLL-F)",
+      "new": "\t(ACTION ALT-TROLL-F)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION ABS-NEST-F)",
+      "new": "\t(ACTION ALT-NEST-F)",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(ACTION ABS-TREE-F)>",
+      "new": "\t(ACTION ALT-TREE-F)>",
+      "expected_count": 1
+    }
+  ]
+}
