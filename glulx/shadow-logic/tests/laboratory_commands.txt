@@ -1,4 +1,9 @@
-shlab
+take torch
+take bottle
+take sword
+take rope
+take garlic
+take manual
 read manual
 words
 say melzar
