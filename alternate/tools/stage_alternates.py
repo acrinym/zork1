@@ -25,6 +25,7 @@ from stage_source import (  # noqa: E402
 
 
 def remove_path(path: Path) -> None:
+    """Remove a file, symlink, or directory tree when it exists."""
     if not path.exists() and not path.is_symlink():
         return
     if path.is_dir() and not path.is_symlink():
@@ -34,10 +35,12 @@ def remove_path(path: Path) -> None:
 
 
 def sha256(path: Path) -> str:
+    """Return the hexadecimal SHA-256 digest of one file."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def inventory(root: Path) -> dict[str, str]:
+    """Map every staged file path to its SHA-256 digest."""
     return {
         path.relative_to(root).as_posix(): sha256(path)
         for path in sorted(root.rglob("*"))
@@ -46,6 +49,7 @@ def inventory(root: Path) -> dict[str, str]:
 
 
 def main() -> int:
+    """Stage and verify the exact Release 122 source boundary."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", type=Path, required=True)
     parser.add_argument("--destination", type=Path, required=True)
