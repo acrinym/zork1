@@ -13,7 +13,7 @@
 | Unofficial Assisted Glulx | `.ulx` | Release 1211 / `260719` | Qualified action hooks and assistance parity |
 | Unofficial Reactive Surface Glulx | `.ulx` | Release 1212 / `260719` | Qualified proximity-safe white-house surface reactions |
 | Unofficial Shadow Logic Glulx | `.ulx` | Release 1213 / `260720` | Qualified native experimentation, player consequences, diagnostics, and folly ledger |
-| Unofficial Absurd Alternate Glulx | `.ulx` | Release 1214 / `260720` | Release 122 semantic parity implemented; exact artifact qualification active in PR #6 |
+| Unofficial Absurd Alternate Glulx | `.ulx` | Release 1214 / `260720` | Qualified Release 122 semantic parity and locked artifact identity |
 | Deeper Shadow Logic Glulx | `.ulx` | not assigned | Dam, ritual, and controlled mechanism interactions remain a separate future layer |
 
 ## Release 121 interaction foundation
@@ -96,7 +96,13 @@ Ports only the earned Release 122 outcomes above qualified Release 1213:
 - canonical non-torch burning;
 - persistent parity state.
 
-Release 1214 rebuilds Release 122 and compares named semantic outcomes across `dfrotz` and pinned native Glulxe. It does not require byte parity or identical transcript wrapping.
+Release 1214 rebuilds Release 122 and compares named semantic outcomes across `dfrotz` and pinned native Glulxe. Every shared category passed. Byte parity and identical transcript wrapping are not required.
+
+Locked Release 1214 artifact:
+
+- `202,240` bytes;
+- checksum `0x53f5066d`;
+- SHA-256 `10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628`.
 
 ## Validation coverage
 
@@ -106,14 +112,15 @@ Release 1214 rebuilds Release 122 and compares named semantic outcomes across `d
 | Release 121 | Exact staging, pinned ZILF/ZAPF build, story verification, and deterministic Frotz routes |
 | Release 122 staging | Complete Release 121 stage followed by an exact five-path changed-set gate |
 | Release 122 artifact | Fail-closed 107,992-byte `.z3`, checksum `0x3ab5`, and SHA-256 `58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db` |
+| Release 1214 staging | Complete qualified Release 1213 stage followed by an exact five-path changed-set gate |
+| Release 1214 artifact | Fail-closed 202,240-byte `.ulx`, checksum `0x53f5066d`, and SHA-256 `10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628` |
 | Troll alternate | Real-map rope acquisition, alert failure, trick, restraint, conditional axe drop, passage travel, description, untie restoration, and recap |
 | Prepared nest alternate | Test-only setup story exercises production mechanics and proves intact accessible egg, both cushioning narrations, and corrected prose |
 | Destructive nest alternate | Canonical `BAD-EGG` produces the existing ruined egg and broken canary |
 | Preservation fallbacks | Canonical non-torch nest burning, no phantom axe drop, and restored troll hostility after leaving or untying |
 | Production/test isolation | Production source and artifact contain no qualification setup verbs or setup module |
-| Glulx lineage | Separate pinned artifact and semantic-route gates through Release 1213, with Release 1214 exact-head qualification in PR #6 |
-| Cross-VM parity | Rebuild both artifacts, run their native interpreters, and compare shared outcome categories |
-| Beadtrain integrity | Completed and active trains validate against canonical and sharded issue ledgers |
+| Cross-VM parity | Rebuild both locked artifacts, run their native interpreters, and compare shared outcome categories |
+| Beadtrain integrity | Completed trains validate against canonical and sharded issue ledgers |
 
 ## Still requiring dedicated work
 
