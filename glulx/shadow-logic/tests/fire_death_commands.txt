@@ -1,0 +1,6 @@
+shadowlab
+use torch on self
+look
+look
+quit
+y
