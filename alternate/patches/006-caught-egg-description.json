@@ -1,0 +1,12 @@
+{
+  "id": "Z1-ALT-006",
+  "description": "Replace the intact egg's fixed nest-specific first description after the nest burns and the prepared sack catches it",
+  "path": "absurd_alternates.zil",
+  "replacements": [
+    {
+      "old": "\t                     <MOVE ,EGG ,SANDWICH-BAG>\n\t                     <ROB ,NEST ,PATH>",
+      "new": "\t                     <MOVE ,EGG ,SANDWICH-BAG>\n\t                     <PUTP ,EGG ,P?FDESC\n\"A large jewel-encrusted egg rests here, intact despite its recent descent.\">\n\t                     <ROB ,NEST ,PATH>",
+      "expected_count": 1
+    }
+  ]
+}
