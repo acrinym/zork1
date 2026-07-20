@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1215-DAM-RECAP",
+  "path": "assistance.zil",
+  "description": "Append discovered dam diagnostics, interlock, gate, light, leak, and tool state after Release 1214 recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<GLULX-ALT-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<GLULX-ALT-RECAP> <SET SEEN T>)>\n\t<COND (<DAM-MECH-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
