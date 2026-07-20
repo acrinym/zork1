@@ -1,0 +1,80 @@
+[train]
+name        = "onyx_zork_glulx_dam_mechanisms"
+title       = "Zork I Glulx Release 1215 dam mechanisms"
+description = """
+Build a focused Glulx layer above qualified Release 1214 that makes Flood
+Control Dam #3 physically legible and experimentally useful while preserving
+its canonical buttons, wrench, bolt, leak, reservoir timers, and consequences.
+"""
+created     = "2026-07-20"
+status      = "in_progress"
+
+[[cars]]
+id = "base"
+bead = "zork1-glulx-dam1215-001"
+title = "Qualified Release 1214 base"
+parallel_start = true
+depends_on = []
+summary = "Rebuild exact Release 1214 and reject any change outside the reviewed five-path dam delta."
+
+[[cars]]
+id = "panel"
+bead = "zork1-glulx-dam1215-002"
+title = "Readable physical panel"
+parallel_start = true
+depends_on = ["base"]
+summary = "Expose interlock, gates, reservoir trend, leak state, vibration, and connected hardware through ordinary observation."
+
+[[cars]]
+id = "buttons"
+bead = "zork1-glulx-dam1215-003"
+title = "Canonical button explanations"
+parallel_start = true
+depends_on = ["panel"]
+summary = "Explain yellow, brown, red, and blue while delegating their real state changes to BUTTON-F."
+
+[[cars]]
+id = "tools"
+bead = "zork1-glulx-dam1215-004"
+title = "Real tool interfaces"
+parallel_start = true
+depends_on = ["panel"]
+summary = "Route wrench, screwdriver, guidebook, water, bolt, panel, and leak combinations through physical interfaces."
+
+[[cars]]
+id = "gates"
+bead = "zork1-glulx-dam1215-005"
+title = "Preserved sluice mechanics"
+parallel_start = false
+depends_on = ["buttons", "tools"]
+summary = "Operate the canonical wrench-and-bolt gate cycle and leave fill and empty timing untouched."
+
+[[cars]]
+id = "leak"
+bead = "zork1-glulx-dam1215-006"
+title = "Real leak consequence and repair"
+parallel_start = false
+depends_on = ["buttons", "tools"]
+summary = "Retain blue-button flooding, reject wrong tools, and route real putty into the canonical repair."
+
+[[cars]]
+id = "memory"
+bead = "zork1-glulx-dam1215-007"
+title = "MELZAR and recap memory"
+parallel_start = false
+depends_on = ["gates", "leak"]
+summary = "Report complete dam state through learned diagnostics and persist meaningful mechanism discoveries."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx-dam1215-008"
+title = "Release 1215 qualification capstone"
+parallel_start = false
+depends_on = ["memory"]
+summary = "Lock the artifact identity, finish native qualification and review, and leave the stacked PR ready but unmerged."
+
+[meta]
+one_liner = "Flood Control Dam #3 now behaves like machinery players can understand, test, break, and repair—not painted scenery."
+prior_car = "onyx_zork_glulx_absurd_parity"
+couples_with = ["onyx_zork_shadow_logic"]
+watch = ["glulx/dam-mechanisms", ".github/workflows/glulx-dam-mechanisms.yml", "dam"]
