@@ -1,0 +1,4 @@
+You gasp and point behind the troll.
+Cellar
+Time passes...
+[Test-only troll hostility restored.]
