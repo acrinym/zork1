@@ -14,5 +14,8 @@ south
 north
 north
 tie up troll with rope
+altunarm
+tie up troll with rope
+trick troll
 quit
 y
