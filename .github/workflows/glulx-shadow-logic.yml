@@ -101,6 +101,11 @@ jobs:
           from pathlib import Path
           layer = json.loads(Path('glulx/shadow-logic/patch-series.json').read_text())
           base = json.loads(Path('glulx/reactive-surface/patch-series.json').read_text())
+          expected_paths = [
+              '1actions.zil', '1dungeon.zil', 'assistance.zil', 'gmain.zil',
+              'gsyntax.zil', 'gverbs.zil', 'reactive_surface.zil',
+              'shadow_logic.zil', 'zork1.zil',
+          ]
           assert layer['release'] == int(os.environ['SHADOW_RELEASE'])
           assert layer['serial'] == os.environ['SHADOW_SERIAL']
           assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
@@ -109,16 +114,7 @@ jobs:
           assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
           assert base['release'] == int(os.environ['BASE_RELEASE'])
           assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
-          assert layer['expected_changed_paths'] == [
-              '1actions.zil',
-              '1dungeon.zil',
-              'assistance.zil',
-              'gmain.zil',
-              'gverbs.zil',
-              'reactive_surface.zil',
-              'shadow_logic.zil',
-              'zork1.zil',
-          ]
+          assert layer['expected_changed_paths'] == expected_paths
           PY
 
       - name: Build pinned ZILF
@@ -151,53 +147,40 @@ jobs:
           "$glazer_binary" --version | tee glulx/build/shadow-logic/glazer-version.txt
           grep -Fx "glazer 1.2.0" glulx/build/shadow-logic/glazer-version.txt
 
-      - name: Stage exact Release 1213 source
+      - name: Stage and audit exact Release 1213 source
         run: |
           python glulx/tools/stage_shadow_logic.py \
             --upstream .upstream/zork1-glulx \
             --destination glulx/build/shadow-logic/src \
             --allowed-root glulx/build/shadow-logic \
             --manifest glulx/shadow-logic/patch-series.json
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          receipt = json.loads(Path('glulx/build/shadow-logic/src/STAGING-RECEIPT.json').read_text())
-          assert receipt['base']['release'] == 1212
-          assert receipt['base']['artifact_sha256'] == '78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002'
-          assert receipt['changed_paths'] == [
-              '1actions.zil',
-              '1dungeon.zil',
-              'assistance.zil',
-              'gmain.zil',
-              'gverbs.zil',
-              'reactive_surface.zil',
-              'shadow_logic.zil',
-              'zork1.zil',
-          ]
-          created = sorted(item['path'] for item in receipt['overrides'] if item.get('created'))
-          assert created == ['assistance.zil', 'reactive_surface.zil', 'shadow_logic.zil']
-          source = Path('glulx/build/shadow-logic/src')
-          assert not (source / 'shadow_test.zil').exists()
-          assert not any('SHADOWLAB' in path.read_text(errors='ignore') for path in source.glob('*.zil'))
-          PY
-
-      - name: Audit staged Shadow Logic source
-        run: |
           python optimized/tools/zil_smell_check.py \
             --source glulx/build/shadow-logic/src \
             --json glulx/build/shadow-logic/smell-report.json
           python - <<'PY'
           import json
           from pathlib import Path
+          expected_paths = [
+              '1actions.zil', '1dungeon.zil', 'assistance.zil', 'gmain.zil',
+              'gsyntax.zil', 'gverbs.zil', 'reactive_surface.zil',
+              'shadow_logic.zil', 'zork1.zil',
+          ]
+          receipt = json.loads(Path('glulx/build/shadow-logic/src/STAGING-RECEIPT.json').read_text())
           report = json.loads(Path('glulx/build/shadow-logic/smell-report.json').read_text())
-          if report['errors']:
-              raise SystemExit(report['errors'])
-          unresolved = [item for item in report['includes'] if not item['resolved']]
-          if unresolved:
-              raise SystemExit(f'unresolved includes: {unresolved}')
+          assert receipt['base']['release'] == 1212
+          assert receipt['base']['artifact_sha256'] == '78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002'
+          assert receipt['changed_paths'] == expected_paths
+          assert sorted(item['path'] for item in receipt['overrides'] if item.get('created')) == [
+              'assistance.zil', 'reactive_surface.zil', 'shadow_logic.zil'
+          ]
+          assert not report['errors']
+          assert not [item for item in report['includes'] if not item['resolved']]
+          source = Path('glulx/build/shadow-logic/src')
+          assert not (source / 'shadow_test.zil').exists()
+          assert not any('SHLAB' in path.read_text(errors='ignore') for path in source.glob('*.zil'))
           PY
 
-      - name: Compile Shadow Logic candidate
+      - name: Compile and verify Shadow Logic candidate
         shell: bash
         run: |
           set -euxo pipefail
@@ -237,13 +220,12 @@ jobs:
             test -z "$marker" || grep -F "$marker" glulx/build/shadow-logic/production-transcript.txt
           done < glulx/shadow-logic/tests/production_expectations.txt
 
-      - name: Build test-only Shadow Logic story
+      - name: Build test-only startup-state story
         shell: bash
         run: |
           set -euxo pipefail
           rm -rf glulx/build/shadow-logic/test-src
           cp -a glulx/build/shadow-logic/src glulx/build/shadow-logic/test-src
-          cp glulx/shadow-logic/tests/shadow_test.zil glulx/build/shadow-logic/test-src/shadow_test.zil
           python - <<'PY'
           import sys
           from pathlib import Path
@@ -259,7 +241,9 @@ jobs:
           dotnet "$ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
             2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/shadow-logic/test-zilf-compile.log"
           popd
-          python glulx/tools/normalize_serial.py "$assembly" --serial "$SHADOW_SERIAL"
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$SHADOW_SERIAL" \
+            --receipt glulx/build/shadow-logic/TEST-SERIAL-NORMALIZATION.json
           "$GLAZER_BIN" "$assembly" -o glulx/build/shadow-logic/zork1-glulx-shadow-logic-test.ulx \
             2>&1 | tee glulx/build/shadow-logic/test-glazer-assemble.log
 
@@ -315,9 +299,9 @@ jobs:
                   'real_map_self_restraint': 'passed',
                   'materials': 'passed',
                   'light_inventory': 'passed',
-                  'learned_melzar': 'passed in test-only setup story using production logic',
-                  'mirror_light': 'passed in test-only setup story using production logic',
-                  'self_fire_rescue': 'passed in test-only setup story using production logic',
+                  'learned_melzar_and_say': 'passed in startup-state test story',
+                  'mirror_light': 'passed in startup-state test story',
+                  'self_fire_rescue': 'passed in startup-state test story',
                   'telegraphed_fire_death': 'passed',
                   'weapon_self_death': 'passed',
               },
@@ -338,6 +322,7 @@ jobs:
             glulx/build/shadow-logic/story-report.json
             glulx/build/shadow-logic/BUILD-RECEIPT.json
             glulx/build/shadow-logic/SERIAL-NORMALIZATION.json
+            glulx/build/shadow-logic/TEST-SERIAL-NORMALIZATION.json
             glulx/build/shadow-logic/src/STAGING-RECEIPT.json
             glulx/build/shadow-logic/smell-report.json
             glulx/build/shadow-logic/production-transcript.txt
@@ -347,9 +332,11 @@ jobs:
             glulx/build/shadow-logic/zilf-restore.log
             glulx/build/shadow-logic/zilf-build.log
             glulx/build/shadow-logic/zilf-compile.log
+            glulx/build/shadow-logic/test-zilf-compile.log
             glulx/build/shadow-logic/glazer-build.log
             glulx/build/shadow-logic/glazer-version.txt
             glulx/build/shadow-logic/glazer-assemble.log
+            glulx/build/shadow-logic/test-glazer-assemble.log
             glulx/build/shadow-logic/cheapglk-build.log
             glulx/build/shadow-logic/glulxe-build.log
             glulx/shadow-logic/patch-series.json
