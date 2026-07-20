@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1215-SHADOW-DAM-ROUTING",
+  "path": "shadow_logic.zil",
+  "description": "Give dam-specific combinations first refusal in USE routing and replace the terse dam MELZAR response with a complete physical diagnostic",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<EQUAL? ,PRSI ,ME>",
+      "new": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<DAM-MECH-USE-ON> <RTRUE>)\n\t      (<EQUAL? ,PRSI ,ME>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<EQUAL? ,HERE ,DAM-ROOM>\n\t       <TELL \"A cold voice reports: CONTROL SYSTEM \">\n\t       <COND (,GATES-OPEN <TELL \"ACTIVE; SLUICE GATES OPEN\">)\n\t             (T <TELL \"INACTIVE OR INCOMPLETE; INSPECT CONTROLS AND TURNING HARDWARE\">)>\n\t       <TELL \".\" CR>)",
+      "new": "\t      (<EQUAL? ,HERE ,DAM-ROOM>\n\t       <DAM-MECH-MELZAR>)"
+    }
+  ]
+}
