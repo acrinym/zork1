@@ -2,7 +2,7 @@ version
 open mailbox
 take leaflet
 touch leaflet
-knock leaflet
+knock on leaflet
 north
 east
 open window
@@ -11,12 +11,14 @@ west
 take lamp
 turn on lamp
 lights
+east
 up
 take rope
 use rope on self
 down
 untie self
 down
+west
 use lamp on self
 follies
 quit
