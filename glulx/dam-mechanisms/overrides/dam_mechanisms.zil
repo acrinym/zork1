@@ -166,7 +166,7 @@
 	       <TELL "The tour guidebook describes the dam's grandeur, workforce, and funding, then becomes mysteriously unhelpful at the point where operating instructions would begin." CR>
 	       <RTRUE>)
 	      (<AND <EQUAL? ,PRSI ,CONTROL-PANEL> <EQUAL? ,PRSO ,WATER ,BOTTLE>>
-	       <COND (<AND <EQUAL? ,PRSO ,BOTTLE> <NOT <SHADOW-HAS-BOTTLED-WATER?>>>
+	       <COND (<NOT <SHADOW-HAS-BOTTLED-WATER?>>
 	              <TELL "The bottle must be open and contain water before it can participate in this bad idea." CR>)
 	             (T
 	              <TELL "Water beads across the sealed metal and runs away. The panel remains functional and your maintenance credentials remain theoretical." CR>)>
