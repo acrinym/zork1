@@ -43,7 +43,8 @@
     "../reactive-surface/patches/002-surface-recap.json",
     "patches/001-shadow-action-hook.json",
     "patches/002-shadow-recap.json",
-    "patches/003-melzar-manual.json"
+    "patches/003-melzar-manual.json",
+    "patches/004-material-rub-action.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
