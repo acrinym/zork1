@@ -1,0 +1,22 @@
+{
+  "edition": "Absurd Alternate Zork I",
+  "release": 122,
+  "serial": "260720",
+  "base_edition": "Expanded Zork I",
+  "base_release": 121,
+  "base_serial": "260719",
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "absurd_alternates.zil",
+    "expansions.zil",
+    "gsyntax.zil",
+    "zork1.zil"
+  ],
+  "excluded_scope": [
+    "Wizard of Frobozz",
+    "new rooms",
+    "new treasure objects",
+    "automatic puzzle completion",
+    "Glulx parity"
+  ]
+}
