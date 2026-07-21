@@ -1,0 +1,27 @@
+{
+  "qualification": "Release 1216 state persistence",
+  "production_release": 1216,
+  "production_serial": "260720",
+  "production_artifact": "zork1-glulx-ritual-resonance.ulx",
+  "production_size_bytes": 211968,
+  "production_checksum_hex": "0x3d27d123",
+  "production_sha256": "4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2",
+  "production_source_changes": [],
+  "test_only_module": "tests/state_persistence_test.zil",
+  "routes": [
+    "bound_troll_rope_axe_and_passage",
+    "prepared_intact_egg_and_container_graph",
+    "broken_egg_and_canary_consequence",
+    "dam_interlock_gates_tide_leak_light_and_discovery",
+    "completed_ritual_ghost_bell_and_recap_state",
+    "queued_troll_recovery_interrupt"
+  ],
+  "required_properties": [
+    "every route uses the canonical SAVE and RESTORE verbs",
+    "every route mutates the live state after saving",
+    "every route proves the pre-save state returns after restoring",
+    "save files are produced by pinned native Glulxe and CheapGlk",
+    "production Release 1216 remains byte-identical",
+    "no setup or reporting verb appears in production source"
+  ]
+}
