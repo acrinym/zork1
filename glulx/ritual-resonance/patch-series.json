@@ -36,9 +36,9 @@
   "expected_artifact": {
     "file": "zork1-glulx-ritual-resonance.ulx",
     "glulx_version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "DISCOVERY",
-    "sha256": "DISCOVERY"
+    "size_bytes": 211968,
+    "checksum_hex": "0x3d27d123",
+    "sha256": "4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2"
   },
   "preserved_canonical_state": [
     "XB remains the canonical active bell interval",
