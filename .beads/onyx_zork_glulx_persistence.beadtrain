@@ -1,0 +1,80 @@
+[train]
+name        = "onyx_zork_glulx_persistence"
+title       = "Zork I Glulx Release 1216 persistence qualification"
+description = """
+Prove that exact Release 1216 world state, object ownership, transformed objects,
+and queued interrupts survive real interpreter SAVE and RESTORE cycles without
+post-restore repair by the harness.
+"""
+created     = "2026-07-21"
+status      = "in_progress"
+
+[[cars]]
+id = "driver"
+bead = "zork1-glulx-persist-001"
+title = "Prompt-aware persistence driver"
+parallel_start = true
+depends_on = []
+summary = "Drive real filename prompts, transcripts, variable substitution, EOF, timeout, and exit-status assertions through a PTY."
+
+[[cars]]
+id = "probes"
+bead = "zork1-glulx-persist-002"
+title = "Isolated production-state probes"
+parallel_start = false
+depends_on = ["driver"]
+summary = "Expose test-only setup, corruption, timer, and report commands while rejecting every probe from production source."
+
+[[cars]]
+id = "troll_egg"
+bead = "zork1-glulx-persist-003"
+title = "Bound troll and intact egg persistence"
+parallel_start = true
+depends_on = ["probes"]
+summary = "Restore living restraint, rope commitment, axe drop, open passages, prepared sack, and the intact egg twice from one save."
+
+[[cars]]
+id = "dam_gate"
+bead = "zork1-glulx-persist-004"
+title = "Dam gate and reservoir interrupt persistence"
+parallel_start = true
+depends_on = ["probes"]
+summary = "Restore the real interlock and open sluices, then prove the saved reservoir interrupt resumes to low tide."
+
+[[cars]]
+id = "dam_leak"
+bead = "zork1-glulx-persist-005"
+title = "Active and repaired leak persistence"
+parallel_start = true
+depends_on = ["probes"]
+summary = "Restore independent active-rising and canonically repaired maintenance-leak snapshots."
+
+[[cars]]
+id = "ritual"
+bead = "zork1-glulx-persist-006"
+title = "Ritual completion and timer persistence"
+parallel_start = true
+depends_on = ["probes"]
+summary = "Restore learned ceremony state, ghost removal, bell transformation, and the queued hot-bell cooldown."
+
+[[cars]]
+id = "review_docs"
+bead = "zork1-glulx-persist-007"
+title = "Persistence review and evidence documentation"
+parallel_start = false
+depends_on = ["troll_egg", "dam_gate", "dam_leak", "ritual"]
+summary = "Resolve valid review findings and publish exact route evidence and limitations."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx-persist-008"
+title = "Persistence qualification capstone"
+parallel_start = false
+depends_on = ["review_docs"]
+summary = "Run exact-head CI, close the train, and leave the non-draft PR mergeable but unmerged."
+
+[meta]
+one_liner = "Zork now proves that its strangest new states survive closing the book and reopening it exactly where you left off."
+prior_car = "onyx_zork_glulx_ritual_resonance"
+couples_with = ["onyx_zork_glulx_dam_mechanisms", "onyx_zork_glulx_absurd_alternate_parity"]
+watch = ["glulx/persistence", "glulx/tools/run_interactive_story.py", ".github/workflows/glulx-persistence-driver.yml", "save", "restore"]
