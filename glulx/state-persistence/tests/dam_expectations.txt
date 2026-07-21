@@ -1,5 +1,6 @@
 [PERSIST dam interlock=armed gates=open tide=low water=3 leak-visible=yes room-lit=yes repaired=no]
 [PERSIST dam interlock=disarmed gates=closed tide=high water=-1 leak-visible=no room-lit=no repaired=yes]
 [PERSIST dam interlock=armed gates=open tide=low water=3 leak-visible=yes room-lit=yes repaired=no]
-TURNING INTERLOCK: ARMED. SLUICE GATES: OPEN.
+A cold voice reports: NO REGISTERED MAINTENANCE FAULT IN THE IMMEDIATE VICINITY.
+- You learned the maintenance word MELZAR from the owner's manual.
 - You diagnosed Flood Control Dam #3's interlock, sluice, reservoir, and leak state.
