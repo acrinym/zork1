@@ -1,12 +1,12 @@
 {
   "id": "Z1-GLULX-1216-PERSISTENCE-TEST-INCLUDE",
   "path": "zork1.zil",
-  "description": "Load test-only persistence setup, mutation, and observation verbs after every production module",
+  "description": "Load test-only persistence setup, mutation, observation routines, and prefix-unique parser aliases after every production module",
   "replacements": [
     {
       "expected_count": 1,
       "old": "<INSERT-FILE \"ritual_resonance\" T>",
-      "new": "<INSERT-FILE \"ritual_resonance\" T>\n<INSERT-FILE \"persistence_test\" T>"
+      "new": "<INSERT-FILE \"ritual_resonance\" T>\n<INSERT-FILE \"persistence_test\" T>\n<INSERT-FILE \"persistence_aliases\" T>"
     }
   ]
 }
