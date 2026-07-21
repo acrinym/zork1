@@ -1,0 +1,12 @@
+pecat
+regg
+save
+egg-caught.sav
+uegg
+regg
+restore
+egg-caught.sav
+regg
+recap
+quit
+y
