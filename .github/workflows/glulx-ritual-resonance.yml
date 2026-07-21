@@ -42,6 +42,9 @@ env:
   RITUAL_RELEASE: "1216"
   RITUAL_SERIAL: "260720"
   RITUAL_TEST_SERIAL: "990216"
+  RITUAL_SIZE: "211968"
+  RITUAL_CHECKSUM: "0x3d27d123"
+  RITUAL_SHA256: 4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2
 
 jobs:
   qualify-glulx-ritual-resonance:
@@ -100,7 +103,7 @@ jobs:
           sudo apt-get install -y build-essential libncurses-dev curl
           mkdir -p glulx/build/ritual-resonance
 
-      - name: Validate ritual layer and exact qualified base
+      - name: Validate locked ritual layer and exact qualified base
         run: |
           python - <<'PY'
           import json, os
@@ -122,9 +125,9 @@ jobs:
           artifact = layer['expected_artifact']
           assert artifact['file'] == 'zork1-glulx-ritual-resonance.ulx'
           assert artifact['glulx_version_hex'] == '0x00030103'
-          assert artifact['size_bytes'] == 0
-          assert artifact['checksum_hex'] == 'DISCOVERY'
-          assert artifact['sha256'] == 'DISCOVERY'
+          assert artifact['size_bytes'] == int(os.environ['RITUAL_SIZE'])
+          assert artifact['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
+          assert artifact['sha256'] == os.environ['RITUAL_SHA256']
           PY
 
       - name: Build pinned Glulx ZILF
@@ -187,7 +190,7 @@ jobs:
           assert not any(token in production for token in forbidden)
           PY
 
-      - name: Compile discovery Glulx Release 1216 artifact
+      - name: Compile locked Glulx Release 1216 artifact
         shell: bash
         run: |
           set -euxo pipefail
@@ -202,17 +205,20 @@ jobs:
           "$GLAZER_BIN" "$assembly" -o glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.ulx \
             2>&1 | tee glulx/build/ritual-resonance/glazer-assemble.log
 
-      - name: Measure discovery artifact identity
+      - name: Verify exact Release 1216 artifact identity
         run: |
           python glulx/tools/verify_ulx.py glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.ulx \
+            --expect-sha256 "$RITUAL_SHA256" \
             --json glulx/build/ritual-resonance/story-report.json
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
           story = json.loads(Path('glulx/build/ritual-resonance/story-report.json').read_text(encoding='utf-8'))
           assert story['version_hex'] == '0x00030103'
           assert story['checksum_valid'] is True
-          print('DISCOVERED_RITUAL_IDENTITY=' + json.dumps(story, sort_keys=True))
+          assert story['size_bytes'] == int(os.environ['RITUAL_SIZE'])
+          assert story['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
+          assert story['sha256'] == os.environ['RITUAL_SHA256']
           PY
 
       - name: Build pinned native Glulxe with CheapGlk
@@ -255,7 +261,7 @@ jobs:
           "$GLAZER_BIN" "$assembly" -o glulx/build/ritual-resonance/zork1-glulx-ritual-resonance-test.ulx \
             2>&1 | tee glulx/build/ritual-resonance/test-glazer-assemble.log
 
-      - name: Run ritual resonance and canonical exorcism route
+      - name: Run qualified ritual resonance and canonical exorcism route
         shell: bash
         run: |
           set -o pipefail
@@ -263,23 +269,39 @@ jobs:
             < glulx/ritual-resonance/tests/ritual_commands.txt \
             2>&1 | tee glulx/build/ritual-resonance/ritual-transcript.txt
           while IFS= read -r marker; do
-            test -z "$marker" || grep -F "$marker" glulx/build/ritual-resonance/ritual-transcript.txt
+            test -z "$marker" || grep -F -- "$marker" glulx/build/ritual-resonance/ritual-transcript.txt
           done < glulx/ritual-resonance/tests/ritual_expectations.txt
 
-      - name: Write discovery qualification receipt
+      - name: Write qualified Release 1216 receipt
         run: |
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
           story = json.loads(Path('glulx/build/ritual-resonance/story-report.json').read_text(encoding='utf-8'))
           stage = json.loads(Path('glulx/build/ritual-resonance/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
+          serial = json.loads(Path('glulx/build/ritual-resonance/SERIAL-NORMALIZATION.json').read_text(encoding='utf-8'))
+          assert story['size_bytes'] == int(os.environ['RITUAL_SIZE'])
+          assert story['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
+          assert story['sha256'] == os.environ['RITUAL_SHA256']
           receipt = {
-              'qualification_status': 'discovery build and ritual route passed; artifact identity awaits committed lock',
-              'identity': {'release': 1216, 'serial': '260720'},
+              'qualification_status': 'qualified and fail-closed',
+              'identity': {'release': int(os.environ['RITUAL_RELEASE']), 'serial': os.environ['RITUAL_SERIAL']},
               'base': stage['base'],
               'changed_paths': stage['changed_paths'],
               'artifact': story,
+              'serial_normalization': serial,
               'canonical_state_machine': ['XB', 'XC', 'LLD-FLAG', 'BELL/HOT-BELL', 'I-XBH', 'GHOSTS'],
+              'routes': {
+                  'damaged_page_order_discovery': 'passed',
+                  'temple_bell_resonance': 'passed',
+                  'mirror_bell_and_candle_delay': 'passed',
+                  'wrong_order_prayer_preservation': 'passed',
+                  'canonical_bell_interval': 'passed',
+                  'canonical_paired_candle_response': 'passed',
+                  'canonical_black_book_exorcism': 'passed',
+                  'real_bottled_water_hot_bell_cooling': 'passed',
+                  'ceremony_and_recap_reporting': 'passed',
+              },
               'production_contains_test_setup': False,
               'generalized_spell_system': False,
               'wizard_of_frobozz': 'excluded; Zork II scope',
@@ -289,11 +311,11 @@ jobs:
           )
           PY
 
-      - name: Upload discovery artifact and ritual evidence
+      - name: Upload qualified artifact and ritual evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zork1-glulx-ritual-resonance-discovery
+          name: zork1-glulx-ritual-resonance-qualified
           path: |
             glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.ulx
             glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.asm
