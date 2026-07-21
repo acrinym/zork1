@@ -36,6 +36,8 @@
     {"expect": "(?i)(file name|filename|saved game)"},
     {"sendline": "{REPAIRED_SAVE_FILE}"},
     {"expect": ">"},
+    {"sendline": "plready"},
+    {"expect": "PERSIST-SETUP:LEAK-READY"},
     {"sendline": "push blue button"},
     {"expect": "stream of water appears to burst|rumbling sound"},
     {"sendline": "plreport"},
