@@ -4,6 +4,25 @@ This train does **not** invent Release `1217` and does not modify production gam
 
 It rebuilds the exact locked Unofficial Ritual Resonance Glulx Release `1216`, verifies its exact artifact identity, then compiles a separate test-only story containing deterministic setup, mutation, and reporting verbs. Each route uses the game's real `SAVE` and `RESTORE` commands under pinned native Glulxe and CheapGlk.
 
+## Qualification result
+
+The complete route suite passed under pinned native Glulxe and CheapGlk. It produced six real, non-empty save files and restored every asserted object graph, global, room property, discovery flag, and queued interrupt.
+
+- `troll.sav`: `1,022` bytes
+- `egg-caught.sav`: `1,038` bytes
+- `egg-broken.sav`: `1,030` bytes
+- `dam.sav`: `1,008` bytes
+- `ritual.sav`: `1,036` bytes
+- `timer.sav`: `1,014` bytes
+
+The build receipt records:
+
+- `object_graph_restoration`: passed;
+- `global_and_property_restoration`: passed;
+- `interrupt_table_restoration`: passed;
+- `production_source_changes`: none;
+- `production_contains_test_setup`: false.
+
 ## Why this train exists
 
 The newest Glulx layers add meaningful state outside the original 1980-era puzzle variables:
@@ -82,7 +101,7 @@ Proves restoration of:
 - low-tide reservoir state;
 - active maintenance water level;
 - visible leak and lit maintenance room;
-- dam discovery globals and `MELZAR`/`RECAP` output.
+- learned `MELZAR` state, dam discovery globals, and restored `MELZAR`/`RECAP` output.
 
 ### Completed ritual
 
@@ -97,7 +116,7 @@ Proves restoration of:
 
 ### Queued troll recovery
 
-Proves that save/restore preserves the actual Glulx clock interrupt table. After restoration the distracted troll remains temporarily non-hostile, then the original queued `I-GLULX-ALT-TROLL-RECOVER` routine fires after the expected waits and restores hostility.
+Proves that save/restore preserves the actual Glulx clock interrupt table. After restoration the distracted troll remains temporarily non-hostile, then the original queued `I-GLULX-ALT-TROLL-RECOVER` routine fires after the saved delay and restores hostility.
 
 ## Isolation boundary
 
