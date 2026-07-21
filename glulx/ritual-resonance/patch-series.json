@@ -1,0 +1,60 @@
+{
+  "edition": "Unofficial Ritual Resonance Glulx",
+  "release": 1216,
+  "serial": "260720",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../dam-mechanisms/patch-series.json",
+  "base_release": 1215,
+  "base_artifact_sha256": "ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1215 layer, assign Release 1216, and load focused ritual resonance"
+    },
+    {
+      "path": "ritual_resonance.zil",
+      "source": "overrides/ritual_resonance.zil",
+      "allow_new": true,
+      "description": "Add bell, candle, black-book, mirror, ceremony-state, hot-bell cooling, and persistent ritual behavior"
+    }
+  ],
+  "patches": [
+    "patches/001-ritual-object-room-hooks.json",
+    "patches/002-shadow-ritual-routing.json",
+    "patches/003-ritual-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "assistance.zil",
+    "ritual_resonance.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-ritual-resonance.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 0,
+    "checksum_hex": "DISCOVERY",
+    "sha256": "DISCOVERY"
+  },
+  "preserved_canonical_state": [
+    "XB remains the canonical active bell interval",
+    "XC remains the canonical paired-candle response state",
+    "LLD-FLAG changes only through the original black-book prayer completion",
+    "BELL and HOT-BELL still exchange through LLD-ROOM and I-XBH",
+    "CANDLES still use the original burn timer and may be lost through canonical misuse",
+    "GHOSTS are removed only by the original completed ceremony",
+    "the original exorcism order remains bell, lit carried candles, then reading the black book"
+  ],
+  "excluded_scope": [
+    "generalized spell system",
+    "new exorcism solution",
+    "automatic ritual completion",
+    "broad supernatural room propagation",
+    "new treasure or scoring",
+    "Hidden Glade and character alternate ports",
+    "Wizard of Frobozz"
+  ]
+}
