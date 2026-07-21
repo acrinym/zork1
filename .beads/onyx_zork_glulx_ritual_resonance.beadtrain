@@ -7,7 +7,7 @@ bell, candle, black-book, mirror, and exorcism state physically legible while
 preserving the canonical XB, XC, LLD-FLAG, timers, objects, and solution order.
 """
 created     = "2026-07-20"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "base"
