@@ -1,27 +1,56 @@
-name: Zork I Glulx Persistence Driver
+name: Zork I Glulx Persistence Qualification
 
 on:
   push:
     branches:
       - agent/glulx-persistence-qualification
     paths:
-      - "glulx/tools/run_interactive_story.py"
+      - "glulx/tools/**"
       - "glulx/persistence/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
       - ".github/workflows/glulx-persistence-driver.yml"
   pull_request:
     paths:
-      - "glulx/tools/run_interactive_story.py"
+      - "glulx/tools/**"
       - "glulx/persistence/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
       - ".github/workflows/glulx-persistence-driver.yml"
 
 permissions:
   contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  RITUAL_SERIAL: "260720"
+  RITUAL_TEST_SERIAL: "990217"
+  RITUAL_SIZE: "211968"
+  RITUAL_CHECKSUM: "0x3d27d123"
+  RITUAL_SHA256: 4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2
 
 jobs:
   validate-driver:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -31,8 +60,244 @@ jobs:
           mkdir -p glulx/build/persistence-driver
           python glulx/tools/run_interactive_story.py \
             --scenario glulx/persistence/tests/driver_scenario.json \
-            --transcript glulx/build/persistence-driver/transcript.txt \
+            --transcript glulx/build/persistence-driver/self-test-transcript.txt \
             --var SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/persistence-driver/state.sav" \
             -- python glulx/persistence/tests/fake_story.py
-          grep -F "RESTORED AFTER" glulx/build/persistence-driver/transcript.txt
+          grep -F "RESTORED AFTER" glulx/build/persistence-driver/self-test-transcript.txt
           test "$(cat glulx/build/persistence-driver/state.sav)" = "after"
+
+  qualify-release1216-persistence:
+    needs: validate-driver
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interactive prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
+          mkdir -p glulx/build/persistence
+
+      - name: Build pinned Glulx ZILF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          pushd .tooling/zilf-glulx
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/persistence/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/persistence/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "GLULX_ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build exactly pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/persistence/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/persistence/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/persistence/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/persistence/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version | tee glulx/build/persistence/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/persistence/glazer-version.txt
+
+      - name: Stage exact Release 1216 production source
+        run: |
+          python glulx/tools/stage_ritual_resonance.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/persistence/src \
+            --allowed-root glulx/build/persistence \
+            --manifest glulx/ritual-resonance/patch-series.json
+          python optimized/tools/zil_smell_check.py \
+            --source glulx/build/persistence/src \
+            --json glulx/build/persistence/smell-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('glulx/build/persistence/smell-report.json').read_text(encoding='utf-8'))
+          assert not report['errors']
+          assert not [item for item in report['includes'] if not item['resolved']]
+          production = '\n'.join(path.read_text(errors='ignore') for path in Path('glulx/build/persistence/src').glob('*.zil'))
+          forbidden = ('PERSISTTROLLREADY', 'PERSISTEGGREADY', 'PERSISTDAMREADY', 'PERSISTRITUALREADY')
+          assert not any(token in production for token in forbidden)
+          PY
+
+      - name: Rebuild and verify exact production artifact
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/persistence/zork1-glulx-ritual-resonance.asm"
+          pushd glulx/build/persistence/src
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/persistence/zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$RITUAL_SERIAL" \
+            --receipt glulx/build/persistence/SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/persistence/zork1-glulx-ritual-resonance.ulx \
+            2>&1 | tee glulx/build/persistence/glazer-assemble.log
+          python glulx/tools/verify_ulx.py glulx/build/persistence/zork1-glulx-ritual-resonance.ulx \
+            --expect-sha256 "$RITUAL_SHA256" \
+            --json glulx/build/persistence/story-report.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/persistence/story-report.json').read_text(encoding='utf-8'))
+          assert story['size_bytes'] == int(os.environ['RITUAL_SIZE'])
+          assert story['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
+          assert story['sha256'] == os.environ['RITUAL_SHA256']
+          PY
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/persistence/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/persistence/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+          echo "GLULXE_BIN=$(realpath .tooling/glulxe/glulxe)" >> "$GITHUB_ENV"
+
+      - name: Build separate test-only persistence story
+        shell: bash
+        run: |
+          set -euxo pipefail
+          cp -a glulx/build/persistence/src glulx/build/persistence/test-src
+          cp glulx/persistence/tests/persistence_test.zil glulx/build/persistence/test-src/persistence_test.zil
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('glulx/tools').resolve()))
+          from stage_release120 import apply_patch
+          apply_patch(
+              Path('glulx/persistence/tests/001-include-persistence-test.json').resolve(),
+              Path('glulx/build/persistence/test-src').resolve(),
+          )
+          PY
+          assembly="${GITHUB_WORKSPACE}/glulx/build/persistence/zork1-glulx-persistence-test.asm"
+          pushd glulx/build/persistence/test-src
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/persistence/test-zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$RITUAL_TEST_SERIAL" \
+            --receipt glulx/build/persistence/TEST-SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/persistence/zork1-glulx-persistence-test.ulx \
+            2>&1 | tee glulx/build/persistence/test-glazer-assemble.log
+
+      - name: Run bound troll and intact egg persistence
+        run: |
+          python glulx/tools/run_interactive_story.py \
+            --scenario glulx/persistence/tests/troll_egg_persistence.json \
+            --transcript glulx/build/persistence/troll-egg-transcript.txt \
+            --var SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/persistence/troll-egg.sav" \
+            -- "$GLULXE_BIN" glulx/build/persistence/zork1-glulx-persistence-test.ulx
+
+      - name: Run dam gate and reservoir timer persistence
+        run: |
+          python glulx/tools/run_interactive_story.py \
+            --scenario glulx/persistence/tests/dam_gate_persistence.json \
+            --transcript glulx/build/persistence/dam-gate-transcript.txt \
+            --var SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/persistence/dam-gate.sav" \
+            -- "$GLULXE_BIN" glulx/build/persistence/zork1-glulx-persistence-test.ulx
+
+      - name: Run active and repaired leak persistence
+        run: |
+          python glulx/tools/run_interactive_story.py \
+            --scenario glulx/persistence/tests/dam_leak_persistence.json \
+            --transcript glulx/build/persistence/dam-leak-transcript.txt \
+            --var ACTIVE_SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/persistence/dam-leak-active.sav" \
+            --var REPAIRED_SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/persistence/dam-leak-repaired.sav" \
+            -- "$GLULXE_BIN" glulx/build/persistence/zork1-glulx-persistence-test.ulx
+
+      - name: Run completed ritual and hot-bell timer persistence
+        run: |
+          python glulx/tools/run_interactive_story.py \
+            --scenario glulx/persistence/tests/ritual_persistence.json \
+            --transcript glulx/build/persistence/ritual-transcript.txt \
+            --var SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/persistence/ritual.sav" \
+            -- "$GLULXE_BIN" glulx/build/persistence/zork1-glulx-persistence-test.ulx
+
+      - name: Verify persistence evidence
+        run: |
+          grep -F "PERSIST:TROLL=BOUND-ROPE-COMMITTED-AXE-DROPPED-PASSAGES-OPEN" glulx/build/persistence/troll-egg-transcript.txt
+          grep -F "PERSIST:EGG=INTACT-IN-PREPARED-SACK" glulx/build/persistence/troll-egg-transcript.txt
+          grep -F "PERSIST:DAM-TIMER=COMPLETED" glulx/build/persistence/dam-gate-transcript.txt
+          grep -F "PERSIST:LEAK=ACTIVE-AND-RISING" glulx/build/persistence/dam-leak-transcript.txt
+          grep -F "PERSIST:LEAK=SEALED" glulx/build/persistence/dam-leak-transcript.txt
+          grep -F "PERSIST:RITUAL=COMPLETED-KNOWLEDGE-AND-GHOST-REMOVAL" glulx/build/persistence/ritual-transcript.txt
+          grep -F "PERSIST:RITUAL-TIMER=HOT-BELL-COOLED" glulx/build/persistence/ritual-transcript.txt
+          test -s glulx/build/persistence/troll-egg.sav
+          test -s glulx/build/persistence/dam-gate.sav
+          test -s glulx/build/persistence/dam-leak-active.sav
+          test -s glulx/build/persistence/dam-leak-repaired.sav
+          test -s glulx/build/persistence/ritual.sav
+
+      - name: Upload persistence qualification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-persistence-qualification
+          path: |
+            glulx/build/persistence/*.txt
+            glulx/build/persistence/*.json
+            glulx/build/persistence/*.log
+            glulx/build/persistence/*.sav
+            glulx/build/persistence/*.ulx
+            glulx/persistence/tests/*.json
+            glulx/persistence/tests/persistence_test.zil
+          if-no-files-found: warn
