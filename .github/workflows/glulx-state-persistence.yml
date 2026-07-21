@@ -2,8 +2,7 @@ name: Zork I Glulx State Persistence
 
 on:
   push:
-    branches:
-      - agent/glulx-state-persistence
+    branches: [agent/glulx-state-persistence]
     paths:
       - "glulx/state-persistence/**"
       - "glulx/ritual-resonance/**"
@@ -55,7 +54,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Check out pinned Tara Glulx source
+      - name: Check out pinned source and tools
         uses: actions/checkout@v4
         with:
           repository: taradinoc/zork1
@@ -63,67 +62,57 @@ jobs:
           path: .upstream/zork1-glulx
           persist-credentials: false
 
-      - name: Check out pinned Glulx ZILF source
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: taradinoc/zilf
           ref: ${{ env.GLULX_ZILF_COMMIT }}
           path: .tooling/zilf-glulx
           persist-credentials: false
 
-      - name: Check out pinned Glulxe
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: erkyrath/glulxe
           ref: ${{ env.GLULXE_COMMIT }}
           path: .tooling/glulxe
           persist-credentials: false
 
-      - name: Check out pinned CheapGlk
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: erkyrath/cheapglk
           ref: ${{ env.CHEAPGLK_COMMIT }}
           path: .tooling/cheapglk
           persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Set up .NET 10
-        uses: actions/setup-dotnet@v5
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "10.0.x"
 
-      - name: Install build and interpreter prerequisites
+      - name: Install prerequisites
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libncurses-dev curl
           mkdir -p glulx/build/state-persistence
 
-      - name: Validate exact Release 1216 qualification boundary
+      - name: Validate exact Release 1216 boundary
         run: |
           python - <<'PY'
           import json, os
           from pathlib import Path
-          qualification = json.loads(Path('glulx/state-persistence/qualification.json').read_text(encoding='utf-8'))
-          ritual = json.loads(Path('glulx/ritual-resonance/patch-series.json').read_text(encoding='utf-8'))
-          assert qualification['production_release'] == int(os.environ['RITUAL_RELEASE'])
-          assert qualification['production_serial'] == os.environ['RITUAL_SERIAL']
-          assert qualification['production_size_bytes'] == int(os.environ['RITUAL_SIZE'])
-          assert qualification['production_checksum_hex'] == os.environ['RITUAL_CHECKSUM']
-          assert qualification['production_sha256'] == os.environ['RITUAL_SHA256']
-          assert qualification['production_source_changes'] == []
-          assert ritual['release'] == int(os.environ['RITUAL_RELEASE'])
-          assert ritual['serial'] == os.environ['RITUAL_SERIAL']
-          assert ritual['expected_artifact']['size_bytes'] == int(os.environ['RITUAL_SIZE'])
-          assert ritual['expected_artifact']['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
-          assert ritual['expected_artifact']['sha256'] == os.environ['RITUAL_SHA256']
+          q = json.loads(Path('glulx/state-persistence/qualification.json').read_text(encoding='utf-8'))
+          r = json.loads(Path('glulx/ritual-resonance/patch-series.json').read_text(encoding='utf-8'))
+          assert q['production_release'] == int(os.environ['RITUAL_RELEASE']) == r['release']
+          assert q['production_serial'] == os.environ['RITUAL_SERIAL'] == r['serial']
+          assert q['production_size_bytes'] == int(os.environ['RITUAL_SIZE']) == r['expected_artifact']['size_bytes']
+          assert q['production_checksum_hex'] == os.environ['RITUAL_CHECKSUM'] == r['expected_artifact']['checksum_hex']
+          assert q['production_sha256'] == os.environ['RITUAL_SHA256'] == r['expected_artifact']['sha256']
+          assert q['production_source_changes'] == []
           PY
 
-      - name: Build pinned Glulx ZILF
+      - name: Build pinned ZILF and Glazer
         shell: bash
         run: |
           set -euxo pipefail
@@ -135,24 +124,19 @@ jobs:
           zilf_dll="$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)"
           test -n "$zilf_dll"
           echo "GLULX_ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
-
-      - name: Build exactly pinned Glazer
-        shell: bash
-        run: |
-          set -euxo pipefail
           curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
             --output glulx/build/state-persistence/glazer-source.tar.gz
           echo "$GLAZER_SOURCE_SHA256  glulx/build/state-persistence/glazer-source.tar.gz" | sha256sum --check
           mkdir -p .tooling/glazer-source
           tar -xf glulx/build/state-persistence/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
           make -C .tooling/glazer-source 2>&1 | tee glulx/build/state-persistence/glazer-build.log
-          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
-          test -n "$glazer_binary"
-          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
-          "$glazer_binary" --version | tee glulx/build/state-persistence/glazer-version.txt
+          glazer="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer"
+          echo "GLAZER_BIN=$(realpath "$glazer")" >> "$GITHUB_ENV"
+          "$glazer" --version | tee glulx/build/state-persistence/glazer-version.txt
           grep -Fx "glazer 1.2.0" glulx/build/state-persistence/glazer-version.txt
 
-      - name: Stage exact Release 1216 production source
+      - name: Stage and audit exact production source
         run: |
           python glulx/tools/stage_ritual_resonance.py \
             --upstream .upstream/zork1-glulx \
@@ -165,59 +149,49 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          receipt = json.loads(Path('glulx/build/state-persistence/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
-          report = json.loads(Path('glulx/build/state-persistence/smell-report.json').read_text(encoding='utf-8'))
-          assert receipt['changed_paths'] == [
-              '1dungeon.zil', 'assistance.zil', 'ritual_resonance.zil',
-              'shadow_logic.zil', 'zork1.zil',
-          ]
+          build = Path('glulx/build/state-persistence')
+          receipt = json.loads((build / 'src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
+          report = json.loads((build / 'smell-report.json').read_text(encoding='utf-8'))
+          assert receipt['changed_paths'] == ['1dungeon.zil', 'assistance.zil', 'ritual_resonance.zil', 'shadow_logic.zil', 'zork1.zil']
           assert not report['errors']
           assert not [item for item in report['includes'] if not item['resolved']]
-          source = Path('glulx/build/state-persistence/src')
-          forbidden = (
-              'PTROLL', 'UTROLL', 'RTROLL', 'PECAT', 'PEBRK', 'UEGG', 'REGG',
-              'PDAM', 'UDAM', 'RDAM', 'PRITE', 'URITE', 'RRITE',
-              'PTIMER', 'UTIMER', 'RTIMER', 'state_persistence_test',
-          )
-          production = '\n'.join(path.read_text(errors='ignore') for path in source.glob('*.zil'))
+          forbidden = ('PTROLL','UTROLL','RTROLL','PECAT','PEBRK','UEGG','REGG','PDAM','UDAM','RDAM','PRITE','URITE','RRITE','PTIMER','UTIMER','RTIMER','state_persistence_test')
+          production = '\n'.join(path.read_text(errors='ignore') for path in (build / 'src').glob('*.zil'))
           assert not any(token in production for token in forbidden)
           PY
 
-      - name: Compile and verify unchanged Release 1216 artifact
+      - name: Compile and verify unchanged Release 1216
         shell: bash
         run: |
           set -euxo pipefail
-          assembly="${GITHUB_WORKSPACE}/glulx/build/state-persistence/zork1-glulx-ritual-resonance.asm"
+          build="${GITHUB_WORKSPACE}/glulx/build/state-persistence"
+          assembly="${build}/zork1-glulx-ritual-resonance.asm"
           pushd glulx/build/state-persistence/src
           dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
-            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/state-persistence/zilf-compile.log"
+            2>&1 | tee "${build}/zilf-compile.log"
           popd
-          python glulx/tools/normalize_serial.py "$assembly" \
-            --serial "$RITUAL_SERIAL" \
+          python glulx/tools/normalize_serial.py "$assembly" --serial "$RITUAL_SERIAL" \
             --receipt glulx/build/state-persistence/SERIAL-NORMALIZATION.json
           "$GLAZER_BIN" "$assembly" -o glulx/build/state-persistence/zork1-glulx-ritual-resonance.ulx \
             2>&1 | tee glulx/build/state-persistence/glazer-assemble.log
           python glulx/tools/verify_ulx.py glulx/build/state-persistence/zork1-glulx-ritual-resonance.ulx \
-            --expect-sha256 "$RITUAL_SHA256" \
-            --json glulx/build/state-persistence/story-report.json
+            --expect-sha256 "$RITUAL_SHA256" --json glulx/build/state-persistence/story-report.json
           python - <<'PY'
           import json, os
           from pathlib import Path
           story = json.loads(Path('glulx/build/state-persistence/story-report.json').read_text(encoding='utf-8'))
-          assert story['version_hex'] == '0x00030103'
-          assert story['checksum_valid'] is True
+          assert story['version_hex'] == '0x00030103' and story['checksum_valid'] is True
           assert story['size_bytes'] == int(os.environ['RITUAL_SIZE'])
           assert story['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
           assert story['sha256'] == os.environ['RITUAL_SHA256']
           PY
 
-      - name: Build pinned native Glulxe with CheapGlk
+      - name: Build pinned native interpreter
         shell: bash
         run: |
           set -euxo pipefail
           make -C .tooling/cheapglk 2>&1 | tee glulx/build/state-persistence/cheapglk-build.log
-          make -C .tooling/glulxe \
-            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+          make -C .tooling/glulxe GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
             GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
             2>&1 | tee glulx/build/state-persistence/glulxe-build.log
           test -x .tooling/glulxe/glulxe
@@ -227,27 +201,23 @@ jobs:
         shell: bash
         run: |
           set -euxo pipefail
+          build="${GITHUB_WORKSPACE}/glulx/build/state-persistence"
           rm -rf glulx/build/state-persistence/test-src
           cp -a glulx/build/state-persistence/src glulx/build/state-persistence/test-src
-          cp glulx/state-persistence/tests/state_persistence_test.zil \
-            glulx/build/state-persistence/test-src/state_persistence_test.zil
+          cp glulx/state-persistence/tests/state_persistence_test.zil glulx/build/state-persistence/test-src/
           python - <<'PY'
           import sys
           from pathlib import Path
           sys.path.insert(0, str(Path('glulx/tools').resolve()))
           from stage_release120 import apply_patch
-          apply_patch(
-              Path('glulx/state-persistence/tests/001-include-state-persistence-test.json').resolve(),
-              Path('glulx/build/state-persistence/test-src').resolve(),
-          )
+          apply_patch(Path('glulx/state-persistence/tests/001-include-state-persistence-test.json').resolve(), Path('glulx/build/state-persistence/test-src').resolve())
           PY
-          assembly="${GITHUB_WORKSPACE}/glulx/build/state-persistence/zork1-glulx-state-persistence-test.asm"
+          assembly="${build}/zork1-glulx-state-persistence-test.asm"
           pushd glulx/build/state-persistence/test-src
           dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
-            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/state-persistence/test-zilf-compile.log"
+            2>&1 | tee "${build}/test-zilf-compile.log"
           popd
-          python glulx/tools/normalize_serial.py "$assembly" \
-            --serial "$PERSIST_TEST_SERIAL" \
+          python glulx/tools/normalize_serial.py "$assembly" --serial "$PERSIST_TEST_SERIAL" \
             --receipt glulx/build/state-persistence/TEST-SERIAL-NORMALIZATION.json
           "$GLAZER_BIN" "$assembly" -o glulx/build/state-persistence/zork1-glulx-state-persistence-test.ulx \
             2>&1 | tee glulx/build/state-persistence/test-glazer-assemble.log
@@ -272,55 +242,45 @@ jobs:
             esac
             route_dir="${GITHUB_WORKSPACE}/glulx/build/state-persistence/routes/${route}"
             transcript="${GITHUB_WORKSPACE}/glulx/build/state-persistence/${route}-transcript.txt"
-            save_path="${story_dir}/${save_name}"
             rm -rf "$route_dir"
-            rm -f "$save_path"
             mkdir -p "$route_dir"
+            find "$story_dir" -maxdepth 1 -type f -name "${save_name}*" -delete
             set +e
-            (
-              cd "$route_dir"
-              timeout 45s "$GLULXE_BIN" "$story" < "${commands_root}/${route}_commands.txt"
-            ) > "$transcript" 2>&1
+            (cd "$route_dir" && timeout 45s "$GLULXE_BIN" "$story" < "${commands_root}/${route}_commands.txt") > "$transcript" 2>&1
             status=$?
             set -e
             echo "Glulxe route status: $status" >> "$transcript"
             python "$checker" "$transcript" "${commands_root}/${route}_expectations.txt"
-            test -s "$save_path"
-            cp "$save_path" "$route_dir/$save_name"
+            mapfile -t save_paths < <(find "$story_dir" -maxdepth 1 -type f -name "${save_name}*" -size +0c -print)
+            test "${#save_paths[@]}" -eq 1
+            cp "${save_paths[0]}" "$route_dir/$(basename "${save_paths[0]}")"
           done
 
-      - name: Write state persistence qualification receipt
+      - name: Write qualification receipt
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          qualification = json.loads(Path('glulx/state-persistence/qualification.json').read_text(encoding='utf-8'))
+          q = json.loads(Path('glulx/state-persistence/qualification.json').read_text(encoding='utf-8'))
           story = json.loads(Path('glulx/build/state-persistence/story-report.json').read_text(encoding='utf-8'))
           build = Path('glulx/build/state-persistence')
-          route_files = sorted(build.glob('*-transcript.txt'))
-          save_files = sorted(build.glob('*.sav'))
-          assert len(route_files) == 6
-          assert len(save_files) == 6
-          assert all(path.stat().st_size > 0 for path in save_files)
+          transcripts = sorted(build.glob('*-transcript.txt'))
+          saves = sorted(path for path in build.iterdir() if path.is_file() and ('.sav' in path.name or path.suffix == '.glksave'))
+          assert len(transcripts) == 6 and len(saves) == 6
+          assert all(path.stat().st_size > 0 for path in saves)
           receipt = {
               'qualification_status': 'qualified against real SAVE and RESTORE',
               'production_artifact': story,
               'production_source_changes': [],
-              'routes': {name: 'passed' for name in qualification['routes']},
-              'transcripts': [path.name for path in route_files],
-              'save_files': [
-                  {'file': path.name, 'size_bytes': path.stat().st_size}
-                  for path in save_files
-              ],
-              'save_files_created': True,
+              'routes': {name: 'passed' for name in q['routes']},
+              'transcripts': [path.name for path in transcripts],
+              'save_files': [{'file': path.name, 'size_bytes': path.stat().st_size} for path in saves],
               'object_graph_restoration': 'passed',
               'global_and_property_restoration': 'passed',
               'interrupt_table_restoration': 'passed',
               'production_contains_test_setup': False,
           }
-          Path('glulx/build/state-persistence/BUILD-RECEIPT.json').write_text(
-              json.dumps(receipt, indent=2) + '\n', encoding='utf-8'
-          )
+          (build / 'BUILD-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8')
           PY
 
       - name: Upload persistence evidence
@@ -337,7 +297,8 @@ jobs:
             glulx/build/state-persistence/TEST-SERIAL-NORMALIZATION.json
             glulx/build/state-persistence/src/STAGING-RECEIPT.json
             glulx/build/state-persistence/smell-report.json
-            glulx/build/state-persistence/*.sav
+            glulx/build/state-persistence/*.sav*
+            glulx/build/state-persistence/*.glksave
             glulx/build/state-persistence/*-transcript.txt
             glulx/build/state-persistence/routes/**
             glulx/build/state-persistence/*-compile.log
