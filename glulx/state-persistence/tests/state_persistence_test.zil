@@ -92,6 +92,8 @@
 <ROUTINE V-PERSIST-EGG-CAUGHT-SET ()
 	<PERSIST-EGG-BASE>
 	<SETG GLULX-ALT-SACK-PREPARED T>
+	<SETG PRSO ,NEST>
+	<SETG PRSI ,TORCH>
 	<GLULX-ALT-BURN-NEST>
 	<SETG CLOCK-WAIT T>
 	<TELL "[Test-only intact-egg persistence state established.]" CR>>
@@ -99,6 +101,8 @@
 <ROUTINE V-PERSIST-EGG-BROKEN-SET ()
 	<PERSIST-EGG-BASE>
 	<SETG GLULX-ALT-SACK-PREPARED <>>
+	<SETG PRSO ,NEST>
+	<SETG PRSI ,TORCH>
 	<GLULX-ALT-BURN-NEST>
 	<SETG CLOCK-WAIT T>
 	<TELL "[Test-only broken-egg persistence state established.]" CR>>
