@@ -1,0 +1,6 @@
+[PERSIST ritual known=yes xb=no xc=yes complete=yes ghosts-present=no bell=cool-held]
+[PERSIST ritual known=no xb=yes xc=no complete=no ghosts-present=yes bell=hot-room]
+[PERSIST ritual known=yes xb=no xc=yes complete=yes ghosts-present=no bell=cool-held]
+- Paired light: fulfilled and released.
+- Prayer: completed.
+- You completed the canonical bell, candle, and black-book exorcism.
