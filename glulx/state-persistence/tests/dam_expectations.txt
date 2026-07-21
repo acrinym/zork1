@@ -1,0 +1,5 @@
+[PERSIST dam interlock=armed gates=open tide=low water=3 leak-visible=yes room-lit=yes repaired=no]
+[PERSIST dam interlock=disarmed gates=closed tide=high water=-1 leak-visible=no room-lit=no repaired=yes]
+[PERSIST dam interlock=armed gates=open tide=low water=3 leak-visible=yes room-lit=yes repaired=no]
+TURNING INTERLOCK: ARMED. SLUICE GATES: OPEN.
+- You diagnosed Flood Control Dam #3's interlock, sluice, reservoir, and leak state.
