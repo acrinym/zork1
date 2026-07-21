@@ -23,7 +23,8 @@
   "patches": [
     "patches/001-ritual-object-room-hooks.json",
     "patches/002-shadow-ritual-routing.json",
-    "patches/003-ritual-recap.json"
+    "patches/003-ritual-recap.json",
+    "patches/004-completed-ceremony-report.json"
   ],
   "expected_changed_paths": [
     "1dungeon.zil",
