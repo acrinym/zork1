@@ -1,0 +1,23 @@
+[Test-only unprepared-fall scenario with an unprepared sack beneath the tree.]
+The nest flashes into flame.
+strikes the
+ground, and springs open with an expensive crunch.
+There is a somewhat ruined egg here.
+What you currently remember:
+shortest and most
+destructive route.
+[Test-only canonical nest-burning scenario.]
+The bird's nest catches fire and is consumed.
+[Test-only troll recovery scenario.]
+You gasp and point behind the troll.
+Cellar
+The Troll Room
+You approach the alert, armed troll with the rope arranged confidently.
+[Test-only unarmed troll scenario.]
+You seize the troll's present disadvantage and loop the rope
+The bound troll remains
+alive, furious, and no longer able to block the passages.
+The troll is not presently available for further tactical deception.
+[Test-only bound troll restoration scenario.]
+You release the final knot.
+You approach the alert, armed troll with the rope arranged confidently.

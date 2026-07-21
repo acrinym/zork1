@@ -1,0 +1,96 @@
+[train]
+name        = "onyx_zork_glulx_absurd_parity"
+title       = "Zork I Glulx Release 1214 absurd alternate parity"
+description = """
+Build an isolated Glulx layer above qualified Shadow Logic and port the earned
+Release 122 troll-restraint and prepared nest-fire outcomes with real objects,
+canonical consequences, persistent state, and cross-VM semantic qualification.
+"""
+created     = "2026-07-20"
+status      = "complete"
+
+[[cars]]
+id = "base"
+bead = "zork1-glulx-alt1214-001"
+title = "Qualified Shadow Logic base"
+parallel_start = true
+depends_on = []
+summary = "Rebuild exact Release 1213 and reject any parity change outside the reviewed five-path boundary."
+
+[[cars]]
+id = "trick"
+bead = "zork1-glulx-alt1214-002"
+title = "One-use Glulx troll deception"
+parallel_start = true
+depends_on = ["base"]
+summary = "Create one timed tactical opening and recover troll hostility after delay or departure."
+
+[[cars]]
+id = "bind"
+bead = "zork1-glulx-alt1214-003"
+title = "Living real-rope restraint"
+parallel_start = false
+depends_on = ["trick"]
+summary = "Bind a genuinely vulnerable troll alive, conditionally drop the real axe, and open the passages."
+
+[[cars]]
+id = "recover"
+bead = "zork1-glulx-alt1214-004"
+title = "Troll threat restoration"
+parallel_start = false
+depends_on = ["bind"]
+summary = "Expire abandoned opportunities and make UNTIE restore the rope, fight state, and danger."
+
+[[cars]]
+id = "catcher"
+bead = "zork1-glulx-alt1214-005"
+title = "Deliberate brown-sack catcher"
+parallel_start = true
+depends_on = ["base"]
+summary = "Require explicit preparation to spread and open the real sack beneath the tree."
+
+[[cars]]
+id = "fire"
+bead = "zork1-glulx-alt1214-006"
+title = "Controlled ivory-torch nest fire"
+parallel_start = false
+depends_on = ["catcher"]
+summary = "Limit the alternate descent to the held lit torch, real nest in tree, and player beside it."
+
+[[cars]]
+id = "egg"
+bead = "zork1-glulx-alt1214-007"
+title = "Real egg semantic outcomes"
+parallel_start = false
+depends_on = ["fire"]
+summary = "Catch the intact egg only with preparation and invoke canonical BAD-EGG without it."
+
+[[cars]]
+id = "recap"
+bead = "zork1-glulx-alt1214-008"
+title = "Persistent parity recap"
+parallel_start = true
+depends_on = ["recover", "egg"]
+summary = "Record meaningful troll, prepared sack, caught egg, and destructive descent state."
+
+[[cars]]
+id = "semantic"
+bead = "zork1-glulx-alt1214-009"
+title = "Dual-VM semantic qualification"
+parallel_start = false
+depends_on = ["recap"]
+summary = "Rebuild Release 122 and Release 1214, run both interpreters, and compare named outcomes rather than bytes."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx-alt1214-010"
+title = "Release 1214 qualification capstone"
+parallel_start = false
+depends_on = ["semantic"]
+summary = "Lock the artifact identity, complete review and documentation, and leave the non-draft PR ready but unmerged."
+
+[meta]
+one_liner = "Prepared ridiculousness now survives the jump from Z-machine V3 to native Glulx without weakening canonical Zork."
+prior_car = "onyx_zork_absurd_alternates"
+couples_with = ["onyx_zork_shadow_logic"]
+watch = ["glulx/absurd-alternates", ".github/workflows/glulx-absurd-alternates.yml", "alternate"]

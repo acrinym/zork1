@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1214-ROPE-GRAMMAR",
+  "path": "gsyntax.zil",
+  "description": "Allow TIE UP actor WITH any held object so the real rope reaches canonical V-TIE-UP without requiring TOOLBIT",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX TIE UP OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM) WITH OBJECT\n\t(FIND TOOLBIT) (ON-GROUND IN-ROOM HELD CARRIED HAVE) = V-TIE-UP>",
+      "new": "<SYNTAX TIE UP OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM) WITH OBJECT\n\t(ON-GROUND IN-ROOM HELD CARRIED HAVE) = V-TIE-UP>"
+    }
+  ]
+}
