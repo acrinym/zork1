@@ -29,7 +29,7 @@
 	      (T
 	       <TELL "The note fades normally, which is almost suspicious after everything else." CR>)>>
 
-<ROUTINE RITUAL-BELL-F ()>
+<ROUTINE RITUAL-BELL-F ()
 	<COND (<VERB? EXAMINE DIAGNOSE>
 	       <TELL "The small brass bell is cool enough to hold. Its rim is worn unevenly, as though one particular note mattered more than all the others." CR>
 	       <RTRUE>)
@@ -47,7 +47,7 @@
 	              <RTRUE>)>)>
 	<BELL-F>>
 
-<ROUTINE RITUAL-HOT-BELL-F ()>
+<ROUTINE RITUAL-HOT-BELL-F ()
 	<COND (<VERB? EXAMINE DIAGNOSE>
 	       <TELL "The bell is red hot. Heat shimmers above it, but the metal still carries a faint vibration from the note that began the ceremony." CR>
 	       <RTRUE>)
@@ -56,7 +56,7 @@
 	       <RTRUE>)>
 	<HOT-BELL-F>>
 
-<ROUTINE RITUAL-BLACK-BOOK-F ()>
+<ROUTINE RITUAL-BLACK-BOOK-F ()
 	<COND (<OR <VERB? TURN>
 	           <AND <VERB? READ-PAGE>
 	                <EQUAL? ,PRSI ,INTNUM>
@@ -78,7 +78,7 @@
 	       <RTRUE>)>
 	<BLACK-BOOK>>
 
-<ROUTINE RITUAL-CANDLES-F ()>
+<ROUTINE RITUAL-CANDLES-F ()
 	<COND (<VERB? EXAMINE DIAGNOSE>
 	       <TELL "The pair of candles is ">
 	       <COND (<FSET? ,CANDLES ,RMUNGBIT>
