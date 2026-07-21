@@ -1,10 +1,10 @@
 # Expansion frontier
 
-Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified **earned absurd alternate solutions** while preserving Release 121 as an independent edition. The Glulx lineage is now qualified through focused Ritual Resonance Release `1216`, stacked above Dam Mechanisms Release `1215` and the isolated Release `1214` parity layer.
+Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified **earned absurd alternate solutions** while preserving Release 121 as an independent edition. The Glulx lineage is now qualified through focused Ritual Resonance Release `1216`, and its newest world state has been proven through real save/restore without creating another production edition.
 
 Two distinct frontiers must remain separate:
 
-1. deepen physical world behavior and persistent-state qualification in small Glulx layers;
+1. deepen physical world behavior in small, coherent Glulx layers;
 2. add further earned alternate solutions only when real objects, preparation, risk, and canonical consequences justify them.
 
 ## 0. Glulx upstream reconciliation — complete
@@ -59,7 +59,7 @@ The qualification pipeline rebuilds the locked Release `122` `.z3` reference and
 
 This layer explicitly excludes Hidden Glade, songbird-follow geography, troll bribe, cyclops lullaby, thief bargain, the full Adventurer Misconduct surface, broad fire propagation, generalized spells, Version 3 object-slot cleanup, and the Wizard of Frobozz.
 
-## 0.6 Flood Control Dam mechanisms — complete in stacked PR #7
+## 0.6 Flood Control Dam mechanisms — complete
 
 Release `1215` is an isolated layer above exact qualified Release `1214`. It turns Flood Control Dam #3 into machinery players can inspect, test, operate, break, and repair without replacing its canonical puzzle state.
 
@@ -92,7 +92,7 @@ The production layer changes exactly five staged paths. Qualification uses a sep
 
 Bell/exorcism expansion, magical dam controls, broad flood propagation, optional geography, character alternatives, and the Wizard remain outside this layer.
 
-## 0.7 Ritual resonance and black-book knowledge — complete in stacked PR #8
+## 0.7 Ritual resonance and black-book knowledge — complete
 
 Release `1216` is an isolated layer above exact qualified Release `1215`. It makes the canonical ceremony discoverable and physically responsive while leaving the original exorcism state machine authoritative.
 
@@ -123,38 +123,38 @@ The production layer changes exactly five staged paths. Qualification uses a sep
 
 Release `1216` adds no generalized spell system, alternate exorcism, automatic ceremony completion, new treasure, broad supernatural propagation, optional geography, character alternatives, or Wizard interactions.
 
-## 0.8 Persistent-state save and restore — strongest next train
+## 0.8 Release 1216 state persistence — complete in PR #9
 
-The strongest next train is a focused persistence layer rather than another wide interaction sweep. It should prove that already-earned world changes survive save/restore and revisit correctly.
+This is a qualification train, not a new production layer. It rebuilds the exact locked Release `1216` artifact with zero production-source changes, then compiles a separate test-only story and exercises the canonical `SAVE` and `RESTORE` verbs under pinned native Glulxe and CheapGlk.
 
-Prioritize:
+Proven through real non-empty save files:
 
-1. living bound troll state, rope placement, passage opening, and `UNTIE` restoration after save/restore;
-2. prepared sack, intact caught egg, broken egg, and broken canary states after save/restore;
-3. dam interlock, gate direction, reservoir trend, room lighting, active leak, and repaired leak state;
-4. ritual knowledge, wrong-order discovery, mirror resonance, completed exorcism, ghost removal, and hot-bell/cool-bell state;
-5. `RECAP`, `CEREMONY`, and `MELZAR` accuracy immediately after restore;
-6. revisiting affected rooms without duplicated objects, restarted timers, phantom narration, or lost danger;
-7. production saves using ordinary `SAVE`/`RESTORE`, with test-only filesystem orchestration kept outside game logic.
+1. living bound troll state, rope containment, real axe placement, open passages, and recap;
+2. prepared intact egg inside the real sack, canary containment, nest removal, and recap;
+3. canonical broken egg and broken canary consequence graph;
+4. dam interlock, gates, tide, water level, leak visibility, room lighting, learned `MELZAR`, and recap state;
+5. learned and completed ritual state, canonical `XC`, removed ghosts, cool bell identity, `CEREMONY`, and recap;
+6. the queued production `I-GLULX-ALT-TROLL-RECOVER` interrupt, including the saved delay and later restoration of hostility.
 
-This train should stage from the latest qualified Glulx artifact, assign a new unofficial identity only if production changes are required, and prefer qualification-only improvements when the current engine already preserves state correctly.
+The receipt records object-graph restoration, global/property restoration, and interrupt-table restoration as passed. Production contains no test setup, and no Release `1217` was assigned because no production change was needed.
 
-## 0.9 Deeper non-dam material consequences
+## 0.9 Deeper non-dam material consequences — strongest next train
 
-After persistence is proven, deepen a separate, coherent set of physical surfaces:
+The next strongest coherent product train should deepen a controlled set of physical surfaces rather than create another broad command system:
 
 1. rope uses beyond existing player and troll restraint;
 2. water interactions with hot, dusty, muddy, or mechanically plausible objects;
 3. shovel, axe, wrench, screwdriver, and containers outside the dam;
 4. controlled multi-object consequences that do not grant universal verbs;
 5. visible-noun room-density responses for reasonable touch, knock, listen, smell, pour, cut, push, pull, and positioning intent;
-6. focused semantic routes proving canonical puzzles remain authoritative.
+6. focused semantic routes proving canonical puzzles remain authoritative;
+7. revisit and save/restore assertions only for newly introduced persistent state.
 
-Do not turn the object system into a crafting grid or generalized physics simulator.
+Choose a narrow group of related rooms or objects first. Do not turn the object system into a crafting grid or generalized physics simulator.
 
 ## 0.10 Optional geography and character Glulx layers
 
-After persistence and focused physical behavior, port separately and deliberately:
+After focused physical behavior, port separately and deliberately:
 
 1. songbird and Hidden Glade;
 2. troll bribe;
@@ -164,7 +164,7 @@ After persistence and focused physical behavior, port separately and deliberatel
 6. `FOLLY` and troll bemusement;
 7. Version 3 object-slot cleanup where Glulx no longer needs the workaround.
 
-Release 122 parity, dam mechanisms, and ritual resonance are no longer part of this backlog because they have qualified Release `1214`, `1215`, and `1216` layers.
+Release 122 parity, dam mechanisms, ritual resonance, and Release 1216 persistence qualification are no longer part of this backlog.
 
 ## 1. Absurd Alternate Zork I Release 122 — complete
 
@@ -199,7 +199,7 @@ Controlling record: [`../../alternate/README.md`](../../alternate/README.md).
 
 The Wizard of Frobozz remains Zork II scope.
 
-## 1.1 Further earned alternate solutions — after persistence and mechanism priorities
+## 1.1 Further earned alternate solutions — after mechanism priorities
 
 Candidate actions must satisfy all of these:
 
@@ -223,15 +223,12 @@ Do not implement the Wizard of Frobozz in Zork I. Reserve `GIVE X TO WIZARD`, `B
 
 Add deterministic routes for:
 
-- complete exorcism timing and expiration edges;
+- complete exorcism timing and expiration edges beyond the completed checkpoint route;
 - dam high/low water states across the full canonical timer;
 - cyclops lullaby under impatience timing;
 - thief bargain with carried treasure;
-- save and restore after Releases 121, 122, 1213, 1214, 1215, and 1216 persistent changes;
-- tie, untie, save, restore, and revisit of the bound troll;
-- safe and broken egg states across save/restore;
-- active and repaired dam leak states across save/restore;
-- ritual knowledge, completed exorcism, and hot-bell cooling across save/restore.
+- newly added future persistent states across save/restore and room revisits;
+- restored states under longer continued play, including combat, timers, and ordinary traversal.
 
 ## 3. Room density
 
@@ -247,7 +244,7 @@ Add optional environmental storytelling through maintenance records, inscription
 
 ## 6. Optional geography
 
-After room density and persistence are strong, add only side locations justified by story, puzzle logic, or world reactivity.
+After room density and focused material behavior are strong, add only side locations justified by story, puzzle logic, or world reactivity.
 
 ## 7. Parser kindness
 
