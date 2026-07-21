@@ -15,7 +15,7 @@
 | Unofficial Shadow Logic Glulx | `.ulx` | Release 1213 / `260720` | Qualified native experimentation, player consequences, diagnostics, and folly ledger |
 | Unofficial Absurd Alternate Glulx | `.ulx` | Release 1214 / `260720` | Qualified Release 122 semantic parity and locked artifact identity |
 | Unofficial Dam Mechanisms Glulx | `.ulx` | Release 1215 / `260720` | Qualified panel, interlock, sluice, lighting, leak, repair, diagnostic, and recap mechanics |
-| Unofficial Ritual Resonance Glulx | `.ulx` | Release 1216 / `260720` | Qualified bell, candle, black-book, mirror, hot-bell, ceremony-report, and canonical exorcism-preserving interactions |
+| Unofficial Ritual Resonance Glulx | `.ulx` | Release 1216 / `260720` | Qualified ritual interactions plus real save/restore persistence for object graphs, learned state, and queued interrupts |
 
 ## Release 121 interaction foundation
 
@@ -156,6 +156,21 @@ Locked Release 1216 artifact:
 
 Release 1216 does not add spells, a second exorcism solution, automatic ceremony completion, new treasure, or supernatural room propagation.
 
+### Release 1216 state-persistence qualification
+
+The production artifact remains exactly Release `1216`; no Release `1217` or production patch was created. A separate test-only story exercised the canonical `SAVE` and `RESTORE` verbs under pinned native Glulxe and CheapGlk.
+
+Qualified restoration routes:
+
+- living bound troll, open passages, rope containment, axe placement, and recap;
+- prepared intact egg, real sack containment, canary nesting, nest removal, and recap;
+- canonical broken egg and broken canary consequence graph;
+- dam interlock, gates, tide, water level, leak visibility, room lighting, learned `MELZAR`, and recap state;
+- learned and completed ritual state, removed ghosts, canonical `XC`, cool bell identity, `CEREMONY`, and recap;
+- the queued production troll-recovery interrupt, including its saved delay and later restoration of hostility.
+
+Six real non-empty save files were produced. The qualification receipt records object-graph restoration, globals/properties restoration, and interrupt-table restoration as passed, with zero production-source changes and no test setup in production.
+
 ## Validation coverage
 
 | Coverage | Method |
@@ -177,6 +192,10 @@ Release 1216 does not add spells, a second exorcism solution, automatic ceremony
 | Canonical dam preservation | Production wrappers delegate `BUTTON-F`, `BOLT-F`, and `PLUG`; reservoir and flooding interrupts remain untouched |
 | Ritual resonance route | Test-only positioning story proves page discovery, temple and mirror resonance, wrong-order preservation, canonical exorcism, hot-bell cooling, ceremony state, and recap |
 | Canonical exorcism preservation | Production wrapper delegates `LLD-ROOM`; only original `XB`, `XC`, `LLD-FLAG`, timers, object exchange, and ghost removal advance the puzzle |
+| Real save-file persistence | Six canonical `SAVE`/`RESTORE` routes with ordered pre-save, mutated, and restored transcript assertions and six non-empty save files |
+| Object-graph persistence | Bound troll/rope/axe, intact egg/sack/canary, and broken egg/canary containment restored |
+| Global and property persistence | Dam, ritual, discovery, room property, bell identity, and recap state restored |
+| Interrupt-table persistence | Saved queued `I-GLULX-ALT-TROLL-RECOVER` fires after the restored delay and restores hostility |
 | Production/test isolation | Production source and artifacts contain no qualification setup verbs or setup modules |
 | Cross-VM parity | Rebuild both locked Release 122 and 1214 artifacts, run their native interpreters, and compare shared outcome categories |
 | Beadtrain integrity | Completed and active trains validate against canonical and sharded issue ledgers |
@@ -184,7 +203,7 @@ Release 1216 does not add spells, a second exorcism solution, automatic ceremony
 ## Still requiring dedicated work
 
 - deeper non-dam rope, water, shovel, axe, wrench, container, and scenery interactions;
-- save/restore qualification after troll restraint, egg catch/destruction, dam changes, and ritual discoveries;
+- complete exorcism and dam timer-expiration edge routes beyond the restored checkpoint states;
 - dedicated cyclops-lullaby and thief-bargain long routes;
 - additional earned alternate solutions that use real objects, preparation, risk, and canonical consequences;
 - room-density and parser-kindness passes for visible nouns and reasonable physical intent;
