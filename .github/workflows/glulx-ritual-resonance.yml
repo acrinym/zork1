@@ -1,0 +1,333 @@
+name: Zork I Glulx Ritual Resonance
+
+on:
+  push:
+    branches:
+      - agent/shadow-logic-ritual-mechanisms
+    paths:
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-ritual-resonance.yml"
+  pull_request:
+    paths:
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-ritual-resonance.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1215"
+  BASE_ARTIFACT_SHA256: ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed
+  RITUAL_RELEASE: "1216"
+  RITUAL_SERIAL: "260720"
+  RITUAL_TEST_SERIAL: "990216"
+  RITUAL_SIZE: "211968"
+  RITUAL_CHECKSUM: "0x3d27d123"
+  RITUAL_SHA256: 4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2
+
+jobs:
+  qualify-glulx-ritual-resonance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          mkdir -p glulx/build/ritual-resonance
+
+      - name: Validate locked ritual layer and exact qualified base
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          layer = json.loads(Path('glulx/ritual-resonance/patch-series.json').read_text(encoding='utf-8'))
+          base = json.loads(Path('glulx/dam-mechanisms/patch-series.json').read_text(encoding='utf-8'))
+          assert layer['release'] == int(os.environ['RITUAL_RELEASE'])
+          assert layer['serial'] == os.environ['RITUAL_SERIAL']
+          assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
+          assert layer['upstream_tree'] == os.environ['ZORK_GLULX_TREE']
+          assert layer['base_release'] == int(os.environ['BASE_RELEASE'])
+          assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert base['release'] == int(os.environ['BASE_RELEASE'])
+          assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert layer['expected_changed_paths'] == [
+              '1dungeon.zil', 'assistance.zil', 'ritual_resonance.zil',
+              'shadow_logic.zil', 'zork1.zil',
+          ]
+          artifact = layer['expected_artifact']
+          assert artifact['file'] == 'zork1-glulx-ritual-resonance.ulx'
+          assert artifact['glulx_version_hex'] == '0x00030103'
+          assert artifact['size_bytes'] == int(os.environ['RITUAL_SIZE'])
+          assert artifact['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
+          assert artifact['sha256'] == os.environ['RITUAL_SHA256']
+          PY
+
+      - name: Build pinned Glulx ZILF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          pushd .tooling/zilf-glulx
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/ritual-resonance/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/ritual-resonance/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "GLULX_ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build exactly pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/ritual-resonance/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/ritual-resonance/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/ritual-resonance/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/ritual-resonance/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version | tee glulx/build/ritual-resonance/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/ritual-resonance/glazer-version.txt
+
+      - name: Stage and audit exact ritual source
+        run: |
+          python glulx/tools/stage_ritual_resonance.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/ritual-resonance/src \
+            --allowed-root glulx/build/ritual-resonance \
+            --manifest glulx/ritual-resonance/patch-series.json
+          python optimized/tools/zil_smell_check.py \
+            --source glulx/build/ritual-resonance/src \
+            --json glulx/build/ritual-resonance/smell-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('glulx/build/ritual-resonance/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
+          report = json.loads(Path('glulx/build/ritual-resonance/smell-report.json').read_text(encoding='utf-8'))
+          assert receipt['base']['release'] == 1215
+          assert receipt['base']['artifact_sha256'] == 'ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed'
+          assert receipt['changed_paths'] == [
+              '1dungeon.zil', 'assistance.zil', 'ritual_resonance.zil',
+              'shadow_logic.zil', 'zork1.zil',
+          ]
+          assert not report['errors']
+          assert not [item for item in report['includes'] if not item['resolved']]
+          source = Path('glulx/build/ritual-resonance/src')
+          assert (source / 'ritual_resonance.zil').is_file()
+          assert not (source / 'ritual_test.zil').exists()
+          forbidden = ('RITUALRESET', 'RITUALTEMPLE', 'RITUALHADES', 'RITUALMIRROR')
+          production = '\n'.join(path.read_text(errors='ignore') for path in source.glob('*.zil'))
+          assert not any(token in production for token in forbidden)
+          PY
+
+      - name: Compile locked Glulx Release 1216 artifact
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.asm"
+          pushd glulx/build/ritual-resonance/src
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/ritual-resonance/zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$RITUAL_SERIAL" \
+            --receipt glulx/build/ritual-resonance/SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.ulx \
+            2>&1 | tee glulx/build/ritual-resonance/glazer-assemble.log
+
+      - name: Verify exact Release 1216 artifact identity
+        run: |
+          python glulx/tools/verify_ulx.py glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.ulx \
+            --expect-sha256 "$RITUAL_SHA256" \
+            --json glulx/build/ritual-resonance/story-report.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/ritual-resonance/story-report.json').read_text(encoding='utf-8'))
+          assert story['version_hex'] == '0x00030103'
+          assert story['checksum_valid'] is True
+          assert story['size_bytes'] == int(os.environ['RITUAL_SIZE'])
+          assert story['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
+          assert story['sha256'] == os.environ['RITUAL_SHA256']
+          PY
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/ritual-resonance/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/ritual-resonance/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+          echo "GLULXE_BIN=$(realpath .tooling/glulxe/glulxe)" >> "$GITHUB_ENV"
+
+      - name: Build test-only ritual scenario story
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm -rf glulx/build/ritual-resonance/test-src
+          cp -a glulx/build/ritual-resonance/src glulx/build/ritual-resonance/test-src
+          cp glulx/ritual-resonance/tests/ritual_test.zil glulx/build/ritual-resonance/test-src/ritual_test.zil
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('glulx/tools').resolve()))
+          from stage_release120 import apply_patch
+          apply_patch(
+              Path('glulx/ritual-resonance/tests/001-include-ritual-test.json').resolve(),
+              Path('glulx/build/ritual-resonance/test-src').resolve(),
+          )
+          PY
+          assembly="${GITHUB_WORKSPACE}/glulx/build/ritual-resonance/zork1-glulx-ritual-resonance-test.asm"
+          pushd glulx/build/ritual-resonance/test-src
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/ritual-resonance/test-zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$RITUAL_TEST_SERIAL" \
+            --receipt glulx/build/ritual-resonance/TEST-SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/ritual-resonance/zork1-glulx-ritual-resonance-test.ulx \
+            2>&1 | tee glulx/build/ritual-resonance/test-glazer-assemble.log
+
+      - name: Run qualified ritual resonance and canonical exorcism route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/ritual-resonance/zork1-glulx-ritual-resonance-test.ulx \
+            < glulx/ritual-resonance/tests/ritual_commands.txt \
+            2>&1 | tee glulx/build/ritual-resonance/ritual-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F -- "$marker" glulx/build/ritual-resonance/ritual-transcript.txt
+          done < glulx/ritual-resonance/tests/ritual_expectations.txt
+
+      - name: Write qualified Release 1216 receipt
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/ritual-resonance/story-report.json').read_text(encoding='utf-8'))
+          stage = json.loads(Path('glulx/build/ritual-resonance/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
+          serial = json.loads(Path('glulx/build/ritual-resonance/SERIAL-NORMALIZATION.json').read_text(encoding='utf-8'))
+          assert story['size_bytes'] == int(os.environ['RITUAL_SIZE'])
+          assert story['checksum_hex'] == os.environ['RITUAL_CHECKSUM']
+          assert story['sha256'] == os.environ['RITUAL_SHA256']
+          receipt = {
+              'qualification_status': 'qualified and fail-closed',
+              'identity': {'release': int(os.environ['RITUAL_RELEASE']), 'serial': os.environ['RITUAL_SERIAL']},
+              'base': stage['base'],
+              'changed_paths': stage['changed_paths'],
+              'artifact': story,
+              'serial_normalization': serial,
+              'canonical_state_machine': ['XB', 'XC', 'LLD-FLAG', 'BELL/HOT-BELL', 'I-XBH', 'GHOSTS'],
+              'routes': {
+                  'damaged_page_order_discovery': 'passed',
+                  'temple_bell_resonance': 'passed',
+                  'mirror_bell_and_candle_delay': 'passed',
+                  'wrong_order_prayer_preservation': 'passed',
+                  'canonical_bell_interval': 'passed',
+                  'canonical_paired_candle_response': 'passed',
+                  'canonical_black_book_exorcism': 'passed',
+                  'real_bottled_water_hot_bell_cooling': 'passed',
+                  'ceremony_and_recap_reporting': 'passed',
+              },
+              'production_contains_test_setup': False,
+              'generalized_spell_system': False,
+              'wizard_of_frobozz': 'excluded; Zork II scope',
+          }
+          Path('glulx/build/ritual-resonance/BUILD-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Upload qualified artifact and ritual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-ritual-resonance-qualified
+          path: |
+            glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.ulx
+            glulx/build/ritual-resonance/zork1-glulx-ritual-resonance.asm
+            glulx/build/ritual-resonance/story-report.json
+            glulx/build/ritual-resonance/BUILD-RECEIPT.json
+            glulx/build/ritual-resonance/SERIAL-NORMALIZATION.json
+            glulx/build/ritual-resonance/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/ritual-resonance/src/STAGING-RECEIPT.json
+            glulx/build/ritual-resonance/smell-report.json
+            glulx/build/ritual-resonance/ritual-transcript.txt
+            glulx/build/ritual-resonance/*-compile.log
+            glulx/build/ritual-resonance/*-build.log
+            glulx/build/ritual-resonance/glazer-version.txt
+            glulx/ritual-resonance/patch-series.json
+          if-no-files-found: warn

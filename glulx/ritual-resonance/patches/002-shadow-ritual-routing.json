@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1216-SHADOW-RITUAL-ROUTING",
+  "path": "shadow_logic.zil",
+  "description": "Route physically meaningful bell, candle, book, mirror, and hot-bell combinations before existing dam and generic Shadow Logic handling",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<DAM-MECH-USE-ON> <RTRUE>)\n\t      (<EQUAL? ,PRSI ,ME>",
+      "new": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<RITUAL-USE-ON> <RTRUE>)\n\t      (<DAM-MECH-USE-ON> <RTRUE>)\n\t      (<EQUAL? ,PRSI ,ME>"
+    }
+  ]
+}

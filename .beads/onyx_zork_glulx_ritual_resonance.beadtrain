@@ -1,0 +1,88 @@
+[train]
+name        = "onyx_zork_glulx_ritual_resonance"
+title       = "Zork I Glulx Release 1216 ritual resonance"
+description = """
+Build an isolated Glulx layer above qualified Release 1215 that makes the real
+bell, candle, black-book, mirror, and exorcism state physically legible while
+preserving the canonical XB, XC, LLD-FLAG, timers, objects, and solution order.
+"""
+created     = "2026-07-20"
+status      = "complete"
+
+[[cars]]
+id = "base"
+bead = "zork1-glulx-ritual1216-001"
+title = "Qualified Release 1215 base"
+parallel_start = true
+depends_on = []
+summary = "Rebuild exact Release 1215 and reject any change outside the reviewed five-path ritual delta."
+
+[[cars]]
+id = "bell"
+bead = "zork1-glulx-ritual1216-002"
+title = "Physical bell resonance"
+parallel_start = true
+depends_on = ["base"]
+summary = "Expose cool and hot bell observation plus room-aware resonance while preserving canonical Hades ringing."
+
+[[cars]]
+id = "book"
+bead = "zork1-glulx-ritual1216-003"
+title = "Discoverable black-book order"
+parallel_start = true
+depends_on = ["base"]
+summary = "Retain canonical damaged-page prose and reveal the non-spoiler resonance, paired-light, prayer order."
+
+[[cars]]
+id = "candles"
+bead = "zork1-glulx-ritual1216-004"
+title = "Paired candle behavior"
+parallel_start = true
+depends_on = ["base"]
+summary = "Deepen the real candle pair while leaving original lighting, burning, expiration, and misuse authoritative."
+
+[[cars]]
+id = "state"
+bead = "zork1-glulx-ritual1216-005"
+title = "Canonical exorcism observation"
+parallel_start = false
+depends_on = ["bell", "book", "candles"]
+summary = "Delegate to LLD-ROOM and record only genuine XB, XC, LLD-FLAG, bell, candle, and ghost transitions."
+
+[[cars]]
+id = "use"
+bead = "zork1-glulx-ritual1216-006"
+title = "Narrow physical ritual USE routes"
+parallel_start = false
+depends_on = ["bell", "book", "candles"]
+summary = "Validate mirror, page, flame, possession, and bottled-water combinations without adding spells."
+
+[[cars]]
+id = "memory"
+bead = "zork1-glulx-ritual1216-007"
+title = "Ceremony and recap memory"
+parallel_start = false
+depends_on = ["state", "use"]
+summary = "Report learned and live canonical state without moving objects or completing the puzzle."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-glulx-ritual1216-008"
+title = "Native ritual route qualification"
+parallel_start = false
+depends_on = ["memory"]
+summary = "Prove page discovery, mirrors, wrong order, canonical exorcism, cooling, recap, and production isolation."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx-ritual1216-009"
+title = "Release 1216 qualification capstone"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Lock deterministic identity, complete review and documentation, and leave the stacked PR ready but unmerged."
+
+[meta]
+one_liner = "Zork's exorcism now feels like a physical ceremony players can study without becoming an auto-solving spell menu."
+prior_car = "onyx_zork_glulx_dam_mechanisms"
+couples_with = ["onyx_zork_shadow_logic"]
+watch = ["glulx/ritual-resonance", ".github/workflows/glulx-ritual-resonance.yml", "ritual"]

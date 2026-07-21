@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1216-RITUAL-RECAP",
+  "path": "assistance.zil",
+  "description": "Append learned ceremony, resonance, mirror, cooling, wrong-order, and completed exorcism state after Release 1215 recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<DAM-MECH-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<DAM-MECH-RECAP> <SET SEEN T>)>\n\t<COND (<RITUAL-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}

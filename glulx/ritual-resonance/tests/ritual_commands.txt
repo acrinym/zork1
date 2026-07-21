@@ -1,0 +1,35 @@
+ritualreset
+turn book
+ceremony
+examine bell
+ring bell
+light match
+light candles with match
+use candles on book
+recap
+ritualmirror
+use bell on mirror
+use candles on mirror
+recap
+ritualreset
+ritualhades
+read book
+ceremony
+ring bell
+ceremony
+examine hot bell
+take candles
+light match
+light candles with match
+ceremony
+read book
+ceremony
+recap
+ritualreset
+ritualhades
+ring bell
+use bottle on hot bell
+take bell
+recap
+quit
+y

@@ -1,0 +1,32 @@
+{
+  "id": "Z1-GLULX-1216-RITUAL-HOOKS",
+  "path": "1dungeon.zil",
+  "description": "Route the canonical bell, hot bell, black book, candles, and Entrance to Hades through additive ritual wrappers",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t(ACTION BELL-F)>",
+      "new": "\t(ACTION RITUAL-BELL-F)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t(ACTION HOT-BELL-F)",
+      "new": "\t(ACTION RITUAL-HOT-BELL-F)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t(ACTION BLACK-BOOK)",
+      "new": "\t(ACTION RITUAL-BLACK-BOOK-F)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t(ACTION CANDLES-FCN)",
+      "new": "\t(ACTION RITUAL-CANDLES-F)"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (ACTION LLD-ROOM)",
+      "new": "      (ACTION RITUAL-LLD-ROOM)"
+    }
+  ]
+}

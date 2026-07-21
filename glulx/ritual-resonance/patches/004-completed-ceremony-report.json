@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1216-COMPLETED-CEREMONY-REPORT",
+  "path": "ritual_resonance.zil",
+  "description": "Report paired light as fulfilled after the canonical exorcism instead of still awaiting prayer",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<TELL \"- Paired light: \">\n\t<COND (,XC <TELL \"answered and awaiting the spoken prayer\">)",
+      "new": "\t<TELL \"- Paired light: \">\n\t<COND (,LLD-FLAG <TELL \"fulfilled and released\">)\n\t      (,XC <TELL \"answered and awaiting the spoken prayer\">)"
+    }
+  ]
+}
