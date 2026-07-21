@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1216-STATE-PERSISTENCE-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only persistence setup and reporting verbs after every production module",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"ritual_resonance\" T>",
+      "new": "<INSERT-FILE \"ritual_resonance\" T>\n<INSERT-FILE \"state_persistence_test\" T>"
+    }
+  ]
+}
