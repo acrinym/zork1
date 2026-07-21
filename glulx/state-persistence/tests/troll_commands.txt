@@ -1,0 +1,12 @@
+ptroll
+rtroll
+save
+troll.sav
+utroll
+rtroll
+restore
+troll.sav
+rtroll
+recap
+quit
+y
