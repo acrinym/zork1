@@ -23,6 +23,13 @@ except ImportError as exc:  # pragma: no cover - exercised by the CLI guard
     raise SystemExit("run_interactive_story.py requires pexpect") from exc
 
 
+class SafeFormatDict(dict[str, str]):
+    """Preserve regex quantifiers while expanding explicitly supplied variables."""
+
+    def __missing__(self, key: str) -> str:
+        return "{" + key + "}"
+
+
 def load_scenario(path: Path) -> dict[str, Any]:
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, dict) or not isinstance(data.get("steps"), list):
@@ -31,7 +38,7 @@ def load_scenario(path: Path) -> dict[str, Any]:
 
 
 def expand(value: str, variables: dict[str, str]) -> str:
-    return os.path.expandvars(value.format_map(variables))
+    return os.path.expandvars(value.format_map(SafeFormatDict(variables)))
 
 
 def run_scenario(
@@ -43,11 +50,12 @@ def run_scenario(
     timeout = float(scenario.get("timeout_seconds", 20))
     encoding = str(scenario.get("encoding", "utf-8"))
     child = pexpect.spawn(command[0], command[1:], encoding=encoding, timeout=timeout)
-    transcript_path.parent.mkdir(parents=True, exist_ok=True)
+    index = 0
 
-    with transcript_path.open("w", encoding="utf-8", newline="\n") as transcript:
-        child.logfile_read = transcript
-        try:
+    try:
+        transcript_path.parent.mkdir(parents=True, exist_ok=True)
+        with transcript_path.open("w", encoding="utf-8", newline="\n") as transcript:
+            child.logfile_read = transcript
             for index, raw_step in enumerate(scenario["steps"], start=1):
                 if not isinstance(raw_step, dict):
                     raise ValueError(f"step {index} must be an object")
@@ -68,15 +76,15 @@ def run_scenario(
             if scenario.get("close_stdin", True) and child.isalive():
                 child.sendeof()
                 child.expect(pexpect.EOF)
-        except Exception as exc:
-            before = child.before or ""
-            after = child.after if isinstance(child.after, str) else repr(child.after)
-            raise RuntimeError(
-                f"scenario failed at step {index}: {exc}\n"
-                f"last before={before[-1000:]!r}\nlast after={after!r}"
-            ) from exc
-        finally:
-            child.close(force=True)
+    except Exception as exc:
+        before = child.before or ""
+        after = child.after if isinstance(child.after, str) else repr(child.after)
+        raise RuntimeError(
+            f"scenario failed at step {index}: {exc}\n"
+            f"last before={before[-1000:]!r}\nlast after={after!r}"
+        ) from exc
+    finally:
+        child.close(force=True)
 
     allowed = {int(code) for code in scenario.get("allowed_exit_codes", [0])}
     if child.exitstatus not in allowed:
