@@ -1,0 +1,38 @@
+name: Zork I Glulx Persistence Driver
+
+on:
+  push:
+    branches:
+      - agent/glulx-persistence-qualification
+    paths:
+      - "glulx/tools/run_interactive_story.py"
+      - "glulx/persistence/**"
+      - ".github/workflows/glulx-persistence-driver.yml"
+  pull_request:
+    paths:
+      - "glulx/tools/run_interactive_story.py"
+      - "glulx/persistence/**"
+      - ".github/workflows/glulx-persistence-driver.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-driver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pexpect
+      - name: Exercise prompt-aware save and restore
+        run: |
+          mkdir -p glulx/build/persistence-driver
+          python glulx/tools/run_interactive_story.py \
+            --scenario glulx/persistence/tests/driver_scenario.json \
+            --transcript glulx/build/persistence-driver/transcript.txt \
+            --var SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/persistence-driver/state.sav" \
+            -- python glulx/persistence/tests/fake_story.py
+          grep -F "RESTORED AFTER" glulx/build/persistence-driver/transcript.txt
+          test "$(cat glulx/build/persistence-driver/state.sav)" = "after"
