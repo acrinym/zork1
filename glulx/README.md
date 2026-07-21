@@ -2,7 +2,7 @@
 
 This directory defines the additive, unofficial Glulx lineage for this repository.
 
-Seven layers are now represented, with the newest layer deepening the canonical Flood Control Dam #3 machinery above qualified Release `1214`:
+Eight layers are now represented, with the newest layer making the canonical bell, candle, and black-book exorcism physically legible above qualified Dam Mechanisms Release `1215`:
 
 | Layer | Identity | Purpose |
 |---|---:|---|
@@ -13,6 +13,7 @@ Seven layers are now represented, with the newest layer deepening the canonical 
 | Unofficial Shadow Logic Glulx | Release 1213 / serial `260720` | Add native object-on-object experimentation, player-state consequences, material responses, light reporting, learned maintenance knowledge, and a discovered-folly ledger |
 | Unofficial Absurd Alternate Glulx | Release 1214 / serial `260720` | Port the earned Release 122 troll-restraint and prepared nest-fire outcomes without importing broader comedy or optional geography |
 | Unofficial Dam Mechanisms Glulx | Release 1215 / serial `260720` | Make the real dam panel, interlock, bolt, buttons, leak, tools, reservoir state, and repair consequences readable and experimentally useful |
+| Unofficial Ritual Resonance Glulx | Release 1216 / serial `260720` | Deepen the real bell, candles, black book, mirrors, hot bell, and canonical exorcism without adding a spell system or alternate solution |
 
 Historical Release 119, Optimized Release 120, Expanded Release 121, and Absurd Alternate Release 122 remain supported `.z3` editions and are not replaced or relabeled.
 
@@ -190,9 +191,37 @@ Qualification compiles the locked production artifact and a separate test-only p
 
 See [`dam-mechanisms/README.md`](dam-mechanisms/README.md).
 
+## Unofficial Ritual Resonance Glulx
+
+The eighth layer derives explicitly from the Release 1215 manifest and artifact hash. It deepens the canonical exorcism materials while leaving the original puzzle state machine authoritative:
+
+- ordinary and red-hot bell examination and listening;
+- room-specific bell resonance in temples, mirrors, dam machinery, and ordinary rooms;
+- black-book damaged-page study that reveals order without naming solution objects;
+- paired-candle observation while preserving their original timer and misuse consequences;
+- read-only `CEREMONY`, `RITE`, and `RITUAL` state reporting;
+- mirror interactions with the held bell and held lit candles;
+- lit candle/book ordering feedback;
+- real bottled-water cooling of the real `HOT-BELL` through canonical `POUR-ON`;
+- persistent wrong-order, resonance, cooling, and actual completion state in `RECAP`;
+- observation—but never replacement—of canonical `XB`, `XC`, `LLD-FLAG`, `BELL`/`HOT-BELL`, `I-XBH`, and `GHOSTS` transitions.
+
+### Locked ritual-resonance artifact
+
+- output: `zork1-glulx-ritual-resonance.ulx`
+- identity: Release `1216` / serial `260720`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `211,968` bytes
+- checksum: `0x3d27d123`, valid
+- SHA-256: `4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2`
+
+Qualification rebuilds exact Release 1215, enforces an exact five-path production delta, rejects setup verbs from production, runs a thief-isolated test-only positioning story, proves wrong-order preservation and the original bell → carried lit candles → black-book completion, verifies ghost removal, and proves real-water hot-bell cooling under pinned native Glulxe.
+
+See [`ritual-resonance/README.md`](ritual-resonance/README.md).
+
 ## Locked toolchain
 
-All seven layers use:
+All eight layers use:
 
 - ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
 - Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
@@ -208,14 +237,14 @@ Pinned ZILF 1.8 emits Glulx metadata serial using `DateTime.Now`. Each pipeline 
 
 No upstream ZIL source is modified. The replacement count and final artifact SHA-256 are fail-closed.
 
-## Next porting boundary: ritual and controlled mechanism combinations
+## Next porting boundary: deeper material consequences and persistence
 
-Dam/control-panel experimentation is now isolated and qualified. The next separate layer may extend the foundation into:
+Dam and ritual work are now isolated in Releases `1215` and `1216`. The next separate layer should choose one coherent boundary rather than expanding everything at once:
 
-1. bell resonance and candle-state combinations;
-2. black-book knowledge and additional learned words only where justified;
-3. deeper mirror, rope, water, shovel, axe, and tool interactions outside the dam;
-4. controlled multi-object consequence chains;
-5. focused semantic routes proving canonical exorcism and other puzzle solutions remain valid.
+1. deeper non-dam rope, water, shovel, axe, wrench, and container interactions;
+2. controlled multi-object consequences that preserve canonical puzzle state;
+3. save/restore qualification for bound troll, caught/broken egg, dam, and ritual discoveries;
+4. focused room-density work for visible nouns and reasonable physical intent;
+5. semantic routes proving prior puzzle solutions and persistent states survive revisits.
 
 Songbird geography, Hidden Glade, troll bribes, cyclops lullabies, thief bargains, the full Adventurer Misconduct surface, and Version 3 object-slot cleanup remain later isolated layers.
