@@ -1,0 +1,13 @@
+prite
+rrite
+save
+ritual.sav
+urite
+rrite
+restore
+ritual.sav
+rrite
+ceremony
+recap
+quit
+y
