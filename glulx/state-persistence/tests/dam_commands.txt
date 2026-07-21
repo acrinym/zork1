@@ -1,0 +1,13 @@
+pdam
+rdam
+save
+dam.sav
+udam
+rdam
+restore
+dam.sav
+rdam
+melzar
+recap
+quit
+y
