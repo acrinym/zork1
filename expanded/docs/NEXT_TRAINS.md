@@ -1,6 +1,6 @@
 # Expansion frontier
 
-Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified **earned absurd alternate solutions** while preserving Release 121 as an independent edition. The Glulx lineage is now qualified through isolated Absurd Alternate Release `1214` semantic parity for the Release 122 outcomes.
+Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified **earned absurd alternate solutions** while preserving Release 121 as an independent edition. The Glulx lineage is now qualified through focused Dam Mechanisms Release `1215` above the isolated Release `1214` parity layer.
 
 Two distinct frontiers must remain separate:
 
@@ -59,24 +59,57 @@ The qualification pipeline rebuilds the locked Release `122` `.z3` reference and
 
 This layer explicitly excludes Hidden Glade, songbird-follow geography, troll bribe, cyclops lullaby, thief bargain, the full Adventurer Misconduct surface, broad fire propagation, generalized spells, Version 3 object-slot cleanup, and the Wizard of Frobozz.
 
-## 0.6 Deeper Shadow Logic mechanisms — next separate Glulx train
+## 0.6 Flood Control Dam mechanisms — complete in stacked PR #7
 
-Port, in isolated groups:
+Release `1215` is an isolated layer above exact qualified Release `1214`. It turns Flood Control Dam #3 into machinery players can inspect, test, operate, break, and repair without replacing its canonical puzzle state.
 
-1. dam and control-panel experimentation;
-2. bell resonance and knocking;
-3. candle-state combinations beyond the Release 120 description correction;
-4. black-book knowledge and additional learned words only where justified;
-5. deeper mirror and rope interactions;
-6. water, wrench, shovel, axe, and related tool responses;
-7. controlled multi-object consequence chains;
-8. persistent state required by those reactions.
+Implemented and qualified:
 
-The train must stage from the latest qualified Glulx artifact, preserve every earlier artifact, assign a new unofficial identity, add focused semantic routes, and keep optional geography, character alternatives, and broad comedy out.
+1. physical panel diagnostics for interlock, sluices, reservoir trend, and leak state;
+2. green-bubble interlock feedback;
+3. explanations for the yellow, brown, red, and blue buttons;
+4. possession-validated wrench, screwdriver, guidebook, bottled-water, and repair-material experiments;
+5. canonical yellow/brown interlock behavior;
+6. canonical real-wrench and real-bolt gate cycling;
+7. untouched `I-RFILL` and `I-REMPTY` reservoir timing;
+8. canonical red-button room lighting;
+9. canonical blue-button maintenance leak and rising-water threat;
+10. wrong-tool repair rejection;
+11. reasonable `PUTTY` parsing for the real all-purpose gunk;
+12. canonical leak repair through `FIX-MAINT-LEAK`;
+13. complete dam-state reporting through learned `MELZAR`;
+14. persistent mechanism discoveries in `RECAP`.
 
-## 0.7 Optional geography and character Glulx layers
+### Qualified artifact
 
-After mechanism work, port separately and deliberately:
+- Release `1215` / serial `260720`;
+- Glulx version `3.1.3` / `0x00030103`;
+- 207,360 bytes;
+- checksum `0x3d135bb8`;
+- SHA-256 `ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed`.
+
+The production layer changes exactly five staged paths. Qualification uses a separate test-only positioning story and proves possession failures, both sluice directions, closed-bottle rejection, room-light shutdown and recovery, live leak escalation, wrong-tool failure, real repair, and persistent recap state under pinned native Glulxe.
+
+Bell/exorcism expansion, magical dam controls, broad flood propagation, optional geography, character alternatives, and the Wizard remain outside this layer.
+
+## 0.7 Ritual resonance and black-book knowledge — next separate Glulx train
+
+The next strongest coherent mechanism train should focus on the existing exorcism materials without making a generalized spell system:
+
+1. bell resonance, ringing surfaces, and room-specific echoes;
+2. hot-bell and ordinary-bell state feedback;
+3. candle lit, extinguished, carried, altar, and ritual-placement combinations;
+4. black-book reading, page state, learned ritual knowledge, and justified words only;
+5. physically grounded `USE BELL/CANDLES/BOOK ON/WITH ...` routing;
+6. persistent ritual discoveries and consequence state;
+7. focused routes proving the canonical bell-book-candle exorcism remains authoritative;
+8. explicit rejection of automatic ceremony completion and arbitrary magic.
+
+Stage from the latest qualified Glulx artifact, assign a new unofficial identity, preserve every prior artifact, and keep dam work, optional geography, character alternatives, and broad comedy isolated.
+
+## 0.8 Optional geography and character Glulx layers
+
+After the focused mechanism and ritual layers, port separately and deliberately:
 
 1. songbird and Hidden Glade;
 2. troll bribe;
@@ -86,7 +119,7 @@ After mechanism work, port separately and deliberately:
 6. `FOLLY` and troll bemusement;
 7. Version 3 object-slot cleanup where Glulx no longer needs the workaround.
 
-Release 122 parity is no longer part of this backlog because it has its own qualified Release `1214` layer.
+Release 122 parity and dam mechanisms are no longer part of this backlog because they have qualified Release `1214` and `1215` layers.
 
 ## 1. Absurd Alternate Zork I Release 122 — complete
 
@@ -146,12 +179,13 @@ Do not implement the Wizard of Frobozz in Zork I. Reserve `GIVE X TO WIZARD`, `B
 Add deterministic routes for:
 
 - complete exorcism timing;
-- dam high/low water states;
+- dam high/low water states across the full canonical timer;
 - cyclops lullaby under impatience timing;
 - thief bargain with carried treasure;
-- save and restore after Release 121, 122, 1213, and 1214 persistent changes;
+- save and restore after Release 121, 122, 1213, 1214, and 1215 persistent changes;
 - tie, untie, save, restore, and revisit of the bound troll;
-- safe and broken egg states across save/restore.
+- safe and broken egg states across save/restore;
+- active and repaired dam leak states across save/restore.
 
 ## 3. Room density
 

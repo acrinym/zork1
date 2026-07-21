@@ -2,7 +2,7 @@
 
 This directory defines the additive, unofficial Glulx lineage for this repository.
 
-Six layers are now represented, with the newest layer qualifying semantic parity against project Release `122`:
+Seven layers are now represented, with the newest layer deepening the canonical Flood Control Dam #3 machinery above qualified Release `1214`:
 
 | Layer | Identity | Purpose |
 |---|---:|---|
@@ -12,6 +12,7 @@ Six layers are now represented, with the newest layer qualifying semantic parity
 | Unofficial Reactive Surface Glulx | Release 1212 / serial `260719` | Port proximity-safe white-house, door, board, window, mailbox, forest, tree, and songbird reactions without optional geography |
 | Unofficial Shadow Logic Glulx | Release 1213 / serial `260720` | Add native object-on-object experimentation, player-state consequences, material responses, light reporting, learned maintenance knowledge, and a discovered-folly ledger |
 | Unofficial Absurd Alternate Glulx | Release 1214 / serial `260720` | Port the earned Release 122 troll-restraint and prepared nest-fire outcomes without importing broader comedy or optional geography |
+| Unofficial Dam Mechanisms Glulx | Release 1215 / serial `260720` | Make the real dam panel, interlock, bolt, buttons, leak, tools, reservoir state, and repair consequences readable and experimentally useful |
 
 Historical Release 119, Optimized Release 120, Expanded Release 121, and Absurd Alternate Release 122 remain supported `.z3` editions and are not replaced or relabeled.
 
@@ -162,9 +163,36 @@ Qualification rebuilds the locked Release 122 `.z3` artifact and proves every sh
 
 See [`absurd-alternates/README.md`](absurd-alternates/README.md).
 
+## Unofficial Dam Mechanisms Glulx
+
+The seventh layer derives explicitly from the Release 1214 manifest and artifact hash. It deepens Flood Control Dam #3 without replacing its canonical state machine:
+
+- readable panel, green-bubble, bolt, and button state;
+- physically validated wrench, screwdriver, guidebook, water, and putty interactions;
+- the canonical yellow/brown interlock and wrench-and-bolt sluice cycle;
+- untouched eight-turn reservoir fill and empty timing;
+- the canonical red-button room lighting;
+- the canonical blue-button leak and rising-water threat;
+- wrong-tool repair feedback and real all-purpose-gunk repair;
+- complete dam-specific `MELZAR` diagnostics;
+- persistent mechanism discoveries in `RECAP`.
+
+### Locked dam-mechanisms artifact
+
+- output: `zork1-glulx-dam-mechanisms.ulx`
+- identity: Release `1215` / serial `260720`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `207,360` bytes
+- checksum: `0x3d135bb8`, valid
+- SHA-256: `ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed`
+
+Qualification compiles the locked production artifact and a separate test-only positioning story, then proves possession checks, panel diagnostics, both gate directions, bottled-water validation, light shutdown and restoration, live flooding, wrong-tool failure, canonical repair, and recap state under pinned native Glulxe.
+
+See [`dam-mechanisms/README.md`](dam-mechanisms/README.md).
+
 ## Locked toolchain
 
-All six layers use:
+All seven layers use:
 
 - ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
 - Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
@@ -180,15 +208,14 @@ Pinned ZILF 1.8 emits Glulx metadata serial using `DateTime.Now`. Each pipeline 
 
 No upstream ZIL source is modified. The replacement count and final artifact SHA-256 are fail-closed.
 
-## Next porting boundary: deeper Shadow Logic
+## Next porting boundary: ritual and controlled mechanism combinations
 
-Release 122 parity is now isolated from the mechanism and ritual frontier. The next separate layer may extend the qualified foundation into:
+Dam/control-panel experimentation is now isolated and qualified. The next separate layer may extend the foundation into:
 
-1. dam and control-panel experimentation;
-2. bell resonance and candle-state combinations;
-3. black-book knowledge and additional learned words where justified;
-4. deeper mirror, rope, water, wrench, shovel, axe, and tool interactions;
-5. controlled multi-object consequence chains;
-6. focused semantic routes proving canonical puzzle solutions remain valid.
+1. bell resonance and candle-state combinations;
+2. black-book knowledge and additional learned words only where justified;
+3. deeper mirror, rope, water, shovel, axe, and tool interactions outside the dam;
+4. controlled multi-object consequence chains;
+5. focused semantic routes proving canonical exorcism and other puzzle solutions remain valid.
 
 Songbird geography, Hidden Glade, troll bribes, cyclops lullabies, thief bargains, the full Adventurer Misconduct surface, and Version 3 object-slot cleanup remain later isolated layers.

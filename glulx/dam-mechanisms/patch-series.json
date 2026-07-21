@@ -1,0 +1,58 @@
+{
+  "edition": "Unofficial Dam Mechanisms Glulx",
+  "release": 1215,
+  "serial": "260720",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../absurd-alternates/patch-series.json",
+  "base_release": 1214,
+  "base_artifact_sha256": "10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1214 layer, assign Release 1215, and load focused dam mechanisms"
+    },
+    {
+      "path": "dam_mechanisms.zil",
+      "source": "overrides/dam_mechanisms.zil",
+      "allow_new": true,
+      "description": "Add physical dam diagnostics, tool routing, canonical gate operation, leak consequences, and recap state"
+    }
+  ],
+  "patches": [
+    "patches/001-dam-object-hooks.json",
+    "patches/002-shadow-dam-routing.json",
+    "patches/003-dam-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "assistance.zil",
+    "dam_mechanisms.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-dam-mechanisms.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 207360,
+    "checksum_hex": "0x3d135bb8",
+    "sha256": "ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed"
+  },
+  "preserved_canonical_state": [
+    "GATE-FLAG remains the yellow/brown turning interlock",
+    "GATES-OPEN still changes only through BOLT-F with the real wrench",
+    "I-RFILL and I-REMPTY retain the original eight-turn reservoir timing",
+    "the blue button still creates the real maintenance leak",
+    "PUTTY and FIX-MAINT-LEAK retain the original repair consequence",
+    "the red button still controls only maintenance-room lighting"
+  ],
+  "excluded_scope": [
+    "bell and exorcism ceremony expansion",
+    "new spells or magical dam controls",
+    "automatic puzzle completion",
+    "broad room flooding changes",
+    "Hidden Glade and character alternate ports",
+    "Wizard of Frobozz"
+  ]
+}

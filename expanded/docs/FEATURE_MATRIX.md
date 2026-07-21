@@ -14,7 +14,8 @@
 | Unofficial Reactive Surface Glulx | `.ulx` | Release 1212 / `260719` | Qualified proximity-safe white-house surface reactions |
 | Unofficial Shadow Logic Glulx | `.ulx` | Release 1213 / `260720` | Qualified native experimentation, player consequences, diagnostics, and folly ledger |
 | Unofficial Absurd Alternate Glulx | `.ulx` | Release 1214 / `260720` | Qualified Release 122 semantic parity and locked artifact identity |
-| Deeper Shadow Logic Glulx | `.ulx` | not assigned | Dam, ritual, and controlled mechanism interactions remain a separate future layer |
+| Unofficial Dam Mechanisms Glulx | `.ulx` | Release 1215 / `260720` | Qualified panel, interlock, sluice, lighting, leak, repair, diagnostic, and recap mechanics |
+| Ritual Resonance Glulx | `.ulx` | not assigned | Bell, candle, black-book, and exorcism-preserving interactions remain a future isolated layer |
 
 ## Release 121 interaction foundation
 
@@ -58,7 +59,7 @@ Release 122 distinguishes harmless folly from ridiculous actions that can alter 
 - Release 122 adds no room, treasure, universal actor trick, or automatic puzzle completion.
 - Release 121 remains independently reproducible.
 
-## Glulx parity reached
+## Glulx parity and mechanism layers
 
 ### Release 1211
 
@@ -104,6 +105,33 @@ Locked Release 1214 artifact:
 - checksum `0x53f5066d`;
 - SHA-256 `10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628`.
 
+### Release 1215
+
+Deepens the existing Flood Control Dam #3 machinery above qualified Release 1214:
+
+- physical `EXAMINE`, `DIAGNOSE`, `LISTEN`, `TOUCH`, and `KNOCK` responses for the panel, bolt, and green bubble;
+- readable yellow/brown turning-interlock state;
+- readable sluice, reservoir trend, and maintenance-leak state;
+- possession-validated wrench, screwdriver, guidebook, bottled-water, and repair-material interactions;
+- real `USE WRENCH ON BOLT` routing into canonical `BOLT-F`;
+- canonical gate opening and closing through the real interlock, wrench, and bolt;
+- untouched `I-RFILL` and `I-REMPTY` reservoir timers;
+- canonical red-button room lighting, including shutdown and restoration;
+- canonical blue-button leak and rising-water threat;
+- wrong-tool repair rejection;
+- `PUTTY` as a reasonable synonym for the real all-purpose gunk;
+- canonical leak repair through `FIX-MAINT-LEAK`;
+- complete dam state through learned `MELZAR`;
+- persistent mechanism discoveries in `RECAP`.
+
+Locked Release 1215 artifact:
+
+- `207,360` bytes;
+- checksum `0x3d135bb8`;
+- SHA-256 `ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed`.
+
+Release 1215 does not replace the canonical dam routines, invent magical controls, automatically solve the puzzle, or broaden room flooding.
+
 ## Validation coverage
 
 | Coverage | Method |
@@ -114,18 +142,22 @@ Locked Release 1214 artifact:
 | Release 122 artifact | Fail-closed 107,992-byte `.z3`, checksum `0x3ab5`, and SHA-256 `58153ea7f2b59dfc94ca2367ae2e4507e3eef02d14c60023790953a8415498db` |
 | Release 1214 staging | Complete qualified Release 1213 stage followed by an exact five-path changed-set gate |
 | Release 1214 artifact | Fail-closed 202,240-byte `.ulx`, checksum `0x53f5066d`, and SHA-256 `10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628` |
+| Release 1215 staging | Complete qualified Release 1214 stage followed by an exact five-path changed-set gate |
+| Release 1215 artifact | Fail-closed 207,360-byte `.ulx`, checksum `0x3d135bb8`, and SHA-256 `ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed` |
 | Troll alternate | Real-map rope acquisition, alert failure, trick, restraint, conditional axe drop, passage travel, description, untie restoration, and recap |
 | Prepared nest alternate | Test-only setup story exercises production mechanics and proves intact accessible egg, both cushioning narrations, and corrected prose |
 | Destructive nest alternate | Canonical `BAD-EGG` produces the existing ruined egg and broken canary |
-| Preservation fallbacks | Canonical non-torch nest burning, no phantom axe drop, and restored troll hostility after leaving or untying |
-| Production/test isolation | Production source and artifact contain no qualification setup verbs or setup module |
-| Cross-VM parity | Rebuild both locked artifacts, run their native interpreters, and compare shared outcome categories |
+| Dam mechanism route | Test-only positioning story exercises production panel diagnostics, possession checks, both gate directions, bottled-water validation, red lighting, blue leak, wrong tools, repair, and recap |
+| Canonical dam preservation | Production wrappers delegate `BUTTON-F`, `BOLT-F`, and `PLUG`; reservoir and flooding interrupts remain untouched |
+| Production/test isolation | Production source and artifacts contain no qualification setup verbs or setup modules |
+| Cross-VM parity | Rebuild both locked Release 122 and 1214 artifacts, run their native interpreters, and compare shared outcome categories |
 | Beadtrain integrity | Completed trains validate against canonical and sharded issue ledgers |
 
 ## Still requiring dedicated work
 
-- deeper Glulx dam, ritual, rope, mirror, water, and tool reactions;
+- bell resonance, candle combinations, black-book knowledge, and canonical exorcism-preserving Glulx routes;
+- deeper non-dam rope, mirror, water, shovel, axe, and tool reactions;
 - dedicated cyclops-lullaby and thief-bargain long routes;
-- save/restore after expanded and parity persistent-state changes;
+- save/restore after expanded, parity, and dam persistent-state changes;
 - additional earned alternate solutions that use real objects, preparation, risk, and canonical consequences;
-- optional geography and broader character-layer Glulx ports kept separate from Release 1214.
+- optional geography and broader character-layer Glulx ports kept separate from Releases 1214 and 1215.

@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1215-DAM-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only dam positioning and reset verbs after all production modules",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"dam_mechanisms\" T>",
+      "new": "<INSERT-FILE \"dam_mechanisms\" T>\n<INSERT-FILE \"dam_mech_test\" T>"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+damreset
+examine yellow button
+push yellow button
+damtop
+examine panel
+examine bubble
+use screwdriver on panel
+drop wrench
+use wrench on bolt
+take wrench
+use wrench on bolt
+melzar
+recap
+close bottle
+use bottle on panel
+open bottle
+use water on panel
+dammaint
+push red button
+push red button
+push blue button
+use wrench on leak
+use putty on leak
+recap
+damtop
+use wrench on bolt
+recap
+quit
+yes

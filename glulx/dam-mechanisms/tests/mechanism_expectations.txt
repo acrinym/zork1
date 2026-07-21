@@ -1,0 +1,22 @@
+[Test-only dam mechanism state reset at the maintenance controls.]
+The yellow button arms the remote turning interlock
+Click.
+[Test-only movement to the top of Flood Control Dam #3.]
+The control panel reports no words, but its physical state is readable:
+The green plastic bubble is a crude interlock indicator.
+The visible seams are riveted and sealed.
+You would first need to be holding the wrench.
+The sluice gates open and water pours through the dam.
+A cold voice reports: FLOOD CONTROL DAM NUMBER THREE.
+- You cycled the real sluice gates through the canonical wrench-and-bolt mechanism.
+The bottle must be open and contain water before it can participate in this bad idea.
+Water beads across the sealed metal and runs away.
+The lights within the room shut off.
+The lights within the room come on.
+There is a rumbling sound and a stream of water appears to burst
+The tool can interrogate the pipe, but it cannot replace the missing material.
+By some miracle of Zorkian technology, you have managed to stop the leak in the dam.
+- You activated the blue pipe circuit and discovered why it was abandoned.
+- You sealed the active maintenance leak with the real all-purpose gunk.
+The sluice gates close and water starts to collect behind the dam.
+- You compared the wrench and screwdriver against the dam's actual mechanical interfaces.
