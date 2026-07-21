@@ -257,13 +257,24 @@ jobs:
         run: |
           set -u
           story="$(realpath glulx/build/state-persistence/zork1-glulx-state-persistence-test.ulx)"
+          story_dir="$(dirname "$story")"
           commands_root="$(realpath glulx/state-persistence/tests)"
           checker="$(realpath glulx/state-persistence/tools/assert_ordered_transcript.py)"
           mkdir -p glulx/build/state-persistence/routes
           for route in troll egg_caught egg_broken dam ritual timer; do
+            case "$route" in
+              troll) save_name="troll.sav" ;;
+              egg_caught) save_name="egg-caught.sav" ;;
+              egg_broken) save_name="egg-broken.sav" ;;
+              dam) save_name="dam.sav" ;;
+              ritual) save_name="ritual.sav" ;;
+              timer) save_name="timer.sav" ;;
+            esac
             route_dir="${GITHUB_WORKSPACE}/glulx/build/state-persistence/routes/${route}"
             transcript="${GITHUB_WORKSPACE}/glulx/build/state-persistence/${route}-transcript.txt"
+            save_path="${story_dir}/${save_name}"
             rm -rf "$route_dir"
+            rm -f "$save_path"
             mkdir -p "$route_dir"
             set +e
             (
@@ -274,7 +285,8 @@ jobs:
             set -e
             echo "Glulxe route status: $status" >> "$transcript"
             python "$checker" "$transcript" "${commands_root}/${route}_expectations.txt"
-            test "$(find "$route_dir" -maxdepth 1 -type f -size +0c | wc -l)" -ge 1
+            test -s "$save_path"
+            cp "$save_path" "$route_dir/$save_name"
           done
 
       - name: Write state persistence qualification receipt
@@ -284,14 +296,22 @@ jobs:
           from pathlib import Path
           qualification = json.loads(Path('glulx/state-persistence/qualification.json').read_text(encoding='utf-8'))
           story = json.loads(Path('glulx/build/state-persistence/story-report.json').read_text(encoding='utf-8'))
-          route_files = sorted(Path('glulx/build/state-persistence').glob('*-transcript.txt'))
+          build = Path('glulx/build/state-persistence')
+          route_files = sorted(build.glob('*-transcript.txt'))
+          save_files = sorted(build.glob('*.sav'))
           assert len(route_files) == 6
+          assert len(save_files) == 6
+          assert all(path.stat().st_size > 0 for path in save_files)
           receipt = {
               'qualification_status': 'qualified against real SAVE and RESTORE',
               'production_artifact': story,
               'production_source_changes': [],
               'routes': {name: 'passed' for name in qualification['routes']},
               'transcripts': [path.name for path in route_files],
+              'save_files': [
+                  {'file': path.name, 'size_bytes': path.stat().st_size}
+                  for path in save_files
+              ],
               'save_files_created': True,
               'object_graph_restoration': 'passed',
               'global_and_property_restoration': 'passed',
@@ -317,6 +337,7 @@ jobs:
             glulx/build/state-persistence/TEST-SERIAL-NORMALIZATION.json
             glulx/build/state-persistence/src/STAGING-RECEIPT.json
             glulx/build/state-persistence/smell-report.json
+            glulx/build/state-persistence/*.sav
             glulx/build/state-persistence/*-transcript.txt
             glulx/build/state-persistence/routes/**
             glulx/build/state-persistence/*-compile.log
