@@ -1,12 +1,12 @@
 {
   "id": "Z1-GLULX-1216-PERSISTENCE-TEST-INCLUDE",
   "path": "zork1.zil",
-  "description": "Load test-only persistence setup, mutation, observation routines, and prefix-unique parser aliases after every production module",
+  "description": "Load test-only persistence routines and append prefix-unique parser aliases after every production module",
   "replacements": [
     {
       "expected_count": 1,
       "old": "<INSERT-FILE \"ritual_resonance\" T>",
-      "new": "<INSERT-FILE \"ritual_resonance\" T>\n<INSERT-FILE \"persistence_test\" T>\n<INSERT-FILE \"persistence_aliases\" T>"
+      "new": "<INSERT-FILE \"ritual_resonance\" T>\n<INSERT-FILE \"persistence_test\" T>\n<SYNTAX PTREADY = V-PERSIST-TROLL-READY>\n<SYNTAX PTREPORT = V-PERSIST-TROLL-REPORT>\n<SYNTAX PTMUTATE = V-PERSIST-TROLL-MUTATE>\n<SYNTAX PEREADY = V-PERSIST-EGG-READY>\n<SYNTAX PEREPORT = V-PERSIST-EGG-REPORT>\n<SYNTAX PEMUTATE = V-PERSIST-EGG-MUTATE>\n<SYNTAX PDREADY = V-PERSIST-DAM-READY>\n<SYNTAX PDTOP = V-PERSIST-DAM-TOP>\n<SYNTAX PDREPORT = V-PERSIST-DAM-REPORT>\n<SYNTAX PDMUTATE = V-PERSIST-DAM-MUTATE>\n<SYNTAX PDTIMER = V-PERSIST-DAM-TIMER>\n<SYNTAX PLREADY = V-PERSIST-LEAK-READY>\n<SYNTAX PLREPORT = V-PERSIST-LEAK-REPORT>\n<SYNTAX PLMUTATE = V-PERSIST-LEAK-MUTATE>\n<SYNTAX PRREADY = V-PERSIST-RITUAL-READY>\n<SYNTAX PRREPORT = V-PERSIST-RITUAL-REPORT>\n<SYNTAX PRMUTATE = V-PERSIST-RITUAL-MUTATE>\n<SYNTAX PRTIMER = V-PERSIST-RITUAL-TIMER>"
     }
   ]
 }
