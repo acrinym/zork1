@@ -1,0 +1,12 @@
+pebrk
+regg
+save
+egg-broken.sav
+uegg
+regg
+restore
+egg-broken.sav
+regg
+recap
+quit
+y
