@@ -1,0 +1,39 @@
+name: Zork I Glulx Persistence Beadtrain
+
+on:
+  push:
+    branches:
+      - agent/glulx-persistence-qualification
+    paths:
+      - ".beads/onyx_zork_glulx_persistence.beadtrain"
+      - ".beads/issues*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/glulx-persistence-beadtrain.yml"
+  pull_request:
+    paths:
+      - ".beads/onyx_zork_glulx_persistence.beadtrain"
+      - ".beads/issues*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/glulx-persistence-beadtrain.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-glulx-persistence-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate sharded persistence train
+        run: |
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
+            .beads/onyx_zork_glulx_persistence.beadtrain
