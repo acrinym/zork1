@@ -1,0 +1,5 @@
+[PERSIST timer distracted=yes fight=no]
+[PERSIST timer distracted=no fight=yes]
+[PERSIST timer distracted=yes fight=no]
+The troll turns back, discovers that reality has not improved, and resumes guarding it.
+[PERSIST timer distracted=no fight=yes]
