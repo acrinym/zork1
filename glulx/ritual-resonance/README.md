@@ -11,15 +11,19 @@ It does **not** replace the canonical Zork I exorcism. The original state machin
 
 Release `1216` observes and explains those transitions without inventing a parallel solution.
 
-## Identity
+## Locked identity
 
 - edition: Unofficial Ritual Resonance Glulx
 - release: `1216`
 - serial: `260720`
 - artifact: `zork1-glulx-ritual-resonance.ulx`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `211,968` bytes
+- checksum: `0x3d27d123`, valid
+- SHA-256: `4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2`
 - base: qualified Unofficial Dam Mechanisms Glulx Release `1215`
 
-The first complete qualification run discovers the deterministic artifact size, checksum, and SHA-256. Those values are committed and enforced fail-closed before the train is complete.
+The pinned workflow rebuilds this identity and rejects any byte, checksum, or hash drift.
 
 ## Player-facing behavior
 
@@ -47,7 +51,7 @@ The prose does not name the required objects. Players still have to reason from 
 This read-only report describes what the player has actually learned and the current canonical state:
 
 - whether resonance is absent, active, expired, or completed;
-- whether the paired candles are merely burning or have answered inside `XB`;
+- whether the paired candles are merely burning, have answered inside `XB`, or were fulfilled and released by completion;
 - whether the black-book prayer is unknown, blocked by missing prerequisites, ready, or complete.
 
 The command never moves objects, starts timers, sets `XB` or `XC`, removes ghosts, or changes `LLD-FLAG`.
@@ -91,22 +95,24 @@ The staging tool rebuilds the complete qualified Release `1215` source first and
 
 The test-only setup module is copied only into a separate qualification source tree. Production is rejected if any setup verb appears.
 
-## Qualification route
+## Qualified route
 
-The pinned native Glulxe route proves:
+The pinned native Glulxe route passes and proves:
 
 - damaged-page discovery;
 - read-only ceremony reporting;
 - temple bell resonance;
 - paired-flame page response;
 - mirror bell and candle delays;
-- wrong-order prayer failure;
-- canonical bell transformation and active interval;
-- canonical paired-candle response;
-- canonical black-book exorcism and ghost removal;
+- wrong-order prayer failure without ghost removal;
+- canonical bell transformation and active `XB` interval;
+- canonical paired-candle `XC` response;
+- canonical black-book exorcism, `LLD-FLAG`, and ghost removal;
+- internally consistent completed-ceremony reporting;
 - deliberate real-water hot-bell cooling;
 - persistent recap;
-- production/test isolation.
+- production/test isolation;
+- deterministic qualification isolated from the roaming thief without changing production thief behavior.
 
 ## Explicit exclusions
 
