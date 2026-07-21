@@ -1,0 +1,72 @@
+[train]
+name        = "onyx_zork_glulx_state_persistence"
+title       = "Zork I Glulx Release 1216 state persistence"
+description = """
+Prove that the exact qualified Release 1216 artifact preserves new Glulx object
+graphs, globals, room properties, discovery state, and queued interrupts through
+real canonical SAVE and RESTORE operations under pinned native Glulxe.
+"""
+created     = "2026-07-21"
+status      = "in_progress"
+
+[[cars]]
+id = "identity"
+bead = "zork1-glulx-persist-001"
+title = "Exact Release 1216 identity"
+parallel_start = true
+depends_on = []
+summary = "Rebuild the locked production artifact and reject any byte, checksum, SHA, or production-source drift."
+
+[[cars]]
+id = "isolation"
+bead = "zork1-glulx-persist-002"
+title = "Test-only state laboratory"
+parallel_start = true
+depends_on = ["identity"]
+summary = "Compile deterministic setup, mutation, and reporting verbs only into a separate qualification story."
+
+[[cars]]
+id = "objects"
+bead = "zork1-glulx-persist-003"
+title = "Troll and egg object graphs"
+parallel_start = true
+depends_on = ["isolation"]
+summary = "Save, mutate, and restore bound-troll, intact-caught-egg, and canonical broken-egg/canary states."
+
+[[cars]]
+id = "dam"
+bead = "zork1-glulx-persist-004"
+title = "Dam mechanism persistence"
+parallel_start = true
+depends_on = ["isolation"]
+summary = "Restore interlock, gates, tide, water, leak visibility, lighting, and learned dam state."
+
+[[cars]]
+id = "ritual"
+bead = "zork1-glulx-persist-005"
+title = "Ritual completion persistence"
+parallel_start = true
+depends_on = ["isolation"]
+summary = "Restore learned ceremony state, completed exorcism, removed ghosts, and the correct bell object."
+
+[[cars]]
+id = "interrupts"
+bead = "zork1-glulx-persist-006"
+title = "Clock interrupt persistence"
+parallel_start = false
+depends_on = ["objects"]
+summary = "Restore the actual queued troll-recovery interrupt and prove it fires after the preserved delay."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx-persist-007"
+title = "Persistence qualification capstone"
+parallel_start = false
+depends_on = ["objects", "dam", "ritual", "interrupts"]
+summary = "Finish real save-file qualification, review, documentation, and exact-head CI without inventing Release 1217."
+
+[meta]
+one_liner = "The new Zork world state now survives turning the entire virtual machine off and back on."
+prior_car = "onyx_zork_glulx_ritual_resonance"
+couples_with = ["onyx_zork_glulx_absurd_parity", "onyx_zork_glulx_dam_mechanisms"]
+watch = ["glulx/state-persistence", ".github/workflows/glulx-state-persistence.yml", "save", "restore"]
