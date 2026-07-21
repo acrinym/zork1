@@ -1,0 +1,4 @@
+[PERSIST egg burned=yes caught=yes intact-in-sack=yes broken-present=no nest-in-tree=no]
+[PERSIST egg burned=no caught=no intact-in-sack=no broken-present=no nest-in-tree=yes]
+[PERSIST egg burned=yes caught=yes intact-in-sack=yes broken-present=no nest-in-tree=no]
+- The bird's nest burned, but the prepared sack caught the intact jewel-encrusted egg.
