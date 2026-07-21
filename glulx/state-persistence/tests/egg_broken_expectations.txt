@@ -1,0 +1,4 @@
+[PERSIST egg burned=yes caught=no intact-in-sack=no broken-present=yes nest-in-tree=no]
+[PERSIST egg burned=no caught=no intact-in-sack=no broken-present=no nest-in-tree=yes]
+[PERSIST egg burned=yes caught=no intact-in-sack=no broken-present=yes nest-in-tree=no]
+- Burning the bird's nest brought the egg down by the shortest and most destructive route.
