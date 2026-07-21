@@ -1,0 +1,4 @@
+[PERSIST troll bound=yes passage=open rope=troll axe=room]
+[PERSIST troll bound=no passage=blocked rope=room axe=room]
+[PERSIST troll bound=yes passage=open rope=troll axe=room]
+- The troll remains alive, thoroughly tied, and professionally embarrassed.
