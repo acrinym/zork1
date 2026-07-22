@@ -17,6 +17,8 @@
 | Unofficial Dam Mechanisms Glulx | `.ulx` | Release 1215 / `260720` | Qualified panel, interlock, sluice, lighting, leak, repair, diagnostic, and recap mechanics |
 | Unofficial Ritual Resonance Glulx | `.ulx` | Release 1216 / `260720` | Qualified bell, candle, black-book, mirror, hot-bell, ceremony-report, and canonical exorcism-preserving interactions |
 
+Release `1216` persistence is a qualification-only layer over the exact locked artifact, not another production edition or identity.
+
 ## Release 121 interaction foundation
 
 | Area | Expanded behavior | Canonical behavior retained |
@@ -156,6 +158,21 @@ Locked Release 1216 artifact:
 
 Release 1216 does not add spells, a second exorcism solution, automatic ceremony completion, new treasure, or supernatural room propagation.
 
+### Release 1216 persistence qualification
+
+A prompt-aware native Glulxe harness now proves ordinary save files preserve the highest-risk state introduced through Releases `1213`–`1216`:
+
+- living bound troll, committed rope, dropped axe, and open passages;
+- prepared intact egg in the real sack;
+- canonical broken egg with broken canary and the original egg removed;
+- dam interlock, open sluices, and the queued eight-turn reservoir interrupt;
+- active rising leak and independently repaired `WATER-LEVEL = -1` snapshot;
+- completed canonical exorcism, learned and wrong-order memory, mirror resonance, ghost removal, transformed bell, and queued 20-turn hot-bell cooldown;
+- `MELZAR`, `CEREMONY`, and `RECAP` agreement immediately after restore;
+- repeated deterministic restore without duplicate treasure, canaries, rope, axe, bells, ghosts, or containers.
+
+Production Release `1216` is rebuilt and verified byte-for-byte before a separate test-only story is created. No persistence probe enters the production artifact and no state is repaired after `RESTORE`.
+
 ## Validation coverage
 
 | Coverage | Method |
@@ -177,6 +194,10 @@ Release 1216 does not add spells, a second exorcism solution, automatic ceremony
 | Canonical dam preservation | Production wrappers delegate `BUTTON-F`, `BOLT-F`, and `PLUG`; reservoir and flooding interrupts remain untouched |
 | Ritual resonance route | Test-only positioning story proves page discovery, temple and mirror resonance, wrong-order preservation, canonical exorcism, hot-bell cooling, ceremony state, and recap |
 | Canonical exorcism preservation | Production wrapper delegates `LLD-ROOM`; only original `XB`, `XC`, `LLD-FLAG`, timers, object exchange, and ghost removal advance the puzzle |
+| Native save-file driver | PTY-backed JSON scenarios answer real Glulxe filename prompts, capture transcripts, enforce timeouts and exit status, and preserve regex syntax |
+| Troll and egg persistence | Deliberate corruption followed by repeated restore proves bound troll, rope, axe, passages, intact catch, broken egg/canary, and object uniqueness |
+| Dam persistence | Restored interlock, gates, active reservoir timer, active leak, repaired sentinel, and game-facing `MELZAR` state |
+| Ritual persistence | Restored completion, knowledge, wrong-order and mirror memory, ghosts, transformed bell, cooldown timer, `CEREMONY`, and `RECAP` |
 | Production/test isolation | Production source and artifacts contain no qualification setup verbs or setup modules |
 | Cross-VM parity | Rebuild both locked Release 122 and 1214 artifacts, run their native interpreters, and compare shared outcome categories |
 | Beadtrain integrity | Completed and active trains validate against canonical and sharded issue ledgers |
@@ -184,7 +205,6 @@ Release 1216 does not add spells, a second exorcism solution, automatic ceremony
 ## Still requiring dedicated work
 
 - deeper non-dam rope, water, shovel, axe, wrench, container, and scenery interactions;
-- save/restore qualification after troll restraint, egg catch/destruction, dam changes, and ritual discoveries;
 - dedicated cyclops-lullaby and thief-bargain long routes;
 - additional earned alternate solutions that use real objects, preparation, risk, and canonical consequences;
 - room-density and parser-kindness passes for visible nouns and reasonable physical intent;
