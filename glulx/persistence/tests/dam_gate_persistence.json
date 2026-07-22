@@ -28,6 +28,8 @@
     {"expect": ">"},
     {"sendline": "pdreport"},
     {"expect": "PERSIST:DAM=INTERLOCKED-GATES-OPEN"},
+    {"sendline": "melzar"},
+    {"expect": "FLOOD CONTROL DAM NUMBER THREE"},
     {"sendline": "wait"},
     {"sendline": "wait"},
     {"sendline": "wait"},
