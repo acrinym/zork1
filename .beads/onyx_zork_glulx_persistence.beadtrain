@@ -7,7 +7,7 @@ and queued interrupts survive real interpreter SAVE and RESTORE cycles without
 post-restore repair by the harness.
 """
 created     = "2026-07-21"
-status      = "completed"
+status      = "complete"
 
 [[cars]]
 id = "driver"
