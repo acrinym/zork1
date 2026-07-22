@@ -7,7 +7,7 @@ and queued interrupts survive real interpreter SAVE and RESTORE cycles without
 post-restore repair by the harness.
 """
 created     = "2026-07-21"
-status      = "in_progress"
+status      = "completed"
 
 [[cars]]
 id = "driver"
@@ -28,10 +28,10 @@ summary = "Expose test-only setup, corruption, timer, and report commands while 
 [[cars]]
 id = "troll_egg"
 bead = "zork1-glulx-persist-003"
-title = "Bound troll and intact egg persistence"
+title = "Bound troll and both egg outcomes"
 parallel_start = true
 depends_on = ["probes"]
-summary = "Restore living restraint, rope commitment, axe drop, open passages, prepared sack, and the intact egg twice from one save."
+summary = "Restore living restraint, rope commitment, axe drop, open passages, the prepared intact egg, and canonical broken egg/canary state twice from each save."
 
 [[cars]]
 id = "dam_gate"
