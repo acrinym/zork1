@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1218-STUDIO-PAINT-PSEUDOS",
+  "path": "1dungeon.zil",
+  "description": "Route Studio paint vocabulary to the Release 1218 bounded paint response",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "              \"PAINT\" PAINT-PSEUDO\n              \"PAINTS\" PAINT-PSEUDO\n              \"COLORS\" PAINT-PSEUDO\n              \"SPLATTERS\" PAINT-PSEUDO",
+      "new": "              \"PAINT\" ROOM-DENSITY-STUDIO-PAINT-F\n              \"PAINTS\" ROOM-DENSITY-STUDIO-PAINT-F\n              \"COLORS\" ROOM-DENSITY-STUDIO-PAINT-F\n              \"SPLATTERS\" ROOM-DENSITY-STUDIO-PAINT-F"
+    }
+  ]
+}

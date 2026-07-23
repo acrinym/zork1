@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1218-ROOM-RECAP",
+  "path": "assistance.zil",
+  "description": "Append bounded room-density discoveries after Release 1217 material recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<MATERIAL-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<MATERIAL-RECAP> <SET SEEN T>)>\n\t<COND (<ROOM-DENSITY-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}

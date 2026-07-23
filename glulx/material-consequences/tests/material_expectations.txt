@@ -1,0 +1,29 @@
+MATERIAL-SETUP:RESET
+MATERIAL-SETUP:SURFACE
+You work the shovel blade into the narrow seam and lean on the handle.
+The screwdriver traces every visible seam and finds no screw head.
+The wrench finds no exposed nut or bolt.
+You used the shovel as a pry bar and confirmed that the boarded entrance is secured by unreachable interior hardware.
+Screwdriver or wrench probing confirmed that the boarded entrance exposes no exterior fastener.
+MATERIAL-SETUP:ANCHOR
+You tie one end of the rope securely to the wooden railing.
+The rope draws taut against the wooden railing. The knot holds.
+The rope cannot be surrendered while one end remains tied to the wooden railing.
+You undo the knot around the wooden railing. The rope is fully available again.
+You wrap the rope around the mouth of the brown sack and cinch it tight.
+The rope is cinched around the sack's mouth.
+You undo the knot around the brown sack. The rope is fully available again.
+MATERIAL-REPORT:ROPE=FREE
+MATERIAL-SETUP:TOOLS
+You rinse packed soil from the shovel blade.
+MATERIAL-SETUP:REFILL
+Water carries loose orange rust from the knife
+A fresh orange bloom spreads along the blade.
+The rusty knife now bears a fresh orange bloom where water sat in the pits.
+MATERIAL-REPORT:ROPE=FREE;BOARDS=UNTESTED;SHOVEL=CLEAN;RUST=WORSE;NEST=DRY
+MATERIAL-SETUP:NEST
+You soak the woven nest.
+The torch chars a few damp fibers
+The soaked nest has finally dried enough to become dangerously flammable again.
+The nest flashes into flame. The jewel-encrusted egg falls ten feet
+MATERIAL-REPORT:ROPE=FREE;BOARDS=UNTESTED;SHOVEL=DIRTY;RUST=OLD;NEST=DRY

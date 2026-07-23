@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_house_living_museum"
+title       = "Zork I living-room museum and display"
+description = """
+Turn the Living Room into an optional physical autobiography while keeping the trophy case and canonical scoring authoritative.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "registry"
+bead = "zork1-house-museum-001"
+title = "Displayable-object registry and provenance"
+parallel_start = true
+depends_on = []
+summary = "Define which real objects may be displayed and what must remain puzzle-active."
+
+[[cars]]
+id = "case"
+bead = "zork1-house-museum-002"
+title = "Canonical trophy-case integration"
+parallel_start = true
+depends_on = ["registry"]
+summary = "Preserve score flow, treasure identity, and removal behavior while exposing richer display state."
+
+[[cars]]
+id = "surfaces"
+bead = "zork1-house-museum-003"
+title = "Wall, shelf, stand, and frame surfaces"
+parallel_start = true
+depends_on = ["registry"]
+summary = "Add bounded display surfaces for paintings, weapons, maps, ritual objects, and curios."
+
+[[cars]]
+id = "placement"
+bead = "zork1-house-museum-004"
+title = "Place, move, and recover displays"
+parallel_start = true
+depends_on = ["registry"]
+summary = "Support deliberate mounting and removal without cloning or trapping required objects."
+
+[[cars]]
+id = "groups"
+bead = "zork1-house-museum-005"
+title = "Related-object group synthesis"
+parallel_start = false
+depends_on = ["case", "surfaces", "placement"]
+summary = "Unlock optional historical observations when coherent artifact groups are displayed."
+
+[[cars]]
+id = "security"
+bead = "zork1-house-museum-006"
+title = "Theft, disturbance, and display security"
+parallel_start = false
+depends_on = ["groups"]
+summary = "Let canonical theft or house disturbance affect unsecured displays with recoverable evidence."
+
+[[cars]]
+id = "persistence"
+bead = "zork1-house-museum-007"
+title = "Museum save/restore and object-tree proof"
+parallel_start = false
+depends_on = ["security"]
+summary = "Restore placement, provenance, case contents, and security without duplication."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-house-museum-008"
+title = "Living-room museum capstone"
+parallel_start = false
+depends_on = ["persistence"]
+summary = "Publish exact boundaries, routes, evidence, and hooks for later house systems."
+
+[meta]
+one_liner = "Turn the Living Room into an optional physical autobiography while keeping the trophy case and canonical scoring authoritative."
+prior_car = "zork1-house-state-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "house_living_museum", "SAVE", "RESTORE"]

@@ -1,0 +1,80 @@
+[train]
+name        = "onyx_zork_glulx_material_consequences"
+title       = "Zork I Glulx Release 1217 material consequences"
+description = """
+Build a focused non-dam physical layer above exact Release 1216 using real rope,
+water, tools, containers, and visible surfaces while preserving every canonical
+puzzle, object identity, timer, score path, and previously qualified behavior.
+"""
+created     = "2026-07-22"
+status      = "complete"
+
+[[cars]]
+id = "base"
+bead = "zork1-glulx-material1217-001"
+title = "Exact Release 1216 base and four-path delta"
+parallel_start = true
+depends_on = []
+summary = "Stage exact Release 1216, require its locked artifact SHA, and reject any production change outside the reviewed four paths."
+
+[[cars]]
+id = "rope"
+bead = "zork1-glulx-material1217-002"
+title = "Recoverable rope anchors and sack cinching"
+parallel_start = true
+depends_on = ["base"]
+summary = "Commit the real rope to selected anchors or the real brown sack with visible constraints and explicit UNTIE recovery."
+
+[[cars]]
+id = "water_tools"
+bead = "zork1-glulx-material1217-003"
+title = "Water, cleaned tools, and worsening rust"
+parallel_start = true
+depends_on = ["base"]
+summary = "Use real bottled water on a focused tool set while distinguishing useful cleaning from corrosive misuse."
+
+[[cars]]
+id = "boards"
+bead = "zork1-glulx-material1217-004"
+title = "Boarded entrance tool experiments"
+parallel_start = true
+depends_on = ["base"]
+summary = "Give shovel, screwdriver, and wrench distinct evidence without creating a second house entrance."
+
+[[cars]]
+id = "nest"
+bead = "zork1-glulx-material1217-005"
+title = "Temporary nest soaking"
+parallel_start = true
+depends_on = ["base"]
+summary = "Delay ignition with real water, then delegate to the original intact or destructive egg consequence after drying."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-glulx-material1217-006"
+title = "Gameplay and persistence qualification"
+parallel_start = false
+depends_on = ["rope", "water_tools", "boards", "nest"]
+summary = "Pin Release 1217, run native gameplay, deliberately corrupt saves, and prove restored constraints and timers remain live."
+
+[[cars]]
+id = "review_docs"
+bead = "zork1-glulx-material1217-007"
+title = "Review and evidence documentation"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Resolve valid findings and publish exact artifact, route, persistence, boundary, and frontier truth."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx-material1217-008"
+title = "Release 1217 capstone"
+parallel_start = false
+depends_on = ["review_docs"]
+summary = "Run exact-head CI, close the train, and leave the non-draft PR mergeable but unmerged."
+
+[meta]
+one_liner = "Zork's rope, water, tools, sack, nest, and boarded entrance now behave like materials without turning the parser into a crafting engine."
+prior_car = "onyx_zork_glulx_persistence"
+couples_with = ["onyx_zork_glulx_shadow_logic", "onyx_zork_glulx_absurd_alternate_parity"]
+watch = ["glulx/material-consequences", "glulx/tools/stage_material_consequences.py", ".github/workflows/glulx-material-consequences.yml", "rope", "water", "shovel", "rust", "nest", "save", "restore"]

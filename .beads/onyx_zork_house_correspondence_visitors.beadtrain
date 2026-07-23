@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_house_correspondence_visitors"
+title       = "Zork I correspondence, mailbox, and visitors"
+description = """
+Turn the mailbox and front of the house into a stateful surface for notes, replies, deliveries, warnings, and bounded NPC visits.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "queue"
+bead = "zork1-house-mail-001"
+title = "Deterministic correspondence queue"
+parallel_start = true
+depends_on = []
+summary = "Schedule authored notes and deliveries from meaningful world events."
+
+[[cars]]
+id = "provenance"
+bead = "zork1-house-mail-002"
+title = "Letter and note provenance"
+parallel_start = true
+depends_on = ["queue"]
+summary = "Record sender, trigger, location, authenticity, annotations, and archive links."
+
+[[cars]]
+id = "mailbox"
+bead = "zork1-house-mail-003"
+title = "Mailbox delivery and retrieval"
+parallel_start = true
+depends_on = ["queue"]
+summary = "Preserve the leaflet and canonical mailbox while adding ordered, nonduplicating mail."
+
+[[cars]]
+id = "outgoing"
+bead = "zork1-house-mail-004"
+title = "Bounded replies and outgoing mail"
+parallel_start = true
+depends_on = ["queue"]
+summary = "Permit selected authored responses, not free-form correspondence."
+
+[[cars]]
+id = "visitors"
+bead = "zork1-house-mail-005"
+title = "Knocks, visitors, and optional entry"
+parallel_start = false
+depends_on = ["provenance", "mailbox", "outgoing"]
+summary = "Handle a small set of stateful visits with refusal, absence, and return behavior."
+
+[[cars]]
+id = "missed"
+bead = "zork1-house-mail-006"
+title = "Missed-delivery and revisit behavior"
+parallel_start = false
+depends_on = ["visitors"]
+summary = "Persist unopened mail, notices, returned items, and visitor evidence."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-house-mail-007"
+title = "Correspondence gameplay and persistence"
+parallel_start = false
+depends_on = ["missed"]
+summary = "Prove ordering, provenance, duplicates, replies, visits, absence, and restore."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-house-mail-008"
+title = "Correspondence and visitors capstone"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Document the message contract and provide clean inputs for the Attic."
+
+[meta]
+one_liner = "Turn the mailbox and front of the house into a stateful surface for notes, replies, deliveries, warnings, and bounded NPC visits."
+prior_car = "zork1-house-state-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "house_correspondence_visitors", "SAVE", "RESTORE"]
