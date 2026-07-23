@@ -1,0 +1,34 @@
+Release 1218
+ROOM-DENSITY-SETUP:TROLL
+The old bloodstains have soaked into cracks in the stone.
+The gouges are rough-edged and deep enough to catch a fingertip.
+The western hole is a low, forbidding opening into the maze.
+The east and south passages are ordinary stone corridors.
+ROOM-DENSITY-SETUP:GALLERY
+Behind the remaining canvases is bare wall, dust, and no secret exit.
+A frame answers with a small wooden clack.
+The vandals are long gone.
+ROOM-DENSITY-SETUP:STUDIO
+The floor is layered with old paint spatters
+Old ash, soot, and damp masonry linger in the hearth.
+ROOM-DENSITY-SETUP:CHASM
+The path hugs the eastern edge of the chasm.
+The passage carries a faint damp echo from the cellar.
+ROOM-DENSITY-SETUP:PASSAGE
+The old wooden door stands at the east end of the passage.
+The opening is roughly cyclops-shaped and comfortably adventurer-sized.
+ROOM-DENSITY-SETUP:TREASURE
+The discarded bags are empty, brittle, and collapsing into flakes.
+The stone floor is littered with dust and fragments from the discarded bags.
+ROOM-DENSITY-SETUP:PATH
+Damp earth, leaves, and resin rise from the path.
+ROOM-DENSITY-SETUP:STREAM
+The path follows the stream closely on firm, damp ground.
+ROOM-DENSITY-STATE:TROLL=SEEN;GALLERY=SEEN;STUDIO=SEEN;CHASM=SEEN;PASSAGE=SEEN;TREASURE=SEEN;PATH=SEEN
+- You inspected the Troll Room's bloodstains, scratches, openings, or passages instead of treating its description as decoration.
+- You examined what remains of the gallery's paintings, frames, and long-departed vandals.
+- You inspected the studio floor or fireplace as real scenery rather than unreachable prose.
+- You examined the path and northern passage at the east edge of the chasm.
+- You inspected the ruined wooden door and cyclops-shaped opening in the strange passage.
+- You checked the crumbling bags and debris-strewn floor of the treasure room.
+- You treated the described forest and streamside paths as targetable scenery.
