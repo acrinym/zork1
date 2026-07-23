@@ -26,8 +26,8 @@
   ],
   "expected_changed_paths": [
     "assistance.zil",
-    "gmain.zil",
     "material_consequences.zil",
+    "shadow_logic.zil",
     "zork1.zil"
   ],
   "expected_artifact": {
@@ -35,6 +35,7 @@
     "glulx_version_hex": "0x00030103"
   },
   "preserved_canonical_state": [
+    "Shadow Logic threat advancement remains first and authoritative for every turn",
     "rope commitment is always recoverable through UNTIE and does not replace troll restraint",
     "the brown sack remains the real sandwich bag and can be returned to canonical open use",
     "wet nest state only delays ignition and never creates or removes the egg",
