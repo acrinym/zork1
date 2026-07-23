@@ -2,7 +2,7 @@
 
 This directory defines the additive, unofficial Glulx lineage for this repository.
 
-Nine production layers are represented. Release `1216` also has a qualification-only persistence train; Release `1217` adds its own focused gameplay and save/restore qualification without altering older artifacts.
+Ten production layers are represented. Release `1216` also has a qualification-only persistence train; Releases `1217` and `1218` add their own focused gameplay and save/restore qualifications without altering older artifacts.
 
 | Layer | Identity | Purpose |
 |---|---:|---|
@@ -15,6 +15,7 @@ Nine production layers are represented. Release `1216` also has a qualification-
 | Unofficial Dam Mechanisms Glulx | Release 1215 / serial `260720` | Make the real dam panel, interlock, bolt, buttons, leak, tools, reservoir state, and repair consequences readable and experimentally useful |
 | Unofficial Ritual Resonance Glulx | Release 1216 / serial `260720` | Deepen the real bell, candles, black book, mirrors, hot bell, and canonical exorcism without adding a spell system or alternate solution |
 | Unofficial Material Consequences Glulx | Release 1217 / serial `260722` | Add focused non-dam rope, water, tool, sack, nest, rust, and boarded-surface consequences without generalized crafting or physics |
+| Unofficial Room Density Glulx | Release 1218 / serial `260723` | Make explicitly described room scenery targetable through bounded canonical actions without a universal or free-form parser |
 
 Historical Release 119, Optimized Release 120, Expanded Release 121, and Absurd Alternate Release 122 remain supported `.z3` editions and are not replaced or relabeled.
 
@@ -228,9 +229,39 @@ Qualification includes a deterministic native route and prompt-aware save/restor
 
 See [`material-consequences/README.md`](material-consequences/README.md).
 
+## Unofficial Room Density Glulx
+
+Release `1218` is the tenth production layer. It derives from exact Release `1217` and changes exactly four staged paths.
+
+It adds bounded room-scoped responses for nouns explicitly advertised in:
+
+- Troll Room;
+- Gallery;
+- Studio;
+- East of Chasm;
+- Strange Passage;
+- Treasure Room;
+- Forest Path;
+- Stream View.
+
+The layer uses existing parser actions such as examination, search, listening, smell, touch, knock, push, pull, and looking in/under/behind. Established openings delegate to existing map exits. No portable scenery, hidden route, treasure, score, timer, actor state, or alternate solution is added.
+
+### Locked artifact
+
+- output: `zork1-glulx-room-density.ulx`
+- identity: Release `1218` / serial `260723`
+- Glulx version: `3.1.3` / `0x00030103`
+- size: `227,840` bytes
+- checksum: `0x3b65ecaf`, valid
+- SHA-256: `efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521`
+
+Qualification includes a deterministic native room tour, canonical travel delegation, persistent `RECAP` categories, and prompt-aware save/restore after deliberate clearing of all discovery flags. Test-only positioning, actor isolation, mutation, and reporting commands are rejected from production.
+
+See [`room-density/README.md`](room-density/README.md).
+
 ## Locked toolchain
 
-All nine production layers and their qualification routes use:
+All ten production layers and their qualification routes use:
 
 - ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
 - Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
@@ -246,14 +277,14 @@ Pinned ZILF emits Glulx metadata serial using the build date. Each production pi
 
 ## Next porting boundary
 
-Release `1217` completes the focused non-dam material train. The next coherent work should avoid another arbitrary object-pair sweep.
+Release `1218` completes the first focused room-density and parser-kindness train. Additional parser work should begin from demonstrated failures rather than another universal sweep.
 
-Strong candidates are:
+The strongest next candidates are:
 
-1. room-density and parser-kindness for visible nouns and reasonable physical intent;
-2. renewed troll danger after `UNTIE`/restore and other dedicated character-state routes;
-3. cyclops impatience/lullaby and thief-bargain long routes;
-4. focused character memory for gifts, threats, mercy, deception, and restraint;
+1. restored troll restraint, `UNTIE`, queued recovery, weapon reacquisition, and renewed danger;
+2. cyclops impatience and lullaby timing;
+3. thief bargain with carried real treasure;
+4. focused actor memory for gifts, threats, mercy, deception, and restraint;
 5. optional geography only where story or puzzle logic justifies it.
 
 Hidden Glade, songbird geography, broad character alternatives, generalized crafting, broad fire/flood propagation, Version 3 object-slot cleanup, and the Wizard of Frobozz remain separate scope.
