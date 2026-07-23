@@ -103,6 +103,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
           mkdir -p glulx/build/material-consequences
 
       - name: Validate Release 1217 layer and exact qualified base
@@ -185,7 +186,10 @@ jobs:
           source = Path('glulx/build/material-consequences/src')
           assert (source / 'material_consequences.zil').is_file()
           assert not (source / 'material_test.zil').exists()
-          forbidden = ('MRESET', 'MSURF', 'MANCH', 'MTOOLS', 'MNEST', 'MREFIL', 'MREPORT')
+          forbidden = (
+              'MRESET', 'MSURF', 'MANCH', 'MTOOLS', 'MNEST', 'MREFIL', 'MREPORT',
+              'MPSTART', 'MPPATH', 'MPTREE', 'MPMUTATE', 'MPREPORT'
+          )
           production = '\n'.join(path.read_text(errors='ignore') for path in source.glob('*.zil'))
           assert not any(token in production for token in forbidden)
           PY
@@ -269,6 +273,21 @@ jobs:
             test -z "$marker" || grep -F -- "$marker" glulx/build/material-consequences/material-transcript.txt
           done < glulx/material-consequences/tests/material_expectations.txt
 
+      - name: Run Release 1217 material persistence route
+        run: |
+          python glulx/tools/run_interactive_story.py \
+            --scenario glulx/material-consequences/tests/material_persistence.json \
+            --transcript glulx/build/material-consequences/material-persistence-transcript.txt \
+            --var STATE_SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/material-consequences/material-state.sav" \
+            --var SACK_SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/material-consequences/material-sack.sav" \
+            -- "$GLULXE_BIN" glulx/build/material-consequences/zork1-glulx-material-consequences-test.ulx
+          grep -F "MATERIAL-PERSIST:ROPE=RAILING;SACK=OPEN;BOARDS=PRIED-HARDWARE;SHOVEL=CLEAN;RUST=WORSE;NEST=WET" \
+            glulx/build/material-consequences/material-persistence-transcript.txt
+          grep -F "MATERIAL-PERSIST:ROPE=SACK;SACK=CINCHED;BOARDS=PRIED-HARDWARE;SHOVEL=CLEAN;RUST=WORSE;NEST=DRY" \
+            glulx/build/material-consequences/material-persistence-transcript.txt
+          test -s glulx/build/material-consequences/material-state.sav
+          test -s glulx/build/material-consequences/material-sack.sav
+
       - name: Write Release 1217 qualification receipt
         run: |
           python - <<'PY'
@@ -293,6 +312,8 @@ jobs:
                   'temporary_nest_soaking': 'passed',
                   'canonical_destructive_egg_outcome_after_drying': 'passed',
                   'recap_reporting': 'passed',
+                  'material_save_restore': 'passed',
+                  'wet_nest_timer_resume': 'passed',
               },
               'production_contains_test_setup': False,
               'generalized_crafting_or_physics': False,
@@ -317,10 +338,13 @@ jobs:
             glulx/build/material-consequences/src/STAGING-RECEIPT.json
             glulx/build/material-consequences/smell-report.json
             glulx/build/material-consequences/material-transcript.txt
+            glulx/build/material-consequences/material-persistence-transcript.txt
+            glulx/build/material-consequences/*.sav
             glulx/build/material-consequences/*-compile.log
             glulx/build/material-consequences/*-build.log
             glulx/build/material-consequences/*-restore.log
             glulx/build/material-consequences/*-assemble.log
             glulx/build/material-consequences/glazer-version.txt
             glulx/material-consequences/patch-series.json
+            glulx/material-consequences/tests/material_persistence.json
           if-no-files-found: warn
