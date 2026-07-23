@@ -1,8 +1,8 @@
 mreset
 msurf
-use shovel on boarded window
+use shovel on board
 use screwdriver on board
-use wrench on boarded window
+use wrench on board
 recap
 manch
 use rope on railing
