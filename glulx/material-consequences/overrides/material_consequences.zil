@@ -49,7 +49,7 @@
 	      (<NOT <SHADOW-HELD? ,ROPE>>
 	       <TELL "You would first need to be holding the rope." CR>)
 	      (,MATERIAL-ROPE-ANCHOR
-	       <TELL "One end of the rope is already committed to " THE ,MATERIAL-ROPE-ANCHOR ". Untie it before inventing a second geometry." CR>)
+	       <TELL "One end of the rope is already committed to the " D ,MATERIAL-ROPE-ANCHOR ". Untie it before inventing a second geometry." CR>)
 	      (<NOT <ACCESSIBLE? ,PRSI>>
 	       <TELL "The proposed anchor is not within reach." CR>)
 	      (<AND <EQUAL? ,PRSI ,SANDWICH-BAG> ,GLULX-ALT-SACK-PREPARED>
@@ -61,7 +61,7 @@
 	       <TELL "You wrap the rope around the mouth of the brown sack and cinch it tight. The sack is now secure, portable, and impossible to open without undoing your work." CR>)
 	      (T
 	       <SETG MATERIAL-ROPE-ANCHOR ,PRSI>
-	       <TELL "You tie one end of the rope securely to " THE ,PRSI ". The remaining coil stays with you, but it now has a definite and inconvenient opinion about distance." CR>)>
+	       <TELL "You tie one end of the rope securely to the " D ,PRSI ". The remaining coil stays with you, but it now has a definite and inconvenient opinion about distance." CR>)>
 	<RTRUE>>
 
 <ROUTINE MATERIAL-UNTIE-ROPE ()
@@ -69,7 +69,7 @@
 	      (<NOT <OR <EQUAL? ,PRSO ,ROPE>
 	                <EQUAL? ,PRSO ,MATERIAL-ROPE-ANCHOR>>>
 	       <RFALSE>)>
-	<TELL "You undo the knot around " THE ,MATERIAL-ROPE-ANCHOR ". The rope is fully available again." CR>
+	<TELL "You undo the knot around the " D ,MATERIAL-ROPE-ANCHOR ". The rope is fully available again." CR>
 	<SETG MATERIAL-ROPE-ANCHOR <>>
 	<SETG MATERIAL-SACK-CINCHED <>>
 	<RTRUE>>
@@ -87,17 +87,17 @@
 	      (<AND ,MATERIAL-ROPE-ANCHOR
 	            <VERB? DROP GIVE>
 	            <EQUAL? ,PRSO ,ROPE>>
-	       <TELL "The rope cannot be surrendered while one end remains tied to " THE ,MATERIAL-ROPE-ANCHOR "." CR>
+	       <TELL "The rope cannot be surrendered while one end remains tied to the " D ,MATERIAL-ROPE-ANCHOR "." CR>
 	       <RTRUE>)
 	      (<AND ,MATERIAL-ROPE-ANCHOR
 	            <VERB? EXAMINE>
 	            <EQUAL? ,PRSO ,ROPE>>
-	       <TELL "The rope is sound. One end is tied to " THE ,MATERIAL-ROPE-ANCHOR ", while the remaining coil is still under your control." CR>
+	       <TELL "The rope is sound. One end is tied to the " D ,MATERIAL-ROPE-ANCHOR ", while the remaining coil is still under your control." CR>
 	       <RTRUE>)
 	      (<AND ,MATERIAL-ROPE-ANCHOR
-	            <VERB? PULL>
+	            <VERB? MOVE>
 	            <EQUAL? ,PRSO ,ROPE>>
-	       <TELL "The rope draws taut against " THE ,MATERIAL-ROPE-ANCHOR ". The knot holds." CR>
+	       <TELL "The rope draws taut against the " D ,MATERIAL-ROPE-ANCHOR ". The knot holds." CR>
 	       <RTRUE>)
 	      (<AND <MATERIAL-FIXED-ROPE-ANCHOR?>
 	            <ACCESSIBLE? ,MATERIAL-ROPE-ANCHOR>
@@ -182,7 +182,7 @@
 	       <TELL "The nest is dark with water. Its woven twigs are intact, heavy, and presently resistant to ignition." CR>
 	       <RTRUE>)
 	      (<AND <G? ,MATERIAL-NEST-WET 0>
-	            <VERB? TOUCH>
+	            <VERB? RUB>
 	            <EQUAL? ,PRSO ,NEST>>
 	       <TELL "The nest is cold, soaked, and flexible beneath your fingers." CR>
 	       <RTRUE>)>
@@ -220,7 +220,7 @@
 	      (<AND <VERB? RUB> <EQUAL? ,PRSO ,RUSTY-KNIFE> ,MATERIAL-RUST-WORSE>
 	       <TELL "Fresh rust flakes away under your fingers. The blade is no sharper, only more honestly damaged." CR>
 	       <RTRUE>)
-	      (<AND <VERB? TOUCH>
+	      (<AND <VERB? RUB>
 	            <EQUAL? ,PRSO ,SHOVEL ,WRENCH ,SCREWDRIVER ,AXE>
 	            <MATERIAL-TOOL-CLEAN? ,PRSO>>
 	       <TELL "The cleaned metal is cool and free of the grime that previously hid its working surfaces." CR>
@@ -246,7 +246,7 @@
 	       <COND (,MATERIAL-SACK-CINCHED
 	              <TELL "- You cinched the brown sack shut with the rope." CR>)
 	             (T
-	              <TELL "- You tied one end of the rope to " THE ,MATERIAL-ROPE-ANCHOR "." CR>)>)>
+	              <TELL "- You tied one end of the rope to the " D ,MATERIAL-ROPE-ANCHOR "." CR>)>)>
 	<COND (,MATERIAL-BOARDS-PRIED
 	       <SET SEEN T>
 	       <TELL "- You used the shovel as a pry bar and confirmed that the boarded entrance is secured by unreachable interior hardware." CR>)>
