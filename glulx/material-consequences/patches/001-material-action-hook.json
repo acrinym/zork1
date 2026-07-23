@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1217-MATERIAL-HOOK",
+  "path": "gmain.zil",
+  "description": "Run focused material consequences after Shadow Logic threat handling and before ordinary object dispatch in both PERFORM variants",
+  "replacements": [
+    {
+      "expected_count": 2,
+      "old": "\t<COND (<SHADOW-ACTION-HOOK> <RTRUE>)>\n\t<COND (<AND <EQUAL? ,NOT-HERE-OBJECT ,PRSO ,PRSI>",
+      "new": "\t<COND (<SHADOW-ACTION-HOOK> <RTRUE>)>\n\t<COND (<MATERIAL-ACTION-HOOK> <RTRUE>)>\n\t<COND (<AND <EQUAL? ,NOT-HERE-OBJECT ,PRSO ,PRSI>"
+    }
+  ]
+}
