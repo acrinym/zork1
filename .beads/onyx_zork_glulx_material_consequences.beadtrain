@@ -7,7 +7,7 @@ water, tools, containers, and visible surfaces while preserving every canonical
 puzzle, object identity, timer, score path, and previously qualified behavior.
 """
 created     = "2026-07-22"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "base"
