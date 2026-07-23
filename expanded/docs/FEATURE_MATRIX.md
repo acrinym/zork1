@@ -17,8 +17,9 @@
 | Unofficial Dam Mechanisms Glulx | `.ulx` | Release 1215 / `260720` | Qualified panel, interlock, sluice, lighting, leak, repair, diagnostic, and recap mechanics |
 | Unofficial Ritual Resonance Glulx | `.ulx` | Release 1216 / `260720` | Qualified bell, candle, black-book, mirror, hot-bell, ceremony-report, and canonical exorcism-preserving interactions |
 | Unofficial Material Consequences Glulx | `.ulx` | Release 1217 / `260722` | Qualified rope anchors, sack cinching, water/tool/rust state, nest soaking, boarded-surface experiments, recap, and persistence |
+| Unofficial Room Density Glulx | `.ulx` | Release 1218 / `260723` | Qualified room-scoped visible nouns, bounded physical intent, canonical travel delegation, recap, and persistence |
 
-Release `1216` persistence remains a qualification-only train over its exact locked artifact. Release `1217` is a separate production edition with its own locked artifact and focused persistence routes.
+Release `1216` persistence remains a qualification-only train over its exact locked artifact. Releases `1217` and `1218` are separate production editions with their own locked artifacts and focused persistence routes.
 
 ## Release 121 interaction foundation
 
@@ -148,6 +149,40 @@ Locked artifact:
 
 Release `1217` does not add generalized crafting, universal physics, a new house entrance, permanent tool destruction, broad fire/flood propagation, treasure, scoring, or automatic puzzle completion.
 
+### Release 1218 — room density and parser kindness
+
+Release `1218` derives from exact Release `1217` and changes exactly:
+
+- `1dungeon.zil`;
+- `assistance.zil`;
+- new `room_density.zil`;
+- `zork1.zil`.
+
+Implemented and qualified:
+
+1. Troll Room bloodstains, scratches, hole, and passages as bounded room scenery;
+2. Gallery paintings, frames, and departed vandals;
+3. Studio floor, fireplace, hearth, and sixty-nine-color paint vocabulary;
+4. East of Chasm path and northern passage;
+5. Strange Passage ruined door and cyclops-shaped opening;
+6. Treasure Room crumbling bags, debris, fragments, and floor;
+7. Forest Path and Stream View path scenery;
+8. existing `EXAMINE`, `SEARCH`, `LISTEN`, `SMELL`, `RUB`, `KNOCK`, `PUSH`, `MOVE`, `LOOK IN`, `LOOK UNDER`, and `LOOK BEHIND` actions;
+9. canonical west, north, and east travel when entering established openings;
+10. persistent discovery categories in `RECAP`;
+11. native save/restore of all seven discovery categories after deliberate corruption;
+12. strict production/test isolation.
+
+Locked artifact:
+
+- Release `1218` / serial `260723`;
+- Glulx `3.1.3` / `0x00030103`;
+- `227,840` bytes;
+- checksum `0x3b65ecaf`;
+- SHA-256 `efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521`.
+
+Release `1218` adds no portable scenery object, free-form parser, universal fallback, new treasure, score, timer, actor state, hidden passage, optional geography, or alternate solution.
+
 ## Validation coverage
 
 | Coverage | Method |
@@ -160,6 +195,8 @@ Release `1217` does not add generalized crafting, universal physics, a new house
 | Release 1216 artifact | Fail-closed 211,968-byte `.ulx`, checksum `0x3d27d123`, SHA-256 `4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2` |
 | Release 1217 staging | Exact Release 1216 stage followed by an exact four-path changed-set gate |
 | Release 1217 artifact | Fail-closed 217,344-byte `.ulx`, checksum `0xb0028984`, SHA-256 `2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da` |
+| Release 1218 staging | Exact Release 1217 stage followed by an exact four-path changed-set gate |
+| Release 1218 artifact | Fail-closed 227,840-byte `.ulx`, checksum `0x3b65ecaf`, SHA-256 `efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521` |
 | Troll alternate | Real rope acquisition, timed opening, restraint, axe drop, passage travel, untie restoration, and recap |
 | Egg outcomes | Prepared intact catch and canonical `BAD-EGG` broken egg/canary state |
 | Dam mechanisms | Panel diagnostics, possession checks, both gate directions, lighting, leak, wrong tools, repair, and recap |
@@ -167,14 +204,17 @@ Release `1217` does not add generalized crafting, universal physics, a new house
 | Release 1216 persistence | Deliberate corruption and restore of troll, egg, dam, leak, ritual, timers, objects, and reports |
 | Release 1217 gameplay | Native route for boards, rope, sack, water, tools, rust, wet nest, drying, canonical destructive egg, and recap |
 | Release 1217 persistence | Two native saves prove composite material state, wet-timer resumption, restored movement blocking, and restored sack-opening refusal |
+| Release 1218 gameplay | Native room tour proves every selected visible noun, bounded action family, recap category, and established travel delegation |
+| Release 1218 persistence | Deliberate clearing followed by native restore proves all seven room-discovery categories serialize without repair |
 | Production/test isolation | Production source contains no setup, positioning, mutation, or report verbs from qualification stories |
 | Cross-VM parity | Locked Release 122 and 1214 artifacts run under their native interpreters and compare shared semantic outcomes |
 | Beadtrain integrity | Completed and active trains validate against canonical and sharded issue ledgers |
 
 ## Still requiring dedicated work
 
-- room-density and parser-kindness passes for visible nouns and reasonable physical intent;
-- dedicated renewed-troll-danger, cyclops-lullaby, and thief-bargain long routes;
+- restored bound-troll recovery and renewed-danger long routes;
+- cyclops impatience and lullaby timing;
+- thief bargain with carried real treasure;
 - focused character memory for gifts, threats, mercy, deception, and restraint;
 - additional earned alternate solutions only where objects, preparation, risk, and canonical consequences justify them;
 - optional geography and broader character-layer Glulx ports kept separate;
