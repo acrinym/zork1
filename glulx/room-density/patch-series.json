@@ -34,7 +34,10 @@
   ],
   "expected_artifact": {
     "file": "zork1-glulx-room-density.ulx",
-    "glulx_version_hex": "0x00030103"
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 227840,
+    "checksum_hex": "0x3b65ecaf",
+    "sha256": "efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521"
   },
   "preserved_canonical_state": [
     "every selected noun is room-scoped PSEUDO scenery rather than a portable object",
