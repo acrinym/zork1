@@ -1,0 +1,54 @@
+{
+  "edition": "Unofficial Room Density Glulx",
+  "release": 1218,
+  "serial": "260723",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../material-consequences/patch-series.json",
+  "base_release": 1217,
+  "base_artifact_sha256": "2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1217 layer, assign Release 1218, and load bounded room-density scenery"
+    },
+    {
+      "path": "room_density.zil",
+      "source": "overrides/room_density.zil",
+      "allow_new": true,
+      "description": "Add room-scoped parser-kindness responses for nouns explicitly advertised by existing prose"
+    }
+  ],
+  "patches": [
+    "patches/001-room-pseudos.json",
+    "patches/002-room-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "assistance.zil",
+    "room_density.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-room-density.ulx",
+    "glulx_version_hex": "0x00030103"
+  },
+  "preserved_canonical_state": [
+    "every selected noun is room-scoped PSEUDO scenery rather than a portable object",
+    "existing room exits and conditional blockers remain authoritative",
+    "entering established openings delegates to existing directional travel",
+    "no new object, score, treasure, combat, timer, or puzzle state is introduced",
+    "existing Studio door and paint pseudo routines remain authoritative",
+    "Release 1217 material consequences and all earlier layers remain unchanged"
+  ],
+  "excluded_scope": [
+    "unconstrained natural-language interpretation",
+    "universal scenery or material fallback",
+    "new hidden passages, treasure, score, or alternate solutions",
+    "broad room rewrite or prose replacement",
+    "character memory and conversation expansion",
+    "Hidden Glade and optional geography",
+    "Wizard of Frobozz"
+  ]
+}
