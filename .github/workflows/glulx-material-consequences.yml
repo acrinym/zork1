@@ -1,0 +1,310 @@
+name: Zork I Glulx Material Consequences
+
+on:
+  push:
+    branches:
+      - agent/glulx-material-consequences
+    paths:
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-material-consequences.yml"
+  pull_request:
+    paths:
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-material-consequences.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1216"
+  BASE_ARTIFACT_SHA256: 4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2
+  MATERIAL_RELEASE: "1217"
+  MATERIAL_SERIAL: "260722"
+  MATERIAL_TEST_SERIAL: "990218"
+
+jobs:
+  qualify-glulx-material-consequences:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          mkdir -p glulx/build/material-consequences
+
+      - name: Validate Release 1217 layer and exact qualified base
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          layer = json.loads(Path('glulx/material-consequences/patch-series.json').read_text(encoding='utf-8'))
+          base = json.loads(Path('glulx/ritual-resonance/patch-series.json').read_text(encoding='utf-8'))
+          assert layer['release'] == int(os.environ['MATERIAL_RELEASE'])
+          assert layer['serial'] == os.environ['MATERIAL_SERIAL']
+          assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
+          assert layer['upstream_tree'] == os.environ['ZORK_GLULX_TREE']
+          assert layer['base_release'] == int(os.environ['BASE_RELEASE'])
+          assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert base['release'] == int(os.environ['BASE_RELEASE'])
+          assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert layer['expected_changed_paths'] == [
+              'assistance.zil', 'gmain.zil', 'material_consequences.zil', 'zork1.zil'
+          ]
+          artifact = layer['expected_artifact']
+          assert artifact['file'] == 'zork1-glulx-material-consequences.ulx'
+          assert artifact['glulx_version_hex'] == '0x00030103'
+          PY
+
+      - name: Build pinned Glulx ZILF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          pushd .tooling/zilf-glulx
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/material-consequences/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/material-consequences/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "GLULX_ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build exactly pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/material-consequences/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/material-consequences/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/material-consequences/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/material-consequences/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version | tee glulx/build/material-consequences/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/material-consequences/glazer-version.txt
+
+      - name: Stage and audit exact Release 1217 source
+        run: |
+          python glulx/tools/stage_material_consequences.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/material-consequences/src \
+            --allowed-root glulx/build/material-consequences \
+            --manifest glulx/material-consequences/patch-series.json
+          python optimized/tools/zil_smell_check.py \
+            --source glulx/build/material-consequences/src \
+            --json glulx/build/material-consequences/smell-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('glulx/build/material-consequences/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
+          report = json.loads(Path('glulx/build/material-consequences/smell-report.json').read_text(encoding='utf-8'))
+          assert receipt['base']['release'] == 1216
+          assert receipt['base']['artifact_sha256'] == '4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2'
+          assert receipt['changed_paths'] == [
+              'assistance.zil', 'gmain.zil', 'material_consequences.zil', 'zork1.zil'
+          ]
+          assert not report['errors']
+          assert not [item for item in report['includes'] if not item['resolved']]
+          source = Path('glulx/build/material-consequences/src')
+          assert (source / 'material_consequences.zil').is_file()
+          assert not (source / 'material_test.zil').exists()
+          forbidden = ('MRESET', 'MSURF', 'MANCH', 'MTOOLS', 'MNEST', 'MREFIL', 'MREPORT')
+          production = '\n'.join(path.read_text(errors='ignore') for path in source.glob('*.zil'))
+          assert not any(token in production for token in forbidden)
+          PY
+
+      - name: Compile Release 1217 discovery artifact
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/material-consequences/zork1-glulx-material-consequences.asm"
+          pushd glulx/build/material-consequences/src
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/material-consequences/zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$MATERIAL_SERIAL" \
+            --receipt glulx/build/material-consequences/SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/material-consequences/zork1-glulx-material-consequences.ulx \
+            2>&1 | tee glulx/build/material-consequences/glazer-assemble.log
+          python glulx/tools/verify_ulx.py glulx/build/material-consequences/zork1-glulx-material-consequences.ulx \
+            --json glulx/build/material-consequences/story-report.json
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/material-consequences/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/material-consequences/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+          echo "GLULXE_BIN=$(realpath .tooling/glulxe/glulxe)" >> "$GITHUB_ENV"
+
+      - name: Build separate test-only material story
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm -rf glulx/build/material-consequences/test-src
+          cp -a glulx/build/material-consequences/src glulx/build/material-consequences/test-src
+          cp glulx/material-consequences/tests/material_test.zil glulx/build/material-consequences/test-src/material_test.zil
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('glulx/tools').resolve()))
+          from stage_release120 import apply_patch
+          apply_patch(
+              Path('glulx/material-consequences/tests/001-include-material-test.json').resolve(),
+              Path('glulx/build/material-consequences/test-src').resolve(),
+          )
+          PY
+          assembly="${GITHUB_WORKSPACE}/glulx/build/material-consequences/zork1-glulx-material-consequences-test.asm"
+          pushd glulx/build/material-consequences/test-src
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/material-consequences/test-zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$MATERIAL_TEST_SERIAL" \
+            --receipt glulx/build/material-consequences/TEST-SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/material-consequences/zork1-glulx-material-consequences-test.ulx \
+            2>&1 | tee glulx/build/material-consequences/test-glazer-assemble.log
+
+      - name: Run focused material consequences route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/material-consequences/zork1-glulx-material-consequences-test.ulx \
+            < glulx/material-consequences/tests/material_commands.txt \
+            2>&1 | tee glulx/build/material-consequences/material-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F -- "$marker" glulx/build/material-consequences/material-transcript.txt
+          done < glulx/material-consequences/tests/material_expectations.txt
+
+      - name: Write Release 1217 discovery receipt
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/material-consequences/story-report.json').read_text(encoding='utf-8'))
+          stage = json.loads(Path('glulx/build/material-consequences/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
+          serial = json.loads(Path('glulx/build/material-consequences/SERIAL-NORMALIZATION.json').read_text(encoding='utf-8'))
+          assert story['version_hex'] == '0x00030103'
+          assert story['checksum_valid'] is True
+          receipt = {
+              'qualification_status': 'route-qualified; artifact identity awaiting pin',
+              'identity': {'release': int(os.environ['MATERIAL_RELEASE']), 'serial': os.environ['MATERIAL_SERIAL']},
+              'base': stage['base'],
+              'changed_paths': stage['changed_paths'],
+              'artifact': story,
+              'serial_normalization': serial,
+              'routes': {
+                  'board_prying_and_fastener_diagnosis': 'passed',
+                  'recoverable_rope_anchor': 'passed',
+                  'recoverable_sack_cinching': 'passed',
+                  'tool_washing': 'passed',
+                  'rust_escalation': 'passed',
+                  'temporary_nest_soaking': 'passed',
+                  'canonical_destructive_egg_outcome_after_drying': 'passed',
+                  'recap_reporting': 'passed',
+              },
+              'production_contains_test_setup': False,
+              'generalized_crafting_or_physics': False,
+          }
+          Path('glulx/build/material-consequences/BUILD-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2) + '\n', encoding='utf-8'
+          )
+          print(json.dumps(story, indent=2))
+          PY
+
+      - name: Upload Release 1217 discovery artifact and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-material-consequences-discovery
+          path: |
+            glulx/build/material-consequences/zork1-glulx-material-consequences.ulx
+            glulx/build/material-consequences/zork1-glulx-material-consequences.asm
+            glulx/build/material-consequences/story-report.json
+            glulx/build/material-consequences/BUILD-RECEIPT.json
+            glulx/build/material-consequences/SERIAL-NORMALIZATION.json
+            glulx/build/material-consequences/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/material-consequences/src/STAGING-RECEIPT.json
+            glulx/build/material-consequences/smell-report.json
+            glulx/build/material-consequences/material-transcript.txt
+            glulx/build/material-consequences/*-compile.log
+            glulx/build/material-consequences/*-build.log
+            glulx/build/material-consequences/glazer-version.txt
+            glulx/material-consequences/patch-series.json
+          if-no-files-found: warn
