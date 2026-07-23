@@ -11,6 +11,7 @@ The vandals are long gone.
 ROOM-DENSITY-SETUP:STUDIO
 The floor is layered with old paint spatters
 Old ash, soot, and damp masonry linger in the hearth.
+The paint covers walls, floor, and door in sixty-nine distinguishable colors
 ROOM-DENSITY-SETUP:CHASM
 The path hugs the eastern edge of the chasm.
 The passage carries a faint damp echo from the cellar.
