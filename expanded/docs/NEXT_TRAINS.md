@@ -1,12 +1,12 @@
 # Expansion frontier
 
-Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified earned absurd alternate solutions. The Glulx lineage is now qualified through Material Consequences Release `1217`, stacked above exact Release `1216` and its ordinary save-file persistence proof.
+Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified earned absurd alternate solutions. The Glulx lineage is now qualified through Room Density Release `1218`, stacked above exact Release `1217` material consequences and exact Release `1216` save-file persistence.
 
 Three frontiers must remain separate:
 
-1. deepen visible-room and parser behavior without creating universal verbs;
-2. deepen actor memory through focused deterministic state machines;
-3. add further earned alternate solutions only when real objects, preparation, risk, and canonical consequences justify them.
+1. deepen actor memory through focused deterministic state machines;
+2. add further earned alternate solutions only when real objects, preparation, risk, and canonical consequences justify them;
+3. add optional geography only after core rooms and actors are strong.
 
 ## 0. Glulx upstream reconciliation — complete
 
@@ -111,50 +111,65 @@ Implemented and qualified:
 
 The production layer changes exactly four staged paths and rejects every test-only setup, mutation, positioning, and report verb.
 
-## 0.10 Room density and parser kindness — strongest next train
+## 0.10 Room density and parser kindness — complete in PR #12
 
-The strongest next player-facing train is not more arbitrary object pairs. It is a focused audit of visible nouns and reasonable intent.
+Release `1218` is an isolated production layer above exact Release `1217`. It turns explicitly described scenery into bounded room-scoped parser targets without creating a universal scenery object or free-form parser.
+
+Implemented and qualified:
+
+1. Troll Room bloodstains, scratches, passages, and western hole;
+2. Gallery paintings, frames, and departed vandals;
+3. Studio floor, fireplace, hearth, and sixty-nine-color paint vocabulary;
+4. East of Chasm path and northern passage;
+5. Strange Passage ruined door and cyclops-shaped opening;
+6. Treasure Room crumbling bags, debris, fragments, and floor;
+7. Forest Path and Stream View path scenery;
+8. physically plausible `EXAMINE`, `SEARCH`, `LISTEN`, `SMELL`, `TOUCH`, `KNOCK`, `PUSH`, `PULL`, `LOOK IN`, `LOOK UNDER`, and `LOOK BEHIND` behavior;
+9. established opening traversal delegated to canonical west, north, and east exits;
+10. no portable scenery, treasure, score, timer, puzzle state, or hidden route;
+11. persistent room-discovery categories in `RECAP`;
+12. native save/restore after deliberate clearing of every discovery category;
+13. exact four-path production staging and strict test-story isolation.
+
+### Qualified artifact
+
+- Release `1218` / serial `260723`;
+- Glulx `3.1.3` / `0x00030103`;
+- 227,840 bytes;
+- checksum `0x3b65ecaf`;
+- SHA-256 `efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521`.
+
+This completes the focused first room-density pass. Future parser work should be evidence-driven and local, not another broad sweep of every noun/preposition pair.
+
+## 0.11 Focused actor state and long routes — strongest next train
+
+The strongest next player-facing train is remembered actor state proved through deterministic routes, not open-ended conversation.
 
 Prioritize:
 
-1. rooms where prominent description nouns are not targetable;
-2. `EXAMINE`, `SEARCH`, `LISTEN`, `SMELL`, `TOUCH`, `KNOCK`, `PUSH`, `PULL`, `LOOK UNDER`, and `LOOK BEHIND` for physically plausible scenery;
-3. ambiguity messages that explain which object the parser needs;
-4. pronoun and container behavior after multi-object actions;
-5. intention routing for reasonable synonyms without granting impossible actions;
-6. deterministic routes proving canonical puzzle commands remain authoritative;
-7. no bespoke prose requirement for every nonsense pairing.
-
-This train should make the world feel less painted-on, not inflate the parser into an unconstrained natural-language system.
-
-## 0.11 Focused character memory and long routes
-
-A separate actor train should prove remembered state rather than adding open-ended conversation.
-
-Highest-value routes:
-
-1. restored bound troll, `UNTIE`, queued recovery, and renewed real danger;
-2. cyclops lullaby under impatience timing;
-3. thief bargain with carried real treasure;
+1. restored bound troll, `UNTIE`, queued recovery, weapon reacquisition, and renewed real danger;
+2. cyclops impatience timing and the repeated lullaby route;
+3. thief bargain with carried real treasure and canonical theft/combat still active;
 4. remembered gifts, threats, mercy, deception, and restraint;
-5. deterministic revisit behavior after save/restore;
-6. no infinite-chatbot actor surface.
+5. deterministic revisit behavior after ordinary `SAVE` and `RESTORE`;
+6. actor state exposed through concise observation and `RECAP`, not a dialogue engine;
+7. no infinite-chatbot actor surface.
 
-The queued troll-recovery concept preserved from superseded PR #9 belongs here, not inside Release `1217`.
+The queued troll-recovery concept preserved from superseded PR #9 belongs here, not inside Release `1217` or `1218`.
 
 ## 0.12 Optional geography and broader character ports
 
-Port separately and deliberately only after room density and focused character state are strong:
+Port separately and deliberately only after focused character state is strong:
 
 1. songbird and Hidden Glade;
 2. troll bribe;
 3. cyclops lullaby if not handled solely as a route-first state layer;
-4. thief bargain;
+4. thief bargain if not handled solely as a route-first state layer;
 5. Adventurer Misconduct;
 6. `FOLLY` and troll bemusement;
 7. Version 3 object-slot cleanup where Glulx no longer needs the workaround.
 
-Release 122 parity, dam mechanisms, ritual resonance, Release 1216 persistence, and Release 1217 material consequences are no longer backlog items.
+Release 122 parity, dam mechanisms, ritual resonance, Release 1216 persistence, Release 1217 material consequences, and Release 1218 room density are no longer backlog items.
 
 ## 1. Absurd Alternate Zork I Release 122 — complete
 
@@ -189,7 +204,7 @@ Controlling record: [`../../alternate/README.md`](../../alternate/README.md).
 
 The Wizard of Frobozz remains Zork II scope.
 
-## 1.1 Further earned alternate solutions — after room and character priorities
+## 1.1 Further earned alternate solutions — after actor priorities
 
 Candidates must:
 
@@ -211,13 +226,13 @@ Add deterministic routes for:
 - renewed troll danger after restored restraint and `UNTIE`;
 - cyclops impatience and lullaby timing;
 - thief bargain with carried treasure;
-- broader whole-game saves outside the focused Release `1213`–`1217` state matrices.
+- broader whole-game saves outside the focused Release `1213`–`1218` state matrices.
 
-## 3. Room density
+## 3. Room density — first focused pass complete
 
-Audit visible nouns for plausible examination, search, listening, smell, touch, positioning, cutting, pouring, burning, pushing, pulling, and looking under or behind. Stop important scenery from feeling painted on without writing bespoke prose for every impossible pairing.
+Release `1218` covers seven high-value discovery categories where room prose previously advertised nouns the parser could not meaningfully address. Additional room work must begin from observed parser failures and remain room-scoped.
 
-## 4. Character memory
+## 4. Character memory — next priority
 
 Deepen troll, cyclops, and thief state machines so they remember meaningful gifts, threats, mercy, deception, and restraint without becoming infinite chatbots.
 
@@ -227,8 +242,8 @@ Add optional environmental storytelling through maintenance records, inscription
 
 ## 6. Optional geography
 
-After room density and focused actor memory are strong, add only side locations justified by story, puzzle logic, or world reactivity.
+After focused actor memory is strong, add only side locations justified by story, puzzle logic, or world reactivity.
 
-## 7. Parser kindness
+## 7. Parser kindness — bounded first pass complete
 
-Expand synonyms and intention routing, improve ambiguity messages, and make pronoun and container behavior more predictable while preserving Zork's command-line identity.
+Release `1218` expands explicit room vocabulary and existing action routing without unconstrained natural language. Future improvements should target demonstrated ambiguity, pronoun, container, or synonym failures one coherent surface at a time.
