@@ -1,0 +1,339 @@
+name: Zork I Glulx Room Density
+
+on:
+  push:
+    branches:
+      - agent/glulx-room-density-parser-kindness
+    paths:
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-room-density.yml"
+  pull_request:
+    paths:
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-room-density.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1217"
+  BASE_ARTIFACT_SHA256: 2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da
+  ROOM_RELEASE: "1218"
+  ROOM_SERIAL: "260723"
+  ROOM_TEST_SERIAL: "990219"
+
+jobs:
+  qualify-glulx-room-density:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
+          mkdir -p glulx/build/room-density
+
+      - name: Validate Release 1218 layer and exact qualified base
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          layer = json.loads(Path('glulx/room-density/patch-series.json').read_text(encoding='utf-8'))
+          base = json.loads(Path('glulx/material-consequences/patch-series.json').read_text(encoding='utf-8'))
+          assert layer['release'] == int(os.environ['ROOM_RELEASE'])
+          assert layer['serial'] == os.environ['ROOM_SERIAL']
+          assert layer['upstream_commit'] == os.environ['ZORK_GLULX_COMMIT']
+          assert layer['upstream_tree'] == os.environ['ZORK_GLULX_TREE']
+          assert layer['base_release'] == int(os.environ['BASE_RELEASE'])
+          assert layer['base_artifact_sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert base['release'] == int(os.environ['BASE_RELEASE'])
+          assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
+          assert layer['expected_changed_paths'] == [
+              '1dungeon.zil', 'assistance.zil', 'room_density.zil', 'zork1.zil'
+          ]
+          artifact = layer['expected_artifact']
+          assert artifact['file'] == 'zork1-glulx-room-density.ulx'
+          assert artifact['glulx_version_hex'] == '0x00030103'
+          PY
+
+      - name: Build pinned Glulx ZILF
+        shell: bash
+        run: |
+          set -euxo pipefail
+          pushd .tooling/zilf-glulx
+          dotnet restore Zilf.sln --nologo 2>&1 | tee ../../glulx/build/room-density/zilf-restore.log
+          dotnet build Zilf.sln --configuration Release --property:PortableTarget=true --no-restore --nologo \
+            2>&1 | tee ../../glulx/build/room-density/zilf-build.log
+          popd
+          zilf_dll="$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)"
+          test -n "$zilf_dll"
+          echo "GLULX_ZILF_DLL=$(realpath "$zilf_dll")" >> "$GITHUB_ENV"
+
+      - name: Build exactly pinned Glazer
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" \
+            --output glulx/build/room-density/glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glulx/build/room-density/glazer-source.tar.gz" | sha256sum --check
+          mkdir -p .tooling/glazer-source
+          tar -xf glulx/build/room-density/glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source 2>&1 | tee glulx/build/room-density/glazer-build.log
+          glazer_binary="$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)"
+          test -n "$glazer_binary"
+          echo "GLAZER_BIN=$(realpath "$glazer_binary")" >> "$GITHUB_ENV"
+          "$glazer_binary" --version | tee glulx/build/room-density/glazer-version.txt
+          grep -Fx "glazer 1.2.0" glulx/build/room-density/glazer-version.txt
+
+      - name: Stage and audit exact Release 1218 source
+        run: |
+          python glulx/tools/stage_room_density.py \
+            --upstream .upstream/zork1-glulx \
+            --destination glulx/build/room-density/src \
+            --allowed-root glulx/build/room-density \
+            --manifest glulx/room-density/patch-series.json
+          python optimized/tools/zil_smell_check.py \
+            --source glulx/build/room-density/src \
+            --json glulx/build/room-density/smell-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('glulx/build/room-density/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
+          report = json.loads(Path('glulx/build/room-density/smell-report.json').read_text(encoding='utf-8'))
+          assert receipt['base']['release'] == 1217
+          assert receipt['base']['artifact_sha256'] == '2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da'
+          assert receipt['changed_paths'] == [
+              '1dungeon.zil', 'assistance.zil', 'room_density.zil', 'zork1.zil'
+          ]
+          assert not report['errors']
+          assert not [item for item in report['includes'] if not item['resolved']]
+          source = Path('glulx/build/room-density/src')
+          assert (source / 'room_density.zil').is_file()
+          assert not (source / 'room_density_test.zil').exists()
+          forbidden = (
+              'RDTROLL', 'RDGALLERY', 'RDSTUDIO', 'RDCHASM', 'RDPASSAGE',
+              'RDTREASURE', 'RDPATH', 'RDSTREAM', 'RDREPORT', 'RDMUTATE'
+          )
+          production = '\n'.join(path.read_text(errors='ignore') for path in source.glob('*.zil'))
+          assert not any(token in production for token in forbidden)
+          PY
+
+      - name: Compile and inspect Release 1218 discovery artifact
+        shell: bash
+        run: |
+          set -euxo pipefail
+          assembly="${GITHUB_WORKSPACE}/glulx/build/room-density/zork1-glulx-room-density.asm"
+          pushd glulx/build/room-density/src
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/room-density/zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$ROOM_SERIAL" \
+            --receipt glulx/build/room-density/SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/room-density/zork1-glulx-room-density.ulx \
+            2>&1 | tee glulx/build/room-density/glazer-assemble.log
+          python glulx/tools/verify_ulx.py glulx/build/room-density/zork1-glulx-room-density.ulx \
+            --json glulx/build/room-density/story-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/room-density/story-report.json').read_text(encoding='utf-8'))
+          assert story['version_hex'] == '0x00030103'
+          assert story['checksum_valid'] is True
+          PY
+
+      - name: Build pinned native Glulxe with CheapGlk
+        shell: bash
+        run: |
+          set -euxo pipefail
+          make -C .tooling/cheapglk 2>&1 | tee glulx/build/room-density/cheapglk-build.log
+          make -C .tooling/glulxe \
+            GLKDIR="${GITHUB_WORKSPACE}/.tooling/cheapglk" \
+            GLKLIB="${GITHUB_WORKSPACE}/.tooling/cheapglk/libcheapglk.a" \
+            2>&1 | tee glulx/build/room-density/glulxe-build.log
+          test -x .tooling/glulxe/glulxe
+          echo "GLULXE_BIN=$(realpath .tooling/glulxe/glulxe)" >> "$GITHUB_ENV"
+
+      - name: Build separate test-only room-density story
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm -rf glulx/build/room-density/test-src
+          cp -a glulx/build/room-density/src glulx/build/room-density/test-src
+          cp glulx/room-density/tests/room_density_test.zil glulx/build/room-density/test-src/room_density_test.zil
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('glulx/tools').resolve()))
+          from stage_release120 import apply_patch
+          apply_patch(
+              Path('glulx/room-density/tests/001-include-room-density-test.json').resolve(),
+              Path('glulx/build/room-density/test-src').resolve(),
+          )
+          PY
+          assembly="${GITHUB_WORKSPACE}/glulx/build/room-density/zork1-glulx-room-density-test.asm"
+          pushd glulx/build/room-density/test-src
+          dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
+            2>&1 | tee "${GITHUB_WORKSPACE}/glulx/build/room-density/test-zilf-compile.log"
+          popd
+          python glulx/tools/normalize_serial.py "$assembly" \
+            --serial "$ROOM_TEST_SERIAL" \
+            --receipt glulx/build/room-density/TEST-SERIAL-NORMALIZATION.json
+          "$GLAZER_BIN" "$assembly" -o glulx/build/room-density/zork1-glulx-room-density-test.ulx \
+            2>&1 | tee glulx/build/room-density/test-glazer-assemble.log
+
+      - name: Run focused room-density route
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GLULXE_BIN" glulx/build/room-density/zork1-glulx-room-density-test.ulx \
+            < glulx/room-density/tests/room_density_commands.txt \
+            2>&1 | tee glulx/build/room-density/room-density-transcript.txt
+          while IFS= read -r marker; do
+            test -z "$marker" || grep -F -- "$marker" glulx/build/room-density/room-density-transcript.txt
+          done < glulx/room-density/tests/room_density_expectations.txt
+
+      - name: Run Release 1218 room-density persistence route
+        run: |
+          python glulx/tools/run_interactive_story.py \
+            --scenario glulx/room-density/tests/room_density_persistence.json \
+            --transcript glulx/build/room-density/room-density-persistence-transcript.txt \
+            --var STATE_SAVE_FILE="${GITHUB_WORKSPACE}/glulx/build/room-density/room-density-state.sav" \
+            -- "$GLULXE_BIN" glulx/build/room-density/zork1-glulx-room-density-test.ulx
+          grep -F "ROOM-DENSITY-STATE:TROLL=SEEN;GALLERY=SEEN;STUDIO=SEEN;CHASM=SEEN;PASSAGE=SEEN;TREASURE=SEEN;PATH=SEEN" \
+            glulx/build/room-density/room-density-persistence-transcript.txt
+          grep -F "ROOM-DENSITY-STATE:TROLL=CLEAR;GALLERY=CLEAR;STUDIO=CLEAR;CHASM=CLEAR;PASSAGE=CLEAR;TREASURE=CLEAR;PATH=CLEAR" \
+            glulx/build/room-density/room-density-persistence-transcript.txt
+          test -s glulx/build/room-density/room-density-state.sav
+
+      - name: Write Release 1218 discovery receipt
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/room-density/story-report.json').read_text(encoding='utf-8'))
+          stage = json.loads(Path('glulx/build/room-density/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
+          serial = json.loads(Path('glulx/build/room-density/SERIAL-NORMALIZATION.json').read_text(encoding='utf-8'))
+          receipt = {
+              'qualification_status': 'discovery',
+              'identity': {'release': int(os.environ['ROOM_RELEASE']), 'serial': os.environ['ROOM_SERIAL']},
+              'base': stage['base'],
+              'changed_paths': stage['changed_paths'],
+              'artifact': story,
+              'serial_normalization': serial,
+              'routes': {
+                  'troll_room_visible_nouns': 'passed',
+                  'gallery_visible_nouns': 'passed',
+                  'studio_visible_nouns': 'passed',
+                  'chasm_path_and_passage': 'passed',
+                  'strange_passage_door_and_opening': 'passed',
+                  'treasure_room_bags_and_floor': 'passed',
+                  'forest_and_streamside_paths': 'passed',
+                  'room_recap': 'passed',
+                  'room_discovery_save_restore': 'passed',
+              },
+              'production_contains_test_setup': False,
+              'universal_scenery_or_free_form_parser': False,
+          }
+          Path('glulx/build/room-density/BUILD-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Upload Release 1218 discovery artifact and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-room-density-discovery
+          path: |
+            glulx/build/room-density/zork1-glulx-room-density.ulx
+            glulx/build/room-density/zork1-glulx-room-density.asm
+            glulx/build/room-density/story-report.json
+            glulx/build/room-density/BUILD-RECEIPT.json
+            glulx/build/room-density/SERIAL-NORMALIZATION.json
+            glulx/build/room-density/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/room-density/src/STAGING-RECEIPT.json
+            glulx/build/room-density/smell-report.json
+            glulx/build/room-density/room-density-transcript.txt
+            glulx/build/room-density/room-density-persistence-transcript.txt
+            glulx/build/room-density/*.sav
+            glulx/build/room-density/*-compile.log
+            glulx/build/room-density/*-build.log
+            glulx/build/room-density/*-restore.log
+            glulx/build/room-density/*-assemble.log
+            glulx/build/room-density/glazer-version.txt
+            glulx/room-density/patch-series.json
+            glulx/room-density/tests/room_density_persistence.json
+          if-no-files-found: warn
