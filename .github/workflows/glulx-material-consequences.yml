@@ -118,7 +118,7 @@ jobs:
           assert base['release'] == int(os.environ['BASE_RELEASE'])
           assert base['expected_artifact']['sha256'] == os.environ['BASE_ARTIFACT_SHA256']
           assert layer['expected_changed_paths'] == [
-              'assistance.zil', 'gmain.zil', 'material_consequences.zil', 'zork1.zil'
+              'assistance.zil', 'material_consequences.zil', 'shadow_logic.zil', 'zork1.zil'
           ]
           artifact = layer['expected_artifact']
           assert artifact['file'] == 'zork1-glulx-material-consequences.ulx'
@@ -172,7 +172,7 @@ jobs:
           assert receipt['base']['release'] == 1216
           assert receipt['base']['artifact_sha256'] == '4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2'
           assert receipt['changed_paths'] == [
-              'assistance.zil', 'gmain.zil', 'material_consequences.zil', 'zork1.zil'
+              'assistance.zil', 'material_consequences.zil', 'shadow_logic.zil', 'zork1.zil'
           ]
           assert not report['errors']
           assert not [item for item in report['includes'] if not item['resolved']]
