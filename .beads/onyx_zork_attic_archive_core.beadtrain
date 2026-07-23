@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_attic_archive_core"
+title       = "Zork I 1970s attic archive core"
+description = """
+Build a period-authentic physical archive using filing cabinets, index cards, banker boxes, cassettes, microfiche, Polaroids, and a terminal.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "record"
+bead = "zork1-attic-core-001"
+title = "Canonical archive-record schema"
+parallel_start = true
+depends_on = []
+summary = "Represent people, places, objects, messages, incidents, quotes, outcomes, and links."
+
+[[cars]]
+id = "media"
+bead = "zork1-attic-core-002"
+title = "Late-1970s physical media taxonomy"
+parallel_start = true
+depends_on = ["record"]
+summary = "Map records onto folders, cards, printouts, cassettes, film, microfiche, photos, and boxes."
+
+[[cars]]
+id = "catalog"
+bead = "zork1-attic-core-003"
+title = "Card catalog and deterministic indexing"
+parallel_start = true
+depends_on = ["record"]
+summary = "Index by person, place, object, incident, chronology, and expedition."
+
+[[cars]]
+id = "storage"
+bead = "zork1-attic-core-004"
+title = "Attic filing surfaces and capacity model"
+parallel_start = true
+depends_on = ["record"]
+summary = "Create cabinets, drawers, boxes, shelves, recorder, projector, and terminal interfaces."
+
+[[cars]]
+id = "commands"
+bead = "zork1-attic-core-005"
+title = "Archive query and retrieval commands"
+parallel_start = false
+depends_on = ["media", "catalog", "storage"]
+summary = "Support READ, FIND, FILE, PLAY, REVIEW, SHOW, and CROSS-REFERENCE explicitly."
+
+[[cars]]
+id = "provenance"
+bead = "zork1-attic-core-006"
+title = "Provenance, truth status, and annotations"
+parallel_start = false
+depends_on = ["commands"]
+summary = "Track source, confidence, contradictions, verification, redaction, and missing evidence."
+
+[[cars]]
+id = "persistence"
+bead = "zork1-attic-core-007"
+title = "Archive save/restore and migration"
+parallel_start = false
+depends_on = ["provenance"]
+summary = "Persist records and indices, reject duplicates, and define schema migrations."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-attic-core-008"
+title = "Attic archive-core capstone"
+parallel_start = false
+depends_on = ["persistence"]
+summary = "Qualify retrieval and publish stable APIs for dossiers, cases, and playback."
+
+[meta]
+one_liner = "Build a period-authentic physical archive using filing cabinets, index cards, banker boxes, cassettes, microfiche, Polaroids, and a terminal."
+prior_car = "zork1-house-state-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "attic_archive_core", "SAVE", "RESTORE"]

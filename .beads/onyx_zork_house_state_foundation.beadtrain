@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_house_state_foundation"
+title       = "Zork I evolving house state foundation"
+description = """
+Establish a persistent, event-driven home-state substrate so the white house reflects the adventure without chores, score drift, or puzzle replacement.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "base"
+bead = "zork1-house-state-001"
+title = "Exact Release 1218 base and house-state boundary"
+parallel_start = true
+depends_on = []
+summary = "Define the exact base, production delta, and exclusions for the evolving-house substrate."
+
+[[cars]]
+id = "schema"
+bead = "zork1-house-state-002"
+title = "Persistent condition and atmosphere schema"
+parallel_start = true
+depends_on = ["base"]
+summary = "Represent condition, collection, knowledge, security, and atmosphere as compact state."
+
+[[cars]]
+id = "events"
+bead = "zork1-house-state-003"
+title = "Adventure-to-house event receipts"
+parallel_start = true
+depends_on = ["base"]
+summary = "Record meaningful discoveries, damage, deliveries, returns, and consequences deterministically."
+
+[[cars]]
+id = "projection"
+bead = "zork1-house-state-004"
+title = "Room-description projection"
+parallel_start = true
+depends_on = ["base"]
+summary = "Reflect state in Living Room, Kitchen, Attic, Bedroom, and Cellar descriptions without topology changes."
+
+[[cars]]
+id = "isolation"
+bead = "zork1-house-state-005"
+title = "Canonical score and puzzle isolation"
+parallel_start = false
+depends_on = ["schema", "events", "projection"]
+summary = "Prove no treasure duplication, scoring drift, auto-solves, or chore loops."
+
+[[cars]]
+id = "persistence"
+bead = "zork1-house-state-006"
+title = "Save migration and deterministic restore"
+parallel_start = false
+depends_on = ["isolation"]
+summary = "Persist the house schema and define safe defaults for older snapshots."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-house-state-007"
+title = "Foundation gameplay and state qualification"
+parallel_start = false
+depends_on = ["persistence"]
+summary = "Prove event receipt, projection, reset boundaries, and native save/restore."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-house-state-008"
+title = "House-state foundation capstone"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Document the substrate and leave stable hooks for room-specific trains."
+
+[meta]
+one_liner = "Establish a persistent, event-driven home-state substrate so the white house reflects the adventure without chores, score drift, or puzzle replacement."
+prior_car = "zork1-glulx-room1218-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "house_state_foundation", "SAVE", "RESTORE"]

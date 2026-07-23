@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_house_cellar_threshold"
+title       = "Zork I cellar expedition threshold"
+description = """
+Make the Cellar a staging, sensing, storage, and containment boundary between home and the underground.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "staging"
+bead = "zork1-house-cellar-001"
+title = "Expedition staging surfaces"
+parallel_start = true
+depends_on = []
+summary = "Add deliberate tool, rope, light, and container staging using ordinary parser inventory."
+
+[[cars]]
+id = "trapdoor"
+bead = "zork1-house-cellar-002"
+title = "Trap-door and route-state observation"
+parallel_start = true
+depends_on = ["staging"]
+summary = "Expose canonical access, light, and route conditions without bypassing movement."
+
+[[cars]]
+id = "sensing"
+bead = "zork1-house-cellar-003"
+title = "Sounds, drafts, damp, and warning evidence"
+parallel_start = true
+depends_on = ["staging"]
+summary = "Communicate nearby underground conditions through bounded sensory clues."
+
+[[cars]]
+id = "hazards"
+bead = "zork1-house-cellar-004"
+title = "Carried-hazard screening"
+parallel_start = true
+depends_on = ["staging"]
+summary = "Recognize smoke, heat, water, cursed, living, or unstable objects entering home."
+
+[[cars]]
+id = "containment"
+bead = "zork1-house-cellar-005"
+title = "Recoverable containment choices"
+parallel_start = false
+depends_on = ["trapdoor", "sensing", "hazards"]
+summary = "Support limited barriers, storage, and quarantine with real house objects."
+
+[[cars]]
+id = "intrusion_hooks"
+bead = "zork1-house-cellar-006"
+title = "Home-intrusion event hooks"
+parallel_start = false
+depends_on = ["containment"]
+summary = "Define deterministic hooks for thieves, creatures, water, smoke, and supernatural effects."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-house-cellar-007"
+title = "Cellar threshold qualification"
+parallel_start = false
+depends_on = ["intrusion_hooks"]
+summary = "Prove staging, route authority, warning state, containment, hooks, and restore."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-house-cellar-008"
+title = "Cellar threshold capstone"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Publish stable hooks for vulnerability, visitors, and the archive."
+
+[meta]
+one_liner = "Make the Cellar a staging, sensing, storage, and containment boundary between home and the underground."
+prior_car = "zork1-house-state-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "house_cellar_threshold", "SAVE", "RESTORE"]
