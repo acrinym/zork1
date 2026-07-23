@@ -1,12 +1,17 @@
 {
   "id": "Z1-GLULX-1217-MATERIAL-HOOK",
-  "path": "gmain.zil",
-  "description": "Run focused material consequences after Shadow Logic threat handling and before ordinary object dispatch in both PERFORM variants",
+  "path": "shadow_logic.zil",
+  "description": "Advance focused material timers and run specialized Release 1217 handling after Shadow Logic threats but before generic material prose",
   "replacements": [
     {
-      "expected_count": 2,
-      "old": "\t<COND (<SHADOW-ACTION-HOOK> <RTRUE>)>\n\t<COND (<AND <EQUAL? ,NOT-HERE-OBJECT ,PRSO ,PRSI>",
-      "new": "\t<COND (<SHADOW-ACTION-HOOK> <RTRUE>)>\n\t<COND (<MATERIAL-ACTION-HOOK> <RTRUE>)>\n\t<COND (<AND <EQUAL? ,NOT-HERE-OBJECT ,PRSO ,PRSI>"
+      "expected_count": 1,
+      "old": "\t<SHADOW-ADVANCE-THREATS>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<SHADOW-ADVANCE-THREATS>\n\t<MATERIAL-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<SHADOW-MATERIAL-HOOK> <RTRUE>)>\n\t<RFALSE>>",
+      "new": "\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)\n\t      (<MATERIAL-NEST-HOOK> <RTRUE>)\n\t      (<MATERIAL-TOOL-STATE-HOOK> <RTRUE>)\n\t      (<SHADOW-MATERIAL-HOOK> <RTRUE>)>\n\t<RFALSE>>"
     }
   ]
 }
