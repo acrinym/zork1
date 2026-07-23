@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_attic_playback"
+title       = "Zork I archival transcript and playback"
+description = """
+Reconstruct meaningful parts of the player's own adventure through curated line-printer transcripts, cassette playback, command echoes, and scene records.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "capture"
+bead = "zork1-attic-playback-001"
+title = "Meaningful event and utterance capture"
+parallel_start = true
+depends_on = []
+summary = "Capture unique statements, consequential commands, state transitions, failures, and cues."
+
+[[cars]]
+id = "printer"
+bead = "zork1-attic-playback-002"
+title = "Continuous-feed line-printer transcripts"
+parallel_start = true
+depends_on = ["capture"]
+summary = "Render commands and responses as period-authentic printed records."
+
+[[cars]]
+id = "cassette"
+bead = "zork1-attic-playback-003"
+title = "Textual cassette playback"
+parallel_start = true
+depends_on = ["capture"]
+summary = "Replay voices, pauses, tape hiss, environmental sounds, and speaker labels."
+
+[[cars]]
+id = "scenes"
+bead = "zork1-attic-playback-004"
+title = "Scene reconstruction and navigation"
+parallel_start = true
+depends_on = ["capture"]
+summary = "Review encounters by incident, actor, place, or chronology without changing live state."
+
+[[cars]]
+id = "raw_curated"
+bead = "zork1-attic-playback-005"
+title = "Curated record versus raw session log"
+parallel_start = false
+depends_on = ["printer", "cassette", "scenes"]
+summary = "Keep readable selections and an optional bounded forensic transcript."
+
+[[cars]]
+id = "integrity"
+bead = "zork1-attic-playback-006"
+title = "Playback integrity and no time travel"
+parallel_start = false
+depends_on = ["raw_curated"]
+summary = "Prove playback cannot mutate objects, score, timers, actors, pronouns, or location."
+
+[[cars]]
+id = "persistence"
+bead = "zork1-attic-playback-007"
+title = "Playback index persistence and size controls"
+parallel_start = false
+depends_on = ["integrity"]
+summary = "Persist indices, deduplicate records, and bound long-session storage."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-attic-playback-008"
+title = "Transcript and playback capstone"
+parallel_start = false
+depends_on = ["persistence"]
+summary = "Qualify representative scenes and publish hooks for expedition records."
+
+[meta]
+one_liner = "Reconstruct meaningful parts of the player's own adventure through curated line-printer transcripts, cassette playback, command echoes, and scene records."
+prior_car = "zork1-attic-core-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "attic_playback", "SAVE", "RESTORE"]

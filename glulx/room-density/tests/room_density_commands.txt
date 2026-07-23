@@ -1,0 +1,36 @@
+rdtroll
+examine bloodstains
+touch scratches
+look in hole
+examine passages
+enter hole
+rdtroll
+rdgallery
+look behind paintings
+knock on frames
+find vandals
+rdstudio
+examine floor
+smell fireplace
+examine paints
+rdchasm
+examine path
+listen to passage
+enter passage
+rdchasm
+rdpassage
+examine door
+look in opening
+enter opening
+rdpassage
+rdtreasure
+search bags
+look under floor
+rdpath
+smell path
+rdstream
+examine path
+rdreport
+recap
+quit
+yes

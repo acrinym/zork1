@@ -1,0 +1,80 @@
+[train]
+name        = "onyx_zork_glulx_room_density"
+title       = "Zork I Glulx Release 1218 room density and parser kindness"
+description = """
+Build a focused room-scoped scenery layer above exact Release 1217 so nouns
+explicitly advertised by room prose accept reasonable canonical actions without
+adding a free-form parser, portable pseudo objects, new routes, or puzzle state.
+"""
+created     = "2026-07-23"
+status      = "complete"
+
+[[cars]]
+id = "base"
+bead = "zork1-glulx-room1218-001"
+title = "Exact Release 1217 base and four-path delta"
+parallel_start = true
+depends_on = []
+summary = "Stage exact Release 1217, require its locked artifact SHA, and reject any production change outside the reviewed four paths."
+
+[[cars]]
+id = "troll_gallery"
+bead = "zork1-glulx-room1218-002"
+title = "Troll Room and Gallery visible nouns"
+parallel_start = true
+depends_on = ["base"]
+summary = "Make bloodstains, scratches, openings, paintings, frames, and departed vandals targetable through bounded existing actions."
+
+[[cars]]
+id = "studio_chasm"
+bead = "zork1-glulx-room1218-003"
+title = "Studio and East of Chasm scenery"
+parallel_start = true
+depends_on = ["base"]
+summary = "Deepen paint, floor, fireplace, path, and passage responses without changing chimney or chasm topology."
+
+[[cars]]
+id = "passage_treasure_paths"
+bead = "zork1-glulx-room1218-004"
+title = "Passage, treasure-room, and path scenery"
+parallel_start = true
+depends_on = ["base"]
+summary = "Make the ruined door/opening, crumbling bags/debris, and forest/stream paths physically addressable but nonportable."
+
+[[cars]]
+id = "boundaries"
+bead = "zork1-glulx-room1218-005"
+title = "Canonical travel and parser boundaries"
+parallel_start = false
+depends_on = ["troll_gallery", "studio_chasm", "passage_treasure_paths"]
+summary = "Delegate established openings to real exits and prove there is no universal scenery or free-form parser."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-glulx-room1218-006"
+title = "Gameplay and persistence qualification"
+parallel_start = false
+depends_on = ["boundaries"]
+summary = "Pin Release 1218, run the native room tour, deliberately clear discoveries, and prove ordinary restore returns them."
+
+[[cars]]
+id = "review_docs"
+bead = "zork1-glulx-room1218-007"
+title = "Review and evidence documentation"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Resolve valid findings and publish exact artifact, room scope, parser boundary, persistence, and frontier truth."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-glulx-room1218-008"
+title = "Release 1218 capstone"
+parallel_start = false
+depends_on = ["review_docs"]
+summary = "Run exact-head CI, close the train, reopen the stacked non-draft PR, and leave it mergeable but unmerged."
+
+[meta]
+one_liner = "Zork now lets you inspect the scenery it explicitly tells you is there without pretending the parser understands everything."
+prior_car = "onyx_zork_glulx_material_consequences"
+couples_with = ["onyx_zork_glulx_reactive_surface", "onyx_zork_glulx_shadow_logic"]
+watch = ["glulx/room-density", "glulx/tools/stage_room_density.py", ".github/workflows/glulx-room-density.yml", "PSEUDO", "EXAMINE", "SEARCH", "LISTEN", "SMELL", "SAVE", "RESTORE"]
