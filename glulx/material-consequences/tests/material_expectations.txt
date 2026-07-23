@@ -6,10 +6,10 @@ The wrench finds no exposed nut or bolt.
 You used the shovel as a pry bar and confirmed that the boarded entrance is secured by unreachable interior hardware.
 Screwdriver or wrench probing confirmed that the boarded entrance exposes no exterior fastener.
 MATERIAL-SETUP:ANCHOR
-You tie one end of the rope securely to the railing.
-The rope draws taut against the railing. The knot holds.
-The rope cannot be surrendered while one end remains tied to the railing.
-You undo the knot around the railing. The rope is fully available again.
+You tie one end of the rope securely to the wooden railing.
+The rope draws taut against the wooden railing. The knot holds.
+The rope cannot be surrendered while one end remains tied to the wooden railing.
+You undo the knot around the wooden railing. The rope is fully available again.
 You wrap the rope around the mouth of the brown sack and cinch it tight.
 The rope is cinched around the sack's mouth.
 You undo the knot around the brown sack. The rope is fully available again.
