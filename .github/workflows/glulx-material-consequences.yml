@@ -44,6 +44,9 @@ env:
   MATERIAL_RELEASE: "1217"
   MATERIAL_SERIAL: "260722"
   MATERIAL_TEST_SERIAL: "990218"
+  MATERIAL_SIZE: "217344"
+  MATERIAL_CHECKSUM: "0xb0028984"
+  MATERIAL_SHA256: 2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da
 
 jobs:
   qualify-glulx-material-consequences:
@@ -123,6 +126,9 @@ jobs:
           artifact = layer['expected_artifact']
           assert artifact['file'] == 'zork1-glulx-material-consequences.ulx'
           assert artifact['glulx_version_hex'] == '0x00030103'
+          assert artifact['size_bytes'] == int(os.environ['MATERIAL_SIZE'])
+          assert artifact['checksum_hex'] == os.environ['MATERIAL_CHECKSUM']
+          assert artifact['sha256'] == os.environ['MATERIAL_SHA256']
           PY
 
       - name: Build pinned Glulx ZILF
@@ -184,7 +190,7 @@ jobs:
           assert not any(token in production for token in forbidden)
           PY
 
-      - name: Compile Release 1217 discovery artifact
+      - name: Compile and verify exact Release 1217 artifact
         shell: bash
         run: |
           set -euxo pipefail
@@ -199,7 +205,18 @@ jobs:
           "$GLAZER_BIN" "$assembly" -o glulx/build/material-consequences/zork1-glulx-material-consequences.ulx \
             2>&1 | tee glulx/build/material-consequences/glazer-assemble.log
           python glulx/tools/verify_ulx.py glulx/build/material-consequences/zork1-glulx-material-consequences.ulx \
+            --expect-sha256 "$MATERIAL_SHA256" \
             --json glulx/build/material-consequences/story-report.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          story = json.loads(Path('glulx/build/material-consequences/story-report.json').read_text(encoding='utf-8'))
+          assert story['version_hex'] == '0x00030103'
+          assert story['size_bytes'] == int(os.environ['MATERIAL_SIZE'])
+          assert story['checksum_hex'] == os.environ['MATERIAL_CHECKSUM']
+          assert story['checksum_valid'] is True
+          assert story['sha256'] == os.environ['MATERIAL_SHA256']
+          PY
 
       - name: Build pinned native Glulxe with CheapGlk
         shell: bash
@@ -252,7 +269,7 @@ jobs:
             test -z "$marker" || grep -F -- "$marker" glulx/build/material-consequences/material-transcript.txt
           done < glulx/material-consequences/tests/material_expectations.txt
 
-      - name: Write Release 1217 discovery receipt
+      - name: Write Release 1217 qualification receipt
         run: |
           python - <<'PY'
           import json, os
@@ -260,10 +277,8 @@ jobs:
           story = json.loads(Path('glulx/build/material-consequences/story-report.json').read_text(encoding='utf-8'))
           stage = json.loads(Path('glulx/build/material-consequences/src/STAGING-RECEIPT.json').read_text(encoding='utf-8'))
           serial = json.loads(Path('glulx/build/material-consequences/SERIAL-NORMALIZATION.json').read_text(encoding='utf-8'))
-          assert story['version_hex'] == '0x00030103'
-          assert story['checksum_valid'] is True
           receipt = {
-              'qualification_status': 'route-qualified; artifact identity awaiting pin',
+              'qualification_status': 'qualified',
               'identity': {'release': int(os.environ['MATERIAL_RELEASE']), 'serial': os.environ['MATERIAL_SERIAL']},
               'base': stage['base'],
               'changed_paths': stage['changed_paths'],
@@ -285,14 +300,13 @@ jobs:
           Path('glulx/build/material-consequences/BUILD-RECEIPT.json').write_text(
               json.dumps(receipt, indent=2) + '\n', encoding='utf-8'
           )
-          print(json.dumps(story, indent=2))
           PY
 
-      - name: Upload Release 1217 discovery artifact and evidence
+      - name: Upload Release 1217 artifact and evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zork1-glulx-material-consequences-discovery
+          name: zork1-glulx-material-consequences-qualified
           path: |
             glulx/build/material-consequences/zork1-glulx-material-consequences.ulx
             glulx/build/material-consequences/zork1-glulx-material-consequences.asm
@@ -305,6 +319,8 @@ jobs:
             glulx/build/material-consequences/material-transcript.txt
             glulx/build/material-consequences/*-compile.log
             glulx/build/material-consequences/*-build.log
+            glulx/build/material-consequences/*-restore.log
+            glulx/build/material-consequences/*-assemble.log
             glulx/build/material-consequences/glazer-version.txt
             glulx/material-consequences/patch-series.json
           if-no-files-found: warn
