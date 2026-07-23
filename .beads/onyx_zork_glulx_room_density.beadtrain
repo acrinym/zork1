@@ -7,7 +7,7 @@ explicitly advertised by room prose accept reasonable canonical actions without
 adding a free-form parser, portable pseudo objects, new routes, or puzzle state.
 """
 created     = "2026-07-23"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "base"
