@@ -32,7 +32,10 @@
   ],
   "expected_artifact": {
     "file": "zork1-glulx-material-consequences.ulx",
-    "glulx_version_hex": "0x00030103"
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 217344,
+    "checksum_hex": "0xb0028984",
+    "sha256": "2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da"
   },
   "preserved_canonical_state": [
     "Shadow Logic threat advancement remains first and authoritative for every turn",
