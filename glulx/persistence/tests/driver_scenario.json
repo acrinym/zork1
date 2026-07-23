@@ -1,0 +1,23 @@
+{
+  "timeout_seconds": 5,
+  "allowed_exit_codes": [0],
+  "close_stdin": false,
+  "steps": [
+    {"expect": "FAKE STORY READY"},
+    {"sendline": "mutate"},
+    {"expect": "STATE AFTER"},
+    {"sendline": "save"},
+    {"expect": "SAVE FILE\\?"},
+    {"sendline": "{SAVE_FILE}"},
+    {"expect": "SAVED"},
+    {"sendline": "reset"},
+    {"expect": "STATE BEFORE"},
+    {"sendline": "restore"},
+    {"expect": "RESTORE FILE\\?"},
+    {"sendline": "{SAVE_FILE}"},
+    {"expect": "RESTORED AFTER"},
+    {"sendline": "quit"},
+    {"expect": "GOODBYE"},
+    {"expect_eof": true}
+  ]
+}

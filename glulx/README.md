@@ -2,7 +2,7 @@
 
 This directory defines the additive, unofficial Glulx lineage for this repository.
 
-Eight layers are now represented, with the newest layer making the canonical bell, candle, and black-book exorcism physically legible above qualified Dam Mechanisms Release `1215`:
+Eight production layers are represented, followed by a qualification-only persistence train over exact Release `1216`:
 
 | Layer | Identity | Purpose |
 |---|---:|---|
@@ -219,9 +219,28 @@ Qualification rebuilds exact Release 1215, enforces an exact five-path productio
 
 See [`ritual-resonance/README.md`](ritual-resonance/README.md).
 
+## Release 1216 persistence qualification
+
+The persistence train rebuilds and byte-verifies the exact locked Release `1216` production artifact, then creates a separate test-only story to exercise ordinary native Glulxe `SAVE` and `RESTORE` prompts.
+
+It proves:
+
+- living bound troll, committed rope, dropped axe, and open passages;
+- prepared intact egg and canonical broken egg/broken canary object trees;
+- dam interlock, open sluices, and resumed eight-turn reservoir timing;
+- active rising and canonically repaired maintenance-leak snapshots;
+- learned `MELZAR` and restored dam reporting;
+- completed exorcism, learned and wrong-order memory, mirror resonance, ghost removal, transformed bell, and resumed 20-turn hot-bell cooldown;
+- restored `CEREMONY` and `RECAP` agreement;
+- deterministic repeated restore without object duplication.
+
+This qualification assigns no new production identity and changes no Release `1216` serialization behavior. Test-only positioning and corruption commands are rejected from production source.
+
+See [`persistence/README.md`](persistence/README.md).
+
 ## Locked toolchain
 
-All eight layers use:
+All eight production layers and the persistence qualification use:
 
 - ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
 - Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
@@ -233,18 +252,18 @@ The Release 122 semantic reference uses its separately pinned Version 3 ZILF/ZAP
 
 ## Deterministic serial normalization
 
-Pinned ZILF 1.8 emits Glulx metadata serial using `DateTime.Now`. Each pipeline compiles ZIL to Glazer assembly, replaces exactly one generated metadata serial with the edition's committed serial, and assembles the normalized output.
+Pinned ZILF 1.8 emits Glulx metadata serial using `DateTime.Now`. Each production pipeline compiles ZIL to Glazer assembly, replaces exactly one generated metadata serial with the edition's committed serial, and assembles the normalized output.
 
 No upstream ZIL source is modified. The replacement count and final artifact SHA-256 are fail-closed.
 
-## Next porting boundary: deeper material consequences and persistence
+## Next porting boundary: deeper material consequences
 
-Dam and ritual work are now isolated in Releases `1215` and `1216`. The next separate layer should choose one coherent boundary rather than expanding everything at once:
+Persistence is now qualified without creating another production edition. The next separate layer should choose one coherent player-facing boundary:
 
-1. deeper non-dam rope, water, shovel, axe, wrench, and container interactions;
+1. deeper non-dam rope, water, shovel, axe, wrench, screwdriver, and container interactions;
 2. controlled multi-object consequences that preserve canonical puzzle state;
-3. save/restore qualification for bound troll, caught/broken egg, dam, and ritual discoveries;
-4. focused room-density work for visible nouns and reasonable physical intent;
-5. semantic routes proving prior puzzle solutions and persistent states survive revisits.
+3. focused room-density work for visible nouns and reasonable physical intent;
+4. dedicated cyclops-lullaby and thief-bargain long routes;
+5. semantic revisit routes proving prior puzzle solutions remain authoritative.
 
-Songbird geography, Hidden Glade, troll bribes, cyclops lullabies, thief bargains, the full Adventurer Misconduct surface, and Version 3 object-slot cleanup remain later isolated layers.
+Songbird geography, Hidden Glade, troll bribes, the full Adventurer Misconduct surface, broad fire propagation, generalized crafting, and Version 3 object-slot cleanup remain later isolated layers.
