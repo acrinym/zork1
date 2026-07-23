@@ -1,0 +1,47 @@
+{
+  "id": "Z1-GLULX-1218-ROOM-PSEUDOS",
+  "path": "1dungeon.zil",
+  "description": "Make nouns explicitly advertised by selected room descriptions targetable through bounded PSEUDO scenery",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (FLAGS RLANDBIT)\n      (ACTION TROLL-ROOM-F)>",
+      "new": "      (FLAGS RLANDBIT)\n      (ACTION TROLL-ROOM-F)\n      (PSEUDO \"BLOOD\" ROOM-DENSITY-BLOOD-F\n              \"BLOODSTAINS\" ROOM-DENSITY-BLOOD-F\n              \"STAINS\" ROOM-DENSITY-BLOOD-F\n              \"SCRATCHES\" ROOM-DENSITY-SCRATCHES-F\n              \"SCRATCH\" ROOM-DENSITY-SCRATCHES-F\n              \"MARKS\" ROOM-DENSITY-SCRATCHES-F\n              \"HOLE\" ROOM-DENSITY-TROLL-HOLE-F\n              \"PASSAGES\" ROOM-DENSITY-TROLL-PASSAGES-F\n              \"PASSAGE\" ROOM-DENSITY-TROLL-PASSAGES-F)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (FLAGS RLANDBIT)\n      (PSEUDO \"CHASM\" CHASM-PSEUDO)>\n\n<ROOM GALLERY",
+      "new": "      (FLAGS RLANDBIT)\n      (PSEUDO \"CHASM\" CHASM-PSEUDO\n              \"PATH\" ROOM-DENSITY-CHASM-PATH-F\n              \"PASSAGE\" ROOM-DENSITY-CHASM-PASSAGE-F)>\n\n<ROOM GALLERY"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (WEST TO EAST-OF-CHASM)\n      (NORTH TO STUDIO)\n      (FLAGS RLANDBIT ONBIT)>",
+      "new": "      (WEST TO EAST-OF-CHASM)\n      (NORTH TO STUDIO)\n      (FLAGS RLANDBIT ONBIT)\n      (PSEUDO \"PAINTINGS\" ROOM-DENSITY-GALLERY-PAINTINGS-F\n              \"PAINTING\" ROOM-DENSITY-GALLERY-PAINTINGS-F\n              \"PICTURES\" ROOM-DENSITY-GALLERY-PAINTINGS-F\n              \"ART\" ROOM-DENSITY-GALLERY-PAINTINGS-F\n              \"FRAMES\" ROOM-DENSITY-GALLERY-FRAMES-F\n              \"FRAME\" ROOM-DENSITY-GALLERY-FRAMES-F\n              \"VANDALS\" ROOM-DENSITY-GALLERY-VANDALS-F\n              \"VANDAL\" ROOM-DENSITY-GALLERY-VANDALS-F)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (GLOBAL CHIMNEY)\n      (PSEUDO \"DOOR\" DOOR-PSEUDO \"PAINT\" PAINT-PSEUDO)>",
+      "new": "      (GLOBAL CHIMNEY)\n      (PSEUDO \"DOOR\" DOOR-PSEUDO\n              \"PAINT\" PAINT-PSEUDO\n              \"PAINTS\" PAINT-PSEUDO\n              \"COLORS\" PAINT-PSEUDO\n              \"SPLATTERS\" PAINT-PSEUDO\n              \"FLOOR\" ROOM-DENSITY-STUDIO-FLOOR-F\n              \"FLOORS\" ROOM-DENSITY-STUDIO-FLOOR-F\n              \"FIREPLACE\" ROOM-DENSITY-FIREPLACE-F\n              \"HEARTH\" ROOM-DENSITY-FIREPLACE-F)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (WEST TO CYCLOPS-ROOM)\n      (IN TO CYCLOPS-ROOM)\n      (EAST TO LIVING-ROOM)\n      (FLAGS RLANDBIT)>",
+      "new": "      (WEST TO CYCLOPS-ROOM)\n      (IN TO CYCLOPS-ROOM)\n      (EAST TO LIVING-ROOM)\n      (FLAGS RLANDBIT)\n      (PSEUDO \"DOOR\" ROOM-DENSITY-PASSAGE-DOOR-F\n              \"OPENING\" ROOM-DENSITY-PASSAGE-OPENING-F\n              \"HOLE\" ROOM-DENSITY-PASSAGE-OPENING-F)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (ACTION TREASURE-ROOM-FCN)\n      (FLAGS RLANDBIT ;\"CANT-HAVE-ONBIT\")\n      (VALUE 25)\n      (GLOBAL STAIRS)>",
+      "new": "      (ACTION TREASURE-ROOM-FCN)\n      (FLAGS RLANDBIT ;\"CANT-HAVE-ONBIT\")\n      (VALUE 25)\n      (GLOBAL STAIRS)\n      (PSEUDO \"BAGS\" ROOM-DENSITY-CRUMBLING-BAGS-F\n              \"BAG\" ROOM-DENSITY-CRUMBLING-BAGS-F\n              \"FLOOR\" ROOM-DENSITY-TREASURE-FLOOR-F\n              \"DEBRIS\" ROOM-DENSITY-TREASURE-FLOOR-F\n              \"FRAGMENTS\" ROOM-DENSITY-TREASURE-FLOOR-F)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)>\n\n<ROOM UP-A-TREE",
+      "new": "      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)\n      (PSEUDO \"PATH\" ROOM-DENSITY-FOREST-PATH-F)>\n\n<ROOM UP-A-TREE"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (FLAGS RLANDBIT)\n      (GLOBAL GLOBAL-WATER)\n      (PSEUDO \"STREAM\" STREAM-PSEUDO)>\n\n<ROOM IN-STREAM",
+      "new": "      (FLAGS RLANDBIT)\n      (GLOBAL GLOBAL-WATER)\n      (PSEUDO \"STREAM\" STREAM-PSEUDO\n              \"PATH\" ROOM-DENSITY-STREAM-PATH-F)>\n\n<ROOM IN-STREAM"
+    }
+  ]
+}
