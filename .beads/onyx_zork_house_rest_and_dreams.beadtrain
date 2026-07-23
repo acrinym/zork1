@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_house_rest_and_dreams"
+title       = "Zork I bedroom rest, dreams, and delayed consequences"
+description = """
+Give the Bedroom optional recovery, dream, overnight, and delayed-consequence behavior without mandatory sleep cycles or timer exploits.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "rest"
+bead = "zork1-house-rest-001"
+title = "Optional rest and wake contract"
+parallel_start = true
+depends_on = []
+summary = "Define when rest is allowed, refused, interrupted, or advances ordinary turns."
+
+[[cars]]
+id = "timers"
+bead = "zork1-house-rest-002"
+title = "Timer advancement and exploit prevention"
+parallel_start = true
+depends_on = ["rest"]
+summary = "Preserve canonical queues and prevent skipping danger or farming events."
+
+[[cars]]
+id = "recovery"
+bead = "zork1-house-rest-003"
+title = "Bounded nonterminal recovery"
+parallel_start = true
+depends_on = ["rest"]
+summary = "Recover selected temporary states without erasing permanent consequences."
+
+[[cars]]
+id = "dreams"
+bead = "zork1-house-rest-004"
+title = "Discovery-driven dream records"
+parallel_start = true
+depends_on = ["rest"]
+summary = "Generate authored dreams from objects, actors, rituals, follies, and unresolved evidence."
+
+[[cars]]
+id = "overnight"
+bead = "zork1-house-rest-005"
+title = "Overnight house changes"
+parallel_start = false
+depends_on = ["timers", "recovery", "dreams"]
+summary = "Apply mail, visits, theft, damp, smoke, movement, and archive updates deterministically."
+
+[[cars]]
+id = "wake"
+bead = "zork1-house-rest-006"
+title = "Noises, warnings, and forced waking"
+parallel_start = false
+depends_on = ["overnight"]
+summary = "Wake the player for authored danger or evidence while preserving escape routes."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-house-rest-007"
+title = "Rest, dream, and persistence qualification"
+parallel_start = false
+depends_on = ["wake"]
+summary = "Prove timers, recovery, dreams, interruptions, ordering, and restore."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-house-rest-008"
+title = "Bedroom rest and dreams capstone"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Document optionality and connect overnight evidence to the archive."
+
+[meta]
+one_liner = "Give the Bedroom optional recovery, dream, overnight, and delayed-consequence behavior without mandatory sleep cycles or timer exploits."
+prior_car = "zork1-house-state-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "house_rest_and_dreams", "SAVE", "RESTORE"]
