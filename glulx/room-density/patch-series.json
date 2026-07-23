@@ -22,7 +22,9 @@
   ],
   "patches": [
     "patches/001-room-pseudos.json",
-    "patches/002-room-recap.json"
+    "patches/002-room-recap.json",
+    "patches/003-studio-paint.json",
+    "patches/004-studio-paint-pseudos.json"
   ],
   "expected_changed_paths": [
     "1dungeon.zil",
@@ -39,7 +41,7 @@
     "existing room exits and conditional blockers remain authoritative",
     "entering established openings delegates to existing directional travel",
     "no new object, score, treasure, combat, timer, or puzzle state is introduced",
-    "existing Studio door and paint pseudo routines remain authoritative",
+    "the existing Studio door pseudo remains authoritative while advertised paint vocabulary gains bounded responses",
     "Release 1217 material consequences and all earlier layers remain unchanged"
   ],
   "excluded_scope": [
