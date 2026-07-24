@@ -1,6 +1,6 @@
 MUSEUM-SETUP:READY
 A deep frame, a bracketed weapon wall, a narrow record shelf, and a low relic stand make the room usable as a small private museum.
-The placement is only a display. The bell remains real, removable, and still required wherever the adventure requires it.
+The placement is only a display. The brass bell remains real, removable, and still required wherever the adventure requires it.
 MUSEUM-SETUP:COMPLETED-FIELD-HISTORY
 MUSEUM:VERSION=1;FRAME-PAINT=Y;WALL-SWORD=Y;WALL-AXE=Y;SHELF-MAP=Y;SHELF-GUIDE=Y;SHELF-BOOK=Y;STAND-WRENCH=Y;STAND-DRIVER=Y;STAND-BELL=Y;STAND-CANDLES=Y;CASE-TRIDENT=Y;CASE-AUTH=Y;HOUSE=Y;RITUAL=Y;DAM=Y;CONFLICT=Y;THEFT=N;PAINT-THIEF=N;PAINT-TREASURE-ROOM=N;EGG-NESTED=Y
 Together, the painting, sword, and map compress the white house's abandoned past and the beginning of your expedition into one wall.
