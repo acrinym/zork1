@@ -7,7 +7,7 @@ The dust remains, but the attic now feels less like forgotten storage and more l
 HOUSE-STATE-SETUP:CELLAR
 The cellar feels less like another room of the house than the place where the house gives way to the underground.
 HOUSE-STATE-SETUP:RETURN
-The room has begun to feel like a place returned to between expeditions.
+However dusty it remains, the room now has the settled air of a place returned to between expeditions.
 HOUSE-STATE-SETUP:COLLECTION
 HOUSE-STATE:VERSION=1;CONDITION=2;COLLECTION=1;KNOWLEDGE=2;SECURITY=2;ATMOSPHERE=2;ENTERED=Y;ATTIC=Y;CELLAR=Y;RETURN=Y;COLLECTED=Y;DISTURBED=Y
 You began using the white house as a place rather than merely passing through it.
