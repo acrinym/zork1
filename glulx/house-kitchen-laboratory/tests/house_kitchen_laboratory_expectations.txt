@@ -1,0 +1,27 @@
+KITCHEN-SETUP:READY
+The room now contains a porcelain sink, a broad worktop, a wooden cupboard, and a cast-iron range.
+You wash the nasty knife until its blade is clean enough for deliberate food preparation.
+You dry the nasty knife thoroughly.
+You slice the real clove.
+You unwrap and arrange the hot-pepper sandwich on the worktop.
+Cold water runs into the real glass bottle.
+Cold water removes the visible grime from the wrench.
+You transfer flame to the range.
+The controlled heat dries the wrench.
+The water becomes warm but does not boil, multiply, or become a potion.
+KITCHEN:VERSION=1;WATER-BOTTLE=Y;KNIFE-CLEAN=Y;KNIFE-WET=N;GARLIC-SLICED=Y;GARLIC-CUPBOARD=Y;LUNCH-PREP=Y;LUNCH-CUPBOARD=Y;WRENCH-CLEAN=Y;WRENCH-WET=N;RANGE-HOT=Y;WATER-WARM=Y;RESIDUE=Y;STORAGE=Y;RUST-WORSE=N
+Water flashes into steam across the hot iron and kills the bounded heat.
+Cold water runs into the real glass bottle.
+The sink removes loose rust but leaves water in every pit.
+A fresh orange bloom spreads along the blade.
+The rusty knife now bears a fresh orange bloom
+KITCHEN-ACTORS:READY
+The bat recoils from the concentrated garlic scent and refuses the offering.
+The prepared pepper scent reaches the cyclops before the offering does.
+- You used the Kitchen sink without cloning the canonical portable water.
+- You washed or dried real tools, the bottle, or the worktop, preserving existing material consequences.
+- You lit the cast-iron range with a real flame and used bounded temporary heat.
+- You prepared the real lunch or sliced the real garlic without creating a recipe economy.
+- You completed a selected Kitchen heat, water, or utensil experiment without a universal chemistry system.
+- You used the Kitchen's real cupboard or work surfaces as deliberate object-tree storage.
+- Prepared food changed an authored creature interaction without replacing canonical puzzle solutions.
