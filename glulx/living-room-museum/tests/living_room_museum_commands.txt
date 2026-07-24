@@ -1,5 +1,6 @@
 msetup
 look
+put bell on stand
 put painting on frame
 put sword on rack
 put map on shelf
@@ -7,7 +8,6 @@ mcomplete
 put guide on shelf
 put wrench on stand
 put screwdriver on stand
-put bell on stand
 put candles on stand
 put black book on shelf
 put axe on rack
