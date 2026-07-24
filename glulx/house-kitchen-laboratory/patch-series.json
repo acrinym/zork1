@@ -1,0 +1,54 @@
+{
+  "edition": "Unofficial House Kitchen Laboratory Glulx",
+  "release": 1221,
+  "serial": "260724",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../living-room-museum/patch-series.json",
+  "base_release": 1220,
+  "base_artifact_sha256": "f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1220 layer, assign Release 1221, and load the bounded Kitchen laboratory"
+    },
+    {
+      "path": "house_kitchen_laboratory.zil",
+      "source": "overrides/house_kitchen_laboratory.zil",
+      "allow_new": true,
+      "description": "Add real-water handling, fixed Kitchen fixtures, selected cleaning/drying/heat/food/storage interactions, persistent state, and recap"
+    }
+  ],
+  "patches": [
+    "patches/001-kitchen-room-hooks.json",
+    "patches/002-kitchen-action-hook.json",
+    "patches/003-kitchen-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "assistance.zil",
+    "house_kitchen_laboratory.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "preserved_canonical_state": [
+    "the single canonical WATER object remains the only portable water quantity and is never cloned",
+    "the real bottle, lunch, garlic, knives, tools, actors, score, and puzzle routines remain authoritative",
+    "existing material cleaning and rusty-knife consequence state is reused rather than replaced",
+    "the Kitchen fixtures are fixed containers and surfaces whose contents remain in the canonical object tree",
+    "food preparation changes only bounded observation and authored offering context",
+    "heat is temporary and cannot grant weapon strength, tool repair, score, or puzzle bypass"
+  ],
+  "excluded_scope": [
+    "hunger or thirst meters",
+    "mandatory chores or maintenance",
+    "generic crafting recipes or a recipe economy",
+    "universal chemistry or ingredient combinations",
+    "automatic puzzle-water replenishment",
+    "duplicated food, water, tools, or puzzle objects",
+    "broad fire or flood simulation",
+    "new score or automatic puzzle completion",
+    "sub-beads or a parallel planning hierarchy"
+  ]
+}

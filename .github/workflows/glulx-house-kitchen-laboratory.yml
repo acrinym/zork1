@@ -1,0 +1,140 @@
+name: Zork I Glulx House Kitchen Laboratory
+
+on:
+  push:
+    branches:
+      - agent/glulx-house-kitchen-laboratory
+    paths:
+      - "glulx/house-kitchen-laboratory/**"
+      - "glulx/living-room-museum/**"
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-house-kitchen-laboratory.yml"
+  pull_request:
+    paths:
+      - "glulx/house-kitchen-laboratory/**"
+      - "glulx/living-room-museum/**"
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-house-kitchen-laboratory.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1220"
+  BASE_ARTIFACT_SHA256: f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4
+  KITCHEN_RELEASE: "1221"
+  KITCHEN_SERIAL: "260724"
+  KITCHEN_TEST_SERIAL: "990321"
+
+jobs:
+  discover-glulx-house-kitchen-laboratory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
+
+      - name: Discover Release 1221 artifact and prove Kitchen routes
+        run: bash glulx/house-kitchen-laboratory/discover.sh
+
+      - name: Upload Release 1221 discovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-house-kitchen-laboratory-discovery
+          path: |
+            glulx/build/house-kitchen-laboratory/zork1-glulx-house-kitchen-laboratory.ulx
+            glulx/build/house-kitchen-laboratory/zork1-glulx-house-kitchen-laboratory.asm
+            glulx/build/house-kitchen-laboratory/story-report.json
+            glulx/build/house-kitchen-laboratory/DISCOVERY-RECEIPT.json
+            glulx/build/house-kitchen-laboratory/SERIAL-NORMALIZATION.json
+            glulx/build/house-kitchen-laboratory/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/house-kitchen-laboratory/src/STAGING-RECEIPT.json
+            glulx/build/house-kitchen-laboratory/smell-report.json
+            glulx/build/house-kitchen-laboratory/house-kitchen-laboratory-transcript.txt
+            glulx/build/house-kitchen-laboratory/house-kitchen-laboratory-persistence-transcript.txt
+            glulx/build/house-kitchen-laboratory/*.sav
+            glulx/build/house-kitchen-laboratory/*-compile.log
+            glulx/build/house-kitchen-laboratory/*-build.log
+            glulx/build/house-kitchen-laboratory/*-restore.log
+            glulx/build/house-kitchen-laboratory/*-assemble.log
+            glulx/build/house-kitchen-laboratory/glazer-version.txt
+            glulx/house-kitchen-laboratory/patch-series.json
+            glulx/house-kitchen-laboratory/tests/house_kitchen_laboratory_persistence.json
+          if-no-files-found: warn

@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1221-KITCHEN-RECAP",
+  "path": "assistance.zil",
+  "description": "Append bounded Kitchen receipts after the Living Room museum recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<MUSEUM-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<MUSEUM-RECAP> <SET SEEN T>)>\n\t<COND (<KITCHEN-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}

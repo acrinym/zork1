@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1221-KITCHEN-ROOM-HOOKS",
+  "path": "1actions.zil",
+  "description": "Append Kitchen Laboratory projection and bounded pre/post-action hooks to the canonical Kitchen room action",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t     (T\n\t\t      <TELL \"slightly ajar.\" CR>)>\n\t       <HOUSE-STATE-PROJECT ,KITCHEN>)\n\t      (<EQUAL? .RARG ,M-ENTER>\n\t       <HOUSE-STATE-ENTER ,KITCHEN>)\n\t      (<==? .RARG ,M-BEG>\n\t       <COND (<AND <VERB? CLIMB-UP> <EQUAL? ,PRSO ,STAIRS>>\n\t\t      <DO-WALK ,P?UP>)\n\t\t     (<AND <VERB? CLIMB-UP> <EQUAL? ,PRSO ,STAIRS>>\n\t\t      <TELL \"There are no stairs leading down.\" CR>)>)>>",
+      "new": "\t\t     (T\n\t\t      <TELL \"slightly ajar.\" CR>)>\n\t       <HOUSE-STATE-PROJECT ,KITCHEN>\n\t       <KITCHEN-PROJECT>)\n\t      (<EQUAL? .RARG ,M-ENTER>\n\t       <HOUSE-STATE-ENTER ,KITCHEN>)\n\t      (<==? .RARG ,M-BEG>\n\t       <COND (<KITCHEN-BEGIN> <RTRUE>)\n\t\t     (<AND <VERB? CLIMB-UP> <EQUAL? ,PRSO ,STAIRS>>\n\t\t      <DO-WALK ,P?UP>)\n\t\t     (<AND <VERB? CLIMB-UP> <EQUAL? ,PRSO ,STAIRS>>\n\t\t      <TELL \"There are no stairs leading down.\" CR>)>)\n\t      (<EQUAL? .RARG ,M-END>\n\t       <KITCHEN-END>)>>"
+    }
+  ]
+}

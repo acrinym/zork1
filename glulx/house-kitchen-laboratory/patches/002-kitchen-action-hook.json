@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1221-KITCHEN-ACTION-HOOK",
+  "path": "shadow_logic.zil",
+  "description": "Advance bounded Kitchen timers and run specialized Kitchen handling after Shadow threats but before existing material handling",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<SHADOW-ADVANCE-THREATS>\n\t<MATERIAL-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<SHADOW-ADVANCE-THREATS>\n\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)\n\t      (<MATERIAL-NEST-HOOK> <RTRUE>)",
+      "new": "\t      (<KITCHEN-ACTION-HOOK> <RTRUE>)\n\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)\n\t      (<MATERIAL-NEST-HOOK> <RTRUE>)"
+    }
+  ]
+}
