@@ -25,7 +25,7 @@
         <SET NEXT <NEXT? .ITEM>>
         <MOVE .ITEM ,WINNER>
         <FCLEAR .ITEM ,INVISIBLE>
-        <SET ITEM .NEXT>>>
+        <SET ITEM .NEXT>>
     <RTRUE>>
 
 <ROUTINE MUSEUM-TEST-CLEAR-STATE ()
