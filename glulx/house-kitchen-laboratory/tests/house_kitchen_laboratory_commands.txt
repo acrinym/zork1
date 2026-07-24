@@ -1,13 +1,15 @@
 ksetup
 look
-wash knife in sink
-dry knife
+wash nasty knife in sink
+dry nasty knife
 put garlic on worktop
-slice garlic with knife
+slice garlic with nasty knife
 put lunch on worktop
 prepare lunch
 open cupboard
+take garlic
 put garlic in cupboard
+take lunch
 put lunch in cupboard
 fill bottle from sink
 wash wrench in sink
