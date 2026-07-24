@@ -52,9 +52,14 @@ env:
   KITCHEN_RELEASE: "1221"
   KITCHEN_SERIAL: "260724"
   KITCHEN_TEST_SERIAL: "990321"
+  KITCHEN_FILE: zork1-glulx-house-kitchen-laboratory.ulx
+  KITCHEN_GLULX_VERSION: "0x00030103"
+  KITCHEN_SIZE: "249600"
+  KITCHEN_CHECKSUM: "0x85d64142"
+  KITCHEN_SHA256: 93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f
 
 jobs:
-  discover-glulx-house-kitchen-laboratory:
+  qualify-glulx-house-kitchen-laboratory:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -110,19 +115,19 @@ jobs:
           sudo apt-get install -y build-essential libncurses-dev curl
           python -m pip install pexpect
 
-      - name: Discover Release 1221 artifact and prove Kitchen routes
-        run: bash glulx/house-kitchen-laboratory/discover.sh
+      - name: Qualify exact Release 1221 artifact, Kitchen gameplay, and persistence
+        run: bash glulx/house-kitchen-laboratory/qualify.sh
 
-      - name: Upload Release 1221 discovery evidence
+      - name: Upload qualified Release 1221 artifact and evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zork1-glulx-house-kitchen-laboratory-discovery
+          name: zork1-glulx-house-kitchen-laboratory-qualified
           path: |
             glulx/build/house-kitchen-laboratory/zork1-glulx-house-kitchen-laboratory.ulx
             glulx/build/house-kitchen-laboratory/zork1-glulx-house-kitchen-laboratory.asm
             glulx/build/house-kitchen-laboratory/story-report.json
-            glulx/build/house-kitchen-laboratory/DISCOVERY-RECEIPT.json
+            glulx/build/house-kitchen-laboratory/QUALIFICATION-RECEIPT.json
             glulx/build/house-kitchen-laboratory/SERIAL-NORMALIZATION.json
             glulx/build/house-kitchen-laboratory/TEST-SERIAL-NORMALIZATION.json
             glulx/build/house-kitchen-laboratory/src/STAGING-RECEIPT.json
