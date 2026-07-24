@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1219-HOUSE-RECAP",
+  "path": "assistance.zil",
+  "description": "Append bounded evolving-house receipts after Release 1218 room-density recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<ROOM-DENSITY-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<ROOM-DENSITY-RECAP> <SET SEEN T>)>\n\t<COND (<HOUSE-STATE-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
