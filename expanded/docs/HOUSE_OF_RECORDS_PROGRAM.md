@@ -2,18 +2,20 @@
 
 ## Status
 
-Active twelve-train, ninety-six-bead program above qualified Glulx Release `1220`.
+Active twelve-train, ninety-six-bead program above qualified Glulx Release `1221`.
 
 - **Train 1 complete:** `onyx_zork_house_state_foundation` — Release `1219`.
 - **Train 2 complete:** `onyx_zork_house_living_museum` — Release `1220`.
-- **Next train:** `onyx_zork_house_kitchen_laboratory`.
+- **Train 3 in capstone:** `onyx_zork_house_kitchen_laboratory` — qualified Release `1221`.
+- **Next existing train after closure:** `onyx_zork_house_cellar_threshold`.
 
-Current roadmap truth:
+Current capstone-candidate truth:
 
 - 12 trains;
 - 96 beads;
-- 16 closed beads across Trains 1–2;
-- 80 open beads across Trains 3–12;
+- 23 closed beads across Trains 1–3;
+- Train 3 bead 008 remains open;
+- 73 open beads total;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
@@ -36,7 +38,7 @@ The Attic should become a period-authentic archive of this player's actual run: 
 8. Actor records describe this player's relationship with the actor, not a generic biography.
 9. Area completion unlocks retrospective synthesis, not a checklist HUD.
 10. Authored bounded interactions beat universal simulation.
-11. Later trains reuse existing house and museum machinery rather than creating parallel controllers.
+11. Later trains reuse existing house machinery rather than creating parallel controllers.
 12. Trains contain beads; beads do not receive sub-beads.
 
 ## Train 1 — House State Foundation
@@ -64,17 +66,9 @@ Exact production delta:
 - new `house_state_foundation.zil`;
 - `zork1.zil`.
 
-The foundation provides compact versioned state for:
+The foundation provides compact versioned condition, collection, knowledge, security, and atmosphere state. It records bounded receipts for house use, Attic entry, Cellar crossing, return, real trophy-case collection, and physical disturbance. State derives from real canonical rooms and objects.
 
-- condition;
-- collection;
-- knowledge;
-- security;
-- atmosphere.
-
-It records bounded receipts for house use, Attic entry, Cellar crossing, return, real trophy-case collection, and physical disturbance. State derives from real canonical rooms and objects: the trophy case and `OTVAL-FROB`, rug, trap door, kitchen window, room visits, and Cellar return cycle.
-
-Release `1218` contains no canonical Bedroom, so Train 1 added no unreachable Bedroom placeholder or topology change.
+Release `1218` contains no canonical Bedroom, so Train 1 added no unreachable placeholder or topology change.
 
 Controlling record:
 
@@ -104,32 +98,80 @@ Exact production delta above Release `1219`:
 - new `living_room_museum.zil`;
 - `zork1.zil`.
 
-The canonical Living Room now contains four fixed open display surfaces:
+The canonical Living Room contains a gallery frame, weapon wall, record shelf, and relic stand. Players place, inspect, remove, and replace the original objects through ordinary parser actions. These surfaces award no score; the canonical trophy case remains authoritative.
 
-- gallery frame;
-- weapon wall;
-- record shelf;
-- relic stand.
-
-Players place, inspect, remove, and replace the original objects through ordinary parser actions. The surfaces award no score. The canonical trophy case and `OTVAL-FROB` remain the only house scoring authority.
-
-Bounded provenance and real-object synthesis cover:
-
-- painting + sword + map;
-- completed bell + candles + black-book ceremony;
-- repaired dam guide + wrench + screwdriver;
-- sword + troll axe;
-- intact or broken egg with its correctly nested canary.
-
-When Release `1219` marks the house exposed and the canonical thief remains available, one exact unsecured treasure can move into the real thief's inventory. The room retains physical evidence, and recovery follows canonical thief booty handling. Qualification proves the real painting moves from the frame to the thief and then to the Treasure Room without cloning, deletion, or a substitute token.
-
-Native persistence proves exact display placement, trophy-case score authority, group history, theft evidence, thief custody, and egg/canary nesting after deliberate corruption and ordinary restore.
-
-The capstone candidate passed all 27 workflows. One inherited Release 122 real-map route initially failed because random troll combat killed the player before the restraint commands; retrying only that unchanged job passed. No Train 2 production change was needed.
+Bounded provenance and real-object synthesis cover house history, the Hades ceremony, the repaired dam, troll conflict, and intact or broken egg/canary nesting. Exposed valuables can move into the real thief's inventory and later follow canonical booty recovery.
 
 Controlling record:
 
 `glulx/living-room-museum/README.md`
+
+## Train 3 — House Kitchen Laboratory
+
+Train:
+
+`onyx_zork_house_kitchen_laboratory`
+
+Status:
+
+`in_progress` — qualified implementation and persistence complete; capstone bead open.
+
+Qualified Release `1221` identity:
+
+- serial `260724`;
+- Glulx `3.1.3` / `0x00030103`;
+- 249,600 bytes;
+- checksum `0x85d64142`;
+- SHA-256 `93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f`.
+
+Exact base:
+
+- Release `1220` SHA-256 `f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4`.
+
+Exact production delta above Release `1220`:
+
+- `1actions.zil`;
+- `assistance.zil`;
+- new `house_kitchen_laboratory.zil`;
+- `shadow_logic.zil`;
+- `zork1.zil`.
+
+The canonical Kitchen gains four fixed fixtures:
+
+- porcelain sink;
+- wooden worktop;
+- wooden cupboard;
+- cast-iron range.
+
+Release `1221` uses the real bottle, the single canonical `WATER` object, the real lunch and garlic, the real knives and tools, existing material-cleaning state, and the existing rusty-knife consequence.
+
+Qualified behavior includes:
+
+1. bottle refill without water cloning;
+2. selected sink washing and ordinary drying;
+3. temporary range heat from a real held flame;
+4. warming food and water;
+5. heat-drying wet metal without bonuses or repairs;
+6. prepared real lunch and canonically cut real garlic;
+7. bounded hot-iron quenching and worktop rinsing;
+8. ordinary object-tree storage and retrieval;
+9. bat and cyclops offering context without replacement solutions;
+10. concise Kitchen `RECAP` receipts;
+11. native save, deliberate corruption, and exact restore.
+
+The first production compile exposed the Glulx ZIL global-variable ceiling. The correct repair packed the entire Kitchen schema into one indexed persistent table instead of deleting behavior or weakening persistence.
+
+The route also retained parser truth:
+
+- `NASTY KNIFE` disambiguates the real food knife from the rusty knife;
+- ordinary `TAKE` is required before moving an exhibit from the worktop into the cupboard;
+- existing canonical `CUT` handles `SLICE`, so the Kitchen intercepts only garlic with the real nasty knife and delegates every other cut unchanged.
+
+No hunger/thirst meter, mandatory chores, recipe economy, generic crafting, universal chemistry, automatic puzzle-water replenishment, duplicate object, broad fire/flood simulation, parallel score, or automatic puzzle completion exists.
+
+Controlling record:
+
+`glulx/house-kitchen-laboratory/README.md`
 
 ## Period presentation
 
@@ -146,11 +188,7 @@ The later archive should use the material culture of the original game's era rat
 - stamped and annotated folders;
 - a late-1970s terminal whose commands locate physical records.
 
-## Remaining house rooms and systems
-
-### Train 3 — Kitchen Laboratory
-
-Use real containers, water, food, tools, residues, timers, cupboards, and work surfaces. Support bounded cleaning, drying, warming, cooling, preparation, offerings, and authored experiments without hunger, thirst, housekeeping, universal chemistry, or a crafting tree.
+## Remaining trains
 
 ### Train 4 — Cellar Threshold
 
@@ -194,8 +232,8 @@ After victory, preserve the route, deaths, treasures, actor outcomes, area outco
 |---:|---|---|
 | 1 | `onyx_zork_house_state_foundation` | Complete — Release 1219 |
 | 2 | `onyx_zork_house_living_museum` | Complete — Release 1220 |
-| 3 | `onyx_zork_house_kitchen_laboratory` | Planned / next |
-| 4 | `onyx_zork_house_cellar_threshold` | Planned |
+| 3 | `onyx_zork_house_kitchen_laboratory` | Capstone candidate — Release 1221 |
+| 4 | `onyx_zork_house_cellar_threshold` | Planned / next |
 | 5 | `onyx_zork_house_correspondence_visitors` | Planned |
 | 6 | `onyx_zork_attic_archive_core` | Planned |
 | 7 | `onyx_zork_attic_npc_dossiers` | Planned |
@@ -224,7 +262,7 @@ Every train must:
 6. run deterministic player-facing routes;
 7. deliberately corrupt state and prove native restore;
 8. prove no duplicate object, actor, score, or record;
-9. update the program, handoff, frontier, matrix, README, train, and issue ledger;
+9. update the program, handoff, README, train, and issue ledger;
 10. close beads only after exact-head evidence;
 11. keep PRs open and unmerged absent Justin's explicit merge whistle.
 
