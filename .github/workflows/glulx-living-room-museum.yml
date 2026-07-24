@@ -1,0 +1,138 @@
+name: Zork I Glulx Living Room Museum
+
+on:
+  push:
+    branches:
+      - agent/glulx-living-room-museum
+    paths:
+      - "glulx/living-room-museum/**"
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-living-room-museum.yml"
+  pull_request:
+    paths:
+      - "glulx/living-room-museum/**"
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-living-room-museum.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1219"
+  BASE_ARTIFACT_SHA256: e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f
+  MUSEUM_RELEASE: "1220"
+  MUSEUM_SERIAL: "260724"
+  MUSEUM_TEST_SERIAL: "990221"
+
+jobs:
+  discover-glulx-living-room-museum:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
+
+      - name: Discover Release 1220 artifact and prove museum routes
+        run: bash glulx/living-room-museum/discover.sh
+
+      - name: Upload Release 1220 discovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-living-room-museum-discovery
+          path: |
+            glulx/build/living-room-museum/zork1-glulx-living-room-museum.ulx
+            glulx/build/living-room-museum/zork1-glulx-living-room-museum.asm
+            glulx/build/living-room-museum/story-report.json
+            glulx/build/living-room-museum/BUILD-RECEIPT.json
+            glulx/build/living-room-museum/SERIAL-NORMALIZATION.json
+            glulx/build/living-room-museum/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/living-room-museum/src/STAGING-RECEIPT.json
+            glulx/build/living-room-museum/smell-report.json
+            glulx/build/living-room-museum/living-room-museum-transcript.txt
+            glulx/build/living-room-museum/living-room-museum-persistence-transcript.txt
+            glulx/build/living-room-museum/*.sav
+            glulx/build/living-room-museum/*-compile.log
+            glulx/build/living-room-museum/*-build.log
+            glulx/build/living-room-museum/*-restore.log
+            glulx/build/living-room-museum/*-assemble.log
+            glulx/build/living-room-museum/glazer-version.txt
+            glulx/living-room-museum/patch-series.json
+            glulx/living-room-museum/tests/living_room_museum_persistence.json
+          if-no-files-found: warn
