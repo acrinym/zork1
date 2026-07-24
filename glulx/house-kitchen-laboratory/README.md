@@ -2,13 +2,13 @@
 
 ## Status
 
-Qualified House of Records Train 3 implementation above exact Living Room Museum Release `1220`.
+House of Records Train 3 is complete above exact Living Room Museum Release `1220`.
 
 Train:
 
 `onyx_zork_house_kitchen_laboratory`
 
-Current capstone-candidate state is seven closed implementation/qualification beads and one open capstone bead. No sub-beads, sub-trains, or parallel planning hierarchy exist.
+All eight existing Train 3 beads are closed. The House of Records roadmap now contains 24 closed beads and 72 open beads. No sub-beads, sub-trains, or parallel planning hierarchy exist.
 
 ## Locked identity
 
@@ -82,6 +82,14 @@ The permanent pinned route proves:
 11. packed Kitchen state and fixture contents through native `SAVE` and `RESTORE` after deliberate corruption;
 12. production/test isolation.
 
+All 29 capstone-candidate workflows passed on exact head `f540c6b12c7b56bceedbf8bee8ddae3966416ccb`. One inherited Release 122 real-map route initially failed because random troll combat killed the test player before the scripted restraint sequence; its exact artifact had rebuilt correctly, and retrying only that unchanged job passed.
+
 ## Explicit exclusions
 
 No hunger or thirst meter, mandatory chores, recipe economy, generic crafting, universal chemistry, automatic puzzle-water replenishment, duplicated objects, broad fire/flood simulation, parallel score, or automatic puzzle completion.
+
+## Next existing train
+
+`onyx_zork_house_cellar_threshold`
+
+Train 4 must execute its existing eight beads directly above exact qualified Release `1221`.
