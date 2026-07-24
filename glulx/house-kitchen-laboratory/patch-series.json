@@ -33,6 +33,13 @@
     "shadow_logic.zil",
     "zork1.zil"
   ],
+  "expected_artifact": {
+    "file": "zork1-glulx-house-kitchen-laboratory.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 249600,
+    "checksum_hex": "0x85d64142",
+    "sha256": "93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f"
+  },
   "preserved_canonical_state": [
     "the single canonical WATER object remains the only portable water quantity and is never cloned",
     "the real bottle, lunch, garlic, knives, tools, actors, score, and puzzle routines remain authoritative",
