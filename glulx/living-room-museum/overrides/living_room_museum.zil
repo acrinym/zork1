@@ -115,7 +115,7 @@
            <TELL CR "Its current display is:" CR>
            <REPEAT ()
                <COND (<NOT .ITEM> <RETURN>)>
-               <TELL "  " D .ITEM " — ">
+               <TELL "  " D .ITEM " - ">
                <MUSEUM-PROVENANCE .ITEM>
                <COND (<MUSEUM-ACTIVE-FIELD-OBJECT? .ITEM>
                       <TELL "; still active field equipment, not a retired exhibit">)>
@@ -292,7 +292,7 @@
     <COND (<MUSEUM-GROUP-RITUAL?>
            <TELL "The bell, candles, and black book now read as a complete record of the ceremony rather than three disconnected tools." CR>)>
     <COND (<MUSEUM-GROUP-DAM?>
-           <TELL "The guidebook and cleaned maintenance tools form an accidental bureaucratic monument to the repaired dam." CR>)>
+           <TELL "The guidebook and maintenance tools form an accidental bureaucratic monument to the repaired dam." CR>)>
     <COND (<MUSEUM-GROUP-CONFLICT?>
            <TELL "The elvish sword beside the troll's axe turns the weapon wall into a blunt account of one passage that did not open politely." CR>)>
     <COND (<MUSEUM-GROUP-CANARY?>
