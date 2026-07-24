@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1220-MUSEUM-RECAP",
+  "path": "assistance.zil",
+  "description": "Append bounded Living Room museum receipts after the Release 1219 house recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<HOUSE-STATE-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<HOUSE-STATE-RECAP> <SET SEEN T>)>\n\t<COND (<MUSEUM-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
