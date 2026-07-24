@@ -48,9 +48,12 @@ env:
   HOUSE_RELEASE: "1219"
   HOUSE_SERIAL: "260724"
   HOUSE_TEST_SERIAL: "990220"
+  HOUSE_SIZE: "230144"
+  HOUSE_CHECKSUM: "0xbe6bc80a"
+  HOUSE_SHA256: e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f
 
 jobs:
-  discover-glulx-house-state-foundation:
+  qualify-glulx-house-state-foundation:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -106,14 +109,14 @@ jobs:
           sudo apt-get install -y build-essential libncurses-dev curl
           python -m pip install pexpect
 
-      - name: Discover Release 1219 artifact and prove foundation routes
-        run: bash glulx/house-state-foundation/discover.sh
+      - name: Qualify exact Release 1219 artifact, gameplay, migration, and persistence
+        run: bash glulx/house-state-foundation/qualify.sh
 
-      - name: Upload Release 1219 discovery evidence
+      - name: Upload qualified Release 1219 artifact and evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zork1-glulx-house-state-foundation-discovery
+          name: zork1-glulx-house-state-foundation-qualified
           path: |
             glulx/build/house-state-foundation/zork1-glulx-house-state-foundation.ulx
             glulx/build/house-state-foundation/zork1-glulx-house-state-foundation.asm
