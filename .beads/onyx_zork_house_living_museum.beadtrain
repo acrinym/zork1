@@ -5,7 +5,7 @@ description = """
 Turn the Living Room into an optional physical autobiography while keeping the trophy case and canonical scoring authoritative.
 """
 created     = "2026-07-23"
-status      = "planned"
+status      = "in_progress"
 
 [[cars]]
 id = "registry"
@@ -75,4 +75,4 @@ summary = "Publish exact boundaries, routes, evidence, and hooks for later house
 one_liner = "Turn the Living Room into an optional physical autobiography while keeping the trophy case and canonical scoring authoritative."
 prior_car = "zork1-house-state-008"
 couples_with = ["onyx_zork_glulx_room_density"]
-watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "house_living_museum", "SAVE", "RESTORE"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "living_room_museum", "SAVE", "RESTORE"]
