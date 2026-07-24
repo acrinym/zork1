@@ -1,0 +1,58 @@
+{
+  "edition": "Unofficial Living Room Museum Glulx",
+  "release": 1220,
+  "serial": "260724",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../house-state-foundation/patch-series.json",
+  "base_release": 1219,
+  "base_artifact_sha256": "e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1219 layer, assign Release 1220, and load the Living Room museum"
+    },
+    {
+      "path": "living_room_museum.zil",
+      "source": "overrides/living_room_museum.zil",
+      "allow_new": true,
+      "description": "Add fixed display surfaces, real-object registry, provenance, synthesis, theft evidence, recap, and persistence"
+    }
+  ],
+  "patches": [
+    "patches/001-living-room-museum-hooks.json",
+    "patches/002-museum-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "assistance.zil",
+    "living_room_museum.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-living-room-museum.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 0,
+    "checksum_hex": "DISCOVERY",
+    "sha256": "DISCOVERY"
+  },
+  "preserved_canonical_state": [
+    "the canonical trophy case and OTVAL-FROB remain the only house scoring authority",
+    "every displayed item is the original real object and remains removable through ordinary parser actions",
+    "nested object trees move only with their real root container and are never flattened or duplicated",
+    "fixed museum surfaces add no treasure, score, alternate solution, or puzzle completion",
+    "active field objects remain behaviorally active and are explicitly described as non-retired",
+    "museum theft moves one real unsecured valuable into the canonical thief inventory for canonical recovery",
+    "Release 1219 house state and every earlier qualified layer remain unchanged"
+  ],
+  "excluded_scope": [
+    "duplicate display records or cloned treasures",
+    "parallel museum score or automatic trophy-case credit",
+    "trapping or retiring completion-critical objects",
+    "generalized furniture placement or base-building",
+    "universal provenance database or transcript archive",
+    "Kitchen, Cellar, visitor, dream, playback, death recovery, armor, or Zork Plus machinery",
+    "Wizard of Frobozz"
+  ]
+}
