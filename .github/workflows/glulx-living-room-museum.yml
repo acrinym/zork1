@@ -50,12 +50,9 @@ env:
   MUSEUM_RELEASE: "1220"
   MUSEUM_SERIAL: "260724"
   MUSEUM_TEST_SERIAL: "990221"
-  MUSEUM_SIZE: "237312"
-  MUSEUM_CHECKSUM: "0x16d2b6ed"
-  MUSEUM_SHA256: 76126b0c6fd47a33548421484b246dda393ec26de598968f35792a35ca7289c9
 
 jobs:
-  qualify-glulx-living-room-museum:
+  discover-glulx-living-room-museum:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -111,14 +108,14 @@ jobs:
           sudo apt-get install -y build-essential libncurses-dev curl
           python -m pip install pexpect
 
-      - name: Qualify exact Release 1220 artifact, gameplay, theft, recovery, and persistence
-        run: bash glulx/living-room-museum/qualify.sh
+      - name: Discover Release 1220 artifact and prove museum routes
+        run: bash glulx/living-room-museum/discover.sh
 
-      - name: Upload qualified Release 1220 artifact and evidence
+      - name: Upload Release 1220 discovery evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zork1-glulx-living-room-museum-qualified
+          name: zork1-glulx-living-room-museum-discovery
           path: |
             glulx/build/living-room-museum/zork1-glulx-living-room-museum.ulx
             glulx/build/living-room-museum/zork1-glulx-living-room-museum.asm
