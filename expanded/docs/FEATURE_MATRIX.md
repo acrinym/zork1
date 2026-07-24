@@ -18,8 +18,9 @@
 | Unofficial Ritual Resonance Glulx | `.ulx` | Release 1216 / `260720` | Qualified bell, candle, black-book, mirror, hot-bell, ceremony-report, and canonical exorcism-preserving interactions |
 | Unofficial Material Consequences Glulx | `.ulx` | Release 1217 / `260722` | Qualified rope anchors, sack cinching, water/tool/rust state, nest soaking, boarded-surface experiments, recap, and persistence |
 | Unofficial Room Density Glulx | `.ulx` | Release 1218 / `260723` | Qualified room-scoped visible nouns, bounded physical intent, canonical travel delegation, recap, and persistence |
+| Unofficial House State Foundation Glulx | `.ulx` | Release 1219 / `260724` | Qualified evolving-house substrate, bounded receipts, state projection, migration, recap, and persistence |
 
-Release `1216` persistence remains a qualification-only train over its exact locked artifact. Releases `1217` and `1218` are separate production editions with their own locked artifacts and focused persistence routes.
+Release `1216` persistence remains a qualification-only train over its exact locked artifact. Releases `1217`–`1219` are separate production editions with their own locked artifacts and focused persistence routes.
 
 ## Release 121 interaction foundation
 
@@ -183,6 +184,39 @@ Locked artifact:
 
 Release `1218` adds no portable scenery object, free-form parser, universal fallback, new treasure, score, timer, actor state, hidden passage, optional geography, or alternate solution.
 
+### Release 1219 — House of Records foundation
+
+Release `1219` executes the existing `onyx_zork_house_state_foundation` train above exact Release `1218` and changes exactly:
+
+- `1actions.zil`;
+- `1dungeon.zil`;
+- `assistance.zil`;
+- new `house_state_foundation.zil`;
+- `zork1.zil`.
+
+Implemented and qualified:
+
+1. compact versioned condition, collection, knowledge, security, and atmosphere state;
+2. bounded receipts for house use, Attic, Cellar, return, collection, and disturbance;
+3. projection appended after canonical Living Room, Kitchen, Attic, and Cellar descriptions;
+4. real trophy-case collection derived through `OTVAL-FROB`;
+5. real rug, trap-door, kitchen-window, and return-cycle authority;
+6. no parallel score, object tree, puzzle state, or chore loop;
+7. conservative migration from existing canonical world state;
+8. native save/restore after deliberate global and object corruption;
+9. production/test isolation;
+10. no Bedroom placeholder or topology change.
+
+Locked artifact:
+
+- Release `1219` / serial `260724`;
+- Glulx `3.1.3` / `0x00030103`;
+- `230,144` bytes;
+- checksum `0xbe6bc80a`;
+- SHA-256 `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f`.
+
+Train 1 is complete with eight closed beads. The remaining eighty-eight House of Records beads remain open in their existing trains.
+
 ## Validation coverage
 
 | Coverage | Method |
@@ -197,6 +231,8 @@ Release `1218` adds no portable scenery object, free-form parser, universal fall
 | Release 1217 artifact | Fail-closed 217,344-byte `.ulx`, checksum `0xb0028984`, SHA-256 `2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da` |
 | Release 1218 staging | Exact Release 1217 stage followed by an exact four-path changed-set gate |
 | Release 1218 artifact | Fail-closed 227,840-byte `.ulx`, checksum `0x3b65ecaf`, SHA-256 `efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521` |
+| Release 1219 staging | Exact Release 1218 stage followed by an exact five-path changed-set gate |
+| Release 1219 artifact | Fail-closed 230,144-byte `.ulx`, checksum `0xbe6bc80a`, SHA-256 `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f` |
 | Troll alternate | Real rope acquisition, timed opening, restraint, axe drop, passage travel, untie restoration, and recap |
 | Egg outcomes | Prepared intact catch and canonical `BAD-EGG` broken egg/canary state |
 | Dam mechanisms | Panel diagnostics, possession checks, both gate directions, lighting, leak, wrong tools, repair, and recap |
@@ -206,12 +242,19 @@ Release `1218` adds no portable scenery object, free-form parser, universal fall
 | Release 1217 persistence | Two native saves prove composite material state, wet-timer resumption, restored movement blocking, and restored sack-opening refusal |
 | Release 1218 gameplay | Native room tour proves every selected visible noun, bounded action family, recap category, and established travel delegation |
 | Release 1218 persistence | Deliberate clearing followed by native restore proves all seven room-discovery categories serialize without repair |
-| Production/test isolation | Production source contains no setup, positioning, mutation, or report verbs from qualification stories |
+| Release 1219 gameplay | Native house route proves entry, Attic, Cellar, return, real trophy-case collection, disturbance, projection, and recap |
+| Release 1219 persistence | Deliberate global/object corruption followed by native restore proves exact house state and migration behavior without repair |
+| Production/test isolation | Production source contains no setup, positioning, mutation, migration, or report verbs from qualification stories |
 | Cross-VM parity | Locked Release 122 and 1214 artifacts run under their native interpreters and compare shared semantic outcomes |
+| House roadmap integrity | Twelve trains / ninety-six beads; Train 1 complete with eight closed and eighty-eight open |
 | Beadtrain integrity | Completed and active trains validate against canonical and sharded issue ledgers |
 
 ## Still requiring dedicated work
 
+- House of Records Train 2: Living Room museum and real-object displays;
+- House of Records Train 3: Kitchen laboratory and preparation;
+- House of Records Train 4: Cellar expedition threshold;
+- House of Records Trains 5–12: correspondence, archive, dossiers, case files, playback, rest, vulnerability, and expedition boxes;
 - restored bound-troll recovery and renewed-danger long routes;
 - cyclops impatience and lullaby timing;
 - thief bargain with carried real treasure;

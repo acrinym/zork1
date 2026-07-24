@@ -1,0 +1,22 @@
+{
+  "id": "Z1-GLULX-1219-HOUSE-ROOM-HOOKS",
+  "path": "1actions.zil",
+  "description": "Attach the compact house-state substrate to canonical Kitchen, Living Room, and Cellar room actions without replacing their behavior",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t     (T\n\t\t      <TELL \"slightly ajar.\" CR>)>)\n\t      (<==? .RARG ,M-BEG>",
+      "new": "\t\t     (T\n\t\t      <TELL \"slightly ajar.\" CR>)>\n\t       <HOUSE-STATE-PROJECT ,KITCHEN>)\n\t      (<EQUAL? .RARG ,M-ENTER>\n\t       <HOUSE-STATE-ENTER ,KITCHEN>)\n\t      (<==? .RARG ,M-BEG>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t       <CRLF>\n\t       T)\n\t      (<EQUAL? .RARG ,M-END>\n\t       <COND",
+      "new": "\t       <CRLF>\n\t       <HOUSE-STATE-PROJECT ,LIVING-ROOM>\n\t       T)\n\t      (<EQUAL? .RARG ,M-ENTER>\n\t       <HOUSE-STATE-ENTER ,LIVING-ROOM>)\n\t      (<EQUAL? .RARG ,M-END>\n\t       <HOUSE-STATE-AFTER-LIVING-ACTION>\n\t       <COND"
+    },
+    {
+      "expected_count": 1,
+      "old": "steep metal ramp which is unclimbable.\" CR>)\n\t(<EQUAL? .RARG ,M-ENTER>\n\t <COND",
+      "new": "steep metal ramp which is unclimbable.\" CR>\n\t <HOUSE-STATE-PROJECT ,CELLAR>)\n\t(<EQUAL? .RARG ,M-ENTER>\n\t <HOUSE-STATE-ENTER ,CELLAR>\n\t <COND"
+    }
+  ]
+}

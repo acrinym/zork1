@@ -1,12 +1,13 @@
 # Expansion frontier
 
-Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified earned absurd alternate solutions. The Glulx lineage is now qualified through Room Density Release `1218`, stacked above exact Release `1217` material consequences and exact Release `1216` save-file persistence.
+Release 121 established the broad reactive and assistance architecture. Release 122 added the first qualified earned absurd alternate solutions. The Glulx lineage is now qualified through House State Foundation Release `1219`, stacked above exact Release `1218` room density, Release `1217` material consequences, and Release `1216` save-file persistence.
 
-Three frontiers must remain separate:
+Four frontiers must remain separate:
 
-1. deepen actor memory through focused deterministic state machines;
-2. add further earned alternate solutions only when real objects, preparation, risk, and canonical consequences justify them;
-3. add optional geography only after core rooms and actors are strong.
+1. execute the existing House of Records trains directly, without sub-beads or parallel planning layers;
+2. deepen actor memory through focused deterministic state machines;
+3. add further earned alternate solutions only when real objects, preparation, risk, and canonical consequences justify them;
+4. add optional geography only after core rooms, house systems, and actors are strong.
 
 ## 0. Glulx upstream reconciliation — complete
 
@@ -42,7 +43,7 @@ Release `1214` ports only the earned Release 122 troll-restraint and nest-fire o
 
 Hidden Glade, songbird geography, troll bribe, cyclops lullaby, thief bargain, full Adventurer Misconduct, broad fire propagation, generalized spells, Version 3 object-slot cleanup, and the Wizard remain separate scope.
 
-## 0.6 Flood Control Dam mechanisms — complete in PR #7
+## 0.6 Flood Control Dam mechanisms — complete
 
 Release `1215` makes Flood Control Dam #3 inspectable, operable, breakable, and repairable while preserving its canonical state machine, reservoir timers, lighting, leak, and real repair.
 
@@ -53,7 +54,7 @@ Release `1215` makes Flood Control Dam #3 inspectable, operable, breakable, and 
 - checksum `0x3d135bb8`;
 - SHA-256 `ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed`.
 
-## 0.7 Ritual resonance and black-book knowledge — complete in PR #8
+## 0.7 Ritual resonance and black-book knowledge — complete
 
 Release `1216` makes the canonical ceremony discoverable and physically responsive while leaving the original exorcism state, timers, object exchange, ghost removal, and order authoritative.
 
@@ -64,7 +65,7 @@ Release `1216` makes the canonical ceremony discoverable and physically responsi
 - checksum `0x3d27d123`;
 - SHA-256 `4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2`.
 
-## 0.8 Persistent-state save and restore — complete in PR #10
+## 0.8 Persistent-state save and restore — complete
 
 A qualification-only train over exact Release `1216` proves ordinary native Glulxe saves preserve:
 
@@ -79,7 +80,7 @@ A qualification-only train over exact Release `1216` proves ordinary native Glul
 
 No new release number, autosave UI, save format, production command, or post-restore repair was added.
 
-## 0.9 Non-dam material consequences — complete in PR #11
+## 0.9 Non-dam material consequences — complete
 
 Release `1217` is an isolated production layer above exact Release `1216`. It deepens a focused set of real objects and visible surfaces without becoming a crafting system or physics simulator.
 
@@ -111,7 +112,7 @@ Implemented and qualified:
 
 The production layer changes exactly four staged paths and rejects every test-only setup, mutation, positioning, and report verb.
 
-## 0.10 Room density and parser kindness — complete in PR #12
+## 0.10 Room density and parser kindness — complete
 
 Release `1218` is an isolated production layer above exact Release `1217`. It turns explicitly described scenery into bounded room-scoped parser targets without creating a universal scenery object or free-form parser.
 
@@ -141,11 +142,57 @@ Implemented and qualified:
 
 This completes the focused first room-density pass. Future parser work should be evidence-driven and local, not another broad sweep of every noun/preposition pair.
 
-## 0.11 Focused actor state and long routes — strongest next train
+## 0.11 House of Records Train 1 — complete
 
-The strongest next player-facing train is remembered actor state proved through deterministic routes, not open-ended conversation.
+Release `1219` executes the existing `onyx_zork_house_state_foundation` train directly. No sub-beads or parallel planning hierarchy were added.
 
-Prioritize:
+Implemented and qualified:
+
+1. exact Release `1218` base and exact five-path production delta;
+2. compact versioned condition, collection, knowledge, security, and atmosphere state;
+3. bounded house-use, Attic, Cellar, return, collection, and disturbance receipts;
+4. state projection appended after canonical Living Room, Kitchen, Attic, and Cellar descriptions;
+5. real trophy-case authority through `OTVAL-FROB` and ordinary parser commands;
+6. no parallel score, duplicate treasure, auto-solve, topology change, or chore loop;
+7. conservative migration from existing canonical world state;
+8. deliberate corruption and native `SAVE`/`RESTORE` without repair;
+9. production/test isolation;
+10. eight closed Train 1 beads and eighty-eight remaining House of Records beads.
+
+### Qualified artifact
+
+- Release `1219` / serial `260724`;
+- Glulx `3.1.3` / `0x00030103`;
+- 230,144 bytes;
+- checksum `0xbe6bc80a`;
+- SHA-256 `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f`.
+
+Release `1218` contains no canonical Bedroom, so Train 1 added no unreachable placeholder. Later authored topology must reuse the same foundation.
+
+## 0.12 House of Records Train 2 — strongest next train
+
+Continue directly with:
+
+`onyx_zork_house_living_museum`
+
+Execute its existing eight beads:
+
+1. displayable-object registry and provenance;
+2. canonical trophy-case integration;
+3. wall, shelf, stand, and frame surfaces;
+4. place, move, and recover displays;
+5. related-object group synthesis;
+6. theft, disturbance, and display security;
+7. museum save/restore and object-tree proof;
+8. Living Room museum capstone.
+
+The train must use real objects and Release `1219` house state. It must not duplicate treasures, trap completion-critical objects, add parallel score, or create sub-beads.
+
+## 0.13 Focused actor state and long routes — later separate train
+
+Remembered actor state remains important, but it follows the requested House of Records work rather than interrupting it.
+
+Prioritize later:
 
 1. restored bound troll, `UNTIE`, queued recovery, weapon reacquisition, and renewed real danger;
 2. cyclops impatience timing and the repeated lullaby route;
@@ -155,11 +202,9 @@ Prioritize:
 6. actor state exposed through concise observation and `RECAP`, not a dialogue engine;
 7. no infinite-chatbot actor surface.
 
-The queued troll-recovery concept preserved from superseded PR #9 belongs here, not inside Release `1217` or `1218`.
+## 0.14 Optional geography and broader character ports
 
-## 0.12 Optional geography and broader character ports
-
-Port separately and deliberately only after focused character state is strong:
+Port separately and deliberately only after focused house and character state are strong:
 
 1. songbird and Hidden Glade;
 2. troll bribe;
@@ -169,7 +214,7 @@ Port separately and deliberately only after focused character state is strong:
 6. `FOLLY` and troll bemusement;
 7. Version 3 object-slot cleanup where Glulx no longer needs the workaround.
 
-Release 122 parity, dam mechanisms, ritual resonance, Release 1216 persistence, Release 1217 material consequences, and Release 1218 room density are no longer backlog items.
+Release 122 parity, dam mechanisms, ritual resonance, Release 1216 persistence, Release 1217 material consequences, Release 1218 room density, and Release 1219 house foundation are no longer backlog items.
 
 ## 1. Absurd Alternate Zork I Release 122 — complete
 
@@ -204,7 +249,7 @@ Controlling record: [`../../alternate/README.md`](../../alternate/README.md).
 
 The Wizard of Frobozz remains Zork II scope.
 
-## 1.1 Further earned alternate solutions — after actor priorities
+## 1.1 Further earned alternate solutions — after House and actor priorities
 
 Candidates must:
 
@@ -226,24 +271,42 @@ Add deterministic routes for:
 - renewed troll danger after restored restraint and `UNTIE`;
 - cyclops impatience and lullaby timing;
 - thief bargain with carried treasure;
-- broader whole-game saves outside the focused Release `1213`–`1218` state matrices.
+- broader whole-game saves outside the focused Release `1213`–`1219` state matrices.
 
 ## 3. Room density — first focused pass complete
 
 Release `1218` covers seven high-value discovery categories where room prose previously advertised nouns the parser could not meaningfully address. Additional room work must begin from observed parser failures and remain room-scoped.
 
-## 4. Character memory — next priority
+## 4. House of Records — active priority
+
+Train 1 is complete. Continue the existing trains and beads in order or by documented dependency:
+
+- Living Room museum;
+- Kitchen laboratory;
+- Cellar threshold;
+- correspondence and visitors;
+- Attic archive core;
+- NPC dossiers;
+- area case files;
+- playback;
+- rest and dreams;
+- house vulnerability;
+- expedition archive.
+
+Do not create sub-beads beneath these trains.
+
+## 5. Character memory — later priority
 
 Deepen troll, cyclops, and thief state machines so they remember meaningful gifts, threats, mercy, deception, and restraint without becoming infinite chatbots.
 
-## 5. Great Underground Empire history
+## 6. Great Underground Empire history
 
 Add optional environmental storytelling through maintenance records, inscriptions, employee areas, and artifact descriptions. Lore should reward exploration without becoming mandatory exposition.
 
-## 6. Optional geography
+## 7. Optional geography
 
-After focused actor memory is strong, add only side locations justified by story, puzzle logic, or world reactivity.
+After House of Records and focused actor memory are strong, add only side locations justified by story, puzzle logic, or world reactivity.
 
-## 7. Parser kindness — bounded first pass complete
+## 8. Parser kindness — bounded first pass complete
 
 Release `1218` expands explicit room vocabulary and existing action routing without unconstrained natural language. Future improvements should target demonstrated ambiguity, pronoun, container, or synonym failures one coherent surface at a time.

@@ -1,0 +1,39 @@
+name: Zork I House State Foundation Beadtrain
+
+on:
+  push:
+    branches:
+      - agent/glulx-house-state-foundation
+    paths:
+      - ".beads/onyx_zork_house_state_foundation.beadtrain"
+      - ".beads/issues-zork-house-of-records-*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/house-state-foundation-beadtrain.yml"
+  pull_request:
+    paths:
+      - ".beads/onyx_zork_house_state_foundation.beadtrain"
+      - ".beads/issues-zork-house-of-records-*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/house-state-foundation-beadtrain.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-house-state-foundation-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate completed House State Foundation train
+        run: |
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
+            .beads/onyx_zork_house_state_foundation.beadtrain

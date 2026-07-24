@@ -1,0 +1,139 @@
+name: Zork I Glulx House State Foundation
+
+on:
+  push:
+    branches:
+      - agent/glulx-house-state-foundation
+    paths:
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-house-state-foundation.yml"
+  pull_request:
+    paths:
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-house-state-foundation.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1218"
+  BASE_ARTIFACT_SHA256: efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521
+  HOUSE_RELEASE: "1219"
+  HOUSE_SERIAL: "260724"
+  HOUSE_TEST_SERIAL: "990220"
+  HOUSE_SIZE: "230144"
+  HOUSE_CHECKSUM: "0xbe6bc80a"
+  HOUSE_SHA256: e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f
+
+jobs:
+  qualify-glulx-house-state-foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
+
+      - name: Qualify exact Release 1219 artifact, gameplay, migration, and persistence
+        run: bash glulx/house-state-foundation/qualify.sh
+
+      - name: Upload qualified Release 1219 artifact and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-house-state-foundation-qualified
+          path: |
+            glulx/build/house-state-foundation/zork1-glulx-house-state-foundation.ulx
+            glulx/build/house-state-foundation/zork1-glulx-house-state-foundation.asm
+            glulx/build/house-state-foundation/story-report.json
+            glulx/build/house-state-foundation/BUILD-RECEIPT.json
+            glulx/build/house-state-foundation/SERIAL-NORMALIZATION.json
+            glulx/build/house-state-foundation/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/house-state-foundation/src/STAGING-RECEIPT.json
+            glulx/build/house-state-foundation/smell-report.json
+            glulx/build/house-state-foundation/house-state-transcript.txt
+            glulx/build/house-state-foundation/house-state-persistence-transcript.txt
+            glulx/build/house-state-foundation/*.sav
+            glulx/build/house-state-foundation/*-compile.log
+            glulx/build/house-state-foundation/*-build.log
+            glulx/build/house-state-foundation/*-restore.log
+            glulx/build/house-state-foundation/*-assemble.log
+            glulx/build/house-state-foundation/glazer-version.txt
+            glulx/house-state-foundation/patch-series.json
+            glulx/house-state-foundation/tests/house_state_persistence.json
+          if-no-files-found: warn
