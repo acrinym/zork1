@@ -23,7 +23,8 @@
   "patches": [
     "patches/001-kitchen-room-hooks.json",
     "patches/002-kitchen-action-hook.json",
-    "patches/003-kitchen-recap.json"
+    "patches/003-kitchen-recap.json",
+    "patches/004-kitchen-cut-hook.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
