@@ -5,61 +5,58 @@
 Active twelve-train, ninety-six-bead program above qualified Glulx Release `1220`.
 
 - **Train 1 complete:** `onyx_zork_house_state_foundation` — Release `1219`.
-- **Train 2 in capstone:** `onyx_zork_house_living_museum` — qualified Release `1220`.
+- **Train 2 complete:** `onyx_zork_house_living_museum` — Release `1220`.
+- **Next train:** `onyx_zork_house_kitchen_laboratory`.
 
-Current capstone-candidate state:
+Current roadmap truth:
 
-- 12 trains total;
-- 96 beads total;
-- 8 closed Train 1 beads;
-- 7 closed Train 2 implementation/qualification beads;
-- Train 2 capstone bead open;
-- 81 open beads total;
-- no sub-beads or planning hierarchy beneath the existing train beads.
-
-This program has two connected product directions:
-
-1. make the white house an evolving home base, museum, workshop, archive, refuge, and possible target rather than only a treasure deposit;
-2. make the Attic a period-authentic archive of the player's actual adventure, including notes, NPC statements, area case files, curated transcripts, postgame playback, and separate records for multiple completed expeditions.
-
-The program is intentionally split into **twelve trains and ninety-six beads**. The beads are the implementation units. They do not need another hierarchy beneath them.
+- 12 trains;
+- 96 beads;
+- 16 closed beads across Trains 1–2;
+- 80 open beads across Trains 3–12;
+- no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
 
-The house should evolve because of the adventure, not because the player performs chores.
+The white house should evolve because of the adventure, not because the player performs chores. A meaningful change must follow from something the player discovered, recovered, displayed, repaired, damaged, carried home, released, received, survived, or foolishly experimented with.
 
-A meaningful house change must come from something the player discovered, recovered, displayed, repaired, damaged, carried home, released, promised, received, survived, or foolishly experimented with.
-
-The Attic must not be a generic encyclopedia. It should preserve evidence from this player's run:
-
-- notes and letters;
-- important NPC statements;
-- gifts, threats, mercy, deception, restraint, bargains, and combat;
-- puzzle and mechanism discoveries;
-- altered object states;
-- major commands and responses;
-- area-completion records;
-- final world and house state;
-- and later, comparisons between separate completed expeditions.
+The Attic should become a period-authentic archive of this player's actual run: notes, correspondence, NPC statements, area case files, curated transcripts, maps, photographs, cassette-style playback, completed expedition boxes, and comparisons between separate histories.
 
 > The house has been quietly writing the history of you.
 
-## Qualified Train 1 — Release 1219 house-state foundation
+## Controlling rules
 
-Train 1 established the shared substrate that every later House of Records train must reuse rather than replace.
+1. Adventure consequences, not upkeep.
+2. Canonical object and actor identity remains authoritative.
+3. The trophy case keeps canonical scoring.
+4. No unseen solution leakage.
+5. Playback never mutates live state.
+6. Mutually exclusive runs remain separate expedition histories.
+7. Every stateful train proves native `SAVE` and `RESTORE` after deliberate corruption.
+8. Actor records describe this player's relationship with the actor, not a generic biography.
+9. Area completion unlocks retrospective synthesis, not a checklist HUD.
+10. Authored bounded interactions beat universal simulation.
+11. Later trains reuse existing house and museum machinery rather than creating parallel controllers.
+12. Trains contain beads; beads do not receive sub-beads.
 
-Qualified identity:
+## Train 1 — House State Foundation
 
-- edition: Unofficial House State Foundation Glulx;
-- release: `1219`;
-- serial: `260724`;
-- output: `zork1-glulx-house-state-foundation.ulx`;
-- Glulx version: `3.1.3` / `0x00030103`;
-- size: `230,144` bytes;
-- checksum: `0xbe6bc80a`;
-- SHA-256: `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f`.
+Train:
 
-Release `1219` derives from exact qualified Release `1218` and changes exactly:
+`onyx_zork_house_state_foundation`
+
+Status:
+
+`complete`
+
+Qualified Release `1219` identity:
+
+- serial `260724`;
+- 230,144 bytes;
+- checksum `0xbe6bc80a`;
+- SHA-256 `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f`.
+
+Exact production delta:
 
 - `1actions.zil`;
 - `1dungeon.zil`;
@@ -67,7 +64,7 @@ Release `1219` derives from exact qualified Release `1218` and changes exactly:
 - new `house_state_foundation.zil`;
 - `zork1.zil`.
 
-It adds five compact state axes:
+The foundation provides compact versioned state for:
 
 - condition;
 - collection;
@@ -75,46 +72,48 @@ It adds five compact state axes:
 - security;
 - atmosphere.
 
-It records bounded receipts for meaningful house use, Attic entry, Cellar crossing, return, real trophy-case collection, and physical disturbance. State derives from real canonical rooms and objects: the trophy case and `OTVAL-FROB`, rug, trap door, kitchen window, room visits, and Cellar return cycle.
+It records bounded receipts for house use, Attic entry, Cellar crossing, return, real trophy-case collection, and physical disturbance. State derives from real canonical rooms and objects: the trophy case and `OTVAL-FROB`, rug, trap door, kitchen window, room visits, and Cellar return cycle.
 
-Release `1218` contains no canonical Bedroom room. Train 1 therefore added no unreachable Bedroom placeholder or topology change.
+Release `1218` contains no canonical Bedroom, so Train 1 added no unreachable Bedroom placeholder or topology change.
 
 Controlling record:
 
 `glulx/house-state-foundation/README.md`
 
-## Qualified Train 2 — Release 1220 Living Room museum
+## Train 2 — Living Room Museum
 
-Train 2 turns the canonical Living Room into an optional physical autobiography while preserving Release `1219` house state and canonical Zork scoring, objects, puzzles, parser behavior, and carrying limits.
+Train:
 
-Qualified identity:
+`onyx_zork_house_living_museum`
 
-- edition: Unofficial Living Room Museum Glulx;
-- release: `1220`;
-- serial: `260724`;
-- output: `zork1-glulx-living-room-museum.ulx`;
-- Glulx version: `3.1.3` / `0x00030103`;
-- size: `237,312` bytes;
-- checksum: `0x630d724a`;
-- SHA-256: `f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4`.
+Status:
 
-Release `1220` derives from exact qualified Release `1219` and changes exactly:
+`complete`
+
+Qualified Release `1220` identity:
+
+- serial `260724`;
+- 237,312 bytes;
+- checksum `0x630d724a`;
+- SHA-256 `f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4`.
+
+Exact production delta above Release `1219`:
 
 - `1actions.zil`;
 - `assistance.zil`;
 - new `living_room_museum.zil`;
 - `zork1.zil`.
 
-The Living Room gains four fixed physical surfaces:
+The canonical Living Room now contains four fixed open display surfaces:
 
 - gallery frame;
 - weapon wall;
 - record shelf;
 - relic stand.
 
-Players place and recover the original objects with ordinary parser actions. The canonical trophy case remains the only house scoring authority. New surfaces are score-neutral. Active field objects remain real, removable, and explicitly described as non-retired.
+Players place, inspect, remove, and replace the original objects through ordinary parser actions. The surfaces award no score. The canonical trophy case and `OTVAL-FROB` remain the only house scoring authority.
 
-Current real arrangements can synthesize optional observations for:
+Bounded provenance and real-object synthesis cover:
 
 - painting + sword + map;
 - completed bell + candles + black-book ceremony;
@@ -122,17 +121,11 @@ Current real arrangements can synthesize optional observations for:
 - sword + troll axe;
 - intact or broken egg with its correctly nested canary.
 
-When Release `1219` marks the house exposed and the canonical thief remains available, one exact unsecured treasure can move into the real thief's inventory. The Living Room retains physical evidence. Recovery proceeds through canonical thief booty handling. The qualification route proves the real painting moves to the real thief and then to the real Treasure Room without cloning or deletion.
+When Release `1219` marks the house exposed and the canonical thief remains available, one exact unsecured treasure can move into the real thief's inventory. The room retains physical evidence, and recovery follows canonical thief booty handling. Qualification proves the real painting moves from the frame to the thief and then to the Treasure Room without cloning, deletion, or a substitute token.
 
-The native persistence route deliberately clears display surfaces, historical globals, thief custody, trophy-case placement, and score state, then restores exact placement, group history, evidence, score authority, thief custody, and egg/canary nesting without a repair pass.
+Native persistence proves exact display placement, trophy-case score authority, group history, theft evidence, thief custody, and egg/canary nesting after deliberate corruption and ordinary restore.
 
-The route also corrected false assumptions rather than weakening the game:
-
-- it uses the object's real parser word `GUIDE`, not `GUIDEBOOK`;
-- it preserves canonical carrying limits;
-- it tests the active bell before ritual completion;
-- it uses ASCII-safe provenance punctuation;
-- it does not overclaim that dam tools were cleaned.
+The capstone candidate passed all 27 workflows. One inherited Release 122 real-map route initially failed because random troll combat killed the player before the restraint commands; retrying only that unchanged job passed. No Train 2 production change was needed.
 
 Controlling record:
 
@@ -140,176 +133,100 @@ Controlling record:
 
 ## Period presentation
 
-The archive should use the material culture of the period when the original game was made, not an in-world Zork calendar and not a modern phone or cloud-drive metaphor.
-
-Preferred surfaces:
+The later archive should use the material culture of the original game's era rather than a phone, cloud drive, or modern dashboard:
 
 - steel filing cabinets;
 - index-card catalogs;
 - banker boxes;
-- continuous-feed line-printer paper;
-- cassette tapes and a tape recorder;
+- continuous-feed printer paper;
+- cassette tapes and recorders;
 - microfiche and film reels;
 - Polaroids;
-- maps, diagrams, and corkboards;
-- paper folders with stamps, annotations, redactions, and cross-references;
-- and a late-1970s terminal with terse archive commands.
+- maps and corkboards;
+- stamped and annotated folders;
+- a late-1970s terminal whose commands locate physical records.
 
-The terminal may be efficient, but the fiction remains physical. A query locates a drawer, card, tape, folder, box, photograph, reel, or printout.
+## Remaining house rooms and systems
 
-## Core design rules
+### Train 3 — Kitchen Laboratory
 
-1. **Adventure consequences, not upkeep.** No sweeping, hunger meters, lumber economies, daily repair chores, or furniture grind.
-2. **Canonical identity remains authoritative.** Do not duplicate treasure, actors, notes, tools, or puzzle objects for display or archive purposes.
-3. **The trophy case keeps canonical scoring.** Optional displays deepen history and atmosphere but do not create parallel scoring.
-4. **The archive never reveals unseen solutions.** Partial files may show missing or redacted evidence without leaking commands or outcomes.
-5. **Playback is observational.** Reviewing a tape or transcript cannot mutate live objects, actors, timers, score, pronouns, or room state.
-6. **Mutually exclusive histories remain separate.** Different completed playthroughs become different expedition boxes rather than one contradictory timeline.
-7. **Save and restore are first-class.** Every stateful train includes deliberate corruption and ordinary native restore proof.
-8. **Actor records are player-specific.** A troll dossier records what happened between this player and this troll, not merely a static biography.
-9. **Area completion unlocks synthesis, not a checklist HUD.** The archive summarizes a case only after the player genuinely assembled its evidence.
-10. **Authored scope beats universal simulation.** Kitchen experiments, house damage, mail, visitors, dreams, and intrusions use selected coherent interactions.
-11. **One substrate.** Later house trains consume Releases `1219` and `1220` instead of creating parallel house-memory or museum controllers.
-12. **No hierarchy inflation.** Trains contain beads; beads do not receive sub-beads.
+Use real containers, water, food, tools, residues, timers, cupboards, and work surfaces. Support bounded cleaning, drying, warming, cooling, preparation, offerings, and authored experiments without hunger, thirst, housekeeping, universal chemistry, or a crafting tree.
 
-## The house as a real place
+### Train 4 — Cellar Threshold
 
-### Living Room — museum and visible autobiography
+Make the Cellar the expedition boundary: tool and light staging, trap-door observation, sounds and drafts, hazard warnings, limited containment, and physical intrusion hooks.
 
-Release `1220` now makes this real. The canonical trophy case retains score authority, while fixed score-neutral surfaces accept bounded families of real objects. Objects remain removable and puzzle-active. Coherent arrangements produce historical observations, and poor security can result in exact-object theft with physical evidence and canonical recovery.
+### Train 5 — Correspondence and Visitors
 
-### Kitchen — preparation and grounded experimentation
+Preserve the canonical mailbox and leaflet while adding deterministic mail provenance, replies, warnings, deliveries, visitors, and missed-event persistence.
 
-The Kitchen may support real container filling, cleaning, drying, warming, cooling, food preparation, storage, and a bounded set of authored object reactions. It must not become a crafting tree, universal chemistry system, recipe economy, or hunger simulator.
+### Train 6 — Attic Archive Core
 
-### Cellar — expedition threshold
+Create the period media, record schema, card catalog, archive commands, provenance, migration, and integrity substrate.
 
-The Cellar becomes the boundary between home and the underground. It may support tool and light staging, trap-door observation, sounds and drafts from below, carried-hazard warnings, limited containment, and deterministic hooks for smoke, water, thieves, creatures, or supernatural effects crossing into the house.
+### Train 7 — NPC Dossiers
 
-### Bedroom — recovery, dreams, and delayed consequences
+Record player-specific troll, cyclops, thief, quotation, gift, threat, mercy, deception, restraint, combat, and outcome histories.
 
-A Bedroom is future authored topology, not part of Releases `1219` or `1220`. When deliberately added, rest remains optional. It may advance ordinary queues, recover selected temporary states, generate authored dreams from discoveries, and process overnight mail, theft, damp, smoke, visitors, or archive updates.
+### Train 8 — Area Case Files
 
-### Mailbox and front of house — correspondence and visitors
+Build partial, redacted, and completed evidence files for the dam, Hades ceremony, house, forest, and representative underground areas.
 
-The canonical leaflet and mailbox remain intact. A deterministic queue may add warnings, threats, replies, deliveries, maintenance notices, bureaucratic absurdities, and evidence. Records retain sender, trigger, authenticity, delivery order, later annotations, and Attic cross-references.
+### Train 9 — Playback
 
-### Attic — the living archive
+Provide curated command/response transcripts, cassette-style scenes, line-printer output, and observational playback that cannot mutate live state.
 
-The Attic stores correspondence, NPC dossiers, area case files, curated transcripts, cassette-style playback, maps, diagrams, photographs, and completed expedition boxes. It is a museum of evidence, a record of what happened, and a way to replay the completed adventure through the player's own commands and the world's responses.
+### Train 10 — Rest and Dreams
 
-## Archive record model
+Add optional rest, timer-safe recovery, discovery-driven dreams, overnight consequences, and waking without mandatory sleep cycles or event farming.
 
-A record should be structured around evidence rather than prewritten codex prose.
+### Train 11 — House Vulnerability
 
-Minimum fields:
+Extend smoke, damp, water, burglary, followers, creatures, and supernatural effects into recoverable physical house consequences.
 
-- stable record ID;
-- record kind;
-- expedition ID;
-- discovery or delivery order;
-- source and provenance;
-- linked person, place, object, and incident IDs;
-- exact or normalized quote where applicable;
-- state transition or outcome;
-- truth status and confidence;
-- redaction or missing-evidence state;
-- later annotations;
-- related record IDs;
-- physical-media presentation;
-- and whether the record is curated, raw, partial, complete, or postgame-only.
+### Train 12 — Expedition Archive
 
-## NPC dossiers
+After victory, preserve the route, deaths, treasures, actor outcomes, area outcomes, altered objects, correspondence, house condition, display arrangement, unresolved evidence, and final mechanism states as a separate expedition box.
 
-Dossiers are histories of relationships, not static biographies.
+## Train ledger
 
-A troll file may record first contact, hostility, axe state, deception, restraint, opened passages, untie, recovery, renewed danger, gifts, threats, mercy, and exact statements. Cyclops and thief files follow the same principle while preserving canonical timing, theft, combat, bargains, and alternate outcomes.
+| # | Beadtrain | Status |
+|---:|---|---|
+| 1 | `onyx_zork_house_state_foundation` | Complete — Release 1219 |
+| 2 | `onyx_zork_house_living_museum` | Complete — Release 1220 |
+| 3 | `onyx_zork_house_kitchen_laboratory` | Planned / next |
+| 4 | `onyx_zork_house_cellar_threshold` | Planned |
+| 5 | `onyx_zork_house_correspondence_visitors` | Planned |
+| 6 | `onyx_zork_attic_archive_core` | Planned |
+| 7 | `onyx_zork_attic_npc_dossiers` | Planned |
+| 8 | `onyx_zork_attic_area_case_files` | Planned |
+| 9 | `onyx_zork_attic_playback` | Planned |
+| 10 | `onyx_zork_house_rest_and_dreams` | Planned |
+| 11 | `onyx_zork_house_vulnerability` | Planned |
+| 12 | `onyx_zork_expedition_archive` | Planned |
 
-Partial files may be redacted, contradictory, or visibly incomplete. They must never expose unseen dialogue or solutions.
-
-## Area case files and completion
-
-Before an area is complete, its folder may contain missing documents, empty card slots, redacted diagrams, unresolved mechanism entries, contradictory records, or explicit notices that evidence is absent.
-
-At genuine completion, the archive may add a synthesis page explaining how discovered evidence fits together. This remains retrospective and cannot replace discovery while the player is solving the area.
-
-Pilot files include:
-
-- Flood Control Dam #3;
-- the Hades ceremony;
-- the house, forest, and representative underground areas.
-
-Release `1220` already provides real-object group receipts that these case files can later consume.
-
-## Playback
-
-Playback reconstructs the player's actual run through text.
-
-- A cassette record may print tape hiss, pauses, speaker labels, and environmental sounds.
-- A line-printer transcript shows the player's command and the game's response.
-- An incident file groups meaningful commands, statements, failures, discoveries, and state changes from one encounter.
-- Raw logs remain optional and bounded.
-- Curated files prioritize unique statements and consequential events rather than dumping every parser turn.
-
-Playback is never time travel. It cannot modify live game state.
-
-## Multiple expeditions
-
-After victory, each completed run receives a separate archival box containing route chronology, deaths, treasures, actor outcomes, area outcomes, altered objects, correspondence, house condition, display arrangement, unresolved evidence, and final mechanism states.
-
-Comparison commands may show differences between runs, but they cannot reveal unseen solution text merely because another outcome exists.
-
-## Program sequencing
-
-- Train 1 is complete and authoritative as Release `1219`.
-- Train 2 is qualified as Release `1220` and awaits capstone closure.
-- Trains 3–5 and 10 may build above the qualified house foundation; later work should consume museum events where relevant.
-- Train 6 establishes the archive substrate.
-- Trains 7–9 build dossiers, case files, and playback above the archive substrate.
-- Train 11 depends on the Cellar threshold and integrates with museum, rest, and archive state.
-- Train 12 closes the program after the archive and house systems are mature.
-
-## Trains
-
-| # | Beadtrain | Status | Purpose |
-|---:|---|---|---|
-| 1 | `onyx_zork_house_state_foundation` | **Complete — Release 1219** | Persistent house condition, event receipts, description projection, isolation, migration, and restore |
-| 2 | `onyx_zork_house_living_museum` | **Capstone — qualified Release 1220** | Trophy-case-safe displays, provenance, group synthesis, theft, and object-tree persistence |
-| 3 | `onyx_zork_house_kitchen_laboratory` | Planned | Water, cleaning, drying, food, storage, and bounded experiments without crafting grind |
-| 4 | `onyx_zork_house_cellar_threshold` | Planned | Expedition staging, sensing, hazard screening, containment, and intrusion hooks |
-| 5 | `onyx_zork_house_correspondence_visitors` | Planned | Mail queue, provenance, replies, deliveries, visitors, and missed-event persistence |
-| 6 | `onyx_zork_attic_archive_core` | Planned | Period media, record schema, card catalog, archive commands, provenance, and migration |
-| 7 | `onyx_zork_attic_npc_dossiers` | Planned | Player-specific troll, cyclops, thief, quotation, and encounter histories |
-| 8 | `onyx_zork_attic_area_case_files` | Planned | Partial/redacted area records, completion synthesis, and representative case files |
-| 9 | `onyx_zork_attic_playback` | Planned | Curated capture, line-printer transcripts, cassette playback, scenes, and integrity |
-| 10 | `onyx_zork_house_rest_and_dreams` | Planned | Optional rest, canonical timer safety, recovery, dreams, overnight changes, and waking |
-| 11 | `onyx_zork_house_vulnerability` | Planned | Smoke, damp, water, burglary, followers, supernatural effects, and meaningful repair |
-| 12 | `onyx_zork_expedition_archive` | Planned | Victory record, timeline, final state, separate run boxes, comparison, migration, and program capstone |
-
-Each train contains eight beads. The canonical issue records are sharded across:
+Canonical issue shards:
 
 - `.beads/issues-zork-house-of-records-01.jsonl`
 - `.beads/issues-zork-house-of-records-02.jsonl`
 - `.beads/issues-zork-house-of-records-03.jsonl`
 - `.beads/issues-zork-house-of-records-04.jsonl`
 
-Current capstone-candidate state is fifteen closed beads and eighty-one open beads. Train 2 becomes sixteen closed / eighty open only after exact-head capstone evidence passes.
-
 ## Qualification standard
 
-Every implementation train must:
+Every train must:
 
-1. resolve the exact live base before editing;
-2. publish a narrow production delta and explicit exclusions;
+1. resolve the exact live base;
+2. publish a narrow production delta and exclusions;
 3. use real canonical objects and actors;
-4. reject test-only setup, mutation, report, and positioning verbs from production;
+4. keep test-only commands out of production;
 5. build with pinned toolchains;
 6. run deterministic player-facing routes;
-7. deliberately corrupt state and prove ordinary native `SAVE` / `RESTORE`;
-8. verify no duplicate object, score, actor, note, or archive record;
-9. update this program, the frontier, feature matrix, and relevant README;
-10. close beads only after exact-head evidence passes;
-11. leave PRs open and unmerged unless Justin explicitly gives the merge whistle.
+7. deliberately corrupt state and prove native restore;
+8. prove no duplicate object, actor, score, or record;
+9. update the program, handoff, frontier, matrix, README, train, and issue ledger;
+10. close beads only after exact-head evidence;
+11. keep PRs open and unmerged absent Justin's explicit merge whistle.
 
 ## Explicit non-goals
 
@@ -319,16 +236,14 @@ Every implementation train must:
 - housekeeping chores;
 - universal physics or chemistry;
 - open-ended AI dialogue;
-- modern phone or cloud-drive metaphors;
-- full transcript dumping as the primary interface;
+- modern cloud-drive metaphors;
+- raw transcript dumping as the primary interface;
 - revealing unseen solutions;
 - merging contradictory playthroughs;
-- using the archive to repair live state;
-- replacing Zork's parser identity with free-form natural language;
-- sub-beads or sub-trains beneath the established House of Records beads.
+- using archive records to repair live state;
+- replacing Zork's parser identity;
+- sub-beads beneath the established trains.
 
 ## Definition of success
 
-The program succeeds when the house feels like the player's place in the Great Underground Empire and the Attic can reconstruct why it became that way.
-
-The player should be able to return home and understand what they recovered, what they changed, what followed them home, what the world sent them, what important characters said and did, how each area was resolved, what remains unknown, and how this expedition differed from another.
+The house should feel like the player's place in the Great Underground Empire, and the Attic should eventually explain why it became that way.
