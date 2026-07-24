@@ -33,9 +33,9 @@
   "expected_artifact": {
     "file": "zork1-glulx-living-room-museum.ulx",
     "glulx_version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "DISCOVERY",
-    "sha256": "DISCOVERY"
+    "size_bytes": 237312,
+    "checksum_hex": "0x16d2b6ed",
+    "sha256": "76126b0c6fd47a33548421484b246dda393ec26de598968f35792a35ca7289c9"
   },
   "preserved_canonical_state": [
     "the canonical trophy case and OTVAL-FROB remain the only house scoring authority",
