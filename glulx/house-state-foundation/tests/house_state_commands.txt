@@ -9,6 +9,7 @@ look
 hsreturn
 look
 hscollect
+open case
 put painting in case
 move rug
 open trap door
