@@ -5,7 +5,7 @@ description = """
 Establish a persistent, event-driven home-state substrate so the white house reflects the adventure without chores, score drift, or puzzle replacement.
 """
 created     = "2026-07-23"
-status      = "complete"
+status      = "in_progress"
 
 [[cars]]
 id = "base"
