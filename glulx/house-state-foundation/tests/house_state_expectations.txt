@@ -1,0 +1,20 @@
+HOUSE-STATE-SETUP:LIVING
+For all its dust, the room bears the faint first impression of being used again.
+HOUSE-STATE-SETUP:KITCHEN
+The kitchen has the tentative air of a room being considered for practical use.
+HOUSE-STATE-SETUP:ATTIC
+The dust remains, but the attic now feels less like forgotten storage and more like a place waiting to remember.
+HOUSE-STATE-SETUP:CELLAR
+The cellar feels less like another room of the house than the place where the house gives way to the underground.
+HOUSE-STATE-SETUP:RETURN
+The room has begun to feel like a place returned to between expeditions.
+HOUSE-STATE-SETUP:COLLECTION
+HOUSE-STATE:VERSION=1;CONDITION=2;COLLECTION=1;KNOWLEDGE=2;SECURITY=2;ATMOSPHERE=2;ENTERED=Y;ATTIC=Y;CELLAR=Y;RETURN=Y;COLLECTED=Y;DISTURBED=Y
+You began using the white house as a place rather than merely passing through it.
+You visited the attic, establishing the first quiet foundation for the house's future memory.
+You crossed the cellar threshold between the house and the underground.
+You returned to the living room after entering the underground, giving the house its first completed expedition cycle.
+The real trophy-case collection began changing how the living room feels without changing canonical score authority.
+Opened routes, the moved rug, or the exposed trap door left visible evidence that the house has been disturbed.
+HOUSE-STATE:MIGRATED
+HOUSE-STATE:VERSION=1;CONDITION=2;COLLECTION=1;KNOWLEDGE=1;SECURITY=2;ATMOSPHERE=1;ENTERED=Y;ATTIC=Y;CELLAR=Y;RETURN=N;COLLECTED=Y;DISTURBED=Y
