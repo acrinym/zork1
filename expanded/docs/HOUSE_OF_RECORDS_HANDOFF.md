@@ -4,31 +4,34 @@
 
 `acrinym/zork1`
 
-## Live production stack at this handoff
-
-- default branch: `master`;
-- production base PR: #11 — `agent/glulx-material-consequences`;
-- House Train 1 PR: #16 — `agent/glulx-house-state-foundation`;
-- PR #16 base: exact PR #11 head `2452bb6c35cae26753922072bbfe478d9e01f4ad`;
-- PR #16 remains open, non-draft, mergeable, and unmerged;
-- no merge is authorized without Justin's explicit merge whistle.
-
-Do not trust these frozen values without resolving the live repository first.
-
 ## Resolve live state first
+
+Do not trust frozen SHAs, check counts, mergeability, PR state, or bead counts without resolving GitHub live.
 
 At the beginning of the next session:
 
 1. resolve exact `master`;
 2. inspect every open pull request;
-3. read PR #11 and PR #16 metadata, comments, reviews, inline threads, checks, bases, and current heads;
+3. read PRs #11, #16, and #17 metadata, comments, reviews, inline threads, checks, bases, and current heads;
 4. confirm whether any stacked branch advanced;
-5. read `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md` and `glulx/house-state-foundation/README.md`;
-6. validate all twelve House of Records beadtrains against all four issue shards;
-7. preserve Release `1219` identity and its exact five-path production boundary;
-8. do not merge any PR without explicit permission.
+5. read `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md`;
+6. read `glulx/house-state-foundation/README.md` and `glulx/living-room-museum/README.md`;
+7. validate all twelve House of Records beadtrains against all four issue shards;
+8. preserve the locked Release `1219` and `1220` identities and changed-path boundaries;
+9. do not merge any PR without Justin's explicit merge whistle.
 
-## Hierarchy correction
+## Live stack at this handoff
+
+- default branch: `master`;
+- production base PR: #11 — `agent/glulx-material-consequences`;
+- Train 1 PR: #16 — `agent/glulx-house-state-foundation`;
+- Train 2 PR: #17 — `agent/glulx-living-room-museum`;
+- PR #17 is stacked on exact qualified PR #16 head `0635c40ab0e4099a9f517865206f194d1d5d86c7`;
+- PRs remain open and unmerged absent explicit permission.
+
+Resolve PR #17's current head live. The implementation head advanced during qualification and capstone work.
+
+## Hierarchy rule
 
 The House of Records program has exactly:
 
@@ -36,11 +39,11 @@ The House of Records program has exactly:
 - eight beads per train;
 - ninety-six beads total.
 
-Do not create sub-beads, sub-trains, or a parallel planning hierarchy beneath those beads. Later work must execute the existing beads directly.
+Do not create sub-beads, sub-trains, or parallel planning documents beneath those beads. Execute the existing beads directly.
 
-The separate death/object-fate detour PR #15 was closed without merge because it introduced an unnecessary planning layer before the House of Records program had begun implementation.
+PR #15, the separate death/object-fate detour, was closed without merge for violating this sequencing.
 
-## Train 1 complete
+## Train 1 complete — Release 1219
 
 Train:
 
@@ -50,28 +53,14 @@ Status:
 
 `complete`
 
-All eight existing Train 1 beads are closed. The other eighty-eight House of Records beads remain open.
+Locked identity:
 
-Train 1 shipped as qualified Glulx Release `1219`.
+- release `1219` / serial `260724`;
+- 230,144 bytes;
+- checksum `0xbe6bc80a`;
+- SHA-256 `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f`.
 
-### Locked Release 1219 identity
-
-- edition: Unofficial House State Foundation Glulx;
-- release: `1219`;
-- serial: `260724`;
-- output: `zork1-glulx-house-state-foundation.ulx`;
-- Glulx version: `3.1.3` / `0x00030103`;
-- size: `230,144` bytes;
-- checksum: `0xbe6bc80a`;
-- SHA-256: `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f`.
-
-Exact base artifact:
-
-- Release `1218` SHA-256: `efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521`.
-
-### Exact production delta
-
-Release `1219` changes exactly:
+Exact production delta:
 
 - `1actions.zil`;
 - `1dungeon.zil`;
@@ -79,115 +68,175 @@ Release `1219` changes exactly:
 - new `house_state_foundation.zil`;
 - `zork1.zil`.
 
-The stager rejects every other production change.
+It established compact condition, collection, knowledge, security, and atmosphere state; bounded house receipts; room projection; conservative migration; and native save/restore without repair.
 
-## What Train 1 established
+## Train 2 capstone candidate — Release 1220
 
-The foundation provides five compact persistent state axes:
+Train:
 
-- condition;
-- collection;
-- knowledge;
-- security;
-- atmosphere.
+`onyx_zork_house_living_museum`
 
-It records only six meaningful foundation receipts:
+Current status:
 
-- first house use;
-- first Attic visit;
-- first Cellar threshold crossing;
-- first return to the Living Room after entering the underground;
-- first real trophy-case collection;
-- first visible house disturbance.
+`in_progress`
 
-The state derives from real canonical machinery:
+Bead state:
 
-- house-room visits;
-- the real trophy case and existing `OTVAL-FROB` score calculation;
-- the real rug;
-- the real trap door;
-- the real kitchen window;
-- the real Cellar return cycle.
+- museum beads 001–007 closed with exact production and qualification evidence;
+- museum bead 008 remains open until capstone-candidate and exact closure-head validation pass;
+- current roadmap expectation: 15 closed / 81 open;
+- final Train 2 expectation: 16 closed / 80 open.
 
-Release `1219` appends state-aware prose to the canonical Living Room, Kitchen, Attic, and Cellar descriptions. It does not replace the original prose, exits, objects, score, or puzzle actions.
+### Locked Release 1220 identity
 
-Release `1218` contains no canonical Bedroom. Train 1 therefore added no unreachable Bedroom placeholder and no topology change. A later deliberately authored Bedroom must consume the same foundation rather than invent a parallel state system.
+- edition: Unofficial Living Room Museum Glulx;
+- release: `1220`;
+- serial: `260724`;
+- output: `zork1-glulx-living-room-museum.ulx`;
+- Glulx version: `3.1.3` / `0x00030103`;
+- size: `237,312` bytes;
+- checksum: `0x630d724a`;
+- SHA-256: `f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4`.
+
+Exact base artifact:
+
+- Release `1219` SHA-256: `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f`.
+
+### Exact production delta
+
+Release `1220` changes exactly:
+
+- `1actions.zil`;
+- `assistance.zil`;
+- new `living_room_museum.zil`;
+- `zork1.zil`.
+
+The fail-closed stager rejects every other production change.
+
+## What Train 2 adds
+
+The canonical Living Room gains four fixed open surfaces:
+
+- gallery frame;
+- weapon wall;
+- record shelf;
+- relic stand.
+
+Every displayed item is the original canonical object. Players use ordinary `PUT`, `TAKE`, and `EXAMINE`. The surfaces do not create copies, retire puzzle objects, override carrying limits, or add score.
+
+The canonical trophy case and `OTVAL-FROB` remain the sole house scoring authority. A closed case protects its contents; an open case is exposed like the fixed surfaces.
+
+Bounded provenance covers real objects such as the Gallery painting, house sword and map, troll axe, thief stiletto, Attic knife, rusty knife, dam records/tools, Hades ceremony pieces, egg/canary, trident, coffin, chalice, and bracelet.
+
+Current real arrangements synthesize optional observations for:
+
+- house history: painting + sword + map;
+- completed ritual: bell + candles + black book;
+- repaired dam: guide + wrench + screwdriver;
+- troll conflict: sword + axe;
+- intact or broken egg with its correctly nested canary.
+
+## Theft and recovery
+
+When Release `1219` marks the house exposed, the canonical thief remains alive/available, and a real valuable is unsecured:
+
+1. one exact treasure moves into the real thief's inventory;
+2. the room retains an empty outline, cut support, scuffed dust, and black thread;
+3. score is recalculated through the real trophy-case authority;
+4. recovery follows canonical thief booty handling.
+
+Qualification proves the real painting moves from the frame into the real thief and later into the real Treasure Room. No copy, token, deletion, or parallel recovery system exists.
 
 ## Qualification completed
 
 The permanent fail-closed route proves:
 
-1. exact Release `1218` base identity;
-2. exact five-path production staging;
-3. exact Release `1219` artifact size, checksum, and SHA;
-4. Living Room, Kitchen, Attic, and Cellar projection;
-5. Cellar crossing and return receipts;
-6. opening the real trophy case and depositing the real painting;
-7. canonical trophy-case scoring with no house score;
-8. rug and trap-door disturbance;
-9. bounded `RECAP` output;
-10. safe version migration from existing-world defaults;
-11. deliberate corruption of globals and real object state;
-12. native `SAVE` and `RESTORE` without repair;
-13. production/test isolation.
+1. exact Release `1219` base identity;
+2. exact four-path production staging;
+3. exact Release `1220` size, checksum, and SHA;
+4. bounded object/surface acceptance;
+5. active-object warning before ritual completion;
+6. ordinary removal and replacement under canonical carrying rules;
+7. canonical trophy-case scoring and score-neutral museum surfaces;
+8. provenance inspection;
+9. house, ritual, dam, conflict, and nested-canary synthesis;
+10. exposed-display theft into the real thief;
+11. physical theft evidence;
+12. canonical thief booty recovery;
+13. deliberate corruption of surfaces, globals, custody, and case contents;
+14. native `SAVE` and `RESTORE` without repair;
+15. production/test isolation.
 
-The first route attempt correctly failed when it tried to put the painting into the closed trophy case. The final route opens the real case through the parser before depositing the real painting. No bypass was added.
+The qualification process rejected false assumptions instead of weakening the game:
 
-All twenty-four capstone-candidate workflows passed on head:
+- the object answers to `GUIDE`, not `GUIDEBOOK`;
+- canonical carrying limits remain active;
+- the bell warning is tested before ritual completion;
+- unsupported em-dash rendering was removed;
+- dam wording does not claim unproven cleaning state.
 
-`3f42726ab0a3db48cc86665d644089f4755328f1`
+The permanent Release `1220` qualification passed before capstone documentation and bead updates began.
 
-The final completion commits update program truth, handoff truth, bead status, and train status. Resolve their exact closure head and checks live rather than trusting this frozen candidate SHA.
+## Roadmap validator
 
-## Roadmap validator correction
+The updated roadmap validator accepts only these Train 2 states:
 
-The old roadmap workflow incorrectly required all ninety-six beads to remain open forever.
+- `in_progress`: Train 1's eight beads and Train 2 beads 001–007 closed — 15 closed / 81 open;
+- `complete`: Train 1 and all eight Train 2 beads closed — 16 closed / 80 open.
 
-It now validates incremental truth:
+All later trains must remain `planned`, and all later beads must remain `open`.
 
-- Train 1 `in_progress`: seven closed / eighty-nine open;
-- Train 1 `complete`: eight closed / eighty-eight open;
-- only Train 1 beads may close during this train;
-- all other trains remain `planned`;
-- all other beads remain `open`.
+A dedicated `living-room-museum-beadtrain.yml` validates Train 2 against the sharded canonical issue ledger.
+
+## Review state
+
+At capstone-candidate preparation time:
+
+- no submitted PR review existed;
+- no inline review thread existed;
+- CodeRabbit skipped because PR #17 targets a non-default stacked branch;
+- Gemini Code Assist reported that its consumer review service has ended.
+
+Perform a manual stacked-diff audit and post it to PR #17. Recheck live review state before closing bead 008.
 
 ## Canonical boundaries preserved
 
-Release `1219` adds no:
+Release `1220` adds no:
 
-- duplicate treasure or tool;
-- parallel score;
-- automatic puzzle completion;
-- changed house entrance or topology;
-- unreachable Bedroom placeholder;
-- maintenance or housekeeping loop;
-- crafting system;
-- universal event log;
+- duplicate exhibit or treasure;
+- display-token surrogate;
+- parallel museum score;
+- automatic trophy-case credit;
+- trapped completion-critical object;
+- generalized furniture or base building;
+- maintenance chore loop;
 - archive playback;
+- Kitchen or Cellar expansion;
 - equipment stash;
 - death-site recovery;
 - armor;
 - Zork Plus;
-- test-only production commands.
+- Wizard of Frobozz;
+- production test commands.
 
-## Next existing train
+## Next existing train after closure
 
-Continue the House of Records program with Train 2:
+Continue with Train 3:
 
-`onyx_zork_house_living_museum`
+`onyx_zork_house_kitchen_laboratory`
 
 Its eight existing beads cover:
 
-1. displayable-object registry and provenance;
-2. canonical trophy-case integration;
-3. wall, shelf, stand, and frame surfaces;
-4. placing, moving, and recovering real displays;
-5. related-object group synthesis;
-6. theft, disturbance, and display security;
-7. museum save/restore and object-tree proof;
-8. Living Room museum capstone.
+1. house water and container handling;
+2. cleaning and residue consequences;
+3. drying, warming, and cooling;
+4. food preparation and creature offerings;
+5. bounded heat, water, and utensil experiments;
+6. cupboard and work-surface storage;
+7. Kitchen gameplay and persistence qualification;
+8. Kitchen laboratory capstone.
 
-Do not create another planning document beneath those beads. Resolve the live stack, create the Train 2 branch above exact qualified Release `1219`, and implement those eight beads directly.
+Do not create another planning document beneath those beads. Branch above exact qualified Release `1220` and implement them directly.
 
 ## Final product target
 
