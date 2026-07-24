@@ -35,9 +35,9 @@
   "expected_artifact": {
     "file": "zork1-glulx-house-state-foundation.ulx",
     "glulx_version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "DISCOVERY",
-    "sha256": "DISCOVERY"
+    "size_bytes": 230144,
+    "checksum_hex": "0xbe6bc80a",
+    "sha256": "e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f"
   },
   "preserved_canonical_state": [
     "canonical room descriptions, exits, score routines, trophy-case scoring, and object locations remain authoritative",
