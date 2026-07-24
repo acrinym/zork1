@@ -1,0 +1,58 @@
+{
+  "edition": "Unofficial House State Foundation Glulx",
+  "release": 1219,
+  "serial": "260724",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../room-density/patch-series.json",
+  "base_release": 1218,
+  "base_artifact_sha256": "efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1218 layer, assign Release 1219, and load the evolving-house state substrate"
+    },
+    {
+      "path": "house_state_foundation.zil",
+      "source": "overrides/house_state_foundation.zil",
+      "allow_new": true,
+      "description": "Add compact house state, meaningful event receipts, projection, recap, and migration defaults"
+    }
+  ],
+  "patches": [
+    "patches/001-house-room-hooks.json",
+    "patches/002-attic-hook.json",
+    "patches/003-house-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "assistance.zil",
+    "house_state_foundation.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-house-state-foundation.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 0,
+    "checksum_hex": "DISCOVERY",
+    "sha256": "DISCOVERY"
+  },
+  "preserved_canonical_state": [
+    "canonical room descriptions, exits, score routines, trophy-case scoring, and object locations remain authoritative",
+    "house prose is appended after the original room description rather than replacing it",
+    "event receipts cover only meaningful house entry, Attic use, Cellar crossing, return, collection, and disturbance",
+    "state axes derive from the real trophy case, rug, trap door, kitchen window, room visits, and return cycle",
+    "native save and restore preserve the exact compact state without post-restore repair",
+    "Release 1218 room density and every earlier qualified layer remain unchanged"
+  ],
+  "excluded_scope": [
+    "new house topology or an unreachable Bedroom placeholder",
+    "display surfaces, kitchen crafting, storage lockers, visitors, dreams, playback, or multi-run archives",
+    "score changes, treasure duplication, automatic puzzle completion, or maintenance chores",
+    "universal event logging, transcript dumping, or open-ended house simulation",
+    "death-site recovery, armor, Zork Plus, or linked storage",
+    "Wizard of Frobozz"
+  ]
+}
