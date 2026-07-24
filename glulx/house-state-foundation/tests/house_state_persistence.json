@@ -16,6 +16,8 @@
     {"expect": "HOUSE-STATE-SETUP:RETURN"},
     {"sendline": "hscollect"},
     {"expect": "HOUSE-STATE-SETUP:COLLECTION"},
+    {"sendline": "open case"},
+    {"expect": ">"},
     {"sendline": "put painting in case"},
     {"expect": ">"},
     {"sendline": "move rug"},
