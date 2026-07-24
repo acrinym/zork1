@@ -1,7 +1,5 @@
 msetup
 look
-put bell on stand
-take bell
 put painting on frame
 put sword on rack
 put map on shelf
@@ -16,6 +14,8 @@ put axe on rack
 open case
 put trident in case
 close case
+take guide
+put guide on shelf
 mreport
 look
 examine frame
