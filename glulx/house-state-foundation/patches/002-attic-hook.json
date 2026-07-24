@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1219-ATTIC-HOOK",
+  "path": "1dungeon.zil",
+  "description": "Give the canonical Attic a bounded room action so it can record entry and append house-state projection",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROOM ATTIC\n      (IN ROOMS)\n      (LDESC \"This is the attic. The only exit is a stairway leading down.\")\n      (DESC \"Attic\")\n      (DOWN TO KITCHEN)\n      (FLAGS RLANDBIT SACREDBIT)\n      (GLOBAL STAIRS)>",
+      "new": "<ROOM ATTIC\n      (IN ROOMS)\n      (LDESC \"This is the attic. The only exit is a stairway leading down.\")\n      (DESC \"Attic\")\n      (DOWN TO KITCHEN)\n      (ACTION HOUSE-STATE-ATTIC-FCN)\n      (FLAGS RLANDBIT SACREDBIT)\n      (GLOBAL STAIRS)>"
+    }
+  ]
+}
