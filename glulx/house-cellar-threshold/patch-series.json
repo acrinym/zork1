@@ -34,6 +34,13 @@
     "shadow_logic.zil",
     "zork1.zil"
   ],
+  "expected_artifact": {
+    "file": "zork1-glulx-house-cellar-threshold.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 262400,
+    "checksum_hex": "0x54b04c7a",
+    "sha256": "1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912"
+  },
   "preserved_canonical_state": [
     "the real rug, trap door, staircase, first-descent slam and bar, Cellar exits, and upward route remain canonical",
     "the Cellar underside is an observational surface only and creates no duplicate door, lock, or route",
