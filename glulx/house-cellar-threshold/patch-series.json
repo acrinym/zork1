@@ -24,7 +24,8 @@
     "patches/001-cellar-room-and-trapdoor-hooks.json",
     "patches/002-cellar-action-hook.json",
     "patches/003-cellar-recap.json",
-    "patches/004-cellar-tactile-verb.json"
+    "patches/004-cellar-tactile-verb.json",
+    "patches/005-cellar-trap-door-underside.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -35,6 +36,7 @@
   ],
   "preserved_canonical_state": [
     "the real rug, trap door, staircase, first-descent slam and bar, Cellar exits, and upward route remain canonical",
+    "the Cellar underside is an observational surface only and creates no duplicate door, lock, or route",
     "real lights, rope, tools, bottle, water, containers, actors, ritual objects, score, and puzzle state remain authoritative",
     "staging, hooks, and quarantine use the ordinary canonical object tree and never create loadout tokens",
     "hazard screening reports existing darkness, flame, water, wetness, fragility, supernatural state, and instability without cancelling consequences",
