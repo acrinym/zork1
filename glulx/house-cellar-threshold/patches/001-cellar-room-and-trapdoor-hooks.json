@@ -1,0 +1,22 @@
+{
+  "id": "Z1-GLULX-1222-CELLAR-ROOM-AND-TRAPDOOR-HOOKS",
+  "path": "1actions.zil",
+  "description": "Attach bounded Cellar staging, sensing, screening, and persistence to the canonical room and trap-door routes without replacing movement or locking",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE TRAP-DOOR-FCN ()\n    <COND (<VERB? RAISE>",
+      "new": "<ROUTINE TRAP-DOOR-FCN ()\n    <COND (<CELLAR-TRAP-DOOR-HOOK> <RTRUE>)\n          (<VERB? RAISE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE CELLAR-FCN (RARG)\n  <COND (<EQUAL? .RARG ,M-LOOK>\n\t <TELL\n\"You are in a dark and damp cellar with a narrow passageway leading\nnorth, and a crawlway to the south. On the west is the bottom of a\nsteep metal ramp which is unclimbable.\" CR>\n\t <HOUSE-STATE-PROJECT ,CELLAR>)\n\t(<EQUAL? .RARG ,M-ENTER>\n\t <HOUSE-STATE-ENTER ,CELLAR>\n\t <COND (<AND <FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t     <NOT <FSET? ,TRAP-DOOR ,TOUCHBIT>>>\n\t\t<FCLEAR ,TRAP-DOOR ,OPENBIT>\n\t\t<FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t<TELL\n\"The trap door crashes shut, and you hear someone barring it.\" CR CR>)>)>>",
+      "new": "<ROUTINE CELLAR-FCN (RARG)\n  <COND (<EQUAL? .RARG ,M-LOOK>\n\t <TELL\n\"You are in a dark and damp cellar with a narrow passageway leading\nnorth, and a crawlway to the south. On the west is the bottom of a\nsteep metal ramp which is unclimbable.\" CR>\n\t <HOUSE-STATE-PROJECT ,CELLAR>\n\t <CELLAR-PROJECT>)\n\t(<EQUAL? .RARG ,M-ENTER>\n\t <HOUSE-STATE-ENTER ,CELLAR>\n\t <COND (<AND <FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t     <NOT <FSET? ,TRAP-DOOR ,TOUCHBIT>>>\n\t\t<FCLEAR ,TRAP-DOOR ,OPENBIT>\n\t\t<FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t<TELL\n\"The trap door crashes shut, and you hear someone barring it.\" CR CR>)>\n\t <CELLAR-ENTER>)\n\t(<EQUAL? .RARG ,M-BEG>\n\t <COND (<CELLAR-BEGIN> <RTRUE>)>)\n\t(<EQUAL? .RARG ,M-END>\n\t <CELLAR-END>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t<COND (<FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t       <RETURN ,CELLAR>)",
+      "new": "\t\t<COND (<FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t       <CELLAR-DESCENT-CHECK>\n\t\t       <RETURN ,CELLAR>)"
+    }
+  ]
+}
