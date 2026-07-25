@@ -2,7 +2,7 @@ csetup
 readiness
 down
 look
-examine trap door
+examine underside
 examine sounds
 examine draft
 examine dampness
