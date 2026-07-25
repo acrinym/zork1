@@ -19,6 +19,7 @@ examine niche
 cintrude
 examine evidence
 creport
+cclear
 cwater
 use bottle on evidence
 creport
