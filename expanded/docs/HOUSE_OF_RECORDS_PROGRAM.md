@@ -6,16 +6,15 @@ Active twelve-train, ninety-six-bead program above qualified Glulx Release `1221
 
 - **Train 1 complete:** `onyx_zork_house_state_foundation` — Release `1219`.
 - **Train 2 complete:** `onyx_zork_house_living_museum` — Release `1220`.
-- **Train 3 in capstone:** `onyx_zork_house_kitchen_laboratory` — qualified Release `1221`.
-- **Next existing train after closure:** `onyx_zork_house_cellar_threshold`.
+- **Train 3 complete:** `onyx_zork_house_kitchen_laboratory` — Release `1221`.
+- **Next existing train:** `onyx_zork_house_cellar_threshold`.
 
-Current capstone-candidate truth:
+Current roadmap truth:
 
 - 12 trains;
 - 96 beads;
-- 23 closed beads across Trains 1–3;
-- Train 3 bead 008 remains open;
-- 73 open beads total;
+- 24 closed beads across Trains 1–3;
+- 72 open beads across Trains 4–12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
@@ -114,7 +113,7 @@ Train:
 
 Status:
 
-`in_progress` — qualified implementation and persistence complete; capstone bead open.
+`complete`
 
 Qualified Release `1221` identity:
 
@@ -167,11 +166,14 @@ The route also retained parser truth:
 - ordinary `TAKE` is required before moving an exhibit from the worktop into the cupboard;
 - existing canonical `CUT` handles `SLICE`, so the Kitchen intercepts only garlic with the real nasty knife and delegates every other cut unchanged.
 
+All 29 capstone-candidate workflows passed on exact head `f540c6b12c7b56bceedbf8bee8ddae3966416ccb`. One inherited Release 122 real-map route initially failed because random troll combat killed the test player before the scripted restraint sequence; its exact artifact had rebuilt correctly, and retrying only that unchanged job passed.
+
 No hunger/thirst meter, mandatory chores, recipe economy, generic crafting, universal chemistry, automatic puzzle-water replenishment, duplicate object, broad fire/flood simulation, parallel score, or automatic puzzle completion exists.
 
-Controlling record:
+Controlling records:
 
-`glulx/house-kitchen-laboratory/README.md`
+- `glulx/house-kitchen-laboratory/README.md`
+- `expanded/docs/HOUSE_KITCHEN_LABORATORY_MATRIX.md`
 
 ## Period presentation
 
@@ -232,7 +234,7 @@ After victory, preserve the route, deaths, treasures, actor outcomes, area outco
 |---:|---|---|
 | 1 | `onyx_zork_house_state_foundation` | Complete — Release 1219 |
 | 2 | `onyx_zork_house_living_museum` | Complete — Release 1220 |
-| 3 | `onyx_zork_house_kitchen_laboratory` | Capstone candidate — Release 1221 |
+| 3 | `onyx_zork_house_kitchen_laboratory` | Complete — Release 1221 |
 | 4 | `onyx_zork_house_cellar_threshold` | Planned / next |
 | 5 | `onyx_zork_house_correspondence_visitors` | Planned |
 | 6 | `onyx_zork_attic_archive_core` | Planned |
