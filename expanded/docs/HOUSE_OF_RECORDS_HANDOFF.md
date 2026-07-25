@@ -30,7 +30,11 @@ Do not trust frozen SHAs or check counts without resolving GitHub live.
 - PR #18 is stacked directly on exact qualified Release 1220 head `f1213a02139a1a305f54f024cc60f98175aac3fa`;
 - all production PRs remain open and unmerged absent explicit permission.
 
-Resolve PR #18's exact live head. The capstone-candidate documentation and ledger commits advance it beyond the qualified-production head.
+Resolve PR #18's exact live closure head. The last fully qualified capstone-candidate head was:
+
+`f540c6b12c7b56bceedbf8bee8ddae3966416ccb`
+
+All 29 candidate workflows passed there. Final ledger/document closure commits advanced the branch afterward, so do not treat the candidate SHA as the current branch head.
 
 ## Hierarchy rule
 
@@ -46,15 +50,11 @@ PR #15, the death/object-fate planning detour, was closed without merge.
 
 ## Current roadmap state
 
-Capstone-candidate truth:
-
 - Train 1 complete — 8 closed beads;
 - Train 2 complete — 8 closed beads;
-- Train 3 in progress — 7 closed beads and capstone bead 008 open;
+- Train 3 complete — 8 closed beads;
 - Trains 4–12 planned;
-- total: 23 closed / 73 open.
-
-Final Train 3 closure must produce 24 closed / 72 open.
+- total: 24 closed / 72 open.
 
 ## Train 1 — Release 1219
 
@@ -109,7 +109,9 @@ Train:
 
 Status:
 
-`in_progress` — beads 001–007 closed; bead 008 open pending exact capstone validation.
+`complete`
+
+All eight existing Train 3 beads are closed.
 
 Locked identity:
 
@@ -160,11 +162,19 @@ Qualified routes prove:
 
 Do not regress these:
 
-- the first compile exceeded the Glulx ZIL global-variable ceiling; all Kitchen state is now packed into one indexed persistent table;
+- the first compile exceeded the Glulx ZIL global-variable ceiling; all Kitchen state is packed into one indexed persistent table;
 - the parser requires `NASTY KNIFE` to distinguish it from the rusty knife;
 - ordinary `PUT` changes real custody, so qualification uses ordinary `TAKE` before moving worktop items into the cupboard;
 - `SLICE` routes to canonical `CUT`; Release 1221 intercepts only garlic with the real nasty knife and delegates every other cut unchanged;
 - no test-only helper enters production.
+
+## Capstone evidence
+
+The exact capstone-candidate head `f540c6b12c7b56bceedbf8bee8ddae3966416ccb` passed all 29 workflows.
+
+One inherited Release 122 real-map route initially failed because random troll combat knocked out and killed the test player before the scripted restraint route began. The unchanged Release 122 artifact had rebuilt correctly. Retry of only that failed job passed; no Train 3 production change was required.
+
+Manual stacked-scope audit found no unresolved actionable issue. PR #18 had no submitted review or inline review thread. CodeRabbit skipped the non-default stacked base, and Gemini consumer review has ended.
 
 ## Explicit exclusions
 
@@ -180,24 +190,9 @@ Release `1221` adds no:
 - new score or automatic puzzle completion;
 - sub-bead or parallel planning layer.
 
-## Train 3 capstone closure checklist
-
-Before closing `zork1-house-kitchen-008`:
-
-1. resolve PR #18 exact head;
-2. confirm the permanent Release 1221 qualifier passes;
-3. confirm the Train 3 bead validator passes;
-4. confirm the House roadmap validates 23 closed / 73 open;
-5. inspect all inherited workflows;
-6. inspect PR comments, reviews, and inline threads;
-7. post a manual stacked-scope audit;
-8. close bead 008 only after the exact capstone candidate is green;
-9. set Train 3 to `complete` and publish 24 closed / 72 open;
-10. keep PR #18 open and unmerged.
-
 ## Next existing train
 
-After Train 3 closure, continue directly with:
+Continue directly with:
 
 `onyx_zork_house_cellar_threshold`
 
@@ -212,4 +207,4 @@ Its eight existing beads cover:
 7. Cellar gameplay and persistence qualification;
 8. Cellar threshold capstone.
 
-Do not create another planning layer beneath those beads.
+Branch Train 4 directly from the exact qualified Release 1221 closure head after resolving it live. Do not create another planning layer beneath those beads.
