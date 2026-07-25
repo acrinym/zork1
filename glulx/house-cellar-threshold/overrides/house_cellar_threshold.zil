@@ -24,10 +24,10 @@
 <CONSTANT CS-EVENT-INTRUSION 11>
 <CONSTANT CS-EVENT-READINESS 12>
 
-<CONSTANT CELLAR-SENSE-SOUND 1>
-<CONSTANT CELLAR-SENSE-DRAFT 2>
-<CONSTANT CELLAR-SENSE-DAMP 4>
-<CONSTANT CELLAR-SENSE-ROUTE 8>
+<CONSTANT CELLAR-SENSE-BIT-SOUND 1>
+<CONSTANT CELLAR-SENSE-BIT-DRAFT 2>
+<CONSTANT CELLAR-SENSE-BIT-DAMP 4>
+<CONSTANT CELLAR-SENSE-BIT-ROUTE 8>
 
 <CONSTANT CELLAR-HAZARD-DARK 1>
 <CONSTANT CELLAR-HAZARD-FLAME 2>
@@ -303,7 +303,7 @@
     <RFALSE>>
 
 <ROUTINE CELLAR-SENSE-SOUND ()
-    <CELLAR-SET-BIT ,CS-SENSE-BITS ,CELLAR-SENSE-SOUND>
+    <CELLAR-SET-BIT ,CS-SENSE-BITS ,CELLAR-SENSE-BIT-SOUND>
     <CELLAR-PUT ,CS-EVENT-SENSING T>
     <COND (<CELLAR-IN-CELLAR? ,THIEF>
            <TELL "A soft shoe scuffs stone, then becomes still with professional speed." CR>)
@@ -316,7 +316,7 @@
     <RTRUE>>
 
 <ROUTINE CELLAR-SENSE-DRAFT ()
-    <CELLAR-SET-BIT ,CS-SENSE-BITS ,CELLAR-SENSE-DRAFT>
+    <CELLAR-SET-BIT ,CS-SENSE-BITS ,CELLAR-SENSE-BIT-DRAFT>
     <CELLAR-PUT ,CS-EVENT-SENSING T>
     <COND (<FSET? ,TRAP-DOOR ,OPENBIT>
            <TELL "Warmer house air descends through the open trap door while colder air moves between the northern passage and southern crawlway." CR>)
@@ -325,7 +325,7 @@
     <RTRUE>>
 
 <ROUTINE CELLAR-SENSE-DAMP ()
-    <CELLAR-SET-BIT ,CS-SENSE-BITS ,CELLAR-SENSE-DAMP>
+    <CELLAR-SET-BIT ,CS-SENSE-BITS ,CELLAR-SENSE-BIT-DAMP>
     <CELLAR-PUT ,CS-EVENT-SENSING T>
     <COND (<CELLAR-HAS-BIT? ,CS-INTRUSION-BITS ,CELLAR-INTRUSION-WATER>
            <TELL "Old cellar damp is joined by a fresher wet track across the threshold stone." CR>)
@@ -334,17 +334,14 @@
     <RTRUE>>
 
 <ROUTINE CELLAR-SENSE-FCN ()
-    <COND (<EQUAL? ,PRSO ,CELLAR-SOUNDS>
-           <CELLAR-SENSE-SOUND>)
-          (<EQUAL? ,PRSO ,CELLAR-DRAFTS>
-           <CELLAR-SENSE-DRAFT>)
-          (<EQUAL? ,PRSO ,CELLAR-DAMPNESS>
-           <CELLAR-SENSE-DAMP>)>
+    <COND (<EQUAL? ,PRSO ,CELLAR-SOUNDS> <CELLAR-SENSE-SOUND>)
+          (<EQUAL? ,PRSO ,CELLAR-DRAFTS> <CELLAR-SENSE-DRAFT>)
+          (<EQUAL? ,PRSO ,CELLAR-DAMPNESS> <CELLAR-SENSE-DAMP>)>
     <RTRUE>>
 
 <ROUTINE CELLAR-THRESHOLD-FCN ()
     <COND (<VERB? EXAMINE SEARCH TOUCH>
-           <CELLAR-SET-BIT ,CS-SENSE-BITS ,CELLAR-SENSE-ROUTE>
+           <CELLAR-SET-BIT ,CS-SENSE-BITS ,CELLAR-SENSE-BIT-ROUTE>
            <CELLAR-PUT ,CS-EVENT-SENSING T>
            <TELL "The threshold is not a new exit. It is the exact junction of the real trap-door stair, northern passage, southern crawlway, and the objects you deliberately leave here." CR>)
           (<VERB? TAKE MOVE PUSH>
@@ -354,7 +351,7 @@
     <RTRUE>>
 
 <ROUTINE CELLAR-MARKS-FCN ()
-    <COND (<VERB? EXAMINE SEARCH LOOK-ON>
+    <COND (<VERB? EXAMINE SEARCH>
            <TELL "The threshold stone records">
            <COND (<CELLAR-HAS-BIT? ,CS-INTRUSION-BITS ,CELLAR-INTRUSION-THIEF>
                   <TELL " a black thread and careful heel scuff;">)>
@@ -430,7 +427,7 @@
 
 <ROUTINE CELLAR-SCREEN-HAZARDS (HOMEWARD "AUX" (SEEN <>))
     <CELLAR-PUT ,CS-EVENT-READINESS T>
-    <COND (<AND <NOT .HOMEWARD> <NOT <CELLAR-READY-LIGHT?>>
+    <COND (<AND <NOT .HOMEWARD> <NOT <CELLAR-READY-LIGHT?>>>
            <SET SEEN T>
            <CELLAR-SET-BIT ,CS-HAZARD-BITS ,CELLAR-HAZARD-DARK>
            <TELL "No active light is in hand. The canonical Cellar is dark, and the threshold will not supply one." CR>)>
@@ -477,41 +474,46 @@
     <CELLAR-PUT ,CS-RETURNS <+ <CELLAR-GET ,CS-RETURNS> 1>>
     <RFALSE>>
 
-<ROUTINE CELLAR-REGISTER-INTRUSION (BIT TEXT)
-    <COND (<NOT <CELLAR-HAS-BIT? ,CS-INTRUSION-BITS .BIT>>
-           <CELLAR-SET-BIT ,CS-INTRUSION-BITS .BIT>
-           <CELLAR-PUT ,CS-EVENT-INTRUSION T>
-           <FCLEAR ,CELLAR-THRESHOLD-MARKS ,INVISIBLE>
-           <COND (<EQUAL? ,HERE ,CELLAR> <TELL .TEXT CR>)>)>
+<ROUTINE CELLAR-REGISTER-INTRUSION (BIT)
+    <COND (<CELLAR-HAS-BIT? ,CS-INTRUSION-BITS .BIT> <RTRUE>)>
+    <CELLAR-SET-BIT ,CS-INTRUSION-BITS .BIT>
+    <CELLAR-PUT ,CS-EVENT-INTRUSION T>
+    <FCLEAR ,CELLAR-THRESHOLD-MARKS ,INVISIBLE>
+    <COND (<NOT <EQUAL? ,HERE ,CELLAR>> <RTRUE>)>
+    <COND (<EQUAL? .BIT ,CELLAR-INTRUSION-THIEF>
+           <TELL "A black thread catches in a crack beside a careful heel scuff." CR>)
+          (<EQUAL? .BIT ,CELLAR-INTRUSION-CREATURE>
+           <TELL "A fresh clawed or dragging mark appears across the threshold dust." CR>)
+          (<EQUAL? .BIT ,CELLAR-INTRUSION-WATER>
+           <TELL "A fresh damp track crosses the older cellar moisture." CR>)
+          (<EQUAL? .BIT ,CELLAR-INTRUSION-SMOKE>
+           <TELL "A thin soot fan records that live flame crossed or lingered at the boundary." CR>)
+          (T
+           <TELL "Cold gray residue settles in the threshold cracks around an object that does not belong to ordinary housekeeping." CR>)>
     <RTRUE>>
 
 <ROUTINE CELLAR-INTRUSION-SCAN ()
     <COND (<CELLAR-IN-CELLAR? ,THIEF>
-           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-THIEF
-             "A black thread catches in a crack beside a careful heel scuff.">)>
+           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-THIEF>)>
     <COND (<OR <CELLAR-IN-CELLAR? ,BAT> <CELLAR-IN-CELLAR? ,TROLL>>
-           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-CREATURE
-             "A fresh clawed or dragging mark appears across the threshold dust.">)>
+           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-CREATURE>)>
     <COND (<AND <CELLAR-IN-CELLAR? ,WATER>
                 <NOT <CELLAR-WITHIN? ,WATER ,BOTTLE>>>
-           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-WATER
-             "A fresh damp track crosses the older cellar moisture.">)>
+           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-WATER>)>
     <COND (<OR <AND <CELLAR-IN-CELLAR? ,TORCH>
                      <SHADOW-FLAME? ,TORCH>
                      <NOT <CELLAR-SAFELY-CONTAINED? ,TORCH>>>
                <AND <CELLAR-IN-CELLAR? ,CANDLES>
                      <SHADOW-FLAME? ,CANDLES>
                      <NOT <CELLAR-SAFELY-CONTAINED? ,CANDLES>>>>
-           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-SMOKE
-             "A thin soot fan records that live flame crossed or lingered at the boundary.">)>
+           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-SMOKE>)>
     <COND (<OR <AND <CELLAR-IN-CELLAR? ,BOOK>
                      <NOT <CELLAR-SAFELY-CONTAINED? ,BOOK>>>
                <AND <CELLAR-IN-CELLAR? ,SKULL>
                      <NOT <CELLAR-SAFELY-CONTAINED? ,SKULL>>>
                <AND <CELLAR-IN-CELLAR? ,HOT-BELL>
                      <NOT <CELLAR-SAFELY-CONTAINED? ,HOT-BELL>>>>
-           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-SUPERNATURAL
-             "Cold gray residue settles in the threshold cracks around an object that does not belong to ordinary housekeeping.">)>
+           <CELLAR-REGISTER-INTRUSION ,CELLAR-INTRUSION-SUPERNATURAL>)>
     <RFALSE>>
 
 <ROUTINE CELLAR-CLEAN-MARKS ()
@@ -527,8 +529,7 @@
     <RTRUE>>
 
 <ROUTINE CELLAR-ACTION-HOOK ()
-    <COND (<AND <OR <VERB? SHADOW-USE-ON>
-                    <VERB? POUR-ON>>
+    <COND (<AND <OR <VERB? SHADOW-USE-ON> <VERB? POUR-ON>>
                 <EQUAL? ,PRSI ,CELLAR-THRESHOLD-MARKS>
                 <EQUAL? ,PRSO ,WATER ,BOTTLE>>
            <CELLAR-CLEAN-MARKS>
@@ -584,8 +585,7 @@
                 <NOT <FSET? ,CELLAR-QUARANTINE-NICHE ,OPENBIT>>
                 <FIRST? ,CELLAR-QUARANTINE-NICHE>>
            <CELLAR-PUT ,CS-EVENT-CONTAINMENT T>)>
-    <COND (<AND <VERB? OPEN CLOSE>
-                <EQUAL? ,PRSO ,TRAP-DOOR>>
+    <COND (<AND <VERB? OPEN CLOSE> <EQUAL? ,PRSO ,TRAP-DOOR>>
            <CELLAR-PUT ,CS-EVENT-TRAPDOOR T>)>
     <CELLAR-INTRUSION-SCAN>
     <RFALSE>>
