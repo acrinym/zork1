@@ -20,6 +20,7 @@
 | Room Density Glulx | `.ulx` | Release 1218 / `260723` | Qualified |
 | House State Foundation Glulx | `.ulx` | Release 1219 / `260724` | Qualified; Train 1 complete |
 | Living Room Museum Glulx | `.ulx` | Release 1220 / `260724` | Qualified; Train 2 complete |
+| House Kitchen Laboratory Glulx | `.ulx` | Release 1221 / `260724` | Qualified; Train 3 complete |
 
 ## Locked Glulx lineage
 
@@ -32,6 +33,7 @@
 | 1218 | Room density | 227,840 | `0x3b65ecaf` | `efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521` |
 | 1219 | House state foundation | 230,144 | `0xbe6bc80a` | `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f` |
 | 1220 | Living Room museum | 237,312 | `0x630d724a` | `f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4` |
+| 1221 | House Kitchen laboratory | 249,600 | `0x85d64142` | `93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f` |
 
 ## Release 1219 — House State Foundation
 
@@ -82,14 +84,52 @@ Qualified behavior:
 
 Train 2's capstone candidate passed all 27 workflows. One inherited Release 122 route initially lost the player to random troll combat before the scripted actions; retrying only that unchanged job passed. This was not a Release `1220` regression.
 
+## Release 1221 — House Kitchen Laboratory
+
+Exact Release `1220` plus:
+
+- `1actions.zil`;
+- `assistance.zil`;
+- new `house_kitchen_laboratory.zil`;
+- `shadow_logic.zil`;
+- `zork1.zil`.
+
+Qualified behavior:
+
+1. fixed porcelain sink, wooden worktop, wooden cupboard, and cast-iron range;
+2. one canonical portable `WATER` object and repeat bottle refill only after real consumption;
+3. selected washing and ordinary drying of real tools and containers;
+4. reuse of existing material-clean flags and rusty-knife worsening;
+5. bounded range heat from a real held flame;
+6. warming food and water without creating new objects or recipes;
+7. heat-drying wet metal without repair, sharpening, or combat bonuses;
+8. prepared real lunch and canonically cut real garlic;
+9. bounded hot-range quenching and worktop rinsing using real bottled water;
+10. ordinary object-tree storage and retrieval;
+11. authored bat and cyclops context without replacement solutions;
+12. compact Kitchen receipts in `RECAP`;
+13. one indexed persistent Kitchen table to remain within the Glulx global-variable ceiling;
+14. deliberate state/object-tree corruption and native restore;
+15. strict production/test isolation.
+
+Parser truth retained:
+
+- `NASTY KNIFE` disambiguates the food knife from the rusty knife;
+- ordinary `TAKE` precedes moving real objects between fixtures;
+- `SLICE` remains canonical `CUT`;
+- only garlic with the real nasty knife is intercepted, while every other cut delegates unchanged.
+
+Train 3's capstone candidate passed all 29 workflows. One inherited Release 122 real-map route initially lost the test player to random troll combat; the exact Release 122 artifact had rebuilt correctly, and retrying only that unchanged failed job passed. This was not a Release `1221` regression.
+
 ## House of Records status
 
 - 12 trains;
 - 96 beads;
 - Train 1 complete: 8 closed;
 - Train 2 complete: 8 closed;
-- Trains 3–12 planned: 80 open;
-- total: 16 closed / 80 open;
+- Train 3 complete: 8 closed;
+- Trains 4–12 planned: 72 open;
+- total: 24 closed / 72 open;
 - no sub-beads.
 
 ## Validation coverage
@@ -102,21 +142,20 @@ Train 2's capstone candidate passed all 27 workflows. One inherited Release 122 
 | Parser behavior | Native interpreter routes using ordinary player commands |
 | Canonical authority | Existing objects, score, actors, timers, puzzle state, and carrying rules retained |
 | Persistence | Deliberate corruption followed by ordinary native `SAVE` / `RESTORE` |
-| Object trees | No duplicate roots, flattened containers, or replacement display tokens |
+| Object trees | No duplicate roots, flattened containers, or replacement tokens |
 | Test isolation | Setup, mutation, recovery, and report verbs excluded from production |
-| Roadmap integrity | 12 trains / 96 unique beads / 16 closed / 80 open |
+| Roadmap integrity | 12 trains / 96 unique beads / 24 closed / 72 open |
 
 ## Next dedicated work
 
-House of Records Train 3:
+House of Records Train 4:
 
-`onyx_zork_house_kitchen_laboratory`
+`onyx_zork_house_cellar_threshold`
 
-It must use real water, containers, food, tools, residues, timers, cupboards, and surfaces while preserving puzzle water and avoiding hunger, thirst, chores, universal chemistry, and crafting trees.
+It must turn the real Cellar into a complete expedition boundary using the existing eight beads: staging, threshold sensing, light/tool readiness, carried-hazard screening, limited containment, intrusion hooks, persistence qualification, and capstone.
 
 Later dedicated work remains:
 
-- Cellar expedition threshold;
 - correspondence and visitors;
 - Attic archive core;
 - NPC dossiers;
