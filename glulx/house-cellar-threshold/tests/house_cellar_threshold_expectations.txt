@@ -16,14 +16,16 @@ The north and south passages return small damp echoes.
 With the trap door shut, the cross-draft belongs entirely to the underground passages.
 The damp is old, cold, and strongest toward the southern crawlway.
 The threshold is not a new exit.
-This is deliberate staging, not retirement. The coil of rope remains real and may still be required below.
+This is deliberate staging, not retirement. The rope remains real and may still be required below.
 This is deliberate staging, not retirement. The wrench remains real and may still be required below.
-- a light is staged in the Cellar, but not in hand for the descent;
+- an active light is in hand;
+- no selected expedition tool is carried;
 Sealing a live flame in the niche would create smoke and pressure, not containment.
 The black book is physically in the niche, not removed from the adventure.
 CELLAR-INTRUSION:READY
 The threshold stone records a black thread and careful heel scuff; clawed or dragging marks; a fresh damp track; a thin soot fan; and a cold gray residue that is not ordinary dust;
 CELLAR:VERSION=1;DESCENTS=1;RETURNS=0;SENSE=15;HAZARDS=94;INTRUSIONS=31;ROPE-HOOKS=Y;WRENCH-BENCH=Y;BOOK-NICHE=Y;NICHE-CLOSED=Y;MARKS=Y;TRAP-BARRED=Y;WATER-BOTTLE=N
+CELLAR-INTRUSION:CLEARED
 CELLAR-WATER:READY
 The real bottled water carries thread, soot, damp grit, and cold residue from the threshold.
 CELLAR:VERSION=1;DESCENTS=1;RETURNS=0;SENSE=15;HAZARDS=94;INTRUSIONS=0;ROPE-HOOKS=Y;WRENCH-BENCH=Y;BOOK-NICHE=Y;NICHE-CLOSED=Y;MARKS=N;TRAP-BARRED=Y;WATER-BOTTLE=N
