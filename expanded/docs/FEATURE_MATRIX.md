@@ -21,6 +21,7 @@
 | House State Foundation Glulx | `.ulx` | Release 1219 / `260724` | Qualified; Train 1 complete |
 | Living Room Museum Glulx | `.ulx` | Release 1220 / `260724` | Qualified; Train 2 complete |
 | House Kitchen Laboratory Glulx | `.ulx` | Release 1221 / `260724` | Qualified; Train 3 complete |
+| House Cellar Threshold Glulx | `.ulx` | Release 1222 / `260724` | Qualified; Train 4 capstone candidate |
 
 ## Locked Glulx lineage
 
@@ -34,16 +35,11 @@
 | 1219 | House state foundation | 230,144 | `0xbe6bc80a` | `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f` |
 | 1220 | Living Room museum | 237,312 | `0x630d724a` | `f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4` |
 | 1221 | House Kitchen laboratory | 249,600 | `0x85d64142` | `93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f` |
+| 1222 | House Cellar threshold | 262,400 | `0x54b04c7a` | `1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912` |
 
 ## Release 1219 — House State Foundation
 
-Exact Release `1218` plus:
-
-- `1actions.zil`;
-- `1dungeon.zil`;
-- `assistance.zil`;
-- new `house_state_foundation.zil`;
-- `zork1.zil`.
+Exact Release `1218` plus `1actions.zil`, `1dungeon.zil`, `assistance.zil`, new `house_state_foundation.zil`, and `zork1.zil`.
 
 Qualified behavior:
 
@@ -51,85 +47,84 @@ Qualified behavior:
 - bounded house-use, Attic, Cellar, return, collection, and disturbance receipts;
 - Living Room, Kitchen, Attic, and Cellar projection;
 - real trophy-case collection authority;
-- conservative migration;
-- deliberate corruption and native restore;
+- conservative migration and native restore;
 - no parallel score, duplicate object, chore loop, Bedroom placeholder, or topology change.
 
 ## Release 1220 — Living Room Museum
 
-Exact Release `1219` plus:
-
-- `1actions.zil`;
-- `assistance.zil`;
-- new `living_room_museum.zil`;
-- `zork1.zil`.
+Exact Release `1219` plus `1actions.zil`, `assistance.zil`, new `living_room_museum.zil`, and `zork1.zil`.
 
 Qualified behavior:
 
-1. bounded real-object registry and provenance;
-2. fixed gallery frame, weapon wall, record shelf, and relic stand;
-3. ordinary parser placement, inspection, removal, and replacement;
-4. active-object warning without retiring puzzle equipment;
-5. canonical trophy-case scoring through `OTVAL-FROB`;
-6. score-neutral open museum surfaces;
-7. house, completed-ritual, repaired-dam, troll-conflict, and canary synthesis;
-8. historical museum receipts in `RECAP`;
-9. Release `1219` exposure/security integration;
-10. one exact unsecured treasure moved into the canonical thief;
-11. nonportable physical theft evidence;
-12. canonical thief booty recovery into the Treasure Room;
-13. intact nested egg/canary object identity;
-14. deliberate surface/global/custody/case corruption and native restore;
-15. strict production/test isolation.
-
-Train 2's capstone candidate passed all 27 workflows. One inherited Release 122 route initially lost the player to random troll combat before the scripted actions; retrying only that unchanged job passed. This was not a Release `1220` regression.
+- bounded real-object display registry and provenance;
+- fixed gallery frame, weapon wall, record shelf, and relic stand;
+- ordinary placement, inspection, removal, and replacement;
+- active-object warning without retirement;
+- canonical trophy-case score authority and score-neutral open surfaces;
+- house, ritual, dam, conflict, and canary synthesis;
+- canonical thief custody, physical theft evidence, and booty recovery;
+- exact nested-object persistence and production/test isolation.
 
 ## Release 1221 — House Kitchen Laboratory
 
-Exact Release `1220` plus:
-
-- `1actions.zil`;
-- `assistance.zil`;
-- new `house_kitchen_laboratory.zil`;
-- `shadow_logic.zil`;
-- `zork1.zil`.
+Exact Release `1220` plus `1actions.zil`, `assistance.zil`, new `house_kitchen_laboratory.zil`, `shadow_logic.zil`, and `zork1.zil`.
 
 Qualified behavior:
 
-1. fixed porcelain sink, wooden worktop, wooden cupboard, and cast-iron range;
-2. one canonical portable `WATER` object and repeat bottle refill only after real consumption;
-3. selected washing and ordinary drying of real tools and containers;
-4. reuse of existing material-clean flags and rusty-knife worsening;
-5. bounded range heat from a real held flame;
-6. warming food and water without creating new objects or recipes;
-7. heat-drying wet metal without repair, sharpening, or combat bonuses;
-8. prepared real lunch and canonically cut real garlic;
-9. bounded hot-range quenching and worktop rinsing using real bottled water;
-10. ordinary object-tree storage and retrieval;
-11. authored bat and cyclops context without replacement solutions;
-12. compact Kitchen receipts in `RECAP`;
-13. one indexed persistent Kitchen table to remain within the Glulx global-variable ceiling;
-14. deliberate state/object-tree corruption and native restore;
-15. strict production/test isolation.
+- fixed porcelain sink, wooden worktop, wooden cupboard, and cast-iron range;
+- one canonical portable `WATER` object and repeat refill only after real consumption;
+- selected washing, drying, warming, cooling, quenching, and worktop rinsing;
+- existing material-clean flags and rusty-knife worsening;
+- prepared real lunch and canonically cut real garlic;
+- ordinary object-tree storage and retrieval;
+- bounded bat and cyclops context;
+- packed indexed persistent Kitchen state;
+- native save/corrupt/restore and production/test isolation.
 
 Parser truth retained:
 
-- `NASTY KNIFE` disambiguates the food knife from the rusty knife;
+- `NASTY KNIFE` disambiguates the real food knife;
 - ordinary `TAKE` precedes moving real objects between fixtures;
 - `SLICE` remains canonical `CUT`;
-- only garlic with the real nasty knife is intercepted, while every other cut delegates unchanged.
+- only garlic with the real nasty knife is intercepted.
 
-Train 3's capstone candidate passed all 29 workflows. One inherited Release 122 real-map route initially lost the test player to random troll combat; the exact Release 122 artifact had rebuilt correctly, and retrying only that unchanged failed job passed. This was not a Release `1221` regression.
+## Release 1222 — House Cellar Threshold
+
+Exact Release `1221` plus `1actions.zil`, `assistance.zil`, new `house_cellar_threshold.zil`, `shadow_logic.zil`, and `zork1.zil`.
+
+Qualified behavior:
+
+1. fixed stone staging bench, iron gear hooks, and closable quarantine niche;
+2. canonical trap-door descent, original first-entry slam/bar, and unchanged upward route;
+3. an observational Cellar underside that reports the real trap-door flags without a duplicate route or lock;
+4. actual carried/staged `READINESS` without loadout automation;
+5. bounded sounds, drafts, dampness, and threshold sensing;
+6. warnings for darkness, live flame, exposed canonical water, Kitchen wetness, material rust, fragile/living cargo, supernatural cargo, and unstable objects;
+7. ordinary real-object staging and retrieval;
+8. recoverable physical quarantine with live-flame refusal;
+9. deterministic thief, creature, loose-water, smoke, and supernatural evidence;
+10. real-water evidence cleanup only after live causes are removed;
+11. packed indexed persistent Cellar state;
+12. deliberate state/object-tree/actor-cause corruption and exact native restore;
+13. strict production/test isolation.
+
+Parser and causal truth retained:
+
+- tactile inspection uses canonical `RUB`, not nonexistent `TOUCH`;
+- the original trap-door object remains canonically in the Living Room;
+- `UNDERSIDE` is observation only;
+- staged rope and wrench no longer count as carried;
+- intrusion evidence returns while a real cause remains present;
+- cleanup consumes the one real portable water quantity.
 
 ## House of Records status
 
 - 12 trains;
 - 96 beads;
-- Train 1 complete: 8 closed;
-- Train 2 complete: 8 closed;
-- Train 3 complete: 8 closed;
-- Trains 4–12 planned: 72 open;
-- total: 24 closed / 72 open;
+- Trains 1–3 complete: 24 closed;
+- Train 4 capstone candidate: 7 closed / 1 open;
+- Trains 5–12 planned;
+- total: 31 closed / 65 open;
 - no sub-beads.
 
 ## Validation coverage
@@ -140,30 +135,17 @@ Train 3's capstone candidate passed all 29 workflows. One inherited Release 122 
 | Production delta | Fail-closed changed-path sets for every production release |
 | Artifact identity | Exact size, Glulx checksum, validity, and SHA-256 |
 | Parser behavior | Native interpreter routes using ordinary player commands |
-| Canonical authority | Existing objects, score, actors, timers, puzzle state, and carrying rules retained |
+| Canonical authority | Existing routes, objects, score, actors, timers, puzzle state, and carrying rules retained |
 | Persistence | Deliberate corruption followed by ordinary native `SAVE` / `RESTORE` |
-| Object trees | No duplicate roots, flattened containers, or replacement tokens |
-| Test isolation | Setup, mutation, recovery, and report verbs excluded from production |
-| Roadmap integrity | 12 trains / 96 unique beads / 24 closed / 72 open |
+| Causal evidence | Physical evidence returns while live causes remain and clears only after cause removal |
+| Object trees | No duplicate roots, flattened containers, equipment tokens, or replacement objects |
+| Test isolation | Setup, intrusion, mutation, cleanup, and report verbs excluded from production |
+| Roadmap integrity | 12 trains / 96 unique beads / 31 closed / 65 open |
 
 ## Next dedicated work
 
-House of Records Train 4:
+After Train 4 capstone closure, continue House of Records Train 5:
 
-`onyx_zork_house_cellar_threshold`
+`onyx_zork_house_correspondence_visitors`
 
-It must turn the real Cellar into a complete expedition boundary using the existing eight beads: staging, threshold sensing, light/tool readiness, carried-hazard screening, limited containment, intrusion hooks, persistence qualification, and capstone.
-
-Later dedicated work remains:
-
-- correspondence and visitors;
-- Attic archive core;
-- NPC dossiers;
-- area case files;
-- playback;
-- rest and dreams;
-- house vulnerability;
-- completed expedition boxes;
-- focused actor memory and long routes;
-- evidence-driven parser improvements;
-- optional geography only after core house and actor systems are strong.
+It must preserve the canonical mailbox and leaflet while adding deterministic authored correspondence, provenance, ordered delivery, bounded replies, visitors, missed-delivery behavior, and native persistence through its eight existing beads.
