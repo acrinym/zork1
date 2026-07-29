@@ -71,6 +71,10 @@ north
 east
 open window
 west
+west
+take lamp
+turn on lamp
+east
 up
 examine catalog
 examine terminal
