@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-MAIL-RECAP",
+  "path": "assistance.zil",
+  "description": "Append bounded correspondence and visitor receipts after the Cellar recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<CELLAR-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<CELLAR-RECAP> <SET SEEN T>)>\n\t<COND (<MAIL-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
