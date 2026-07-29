@@ -9,32 +9,22 @@ on:
       - agent/glulx-house-kitchen-laboratory
       - agent/glulx-house-cellar-threshold
       - agent/glulx-house-correspondence-visitors
+      - agent/glulx-attic-archive-core
+      - agent/glulx-attic-npc-dossiers
     paths:
       - "expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md"
       - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
-      - "glulx/house-state-foundation/README.md"
-      - "glulx/living-room-museum/README.md"
-      - "glulx/house-kitchen-laboratory/README.md"
-      - "glulx/house-cellar-threshold/README.md"
-      - "glulx/house-correspondence-visitors/README.md"
+      - "glulx/**/README.md"
       - ".beads/issues-zork-house-of-records-*.jsonl"
-      - ".beads/onyx_zork_house_*.beadtrain"
-      - ".beads/onyx_zork_attic_*.beadtrain"
-      - ".beads/onyx_zork_expedition_archive.beadtrain"
+      - ".beads/onyx_zork_*.beadtrain"
       - ".github/workflows/house-of-records-roadmap.yml"
   pull_request:
     paths:
       - "expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md"
       - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
-      - "glulx/house-state-foundation/README.md"
-      - "glulx/living-room-museum/README.md"
-      - "glulx/house-kitchen-laboratory/README.md"
-      - "glulx/house-cellar-threshold/README.md"
-      - "glulx/house-correspondence-visitors/README.md"
+      - "glulx/**/README.md"
       - ".beads/issues-zork-house-of-records-*.jsonl"
-      - ".beads/onyx_zork_house_*.beadtrain"
-      - ".beads/onyx_zork_attic_*.beadtrain"
-      - ".beads/onyx_zork_expedition_archive.beadtrain"
+      - ".beads/onyx_zork_*.beadtrain"
       - ".github/workflows/house-of-records-roadmap.yml"
 
 permissions:
@@ -74,7 +64,7 @@ jobs:
             python .beads/beadtrains/scripts/validate_sharded_beadtrain.py "$train"
           done
 
-      - name: Verify roadmap counts and incremental completion
+      - name: Verify roadmap counts and sequential completion
         run: |
           python - <<'PY'
           import json
@@ -90,72 +80,56 @@ jobs:
                   if line.strip()
               )
 
-          train_paths = sorted(Path('.beads').glob('onyx_zork_house_*.beadtrain'))
-          train_paths += sorted(Path('.beads').glob('onyx_zork_attic_*.beadtrain'))
-          train_paths += [Path('.beads/onyx_zork_expedition_archive.beadtrain')]
-          unique_trains = {path.resolve() for path in train_paths}
+          trains = [
+              ('house-state', '.beads/onyx_zork_house_state_foundation.beadtrain'),
+              ('house-museum', '.beads/onyx_zork_house_living_room_museum.beadtrain'),
+              ('house-kitchen', '.beads/onyx_zork_house_kitchen_laboratory.beadtrain'),
+              ('house-cellar', '.beads/onyx_zork_house_cellar_threshold.beadtrain'),
+              ('house-mail', '.beads/onyx_zork_house_correspondence_visitors.beadtrain'),
+              ('attic-core', '.beads/onyx_zork_attic_archive_core.beadtrain'),
+              ('attic-npc', '.beads/onyx_zork_attic_npc_dossiers.beadtrain'),
+              ('attic-area', '.beads/onyx_zork_attic_area_case_files.beadtrain'),
+              ('attic-playback', '.beads/onyx_zork_attic_playback.beadtrain'),
+              ('house-rest', '.beads/onyx_zork_house_rest_and_dreams.beadtrain'),
+              ('house-vulnerability', '.beads/onyx_zork_house_vulnerability.beadtrain'),
+              ('expedition', '.beads/onyx_zork_expedition_archive.beadtrain'),
+          ]
 
           assert len(shards) == 4
           assert len(issues) == 96
           assert len({item['id'] for item in issues}) == 96
-          assert len(unique_trains) == 12
+          assert len(trains) == 12
 
           issue_by_id = {item['id']: item for item in issues}
-          foundation_ids = [f'zork1-house-state-{n:03d}' for n in range(1, 9)]
-          museum_ids = [f'zork1-house-museum-{n:03d}' for n in range(1, 9)]
-          kitchen_ids = [f'zork1-house-kitchen-{n:03d}' for n in range(1, 9)]
-          cellar_ids = [f'zork1-house-cellar-{n:03d}' for n in range(1, 9)]
-          mail_ids = [f'zork1-house-mail-{n:03d}' for n in range(1, 9)]
-          active_ids = set(foundation_ids + museum_ids + kitchen_ids + cellar_ids + mail_ids)
-          later = [item for item in issues if item['id'] not in active_ids]
-          assert all(item['status'] == 'open' for item in later)
+          seen_planned = False
+          expected_closed = 0
 
-          for ids in (foundation_ids, museum_ids, kitchen_ids, cellar_ids):
-              assert [issue_by_id[item]['status'] for item in ids] == ['closed'] * 8
-
-          paths = {
-              'foundation': Path('.beads/onyx_zork_house_state_foundation.beadtrain'),
-              'museum': Path('.beads/onyx_zork_house_living_museum.beadtrain'),
-              'kitchen': Path('.beads/onyx_zork_house_kitchen_laboratory.beadtrain'),
-              'cellar': Path('.beads/onyx_zork_house_cellar_threshold.beadtrain'),
-              'mail': Path('.beads/onyx_zork_house_correspondence_visitors.beadtrain'),
-          }
-          trains = {}
-          for name, path in paths.items():
+          for prefix, train_path in trains:
+              path = Path(train_path)
+              assert path.is_file(), train_path
               with path.open('rb') as handle:
-                  trains[name] = tomllib.load(handle)
-          for name in ('foundation', 'museum', 'kitchen', 'cellar'):
-              assert trains[name]['train']['status'] == 'complete'
+                  train = tomllib.load(handle)['train']
 
-          mail_status = trains['mail']['train']['status']
-          mail_statuses = [issue_by_id[item]['status'] for item in mail_ids]
-          if mail_status == 'in_progress':
-              closed_prefix = 0
-              for status in mail_statuses:
-                  if status == 'closed':
-                      closed_prefix += 1
-                  else:
-                      break
-              assert closed_prefix <= 7
-              assert mail_statuses == ['closed'] * closed_prefix + ['open'] * (8 - closed_prefix)
-              expected_closed = 32 + closed_prefix
-          elif mail_status == 'complete':
-              assert mail_statuses == ['closed'] * 8
-              expected_closed = 40
-          else:
-              raise AssertionError(f'Correspondence train must be in_progress or complete, got {mail_status!r}')
+              ids = [f'zork1-{prefix}-{number:03d}' for number in range(1, 9)]
+              statuses = [issue_by_id[item_id]['status'] for item_id in ids]
+              status = train['status']
+
+              if status == 'complete':
+                  assert not seen_planned, f'{train_path} completes after a planned train'
+                  assert statuses == ['closed'] * 8, (train_path, statuses)
+                  expected_closed += 8
+              elif status == 'planned':
+                  seen_planned = True
+                  assert statuses == ['open'] * 8, (train_path, statuses)
+              else:
+                  raise AssertionError(
+                      f'{train_path} must be complete or planned at a closure head, got {status!r}'
+                  )
 
           closed = [item for item in issues if item['status'] == 'closed']
           open_items = [item for item in issues if item['status'] == 'open']
           assert len(closed) == expected_closed
           assert len(open_items) == 96 - expected_closed
-
-          active_names = {path.name for path in paths.values()}
-          for path in unique_trains:
-              with path.open('rb') as handle:
-                  data = tomllib.load(handle)
-              if path.name not in active_names:
-                  assert data['train']['status'] == 'planned'
 
           for required in (
               'expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md',
@@ -167,6 +141,7 @@ jobs:
               'glulx/house-correspondence-visitors/README.md',
           ):
               assert Path(required).is_file()
+
           print(
               'House of Records roadmap validated: '
               f'12 trains / 96 beads / {len(closed)} closed / {len(open_items)} open'
