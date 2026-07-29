@@ -56,9 +56,14 @@ env:
   MAIL_RELEASE: "1223"
   MAIL_SERIAL: "260724"
   MAIL_TEST_SERIAL: "990323"
+  MAIL_FILE: zork1-glulx-house-correspondence-visitors.ulx
+  MAIL_GLULX_VERSION: "0x00030103"
+  MAIL_SIZE: "271872"
+  MAIL_CHECKSUM: "0x4cbcc561"
+  MAIL_SHA256: 362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816
 
 jobs:
-  discover-glulx-house-correspondence-visitors:
+  qualify-glulx-house-correspondence-visitors:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -114,19 +119,19 @@ jobs:
           sudo apt-get install -y build-essential libncurses-dev curl
           python -m pip install pexpect
 
-      - name: Discover Release 1223 artifact and prove correspondence routes
-        run: bash glulx/house-correspondence-visitors/discover.sh
+      - name: Qualify exact Release 1223 artifact, correspondence gameplay, and persistence
+        run: bash glulx/house-correspondence-visitors/qualify.sh
 
-      - name: Upload Release 1223 discovery evidence
+      - name: Upload qualified Release 1223 artifact and evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zork1-glulx-house-correspondence-visitors-discovery
+          name: zork1-glulx-house-correspondence-visitors-qualified
           path: |
             glulx/build/house-correspondence-visitors/zork1-glulx-house-correspondence-visitors.ulx
             glulx/build/house-correspondence-visitors/zork1-glulx-house-correspondence-visitors.asm
             glulx/build/house-correspondence-visitors/story-report.json
-            glulx/build/house-correspondence-visitors/DISCOVERY-RECEIPT.json
+            glulx/build/house-correspondence-visitors/QUALIFICATION-RECEIPT.json
             glulx/build/house-correspondence-visitors/SERIAL-NORMALIZATION.json
             glulx/build/house-correspondence-visitors/TEST-SERIAL-NORMALIZATION.json
             glulx/build/house-correspondence-visitors/src/STAGING-RECEIPT.json
