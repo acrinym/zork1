@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1223-MAIL-ACTION-HOOK",
+  "path": "shadow_logic.zil",
+  "description": "Advance deterministic correspondence and route bounded mail actions before Cellar, Kitchen, and material handlers",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<CELLAR-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<CELLAR-ADVANCE>\n\t<MAIL-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<CELLAR-ACTION-HOOK> <RTRUE>)\n\t      (<KITCHEN-ACTION-HOOK> <RTRUE>)",
+      "new": "\t      (<MAIL-ACTION-HOOK> <RTRUE>)\n\t      (<CELLAR-ACTION-HOOK> <RTRUE>)\n\t      (<KITCHEN-ACTION-HOOK> <RTRUE>)"
+    }
+  ]
+}
