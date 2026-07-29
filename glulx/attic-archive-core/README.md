@@ -1,5 +1,19 @@
 # Attic Archive Core — Release 1224
 
+## Qualified identity
+
+- edition: Unofficial Attic Archive Core Glulx
+- release: `1224`
+- serial: `260729`
+- output: `zork1-glulx-attic-archive-core.ulx`
+- Glulx: `3.1.3` / `0x00030103`
+- size: `280,832` bytes
+- checksum: `0x4fe371b8`
+- SHA-256: `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356`
+- exact Release 1223 base SHA-256: `362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816`
+
+The exact candidate passed its production journey, parser routes, filing and provenance behavior, bounded playback, and native save/corrupt/restore qualification in GitHub Actions run `30478000111`.
+
 ## What this train builds
 
 The canonical Attic becomes a physical late-1970s archive of this player's actual expedition history.
@@ -54,17 +68,7 @@ The archive observes stable filing codes and exact source-object custody. Destro
 
 ## Playback boundary
 
-The cassette produces a curated textual retrospective. It cannot change:
-
-- location;
-- objects or custody;
-- actors;
-- timers;
-- score;
-- pronouns;
-- puzzle state.
-
-It is not time travel and is not a raw session logger.
+The cassette produces a curated textual retrospective. It cannot change location, objects or custody, actors, timers, score, pronouns, or puzzle state. It is not time travel and is not a raw session logger.
 
 ## Persistence qualification
 
