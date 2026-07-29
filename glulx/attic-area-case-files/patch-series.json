@@ -11,9 +11,9 @@
     "file": "zork1-glulx-attic-area-case-files.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "0x00000000",
-    "sha256": "PENDING-CANDIDATE-QUALIFICATION"
+    "size_bytes": 296448,
+    "checksum_hex": "0x70e0fbf9",
+    "sha256": "29822ca9d3d09ad32515d20dcbd9b1ba6817b503603029ea4625eb5bda3e5b7f"
   },
   "overrides": [
     {
