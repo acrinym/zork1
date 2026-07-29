@@ -1,0 +1,154 @@
+name: Zork I Glulx Attic Area Case Files
+
+on:
+  push:
+    branches:
+      - agent/glulx-attic-area-case-files
+    paths:
+      - "glulx/attic-area-case-files/**"
+      - "glulx/attic-npc-dossiers/**"
+      - "glulx/attic-archive-core/**"
+      - "glulx/house-correspondence-visitors/**"
+      - "glulx/house-cellar-threshold/**"
+      - "glulx/house-kitchen-laboratory/**"
+      - "glulx/living-room-museum/**"
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-attic-area-case-files.yml"
+  pull_request:
+    paths:
+      - "glulx/attic-area-case-files/**"
+      - "glulx/attic-npc-dossiers/**"
+      - "glulx/attic-archive-core/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-attic-area-case-files.yml"
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  AREA_SERIAL: "260729"
+  AREA_TEST_SERIAL: "990326"
+  AREA_FILE: zork1-glulx-attic-area-case-files.ulx
+
+jobs:
+  qualify-glulx-attic-area-case-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
+      - name: Qualify Release 1226 area case-file candidate
+        id: qualify
+        run: bash glulx/attic-area-case-files/qualify.sh
+      - name: Publish qualification receipt
+        if: always() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          QUALIFY_OUTCOME: ${{ steps.qualify.outcome }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          {
+            echo "## Train 8 automated qualification"
+            echo
+            echo "Head: \`${GITHUB_SHA}\`"
+            echo "Outcome: **${QUALIFY_OUTCOME}**"
+            if test -f glulx/build/attic-area-case-files/story-report.json; then
+              echo
+              echo '```json'
+              cat glulx/build/attic-area-case-files/story-report.json
+              echo '```'
+            fi
+            if test -f glulx/build/attic-area-case-files/QUALIFICATION-RECEIPT.json; then
+              echo
+              echo "Native area-case qualification receipt was produced, including partial-to-complete and save/corrupt/restore."
+            else
+              echo
+              echo "No final qualification receipt was produced; inspect the failed workflow step and uploaded logs."
+            fi
+          } > "$RUNNER_TEMP/train8-comment.md"
+          gh pr comment "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/train8-comment.md"
+      - name: Upload candidate artifact and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-attic-area-case-files-candidate
+          path: |
+            glulx/build/attic-area-case-files/zork1-glulx-attic-area-case-files.ulx
+            glulx/build/attic-area-case-files/zork1-glulx-attic-area-case-files.asm
+            glulx/build/attic-area-case-files/story-report.json
+            glulx/build/attic-area-case-files/QUALIFICATION-RECEIPT.json
+            glulx/build/attic-area-case-files/SERIAL-NORMALIZATION.json
+            glulx/build/attic-area-case-files/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/attic-area-case-files/src/STAGING-RECEIPT.json
+            glulx/build/attic-area-case-files/smell-report.json
+            glulx/build/attic-area-case-files/attic-area-case-files-transcript.txt
+            glulx/build/attic-area-case-files/attic-area-case-files-persistence-transcript.txt
+            glulx/build/attic-area-case-files/*.sav
+            glulx/build/attic-area-case-files/*-compile.log
+            glulx/build/attic-area-case-files/*-build.log
+            glulx/build/attic-area-case-files/*-assemble.log
+            glulx/build/attic-area-case-files/glazer-version.txt
+            glulx/attic-area-case-files/patch-series.json
+            glulx/attic-area-case-files/tests/attic_area_case_files_persistence.json
+          if-no-files-found: warn

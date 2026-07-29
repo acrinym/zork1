@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1226-AREA-RECAP",
+  "path": "assistance.zil",
+  "description": "Append regional case-file receipts after NPC dossier receipts",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<NPC-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<NPC-RECAP> <SET SEEN T>)>\n\t<COND (<AREA-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
