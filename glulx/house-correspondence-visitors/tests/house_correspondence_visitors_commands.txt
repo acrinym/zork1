@@ -2,29 +2,28 @@ msetup
 look in mailbox
 take gray warning
 read gray warning
-reply to gray warning
+respond to gray warning
 put reply card in mailbox
 north
 southwest
-answer door
+tell surveyor
 refuse surveyor
 north
 southwest
-answer door
+tell surveyor
 admit surveyor
 look in mailbox
 take cream warning
 read cream warning
-reply to cream warning
+respond to cream warning
 put reply card in mailbox
 north
 southwest
-answer door
+tell courier
 admit courier
 look in mailbox
 take blue acknowledgment
 read blue acknowledgment
-read leaflet
 mreport
 recap
 quit
