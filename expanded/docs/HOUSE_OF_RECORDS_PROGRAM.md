@@ -1,0 +1,241 @@
+# House of Records — Evolving White House and Attic Archive Program
+
+## Status
+
+Planned multi-train program above qualified Glulx Release `1218`.
+
+This document records two connected product directions:
+
+1. make the white house an evolving home base, museum, workshop, archive, refuge, and possible target rather than only a treasure deposit;
+2. make the Attic a period-authentic archive of the player's actual adventure, including notes, NPC statements, area case files, curated transcripts, postgame playback, and separate records for multiple completed expeditions.
+
+The program is intentionally split into **twelve trains and ninety-six beads**. These ideas are too powerful and too stateful to hide inside one or two oversized releases.
+
+## Product thesis
+
+The house should evolve because of the adventure, not because the player performs chores.
+
+A meaningful house change must come from something the player discovered, recovered, displayed, repaired, damaged, carried home, released, promised, received, survived, or foolishly experimented with.
+
+The Attic must not be a generic encyclopedia. It should preserve evidence from this player's run:
+
+- notes and letters;
+- important NPC statements;
+- gifts, threats, mercy, deception, restraint, bargains, and combat;
+- puzzle and mechanism discoveries;
+- altered object states;
+- major commands and responses;
+- area-completion records;
+- final world and house state;
+- and later, comparisons between separate completed expeditions.
+
+The emotional target is simple:
+
+> The house has been quietly writing the history of you.
+
+## Period presentation
+
+The archive should use the material culture of the period when the original game was made, not an in-world Zork calendar and not a modern phone or cloud-drive metaphor.
+
+Preferred surfaces:
+
+- steel filing cabinets;
+- index-card catalogs;
+- banker boxes;
+- continuous-feed line-printer paper;
+- cassette tapes and a tape recorder;
+- microfiche and film reels;
+- Polaroids;
+- maps, diagrams, and corkboards;
+- paper folders with stamps, annotations, redactions, and cross-references;
+- and a late-1970s terminal with terse archive commands.
+
+The terminal may be efficient, but the fiction remains physical. A query locates a drawer, card, tape, folder, box, photograph, reel, or printout.
+
+## Core design rules
+
+1. **Adventure consequences, not upkeep.** No sweeping, hunger meters, lumber economies, daily repair chores, or furniture grind.
+2. **Canonical identity remains authoritative.** Do not duplicate treasure, actors, notes, tools, or puzzle objects for display or archive purposes.
+3. **The trophy case keeps canonical scoring.** Optional displays deepen history and atmosphere but do not create parallel scoring.
+4. **The archive never reveals unseen solutions.** Partial files may show missing or redacted evidence without leaking commands or outcomes.
+5. **Playback is observational.** Reviewing a tape or transcript cannot mutate live objects, actors, timers, score, pronouns, or room state.
+6. **Mutually exclusive histories remain separate.** Different completed playthroughs become different expedition boxes rather than one contradictory timeline.
+7. **Save and restore are first-class.** Every stateful train includes deliberate corruption and ordinary native restore proof.
+8. **Actor records are player-specific.** A troll dossier records what happened between this player and this troll, not merely a static biography.
+9. **Area completion unlocks synthesis, not a checklist HUD.** The archive summarizes a case only after the player genuinely assembled its evidence.
+10. **Authored scope beats universal simulation.** Kitchen experiments, house damage, mail, visitors, dreams, and intrusions use selected coherent interactions.
+
+## The house as a real place
+
+### Living Room — museum and visible autobiography
+
+The Living Room keeps the canonical trophy case while gaining optional display surfaces for paintings, weapons, maps, ritual objects, and curios. Objects remain real and removable. Related displays may unlock historical observations, while theft or disturbance can leave evidence when valuables are poorly secured.
+
+The room should gradually change from an abandoned interior into an explorer's den and strange private museum.
+
+### Kitchen — preparation and grounded experimentation
+
+The Kitchen may support real container filling, cleaning, drying, warming, cooling, food preparation, storage, and a bounded set of authored object reactions. It must not become a crafting tree, universal chemistry system, recipe economy, or hunger simulator.
+
+### Cellar — expedition threshold
+
+The Cellar becomes the boundary between home and the underground. It may support tool and light staging, trap-door observation, sounds and drafts from below, carried-hazard warnings, limited containment, and deterministic hooks for smoke, water, thieves, creatures, or supernatural effects crossing into the house.
+
+### Bedroom — recovery, dreams, and delayed consequences
+
+Rest remains optional. It may advance ordinary queues, recover selected temporary states, generate authored dreams from discoveries, and process overnight mail, theft, damp, smoke, visitors, or archive updates. It must not skip danger, reset mechanisms, farm events, or create mandatory sleep cycles.
+
+### Mailbox and front of house — correspondence and visitors
+
+The canonical leaflet and mailbox remain intact. A deterministic queue may add warnings, threats, replies, deliveries, maintenance notices, bureaucratic absurdities, and evidence. Records retain sender, trigger, authenticity, delivery order, later annotations, and Attic cross-references. A small set of authored visitors may knock, leave, return, or be refused.
+
+### Attic — the living archive
+
+The Attic stores correspondence, NPC dossiers, area case files, curated transcripts, cassette-style playback, maps, diagrams, photographs, and completed expedition boxes. It is simultaneously a museum of evidence, a record of what happened, and a way to replay the completed adventure through the player's own commands and the world's responses.
+
+## Archive record model
+
+A record should be structured around evidence rather than prewritten codex prose.
+
+Minimum fields:
+
+- stable record ID;
+- record kind;
+- expedition ID;
+- discovery or delivery order;
+- source and provenance;
+- linked person, place, object, and incident IDs;
+- exact or normalized quote where applicable;
+- state transition or outcome;
+- truth status and confidence;
+- redaction or missing-evidence state;
+- later annotations;
+- related record IDs;
+- physical-media presentation;
+- and whether the record is curated, raw, partial, complete, or postgame-only.
+
+## NPC dossiers
+
+Dossiers are histories of relationships, not static biographies.
+
+A troll file may record first contact, hostility, axe state, deception, restraint, opened passages, untie, recovery, renewed danger, gifts, threats, mercy, and exact statements. Cyclops and thief files follow the same principle while preserving their canonical timing, theft, combat, bargains, and alternate outcomes.
+
+Partial files may be redacted, contradictory, or visibly incomplete. They must never expose unseen dialogue or solutions.
+
+## Area case files and one-hundred-percent completion
+
+Before an area is complete, its folder may contain missing documents, empty card slots, redacted diagrams, unresolved mechanism entries, contradictory records, or explicit notices that evidence is absent.
+
+At genuine completion, the archive may add a synthesis page explaining how the discovered evidence fits together. This remains retrospective and cannot replace discovery while the player is solving the area.
+
+Pilot files include:
+
+- Flood Control Dam #3, including maps, maintenance evidence, MELZAR, gates, leak, repair, transcripts, and final mechanism state;
+- the Hades ceremony, including bell, candles, black book, mirrors, wrong order, ghosts, and completion;
+- the house, forest, and representative underground areas.
+
+## Playback
+
+Playback reconstructs the player's actual run through text.
+
+- A cassette record may print tape hiss, pauses, speaker labels, and environmental sounds.
+- A line-printer transcript shows the player's command and the game's response.
+- An incident file groups meaningful commands, statements, failures, discoveries, and state changes from one encounter.
+- Raw logs remain optional and bounded.
+- Curated files prioritize unique statements and consequential events rather than dumping every parser turn.
+
+Playback is never time travel. It cannot modify live game state.
+
+## Multiple expeditions
+
+After victory, each completed run receives a separate archival box.
+
+A box may contain:
+
+- route chronology;
+- deaths and mortal follies;
+- treasure recovery;
+- actor outcomes;
+- area outcomes;
+- altered or destroyed objects;
+- correspondence;
+- house condition;
+- display arrangement;
+- unresolved evidence;
+- and final mechanism states.
+
+Comparison commands may show differences between runs, but they cannot reveal unseen solution text merely because another outcome exists.
+
+## Program sequencing
+
+The program has a foundation lane, house-room lanes, archive lanes, consequence lanes, and a final postgame capstone.
+
+- Train 1 is mandatory first.
+- Trains 2–5 and 10 may begin after the house foundation.
+- Train 6 establishes the archive substrate.
+- Trains 7–9 build dossiers, case files, and playback above the archive substrate.
+- Train 11 depends on the Cellar threshold and integrates with museum, rest, and archive state.
+- Train 12 closes the program after the archive and house systems are mature.
+
+Focused actor-state work remains an important input to NPC dossiers, but the archive core can begin with already-authored statements and outcomes.
+
+## Planned trains
+
+| # | Beadtrain | Purpose |
+|---:|---|---|
+| 1 | `onyx_zork_house_state_foundation` | Persistent house condition, event receipts, description projection, isolation, migration, and restore |
+| 2 | `onyx_zork_house_living_museum` | Trophy-case-safe displays, provenance, group synthesis, theft, and object-tree persistence |
+| 3 | `onyx_zork_house_kitchen_laboratory` | Water, cleaning, drying, food, storage, and bounded experiments without crafting grind |
+| 4 | `onyx_zork_house_cellar_threshold` | Expedition staging, sensing, hazard screening, containment, and intrusion hooks |
+| 5 | `onyx_zork_house_correspondence_visitors` | Mail queue, provenance, replies, deliveries, visitors, and missed-event persistence |
+| 6 | `onyx_zork_attic_archive_core` | Period media, record schema, card catalog, archive commands, provenance, and migration |
+| 7 | `onyx_zork_attic_npc_dossiers` | Player-specific troll, cyclops, thief, quotation, and encounter histories |
+| 8 | `onyx_zork_attic_area_case_files` | Partial/redacted area records, 100% synthesis, and representative case files |
+| 9 | `onyx_zork_attic_playback` | Curated capture, line-printer transcripts, cassette playback, scenes, and integrity |
+| 10 | `onyx_zork_house_rest_and_dreams` | Optional rest, canonical timer safety, recovery, dreams, overnight changes, and waking |
+| 11 | `onyx_zork_house_vulnerability` | Smoke, damp, water, burglary, followers, supernatural effects, and meaningful repair |
+| 12 | `onyx_zork_expedition_archive` | Victory record, timeline, final state, separate run boxes, comparison, migration, and program capstone |
+
+Each train contains eight planned beads. The canonical issue records are sharded across:
+
+- `.beads/issues-zork-house-of-records-01.jsonl`
+- `.beads/issues-zork-house-of-records-02.jsonl`
+- `.beads/issues-zork-house-of-records-03.jsonl`
+- `.beads/issues-zork-house-of-records-04.jsonl`
+
+## Qualification standard
+
+Every implementation train must:
+
+1. resolve the exact live base before editing;
+2. publish a narrow production delta and explicit exclusions;
+3. use real canonical objects and actors;
+4. reject test-only setup, mutation, report, and positioning verbs from production;
+5. build with pinned toolchains;
+6. run deterministic player-facing routes;
+7. deliberately corrupt state and prove ordinary native `SAVE` / `RESTORE`;
+8. verify no duplicate object, score, actor, note, or archive record;
+9. update this program, the frontier, the feature matrix, and the relevant README;
+10. close beads only after exact-head evidence passes;
+11. leave PRs open and unmerged unless Justin explicitly gives the merge whistle.
+
+## Explicit non-goals
+
+- generic base building;
+- crafting trees;
+- survival meters;
+- housekeeping chores;
+- universal physics or chemistry;
+- open-ended AI dialogue;
+- modern phone or cloud-drive metaphors;
+- full transcript dumping as the primary interface;
+- revealing unseen solutions;
+- merging contradictory playthroughs;
+- using the archive to repair live state;
+- or replacing Zork's parser identity with free-form natural language.
+
+## Definition of success
+
+The program succeeds when the house feels like the player's place in the Great Underground Empire and the Attic can reconstruct why it became that way.
+
+The player should be able to return home and understand what they recovered, what they changed, what followed them home, what the world sent them, what important characters said and did, how each area was resolved, what remains unknown, and how this expedition differed from another.

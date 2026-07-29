@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_expedition_archive"
+title       = "Zork I postgame expedition archive and multi-run comparison"
+description = """
+After victory, turn the Attic into a complete retrospective record of the player's route, choices, outcomes, house, actors, and alternate expeditions.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "unlock"
+bead = "zork1-expedition-001"
+title = "Victory-gated expedition record"
+parallel_start = true
+depends_on = []
+summary = "Unlock the master archive after genuine completion while preserving partial pre-victory files."
+
+[[cars]]
+id = "timeline"
+bead = "zork1-expedition-002"
+title = "Chronological route and incident timeline"
+parallel_start = true
+depends_on = ["unlock"]
+summary = "Reconstruct rooms, discoveries, puzzles, deaths, follies, encounters, and returns home."
+
+[[cars]]
+id = "final_state"
+bead = "zork1-expedition-003"
+title = "Final world and house state summary"
+parallel_start = true
+depends_on = ["unlock"]
+summary = "Record mechanisms, actors, treasure, altered objects, letters, archive, and home state."
+
+[[cars]]
+id = "boxes"
+bead = "zork1-expedition-004"
+title = "Separate expedition boxes"
+parallel_start = true
+depends_on = ["unlock"]
+summary = "Store completed playthroughs separately so mutually exclusive histories never merge."
+
+[[cars]]
+id = "compare"
+bead = "zork1-expedition-005"
+title = "Cross-run comparison"
+parallel_start = false
+depends_on = ["timeline", "final_state", "boxes"]
+summary = "Compare actor outcomes, area resolutions, object fates, route order, mail, and house."
+
+[[cars]]
+id = "unseen"
+bead = "zork1-expedition-006"
+title = "Unseen and alternate-outcome boundaries"
+parallel_start = false
+depends_on = ["compare"]
+summary = "Indicate alternatives exist without revealing commands, solutions, or unseen text."
+
+[[cars]]
+id = "migration"
+bead = "zork1-expedition-007"
+title = "Archive versioning, compatibility, and export"
+parallel_start = false
+depends_on = ["unseen"]
+summary = "Migrate schemas and produce deterministic human-readable expedition receipts."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-expedition-008"
+title = "House of Records program capstone"
+parallel_start = false
+depends_on = ["migration"]
+summary = "Run whole-game and multi-run qualification, reconcile all trains, and publish final docs."
+
+[meta]
+one_liner = "After victory, turn the Attic into a complete retrospective record of the player's route, choices, outcomes, house, actors, and alternate expeditions."
+prior_car = "zork1-attic-playback-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "expedition_archive", "SAVE", "RESTORE"]

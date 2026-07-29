@@ -1,0 +1,137 @@
+name: Zork I Glulx Room Density
+
+on:
+  push:
+    branches:
+      - agent/glulx-room-density-parser-kindness
+    paths:
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-room-density.yml"
+  pull_request:
+    paths:
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-room-density.yml"
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  BASE_RELEASE: "1217"
+  BASE_ARTIFACT_SHA256: 2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da
+  ROOM_RELEASE: "1218"
+  ROOM_SERIAL: "260723"
+  ROOM_TEST_SERIAL: "990219"
+  ROOM_SIZE: "227840"
+  ROOM_CHECKSUM: "0x3b65ecaf"
+  ROOM_SHA256: efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521
+
+jobs:
+  qualify-glulx-room-density:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
+
+      - name: Qualify exact Release 1218 artifact, gameplay, and persistence
+        run: bash glulx/room-density/qualify.sh
+
+      - name: Upload Release 1218 artifact and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-room-density-qualified
+          path: |
+            glulx/build/room-density/zork1-glulx-room-density.ulx
+            glulx/build/room-density/zork1-glulx-room-density.asm
+            glulx/build/room-density/story-report.json
+            glulx/build/room-density/BUILD-RECEIPT.json
+            glulx/build/room-density/SERIAL-NORMALIZATION.json
+            glulx/build/room-density/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/room-density/src/STAGING-RECEIPT.json
+            glulx/build/room-density/smell-report.json
+            glulx/build/room-density/room-density-transcript.txt
+            glulx/build/room-density/room-density-persistence-transcript.txt
+            glulx/build/room-density/*.sav
+            glulx/build/room-density/*-compile.log
+            glulx/build/room-density/*-build.log
+            glulx/build/room-density/*-restore.log
+            glulx/build/room-density/*-assemble.log
+            glulx/build/room-density/glazer-version.txt
+            glulx/room-density/patch-series.json
+            glulx/room-density/tests/room_density_persistence.json
+          if-no-files-found: warn

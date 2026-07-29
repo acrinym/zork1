@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1218-STUDIO-PAINT",
+  "path": "room_density.zil",
+  "description": "Give the Studio's explicitly advertised sixty-nine paint colors bounded scenery behavior",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ROOM-DENSITY-STUDIO-FLOOR-F ()",
+      "new": "<ROUTINE ROOM-DENSITY-STUDIO-PAINT-F ()\n    <SETG ROOM-DENSITY-STUDIO-SEEN T>\n    <COND (<VERB? EXAMINE SEARCH LOOK-ON>\n           <TELL \"The paint covers walls, floor, and door in sixty-nine distinguishable colors, including several that should probably remain unnamed.\" CR>)\n          (<VERB? RUB>\n           <TELL \"The paint is thoroughly dry. Texture varies from thin stains to ridges left by loaded brushes.\" CR>)\n          (<VERB? SMELL>\n           <TELL \"Only a faint trace of old oil and pigment remains.\" CR>)\n          (<VERB? KNOCK STRIKE>\n           <TELL \"The painted surface answers according to the solid wall or floor beneath it.\" CR>)\n          (<VERB? TAKE MOVE PUSH>\n           <TELL \"You cannot remove the paint as a useful, independent object.\" CR>)\n          (T\n           <TELL \"The sixty-nine colors improve the studio's commitment to excess, not its inventory.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE ROOM-DENSITY-STUDIO-FLOOR-F ()"
+    }
+  ]
+}

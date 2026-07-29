@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1217-MATERIAL-HOOK",
+  "path": "shadow_logic.zil",
+  "description": "Advance focused material timers and run specialized Release 1217 handling after Shadow Logic threats but before generic material prose",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<SHADOW-ADVANCE-THREATS>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<SHADOW-ADVANCE-THREATS>\n\t<MATERIAL-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<SHADOW-MATERIAL-HOOK> <RTRUE>)>\n\t<RFALSE>>",
+      "new": "\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)\n\t      (<MATERIAL-NEST-HOOK> <RTRUE>)\n\t      (<MATERIAL-TOOL-STATE-HOOK> <RTRUE>)\n\t      (<SHADOW-MATERIAL-HOOK> <RTRUE>)>\n\t<RFALSE>>"
+    }
+  ]
+}

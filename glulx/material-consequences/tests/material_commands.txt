@@ -1,0 +1,34 @@
+mreset
+msurf
+use shovel on board
+use screwdriver on board
+use wrench on board
+recap
+manch
+use rope on railing
+pull rope
+drop rope
+untie rope
+use rope on brown sack
+open brown sack
+untie brown sack
+mreport
+mtools
+use bottle on shovel
+mrefil
+use bottle on rusty knife
+wait
+wait
+wait
+examine rusty knife
+mreport
+mnest
+use bottle on nest
+burn nest with torch
+wait
+wait
+wait
+burn nest with torch
+mreport
+quit
+y

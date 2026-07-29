@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1218-ROOM-DENSITY-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only room positioning, mutation, and reporting verbs after every production module",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"room_density\" T>",
+      "new": "<INSERT-FILE \"room_density\" T>\n<INSERT-FILE \"room_density_test\" T>"
+    }
+  ]
+}

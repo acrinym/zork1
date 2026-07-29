@@ -1,0 +1,59 @@
+{
+  "edition": "Unofficial Material Consequences Glulx",
+  "release": 1217,
+  "serial": "260722",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../ritual-resonance/patch-series.json",
+  "base_release": 1216,
+  "base_artifact_sha256": "4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1216 layer, assign Release 1217, and load focused non-dam material consequences"
+    },
+    {
+      "path": "material_consequences.zil",
+      "source": "overrides/material_consequences.zil",
+      "allow_new": true,
+      "description": "Add recoverable rope commitment, sack cinching, temporary nest soaking, tool washing and rust consequences, and distinct boarded-surface tool experiments"
+    }
+  ],
+  "patches": [
+    "patches/001-material-action-hook.json",
+    "patches/002-material-recap.json"
+  ],
+  "expected_changed_paths": [
+    "assistance.zil",
+    "material_consequences.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-material-consequences.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 217344,
+    "checksum_hex": "0xb0028984",
+    "sha256": "2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da"
+  },
+  "preserved_canonical_state": [
+    "Shadow Logic threat advancement remains first and authoritative for every turn",
+    "rope commitment is always recoverable through UNTIE and does not replace troll restraint",
+    "the brown sack remains the real sandwich bag and can be returned to canonical open use",
+    "wet nest state only delays ignition and never creates or removes the egg",
+    "canonical prepared and destructive nest-fire outcomes remain in GLULX-ALT-BURN-NEST",
+    "tool washing changes observation state but not weapon strength, dam operation, or scoring",
+    "board experiments preserve the inaccessible front entrance and reuse the existing painted splinter"
+  ],
+  "excluded_scope": [
+    "generalized crafting grid",
+    "universal physics simulator",
+    "new front-door or boarded-window solution",
+    "permanent destruction of the rope or canonical tools",
+    "broad fire or flood propagation",
+    "new treasure or scoring",
+    "Hidden Glade and character alternate ports",
+    "Wizard of Frobozz"
+  ]
+}

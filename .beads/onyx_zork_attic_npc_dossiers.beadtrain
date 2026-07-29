@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_attic_npc_dossiers"
+title       = "Zork I attic NPC dossiers"
+description = """
+Turn meaningful encounters with the troll, cyclops, thief, and later actors into player-specific dossiers rather than static encyclopedia entries.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "events"
+bead = "zork1-attic-npc-001"
+title = "Actor-event normalization"
+parallel_start = true
+depends_on = []
+summary = "Record first contact, hostility, gifts, threats, mercy, deception, restraint, bargains, and combat."
+
+[[cars]]
+id = "troll"
+bead = "zork1-attic-npc-002"
+title = "Troll dossier and renewed-danger history"
+parallel_start = true
+depends_on = ["events"]
+summary = "Archive restraint, axe state, passage access, untie, recovery, quotes, and later danger."
+
+[[cars]]
+id = "cyclops"
+bead = "zork1-attic-npc-003"
+title = "Cyclops dossier and impatience history"
+parallel_start = true
+depends_on = ["events"]
+summary = "Archive water, pepper, Odysseus, lullaby, timing, mood, and statements."
+
+[[cars]]
+id = "thief"
+bead = "zork1-attic-npc-004"
+title = "Thief dossier and property history"
+parallel_start = true
+depends_on = ["events"]
+summary = "Archive bargains, theft, burglary, combat, treasure exchanges, and missing property."
+
+[[cars]]
+id = "quotes"
+bead = "zork1-attic-npc-005"
+title = "Curated quotations and encounter timeline"
+parallel_start = false
+depends_on = ["troll", "cyclops", "thief"]
+summary = "Store unique statements with context and chronology, separate from raw logs."
+
+[[cars]]
+id = "completion"
+bead = "zork1-attic-npc-006"
+title = "Dossier completeness and missing evidence"
+parallel_start = false
+depends_on = ["quotes"]
+summary = "Show partial, redacted, contradictory, and complete files without leaks."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-attic-npc-007"
+title = "NPC dossier persistence and revisit proof"
+parallel_start = false
+depends_on = ["completion"]
+summary = "Restore actor records and prove agreement with live actor state."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-attic-npc-008"
+title = "NPC dossier capstone"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Publish actor-memory boundaries and feed playback and expedition summaries."
+
+[meta]
+one_liner = "Turn meaningful encounters with the troll, cyclops, thief, and later actors into player-specific dossiers rather than static encyclopedia entries."
+prior_car = "zork1-attic-core-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "attic_npc_dossiers", "SAVE", "RESTORE"]

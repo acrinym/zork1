@@ -1,0 +1,90 @@
+name: Zork I House of Records Roadmap
+
+on:
+  push:
+    branches:
+      - agent/house-of-records-program
+    paths:
+      - "expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md"
+      - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
+      - ".beads/issues-zork-house-of-records-*.jsonl"
+      - ".beads/onyx_zork_house_*.beadtrain"
+      - ".beads/onyx_zork_attic_*.beadtrain"
+      - ".beads/onyx_zork_expedition_archive.beadtrain"
+      - ".github/workflows/house-of-records-roadmap.yml"
+  pull_request:
+    paths:
+      - "expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md"
+      - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
+      - ".beads/issues-zork-house-of-records-*.jsonl"
+      - ".beads/onyx_zork_house_*.beadtrain"
+      - ".beads/onyx_zork_attic_*.beadtrain"
+      - ".beads/onyx_zork_expedition_archive.beadtrain"
+      - ".github/workflows/house-of-records-roadmap.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-house-of-records-roadmap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate all planned trains
+        run: |
+          set -euo pipefail
+          for train in \
+            .beads/onyx_zork_house_state_foundation.beadtrain \
+            .beads/onyx_zork_house_living_museum.beadtrain \
+            .beads/onyx_zork_house_kitchen_laboratory.beadtrain \
+            .beads/onyx_zork_house_cellar_threshold.beadtrain \
+            .beads/onyx_zork_house_correspondence_visitors.beadtrain \
+            .beads/onyx_zork_attic_archive_core.beadtrain \
+            .beads/onyx_zork_attic_npc_dossiers.beadtrain \
+            .beads/onyx_zork_attic_area_case_files.beadtrain \
+            .beads/onyx_zork_attic_playback.beadtrain \
+            .beads/onyx_zork_house_rest_and_dreams.beadtrain \
+            .beads/onyx_zork_house_vulnerability.beadtrain \
+            .beads/onyx_zork_expedition_archive.beadtrain
+          do
+            python .beads/beadtrains/scripts/validate_sharded_beadtrain.py "$train"
+          done
+
+      - name: Verify counts and documentation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          shards = sorted(Path(".beads").glob("issues-zork-house-of-records-*.jsonl"))
+          issues = []
+          for shard in shards:
+              issues.extend(
+                  json.loads(line)
+                  for line in shard.read_text(encoding="utf-8").splitlines()
+                  if line.strip()
+              )
+
+          trains = sorted(Path(".beads").glob("onyx_zork_house_*.beadtrain"))
+          trains += sorted(Path(".beads").glob("onyx_zork_attic_*.beadtrain"))
+          trains += [Path(".beads/onyx_zork_expedition_archive.beadtrain")]
+          unique_trains = {path.resolve() for path in trains}
+
+          assert len(shards) == 4, f"expected 4 issue shards, found {len(shards)}"
+          assert len(issues) == 96, f"expected 96 beads, found {len(issues)}"
+          assert len({item["id"] for item in issues}) == 96, "duplicate House of Records bead IDs"
+          assert len(unique_trains) == 12, f"expected 12 trains, found {len(unique_trains)}"
+          assert all(item["status"] == "open" for item in issues)
+          assert Path("expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md").is_file()
+          assert Path("expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md").is_file()
+          print("House of Records roadmap validated: 12 trains / 96 open beads")
+          PY

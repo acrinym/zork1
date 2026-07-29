@@ -1,0 +1,78 @@
+[train]
+name        = "onyx_zork_house_kitchen_laboratory"
+title       = "Zork I kitchen preparation and grounded laboratory"
+description = """
+Give the Kitchen useful water, heat, storage, food, cleaning, and drying interactions without crafting grind or a recipe economy.
+"""
+created     = "2026-07-23"
+status      = "planned"
+
+[[cars]]
+id = "water"
+bead = "zork1-house-kitchen-001"
+title = "House water and container handling"
+parallel_start = true
+depends_on = []
+summary = "Use real containers and a bounded water source while preserving puzzle water."
+
+[[cars]]
+id = "cleaning"
+bead = "zork1-house-kitchen-002"
+title = "Cleaning and residue consequences"
+parallel_start = true
+depends_on = ["water"]
+summary = "Extend grime, soot, rust, paint, and tool-state interactions through grounded surfaces."
+
+[[cars]]
+id = "drying"
+bead = "zork1-house-kitchen-003"
+title = "Drying, warming, and cooling"
+parallel_start = true
+depends_on = ["water"]
+summary = "Provide sensible temperature changes with timer and fire-safety boundaries."
+
+[[cars]]
+id = "food"
+bead = "zork1-house-kitchen-004"
+title = "Food preparation and creature offerings"
+parallel_start = true
+depends_on = ["water"]
+summary = "Prepare existing food for plausible gifts and lures without a hunger meter."
+
+[[cars]]
+id = "experiments"
+bead = "zork1-house-kitchen-005"
+title = "Bounded heat, water, and utensil experiments"
+parallel_start = false
+depends_on = ["cleaning", "drying", "food"]
+summary = "Author selected reactions while rejecting universal chemistry and crafting."
+
+[[cars]]
+id = "storage"
+bead = "zork1-house-kitchen-006"
+title = "Cupboard and work-surface storage"
+parallel_start = false
+depends_on = ["experiments"]
+summary = "Improve container, pronoun, and retrieval behavior without hiding required objects."
+
+[[cars]]
+id = "qualification"
+bead = "zork1-house-kitchen-007"
+title = "Kitchen gameplay and persistence qualification"
+parallel_start = false
+depends_on = ["storage"]
+summary = "Prove object identity, timers, residues, food state, storage, and restore."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-house-kitchen-008"
+title = "Kitchen laboratory capstone"
+parallel_start = false
+depends_on = ["qualification"]
+summary = "Document the matrix, exclusions, evidence, and downstream hooks."
+
+[meta]
+one_liner = "Give the Kitchen useful water, heat, storage, food, cleaning, and drying interactions without crafting grind or a recipe economy."
+prior_car = "zork1-house-state-008"
+couples_with = ["onyx_zork_glulx_room_density"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "house_kitchen_laboratory", "SAVE", "RESTORE"]

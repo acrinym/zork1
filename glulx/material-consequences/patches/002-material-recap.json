@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1217-MATERIAL-RECAP",
+  "path": "assistance.zil",
+  "description": "Append rope, water, tool, container, nest, and boarded-surface discoveries after Release 1216 recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<RITUAL-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<RITUAL-RECAP> <SET SEEN T>)>\n\t<COND (<MATERIAL-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}

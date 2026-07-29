@@ -1,0 +1,39 @@
+name: Zork I Glulx Room Density Beadtrain
+
+on:
+  push:
+    branches:
+      - agent/glulx-room-density-parser-kindness
+    paths:
+      - ".beads/onyx_zork_glulx_room_density.beadtrain"
+      - ".beads/issues*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/glulx-room-density-beadtrain.yml"
+  pull_request:
+    paths:
+      - ".beads/onyx_zork_glulx_room_density.beadtrain"
+      - ".beads/issues*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/glulx-room-density-beadtrain.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-glulx-room-density-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate sharded Release 1218 train
+        run: |
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
+            .beads/onyx_zork_glulx_room_density.beadtrain
