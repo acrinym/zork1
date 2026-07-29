@@ -1,0 +1,26 @@
+{
+  "id": "Z1-GLULX-1225-NPC-CATALOG-RECAP",
+  "description": "Append player-specific actor files to the existing archive catalog and recap",
+  "operations": [
+    {
+      "path": "attic_archive_core.zil",
+      "replacements": [
+        {
+          "expected_count": 1,
+          "old": "    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>",
+          "new": "    <NPC-CATALOG-LIST>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>"
+        }
+      ]
+    },
+    {
+      "path": "assistance.zil",
+      "replacements": [
+        {
+          "expected_count": 1,
+          "old": "\t<COND (<ARCHIVE-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+          "new": "\t<COND (<ARCHIVE-RECAP> <SET SEEN T>)>\n\t<COND (<NPC-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+        }
+      ]
+    }
+  ]
+}
