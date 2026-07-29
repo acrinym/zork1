@@ -64,8 +64,13 @@ python - <<'PY'
 import json
 from pathlib import Path
 story = json.loads(Path('glulx/build/attic-area-case-files/story-report.json').read_text())
-assert story['format'] == 'Glulx'
-assert story['version_hex'] == '0x00030103'
+manifest = json.loads(Path('glulx/attic-area-case-files/patch-series.json').read_text())
+expected = manifest['expected_artifact']
+assert story['format'] == expected['format']
+assert story['version_hex'] == expected['version_hex']
+assert story['size_bytes'] == expected['size_bytes']
+assert story['checksum_hex'] == expected['checksum_hex']
+assert story['sha256'] == expected['sha256']
 assert story['checksum_valid'] is True
 PY
 
