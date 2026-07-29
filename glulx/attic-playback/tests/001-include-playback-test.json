@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1227-PLAYBACK-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Include test-only playback setup and mutation verbs after the production module",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"attic_playback\" T>",
+      "new": "<INSERT-FILE \"attic_playback\" T>\n<INSERT-FILE \"attic_playback_test\" T>"
+    }
+  ]
+}
