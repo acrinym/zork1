@@ -40,6 +40,13 @@
     "shadow_logic.zil",
     "zork1.zil"
   ],
+  "expected_artifact": {
+    "file": "zork1-glulx-house-correspondence-visitors.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 271872,
+    "checksum_hex": "0x4cbcc561",
+    "sha256": "362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816"
+  },
   "preserved_canonical_state": [
     "the canonical West of House, anchored MAILBOX, original ADVERTISEMENT leaflet, boarded front door, room exits, and score remain authoritative",
     "each letter, reply card, visitor notice, receipt, tag, courier, and surveyor is one exact physical object and is never cloned",
