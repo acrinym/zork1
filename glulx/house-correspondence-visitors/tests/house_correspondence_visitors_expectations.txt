@@ -1,5 +1,6 @@
 MAIL-SETUP:READY
 A small internal flap clicks inside the anchored mailbox
+A leaflet
 To the occupant: repeated threshold marks
 Sender: West of House Mutual Assurance Society.
 You prepare the one fixed response appropriate to this letter.
@@ -16,7 +17,6 @@ The courier identifies the reply by its fixed filing code
 Because the canonical front door is still boarded
 Flood Control Dam #3 acknowledges the return of meaningful mechanical function.
 Sender: Flood Control Dam #3 Maintenance Office.
-WELCOME TO ZORK!
 MAIL:VERSION=1;QUEUED=7;DELIVERED=7;READ=7;REPLIED=3;SENT=3;VISITOR-QUEUED=0;VISITOR-ACTIVE=0;MISSED=3;REFUSED=2;COMPLETE=3;LEAFLET-MAILBOX=Y;CELLAR-EXISTS=Y;MUSEUM-EXISTS=Y;DAM-EXISTS=Y;REPLY-EXISTS=N;COURIER-NOTICE=Y;SURVEYOR-NOTICE=Y;RECEIPT=Y;SURVEY-TAG=Y
 - Meaningful house and expedition events queued a small deterministic set of authored correspondence.
 - Physical letters and visit records retained sender, trigger, authenticity, delivery location, and filing codes.
