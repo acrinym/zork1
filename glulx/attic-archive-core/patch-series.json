@@ -1,0 +1,48 @@
+{
+  "edition": "Unofficial Attic Archive Core Glulx",
+  "release": 1224,
+  "serial": "260729",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../house-correspondence-visitors/patch-series.json",
+  "base_release": 1223,
+  "base_artifact_sha256": "362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1223 layer, assign Release 1224, and load the Attic archive core"
+    },
+    {
+      "path": "attic_archive_core.zil",
+      "source": "overrides/attic_archive_core.zil",
+      "allow_new": true,
+      "description": "Add versioned physical archive state, period media, deterministic catalog, explicit retrieval, provenance, migration, and recap"
+    }
+  ],
+  "patches": [
+    "patches/001-archive-hooks.json",
+    "patches/002-archive-recap.json"
+  ],
+  "expected_changed_paths": [
+    "assistance.zil",
+    "attic_archive_core.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "preserved_canonical_state": [
+    "the canonical Attic, stairs, house rooms, mailbox, correspondence, visitors, score, actors, objects, and routes remain authoritative",
+    "archive records are exact physical objects indexed by deterministic filing codes",
+    "live correspondence is observed but never moved, repaired, recreated, or consumed",
+    "the terminal locates physical records but stores none",
+    "playback is textual, bounded, retrospective, and cannot mutate live state",
+    "native save and restore preserve versioned state, index bits, annotations, and object custody"
+  ],
+  "excluded_scope": [
+    "modern filesystem, cloud drive, email inbox, generic database, or universal logger",
+    "raw transcript dump, unseen solution disclosure, or playback that changes the present",
+    "duplicate records, regenerated destroyed records, parallel score, or automatic puzzle completion",
+    "merged mutually exclusive expedition histories",
+    "sub-beads or a parallel planning hierarchy"
+  ]
+}
