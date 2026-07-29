@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-REPLY-CARD-PARSER-KINDNESS",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Make the object's advertised name REPLY CARD parse as one adjective-plus-noun phrase instead of two competing nouns",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT MAIL-REPLY-CARD\n    (SYNONYM CARD REPLY RESPONSE MAIL POSTCARD)\n    (ADJECTIVE OUTGOING WHITE STAMPED)",
+      "new": "<OBJECT MAIL-REPLY-CARD\n    (SYNONYM CARD POSTCARD MAIL)\n    (ADJECTIVE REPLY RESPONSE OUTGOING WHITE STAMPED)"
+    }
+  ]
+}
