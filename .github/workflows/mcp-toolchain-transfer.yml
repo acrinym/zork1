@@ -1,0 +1,66 @@
+name: MCP Toolchain Transfer
+
+on:
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Assemble GitHub CLI and .NET 9 installer payload
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p transfer/bin transfer/sdk-feed/Sdk/9.0.316 transfer/logs
+
+          cp "$(command -v gh)" transfer/bin/gh
+          chmod +x transfer/bin/gh
+          gh --version | tee transfer/logs/gh-version.txt
+
+          curl -fsSL https://dot.net/v1/dotnet-install.sh -o transfer/dotnet-install.sh
+          chmod +x transfer/dotnet-install.sh
+
+          curl -fL --retry 5 --retry-delay 3 \
+            https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.316/dotnet-sdk-9.0.316-linux-x64.tar.gz \
+            -o transfer/sdk-feed/Sdk/9.0.316/dotnet-sdk-9.0.316-linux-x64.tar.gz
+
+          sha256sum transfer/bin/gh | tee transfer/logs/gh-sha256.txt
+          sha512sum transfer/sdk-feed/Sdk/9.0.316/dotnet-sdk-9.0.316-linux-x64.tar.gz \
+            | tee transfer/logs/dotnet-sdk-sha512.txt
+
+      - name: Prove official dotnet-install.sh with bundled feed
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory transfer/sdk-feed \
+            > transfer/logs/feed-server.log 2>&1 &
+          feed_pid=$!
+          trap 'kill "$feed_pid" 2>/dev/null || true' EXIT
+          sleep 2
+
+          transfer/dotnet-install.sh \
+            --version 9.0.316 \
+            --architecture x64 \
+            --os linux \
+            --install-dir "$RUNNER_TEMP/dotnet" \
+            --azure-feed http://127.0.0.1:8765 \
+            --no-path \
+            2>&1 | tee transfer/logs/dotnet-install.log
+
+          "$RUNNER_TEMP/dotnet/dotnet" --info | tee transfer/logs/dotnet-info.txt
+
+      - name: Upload MCP transfer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mcp-sandbox-toolchain
+          path: transfer
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
