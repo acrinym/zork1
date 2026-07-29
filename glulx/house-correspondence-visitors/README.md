@@ -2,13 +2,13 @@
 
 ## Status
 
-Qualified House of Records Train 5 implementation above exact House Cellar Threshold Release `1222`.
+House of Records Train 5 is complete above exact House Cellar Threshold Release `1222`.
 
 Train:
 
 `onyx_zork_house_correspondence_visitors`
 
-Current capstone-candidate state is seven closed implementation/qualification beads and one open capstone bead. The House of Records roadmap contains 39 closed beads and 57 open beads. No sub-beads, sub-trains, or parallel planning hierarchy exist.
+All eight existing Train 5 beads are closed. The House of Records roadmap now contains 40 closed beads and 56 open beads. No sub-beads, sub-trains, or parallel planning hierarchy exist.
 
 ## Locked identity
 
@@ -88,6 +88,8 @@ The permanent pinned route proves:
 13. exact queue, object custody, notices, records, and visitor completion through native `SAVE` and `RESTORE`;
 14. production/test isolation.
 
+All 33 capstone-candidate workflows passed with no retry on exact audited head `7e9019dc3c336413ea07df400341fa6474a3cff6`. The capstone audit found no submitted review, inline review thread, or unresolved actionable finding.
+
 ## Important corrections retained
 
 - The first compile was one global over the Glulx ZIL limit. The packed state table became constant-addressed instead of removing behavior.
@@ -102,8 +104,6 @@ No free-form composition, open-ended dialogue, generic message/NPC scheduler, du
 
 ## Next existing train
 
-After capstone closure:
-
 `onyx_zork_attic_archive_core`
 
-Train 6 must execute its eight existing beads directly above the exact qualified Release `1223` closure head.
+Train 6 must execute its eight existing beads directly above the exact qualified Release `1223` closure head after resolving the live branch state.
