@@ -18,10 +18,10 @@
       "sendline": "examine catalog"
     },
     {
-      "expect": "AREA-DAM-03"
+      "expect": "AREA-FOREST-02"
     },
     {
-      "expect": "AREA-FOREST-02"
+      "expect": "AREA-DAM-03"
     },
     {
       "sendline": "take red case file"
@@ -36,7 +36,7 @@
       "expect": "INCOMPLETE; unresolved sections remain redacted"
     },
     {
-      "expect": "REDACTED - no verified interaction"
+      "expect": "REDACTED - no verified panel diagnosis"
     },
     {
       "sendline": "acomplete"
@@ -87,7 +87,7 @@
       "sendline": "areport"
     },
     {
-      "expect": "AREA:VERSION=1;SEEN=63;DAM=111;HADES=127;HOUSE=109;FOREST=113;UNDER=87;COMPLETE=63;FILED=1;DAMFILE=Y;HADESFILE=Y;HOUSEFILE=Y;FORESTFILE=Y;UNDERFILE=Y;SYNTH=Y;DAM-CABINET=Y"
+      "expect": "AREA:VERSION=1;SEEN=63;DAM=511;HADES=255;HOUSE=127;FOREST=31;UNDER=127;COMPLETE=63;FILED=1;DAMFILE=Y;HADESFILE=Y;HOUSEFILE=Y;FORESTFILE=Y;UNDERFILE=Y;SYNTH=Y;DAM-CABINET=Y"
     },
     {
       "sendline": "save"
@@ -129,7 +129,7 @@
       "sendline": "areport"
     },
     {
-      "expect": "AREA:VERSION=1;SEEN=63;DAM=111;HADES=127;HOUSE=109;FOREST=113;UNDER=87;COMPLETE=63;FILED=1;DAMFILE=Y;HADESFILE=Y;HOUSEFILE=Y;FORESTFILE=Y;UNDERFILE=Y;SYNTH=Y;DAM-CABINET=Y"
+      "expect": "AREA:VERSION=1;SEEN=63;DAM=511;HADES=255;HOUSE=127;FOREST=31;UNDER=127;COMPLETE=63;FILED=1;DAMFILE=Y;HADESFILE=Y;HOUSEFILE=Y;FORESTFILE=Y;UNDERFILE=Y;SYNTH=Y;DAM-CABINET=Y"
     },
     {
       "sendline": "quit"
