@@ -3,7 +3,7 @@ look in mailbox
 take gray warning
 read gray warning
 respond to gray warning
-put reply card in mailbox
+put stamped card in mailbox
 north
 southwest
 tell surveyor
@@ -16,7 +16,7 @@ look in mailbox
 take cream warning
 read cream warning
 respond to cream warning
-put reply card in mailbox
+put stamped card in mailbox
 north
 southwest
 tell courier
