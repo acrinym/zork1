@@ -82,7 +82,7 @@ jobs:
 
           trains = [
               ('house-state', '.beads/onyx_zork_house_state_foundation.beadtrain'),
-              ('house-museum', '.beads/onyx_zork_house_living_room_museum.beadtrain'),
+              ('house-museum', '.beads/onyx_zork_house_living_museum.beadtrain'),
               ('house-kitchen', '.beads/onyx_zork_house_kitchen_laboratory.beadtrain'),
               ('house-cellar', '.beads/onyx_zork_house_cellar_threshold.beadtrain'),
               ('house-mail', '.beads/onyx_zork_house_correspondence_visitors.beadtrain'),
