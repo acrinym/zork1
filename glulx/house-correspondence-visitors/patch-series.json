@@ -28,7 +28,8 @@
     "patches/005-constant-addressed-mail-state.json",
     "patches/006-portable-bit-clear.json",
     "patches/007-unambiguous-mail-parser-forms.json",
-    "patches/008-defer-visitor-across-departure.json"
+    "patches/008-defer-visitor-across-departure.json",
+    "patches/009-valid-stamped-card-instruction.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -42,6 +43,7 @@
     "each letter, reply card, visitor notice, receipt, tag, courier, and surveyor is one exact physical object and is never cloned",
     "authored queue triggers derive from existing Cellar intrusion, museum theft, and repaired-dam state",
     "bounded replies use one reusable fixed-text card and unambiguous RESPOND TO grammar rather than free-form composition",
+    "the player posts the card through the valid unique STAMPED CARD noun phrase because REPLY is already a canonical verb token",
     "ordinary TELL engages a present visitor instead of competing with canonical ANSWER grammar",
     "the mutable packed mail table is constant-addressed to avoid consuming another global while remaining native-save persistent",
     "visitor bit clearing uses known-present power-of-two subtraction rather than nonportable complement operations",
