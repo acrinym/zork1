@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1224-ARCHIVE-RECAP",
+  "path": "assistance.zil",
+  "description": "Append bounded Attic archive receipts after correspondence receipts",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<CELLAR-RECAP> <SET SEEN T>)>\n\t<COND (<MAIL-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<CELLAR-RECAP> <SET SEEN T>)>\n\t<COND (<MAIL-RECAP> <SET SEEN T>)>\n\t<COND (<ARCHIVE-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
