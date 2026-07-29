@@ -17,7 +17,7 @@
     {"sendline": "file gray folder"},
     {"expect": "no copy is created"},
     {"sendline": "play house cassette"},
-    {"expect": "cannot change any live object"},
+    {"expect": "stops without changing any live object"},
     {"sendline": "areport"},
     {"expect": "ARCHIVE:VERSION=1;INDEXED=31;FILED=1;ANNOTATED=1;THRESHOLD=Y;DISPLAY=Y;DAM=Y;VISITOR=Y;CASSETTE=Y;THRESHOLD-CABINET=Y"},
     {"sendline": "save"},
