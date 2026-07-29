@@ -11,6 +11,7 @@ on:
       - agent/glulx-house-correspondence-visitors
       - agent/glulx-attic-archive-core
       - agent/glulx-attic-npc-dossiers
+      - agent/glulx-attic-area-case-files
     paths:
       - "expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md"
       - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
@@ -91,7 +92,7 @@ jobs:
               ('attic-area', '.beads/onyx_zork_attic_area_case_files.beadtrain'),
               ('attic-playback', '.beads/onyx_zork_attic_playback.beadtrain'),
               ('house-rest', '.beads/onyx_zork_house_rest_and_dreams.beadtrain'),
-              ('house-vulnerability', '.beads/onyx_zork_house_vulnerability.beadtrain'),
+              ('house-risk', '.beads/onyx_zork_house_vulnerability.beadtrain'),
               ('expedition', '.beads/onyx_zork_expedition_archive.beadtrain'),
           ]
 
