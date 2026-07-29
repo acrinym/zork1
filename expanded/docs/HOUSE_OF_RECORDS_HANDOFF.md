@@ -11,23 +11,26 @@ Default branch: `master`
 At the start of the next session:
 
 1. resolve exact `master` and every open PR;
-2. inspect PR #26 metadata, comments, reviews, inline threads, head, mergeability, and checks if it remains open;
-3. read `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md`, `expanded/docs/NEXT_TRAINS.md`, and the Release `1226` README/contract;
+2. inspect PRs #26 and #27 metadata, comments, reviews, inline threads, heads, bases, mergeability, and checks if they remain open;
+3. read `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md`, `expanded/docs/NEXT_TRAINS.md`, and the Release `1227` README/contract;
 4. validate all twelve trains against all four issue shards;
 5. preserve every locked artifact identity and changed-path boundary;
-6. do not merge PR #26 or any future PR without Justin's explicit merge whistle.
+6. do not merge PR #26, PR #27, or any future PR without Justin's explicit merge whistle.
 
 Do not trust frozen branch heads or workflow counts without resolving GitHub live.
 
-## Current production state
+## Current production stack
 
-PRs #11, #16, #17, #18, #19, #21, #22, and #24 are merged into `master` through Release `1225`.
+Merged into `master` through Release `1225`:
 
-Train 8 production PR:
+- PRs #11, #16, #17, #18, #19, #21, #22, and #24.
 
-- PR #26: `agent/glulx-attic-area-case-files`;
-- base: `master` at merged Release `1225`;
-- status: open and deliberately unmerged absent Justin's whistle.
+Open production stack:
+
+- PR #26: `agent/glulx-attic-area-case-files` — Release `1226`, base `master`;
+- PR #27: `agent/glulx-attic-playback` — Release `1227`, base PR #26 exact closure head.
+
+Both remain deliberately unmerged absent Justin's whistle.
 
 ## Hierarchy rule
 
@@ -35,9 +38,9 @@ The program has exactly 12 trains, 8 beads per train, and 96 beads total. Do not
 
 ## Current roadmap state
 
-- Trains 1–8 complete;
-- 64 closed beads;
-- 32 open beads across Trains 9–12;
+- Trains 1–9 complete;
+- 72 closed beads;
+- 24 open beads across Trains 10–12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Locked lineage
@@ -52,43 +55,54 @@ The program has exactly 12 trains, 8 beads per train, and 96 beads total. Do not
 | 6 | 1224 | 280,832 | `0x4fe371b8` | `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356` |
 | 7 | 1225 | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` |
 | 8 | 1226 | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` |
+| 9 | 1227 | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` |
 
-## Train 8 closure
+## Train 9 closure
 
-Train: `onyx_zork_attic_area_case_files`
+Train: `onyx_zork_attic_playback`
 
 Status: `complete`
 
-PR: #26
+PR: #27
 
-Release `1226` adds six exact physical records:
+Release `1227` adds exact physical records:
 
-- `AREA-HOUSE-01`;
-- `AREA-FOREST-02`;
-- `AREA-DAM-03`;
-- `AREA-HADES-04`;
-- `AREA-UNDERGROUND-05`;
-- `AREA-SYNTHESIS`.
+- `PLAYBACK-PRINTER-01`;
+- `PLAYBACK-CASSETTE-02`;
+- `PLAYBACK-INCIDENT-03`;
+- `PLAYBACK-ACTOR-04`;
+- `PLAYBACK-PLACE-05`;
+- `PLAYBACK-CHRONOLOGY-06`;
+- `PLAYBACK-FORENSIC-07`.
 
-Every fact is itemized. Partial files keep precise missing/redacted sections. Underground completion requires Cellar, troll, cyclops, thief, Dam, Hades, and return evidence. Synthesis is retrospective and cannot alter the present.
+Capture is capped at twelve unique consequential events. Printer echoes are normalized labels rather than claimed verbatim commands. Cassette voices are contextual paraphrases. Scene cards navigate the same earned evidence without creating a playable past.
 
-GitHub Actions run `30489748466` passed exact artifact identity, no-unearned-file smoke, parser-valid physical filing, partial-to-complete progression, source-aware corruption, and native save/restore.
+GitHub Actions run `30493076701` passed exact artifact identity, production no-unearned-playback smoke, all seven records, capacity and deduplication, active-timer integrity, parser-pronoun preservation, exact filing, deliberate state/media corruption, and native save/restore.
 
 Exact identity:
 
-- Release `1226` / serial `260729`;
-- 298,496 bytes;
-- checksum `0xc6b449e8`;
-- SHA-256 `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6`.
+- Release `1227` / serial `260729`;
+- 307,712 bytes;
+- checksum `0xfb794f11`;
+- SHA-256 `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0`.
 
-All seven actionable PR review threads are resolved.
+PR #27 has no unresolved inline review threads or submitted review actions at closure time.
 
 ## Next existing train
 
-Continue directly with `onyx_zork_attic_playback` above PR #26's exact qualified closure head.
+Continue directly with `onyx_zork_house_rest_and_dreams` above PR #27's exact qualified closure head.
 
-Its existing eight beads cover meaningful capture, line-printer transcripts, textual cassette playback, scene navigation, curated versus raw records, no-time-travel integrity, bounded persistent indices, and capstone qualification.
+Its eight existing beads are:
 
-Train 9 must not become a universal raw logger, modern media player, hidden-solution replay, live-state mutator, parallel score, or sub-bead hierarchy.
+1. optional rest and wake contract;
+2. timer advancement and exploit prevention;
+3. bounded nonterminal recovery;
+4. discovery-driven dream records;
+5. overnight house changes;
+6. noises, warnings, and forced waking;
+7. rest, dream, and persistence qualification;
+8. Bedroom rest and dreams capstone.
 
-Keep PR #26 and future production PRs open and unmerged unless Justin gives the explicit merge whistle.
+Train 10 must keep rest optional, preserve canonical timers and danger, prevent event farming, retain permanent consequences, generate only authored discovery-driven dreams, apply bounded overnight house changes deterministically, and prove native persistence.
+
+Keep PR #26, PR #27, and future production PRs open and unmerged unless Justin gives the explicit merge whistle.

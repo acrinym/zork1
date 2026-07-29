@@ -1,12 +1,12 @@
 # Expansion frontier
 
-The Glulx production lineage is qualified through Attic Area Case Files Release `1226`.
+The Glulx production lineage is qualified through Attic Playback Release `1227`.
 
 ## Current House of Records state
 
-- Trains 1–8 complete — Releases `1219`–`1226`.
-- Train 9 next — `onyx_zork_attic_playback`.
-- Roadmap: 12 trains / 96 beads / 64 closed / 32 open.
+- Trains 1–9 complete — Releases `1219`–`1227`.
+- Train 10 next — `onyx_zork_house_rest_and_dreams`.
+- Roadmap: 12 trains / 96 beads / 72 closed / 24 open.
 - No sub-beads or parallel planning layers.
 
 ## Qualified production frontier
@@ -21,49 +21,49 @@ The Glulx production lineage is qualified through Attic Area Case Files Release 
 | 1224 | Attic archive core | 280,832 | `0x4fe371b8` | `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356` |
 | 1225 | Attic NPC dossiers | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` |
 | 1226 | Attic area case files | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` |
+| 1227 | Attic playback | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` |
 
-## Train 8 closure — Attic Area Case Files
+## Train 9 closure — Attic Playback
 
-Release `1226` adds exact physical regional files for the white house, forest, Dam #3, Hades, and the underground, plus one complete retrospective synthesis printout.
+Release `1227` adds seven physical playback records: a curated continuous-feed transcript, textual cassette, incident/actor/place/chronology cards, and a bounded forensic strip.
 
 Important boundaries:
 
-- every retained fact has its own evidence bit;
-- partial records preserve exact redactions and unresolved sections;
-- room visits are not promoted into unearned actor encounters;
-- each forest sector is tracked separately;
-- underground completion requires the Cellar threshold, all three actor dossiers, complete Dam and Hades files, and return evidence;
-- synthesis appears only after all five files complete;
-- playback, score, objects, actors, routes, timers, and puzzles remain untouched;
-- causal source records are removed during corruption and recovered by native restore.
+- capture is limited to twelve unique consequential events;
+- ordinary movement, parser chatter, typos, duplicates, and unseen events are not stored;
+- printer echoes are normalized labels, not claimed verbatim commands;
+- cassette voices are contextual paraphrases, not invented missing dialogue;
+- playback actions are non-turning;
+- location, score, active timer, actor locations, parser pronoun, and physical custody are checked;
+- playback cannot move objects or actors, repair evidence, open routes, change score, advance timers, or create time travel;
+- native restore recovers exact sequence, indexes, records, and custody after deliberate corruption.
 
-GitHub Actions run `30489748466` passed exact identity, early-house no-leak smoke, partial and complete routes, filing, cross-reference, synthesis, save, mutation, and restore.
+GitHub Actions run `30493076701` passed exact identity, production no-leak smoke, all seven records, capacity, deduplication, scene navigation, active-timer integrity, filing, corruption, and restore.
 
-## Next train — Transcript and Playback
+## Next train — Bedroom Rest and Dreams
 
 Continue directly with:
 
-`onyx_zork_attic_playback`
+`onyx_zork_house_rest_and_dreams`
 
 Execute its existing eight beads:
 
-1. meaningful event and utterance capture;
-2. continuous-feed line-printer transcripts;
-3. textual cassette playback;
-4. scene reconstruction and navigation;
-5. curated record versus raw session log;
-6. playback integrity and no time travel;
-7. playback index persistence and size controls;
-8. transcript and playback capstone.
+1. optional rest and wake contract;
+2. timer advancement and exploit prevention;
+3. bounded nonterminal recovery;
+4. discovery-driven dream records;
+5. overnight house changes;
+6. noises, warnings, and forced waking;
+7. rest, dream, and persistence qualification;
+8. Bedroom rest and dreams capstone.
 
-### Train 9 product boundary
+### Train 10 product boundary
 
-Capture and replay bounded meaningful events without turning the game into a universal logger. Playback may navigate records by incident, actor, place, or chronology, but it must never mutate live objects, score, timers, actors, pronouns, or location.
+Rest is optional, not a mandatory cycle. It may advance legitimate queues, authored overnight changes, and bounded temporary recovery, while permanent consequences remain permanent. Discovery-driven dreams may reflect earned objects, actors, rituals, follies, and unresolved evidence without becoming solution hints.
 
-Do not build a raw unlimited transcript dump, modern media player, hidden-solution replay, time travel controller, parallel score, or sub-bead hierarchy.
+Do not build a sleep meter, timer-skipping exploit, event-farming loop, full health reset, generic procedural dream generator, mandatory bedtime, parallel score, or sub-bead hierarchy.
 
 ## Later trains
 
-- Train 10 — rest and dreams;
 - Train 11 — house vulnerability;
 - Train 12 — completed expedition archive.

@@ -2,20 +2,21 @@
 
 ## Status
 
-Active twelve-train, ninety-six-bead program above qualified Glulx Release `1226`.
+Active twelve-train, ninety-six-bead program above qualified Glulx Release `1227`.
 
 - **Trains 1–5 complete:** evolving white-house foundation through correspondence and visitors — Releases `1219`–`1223`.
 - **Train 6 complete:** `onyx_zork_attic_archive_core` — Release `1224`.
 - **Train 7 complete:** `onyx_zork_attic_npc_dossiers` — Release `1225`.
 - **Train 8 complete:** `onyx_zork_attic_area_case_files` — Release `1226`.
-- **Next existing train:** `onyx_zork_attic_playback`.
+- **Train 9 complete:** `onyx_zork_attic_playback` — Release `1227`.
+- **Next existing train:** `onyx_zork_house_rest_and_dreams`.
 
 Current truth:
 
 - 12 trains;
 - 96 beads;
-- 64 closed beads across Trains 1–8;
-- 32 open beads across Trains 9–12;
+- 72 closed beads across Trains 1–9;
+- 24 open beads across Trains 10–12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
@@ -53,52 +54,47 @@ The Attic is a period-authentic archive of this player's actual run: corresponde
 | 6 | 1224 | 280,832 | `0x4fe371b8` | `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356` | Complete |
 | 7 | 1225 | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` | Complete |
 | 8 | 1226 | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` | Complete |
+| 9 | 1227 | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` | Complete |
 
-## Trains 1–5 — Evolving house foundation
+## Trains 1–8
 
-The first five trains establish compact native-save house state, the Living Room museum, Kitchen laboratory, Cellar threshold, and bounded correspondence and visitors. Canonical rooms, routes, objects, actors, mailbox, leaflet, water, trap door, and score remain authoritative.
+Trains 1–5 establish the evolving house, Train 6 creates the physical Attic archive, Train 7 adds player-specific actor dossiers, and Train 8 builds itemized regional case files and retrospective synthesis. Canonical rooms, routes, mechanisms, actors, objects, score, timers, randomness, and parser state remain authoritative.
 
-## Train 6 — Attic Archive Core
-
-Release `1224` turns the canonical Attic into a bounded late-1970s physical archive with typed records, deterministic indexes, exact filing surfaces, truth/provenance state, and native persistence.
-
-Controlling record: `glulx/attic-archive-core/README.md`
-
-## Train 7 — Attic NPC Dossiers
-
-Release `1225` adds exact player-specific troll, cyclops, thief, and encounter-timeline records. Attempts remain distinct from outcomes; missing property and evidence remain missing; combat, randomness, timers, score, actors, and routes remain canonical.
-
-Controlling record: `glulx/attic-npc-dossiers/README.md`
-
-## Train 8 — Attic Area Case Files
+## Train 9 — Attic Playback
 
 Status: `complete`
 
-Release `1226` adds exact physical `AREA-HOUSE-01`, `AREA-FOREST-02`, `AREA-DAM-03`, `AREA-HADES-04`, `AREA-UNDERGROUND-05`, and `AREA-SYNTHESIS` records.
+Release `1227` adds seven exact physical playback records:
 
-It retains individual evidence rather than broad category guesses:
+- one curated continuous-feed transcript;
+- one textual cassette with labels, pauses, hiss, and environmental cues;
+- incident, actor, place, and chronology scene cards;
+- one bounded twelve-event forensic strip.
 
-- each forest sector, clearing, and songbird observation;
-- Dam visits, panel, interlock, bolt, tool, gate, leak, repair, and document evidence;
-- Hades place, spirit, book, bell, candle, wrong-order, mirror, and outcome evidence;
-- house use, Attic, Cellar, return, collection, disturbance, and physical-document evidence;
-- Cellar threshold, troll, cyclops, thief, completed Dam/Hades, and return evidence for the underground file.
+The system captures only unique consequential events already earned by the run. It suppresses ordinary movement, parser chatter, typos, duplicates, and unseen scenes. Printer echoes are normalized labels rather than claimed verbatim commands, and cassette voices are contextual paraphrases rather than reconstructed missing dialogue.
 
-Partial files preserve exact gaps and redactions. Synthesis appears only after all five regional contracts complete and remains retrospective, score-neutral, and unable to mutate live state.
+Every playback action is non-turning and verifies location, score, active Shadow timer, actor locations, parser pronoun, and physical custody. It cannot move objects or actors, alter score, open routes, advance timers, repair evidence, or create a playable past.
 
-GitHub Actions run `30489748466` passed locked identity, production no-unearned-file smoke, partial-to-complete progression, parser-valid filing, causal source removal, deliberate corruption, and native restore.
+GitHub Actions run `30493076701` passed exact identity, production no-unearned-playback smoke, all seven records, twelve-event capacity, deduplication, scene navigation, active-timer integrity, filing, deliberate corruption, and native restore.
 
 Controlling records:
 
-- `glulx/attic-area-case-files/README.md`;
-- `expanded/docs/AREA_CASE_FILES_CONTRACT.md`.
+- `glulx/attic-playback/README.md`;
+- `expanded/docs/ATTIC_PLAYBACK_CONTRACT.md`.
 
-## Period presentation
+## Next existing train — Bedroom Rest and Dreams
 
-The archive uses steel filing cabinets, index cards, banker boxes, continuous-feed printouts, cassettes, microfiche, Polaroids, maps, corkboards, stamped folders, and a green-phosphor terminal that locates physical records.
+Continue directly with `onyx_zork_house_rest_and_dreams` above exact qualified Release `1227`.
 
-## Next existing train — Transcript and Playback
+Train 10 must execute its existing eight beads directly:
 
-Continue directly with `onyx_zork_attic_playback` above exact qualified Release `1226`.
+1. optional rest and wake contract;
+2. timer advancement and exploit prevention;
+3. bounded nonterminal recovery;
+4. discovery-driven dream records;
+5. overnight house changes;
+6. noises, warnings, and forced waking;
+7. rest, dream, and persistence qualification;
+8. Bedroom rest and dreams capstone.
 
-Train 9 must execute its existing eight beads directly and capture only meaningful, bounded events and utterances. Playback must remain period-authentic, curated, size-bounded, native-save persistent, and incapable of changing objects, score, timers, actors, pronouns, or location. Do not build a raw universal logger, time travel system, hidden-solution replay, modern media player, parallel score, or sub-bead hierarchy.
+Rest must remain optional and bounded. It may advance legitimate queues and authored overnight consequences, but it must not skip danger, farm events, erase permanent consequences, create mandatory sleep cycles, or introduce sub-beads.
