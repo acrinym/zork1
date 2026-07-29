@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1222-CELLAR-TRAP-DOOR-UNDERSIDE",
+  "path": "house_cellar_threshold.zil",
+  "description": "Expose a non-route underside surface in the Cellar so ordinary trap-door inspection reports the canonical door state without duplicating or unlocking it",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT CELLAR-THRESHOLD\n    (IN CELLAR)",
+      "new": "<OBJECT CELLAR-TRAP-DOOR-UNDERSIDE\n    (IN CELLAR)\n    (SYNONYM TRAP DOOR HATCH UNDERSIDE)\n    (ADJECTIVE CELLAR WOODEN BARRED)\n    (DESC \"underside of the trap door\")\n    (FLAGS NDESCBIT TRYTAKEBIT)\n    (ACTION CELLAR-TRAP-DOOR-UNDERSIDE-FCN)>\n\n<ROUTINE CELLAR-TRAP-DOOR-UNDERSIDE-FCN ()\n    <CELLAR-PUT ,CS-EVENT-TRAPDOOR T>\n    <COND (<VERB? EXAMINE LISTEN SMELL>\n           <COND (<FSET? ,TRAP-DOOR ,OPENBIT>\n                  <TELL \"The open trap door exposes the real stair into the Living Room.\" CR>)\n                 (<FSET? ,TRAP-DOOR ,TOUCHBIT>\n                  <TELL \"The trap door is shut and barred from above. Observation does not unlock it.\" CR>)\n                 (T\n                  <TELL \"The real trap door is closed above the stair. Its route and lock remain canonical.\" CR>)>)\n          (<VERB? OPEN CLOSE RAISE MOVE PUSH>\n           <COND (<FSET? ,TRAP-DOOR ,TOUCHBIT>\n                  <TELL \"The bar is on the Living Room side. The underside cannot manufacture an unlocking action.\" CR>)\n                 (T\n                  <TELL \"The underside is only the Cellar face of the real trap door; use its canonical route when it is actually open.\" CR>)>)\n          (T\n           <TELL \"The underside reflects the real trap door's current state and creates no second route.\" CR>)>\n    <RTRUE>>\n\n<OBJECT CELLAR-THRESHOLD\n    (IN CELLAR)"
+    }
+  ]
+}

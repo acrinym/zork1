@@ -1,0 +1,63 @@
+{
+  "edition": "Unofficial House Cellar Threshold Glulx",
+  "release": 1222,
+  "serial": "260724",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../house-kitchen-laboratory/patch-series.json",
+  "base_release": 1221,
+  "base_artifact_sha256": "93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1221 layer, assign Release 1222, and load the bounded Cellar threshold"
+    },
+    {
+      "path": "house_cellar_threshold.zil",
+      "source": "overrides/house_cellar_threshold.zil",
+      "allow_new": true,
+      "description": "Add packed Cellar state, real-object staging, route sensing, hazard screening, recoverable quarantine, intrusion evidence, and recap"
+    }
+  ],
+  "patches": [
+    "patches/001-cellar-room-and-trapdoor-hooks.json",
+    "patches/002-cellar-action-hook.json",
+    "patches/003-cellar-recap.json",
+    "patches/004-cellar-tactile-verb.json",
+    "patches/005-cellar-trap-door-underside.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "assistance.zil",
+    "house_cellar_threshold.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "file": "zork1-glulx-house-cellar-threshold.ulx",
+    "glulx_version_hex": "0x00030103",
+    "size_bytes": 262400,
+    "checksum_hex": "0x54b04c7a",
+    "sha256": "1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912"
+  },
+  "preserved_canonical_state": [
+    "the real rug, trap door, staircase, first-descent slam and bar, Cellar exits, and upward route remain canonical",
+    "the Cellar underside is an observational surface only and creates no duplicate door, lock, or route",
+    "real lights, rope, tools, bottle, water, containers, actors, ritual objects, score, and puzzle state remain authoritative",
+    "staging, hooks, and quarantine use the ordinary canonical object tree and never create loadout tokens",
+    "hazard screening reports existing darkness, flame, water, wetness, fragility, supernatural state, and instability without cancelling consequences",
+    "intrusion hooks leave bounded physical evidence but do not simulate broad creature, fire, smoke, water, or supernatural propagation",
+    "native save and restore preserve the packed threshold table and real fixture contents without a repair pass"
+  ],
+  "excluded_scope": [
+    "inventory automation or equipment classes",
+    "unlimited storage, remote retrieval, or teleportation",
+    "generic hazard simulation",
+    "broad smoke, water, fire, creature, or supernatural propagation",
+    "automatic puzzle preparation, safe passage, or route unlocking",
+    "duplicated lights, tools, hazards, actors, or puzzle objects",
+    "new score or automatic puzzle completion",
+    "sub-beads or a parallel planning hierarchy"
+  ]
+}

@@ -1,0 +1,30 @@
+csetup
+readiness
+down
+look
+examine underside
+examine sounds
+examine draft
+examine dampness
+rub threshold
+put rope on hooks
+put wrench on bench
+readiness
+put torch in niche
+close niche
+take torch
+put black book in niche
+close niche
+examine niche
+cintrude
+examine evidence
+creport
+cclear
+cwater
+use bottle on evidence
+creport
+cintrude
+examine evidence
+recap
+quit
+yes

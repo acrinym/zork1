@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1222-CELLAR-ACTION-HOOK",
+  "path": "shadow_logic.zil",
+  "description": "Advance bounded Cellar intrusion evidence and route specialized threshold actions before the existing Kitchen and material handlers",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<SHADOW-ADVANCE-THREATS>\n\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<SHADOW-ADVANCE-THREATS>\n\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<CELLAR-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<KITCHEN-ACTION-HOOK> <RTRUE>)\n\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)",
+      "new": "\t      (<CELLAR-ACTION-HOOK> <RTRUE>)\n\t      (<KITCHEN-ACTION-HOOK> <RTRUE>)\n\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)"
+    }
+  ]
+}

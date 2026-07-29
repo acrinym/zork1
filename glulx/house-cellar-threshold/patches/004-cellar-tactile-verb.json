@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1222-CELLAR-TACTILE-VERB",
+  "path": "house_cellar_threshold.zil",
+  "description": "Use the canonical RUB action for tactile threshold inspection instead of a nonexistent TOUCH action symbol",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<VERB? EXAMINE SEARCH TOUCH>",
+      "new": "<VERB? EXAMINE SEARCH RUB>"
+    }
+  ]
+}

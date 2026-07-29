@@ -1,0 +1,38 @@
+CELLAR-SETUP:READY
+Threshold readiness:
+- an active light is in hand;
+- at least one real rope, hand tool, or weapon is carried;
+- the open bottle contains the real portable water and may spill;
+At the exposed trap-door threshold, you take stock before descending.
+A live flame is useful below but remains real fire crossing a wooden trap-door stair.
+The open bottle carries the one real portable water quantity; a steep stair is a poor place to spill it.
+Wet metal is crossing the threshold. Existing rust and drying consequences remain active.
+A ritual, funerary, or unnaturally hot object is crossing between the underground and the house.
+At least one carried object is hot, broken, pressurized, corrosive, or otherwise poor threshold cargo.
+The trap door crashes shut, and you hear someone barring it.
+A broad stone staging bench, iron gear hooks, and a closable quarantine niche occupy the house side of the room.
+The trap door is shut and barred from above. Observation does not unlock it.
+The north and south passages return small damp echoes.
+With the trap door shut, the cross-draft belongs entirely to the underground passages.
+The damp is old, cold, and strongest toward the southern crawlway.
+The threshold is not a new exit.
+This is deliberate staging, not retirement. The rope remains real and may still be required below.
+This is deliberate staging, not retirement. The wrench remains real and may still be required below.
+- an active light is in hand;
+- no selected expedition tool is carried;
+Sealing a live flame in the niche would create smoke and pressure, not containment.
+The black book is physically in the niche, not removed from the adventure.
+CELLAR-INTRUSION:READY
+The threshold stone records a black thread and careful heel scuff; clawed or dragging marks; a fresh damp track; a thin soot fan; and a cold gray residue that is not ordinary dust;
+CELLAR:VERSION=1;DESCENTS=1;RETURNS=0;SENSE=15;HAZARDS=94;INTRUSIONS=31;ROPE-HOOKS=Y;WRENCH-BENCH=Y;BOOK-NICHE=Y;NICHE-CLOSED=Y;MARKS=Y;TRAP-BARRED=Y;WATER-BOTTLE=N
+CELLAR-INTRUSION:CLEARED
+CELLAR-WATER:READY
+The real bottled water carries thread, soot, damp grit, and cold residue from the threshold.
+CELLAR:VERSION=1;DESCENTS=1;RETURNS=0;SENSE=15;HAZARDS=94;INTRUSIONS=0;ROPE-HOOKS=Y;WRENCH-BENCH=Y;BOOK-NICHE=Y;NICHE-CLOSED=Y;MARKS=N;TRAP-BARRED=Y;WATER-BOTTLE=N
+- You used the Cellar's real bench or hooks for deliberate expedition staging without creating an automatic loadout.
+- You observed or crossed the canonical rug, trap door, stair, and locking route as the house's true underground boundary.
+- You read bounded sounds, drafts, dampness, and route evidence without revealing an unseen solution.
+- The threshold warned about real darkness, flame, water, wet metal, fragile life, supernatural cargo, or unstable objects without changing their consequences.
+- You placed selected real objects in recoverable physical quarantine rather than deleting or abstracting them.
+- Thief, creature, water, smoke, or supernatural hooks left bounded physical threshold evidence.
+- You checked actual carried and staged readiness without inventory automation.

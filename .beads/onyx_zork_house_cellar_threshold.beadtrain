@@ -5,7 +5,7 @@ description = """
 Make the Cellar a staging, sensing, storage, and containment boundary between home and the underground.
 """
 created     = "2026-07-23"
-status      = "planned"
+status      = "complete"
 
 [[cars]]
 id = "staging"
