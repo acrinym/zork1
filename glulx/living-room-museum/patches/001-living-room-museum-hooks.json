@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1220-LIVING-ROOM-MUSEUM-HOOKS",
+  "path": "1actions.zil",
+  "description": "Attach the Living Room museum to canonical room look, entry, pre-action, and post-action phases without replacing scoring or topology",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t       <HOUSE-STATE-PROJECT ,LIVING-ROOM>\n\t       T)\n\t      (<EQUAL? .RARG ,M-ENTER>\n\t       <HOUSE-STATE-ENTER ,LIVING-ROOM>)\n\t      (<EQUAL? .RARG ,M-END>\n\t       <HOUSE-STATE-AFTER-LIVING-ACTION>",
+      "new": "\t       <HOUSE-STATE-PROJECT ,LIVING-ROOM>\n\t       <MUSEUM-PROJECT>\n\t       T)\n\t      (<EQUAL? .RARG ,M-ENTER>\n\t       <HOUSE-STATE-ENTER ,LIVING-ROOM>\n\t       <MUSEUM-ENTER>)\n\t      (<EQUAL? .RARG ,M-BEG>\n\t       <MUSEUM-BEGIN>)\n\t      (<EQUAL? .RARG ,M-END>\n\t       <HOUSE-STATE-AFTER-LIVING-ACTION>\n\t       <MUSEUM-LIVING-END>"
+    }
+  ]
+}

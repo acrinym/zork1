@@ -1,0 +1,39 @@
+name: Zork I Living Room Museum Beadtrain
+
+on:
+  push:
+    branches:
+      - agent/glulx-living-room-museum
+    paths:
+      - ".beads/onyx_zork_house_living_museum.beadtrain"
+      - ".beads/issues-zork-house-of-records-*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/living-room-museum-beadtrain.yml"
+  pull_request:
+    paths:
+      - ".beads/onyx_zork_house_living_museum.beadtrain"
+      - ".beads/issues-zork-house-of-records-*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/living-room-museum-beadtrain.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-living-room-museum-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Living Room Museum train
+        run: |
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
+            .beads/onyx_zork_house_living_museum.beadtrain
