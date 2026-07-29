@@ -1,0 +1,50 @@
+{
+  "edition": "Unofficial Attic NPC Dossiers Glulx",
+  "release": 1225,
+  "serial": "260729",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../attic-archive-core/patch-series.json",
+  "base_release": 1224,
+  "base_artifact_sha256": "c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1224 layer, assign Release 1225, and load player-specific NPC dossiers"
+    },
+    {
+      "path": "attic_npc_dossiers.zil",
+      "source": "overrides/attic_npc_dossiers.zil",
+      "allow_new": true,
+      "description": "Add normalized actor events, exact troll/cyclops/thief files, curated chronology, missing-evidence boundaries, and native state"
+    }
+  ],
+  "patches": [
+    "patches/001-npc-hooks.json",
+    "patches/002-npc-catalog-and-recap.json",
+    "patches/003-npc-recap.json"
+  ],
+  "expected_changed_paths": [
+    "assistance.zil",
+    "attic_archive_core.zil",
+    "attic_npc_dossiers.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "preserved_canonical_state": [
+    "troll, cyclops, thief, combat, timers, random choices, rooms, routes, objects, property custody, score, and parser remain authoritative",
+    "dossiers record only direct player actions and observable canonical state",
+    "attempts remain distinct from verified outcomes",
+    "missing evidence remains missing and destroyed property is never reconstructed",
+    "curated quotations retain context but no raw transcript",
+    "native save and restore preserve exact dossier bits and physical custody"
+  ],
+  "excluded_scope": [
+    "static encyclopedia entries or omniscient biographies",
+    "unseen solution hints, future prediction, combat advice, or actor control",
+    "raw command logs, duplicate actors, duplicate property, parallel combat, or parallel score",
+    "automatic dossier completion from actors merely existing elsewhere in the map",
+    "sub-beads or a parallel planning hierarchy"
+  ]
+}
