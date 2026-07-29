@@ -40,6 +40,7 @@ env:
   GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
   CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
   ARCHIVE_SERIAL: "260729"
+  ARCHIVE_TEST_SERIAL: "990324"
   ARCHIVE_FILE: zork1-glulx-attic-archive-core.ulx
 
 jobs:
@@ -90,6 +91,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
       - name: Qualify Release 1224 archive candidate
         run: bash glulx/attic-archive-core/qualify.sh
       - name: Upload candidate artifact and evidence
@@ -102,11 +104,17 @@ jobs:
             glulx/build/attic-archive-core/zork1-glulx-attic-archive-core.asm
             glulx/build/attic-archive-core/story-report.json
             glulx/build/attic-archive-core/QUALIFICATION-RECEIPT.json
+            glulx/build/attic-archive-core/SERIAL-NORMALIZATION.json
+            glulx/build/attic-archive-core/TEST-SERIAL-NORMALIZATION.json
             glulx/build/attic-archive-core/src/STAGING-RECEIPT.json
             glulx/build/attic-archive-core/smell-report.json
             glulx/build/attic-archive-core/attic-archive-core-transcript.txt
+            glulx/build/attic-archive-core/attic-archive-core-persistence-transcript.txt
+            glulx/build/attic-archive-core/*.sav
             glulx/build/attic-archive-core/*-compile.log
             glulx/build/attic-archive-core/*-build.log
             glulx/build/attic-archive-core/*-assemble.log
+            glulx/build/attic-archive-core/glazer-version.txt
             glulx/attic-archive-core/patch-series.json
+            glulx/attic-archive-core/tests/attic_archive_core_persistence.json
           if-no-files-found: warn
