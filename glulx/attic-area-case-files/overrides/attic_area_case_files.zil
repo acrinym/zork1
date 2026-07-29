@@ -1,9 +1,10 @@
 "Regional case files and completion dossiers for the repository-local Zork I Glulx lineage."
 
 ;"Release 1226 observes player-earned regional evidence and turns it into exact
-  physical case files. Partial files retain explicit gaps and redactions.
-  Complete synthesis is retrospective only: it cannot reveal, solve, score,
-  move, repair, or otherwise mutate the live world."
+  physical case files. Every retained statement is backed by one itemized
+  observation. Partial files keep explicit gaps and redactions. Complete
+  synthesis is retrospective only: it cannot reveal, solve, score, move,
+  repair, or otherwise mutate the live world."
 
 <CONSTANT AREA-SCHEMA 1>
 
@@ -31,13 +32,51 @@
 <CONSTANT AREA-BIT-SYNTHESIS 32>
 <CONSTANT AREA-BIT-REQUIRED 31>
 
-<CONSTANT AREA-EVIDENCE-DISCOVERY 1>
-<CONSTANT AREA-EVIDENCE-MECHANISM 2>
-<CONSTANT AREA-EVIDENCE-OUTCOME 4>
-<CONSTANT AREA-EVIDENCE-DOCUMENT 8>
-<CONSTANT AREA-EVIDENCE-ACTOR 16>
-<CONSTANT AREA-EVIDENCE-VARIATION 32>
-<CONSTANT AREA-EVIDENCE-COMPLETE 64>
+;"Itemized Dam observations."
+<CONSTANT AREA-DAM-VISIT 1>
+<CONSTANT AREA-DAM-PANEL 2>
+<CONSTANT AREA-DAM-INTERLOCK 4>
+<CONSTANT AREA-DAM-BOLT 8>
+<CONSTANT AREA-DAM-TOOLS 16>
+<CONSTANT AREA-DAM-GATES 32>
+<CONSTANT AREA-DAM-LEAK 64>
+<CONSTANT AREA-DAM-REPAIR 128>
+<CONSTANT AREA-DAM-DOCUMENT 256>
+
+;"Itemized Hades observations."
+<CONSTANT AREA-HADES-VISIT 1>
+<CONSTANT AREA-HADES-SPIRITS 2>
+<CONSTANT AREA-HADES-BOOK 4>
+<CONSTANT AREA-HADES-BELL 8>
+<CONSTANT AREA-HADES-CANDLES 16>
+<CONSTANT AREA-HADES-WRONG 32>
+<CONSTANT AREA-HADES-MIRROR 64>
+<CONSTANT AREA-HADES-OUTCOME 128>
+
+;"Itemized House observations."
+<CONSTANT AREA-HOUSE-USE 1>
+<CONSTANT AREA-HOUSE-ATTIC 2>
+<CONSTANT AREA-HOUSE-CELLAR 4>
+<CONSTANT AREA-HOUSE-RETURN 8>
+<CONSTANT AREA-HOUSE-COLLECTION 16>
+<CONSTANT AREA-HOUSE-DISTURBANCE 32>
+<CONSTANT AREA-HOUSE-DOCUMENT 64>
+
+;"Itemized forest observations."
+<CONSTANT AREA-FOREST-ONE 1>
+<CONSTANT AREA-FOREST-TWO 2>
+<CONSTANT AREA-FOREST-THREE 4>
+<CONSTANT AREA-FOREST-CLEARING 8>
+<CONSTANT AREA-FOREST-SONGBIRD 16>
+
+;"Itemized underground observations."
+<CONSTANT AREA-UNDER-CELLAR 1>
+<CONSTANT AREA-UNDER-TROLL 2>
+<CONSTANT AREA-UNDER-CYCLOPS 4>
+<CONSTANT AREA-UNDER-THIEF 8>
+<CONSTANT AREA-UNDER-DAM 16>
+<CONSTANT AREA-UNDER-HADES 32>
+<CONSTANT AREA-UNDER-RETURN 64>
 
 <CONSTANT AREA-STATE <TABLE 0 0 0 0 0 0 0 0 0 <> <> <> <> <> 0>>
 
@@ -124,8 +163,7 @@
     <AREA-PUT ,AREA-SLOT-EVENT-MODEL T>
     <RTRUE>>
 
-<ROUTINE AREA-MARK-COMPLETE (SLOT BIT)
-    <AREA-SET .SLOT ,AREA-EVIDENCE-COMPLETE>
+<ROUTINE AREA-MARK-COMPLETE (BIT)
     <AREA-SET ,AREA-SLOT-COMPLETE .BIT>
     <RTRUE>>
 
@@ -135,69 +173,78 @@
                ,DAM-MECH-PANEL-DIAGNOSED
                ,DAM-MECH-INTERLOCK-SEEN
                ,DAM-MECH-BOLT-ATTEMPTED
+               ,DAM-MECH-TOOL-PROBED
                ,DAM-MECH-GATES-CYCLED
                ,DAM-MECH-LEAK-TRIGGERED
-               ,DAM-MECH-LEAK-REPAIRED>
+               ,DAM-MECH-LEAK-REPAIRED
+               <LOC ,ARCHIVE-DAM-PRINTOUT>
+               <LOC ,MAIL-DAM-NOTE>>
            <AREA-MATERIALIZE ,AREA-DAM-CASE ,AREA-BIT-DAM>
            <COND (<OR <FSET? ,DAM-ROOM ,TOUCHBIT>
                       <FSET? ,MAINTENANCE-ROOM ,TOUCHBIT>>
-                  <AREA-SET ,AREA-SLOT-DAM ,AREA-EVIDENCE-DISCOVERY>)>
-           <COND (<OR ,DAM-MECH-PANEL-DIAGNOSED
-                      ,DAM-MECH-INTERLOCK-SEEN
-                      ,DAM-MECH-BOLT-ATTEMPTED
-                      ,DAM-MECH-TOOL-PROBED>
-                  <AREA-SET ,AREA-SLOT-DAM ,AREA-EVIDENCE-MECHANISM>)>
-           <COND (<OR ,DAM-MECH-GATES-CYCLED
-                      ,DAM-MECH-LEAK-TRIGGERED
-                      ,DAM-MECH-LEAK-REPAIRED>
-                  <AREA-SET ,AREA-SLOT-DAM ,AREA-EVIDENCE-OUTCOME>)>
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-VISIT>)>
+           <COND (,DAM-MECH-PANEL-DIAGNOSED
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-PANEL>)>
+           <COND (,DAM-MECH-INTERLOCK-SEEN
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-INTERLOCK>)>
+           <COND (,DAM-MECH-BOLT-ATTEMPTED
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-BOLT>)>
+           <COND (,DAM-MECH-TOOL-PROBED
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-TOOLS>)>
+           <COND (,DAM-MECH-GATES-CYCLED
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-GATES>)>
+           <COND (,DAM-MECH-LEAK-TRIGGERED
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-LEAK>)>
+           <COND (,DAM-MECH-LEAK-REPAIRED
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-REPAIR>)>
            <COND (<OR <LOC ,ARCHIVE-DAM-PRINTOUT>
                       <LOC ,MAIL-DAM-NOTE>>
-                  <AREA-SET ,AREA-SLOT-DAM ,AREA-EVIDENCE-DOCUMENT>)>
-           <COND (<OR ,DAM-MECH-LEAK-TRIGGERED
-                      ,DAM-MECH-GATES-CYCLED>
-                  <AREA-SET ,AREA-SLOT-DAM ,AREA-EVIDENCE-VARIATION>)>
-           <COND (<AND ,DAM-MECH-PANEL-DIAGNOSED
-                       ,DAM-MECH-INTERLOCK-SEEN
-                       ,DAM-MECH-GATES-CYCLED
-                       ,DAM-MECH-LEAK-TRIGGERED
-                       ,DAM-MECH-LEAK-REPAIRED>
-                  <AREA-MARK-COMPLETE ,AREA-SLOT-DAM ,AREA-BIT-DAM>)>)>
+                  <AREA-SET ,AREA-SLOT-DAM ,AREA-DAM-DOCUMENT>)>
+           <COND (<AND <AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-PANEL>
+                       <AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-INTERLOCK>
+                       <AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-GATES>
+                       <AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-LEAK>
+                       <AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-REPAIR>>
+                  <AREA-MARK-COMPLETE ,AREA-BIT-DAM>)>)>
     <RFALSE>>
 
 <ROUTINE AREA-OBSERVE-HADES ()
     <COND (<OR <FSET? ,ENTRANCE-TO-HADES ,TOUCHBIT>
                <FSET? ,NORTH-TEMPLE ,TOUCHBIT>
                <FSET? ,SOUTH-TEMPLE ,TOUCHBIT>
+               <FSET? ,GHOSTS ,TOUCHBIT>
                ,RITUAL-CEREMONY-KNOWN
-               ,RITUAL-BELL-RESONANCE-HEARD
                ,RITUAL-BELL-ANSWERED
                ,RITUAL-CANDLES-ANSWERED
                ,RITUAL-WRONG-ORDER-SEEN
-               ,RITUAL-PRAYER-COMPLETED>
+               ,RITUAL-MIRROR-RESONANCE
+               ,RITUAL-PRAYER-COMPLETED
+               ,LLD-FLAG>
            <AREA-MATERIALIZE ,AREA-HADES-CASE ,AREA-BIT-HADES>
            <COND (<OR <FSET? ,ENTRANCE-TO-HADES ,TOUCHBIT>
                       <FSET? ,NORTH-TEMPLE ,TOUCHBIT>
                       <FSET? ,SOUTH-TEMPLE ,TOUCHBIT>>
-                  <AREA-SET ,AREA-SLOT-HADES ,AREA-EVIDENCE-DISCOVERY>
-                  <AREA-SET ,AREA-SLOT-HADES ,AREA-EVIDENCE-ACTOR>)>
-           <COND (<OR ,RITUAL-CEREMONY-KNOWN
-                      ,RITUAL-BELL-ANSWERED
-                      ,RITUAL-CANDLES-ANSWERED>
-                  <AREA-SET ,AREA-SLOT-HADES ,AREA-EVIDENCE-MECHANISM>)>
+                  <AREA-SET ,AREA-SLOT-HADES ,AREA-HADES-VISIT>)>
+           <COND (<FSET? ,GHOSTS ,TOUCHBIT>
+                  <AREA-SET ,AREA-SLOT-HADES ,AREA-HADES-SPIRITS>)>
            <COND (,RITUAL-CEREMONY-KNOWN
-                  <AREA-SET ,AREA-SLOT-HADES ,AREA-EVIDENCE-DOCUMENT>)>
+                  <AREA-SET ,AREA-SLOT-HADES ,AREA-HADES-BOOK>)>
+           <COND (,RITUAL-BELL-ANSWERED
+                  <AREA-SET ,AREA-SLOT-HADES ,AREA-HADES-BELL>)>
+           <COND (,RITUAL-CANDLES-ANSWERED
+                  <AREA-SET ,AREA-SLOT-HADES ,AREA-HADES-CANDLES>)>
+           <COND (,RITUAL-WRONG-ORDER-SEEN
+                  <AREA-SET ,AREA-SLOT-HADES ,AREA-HADES-WRONG>)>
+           <COND (,RITUAL-MIRROR-RESONANCE
+                  <AREA-SET ,AREA-SLOT-HADES ,AREA-HADES-MIRROR>)>
            <COND (<OR ,RITUAL-PRAYER-COMPLETED ,LLD-FLAG>
-                  <AREA-SET ,AREA-SLOT-HADES ,AREA-EVIDENCE-OUTCOME>)>
-           <COND (<OR ,RITUAL-WRONG-ORDER-SEEN
-                      ,RITUAL-MIRROR-RESONANCE>
-                  <AREA-SET ,AREA-SLOT-HADES ,AREA-EVIDENCE-VARIATION>)>
-           <COND (<AND ,RITUAL-CEREMONY-KNOWN
-                       ,RITUAL-BELL-ANSWERED
-                       ,RITUAL-CANDLES-ANSWERED
-                       ,RITUAL-WRONG-ORDER-SEEN
-                       ,RITUAL-PRAYER-COMPLETED>
-                  <AREA-MARK-COMPLETE ,AREA-SLOT-HADES ,AREA-BIT-HADES>)>)>
+                  <AREA-SET ,AREA-SLOT-HADES ,AREA-HADES-OUTCOME>)>
+           <COND (<AND <AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-BOOK>
+                       <AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-BELL>
+                       <AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-CANDLES>
+                       <AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-WRONG>
+                       <AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-OUTCOME>>
+                  <AREA-MARK-COMPLETE ,AREA-BIT-HADES>)>)>
     <RFALSE>>
 
 <ROUTINE AREA-OBSERVE-HOUSE ()
@@ -207,71 +254,89 @@
                ,HOUSE-EVENT-CELLAR
                ,HOUSE-EVENT-RETURN
                ,HOUSE-EVENT-COLLECTION
-               ,HOUSE-EVENT-DISTURBANCE>
+               ,HOUSE-EVENT-DISTURBANCE
+               <LOC ,ARCHIVE-THRESHOLD-FOLDER>
+               <LOC ,ARCHIVE-DISPLAY-CARD>
+               <LOC ,ARCHIVE-CHRONOLOGY-CASSETTE>>
            <AREA-MATERIALIZE ,AREA-HOUSE-CASE ,AREA-BIT-HOUSE>
-           <COND (<OR ,HOUSE-EVENT-ENTERED
-                      ,HOUSE-EVENT-ATTIC
-                      ,HOUSE-EVENT-CELLAR>
-                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-EVIDENCE-DISCOVERY>)>
-           <COND (<OR ,HOUSE-EVENT-RETURN
-                      ,HOUSE-EVENT-COLLECTION>
-                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-EVIDENCE-OUTCOME>)>
+           <COND (,HOUSE-EVENT-ENTERED
+                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-HOUSE-USE>)>
+           <COND (,HOUSE-EVENT-ATTIC
+                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-HOUSE-ATTIC>)>
+           <COND (,HOUSE-EVENT-CELLAR
+                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-HOUSE-CELLAR>)>
+           <COND (,HOUSE-EVENT-RETURN
+                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-HOUSE-RETURN>)>
+           <COND (,HOUSE-EVENT-COLLECTION
+                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-HOUSE-COLLECTION>)>
+           <COND (,HOUSE-EVENT-DISTURBANCE
+                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-HOUSE-DISTURBANCE>)>
            <COND (<OR <LOC ,ARCHIVE-THRESHOLD-FOLDER>
                       <LOC ,ARCHIVE-DISPLAY-CARD>
                       <LOC ,ARCHIVE-CHRONOLOGY-CASSETTE>>
-                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-EVIDENCE-DOCUMENT>)>
-           <COND (,HOUSE-EVENT-DISTURBANCE
-                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-EVIDENCE-VARIATION>)>
-           <COND (<AND ,HOUSE-EVENT-ENTERED
-                       ,HOUSE-EVENT-ATTIC
-                       ,HOUSE-EVENT-CELLAR
-                       ,HOUSE-EVENT-RETURN
-                       ,HOUSE-EVENT-COLLECTION
-                       ,HOUSE-EVENT-DISTURBANCE>
-                  <AREA-MARK-COMPLETE ,AREA-SLOT-HOUSE ,AREA-BIT-HOUSE>)>)>
+                  <AREA-SET ,AREA-SLOT-HOUSE ,AREA-HOUSE-DOCUMENT>)>
+           <COND (<AND <AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-USE>
+                       <AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-ATTIC>
+                       <AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-CELLAR>
+                       <AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-RETURN>
+                       <AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-COLLECTION>
+                       <AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-DISTURBANCE>>
+                  <AREA-MARK-COMPLETE ,AREA-BIT-HOUSE>)>)>
     <RFALSE>>
 
 <ROUTINE AREA-OBSERVE-FOREST ()
     <COND (<OR <FSET? ,FOREST-1 ,TOUCHBIT>
                <FSET? ,FOREST-2 ,TOUCHBIT>
                <FSET? ,FOREST-3 ,TOUCHBIT>
-               <FSET? ,CLEARING ,TOUCHBIT>>
+               <FSET? ,CLEARING ,TOUCHBIT>
+               <FSET? ,SONGBIRD ,TOUCHBIT>>
            <AREA-MATERIALIZE ,AREA-FOREST-CASE ,AREA-BIT-FOREST>
-           <AREA-SET ,AREA-SLOT-FOREST ,AREA-EVIDENCE-DISCOVERY>
-           <COND (<FSET? ,SONGBIRD ,TOUCHBIT>
-                  <AREA-SET ,AREA-SLOT-FOREST ,AREA-EVIDENCE-ACTOR>)>
+           <COND (<FSET? ,FOREST-1 ,TOUCHBIT>
+                  <AREA-SET ,AREA-SLOT-FOREST ,AREA-FOREST-ONE>)>
+           <COND (<FSET? ,FOREST-2 ,TOUCHBIT>
+                  <AREA-SET ,AREA-SLOT-FOREST ,AREA-FOREST-TWO>)>
+           <COND (<FSET? ,FOREST-3 ,TOUCHBIT>
+                  <AREA-SET ,AREA-SLOT-FOREST ,AREA-FOREST-THREE>)>
            <COND (<FSET? ,CLEARING ,TOUCHBIT>
-                  <AREA-SET ,AREA-SLOT-FOREST ,AREA-EVIDENCE-VARIATION>)>
-           <COND (<AND <FSET? ,FOREST-1 ,TOUCHBIT>
-                       <FSET? ,FOREST-2 ,TOUCHBIT>
-                       <FSET? ,FOREST-3 ,TOUCHBIT>
-                       <FSET? ,CLEARING ,TOUCHBIT>>
-                  <AREA-MARK-COMPLETE ,AREA-SLOT-FOREST ,AREA-BIT-FOREST>)>)>
+                  <AREA-SET ,AREA-SLOT-FOREST ,AREA-FOREST-CLEARING>)>
+           <COND (<FSET? ,SONGBIRD ,TOUCHBIT>
+                  <AREA-SET ,AREA-SLOT-FOREST ,AREA-FOREST-SONGBIRD>)>
+           <COND (<AND <AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-ONE>
+                       <AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-TWO>
+                       <AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-THREE>
+                       <AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-CLEARING>>
+                  <AREA-MARK-COMPLETE ,AREA-BIT-FOREST>)>)>
     <RFALSE>>
 
 <ROUTINE AREA-OBSERVE-UNDERGROUND ()
     <COND (<OR ,HOUSE-EVENT-CELLAR
                <NOT <0? <BAND <NPC-GET ,NS-SEEN> 7>>>
                <AREA-HAS? ,AREA-SLOT-SEEN ,AREA-BIT-DAM>
-               <AREA-HAS? ,AREA-SLOT-SEEN ,AREA-BIT-HADES>>
+               <AREA-HAS? ,AREA-SLOT-SEEN ,AREA-BIT-HADES>
+               ,HOUSE-EVENT-RETURN>
            <AREA-MATERIALIZE ,AREA-UNDERGROUND-CASE ,AREA-BIT-UNDERGROUND>
            <COND (,HOUSE-EVENT-CELLAR
-                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-EVIDENCE-DISCOVERY>)>
-           <COND (<NOT <0? <BAND <NPC-GET ,NS-SEEN> 7>>>
-                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-EVIDENCE-ACTOR>)>
-           <COND (<OR <AREA-HAS? ,AREA-SLOT-SEEN ,AREA-BIT-DAM>
-                      <AREA-HAS? ,AREA-SLOT-SEEN ,AREA-BIT-HADES>>
-                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-EVIDENCE-MECHANISM>)>
-           <COND (<OR <AREA-HAS? ,AREA-SLOT-COMPLETE ,AREA-BIT-DAM>
-                      <AREA-HAS? ,AREA-SLOT-COMPLETE ,AREA-BIT-HADES>>
-                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-EVIDENCE-OUTCOME>)>
-           <COND (<NOT <EQUAL? <BAND <NPC-GET ,NS-SEEN> 7> 7>>
-                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-EVIDENCE-VARIATION>)>
-           <COND (<AND <AREA-HAS? ,AREA-SLOT-COMPLETE ,AREA-BIT-DAM>
-                       <AREA-HAS? ,AREA-SLOT-COMPLETE ,AREA-BIT-HADES>
-                       <EQUAL? <BAND <NPC-GET ,NS-SEEN> 7> 7>
-                       ,HOUSE-EVENT-RETURN>
-                  <AREA-MARK-COMPLETE ,AREA-SLOT-UNDERGROUND ,AREA-BIT-UNDERGROUND>)>)>
+                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-CELLAR>)>
+           <COND (<NPC-HAS? ,NS-SEEN ,NPC-BIT-TROLL>
+                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-TROLL>)>
+           <COND (<NPC-HAS? ,NS-SEEN ,NPC-BIT-CYCLOPS>
+                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-CYCLOPS>)>
+           <COND (<NPC-HAS? ,NS-SEEN ,NPC-BIT-THIEF>
+                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-THIEF>)>
+           <COND (<AREA-HAS? ,AREA-SLOT-COMPLETE ,AREA-BIT-DAM>
+                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-DAM>)>
+           <COND (<AREA-HAS? ,AREA-SLOT-COMPLETE ,AREA-BIT-HADES>
+                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-HADES>)>
+           <COND (,HOUSE-EVENT-RETURN
+                  <AREA-SET ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-RETURN>)>
+           <COND (<AND <AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-CELLAR>
+                       <AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-TROLL>
+                       <AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-CYCLOPS>
+                       <AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-THIEF>
+                       <AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-DAM>
+                       <AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-HADES>
+                       <AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-RETURN>>
+                  <AREA-MARK-COMPLETE ,AREA-BIT-UNDERGROUND>)>)>
     <RFALSE>>
 
 <ROUTINE AREA-ENSURE-SYNTHESIS ()
@@ -291,8 +356,8 @@
     <AREA-ENSURE-SYNTHESIS>
     <RFALSE>>
 
-<ROUTINE AREA-PRINT-STATUS (SLOT)
-    <COND (<AREA-HAS? .SLOT ,AREA-EVIDENCE-COMPLETE>
+<ROUTINE AREA-PRINT-STATUS (BIT)
+    <COND (<AREA-HAS? ,AREA-SLOT-COMPLETE .BIT>
            <TELL "COMPLETE">)
           (T
            <TELL "INCOMPLETE; unresolved sections remain redacted">)>
@@ -300,62 +365,116 @@
 
 <ROUTINE AREA-READ-DAM ()
     <TELL "AREA-DAM-03. Flood Control Dam #3 regional case file." CR>
-    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-SLOT-DAM><TELL "." CR>
-    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-EVIDENCE-DISCOVERY>
-           <TELL "- Place evidence: the Dam Room and maintenance works were directly visited." CR>)
+    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-BIT-DAM><TELL "." CR>
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-VISIT>
+           <TELL "- Place evidence: the Dam or maintenance works were directly visited." CR>)
           (T <TELL "- Place evidence: [REDACTED - no verified visit]." CR>)>
-    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-EVIDENCE-MECHANISM>
-           <TELL "- Mechanism evidence: observed panel, interlock, bolt, and tool responses are indexed without converting them into operating instructions." CR>)
-          (T <TELL "- Mechanism evidence: [REDACTED - no verified interaction]." CR>)>
-    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-EVIDENCE-OUTCOME>
-           <TELL "- Outcome evidence: gate and leak consequences actually produced in this expedition are retained." CR>)
-          (T <TELL "- Outcome evidence: unresolved; no final state is inferred." CR>)>
-    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-EVIDENCE-DOCUMENT>
-           <TELL "- Documents: exact maintenance correspondence and printout are cross-indexed where physically present." CR>)
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-PANEL>
+           <TELL "- Panel evidence: a diagnostic response was directly observed." CR>)
+          (T <TELL "- Panel evidence: [REDACTED - no verified panel diagnosis]." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-INTERLOCK>
+           <TELL "- Interlock evidence: its refusal state was directly observed." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-BOLT>
+           <TELL "- Bolt evidence: a real bolt interaction was attempted and retained." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-TOOLS>
+           <TELL "- Tool evidence: one or more real tool responses were directly observed." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-GATES>
+           <TELL "- Gate outcome: the canonical gates were actually cycled." CR>)
+          (T <TELL "- Gate outcome: unresolved; no operating step is inferred." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-LEAK>
+           <TELL "- Leak outcome: the maintenance leak was actually triggered." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-REPAIR>
+           <TELL "- Repair outcome: the leak was actually repaired." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-DAM ,AREA-DAM-DOCUMENT>
+           <TELL "- Documents: exact maintenance correspondence or printout is cross-indexed where physically present." CR>)
           (T <TELL "- Documents: missing; the archive creates no replacement paperwork." CR>)>
     <RTRUE>>
 
 <ROUTINE AREA-READ-HADES ()
     <TELL "AREA-HADES-04. Hades ceremony regional case file." CR>
-    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-SLOT-HADES><TELL "." CR>
-    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-EVIDENCE-DISCOVERY>
-           <TELL "- Place and actor evidence: temples, entrance, and encountered spirits are retained only from direct observation." CR>)
-          (T <TELL "- Place and actor evidence: [REDACTED - no verified encounter]." CR>)>
-    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-EVIDENCE-MECHANISM>
-           <TELL "- Ceremony evidence: bell, paired-light, and prayer stages already observed are indexed without naming an unearned next action." CR>)
-          (T <TELL "- Ceremony evidence: [REDACTED - sequence not established]." CR>)>
-    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-EVIDENCE-VARIATION>
-           <TELL "- Variations: wrong-order and mirror-resonance evidence remain distinct from successful completion." CR>)>
-    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-EVIDENCE-OUTCOME>
+    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-BIT-HADES><TELL "." CR>
+    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-VISIT>
+           <TELL "- Place evidence: one or more Hades or temple locations were directly visited." CR>)
+          (T <TELL "- Place evidence: [REDACTED - no verified visit]." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-SPIRITS>
+           <TELL "- Actor evidence: the spirits themselves were directly encountered." CR>)
+          (T <TELL "- Actor evidence: missing; a room visit is not promoted into a spirit encounter." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-BOOK>
+           <TELL "- Document evidence: the damaged-book ceremony record was established." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-BELL>
+           <TELL "- Bell evidence: the answering resonance stage was directly observed." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-CANDLES>
+           <TELL "- Paired-light evidence: the answering candle stage was directly observed." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-WRONG>
+           <TELL "- Variation evidence: a wrong-order consequence was actually seen." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-MIRROR>
+           <TELL "- Mirror evidence: a mirror-resonance variation was actually seen." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HADES ,AREA-HADES-OUTCOME>
            <TELL "- Outcome: the canonical spirit-removal state was directly verified." CR>)
           (T <TELL "- Outcome: unresolved; the file predicts nothing." CR>)>
     <RTRUE>>
 
 <ROUTINE AREA-READ-HOUSE ()
     <TELL "AREA-HOUSE-01. White house regional case file." CR>
-    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-SLOT-HOUSE><TELL "." CR>
-    <TELL "- The file records actual use, Attic and Cellar thresholds, return cycles, collection evidence, and disturbance without replacing the canonical trophy-case score." CR>
-    <COND (<AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-EVIDENCE-DOCUMENT>
-           <TELL "- Exact house folders, display cards, and chronology media are linked where they physically exist." CR>)
+    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-BIT-HOUSE><TELL "." CR>
+    <COND (<AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-USE>
+           <TELL "- Use evidence: the white house began functioning as a returned-to place." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-ATTIC>
+           <TELL "- Attic evidence: the canonical Attic was directly visited." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-CELLAR>
+           <TELL "- Threshold evidence: the canonical Cellar threshold was crossed." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-RETURN>
+           <TELL "- Expedition evidence: a return from below to the house was completed." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-COLLECTION>
+           <TELL "- Collection evidence: real trophy-case value changed while canonical scoring remained authoritative." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-DISTURBANCE>
+           <TELL "- Condition evidence: real house disturbance was retained." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-HOUSE ,AREA-HOUSE-DOCUMENT>
+           <TELL "- Documentary evidence: exact house folders, display cards, or chronology media are linked where physically present." CR>)
           (T <TELL "- Documentary series: incomplete; no missing record is fabricated." CR>)>
     <RTRUE>>
 
 <ROUTINE AREA-READ-FOREST ()
     <TELL "AREA-FOREST-02. Forest exploration regional case file." CR>
-    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-SLOT-FOREST><TELL "." CR>
-    <TELL "- Coverage is derived from actual visits to the three forest sectors and clearing, not from a map reveal or checklist." CR>
-    <COND (<AREA-HAS? ,AREA-SLOT-FOREST ,AREA-EVIDENCE-ACTOR>
+    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-BIT-FOREST><TELL "." CR>
+    <COND (<AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-ONE>
+           <TELL "- Coverage: Forest sector one was directly visited." CR>)
+          (T <TELL "- Forest sector one: [REDACTED - unvisited]." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-TWO>
+           <TELL "- Coverage: Forest sector two was directly visited." CR>)
+          (T <TELL "- Forest sector two: [REDACTED - unvisited]." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-THREE>
+           <TELL "- Coverage: Forest sector three was directly visited." CR>)
+          (T <TELL "- Forest sector three: [REDACTED - unvisited]." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-CLEARING>
+           <TELL "- Coverage: the marked clearing was directly visited." CR>)
+          (T <TELL "- Clearing: [REDACTED - unvisited]." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-FOREST ,AREA-FOREST-SONGBIRD>
            <TELL "- Living evidence: a direct songbird interaction is retained." CR>)
           (T <TELL "- Living evidence: missing or unobserved." CR>)>
     <RTRUE>>
 
 <ROUTINE AREA-READ-UNDERGROUND ()
     <TELL "AREA-UNDERGROUND-05. Underground expedition regional case file." CR>
-    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-SLOT-UNDERGROUND><TELL "." CR>
-    <TELL "- This file cross-indexes only earned Cellar-threshold, actor-dossier, Dam, and Hades evidence." CR>
-    <COND (<AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-EVIDENCE-VARIATION>
-           <TELL "- Missing actors or unresolved regional outcomes remain explicit gaps, not hints." CR>)
-          (T <TELL "- Required actor and regional evidence is present for retrospective synthesis." CR>)>
+    <TELL "Status: "><AREA-PRINT-STATUS ,AREA-BIT-UNDERGROUND><TELL "." CR>
+    <COND (<AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-CELLAR>
+           <TELL "- Threshold evidence: the Cellar-to-underground boundary was directly crossed." CR>)
+          (T <TELL "- Threshold evidence: missing; no underground completion is inferred." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-TROLL>
+           <TELL "- Actor link: player-specific troll evidence is present." CR>)
+          (T <TELL "- Troll evidence: missing." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-CYCLOPS>
+           <TELL "- Actor link: player-specific cyclops evidence is present." CR>)
+          (T <TELL "- Cyclops evidence: missing." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-THIEF>
+           <TELL "- Actor link: player-specific thief evidence is present." CR>)
+          (T <TELL "- Thief evidence: missing." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-DAM>
+           <TELL "- Regional link: the Dam case is complete." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-HADES>
+           <TELL "- Regional link: the Hades case is complete." CR>)>
+    <COND (<AREA-HAS? ,AREA-SLOT-UNDERGROUND ,AREA-UNDER-RETURN>
+           <TELL "- Return evidence: the expedition cycle returned to the house." CR>)>
     <RTRUE>>
 
 <ROUTINE AREA-READ-SYNTHESIS ()
@@ -385,7 +504,7 @@
           (<EQUAL? .OBJ ,AREA-HOUSE-CASE>
            <TELL "Cross-reference: HOUSE-THRESHOLD-01, HOUSE-DISPLAY-02, VISIT series, and house chronology where earned." CR>)
           (<EQUAL? .OBJ ,AREA-FOREST-CASE>
-           <TELL "Cross-reference: visited forest sectors and clearing only; no hidden route or undiscovered map is supplied." CR>)
+           <TELL "Cross-reference: individually visited forest sectors and clearing only; no hidden route or undiscovered map is supplied." CR>)
           (<EQUAL? .OBJ ,AREA-UNDERGROUND-CASE>
            <TELL "Cross-reference: player-specific troll, cyclops, and thief dossiers plus complete Dam and Hades case files where present." CR>)
           (T
@@ -433,7 +552,6 @@
 <ROUTINE AREA-ENSURE ()
     <COND (<NOT <EQUAL? <AREA-GET ,AREA-SLOT-VERSION> ,AREA-SCHEMA>>
            <AREA-PUT ,AREA-SLOT-VERSION ,AREA-SCHEMA>
-           <AREA-PUT ,AREA-SLOT-EVENT-RESTORE T>
            <COND (<LOC ,AREA-DAM-CASE> <AREA-SET ,AREA-SLOT-SEEN ,AREA-BIT-DAM>)>
            <COND (<LOC ,AREA-HADES-CASE> <AREA-SET ,AREA-SLOT-SEEN ,AREA-BIT-HADES>)>
            <COND (<LOC ,AREA-HOUSE-CASE> <AREA-SET ,AREA-SLOT-SEEN ,AREA-BIT-HOUSE>)>
@@ -460,7 +578,7 @@
 <ROUTINE AREA-RECAP ("AUX" (SEEN <>))
     <COND (<AREA-GET ,AREA-SLOT-EVENT-MODEL>
            <SET SEEN T>
-           <TELL "- Regional files normalized discoveries, mechanisms, outcomes, documents, actors, and unresolved variations from earned evidence." CR>)>
+           <TELL "- Regional files retained itemized discoveries, mechanisms, outcomes, documents, actors, and unresolved variations from earned evidence." CR>)>
     <COND (<AREA-GET ,AREA-SLOT-EVENT-PARTIAL>
            <SET SEEN T>
            <TELL "- Incomplete case files retained missing and redacted sections without exposing undiscovered solutions." CR>)>
@@ -470,8 +588,5 @@
     <COND (<AREA-GET ,AREA-SLOT-EVENT-CROSS>
            <SET SEEN T>
            <TELL "- Cross-references linked only exact physical records and player-specific evidence already present in this expedition." CR>)>
-    <COND (<AREA-GET ,AREA-SLOT-EVENT-RESTORE>
-           <SET SEEN T>
-           <TELL "- Versioned case state, completion bits, and exact physical custody remained native-save persistent." CR>)>
     <COND (.SEEN <RTRUE>)>
     <RFALSE>>
