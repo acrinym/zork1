@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1225-NPC-EVENT-CORRECTION",
+  "path": "attic_npc_dossiers.zil",
+  "description": "Record qualifying actor actions without relying on short-circuit side effects and remove an unused output helper",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<OR <VERB? TELL ASK GIVE THROW ATTACK MUNG KICK TIE UNTIE ODYSSEUS>\n               <NPC-PUT ,NS-EVENTS T>)>\n    <NPC-ENSURE-TIMELINE>",
+      "new": "    <COND (<VERB? TELL ASK GIVE THROW ATTACK MUNG KICK TIE UNTIE ODYSSEUS>\n           <NPC-PUT ,NS-EVENTS T>)>\n    <NPC-ENSURE-TIMELINE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE NPC-TELL-YES-NO (VALUE YES NO)\n    <COND (.VALUE <TELL .YES>) (T <TELL .NO>)>\n    <RTRUE>>\n\n",
+      "new": ""
+    }
+  ]
+}
