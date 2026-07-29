@@ -5,7 +5,7 @@ description = """
 Turn the mailbox and front of the house into a stateful surface for notes, replies, deliveries, warnings, and bounded NPC visits.
 """
 created     = "2026-07-23"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "queue"
