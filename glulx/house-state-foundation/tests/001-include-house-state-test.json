@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1219-HOUSE-STATE-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only house positioning, mutation, migration, and reporting verbs after every production module",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"house_state_foundation\" T>",
+      "new": "<INSERT-FILE \"house_state_foundation\" T>\n<INSERT-FILE \"house_state_foundation_test\" T>"
+    }
+  ]
+}

@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - agent/house-of-records-program
+      - agent/glulx-house-state-foundation
     paths:
       - "expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md"
       - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
+      - "glulx/house-state-foundation/README.md"
       - ".beads/issues-zork-house-of-records-*.jsonl"
       - ".beads/onyx_zork_house_*.beadtrain"
       - ".beads/onyx_zork_attic_*.beadtrain"
@@ -16,6 +18,7 @@ on:
     paths:
       - "expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md"
       - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
+      - "glulx/house-state-foundation/README.md"
       - ".beads/issues-zork-house-of-records-*.jsonl"
       - ".beads/onyx_zork_house_*.beadtrain"
       - ".beads/onyx_zork_attic_*.beadtrain"
@@ -39,7 +42,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate all planned trains
+      - name: Validate all House of Records trains
         run: |
           set -euo pipefail
           for train in \
@@ -59,32 +62,74 @@ jobs:
             python .beads/beadtrains/scripts/validate_sharded_beadtrain.py "$train"
           done
 
-      - name: Verify counts and documentation
+      - name: Verify roadmap counts and incremental completion
         run: |
           python - <<'PY'
           import json
+          import tomllib
           from pathlib import Path
 
-          shards = sorted(Path(".beads").glob("issues-zork-house-of-records-*.jsonl"))
+          shards = sorted(Path('.beads').glob('issues-zork-house-of-records-*.jsonl'))
           issues = []
           for shard in shards:
               issues.extend(
                   json.loads(line)
-                  for line in shard.read_text(encoding="utf-8").splitlines()
+                  for line in shard.read_text(encoding='utf-8').splitlines()
                   if line.strip()
               )
 
-          trains = sorted(Path(".beads").glob("onyx_zork_house_*.beadtrain"))
-          trains += sorted(Path(".beads").glob("onyx_zork_attic_*.beadtrain"))
-          trains += [Path(".beads/onyx_zork_expedition_archive.beadtrain")]
-          unique_trains = {path.resolve() for path in trains}
+          train_paths = sorted(Path('.beads').glob('onyx_zork_house_*.beadtrain'))
+          train_paths += sorted(Path('.beads').glob('onyx_zork_attic_*.beadtrain'))
+          train_paths += [Path('.beads/onyx_zork_expedition_archive.beadtrain')]
+          unique_trains = {path.resolve() for path in train_paths}
 
-          assert len(shards) == 4, f"expected 4 issue shards, found {len(shards)}"
-          assert len(issues) == 96, f"expected 96 beads, found {len(issues)}"
-          assert len({item["id"] for item in issues}) == 96, "duplicate House of Records bead IDs"
-          assert len(unique_trains) == 12, f"expected 12 trains, found {len(unique_trains)}"
-          assert all(item["status"] == "open" for item in issues)
-          assert Path("expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md").is_file()
-          assert Path("expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md").is_file()
-          print("House of Records roadmap validated: 12 trains / 96 open beads")
+          assert len(shards) == 4, f'expected 4 issue shards, found {len(shards)}'
+          assert len(issues) == 96, f'expected 96 beads, found {len(issues)}'
+          assert len({item['id'] for item in issues}) == 96, 'duplicate House of Records bead IDs'
+          assert len(unique_trains) == 12, f'expected 12 trains, found {len(unique_trains)}'
+
+          issue_by_id = {item['id']: item for item in issues}
+          foundation_ids = [f'zork1-house-state-{number:03d}' for number in range(1, 9)]
+          non_foundation = [item for item in issues if item['id'] not in foundation_ids]
+          assert all(item['status'] == 'open' for item in non_foundation), (
+              'only House State Foundation beads may close during Train 1'
+          )
+
+          with Path('.beads/onyx_zork_house_state_foundation.beadtrain').open('rb') as handle:
+              foundation_train = tomllib.load(handle)
+          foundation_status = foundation_train['train']['status']
+          foundation_bead_statuses = [issue_by_id[item]['status'] for item in foundation_ids]
+
+          if foundation_status == 'in_progress':
+              assert foundation_bead_statuses[:7] == ['closed'] * 7
+              assert foundation_bead_statuses[7] == 'open'
+              expected_closed = 7
+          elif foundation_status == 'complete':
+              assert foundation_bead_statuses == ['closed'] * 8
+              expected_closed = 8
+          else:
+              raise AssertionError(
+                  f'House State Foundation must be in_progress or complete, got {foundation_status!r}'
+              )
+
+          closed = [item for item in issues if item['status'] == 'closed']
+          open_items = [item for item in issues if item['status'] == 'open']
+          assert len(closed) == expected_closed
+          assert len(open_items) == 96 - expected_closed
+
+          for path in unique_trains:
+              with path.open('rb') as handle:
+                  data = tomllib.load(handle)
+              if path.name != 'onyx_zork_house_state_foundation.beadtrain':
+                  assert data['train']['status'] == 'planned', (
+                      f'{path.name} advanced before its train began'
+                  )
+
+          assert Path('expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md').is_file()
+          assert Path('expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md').is_file()
+          assert Path('glulx/house-state-foundation/README.md').is_file()
+          print(
+              'House of Records roadmap validated: '
+              f'12 trains / 96 beads / {len(closed)} closed / {len(open_items)} open'
+          )
           PY

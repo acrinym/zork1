@@ -1,0 +1,20 @@
+hsliving
+look
+hskitchen
+look
+hsattic
+look
+hscellar
+look
+hsreturn
+look
+hscollect
+open case
+put painting in case
+move rug
+open trap door
+hsreport
+recap
+hsmigrate
+quit
+yes
