@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1223-WEST-HOUSE-AND-MAILBOX-HOOKS",
+  "path": "1actions.zil",
+  "description": "Attach deterministic delivery and bounded visits to the canonical West of House and mailbox while preserving the original leaflet and anchored box",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE WEST-HOUSE (RARG)\n\t <COND (<EQUAL? .RARG ,M-LOOK>\n\t\t<TELL\n\"You are standing in an open field west of a white house, with a boarded\nfront door.\">\n\t\t<COND (,WON-FLAG\n\t\t       <TELL\n\" A secret path leads southwest into the forest.\">)>\n\t\t<CRLF>)>>",
+      "new": "<ROUTINE WEST-HOUSE (RARG)\n\t <COND (<EQUAL? .RARG ,M-LOOK>\n\t\t<TELL\n\"You are standing in an open field west of a white house, with a boarded\nfront door.\">\n\t\t<COND (,WON-FLAG\n\t\t       <TELL\n\" A secret path leads southwest into the forest.\">)>\n\t\t<MAIL-WEST-PROJECT>)\n\t       (<EQUAL? .RARG ,M-ENTER>\n\t\t<MAIL-WEST-ENTER>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MAILBOX-F ()\n\t <COND (<AND <VERB? TAKE> <EQUAL? ,PRSO ,MAILBOX>>\n\t\t<TELL \"It is securely anchored.\" CR>)>>",
+      "new": "<ROUTINE MAILBOX-F ()\n\t <COND (<MAIL-MAILBOX-HOOK> <RTRUE>)\n\t       (<AND <VERB? TAKE> <EQUAL? ,PRSO ,MAILBOX>>\n\t\t<TELL \"It is securely anchored.\" CR>)>>"
+    }
+  ]
+}
