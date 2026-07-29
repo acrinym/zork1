@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-DEFER-VISITOR-ACROSS-DEPARTURE",
+  "path": "house_correspondence_visitors.zil",
+  "description": "When a queued visitor exists and the player is leaving West of House, defer arrival until the next turn so absence creates a real missed notice before the bounded return",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<AND <VERB? PUT>\n                <EQUAL? ,PRSO ,MAIL-REPLY-CARD>\n                <EQUAL? ,PRSI ,MAILBOX>>\n           <RFALSE>)>\n    <MAIL-VISITOR-ARRIVE>",
+      "new": "    <COND (<AND <VERB? PUT>\n                <EQUAL? ,PRSO ,MAIL-REPLY-CARD>\n                <EQUAL? ,PRSI ,MAILBOX>>\n           <RFALSE>)\n          (<AND <EQUAL? ,HERE ,WEST-OF-HOUSE>\n                <VERB? WALK WALK-TO WALK-AROUND THROUGH ENTER EXIT\n                       CLIMB-UP CLIMB-DOWN CLIMB-FOO LEAP>>\n           <RFALSE>)>\n    <MAIL-VISITOR-ARRIVE>"
+    }
+  ]
+}
