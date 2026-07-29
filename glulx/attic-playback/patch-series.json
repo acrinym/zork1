@@ -11,9 +11,9 @@
     "file": "zork1-glulx-attic-playback.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "UNLOCKED",
-    "sha256": "UNLOCKED"
+    "size_bytes": 307712,
+    "checksum_hex": "0xfb794f11",
+    "sha256": "6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0"
   },
   "overrides": [
     {
