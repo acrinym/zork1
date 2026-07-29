@@ -5,7 +5,7 @@ description = """
 Turn meaningful encounters with the troll, cyclops, thief, and later actors into player-specific dossiers rather than static encyclopedia entries.
 """
 created     = "2026-07-23"
-status      = "planned"
+status      = "complete"
 
 [[cars]]
 id = "events"
@@ -74,5 +74,5 @@ summary = "Publish actor-memory boundaries and feed playback and expedition summ
 [meta]
 one_liner = "Turn meaningful encounters with the troll, cyclops, thief, and later actors into player-specific dossiers rather than static encyclopedia entries."
 prior_car = "zork1-attic-core-008"
-couples_with = ["onyx_zork_glulx_room_density"]
+couples_with = ["onyx_zork_attic_archive_core", "onyx_zork_glulx_room_density"]
 watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "attic_npc_dossiers", "SAVE", "RESTORE"]

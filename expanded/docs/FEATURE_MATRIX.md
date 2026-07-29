@@ -23,6 +23,8 @@
 | House Kitchen Laboratory Glulx | `.ulx` | Release 1221 / `260724` | Train 3 complete |
 | House Cellar Threshold Glulx | `.ulx` | Release 1222 / `260724` | Train 4 complete |
 | House Correspondence and Visitors Glulx | `.ulx` | Release 1223 / `260724` | Train 5 complete |
+| Attic Archive Core Glulx | `.ulx` | Release 1224 / `260729` | Train 6 complete |
+| Attic NPC Dossiers Glulx | `.ulx` | Release 1225 / `260729` | Train 7 complete |
 
 ## Locked Glulx lineage
 
@@ -38,68 +40,53 @@
 | 1221 | House Kitchen laboratory | 249,600 | `0x85d64142` | `93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f` |
 | 1222 | House Cellar threshold | 262,400 | `0x54b04c7a` | `1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912` |
 | 1223 | House correspondence and visitors | 271,872 | `0x4cbcc561` | `362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816` |
+| 1224 | Attic archive core | 280,832 | `0x4fe371b8` | `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356` |
+| 1225 | Attic NPC dossiers | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` |
 
-## Release 1219 — House State Foundation
+## House trains 1–5
 
-Compact versioned house state, bounded receipts, canonical room projection, real trophy-case collection authority, conservative migration, and exact native restore.
+The house foundation, Living Room museum, Kitchen laboratory, Cellar threshold, and correspondence/visitor systems remain qualified and authoritative. Canonical rooms, routes, actors, objects, mailbox, leaflet, score, water, trap door, and prior state are preserved through the stack.
 
-## Release 1220 — Living Room Museum
-
-Real-object display surfaces, canonical score isolation, provenance, group synthesis, canonical thief custody/recovery, physical evidence, nested-object persistence, and production/test isolation.
-
-## Release 1221 — House Kitchen Laboratory
-
-Canonical water and container handling, selected cleaning and wetness, bounded temporary heat, food preparation, canonical garlic cutting, selected experiments, ordinary storage, packed persistence, and exact restore.
-
-## Release 1222 — House Cellar Threshold
-
-Canonical trap-door descent and slam/bar, observational underside without a duplicate route, real-object staging, readiness, bounded sensing, carried-hazard warnings, recoverable quarantine, causal intrusion evidence, real-water cleanup, packed persistence, and exact restore.
-
-## Release 1223 — House Correspondence and Visitors
-
-Exact Release `1222` plus:
-
-- `1actions.zil`;
-- `assistance.zil`;
-- new `house_correspondence_visitors.zil`;
-- `shadow_logic.zil`;
-- `zork1.zil`.
+## Release 1224 — Attic Archive Core
 
 Qualified behavior:
 
-1. deterministic Cellar → museum → dam correspondence order;
-2. three exact physical authored letters, one per real trigger;
-3. sender/source, trigger, delivery, authenticity, and filing-code provenance;
-4. canonical anchored mailbox and original leaflet preservation;
-5. one reusable fixed-text physical stamped reply card;
-6. parser-valid `RESPOND TO` and `PUT STAMPED CARD IN MAILBOX` actions;
-7. surveyor and courier as bounded exterior visitors;
-8. ordinary `TELL`, bounded `REFUSE`, and bounded `ADMIT` without opening the boarded door;
-9. unique missed notices and one bounded return;
-10. unique signed receipt and numbered survey tag;
-11. no duplicate or regenerated correspondence;
-12. constant-addressed packed native-save state;
-13. deliberate live-trigger removal, corruption, and exact restore;
-14. strict production/test isolation.
+1. a canonical archive-record schema for people, places, objects, messages, incidents, chronology, outcomes, links, source, and truth status;
+2. physical late-1970s media rather than a modern filesystem;
+3. an oak card catalog and bounded physical filing surfaces;
+4. a terminal that locates records but stores none;
+5. exact folders, cards, printouts, microfiche, and cassette records;
+6. ordinary object-tree custody and capacity;
+7. explicit `FILE`, `REVIEW`, `SHOW`, and `CROSSREF` routes;
+8. verified, plausible, contradictory, redacted, and missing-evidence states;
+9. bounded textual playback that cannot mutate live state;
+10. native save/corrupt/restore of exact index state and physical custody.
 
-Parser and timing truth retained:
+GitHub Actions run `30478000111` passed the complete Release `1224` qualification.
 
-- canonical grammar claims `REPLY`, so bounded responses use `RESPOND TO`;
-- `REPLY CARD` is not a valid noun phrase, so the exact object is `STAMPED CARD`;
-- posting dispatches through the shared action hook before canonical `PUT` can retain a sent card;
-- ordinary `TELL` engages a visitor;
-- visitor object actions route `ADMIT` and `REFUSE`;
-- posting/departure deferral allows a real missed notice and bounded return;
-- the canonical leaflet is proved through mailbox custody rather than moved for qualification.
+## Release 1225 — Attic NPC Dossiers
 
-All 33 capstone-candidate workflows passed with no retry on exact audited head `7e9019dc3c336413ea07df400341fa6474a3cff6`.
+Qualified behavior:
+
+1. actor-event normalization from direct player actions and observable canonical state;
+2. exact physical troll, cyclops, thief, and encounter-timeline records;
+3. attempts separated from verified outcomes;
+4. hostility, gifts, attacks, restraint, bargains, route outcomes, and property custody retained only when evidenced;
+5. invisibility, absence, contradictions, and missing property represented without reconstruction;
+6. curated quotations and chronology rather than raw command logs;
+7. production proof that unencountered actors do not create dossiers;
+8. ordinary archive filing and cross-reference behavior;
+9. native save/corrupt/restore of exact dossier state and custody;
+10. no actor control, combat replacement, hidden-solution leak, duplicate property, or parallel score.
+
+GitHub Actions run `30480017488` passed the complete Release `1225` qualification.
 
 ## House of Records status
 
 - 12 trains;
 - 96 beads;
-- Trains 1–5 complete: 40 closed;
-- Trains 6–12 planned: 56 open;
+- Trains 1–7 complete: 56 closed;
+- Trains 8–12 planned: 40 open;
 - no sub-beads.
 
 ## Validation coverage
@@ -110,14 +97,15 @@ All 33 capstone-candidate workflows passed with no retry on exact audited head `
 | Production delta | Fail-closed changed-path sets |
 | Artifact identity | Exact size, Glulx checksum, validity, and SHA-256 |
 | Parser behavior | Native interpreter routes using ordinary player commands |
-| Canonical authority | Existing routes, mailbox, leaflet, door, objects, score, actors, and world triggers retained |
-| Persistence | Deliberate cause removal/corruption followed by native `SAVE` / `RESTORE` |
-| Unique records | No duplicate letters, reply cards, visitors, notices, receipts, or tags |
+| Canonical authority | Existing routes, objects, score, actors, timers, randomness, and puzzle state retained |
+| Archive truth | Physical records, provenance, contradictions, redaction, and missing evidence |
+| Actor truth | Player-specific evidence without static omniscient biographies |
+| Persistence | Deliberate state/object/location corruption followed by native `SAVE` / `RESTORE` |
 | Test isolation | Setup, mutation, and report verbs excluded from production |
-| Roadmap integrity | 12 trains / 96 unique beads / 40 closed / 56 open |
+| Roadmap integrity | 12 trains / 96 unique beads / 56 closed / 40 open |
 
 ## Next dedicated work
 
-`onyx_zork_attic_archive_core`
+`onyx_zork_attic_area_case_files`
 
-Resolve PR #21's exact live head, branch Train 6 from that state, execute the eight existing Attic Archive Core beads directly, and keep the stacked PR chain open and unmerged without Justin's explicit merge whistle.
+Train 8 must build evolving regional case files, including Flood Control Dam #3 and Hades pilots, without becoming a checklist HUD or revealing undiscovered solutions. Branch it from PR #24's exact live qualified Release `1225` closure head and keep the stacked PR chain open and unmerged without Justin's explicit merge whistle.

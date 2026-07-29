@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1225-NPC-RECAP",
+  "path": "assistance.zil",
+  "description": "Append player-specific actor-memory receipts after the archive recap",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<ARCHIVE-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<ARCHIVE-RECAP> <SET SEEN T>)>\n\t<COND (<NPC-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}

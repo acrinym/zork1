@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1225-NPC-CATALOG",
+  "path": "attic_archive_core.zil",
+  "description": "Append player-specific actor files after the existing house chronology catalog card",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "           <COND (<ARCHIVE-HAS-BIT? ,AS-INDEXED ,ARCHIVE-BIT-CHRONOLOGY>\n                  <TELL \"- HOUSE-CHRONOLOGY: expedition / chronology / cassette.\" CR>)>)>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>",
+      "new": "           <COND (<ARCHIVE-HAS-BIT? ,AS-INDEXED ,ARCHIVE-BIT-CHRONOLOGY>\n                  <TELL \"- HOUSE-CHRONOLOGY: expedition / chronology / cassette.\" CR>)>)>\n    <NPC-CATALOG-LIST>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>"
+    }
+  ]
+}

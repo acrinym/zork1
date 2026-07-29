@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1225-NPC-HOOKS",
+  "path": "shadow_logic.zil",
+  "description": "Observe canonical actor state after the archive advances and route dossier actions before the base archive handlers",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<NPC-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<ARCHIVE-ACTION-HOOK> <RTRUE>)\n\t      (<MAIL-ACTION-HOOK> <RTRUE>)",
+      "new": "\t      (<NPC-ACTION-HOOK> <RTRUE>)\n\t      (<ARCHIVE-ACTION-HOOK> <RTRUE>)\n\t      (<MAIL-ACTION-HOOK> <RTRUE>)"
+    }
+  ]
+}

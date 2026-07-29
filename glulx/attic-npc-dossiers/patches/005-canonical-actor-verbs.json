@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1225-CANONICAL-ACTOR-VERBS",
+  "path": "attic_npc_dossiers.zil",
+  "description": "Remove the nonexistent standalone ASK action while retaining canonical actor conversation and interaction routes",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<COND (<VERB? TELL ASK GIVE THROW ATTACK MUNG KICK TIE UNTIE ODYSSEUS>",
+      "new": "<COND (<VERB? TELL GIVE THROW ATTACK MUNG KICK TIE UNTIE ODYSSEUS>"
+    }
+  ]
+}
