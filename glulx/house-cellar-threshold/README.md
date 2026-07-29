@@ -2,13 +2,13 @@
 
 ## Status
 
-Qualified House of Records Train 4 implementation above exact House Kitchen Laboratory Release `1221`.
+House of Records Train 4 is complete above exact House Kitchen Laboratory Release `1221`.
 
 Train:
 
 `onyx_zork_house_cellar_threshold`
 
-Current capstone-candidate state is seven closed implementation/qualification beads and one open capstone bead. No sub-beads, sub-trains, or parallel planning hierarchy exist.
+All eight existing Train 4 beads are closed. The House of Records roadmap now contains 32 closed beads and 64 open beads. No sub-beads, sub-trains, or parallel planning hierarchy exist.
 
 ## Locked identity
 
@@ -97,6 +97,14 @@ The permanent pinned route proves:
 12. packed threshold state and real fixture contents through native `SAVE` and `RESTORE` after deliberate corruption;
 13. production/test isolation.
 
+All 31 capstone-candidate workflows passed on exact head `1344d0dcf7c91831ad8a95b886419ff1f42fdfe6`. No submitted review or inline review thread existed, and the manual stacked-scope audit found no unresolved actionable issue.
+
 ## Explicit exclusions
 
 No inventory automation, equipment classes, unlimited storage, remote retrieval, generic hazard simulation, broad smoke/water/fire/creature/supernatural propagation, automatic puzzle preparation, safe passage, route unlocking, duplicated objects or actors, parallel score, or automatic puzzle completion.
+
+## Next existing train
+
+`onyx_zork_house_correspondence_visitors`
+
+Train 5 must execute its existing eight beads directly above the exact qualified Release `1222` closure head.
