@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-GLOBAL-STAMPED-CARD-DISPATCH",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Dispatch the parsed unique stamped card through the shared mail action hook, independent of indirect-container action ordering",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MAIL-ACTION-HOOK ()\n    <COND (<AND <VERB? EXAMINE LOOK-INSIDE SEARCH>\n                <EQUAL? ,PRSO ,MAILBOX>>",
+      "new": "<ROUTINE MAIL-ACTION-HOOK ()\n    <COND (<AND <VERB? PUT>\n                <EQUAL? ,PRSO ,MAIL-REPLY-CARD>\n                <EQUAL? ,PRSI ,MAILBOX>>\n           <MAIL-DISPATCH-REPLY>\n           <RTRUE>)\n          (<AND <VERB? EXAMINE LOOK-INSIDE SEARCH>\n                <EQUAL? ,PRSO ,MAILBOX>>"
+    }
+  ]
+}
