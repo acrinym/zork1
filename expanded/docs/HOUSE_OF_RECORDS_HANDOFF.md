@@ -4,6 +4,8 @@
 
 `acrinym/zork1`
 
+Default branch: `master`
+
 ## Resolve live state first
 
 At the start of the next session:
@@ -18,11 +20,10 @@ At the start of the next session:
 8. preserve every locked artifact identity and changed-path boundary;
 9. do not merge any PR without Justin's explicit merge whistle.
 
-Do not trust frozen SHAs or workflow counts without resolving GitHub live.
+Do not trust frozen branch heads or workflow counts without resolving GitHub live.
 
-## Stack at this handoff
+## Current stack
 
-- default branch: `master`;
 - PR #11: `agent/glulx-material-consequences`;
 - PR #16: `agent/glulx-house-state-foundation`;
 - PR #17: `agent/glulx-living-room-museum`;
@@ -32,7 +33,7 @@ Do not trust frozen SHAs or workflow counts without resolving GitHub live.
 - PR #21 is stacked directly on exact Release 1222 closure head `72ca166d71f055c438906794a36988f2c742d834`;
 - all production PRs remain open and unmerged absent explicit permission.
 
-Resolve PR #21's exact live head. The locked production qualifier is followed by candidate documentation and ledger commits, so do not use an earlier SHA as the current branch head.
+Resolve PR #21's exact live head before branching Train 6. The locked production qualifier and capstone audit are followed by documentation/ledger cleanup commits, so do not use an earlier SHA as the branch head.
 
 ## Hierarchy rule
 
@@ -46,14 +47,10 @@ Do not create sub-beads, sub-trains, or a parallel planning document. Execute ex
 
 ## Current roadmap state
 
-Capstone-candidate truth:
-
-- Trains 1–4 complete — 32 closed beads;
-- Train 5 has beads 001–007 closed and bead 008 open;
-- Trains 6–12 planned;
-- total: 39 closed / 57 open.
-
-Final Train 5 closure must produce 40 closed / 56 open.
+- Trains 1–5 complete;
+- 40 closed beads;
+- 56 open beads across Trains 6–12;
+- no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Locked lineage
 
@@ -65,36 +62,38 @@ Final Train 5 closure must produce 40 closed / 56 open.
 | 4 | 1222 | 262,400 | `0x54b04c7a` | `1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912` |
 | 5 | 1223 | 271,872 | `0x4cbcc561` | `362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816` |
 
-## Train 4 closure
+## Train 5 closure
 
-Train: `onyx_zork_house_cellar_threshold`
+Train:
 
-Status: `complete`
+`onyx_zork_house_correspondence_visitors`
 
-Exact closure head:
+Status:
 
-`72ca166d71f055c438906794a36988f2c742d834`
+`complete`
 
-All 31 workflows passed. PR #19 remained open, mergeable, and unmerged with no submitted review or inline thread.
+All eight existing beads are closed.
 
-## Train 5 — Release 1223
+Exact capstone-candidate audit head:
 
-Train: `onyx_zork_house_correspondence_visitors`
+`7e9019dc3c336413ea07df400341fa6474a3cff6`
 
-Status: `in_progress` — beads 001–007 closed; capstone bead 008 open.
+All 33 candidate workflows passed with no retry. The manual stacked-scope audit found no submitted review, inline review thread, or unresolved actionable finding. PR #21 remained open, mergeable, and unmerged.
 
-Exact base:
+### Exact base
 
 - Release `1222` closure head `72ca166d71f055c438906794a36988f2c742d834`;
 - artifact SHA-256 `1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912`.
 
-Exact production delta:
+### Exact production delta
 
 - `1actions.zil`;
 - `assistance.zil`;
 - new `house_correspondence_visitors.zil`;
 - `shadow_logic.zil`;
 - `zork1.zil`.
+
+### Product behavior
 
 Release `1223` preserves the canonical West of House, anchored mailbox, original leaflet, boarded front door, exits, and score.
 
@@ -109,58 +108,23 @@ It adds:
 - a signed courier receipt and numbered survey tag;
 - packed native-save state and `RECAP` receipts.
 
-## Important Train 5 corrections
-
-Do not regress these:
+### Important corrections that must not regress
 
 - the first compile exceeded the Glulx global limit by one; the mutable packed table is addressed through a constant symbol instead of a global pointer;
 - visitor bit clearing uses known-present power-of-two subtraction rather than an unproven complement operation;
 - use `RESPOND TO <LETTER>` because `REPLY` is claimed by canonical grammar;
 - use `PUT STAMPED CARD IN MAILBOX` because `REPLY CARD` is not a valid noun phrase;
-- parsed card posting dispatches through the shared mail action hook before canonical `PUT` can move a sent card back into the mailbox;
+- parsed card posting dispatches through the shared mail action hook before canonical `PUT` can retain a sent card;
 - ordinary `TELL SURVEYOR` / `TELL COURIER` engages visitors;
 - visitor objects explicitly route custom `ADMIT` and `REFUSE` actions;
 - arrival defers during posting and departure, so absence creates a real missed notice before one bounded return;
 - `ADMIT` means an exterior exchange or inspection; the boarded door never opens;
-- qualification proves leaflet preservation through canonical custody rather than reading/moving it for the test;
+- qualification proves leaflet preservation through canonical custody rather than moving it for the test;
 - deliberate corruption removes Cellar intrusion, museum theft, and repaired-dam triggers before asserting zero, then native restore recovers exact state.
-
-## Qualified Train 5 route
-
-The permanent pinned route proves:
-
-1. exact Release 1222 base and five-path staging;
-2. exact Release 1223 artifact identity;
-3. ordered one-time letter delivery;
-4. complete provenance;
-5. canonical mailbox and leaflet preservation;
-6. one exact fixed-text stamped reply card;
-7. physical missed notices and bounded revisits;
-8. ordinary visitor conversation, refusal, and exterior acceptance;
-9. unique receipt and survey tag;
-10. no duplicate or regenerated correspondence;
-11. native save, deliberate trigger removal/corruption, and exact restore;
-12. strict production/test isolation.
-
-## Train 5 capstone closure checklist
-
-Before closing `zork1-house-mail-008`:
-
-1. resolve PR #21 exact candidate head;
-2. confirm the permanent Release 1223 qualifier passes there;
-3. confirm the Train 5 bead validator passes;
-4. confirm the House roadmap validates 39 closed / 57 open;
-5. inspect all inherited workflows;
-6. inspect PR comments, reviews, and inline threads;
-7. post a manual stacked-scope audit;
-8. close bead 008 only after the exact candidate is green;
-9. set Train 5 to `complete` and publish 40 closed / 56 open;
-10. run the exact final closure matrix;
-11. keep PR #21 open and unmerged.
 
 ## Next existing train
 
-After Train 5 closure, continue directly with:
+Continue directly with:
 
 `onyx_zork_attic_archive_core`
 
@@ -175,4 +139,12 @@ Its eight existing beads are:
 7. archive save/restore and migration;
 8. Attic archive-core capstone.
 
-Train 6 should branch from the exact qualified Release 1223 closure head after resolving it live. It may consume stable correspondence filing codes and statuses, but must not move, recreate, or repair live mail state.
+## Train 6 boundary
+
+Branch from the exact live PR #21 head after resolving it and confirming the current checks. Preserve the qualified Release `1223` artifact and five-path production boundary.
+
+Train 6 may consume stable correspondence filing codes and status receipts, but it must not move, recreate, consume, or repair live mail or visitor state.
+
+Build a complete period-authentic archive substrate in the canonical Attic. Do not build a modern filesystem, cloud drive, email inbox, universal world logger, raw transcript dump, open-ended database, duplicate record system, unseen-solution revealer, or playback engine that mutates live state.
+
+Keep PRs open and unmerged unless Justin explicitly gives the merge whistle.
