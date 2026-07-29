@@ -57,7 +57,6 @@
     {"expect": ">"},
     {"sendline": "pmutate"},
     {"expect": "PLAYBACK:MUTATED"},
-    {"sendline": "preport"},
     {"expect": "PLAYBACK:VERSION=1;CAPTURED=0;COUNT=0;FILED=0;PRINTOUT=N;CASSETTE=N;INCIDENT=N;ACTOR=N;PLACE=N;CHRONOLOGY=N;FORENSIC=N;PRINT-CABINET=N"},
     {"sendline": "restore"},
     {"expect": "(?i)(file name|filename|saved game)"},
