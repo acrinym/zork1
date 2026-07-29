@@ -22,7 +22,8 @@
   ],
   "patches": [
     "patches/001-archive-hooks.json",
-    "patches/002-archive-recap.json"
+    "patches/002-archive-recap.json",
+    "patches/003-custom-action-routing.json"
   ],
   "expected_changed_paths": [
     "assistance.zil",
