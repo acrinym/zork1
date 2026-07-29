@@ -11,9 +11,9 @@
     "file": "zork1-glulx-attic-area-case-files.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": 296448,
-    "checksum_hex": "0x70e0fbf9",
-    "sha256": "29822ca9d3d09ad32515d20dcbd9b1ba6817b503603029ea4625eb5bda3e5b7f"
+    "size_bytes": 0,
+    "checksum_hex": "0x00000000",
+    "sha256": "PENDING-ITEMIZED-EVIDENCE-QUALIFICATION"
   },
   "overrides": [
     {
@@ -42,7 +42,7 @@
   ],
   "preserved_canonical_state": [
     "rooms, routes, mechanisms, actors, objects, score, timers, randomness, and parser remain authoritative",
-    "case files derive only from player-earned observations and existing archive records",
+    "case files derive only from individually retained player-earned observations and existing archive records",
     "incomplete and missing evidence remains visibly incomplete or redacted",
     "retrospective synthesis unlocks only after all five regional case contracts are complete",
     "native save and restore preserve exact case evidence, completion bits, and physical custody"
