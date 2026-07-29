@@ -1,0 +1,54 @@
+{
+  "edition": "Unofficial House Correspondence and Visitors Glulx",
+  "release": 1223,
+  "serial": "260724",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../house-cellar-threshold/patch-series.json",
+  "base_release": 1222,
+  "base_artifact_sha256": "1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912",
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1222 layer, assign Release 1223, and load deterministic correspondence and visitors"
+    },
+    {
+      "path": "house_correspondence_visitors.zil",
+      "source": "overrides/house_correspondence_visitors.zil",
+      "allow_new": true,
+      "description": "Add packed queue state, unique physical letters, provenance, one reusable fixed reply card, missed notices, two exterior visitors, and recap"
+    }
+  ],
+  "patches": [
+    "patches/001-west-house-and-mailbox-hooks.json",
+    "patches/002-mail-action-hook.json",
+    "patches/003-mail-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "assistance.zil",
+    "house_correspondence_visitors.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "preserved_canonical_state": [
+    "the canonical West of House, anchored MAILBOX, original ADVERTISEMENT leaflet, boarded front door, room exits, and score remain authoritative",
+    "each letter, reply card, visitor notice, receipt, tag, courier, and surveyor is one exact physical object and is never cloned",
+    "authored queue triggers derive from existing Cellar intrusion, museum theft, and repaired-dam state",
+    "bounded replies use one reusable fixed-text card rather than free-form composition",
+    "visitors remain exterior because the canonical boarded front door does not open",
+    "missed visits leave physical records and at most one bounded return opportunity",
+    "native save and restore preserve queue order, object custody, replies, notices, visitors, and completion state without repair"
+  ],
+  "excluded_scope": [
+    "free-form mail composition or open-ended dialogue",
+    "generic message or NPC scheduling systems",
+    "duplicate mail, regenerated destroyed mail, or parallel mailbox inventory",
+    "automatic front-door opening or fabricated entry routes",
+    "unbounded visitors, repeated farming, or visitor combat",
+    "automatic archive creation before the Attic archive train",
+    "new score or automatic puzzle completion",
+    "sub-beads or a parallel planning hierarchy"
+  ]
+}
