@@ -1,0 +1,39 @@
+name: Zork I House Correspondence and Visitors Beadtrain
+
+on:
+  push:
+    branches:
+      - agent/glulx-house-correspondence-visitors
+    paths:
+      - ".beads/onyx_zork_house_correspondence_visitors.beadtrain"
+      - ".beads/issues-zork-house-of-records-*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/house-correspondence-visitors-beadtrain.yml"
+  pull_request:
+    paths:
+      - ".beads/onyx_zork_house_correspondence_visitors.beadtrain"
+      - ".beads/issues-zork-house-of-records-*.jsonl"
+      - ".beads/beadtrains/scripts/validate_sharded_beadtrain.py"
+      - ".github/workflows/house-correspondence-visitors-beadtrain.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-house-correspondence-visitors-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate House Correspondence and Visitors train
+        run: |
+          python .beads/beadtrains/scripts/validate_sharded_beadtrain.py \
+            .beads/onyx_zork_house_correspondence_visitors.beadtrain
