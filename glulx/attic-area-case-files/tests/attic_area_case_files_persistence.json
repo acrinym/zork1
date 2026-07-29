@@ -1,147 +1,53 @@
 {
   "timeout_seconds": 90,
-  "allowed_exit_codes": [
-    0
-  ],
+  "allowed_exit_codes": [0],
   "close_stdin": false,
   "steps": [
-    {
-      "expect": "Release 1226"
-    },
-    {
-      "sendline": "apartial"
-    },
-    {
-      "expect": "AREA-PARTIAL:READY"
-    },
-    {
-      "sendline": "examine catalog"
-    },
-    {
-      "expect": "AREA-FOREST-02"
-    },
-    {
-      "expect": "AREA-DAM-03"
-    },
-    {
-      "sendline": "take red case file"
-    },
-    {
-      "expect": ">"
-    },
-    {
-      "sendline": "review red case file"
-    },
-    {
-      "expect": "INCOMPLETE; unresolved sections remain redacted"
-    },
-    {
-      "expect": "REDACTED - no verified panel diagnosis"
-    },
-    {
-      "sendline": "acomplete"
-    },
-    {
-      "expect": "AREA-COMPLETE:READY"
-    },
-    {
-      "sendline": "examine catalog"
-    },
-    {
-      "expect": "AREA-SYNTHESIS"
-    },
-    {
-      "sendline": "take red case file"
-    },
-    {
-      "expect": ">"
-    },
-    {
-      "sendline": "review red case file"
-    },
-    {
-      "expect": "Status: COMPLETE"
-    },
-    {
-      "sendline": "crossref red case file"
-    },
-    {
-      "expect": "FCD3-MAINT-03"
-    },
-    {
-      "sendline": "file red case file"
-    },
-    {
-      "expect": "No duplicate, completion token, or repaired evidence"
-    },
-    {
-      "sendline": "read cream printout"
-    },
-    {
-      "expect": "AREA-SYNTHESIS. Retrospective regional explanation."
-    },
-    {
-      "expect": "grants no score"
-    },
-    {
-      "sendline": "areport"
-    },
-    {
-      "expect": "AREA:VERSION=1;SEEN=63;DAM=511;HADES=255;HOUSE=127;FOREST=31;UNDER=127;COMPLETE=63;FILED=1;DAMFILE=Y;HADESFILE=Y;HOUSEFILE=Y;FORESTFILE=Y;UNDERFILE=Y;SYNTH=Y;DAM-CABINET=Y"
-    },
-    {
-      "sendline": "save"
-    },
-    {
-      "expect": "(?i)(file name|filename|saved game)"
-    },
-    {
-      "sendline": "{AREA_SAVE_FILE}"
-    },
-    {
-      "expect": ">"
-    },
-    {
-      "sendline": "amutate"
-    },
-    {
-      "expect": "AREA:MUTATED"
-    },
-    {
-      "sendline": "areport"
-    },
-    {
-      "expect": "AREA:VERSION=1;SEEN=0;DAM=0;HADES=0;HOUSE=0;FOREST=0;UNDER=0;COMPLETE=0;FILED=0;DAMFILE=N;HADESFILE=N;HOUSEFILE=N;FORESTFILE=N;UNDERFILE=N;SYNTH=N;DAM-CABINET=N"
-    },
-    {
-      "sendline": "restore"
-    },
-    {
-      "expect": "(?i)(file name|filename|saved game)"
-    },
-    {
-      "sendline": "{AREA_SAVE_FILE}"
-    },
-    {
-      "expect": ">"
-    },
-    {
-      "sendline": "areport"
-    },
-    {
-      "expect": "AREA:VERSION=1;SEEN=63;DAM=511;HADES=255;HOUSE=127;FOREST=31;UNDER=127;COMPLETE=63;FILED=1;DAMFILE=Y;HADESFILE=Y;HOUSEFILE=Y;FORESTFILE=Y;UNDERFILE=Y;SYNTH=Y;DAM-CABINET=Y"
-    },
-    {
-      "sendline": "quit"
-    },
-    {
-      "expect": "(?i)(really|wish to leave|are you sure)"
-    },
-    {
-      "sendline": "yes"
-    },
-    {
-      "expect_eof": true
-    }
+    {"expect": "Release 1226"},
+    {"sendline": "apartial"},
+    {"expect": "AREA-PARTIAL:READY"},
+    {"sendline": "examine catalog"},
+    {"expect": "AREA-FOREST-02"},
+    {"expect": "AREA-DAM-03"},
+    {"sendline": "take red folder"},
+    {"expect": ">"},
+    {"sendline": "review red folder"},
+    {"expect": "INCOMPLETE; unresolved sections remain redacted"},
+    {"expect": "REDACTED - no verified panel diagnosis"},
+    {"sendline": "acomplete"},
+    {"expect": "AREA-COMPLETE:READY"},
+    {"sendline": "examine catalog"},
+    {"expect": "AREA-SYNTHESIS"},
+    {"sendline": "take red folder"},
+    {"expect": ">"},
+    {"sendline": "review red folder"},
+    {"expect": "Status: COMPLETE"},
+    {"sendline": "crossref red folder"},
+    {"expect": "FCD3-MAINT-03"},
+    {"sendline": "file red folder"},
+    {"expect": "No duplicate, completion token, or repaired evidence"},
+    {"sendline": "read cream printout"},
+    {"expect": "AREA-SYNTHESIS. Retrospective regional explanation."},
+    {"expect": "grants no score"},
+    {"sendline": "areport"},
+    {"expect": "AREA:VERSION=1;SEEN=63;DAM=511;HADES=255;HOUSE=127;FOREST=31;UNDER=127;COMPLETE=63;FILED=1;DAMFILE=Y;HADESFILE=Y;HOUSEFILE=Y;FORESTFILE=Y;UNDERFILE=Y;SYNTH=Y;DAM-CABINET=Y"},
+    {"sendline": "save"},
+    {"expect": "(?i)(file name|filename|saved game)"},
+    {"sendline": "{AREA_SAVE_FILE}"},
+    {"expect": ">"},
+    {"sendline": "amutate"},
+    {"expect": "AREA:MUTATED"},
+    {"sendline": "areport"},
+    {"expect": "AREA:VERSION=1;SEEN=0;DAM=0;HADES=0;HOUSE=0;FOREST=0;UNDER=0;COMPLETE=0;FILED=0;DAMFILE=N;HADESFILE=N;HOUSEFILE=N;FORESTFILE=N;UNDERFILE=N;SYNTH=N;DAM-CABINET=N"},
+    {"sendline": "restore"},
+    {"expect": "(?i)(file name|filename|saved game)"},
+    {"sendline": "{AREA_SAVE_FILE}"},
+    {"expect": ">"},
+    {"sendline": "areport"},
+    {"expect": "AREA:VERSION=1;SEEN=63;DAM=511;HADES=255;HOUSE=127;FOREST=31;UNDER=127;COMPLETE=63;FILED=1;DAMFILE=Y;HADESFILE=Y;HOUSEFILE=Y;FORESTFILE=Y;UNDERFILE=Y;SYNTH=Y;DAM-CABINET=Y"},
+    {"sendline": "quit"},
+    {"expect": "(?i)(really|wish to leave|are you sure)"},
+    {"sendline": "yes"},
+    {"expect_eof": true}
   ]
 }
