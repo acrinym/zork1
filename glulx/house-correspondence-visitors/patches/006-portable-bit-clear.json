@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-PORTABLE-BIT-CLEAR",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Clear known power-of-two visitor bits by subtraction only when present, avoiding an unproven complement opcode",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MAIL-CLEAR-BIT (SLOT BIT)\n    <MAIL-PUT .SLOT <BAND <MAIL-GET .SLOT> <XORB .BIT -1>>>\n    <RTRUE>>",
+      "new": "<ROUTINE MAIL-CLEAR-BIT (SLOT BIT)\n    <COND (<MAIL-HAS-BIT? .SLOT .BIT>\n           <MAIL-PUT .SLOT <- <MAIL-GET .SLOT> .BIT>>)\n          (T <RFALSE>)>\n    <RTRUE>>"
+    }
+  ]
+}
