@@ -25,7 +25,8 @@
     "patches/002-mail-action-hook.json",
     "patches/003-mail-recap.json",
     "patches/004-defer-visitor-after-posting.json",
-    "patches/005-constant-addressed-mail-state.json"
+    "patches/005-constant-addressed-mail-state.json",
+    "patches/006-portable-bit-clear.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -40,6 +41,7 @@
     "authored queue triggers derive from existing Cellar intrusion, museum theft, and repaired-dam state",
     "bounded replies use one reusable fixed-text card rather than free-form composition",
     "the mutable packed mail table is constant-addressed to avoid consuming another global while remaining native-save persistent",
+    "visitor bit clearing uses known-present power-of-two subtraction rather than nonportable complement operations",
     "visitors remain exterior because the canonical boarded front door does not open",
     "missed visits leave physical records and at most one bounded return opportunity",
     "native save and restore preserve queue order, object custody, replies, notices, visitors, and completion state without repair"
