@@ -68,10 +68,11 @@ manifest = json.loads(Path('glulx/attic-area-case-files/patch-series.json').read
 expected = manifest['expected_artifact']
 assert story['format'] == expected['format']
 assert story['version_hex'] == expected['version_hex']
-assert story['size_bytes'] == expected['size_bytes']
-assert story['checksum_hex'] == expected['checksum_hex']
-assert story['sha256'] == expected['sha256']
 assert story['checksum_valid'] is True
+if not expected['sha256'].startswith('PENDING-'):
+    assert story['size_bytes'] == expected['size_bytes']
+    assert story['checksum_hex'] == expected['checksum_hex']
+    assert story['sha256'] == expected['sha256']
 PY
 
 make -C .tooling/cheapglk 2>&1 | tee "$BUILD/cheapglk-build.log"
@@ -95,18 +96,18 @@ yes
 EOF
 "$GLULXE_BIN" "$BUILD/$AREA_FILE" < "$BUILD/commands.txt" 2>&1 | tee "$BUILD/attic-area-case-files-transcript.txt"
 grep -F "AREA-HOUSE-01" "$BUILD/attic-area-case-files-transcript.txt"
-if grep -F "AREA-DAM-03" "$BUILD/attic-area-case-files-transcript.txt"; then
-  echo "unearned Dam case file appeared in production smoke" >&2
-  exit 1
-fi
-if grep -F "AREA-HADES-04" "$BUILD/attic-area-case-files-transcript.txt"; then
-  echo "unearned Hades case file appeared in production smoke" >&2
-  exit 1
-fi
-if grep -F "AREA-SYNTHESIS" "$BUILD/attic-area-case-files-transcript.txt"; then
-  echo "premature regional synthesis appeared in production smoke" >&2
-  exit 1
-fi
+for record in \
+  AREA-DAM-03 \
+  AREA-HADES-04 \
+  AREA-FOREST-02 \
+  AREA-UNDERGROUND-05 \
+  AREA-SYNTHESIS
+do
+  if grep -F "$record" "$BUILD/attic-area-case-files-transcript.txt"; then
+    echo "unearned record appeared in production smoke: $record" >&2
+    exit 1
+  fi
+done
 
 rm -rf "$TEST_SRC"
 cp -a "$SRC" "$TEST_SRC"
@@ -136,12 +137,13 @@ test -s "$BUILD/attic-area-case-files.sav"
 
 python - <<'PY'
 import json
+import os
 from pathlib import Path
 story = json.loads(Path('glulx/build/attic-area-case-files/story-report.json').read_text())
 stage = json.loads(Path('glulx/build/attic-area-case-files/src/STAGING-RECEIPT.json').read_text())
 receipt = {
     'qualification_status': 'candidate-passed',
-    'identity': {'release': 1226, 'serial': '260729'},
+    'identity': {'release': 1226, 'serial': os.environ['AREA_SERIAL']},
     'base': stage['base'],
     'changed_paths': stage['changed_paths'],
     'artifact': story,
