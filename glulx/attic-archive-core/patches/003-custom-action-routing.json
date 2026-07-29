@@ -10,8 +10,8 @@
     },
     {
       "expected_count": 1,
-      "old": "                  (T <TELL \"That physical record is read or viewed, not played.\" CR>)>)>\n    <RTRUE>>\n\n<ROUTINE ARCHIVE-CATALOG-LIST",
-      "new": "                  (T <TELL \"That physical record is read or viewed, not played.\" CR>)>)>\n    <COND (<VERB? READ EXAMINE FIND PLAY> <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE ARCHIVE-CATALOG-LIST"
+      "old": "    <RTRUE>>\n\n<ROUTINE ARCHIVE-CATALOG-LIST",
+      "new": "    <COND (<VERB? READ EXAMINE FIND PLAY> <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE ARCHIVE-CATALOG-LIST"
     },
     {
       "expected_count": 1,
