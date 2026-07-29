@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1224-CUSTOM-ACTION-ROUTING",
+  "path": "attic_archive_core.zil",
+  "description": "Keep REVIEW and SHOW in their explicit action routines rather than referencing nonexistent canonical action symbols from the object handler",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<COND (<VERB? READ EXAMINE REVIEW SHOW>",
+      "new": "<COND (<VERB? READ EXAMINE>"
+    }
+  ]
+}
