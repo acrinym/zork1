@@ -8,16 +8,15 @@ Active twelve-train, ninety-six-bead program above qualified Glulx Release `1223
 - **Train 2 complete:** `onyx_zork_house_living_museum` — Release `1220`.
 - **Train 3 complete:** `onyx_zork_house_kitchen_laboratory` — Release `1221`.
 - **Train 4 complete:** `onyx_zork_house_cellar_threshold` — Release `1222`.
-- **Train 5 in capstone:** `onyx_zork_house_correspondence_visitors` — qualified Release `1223`.
-- **Next existing train after closure:** `onyx_zork_attic_archive_core`.
+- **Train 5 complete:** `onyx_zork_house_correspondence_visitors` — Release `1223`.
+- **Next existing train:** `onyx_zork_attic_archive_core`.
 
-Current capstone-candidate truth:
+Current truth:
 
 - 12 trains;
 - 96 beads;
-- 39 closed beads across Trains 1–5;
-- Train 5 bead 008 remains open;
-- 57 open beads total;
+- 40 closed beads across Trains 1–5;
+- 56 open beads across Trains 6–12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
@@ -51,7 +50,7 @@ The Attic becomes a period-authentic archive of this player's actual run: corres
 | 2 | 1220 | 237,312 | `0x630d724a` | `f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4` | Complete |
 | 3 | 1221 | 249,600 | `0x85d64142` | `93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f` | Complete |
 | 4 | 1222 | 262,400 | `0x54b04c7a` | `1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912` | Complete |
-| 5 | 1223 | 271,872 | `0x4cbcc561` | `362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816` | Capstone candidate |
+| 5 | 1223 | 271,872 | `0x4cbcc561` | `362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816` | Complete |
 
 ## Train 1 — House State Foundation
 
@@ -99,7 +98,7 @@ Controlling records:
 
 Train: `onyx_zork_house_correspondence_visitors`
 
-Status: `in_progress` — qualified implementation and persistence complete; capstone bead open.
+Status: `complete`
 
 Qualified Release `1223` identity:
 
@@ -138,10 +137,13 @@ Qualified behavior includes:
 
 The first compile exceeded the Glulx global limit by one. The mutable packed state table became constant-addressed instead of dropping behavior. Parser and action-order corrections preserved ordinary play rather than adding test-only shortcuts.
 
+All 33 capstone-candidate workflows passed with no retry on exact audited head `7e9019dc3c336413ea07df400341fa6474a3cff6`. All eight Train 5 beads are closed.
+
 Controlling records:
 
 - `glulx/house-correspondence-visitors/README.md`
 - `expanded/docs/HOUSE_CORRESPONDENCE_VISITORS_CONTRACT.md`
+- `expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md`
 
 ## Period presentation
 
@@ -158,91 +160,8 @@ The archive uses late-1970s/early-1980s physical media:
 - stamped folders;
 - a terminal that locates physical records.
 
-## Remaining trains
+## Next existing train — Attic Archive Core
 
-### Train 6 — Attic Archive Core
+Continue directly with `onyx_zork_attic_archive_core` after resolving PR #21's exact live head.
 
-Create the canonical record schema, physical media taxonomy, card catalog, filing surfaces, explicit retrieval commands, provenance/truth status, and migration substrate.
-
-### Train 7 — NPC Dossiers
-
-Record player-specific troll, cyclops, thief, quotation, gift, threat, mercy, deception, restraint, combat, and outcome histories.
-
-### Train 8 — Area Case Files
-
-Build partial, redacted, and completed evidence files for the dam, Hades ceremony, house, forest, and representative underground areas.
-
-### Train 9 — Playback
-
-Provide curated transcripts, cassette-style scenes, line-printer output, and observational playback that cannot mutate live state.
-
-### Train 10 — Rest and Dreams
-
-Add optional rest, timer-safe recovery, discovery-driven dreams, overnight consequences, and waking without mandatory sleep cycles.
-
-### Train 11 — House Vulnerability
-
-Extend smoke, damp, water, burglary, followers, creatures, and supernatural effects into recoverable physical consequences.
-
-### Train 12 — Expedition Archive
-
-Preserve completed-run routes, deaths, treasures, actors, areas, altered objects, correspondence, house condition, displays, unresolved evidence, and mechanisms as a separate expedition box.
-
-## Train ledger
-
-| # | Beadtrain | Status |
-|---:|---|---|
-| 1 | `onyx_zork_house_state_foundation` | Complete — Release 1219 |
-| 2 | `onyx_zork_house_living_museum` | Complete — Release 1220 |
-| 3 | `onyx_zork_house_kitchen_laboratory` | Complete — Release 1221 |
-| 4 | `onyx_zork_house_cellar_threshold` | Complete — Release 1222 |
-| 5 | `onyx_zork_house_correspondence_visitors` | Capstone candidate — Release 1223 |
-| 6 | `onyx_zork_attic_archive_core` | Planned / next |
-| 7 | `onyx_zork_attic_npc_dossiers` | Planned |
-| 8 | `onyx_zork_attic_area_case_files` | Planned |
-| 9 | `onyx_zork_attic_playback` | Planned |
-| 10 | `onyx_zork_house_rest_and_dreams` | Planned |
-| 11 | `onyx_zork_house_vulnerability` | Planned |
-| 12 | `onyx_zork_expedition_archive` | Planned |
-
-Canonical issue shards:
-
-- `.beads/issues-zork-house-of-records-01.jsonl`
-- `.beads/issues-zork-house-of-records-02.jsonl`
-- `.beads/issues-zork-house-of-records-03.jsonl`
-- `.beads/issues-zork-house-of-records-04.jsonl`
-
-## Qualification standard
-
-Every train must:
-
-1. resolve the exact live base;
-2. publish a narrow production delta and exclusions;
-3. use real canonical objects and actors;
-4. keep test-only commands out of production;
-5. build with pinned toolchains;
-6. run deterministic player-facing routes;
-7. deliberately corrupt state and prove native restore;
-8. prove no duplicate object, actor, score, or record;
-9. update the program, handoff, README, train, and issue ledger;
-10. close beads only after exact-head evidence;
-11. keep PRs open and unmerged absent Justin's explicit merge whistle.
-
-## Explicit non-goals
-
-- generic base building;
-- crafting trees or survival meters;
-- housekeeping chores;
-- universal physics or chemistry;
-- open-ended dialogue or mail composition;
-- modern cloud-drive metaphors;
-- raw transcript dumping as the primary interface;
-- revealing unseen solutions;
-- merging contradictory playthroughs;
-- using archive records to repair live state;
-- replacing Zork's parser identity;
-- sub-beads beneath established trains.
-
-## Definition of success
-
-The house should feel like the player's place in the Great Underground Empire, and the Attic should explain why it became that way.
+Train 6 must execute its existing eight beads directly and build the canonical archive-record schema, physical media taxonomy, card catalog, filing surfaces, explicit retrieval commands, truth/provenance state, migration, native persistence, and capstone without creating a modern filesystem, universal logger, duplicate archive, unseen-solution leak, or sub-bead hierarchy.
