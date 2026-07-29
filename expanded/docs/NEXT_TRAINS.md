@@ -8,9 +8,9 @@ The Glulx production lineage is qualified through House Correspondence and Visit
 - Train 2 complete — Release `1220`.
 - Train 3 complete — Release `1221`.
 - Train 4 complete — Release `1222`.
-- Train 5 capstone candidate — qualified Release `1223`.
-- Train 6 next after closure — `onyx_zork_attic_archive_core`.
-- Roadmap: 12 trains / 96 beads / 39 closed / 57 open.
+- Train 5 complete — Release `1223`.
+- Train 6 next — `onyx_zork_attic_archive_core`.
+- Roadmap: 12 trains / 96 beads / 40 closed / 56 open.
 - No sub-beads or parallel planning layers.
 
 ## Qualified production frontier
@@ -39,9 +39,11 @@ The Glulx production lineage is qualified through House Correspondence and Visit
 - exact save/corrupt/restore;
 - no duplicate mail, regenerated mail, free-form composition, generic scheduler, fabricated route, parallel score, or auto-solve.
 
+All 33 capstone-candidate workflows passed with no retry on exact audited head `7e9019dc3c336413ea07df400341fa6474a3cff6`. Train 5 is complete.
+
 ## Next train — Attic Archive Core
 
-After Train 5 closes, continue directly with:
+Continue directly with:
 
 `onyx_zork_attic_archive_core`
 
@@ -115,13 +117,14 @@ Do not add:
 
 Train 6 must:
 
-1. branch from the exact qualified Release `1223` closure head;
-2. publish a narrow production delta and exclusions;
-3. preserve the canonical Attic, objects, score, and prior-train state;
-4. keep test setup out of production;
-5. use pinned toolchains;
-6. run parser-driven filing/index/query/retrieval routes;
-7. prove duplicate rejection and truth/provenance state;
-8. deliberately corrupt records/indexes and prove native restore/migration;
-9. close only its eight existing beads after exact-head evidence;
-10. keep the PR stack open and unmerged absent Justin's merge whistle.
+1. resolve PR #21's exact live head before branching;
+2. branch from that live qualified Release `1223` closure state;
+3. publish a narrow production delta and exclusions;
+4. preserve the canonical Attic, objects, score, and prior-train state;
+5. keep test setup out of production;
+6. use pinned toolchains;
+7. run parser-driven filing/index/query/retrieval routes;
+8. prove duplicate rejection and truth/provenance state;
+9. deliberately corrupt records/indexes and prove native restore/migration;
+10. close only its eight existing beads after exact-head evidence;
+11. keep the PR stack open and unmerged absent Justin's merge whistle.
