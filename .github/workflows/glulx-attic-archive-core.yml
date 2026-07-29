@@ -30,6 +30,8 @@ on:
 
 permissions:
   contents: read
+  issues: write
+  pull-requests: write
 
 env:
   ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
@@ -93,7 +95,34 @@ jobs:
           sudo apt-get install -y build-essential libncurses-dev curl
           python -m pip install pexpect
       - name: Qualify Release 1224 archive candidate
+        id: qualify
         run: bash glulx/attic-archive-core/qualify.sh
+      - name: Publish qualification receipt to PR 22
+        if: always() && github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          QUALIFY_OUTCOME: ${{ steps.qualify.outcome }}
+        run: |
+          {
+            echo "## Train 6 automated qualification"
+            echo
+            echo "Head: \`${GITHUB_SHA}\`"
+            echo "Outcome: **${QUALIFY_OUTCOME}**"
+            if test -f glulx/build/attic-archive-core/story-report.json; then
+              echo
+              echo '```json'
+              cat glulx/build/attic-archive-core/story-report.json
+              echo '```'
+            fi
+            if test -f glulx/build/attic-archive-core/QUALIFICATION-RECEIPT.json; then
+              echo
+              echo "Native archive qualification receipt was produced, including save/corrupt/restore."
+            else
+              echo
+              echo "No final qualification receipt was produced; inspect the failed workflow step and uploaded logs."
+            fi
+          } > "$RUNNER_TEMP/train6-comment.md"
+          gh pr comment 22 --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/train6-comment.md"
       - name: Upload candidate artifact and evidence
         if: always()
         uses: actions/upload-artifact@v4
