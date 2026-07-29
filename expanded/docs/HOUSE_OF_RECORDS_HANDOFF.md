@@ -12,17 +12,17 @@ At the start of the next session:
 
 1. resolve exact `master`;
 2. enumerate every open PR;
-3. inspect PRs #11, #16, #17, #18, #19, and #21 metadata, comments, reviews, inline threads, bases, heads, mergeability, and checks;
+3. inspect PRs #11, #16, #17, #18, #19, #21, #22, and #24 metadata, comments, reviews, inline threads, bases, heads, mergeability, and checks;
 4. confirm whether any stacked branch advanced;
-5. read `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md`;
-6. read the Release 1219–1223 README files and Train 3–5 contracts/matrices;
+5. read `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md` and `expanded/docs/NEXT_TRAINS.md`;
+6. read the Release `1224` and `1225` README files and manifests;
 7. validate all twelve House of Records trains against all four issue shards;
 8. preserve every locked artifact identity and changed-path boundary;
 9. do not merge any PR without Justin's explicit merge whistle.
 
 Do not trust frozen branch heads or workflow counts without resolving GitHub live.
 
-## Current stack
+## Current production stack
 
 - PR #11: `agent/glulx-material-consequences`;
 - PR #16: `agent/glulx-house-state-foundation`;
@@ -30,10 +30,12 @@ Do not trust frozen branch heads or workflow counts without resolving GitHub liv
 - PR #18: `agent/glulx-house-kitchen-laboratory`;
 - PR #19: `agent/glulx-house-cellar-threshold`;
 - PR #21: `agent/glulx-house-correspondence-visitors`;
-- PR #21 is stacked directly on exact Release 1222 closure head `72ca166d71f055c438906794a36988f2c742d834`;
-- all production PRs remain open and unmerged absent explicit permission.
+- PR #22: `agent/glulx-attic-archive-core`;
+- PR #24: `agent/glulx-attic-npc-dossiers`.
 
-Resolve PR #21's exact live head before branching Train 6. The locked production qualifier and capstone audit are followed by documentation/ledger cleanup commits, so do not use an earlier SHA as the branch head.
+All production PRs remain open and unmerged absent Justin's explicit permission.
+
+Temporary qualification carrier PRs #23 and #25 are not production stack members and must never be merged.
 
 ## Hierarchy rule
 
@@ -47,9 +49,9 @@ Do not create sub-beads, sub-trains, or a parallel planning document. Execute ex
 
 ## Current roadmap state
 
-- Trains 1–5 complete;
-- 40 closed beads;
-- 56 open beads across Trains 6–12;
+- Trains 1–7 complete;
+- 56 closed beads;
+- 40 open beads across Trains 8–12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Locked lineage
@@ -61,90 +63,83 @@ Do not create sub-beads, sub-trains, or a parallel planning document. Execute ex
 | 3 | 1221 | 249,600 | `0x85d64142` | `93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f` |
 | 4 | 1222 | 262,400 | `0x54b04c7a` | `1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912` |
 | 5 | 1223 | 271,872 | `0x4cbcc561` | `362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816` |
+| 6 | 1224 | 280,832 | `0x4fe371b8` | `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356` |
+| 7 | 1225 | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` |
 
-## Train 5 closure
+## Train 6 closure
 
-Train:
+Train: `onyx_zork_attic_archive_core`
 
-`onyx_zork_house_correspondence_visitors`
+Status: `complete`
 
-Status:
+PR: #22
 
-`complete`
+Release `1224` builds the canonical Attic's physical archive substrate:
 
-All eight existing beads are closed.
+- typed records and stable filing codes;
+- late-1970s physical media;
+- card catalog and bounded filing surfaces;
+- terminal-as-location-index, not database;
+- explicit filing, review, showing, and cross-reference commands;
+- provenance, truth, contradiction, redaction, and missing evidence;
+- bounded playback with no live mutation;
+- versioned native-save state.
 
-Exact capstone-candidate audit head:
+GitHub Actions run `30478000111` passed production staging, compilation, assembly, canonical lantern-lit Attic use, and native save/corrupt/restore.
 
-`7e9019dc3c336413ea07df400341fa6474a3cff6`
+Exact identity:
 
-All 33 candidate workflows passed with no retry. The manual stacked-scope audit found no submitted review, inline review thread, or unresolved actionable finding. PR #21 remained open, mergeable, and unmerged.
+- Release `1224` / serial `260729`;
+- 280,832 bytes;
+- checksum `0x4fe371b8`;
+- SHA-256 `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356`.
 
-### Exact base
+## Train 7 closure
 
-- Release `1222` closure head `72ca166d71f055c438906794a36988f2c742d834`;
-- artifact SHA-256 `1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912`.
+Train: `onyx_zork_attic_npc_dossiers`
 
-### Exact production delta
+Status: `complete`
 
-- `1actions.zil`;
-- `assistance.zil`;
-- new `house_correspondence_visitors.zil`;
-- `shadow_logic.zil`;
-- `zork1.zil`.
+PR: #24
 
-### Product behavior
+Release `1225` adds exact physical player-specific troll, cyclops, thief, and encounter timeline records.
 
-Release `1223` preserves the canonical West of House, anchored mailbox, original leaflet, boarded front door, exits, and score.
+Important boundaries:
 
-It adds:
+- dossiers appear only after direct interaction or observable canonical evidence;
+- attempts remain distinct from outcomes;
+- hostility, route state, property custody, invisibility, absence, and contradictions remain evidence-driven;
+- missing property is not recreated;
+- quotations are curated with context, not raw logs;
+- combat, actor choices, timers, randomness, score, and routes remain canonical;
+- no unearned solution hints.
 
-- three unique physical letters triggered by real Cellar intrusion, museum theft, and repaired-dam state;
-- deterministic Cellar → museum → dam delivery order;
-- sender/source, trigger, delivery, authenticity, and filing-code provenance;
-- one reusable fixed-text stamped reply card;
-- a threshold surveyor and uniformed courier as exterior visitors;
-- unique missed notices and one bounded return;
-- a signed courier receipt and numbered survey tag;
-- packed native-save state and `RECAP` receipts.
+GitHub Actions run `30480017488` passed production no-unearned-dossier smoke, exact dossier interaction, filing, cross-reference, curated playback, and native save/corrupt/restore.
 
-### Important corrections that must not regress
+Exact identity:
 
-- the first compile exceeded the Glulx global limit by one; the mutable packed table is addressed through a constant symbol instead of a global pointer;
-- visitor bit clearing uses known-present power-of-two subtraction rather than an unproven complement operation;
-- use `RESPOND TO <LETTER>` because `REPLY` is claimed by canonical grammar;
-- use `PUT STAMPED CARD IN MAILBOX` because `REPLY CARD` is not a valid noun phrase;
-- parsed card posting dispatches through the shared mail action hook before canonical `PUT` can retain a sent card;
-- ordinary `TELL SURVEYOR` / `TELL COURIER` engages visitors;
-- visitor objects explicitly route custom `ADMIT` and `REFUSE` actions;
-- arrival defers during posting and departure, so absence creates a real missed notice before one bounded return;
-- `ADMIT` means an exterior exchange or inspection; the boarded door never opens;
-- qualification proves leaflet preservation through canonical custody rather than moving it for the test;
-- deliberate corruption removes Cellar intrusion, museum theft, and repaired-dam triggers before asserting zero, then native restore recovers exact state.
+- Release `1225` / serial `260729`;
+- 287,744 bytes;
+- checksum `0x4b4d66a0`;
+- SHA-256 `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10`.
 
 ## Next existing train
 
 Continue directly with:
 
-`onyx_zork_attic_archive_core`
+`onyx_zork_attic_area_case_files`
 
 Its eight existing beads are:
 
-1. canonical archive-record schema;
-2. late-1970s physical media taxonomy;
-3. card catalog and deterministic indexing;
-4. Attic filing surfaces and capacity model;
-5. explicit archive query and retrieval commands;
-6. provenance, truth status, and annotations;
-7. archive save/restore and migration;
-8. Attic archive-core capstone.
+1. area evidence and completion model;
+2. incomplete, missing, and redacted presentation;
+3. Flood Control Dam #3 case file;
+4. Hades ceremony case file;
+5. house, forest, and underground pilot files;
+6. one-hundred-percent case synthesis;
+7. case-file completion and persistence;
+8. area case-file capstone.
 
-## Train 6 boundary
+Resolve PR #24's exact live head before branching. Train 8 may synthesize only evidence the player has earned and must not become a checklist HUD, omniscient encyclopedia, unseen-solution revealer, automatic completion controller, parallel score, or sub-bead hierarchy.
 
-Branch from the exact live PR #21 head after resolving it and confirming the current checks. Preserve the qualified Release `1223` artifact and five-path production boundary.
-
-Train 6 may consume stable correspondence filing codes and status receipts, but it must not move, recreate, consume, or repair live mail or visitor state.
-
-Build a complete period-authentic archive substrate in the canonical Attic. Do not build a modern filesystem, cloud drive, email inbox, universal world logger, raw transcript dump, open-ended database, duplicate record system, unseen-solution revealer, or playback engine that mutates live state.
-
-Keep PRs open and unmerged unless Justin explicitly gives the merge whistle.
+Keep every production PR open and unmerged unless Justin explicitly gives the merge whistle.
