@@ -1,0 +1,31 @@
+msetup
+look in mailbox
+take gray warning
+read gray warning
+reply to gray warning
+put reply card in mailbox
+north
+southwest
+answer door
+refuse surveyor
+north
+southwest
+answer door
+admit surveyor
+look in mailbox
+take cream warning
+read cream warning
+reply to cream warning
+put reply card in mailbox
+north
+southwest
+answer door
+admit courier
+look in mailbox
+take blue acknowledgment
+read blue acknowledgment
+read leaflet
+mreport
+recap
+quit
+yes
