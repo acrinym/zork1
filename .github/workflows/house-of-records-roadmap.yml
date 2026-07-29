@@ -6,11 +6,13 @@ on:
       - agent/house-of-records-program
       - agent/glulx-house-state-foundation
       - agent/glulx-living-room-museum
+      - agent/glulx-house-kitchen-laboratory
     paths:
       - "expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md"
       - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
       - "glulx/house-state-foundation/README.md"
       - "glulx/living-room-museum/README.md"
+      - "glulx/house-kitchen-laboratory/README.md"
       - ".beads/issues-zork-house-of-records-*.jsonl"
       - ".beads/onyx_zork_house_*.beadtrain"
       - ".beads/onyx_zork_attic_*.beadtrain"
@@ -22,6 +24,7 @@ on:
       - "expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md"
       - "glulx/house-state-foundation/README.md"
       - "glulx/living-room-museum/README.md"
+      - "glulx/house-kitchen-laboratory/README.md"
       - ".beads/issues-zork-house-of-records-*.jsonl"
       - ".beads/onyx_zork_house_*.beadtrain"
       - ".beads/onyx_zork_attic_*.beadtrain"
@@ -94,35 +97,39 @@ jobs:
           issue_by_id = {item['id']: item for item in issues}
           foundation_ids = [f'zork1-house-state-{number:03d}' for number in range(1, 9)]
           museum_ids = [f'zork1-house-museum-{number:03d}' for number in range(1, 9)]
-          later = [
-              item for item in issues
-              if item['id'] not in set(foundation_ids + museum_ids)
-          ]
+          kitchen_ids = [f'zork1-house-kitchen-{number:03d}' for number in range(1, 9)]
+          active_ids = set(foundation_ids + museum_ids + kitchen_ids)
+          later = [item for item in issues if item['id'] not in active_ids]
           assert all(item['status'] == 'open' for item in later), (
-              'only completed Train 1 and active Train 2 beads may be closed'
+              'only completed Trains 1-2 and active Train 3 beads may be closed'
           )
           assert [issue_by_id[item]['status'] for item in foundation_ids] == ['closed'] * 8
+          assert [issue_by_id[item]['status'] for item in museum_ids] == ['closed'] * 8
 
           foundation_path = Path('.beads/onyx_zork_house_state_foundation.beadtrain')
           museum_path = Path('.beads/onyx_zork_house_living_museum.beadtrain')
+          kitchen_path = Path('.beads/onyx_zork_house_kitchen_laboratory.beadtrain')
           with foundation_path.open('rb') as handle:
               foundation_train = tomllib.load(handle)
           with museum_path.open('rb') as handle:
               museum_train = tomllib.load(handle)
+          with kitchen_path.open('rb') as handle:
+              kitchen_train = tomllib.load(handle)
           assert foundation_train['train']['status'] == 'complete'
+          assert museum_train['train']['status'] == 'complete'
 
-          museum_status = museum_train['train']['status']
-          museum_bead_statuses = [issue_by_id[item]['status'] for item in museum_ids]
-          if museum_status == 'in_progress':
-              assert museum_bead_statuses[:7] == ['closed'] * 7
-              assert museum_bead_statuses[7] == 'open'
-              expected_closed = 15
-          elif museum_status == 'complete':
-              assert museum_bead_statuses == ['closed'] * 8
-              expected_closed = 16
+          kitchen_status = kitchen_train['train']['status']
+          kitchen_bead_statuses = [issue_by_id[item]['status'] for item in kitchen_ids]
+          if kitchen_status == 'in_progress':
+              assert kitchen_bead_statuses[:7] == ['closed'] * 7
+              assert kitchen_bead_statuses[7] == 'open'
+              expected_closed = 23
+          elif kitchen_status == 'complete':
+              assert kitchen_bead_statuses == ['closed'] * 8
+              expected_closed = 24
           else:
               raise AssertionError(
-                  f'Living Room Museum must be in_progress or complete, got {museum_status!r}'
+                  f'House Kitchen Laboratory must be in_progress or complete, got {kitchen_status!r}'
               )
 
           closed = [item for item in issues if item['status'] == 'closed']
@@ -133,6 +140,7 @@ jobs:
           active_names = {
               'onyx_zork_house_state_foundation.beadtrain',
               'onyx_zork_house_living_museum.beadtrain',
+              'onyx_zork_house_kitchen_laboratory.beadtrain',
           }
           for path in unique_trains:
               with path.open('rb') as handle:
@@ -146,6 +154,7 @@ jobs:
           assert Path('expanded/docs/HOUSE_OF_RECORDS_HANDOFF.md').is_file()
           assert Path('glulx/house-state-foundation/README.md').is_file()
           assert Path('glulx/living-room-museum/README.md').is_file()
+          assert Path('glulx/house-kitchen-laboratory/README.md').is_file()
           print(
               'House of Records roadmap validated: '
               f'12 trains / 96 beads / {len(closed)} closed / {len(open_items)} open'

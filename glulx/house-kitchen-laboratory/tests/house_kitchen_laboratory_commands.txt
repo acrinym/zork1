@@ -1,0 +1,38 @@
+ksetup
+look
+wash nasty knife in sink
+dry nasty knife
+put garlic on worktop
+slice garlic with nasty knife
+put lunch on worktop
+prepare lunch
+open cupboard
+take garlic
+put garlic in cupboard
+take lunch
+put lunch in cupboard
+fill bottle from sink
+wash wrench in sink
+light range with torch
+put wrench on range
+warm wrench on range
+take wrench
+put bottle on range
+warm bottle on range
+kreport
+take bottle
+use bottle on range
+fill bottle from sink
+wash rusty knife in sink
+look
+look
+look
+examine rusty knife
+kactors
+take garlic from cupboard
+give garlic to bat
+take lunch from cupboard
+give lunch to cyclops
+recap
+quit
+yes

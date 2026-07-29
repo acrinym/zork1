@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1221-KITCHEN-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only Kitchen positioning, actor, mutation, and reporting verbs after every production module",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"house_kitchen_laboratory\" T>",
+      "new": "<INSERT-FILE \"house_kitchen_laboratory\" T>\n<INSERT-FILE \"house_kitchen_laboratory_test\" T>"
+    }
+  ]
+}

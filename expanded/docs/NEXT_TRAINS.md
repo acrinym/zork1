@@ -1,13 +1,14 @@
 # Expansion frontier
 
-The Glulx production lineage is qualified through Living Room Museum Release `1220`.
+The Glulx production lineage is qualified through House Kitchen Laboratory Release `1221`.
 
 ## Current House of Records state
 
 - Train 1 complete: `onyx_zork_house_state_foundation` — Release `1219`.
 - Train 2 complete: `onyx_zork_house_living_museum` — Release `1220`.
-- Train 3 next: `onyx_zork_house_kitchen_laboratory`.
-- Roadmap: 12 trains / 96 beads / 16 closed / 80 open.
+- Train 3 complete: `onyx_zork_house_kitchen_laboratory` — Release `1221`.
+- Train 4 next: `onyx_zork_house_cellar_threshold`.
+- Roadmap: 12 trains / 96 beads / 24 closed / 72 open.
 - No sub-beads or parallel planning layers.
 
 ## Qualified production frontier
@@ -47,68 +48,91 @@ Qualified machinery:
 
 The capstone candidate passed all 27 workflows. One unchanged inherited Release 122 real-map route was retried after random troll combat killed the player before the scripted commands; the retry passed.
 
-## Next train — Kitchen Laboratory
+### Release 1221 — House Kitchen Laboratory
+
+Qualified identity:
+
+- 249,600 bytes;
+- checksum `0x85d64142`;
+- SHA-256 `93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f`.
+
+Qualified machinery:
+
+- fixed porcelain sink, wooden worktop, wooden cupboard, and cast-iron range;
+- one canonical portable `WATER` object and repeat bottle refill only after real consumption;
+- selected washing, drying, warming, cooling, and quenching;
+- existing material-clean flags and rusty-knife worsening;
+- prepared real lunch and canonically cut real garlic;
+- ordinary object-tree storage and retrieval;
+- authored bat and cyclops context without replacement solutions;
+- packed indexed persistent Kitchen state;
+- native save/corrupt/restore;
+- no hunger, chores, recipe economy, universal chemistry, duplicate objects, or parallel score.
+
+The capstone candidate passed all 29 workflows. One unchanged inherited Release 122 real-map route was retried after random troll combat killed the player before the scripted commands; the retry passed.
+
+## Next train — Cellar Threshold
 
 Continue directly with:
 
-`onyx_zork_house_kitchen_laboratory`
+`onyx_zork_house_cellar_threshold`
 
 Execute its existing eight beads:
 
-1. house water and container handling;
-2. cleaning and residue consequences;
-3. drying, warming, and cooling;
-4. food preparation and creature offerings;
-5. bounded heat, water, and utensil experiments;
-6. cupboard and work-surface storage;
-7. Kitchen gameplay and persistence qualification;
-8. Kitchen laboratory capstone.
+1. expedition staging and equipment boundary;
+2. trap-door and threshold sensing;
+3. light and tool readiness;
+4. carried-hazard screening;
+5. limited containment;
+6. intrusion and upward-consequence hooks;
+7. Cellar gameplay and persistence qualification;
+8. Cellar threshold capstone.
 
-### Train 3 product boundary
+### Train 4 product boundary
 
-Use real canonical objects and state:
+Use the real canonical Cellar, trap door, rug, house state, inventory, lights, tools, hazards, actors, and object custody.
 
-- bottles and other containers;
-- canonical water and puzzle-water boundaries;
-- food and creature offerings;
-- shovel, wrench, screwdriver, knife, rusty knife, axe, putty, and other selected tools;
-- soot, grime, rust, paint, dampness, heat, and drying timers;
-- cupboard, table, counter, sink, stove, or other deliberately authored Kitchen surfaces;
-- Release `1219` house state;
-- Release `1220` provenance and historical receipts where relevant.
+The Cellar should become a complete expedition threshold rather than a generic storage room. It may inspect and respond to:
+
+- staged light and selected expedition tools;
+- open, closed, hidden, or disturbed trap-door state;
+- sounds, drafts, smoke, water, or movement from below;
+- dangerous carried heat, flame, wetness, residue, or supernatural state;
+- limited real-object containment where physically coherent;
+- canonical actors or consequences crossing upward;
+- Release `1219` house condition/security/atmosphere;
+- Release `1220` display security and theft evidence;
+- Release `1221` Kitchen-origin wet, warm, prepared, or stored state where relevant.
 
 ### Required behavior
 
-The Kitchen may support:
+Train 4 should provide:
 
-- filling and emptying real containers;
-- cleaning selected objects and surfaces;
-- drying, warming, and cooling selected objects;
-- preparing existing food for plausible gifts or lures;
-- selected authored heat/water/utensil reactions;
-- bounded storage with reliable parser pronouns and retrieval;
-- consequences that persist through native save/restore.
+- deliberate expedition staging without an automatic loadout system;
+- readable readiness feedback for real lights and tools;
+- threshold warnings grounded in real carried objects and existing state;
+- selected containment that never duplicates or destroys required objects;
+- bounded intrusion hooks that leave physical evidence;
+- ordinary canonical movement through the trap door;
+- native save/restore of threshold state and object custody.
 
 ### Explicit exclusions
 
 Do not add:
 
-- hunger or thirst meters;
-- mandatory eating, drinking, sleeping, sweeping, or maintenance;
-- generic crafting recipes;
-- a universal chemistry engine;
-- infinite ingredient combinations;
-- farming or resource economies;
-- automatic puzzle water replenishment;
-- duplicated food, water, tools, or puzzle objects;
-- a broad fire/flood simulator;
+- inventory automation or an equipment-class abstraction that replaces real objects;
+- unlimited storage or teleporting retrieval;
+- generic hazard simulation;
+- broad smoke, water, fire, or creature propagation before authored hooks exist;
+- automatic puzzle preparation or safe passage;
+- new score;
+- duplicate lights, tools, hazards, actors, or puzzle objects;
 - sub-beads.
 
 ## Later House of Records trains
 
-After Train 3, continue existing trains according to dependencies:
+After Train 4, continue existing trains according to dependencies:
 
-- Train 4 — Cellar expedition threshold;
 - Train 5 — correspondence and visitors;
 - Train 6 — Attic archive core;
 - Train 7 — NPC dossiers;
@@ -152,15 +176,15 @@ Delay broad geography until the house, archive, and focused actor systems are st
 
 ## Qualification standard for the next train
 
-Train 3 must:
+Train 4 must:
 
-1. branch from exact qualified Release `1220`;
+1. branch from the exact qualified Release `1221` closure head;
 2. publish a narrow changed-path set;
-3. preserve real object and water identity;
+3. preserve real Cellar, trap-door, object, actor, light, tool, and hazard identity;
 4. keep test setup out of production;
 5. use pinned toolchains;
-6. run parser-driven Kitchen routes;
+6. run parser-driven threshold routes;
 7. deliberately corrupt state and prove native restore;
-8. prove no duplication, score drift, auto-solve, or chore loop;
+8. prove no duplication, score drift, auto-solve, or inventory automation;
 9. close only its eight existing beads after exact-head evidence;
 10. keep the PR stack open and unmerged absent Justin's merge whistle.

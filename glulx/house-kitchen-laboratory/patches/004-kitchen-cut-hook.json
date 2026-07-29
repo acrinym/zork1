@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1221-KITCHEN-CUT-HOOK",
+  "path": "house_kitchen_laboratory.zil",
+  "description": "Route the canonical CUT action for the real garlic and nasty knife through bounded Kitchen preparation while leaving every other cut unchanged",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE KITCHEN-ACTION-HOOK ()\n    <COND (<KITCHEN-WATER-EXPERIMENT> <RTRUE>)\n          (<KITCHEN-OFFERING-HOOK> <RTRUE>)",
+      "new": "<ROUTINE KITCHEN-ACTION-HOOK ()\n    <COND (<AND <VERB? CUT>\n                <EQUAL? ,PRSO ,GARLIC>\n                <EQUAL? ,PRSI ,KNIFE>>\n           <V-KITCHEN-CUT-WITH>\n           <RTRUE>)\n          (<KITCHEN-WATER-EXPERIMENT> <RTRUE>)\n          (<KITCHEN-OFFERING-HOOK> <RTRUE>)"
+    }
+  ]
+}
