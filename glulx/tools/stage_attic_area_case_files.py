@@ -121,34 +121,36 @@ def main() -> int:
                 f"changed-path mismatch: expected {sorted(expected_changed)}, "
                 f"got {sorted(changed)}"
             )
+
+        base_artifact = base_manifest.get("expected_artifact") or {}
+        receipt = {
+            "edition": manifest.get("edition"),
+            "release": manifest.get("release"),
+            "serial": manifest.get("serial"),
+            "base": {
+                "path": str(base_manifest_path),
+                "manifest_sha256": digest(base_manifest_path.read_bytes()),
+                "edition": base_manifest.get("edition"),
+                "release": base_manifest.get("release"),
+                "artifact_sha256": base_artifact.get("sha256"),
+            },
+            "base_file_hashes": base_files,
+            "overrides": overrides,
+            "patches": patches,
+            "changed_paths": sorted(changed),
+            "final_file_hashes": final_files,
+            "test_only": False,
+        }
+        (destination / "STAGING-RECEIPT.json").write_text(
+            json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
     except Exception:
-        remove_destination(base_destination)
         remove_destination(destination)
         raise
+    finally:
+        remove_destination(base_destination)
 
-    base_artifact = base_manifest.get("expected_artifact") or {}
-    receipt = {
-        "edition": manifest.get("edition"),
-        "release": manifest.get("release"),
-        "serial": manifest.get("serial"),
-        "base": {
-            "path": str(base_manifest_path),
-            "manifest_sha256": digest(base_manifest_path.read_bytes()),
-            "edition": base_manifest.get("edition"),
-            "release": base_manifest.get("release"),
-            "artifact_sha256": base_artifact.get("sha256"),
-        },
-        "base_file_hashes": base_files,
-        "overrides": overrides,
-        "patches": patches,
-        "changed_paths": sorted(changed),
-        "final_file_hashes": final_files,
-        "test_only": False,
-    }
-    (destination / "STAGING-RECEIPT.json").write_text(
-        json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-    )
-    remove_destination(base_destination)
     print(
         f"Staged Glulx Attic Area Case Files Release {manifest.get('release')} "
         f"over Release {base_manifest.get('release')}; changed {len(changed)} reviewed path(s)."
@@ -159,6 +161,6 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except (RuntimeError, subprocess.CalledProcessError) as exc:
+    except (RuntimeError, OSError, subprocess.CalledProcessError) as exc:
         print(f"stage_attic_area_case_files: {exc}", file=sys.stderr)
         raise SystemExit(2) from exc
