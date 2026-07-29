@@ -29,7 +29,8 @@
     "patches/006-portable-bit-clear.json",
     "patches/007-unambiguous-mail-parser-forms.json",
     "patches/008-defer-visitor-across-departure.json",
-    "patches/009-valid-stamped-card-instruction.json"
+    "patches/009-valid-stamped-card-instruction.json",
+    "patches/010-global-stamped-card-dispatch.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -44,6 +45,7 @@
     "authored queue triggers derive from existing Cellar intrusion, museum theft, and repaired-dam state",
     "bounded replies use one reusable fixed-text card and unambiguous RESPOND TO grammar rather than free-form composition",
     "the player posts the card through the valid unique STAMPED CARD noun phrase because REPLY is already a canonical verb token",
+    "parsed stamped-card posting dispatches through the shared authoritative mail action hook instead of relying on indirect-container callback order",
     "ordinary TELL engages a present visitor instead of competing with canonical ANSWER grammar",
     "the mutable packed mail table is constant-addressed to avoid consuming another global while remaining native-save persistent",
     "visitor bit clearing uses known-present power-of-two subtraction rather than nonportable complement operations",
