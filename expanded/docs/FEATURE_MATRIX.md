@@ -22,7 +22,7 @@
 | Living Room Museum Glulx | `.ulx` | Release 1220 / `260724` | Train 2 complete |
 | House Kitchen Laboratory Glulx | `.ulx` | Release 1221 / `260724` | Train 3 complete |
 | House Cellar Threshold Glulx | `.ulx` | Release 1222 / `260724` | Train 4 complete |
-| House Correspondence and Visitors Glulx | `.ulx` | Release 1223 / `260724` | Train 5 capstone candidate |
+| House Correspondence and Visitors Glulx | `.ulx` | Release 1223 / `260724` | Train 5 complete |
 
 ## Locked Glulx lineage
 
@@ -92,14 +92,14 @@ Parser and timing truth retained:
 - posting/departure deferral allows a real missed notice and bounded return;
 - the canonical leaflet is proved through mailbox custody rather than moved for qualification.
 
+All 33 capstone-candidate workflows passed with no retry on exact audited head `7e9019dc3c336413ea07df400341fa6474a3cff6`.
+
 ## House of Records status
 
 - 12 trains;
 - 96 beads;
-- Trains 1–4 complete: 32 closed;
-- Train 5 capstone candidate: 7 closed / 1 open;
-- Trains 6–12 planned;
-- total: 39 closed / 57 open;
+- Trains 1–5 complete: 40 closed;
+- Trains 6–12 planned: 56 open;
 - no sub-beads.
 
 ## Validation coverage
@@ -114,12 +114,10 @@ Parser and timing truth retained:
 | Persistence | Deliberate cause removal/corruption followed by native `SAVE` / `RESTORE` |
 | Unique records | No duplicate letters, reply cards, visitors, notices, receipts, or tags |
 | Test isolation | Setup, mutation, and report verbs excluded from production |
-| Roadmap integrity | 12 trains / 96 unique beads / 39 closed / 57 open |
+| Roadmap integrity | 12 trains / 96 unique beads / 40 closed / 56 open |
 
 ## Next dedicated work
 
-After Train 5 capstone closure:
-
 `onyx_zork_attic_archive_core`
 
-Train 6 must build the period-authentic record schema, media taxonomy, card catalog, filing surfaces, explicit retrieval commands, provenance/truth status, and migration substrate through its eight existing beads.
+Resolve PR #21's exact live head, branch Train 6 from that state, execute the eight existing Attic Archive Core beads directly, and keep the stacked PR chain open and unmerged without Justin's explicit merge whistle.
