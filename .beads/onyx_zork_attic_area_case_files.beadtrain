@@ -1,14 +1,14 @@
 [train]
 name        = "onyx_zork_attic_area_case_files"
-title       = "Zork I area case files and completion dossiers"
+title       = "Zork I Attic area case files"
 description = """
-Convert meaningful regional completion into evolving case files that move from incomplete and redacted to synthesized without becoming a checklist HUD.
+Turn player-earned regional evidence into evolving physical case files without a checklist HUD or unseen-solution leak.
 """
 created     = "2026-07-23"
-status      = "planned"
+status      = "complete"
 
 [[cars]]
-id = "model"
+id = "evidence"
 bead = "zork1-attic-area-001"
 title = "Area evidence and completion model"
 parallel_start = true
@@ -16,11 +16,11 @@ depends_on = []
 summary = "Define discoveries, mechanisms, outcomes, documents, actors, and unresolved variations."
 
 [[cars]]
-id = "partial"
+id = "redaction"
 bead = "zork1-attic-area-002"
 title = "Incomplete, missing, and redacted presentation"
 parallel_start = true
-depends_on = ["model"]
+depends_on = ["evidence"]
 summary = "Show known and unresolved evidence without leaking undiscovered solutions."
 
 [[cars]]
@@ -28,23 +28,23 @@ id = "dam"
 bead = "zork1-attic-area-003"
 title = "Flood Control Dam #3 case file"
 parallel_start = true
-depends_on = ["model"]
+depends_on = ["evidence"]
 summary = "Assemble maps, maintenance, MELZAR, gates, leak, repair, transcript, and final state."
 
 [[cars]]
-id = "ritual"
+id = "hades"
 bead = "zork1-attic-area-004"
 title = "Hades ceremony case file"
 parallel_start = true
-depends_on = ["model"]
+depends_on = ["evidence"]
 summary = "Assemble bell, candles, black book, mirrors, wrong order, ghosts, and completion."
 
 [[cars]]
-id = "regions"
+id = "pilots"
 bead = "zork1-attic-area-005"
 title = "House, forest, and underground pilot files"
 parallel_start = false
-depends_on = ["partial", "dam", "ritual"]
+depends_on = ["redaction", "dam", "hades"]
 summary = "Prove the model across exploration, home, actor, material, and mechanism areas."
 
 [[cars]]
@@ -52,11 +52,11 @@ id = "synthesis"
 bead = "zork1-attic-area-006"
 title = "One-hundred-percent case synthesis"
 parallel_start = false
-depends_on = ["regions"]
+depends_on = ["pilots"]
 summary = "Unlock retrospective explanation only when required evidence is complete."
 
 [[cars]]
-id = "qualification"
+id = "persistence"
 bead = "zork1-attic-area-007"
 title = "Case-file completion and persistence"
 parallel_start = false
@@ -68,11 +68,11 @@ id = "capstone"
 bead = "zork1-attic-area-008"
 title = "Area case-file capstone"
 parallel_start = false
-depends_on = ["qualification"]
+depends_on = ["persistence"]
 summary = "Publish the area contract and feed postgame and multi-run archives."
 
 [meta]
-one_liner = "Convert meaningful regional completion into evolving case files that move from incomplete and redacted to synthesized without becoming a checklist HUD."
-prior_car = "zork1-attic-core-008"
-couples_with = ["onyx_zork_glulx_room_density"]
+one_liner = "Turn player-earned regional evidence into evolving physical case files without a checklist HUD or unseen-solution leak."
+prior_car = "zork1-attic-npc-008"
+couples_with = ["onyx_zork_attic_archive_core", "onyx_zork_attic_npc_dossiers"]
 watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "attic_area_case_files", "SAVE", "RESTORE"]

@@ -2,23 +2,20 @@
 
 ## Status
 
-Active twelve-train, ninety-six-bead program above qualified Glulx Release `1225`.
+Active twelve-train, ninety-six-bead program above qualified Glulx Release `1226`.
 
-- **Train 1 complete:** `onyx_zork_house_state_foundation` — Release `1219`.
-- **Train 2 complete:** `onyx_zork_house_living_museum` — Release `1220`.
-- **Train 3 complete:** `onyx_zork_house_kitchen_laboratory` — Release `1221`.
-- **Train 4 complete:** `onyx_zork_house_cellar_threshold` — Release `1222`.
-- **Train 5 complete:** `onyx_zork_house_correspondence_visitors` — Release `1223`.
+- **Trains 1–5 complete:** evolving white-house foundation through correspondence and visitors — Releases `1219`–`1223`.
 - **Train 6 complete:** `onyx_zork_attic_archive_core` — Release `1224`.
 - **Train 7 complete:** `onyx_zork_attic_npc_dossiers` — Release `1225`.
-- **Next existing train:** `onyx_zork_attic_area_case_files`.
+- **Train 8 complete:** `onyx_zork_attic_area_case_files` — Release `1226`.
+- **Next existing train:** `onyx_zork_attic_playback`.
 
 Current truth:
 
 - 12 trains;
 - 96 beads;
-- 56 closed beads across Trains 1–7;
-- 40 open beads across Trains 8–12;
+- 64 closed beads across Trains 1–8;
+- 32 open beads across Trains 9–12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
@@ -55,90 +52,53 @@ The Attic is a period-authentic archive of this player's actual run: corresponde
 | 5 | 1223 | 271,872 | `0x4cbcc561` | `362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816` | Complete |
 | 6 | 1224 | 280,832 | `0x4fe371b8` | `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356` | Complete |
 | 7 | 1225 | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` | Complete |
+| 8 | 1226 | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` | Complete |
 
 ## Trains 1–5 — Evolving house foundation
 
-The first five trains establish compact native-save house state, the Living Room museum, Kitchen laboratory, Cellar threshold, and bounded correspondence and visitors. The canonical rooms, routes, objects, actors, mailbox, leaflet, water, trap door, and score remain authoritative.
-
-Controlling records:
-
-- `glulx/house-state-foundation/README.md`;
-- `glulx/living-room-museum/README.md`;
-- `glulx/house-kitchen-laboratory/README.md`;
-- `glulx/house-cellar-threshold/README.md`;
-- `glulx/house-correspondence-visitors/README.md`.
+The first five trains establish compact native-save house state, the Living Room museum, Kitchen laboratory, Cellar threshold, and bounded correspondence and visitors. Canonical rooms, routes, objects, actors, mailbox, leaflet, water, trap door, and score remain authoritative.
 
 ## Train 6 — Attic Archive Core
 
-Status: `complete`
-
-Release `1224` turns the real canonical Attic into a bounded physical archive.
-
-It adds:
-
-- a typed archive-record schema;
-- late-1970s folders, cards, printouts, microfiche, cassette, cabinets, banker box, recorder, viewer, corkboard, and green-phosphor terminal;
-- deterministic indexes by person, place, object, incident, chronology, and expedition;
-- ordinary object-tree custody and bounded capacity;
-- explicit `FILE`, `REVIEW`, `SHOW`, and `CROSSREF` commands;
-- provenance, confidence, contradiction, verification, redaction, and missing-evidence states;
-- bounded playback that cannot alter the present;
-- versioned native-save state and conservative migration.
-
-The archive consumes stable filing codes but never moves, recreates, consumes, or repairs live correspondence or visitors.
-
-GitHub Actions run `30478000111` passed the canonical lantern-lit Attic route and native save/corrupt/restore.
+Release `1224` turns the canonical Attic into a bounded late-1970s physical archive with typed records, deterministic indexes, exact filing surfaces, truth/provenance state, and native persistence.
 
 Controlling record: `glulx/attic-archive-core/README.md`
 
 ## Train 7 — Attic NPC Dossiers
 
-Status: `complete`
-
-Release `1225` adds exact physical dossiers for the player's troll, cyclops, and thief evidence plus a curated encounter cassette.
-
-The system records:
-
-- first contact and observed hostility;
-- gifts, attacks, restraint, and bargain attempts;
-- verified outcomes and property custody;
-- absence, invisibility, contradictions, and missing evidence;
-- contextual quotations and chronology.
-
-It does not create static encyclopedia entries. An actor elsewhere in the map creates no file. Attempts remain distinct from outcomes. Missing property remains missing. Combat, randomness, timers, score, actor choices, and routes remain canonical.
-
-GitHub Actions run `30480017488` passed no-unearned-dossier production smoke, exact filing and cross-reference behavior, curated playback, and native save/corrupt/restore.
+Release `1225` adds exact player-specific troll, cyclops, thief, and encounter-timeline records. Attempts remain distinct from outcomes; missing property and evidence remain missing; combat, randomness, timers, score, actors, and routes remain canonical.
 
 Controlling record: `glulx/attic-npc-dossiers/README.md`
 
+## Train 8 — Attic Area Case Files
+
+Status: `complete`
+
+Release `1226` adds exact physical `AREA-HOUSE-01`, `AREA-FOREST-02`, `AREA-DAM-03`, `AREA-HADES-04`, `AREA-UNDERGROUND-05`, and `AREA-SYNTHESIS` records.
+
+It retains individual evidence rather than broad category guesses:
+
+- each forest sector, clearing, and songbird observation;
+- Dam visits, panel, interlock, bolt, tool, gate, leak, repair, and document evidence;
+- Hades place, spirit, book, bell, candle, wrong-order, mirror, and outcome evidence;
+- house use, Attic, Cellar, return, collection, disturbance, and physical-document evidence;
+- Cellar threshold, troll, cyclops, thief, completed Dam/Hades, and return evidence for the underground file.
+
+Partial files preserve exact gaps and redactions. Synthesis appears only after all five regional contracts complete and remains retrospective, score-neutral, and unable to mutate live state.
+
+GitHub Actions run `30489748466` passed locked identity, production no-unearned-file smoke, partial-to-complete progression, parser-valid filing, causal source removal, deliberate corruption, and native restore.
+
+Controlling records:
+
+- `glulx/attic-area-case-files/README.md`;
+- `expanded/docs/AREA_CASE_FILES_CONTRACT.md`.
+
 ## Period presentation
 
-The archive uses late-1970s/early-1980s physical media:
+The archive uses steel filing cabinets, index cards, banker boxes, continuous-feed printouts, cassettes, microfiche, Polaroids, maps, corkboards, stamped folders, and a green-phosphor terminal that locates physical records.
 
-- steel filing cabinets;
-- index cards;
-- banker boxes;
-- continuous-feed printouts;
-- cassettes and recorders;
-- microfiche and film;
-- Polaroids;
-- maps and corkboards;
-- stamped folders;
-- a terminal that locates physical records.
+## Next existing train — Transcript and Playback
 
-## Next existing train — Area Case Files
+Continue directly with `onyx_zork_attic_playback` above exact qualified Release `1226`.
 
-Continue directly with `onyx_zork_attic_area_case_files` after resolving PR #24's exact live qualified head.
-
-Train 8 must execute its existing eight beads directly:
-
-1. area evidence and completion model;
-2. incomplete, missing, and redacted presentation;
-3. Flood Control Dam #3 case file;
-4. Hades ceremony case file;
-5. house, forest, and underground pilot files;
-6. one-hundred-percent case synthesis;
-7. case-file completion and persistence;
-8. area case-file capstone.
-
-Build evolving regional case files from evidence the player has actually earned. Do not build a checklist HUD, unseen-solution revealer, omniscient region encyclopedia, duplicate puzzle controller, automatic completion system, parallel score, or sub-bead hierarchy.
+Train 9 must execute its existing eight beads directly and capture only meaningful, bounded events and utterances. Playback must remain period-authentic, curated, size-bounded, native-save persistent, and incapable of changing objects, score, timers, actors, pronouns, or location. Do not build a raw universal logger, time travel system, hidden-solution replay, modern media player, parallel score, or sub-bead hierarchy.
