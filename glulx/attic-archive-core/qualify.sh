@@ -69,9 +69,8 @@ test -x "$GLULXE_BIN"
 cat > "$BUILD/commands.txt" <<'EOF'
 north
 east
-south
 open window
-enter
+west
 up
 examine catalog
 examine terminal
