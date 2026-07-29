@@ -24,7 +24,8 @@
     "patches/001-npc-hooks.json",
     "patches/002-npc-catalog-and-recap.json",
     "patches/003-npc-recap.json",
-    "patches/004-npc-event-correction.json"
+    "patches/004-npc-event-correction.json",
+    "patches/005-canonical-actor-verbs.json"
   ],
   "expected_changed_paths": [
     "assistance.zil",
