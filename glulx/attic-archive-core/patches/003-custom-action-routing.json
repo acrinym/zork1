@@ -1,0 +1,32 @@
+{
+  "id": "Z1-GLULX-1224-CUSTOM-ACTION-ROUTING",
+  "path": "attic_archive_core.zil",
+  "description": "Route custom archive verbs explicitly while allowing ordinary TAKE, PUT, OPEN, and container traversal to reach canonical handlers",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<COND (<VERB? READ EXAMINE REVIEW SHOW>",
+      "new": "<COND (<VERB? READ EXAMINE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "    <RTRUE>>\n\n<ROUTINE ARCHIVE-CATALOG-LIST",
+      "new": "    <COND (<VERB? READ EXAMINE FIND PLAY> <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE ARCHIVE-CATALOG-LIST"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ARCHIVE-CATALOG-FCN ()\n    <COND (<VERB? EXAMINE READ SEARCH LOOK-INSIDE>\n           <ARCHIVE-CATALOG-LIST>)\n          (<VERB? TAKE>\n           <TELL \"The oak catalog is part of the Attic. Individual physical records may be taken and filed.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE ARCHIVE-CATALOG-FCN ()\n    <COND (<VERB? EXAMINE READ SEARCH LOOK-INSIDE>\n           <ARCHIVE-CATALOG-LIST>\n           <RTRUE>)\n          (<VERB? TAKE>\n           <TELL \"The oak catalog is part of the Attic. Individual physical records may be taken and filed.\" CR>\n           <RTRUE>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ARCHIVE-SURFACE-FCN ()\n    <COND (<VERB? EXAMINE>\n           <TELL \"It is a bounded late-1970s archive surface. Capacity is physical, records remain exact objects, and separate expedition histories are not merged.\" CR>\n           <ARCHIVE-PUT ,AS-EVENT-MEDIA T>)\n          (<VERB? TAKE>\n           <TELL \"It is fixed in the Attic; use the physical records it contains.\" CR>)\n          (<VERB? PLAY>\n           <TELL \"The machine requires a registered physical cassette or film record; it cannot replay the live world.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE ARCHIVE-SURFACE-FCN ()\n    <COND (<VERB? EXAMINE>\n           <TELL \"It is a bounded late-1970s archive surface. Capacity is physical, records remain exact objects, and separate expedition histories are not merged.\" CR>\n           <ARCHIVE-PUT ,AS-EVENT-MEDIA T>\n           <RTRUE>)\n          (<VERB? TAKE>\n           <TELL \"It is fixed in the Attic; use the physical records it contains.\" CR>\n           <RTRUE>)\n          (<VERB? PLAY>\n           <TELL \"The machine requires a registered physical cassette or film record; it cannot replay the live world.\" CR>\n           <RTRUE>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ARCHIVE-TERMINAL-FCN ()\n    <COND (<VERB? EXAMINE READ SEARCH LOOK-INSIDE>\n           <TELL \"The terminal is only an index. It locates physical filing codes by person, place, object, incident, chronology, or expedition and stores no record itself.\" CR>\n           <ARCHIVE-CATALOG-LIST>)\n          (<VERB? TAKE>\n           <TELL \"The terminal is wired into the Attic wall.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE ARCHIVE-TERMINAL-FCN ()\n    <COND (<VERB? EXAMINE READ SEARCH LOOK-INSIDE>\n           <TELL \"The terminal is only an index. It locates physical filing codes by person, place, object, incident, chronology, or expedition and stores no record itself.\" CR>\n           <ARCHIVE-CATALOG-LIST>\n           <RTRUE>)\n          (<VERB? TAKE>\n           <TELL \"The terminal is wired into the Attic wall.\" CR>\n           <RTRUE>)>\n    <RFALSE>>"
+    }
+  ]
+}

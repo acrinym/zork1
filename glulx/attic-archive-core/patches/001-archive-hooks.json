@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1224-ARCHIVE-HOOKS",
+  "path": "shadow_logic.zil",
+  "description": "Advance the bounded Attic archive after correspondence and route archive actions before older overlays",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<CELLAR-ADVANCE>\n\t<MAIL-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<CELLAR-ADVANCE>\n\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<MAIL-ACTION-HOOK> <RTRUE>)\n\t      (<CELLAR-ACTION-HOOK> <RTRUE>)",
+      "new": "\t      (<ARCHIVE-ACTION-HOOK> <RTRUE>)\n\t      (<MAIL-ACTION-HOOK> <RTRUE>)\n\t      (<CELLAR-ACTION-HOOK> <RTRUE>)"
+    }
+  ]
+}

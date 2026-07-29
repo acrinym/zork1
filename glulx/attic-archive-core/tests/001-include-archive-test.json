@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1224-ARCHIVE-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only Attic archive setup, mutation, and reporting verbs after every production module",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"attic_archive_core\" T>",
+      "new": "<INSERT-FILE \"attic_archive_core\" T>\n<INSERT-FILE \"attic_archive_core_test\" T>"
+    }
+  ]
+}
