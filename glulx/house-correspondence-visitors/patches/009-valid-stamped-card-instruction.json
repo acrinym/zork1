@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-VALID-STAMPED-CARD-INSTRUCTION",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Tell the player to use the reply object's unambiguous STAMPED CARD noun phrase because REPLY is already a verb token in the canonical parser",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "The stamped reply card is now in your hand; put it in the real mailbox to send it.",
+      "new": "The stamped card is now in your hand; PUT STAMPED CARD IN MAILBOX to send it."
+    }
+  ]
+}

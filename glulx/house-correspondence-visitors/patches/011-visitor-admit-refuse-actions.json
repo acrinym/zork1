@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-VISITOR-ADMIT-REFUSE-ACTIONS",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Route the custom ADMIT and REFUSE actions through the present visitor's object action instead of swallowing them before their verb routines execute",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (<VERB? TELL>\n           <SETG P-CONT <>>\n           <V-MAIL-ANSWER>)\n          (<VERB? TAKE ATTACK MUNG>",
+      "new": "          (<VERB? TELL>\n           <SETG P-CONT <>>\n           <V-MAIL-ANSWER>)\n          (<VERB? MAIL-ADMIT>\n           <V-MAIL-ADMIT>)\n          (<VERB? MAIL-REFUSE>\n           <V-MAIL-REFUSE>)\n          (<VERB? TAKE ATTACK MUNG>"
+    }
+  ]
+}

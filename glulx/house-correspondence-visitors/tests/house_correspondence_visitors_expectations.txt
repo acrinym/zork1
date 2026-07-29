@@ -1,0 +1,26 @@
+MAIL-SETUP:READY
+A small internal flap clicks inside the anchored mailbox
+A leaflet
+To the occupant: repeated threshold marks
+Sender: West of House Mutual Assurance Society.
+You prepare the one fixed response appropriate to this letter.
+You slide the fixed-text card into the mailbox's narrow outgoing clip.
+A mud-spattered surveyor waits beside the mailbox
+You refuse the visit.
+The surveyor requests permission to inspect the exterior mailbox and threshold evidence.
+You admit the surveyor to an exterior inspection
+A numbered survey tag is left in the mailbox.
+Your display has attracted professional attention
+Sender: an unnamed appraiser.
+A uniformed courier waits beside the mailbox
+The courier identifies the reply by its fixed filing code
+Because the canonical front door is still boarded
+Flood Control Dam #3 acknowledges the return of meaningful mechanical function.
+Sender: Flood Control Dam #3 Maintenance Office.
+MAIL:VERSION=1;QUEUED=7;DELIVERED=7;READ=7;REPLIED=3;SENT=3;VISITOR-QUEUED=0;VISITOR-ACTIVE=0;MISSED=3;REFUSED=2;COMPLETE=3;LEAFLET-MAILBOX=Y;CELLAR-EXISTS=Y;MUSEUM-EXISTS=Y;DAM-EXISTS=Y;REPLY-EXISTS=N;COURIER-NOTICE=Y;SURVEYOR-NOTICE=Y;RECEIPT=Y;SURVEY-TAG=Y
+- Meaningful house and expedition events queued a small deterministic set of authored correspondence.
+- Physical letters and visit records retained sender, trigger, authenticity, delivery location, and filing codes.
+- The canonical mailbox and original leaflet remained authoritative while unique mail moved through the real object tree.
+- You used a bounded fixed-text reply card rather than a free-form correspondence system.
+- Courier and surveyor visits allowed answer, refusal, return, and exterior acceptance without opening the canonical boarded door.
+- Missed visits left unique physical notices and a bounded revisit opportunity.

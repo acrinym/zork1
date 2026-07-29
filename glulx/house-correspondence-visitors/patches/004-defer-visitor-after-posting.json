@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-DEFER-VISITOR-AFTER-POSTING",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Prevent a visitor from appearing during the same command that posts the reply; arrival or a missed notice occurs on later movement or re-entry",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MAIL-ADVANCE ()\n    <COND (<SHADOW-NON-TURN-COMMAND?> <RFALSE>)>\n    <MAIL-ENSURE>\n    <MAIL-DERIVE-QUEUE>\n    <MAIL-DELIVER-NEXT>\n    <MAIL-VISITOR-ARRIVE>\n    <RFALSE>>",
+      "new": "<ROUTINE MAIL-ADVANCE ()\n    <COND (<SHADOW-NON-TURN-COMMAND?> <RFALSE>)>\n    <MAIL-ENSURE>\n    <MAIL-DERIVE-QUEUE>\n    <MAIL-DELIVER-NEXT>\n    <COND (<AND <VERB? PUT>\n                <EQUAL? ,PRSO ,MAIL-REPLY-CARD>\n                <EQUAL? ,PRSI ,MAILBOX>>\n           <RFALSE>)>\n    <MAIL-VISITOR-ARRIVE>\n    <RFALSE>>"
+    }
+  ]
+}

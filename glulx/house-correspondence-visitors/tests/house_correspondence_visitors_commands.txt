@@ -1,0 +1,30 @@
+msetup
+look in mailbox
+take gray warning
+read gray warning
+respond to gray warning
+put stamped card in mailbox
+north
+southwest
+tell surveyor
+refuse surveyor
+north
+southwest
+tell surveyor
+admit surveyor
+look in mailbox
+take cream warning
+read cream warning
+respond to cream warning
+put stamped card in mailbox
+north
+southwest
+tell courier
+admit courier
+look in mailbox
+take blue acknowledgment
+read blue acknowledgment
+mreport
+recap
+quit
+yes

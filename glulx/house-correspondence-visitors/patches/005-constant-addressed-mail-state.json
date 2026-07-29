@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-CONSTANT-ADDRESSED-MAIL-STATE",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Keep the mutable packed mail table in dynamic memory while addressing it through a constant symbol, avoiding one additional global pointer",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<GLOBAL MAIL-STATE <TABLE 1 0 0 0 0 0 0 0 0 0 0 0 <> <> <> <> <> <> 0>>",
+      "new": "<CONSTANT MAIL-STATE <TABLE 1 0 0 0 0 0 0 0 0 0 0 0 <> <> <> <> <> <> 0>>"
+    }
+  ]
+}

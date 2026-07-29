@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1223-UNAMBIGUOUS-MAIL-PARSER-FORMS",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Add RESPOND TO as the unambiguous bounded-reply command while retaining ordinary TELL for visitor engagement",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX REPLY TO OBJECT = V-MAIL-REPLY>\n<SYNTAX ANSWER DOOR = V-MAIL-ANSWER>",
+      "new": "<SYNTAX REPLY TO OBJECT = V-MAIL-REPLY>\n<SYNTAX RESPOND TO OBJECT = V-MAIL-REPLY>\n<SYNTAX ANSWER DOOR = V-MAIL-ANSWER>"
+    }
+  ]
+}
