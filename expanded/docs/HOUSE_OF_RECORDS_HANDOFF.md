@@ -51,7 +51,7 @@ Before any future continuation, resolve GitHub live rather than trusting frozen 
 
 ## Train 12 closure
 
-Train: `onyx_zork_completed_expedition_archive`
+Train: `onyx_zork_expedition_archive`
 
 Status: `complete`
 
@@ -96,7 +96,7 @@ Exact identity:
 - `expanded/docs/FEATURE_MATRIX.md`;
 - `expanded/docs/COMPLETED_EXPEDITION_ARCHIVE_CONTRACT.md`;
 - `glulx/completed-expedition-archive/README.md`;
-- `.beads/onyx_zork_completed_expedition_archive.beadtrain`;
+- `.beads/onyx_zork_expedition_archive.beadtrain`;
 - `.beads/issues-zork-house-of-records-04.jsonl`.
 
 ## Future work boundary
