@@ -11,7 +11,10 @@
     "file": "zork1-glulx-completed-expedition-archive.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "size_bytes": 337408,
+    "checksum_hex": "0x7febe444",
+    "sha256": "b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71",
+    "locked": true
   },
   "overrides": [
     {
