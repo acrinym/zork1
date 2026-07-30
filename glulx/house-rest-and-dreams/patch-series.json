@@ -1,0 +1,64 @@
+{
+  "edition": "Unofficial House Rest and Dreams Glulx",
+  "release": 1228,
+  "serial": "260730",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../attic-playback/patch-series.json",
+  "base_release": 1227,
+  "base_artifact_sha256": "6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0",
+  "expected_artifact": {
+    "file": "zork1-glulx-house-rest-and-dreams.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 0,
+    "checksum_hex": "UNLOCKED",
+    "sha256": "UNLOCKED"
+  },
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1227 layer, assign Release 1228, and load Bedroom rest and dreams"
+    },
+    {
+      "path": "house_rest_and_dreams.zil",
+      "source": "overrides/house_rest_and_dreams.zil",
+      "allow_new": true,
+      "description": "Add the reachable Bedroom, bounded sleep, dreams, recovery, interruptions, and physical overnight records"
+    }
+  ],
+  "patches": [
+    "patches/001-rest-syntax.json",
+    "patches/002-bedroom-room.json",
+    "patches/003-white-house-bedroom.json",
+    "patches/004-rest-record-hooks.json",
+    "patches/005-rest-catalog.json",
+    "patches/006-rest-recap.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "assistance.zil",
+    "attic_archive_core.zil",
+    "gsyntax.zil",
+    "house_rest_and_dreams.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "preserved_canonical_state": [
+    "WAIT and Z retain the original V-WAIT route and canonical clock behavior",
+    "sleep advances CLOCKER one step at a time and stops immediately on a live interruption",
+    "repeated sleep without newly earned evidence becomes a one-turn shallow doze with no recovery farm",
+    "recovery changes only temporary wound adjustment, STAGGERED, or lingering garlic scent",
+    "mail, visitors, theft evidence, water evidence, smoke evidence, objects, score, routes, actors, and puzzles remain authoritative",
+    "native save and restore preserve Bedroom access, successful cycles, dreams, reports, recovery, wake reasons, and custody"
+  ],
+  "excluded_scope": [
+    "mandatory sleep cycles, hunger, hygiene, stamina meters, day-night simulation, or chore gameplay",
+    "skipping danger, bulk timer advancement, repeated healing farms, resurrection, or erasure of permanent consequences",
+    "invented unseen solutions, predictive dreams, generic procedural dream generation, or universal event simulation",
+    "premature Train 11 burglary, structural damage, repair systems, or house-vulnerability controllers",
+    "sub-beads or a parallel planning hierarchy"
+  ]
+}
