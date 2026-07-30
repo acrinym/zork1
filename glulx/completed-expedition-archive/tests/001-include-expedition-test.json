@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1230-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only completed expedition commands after production sources",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"completed_expedition_archive\" T>",
+      "new": "<INSERT-FILE \"completed_expedition_archive\" T>\n<INSERT-FILE \"completed_expedition_archive_test\" T>"
+    }
+  ]
+}

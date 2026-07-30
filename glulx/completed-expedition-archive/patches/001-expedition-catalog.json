@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1230-EXPEDITION-CATALOG",
+  "path": "attic_archive_core.zil",
+  "description": "Append sealed completed-expedition boxes and export receipts to the deterministic Attic catalog",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <PLAYBACK-CATALOG-LIST>\n    <REST-CATALOG-LIST>\n    <HOUSE-RISK-CATALOG-LIST>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>",
+      "new": "    <PLAYBACK-CATALOG-LIST>\n    <REST-CATALOG-LIST>\n    <HOUSE-RISK-CATALOG-LIST>\n    <EXPEDITION-CATALOG-LIST>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>"
+    }
+  ]
+}

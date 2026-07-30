@@ -21,6 +21,7 @@
 | Attic Playback Glulx | `.ulx` | Release 1227 / `260729` | Train 9 complete |
 | House Rest and Dreams Glulx | `.ulx` | Release 1228 / `260730` | Train 10 complete |
 | House Vulnerability Glulx | `.ulx` | Release 1229 / `260730` | Train 11 complete |
+| Completed Expedition Archive Glulx | `.ulx` | Release 1230 / `260730` | Train 12 and program complete |
 
 ## Locked House of Records lineage
 
@@ -37,58 +38,52 @@
 | 1227 | Attic playback | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` |
 | 1228 | House rest and dreams | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` |
 | 1229 | House vulnerability | 328,704 | `0xc774e968` | `94a665cb16069b31473dcf9fdf194d49c13e70aa23c32bd75888c78a074c3b4f` |
+| 1230 | Completed expedition archive | 337,408 | `0x7febe444` | `b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71` |
 
-## Release 1229 — House Vulnerability and Intrusion
+## Release 1230 — Completed Expedition Archive
 
 Qualified behavior:
 
-1. compact authored condition state for disturbance, smoke, damp, burglary, creature intrusion, supernatural disturbance, and physical damage;
-2. parser-native `CHECK HOUSE`, `INSPECT HOUSE`, and `STATUS HOUSE` from the house interior;
-3. real-tool `SECURE HOUSE`, `REPAIR HOUSE`, `VENT HOUSE`, `WARD HOUSE`, and `DRIVE BAT` routes;
-4. smoke derived from live flame, personal fire, or existing Cellar soot evidence;
-5. fresh damp derived from the canonical Cellar water-intrusion bit;
-6. smoke forces waking in the Bedroom rather than allowing danger to be slept through;
-7. canonical burglary moves the real painting into canonical thief custody;
-8. securing the house never returns missing property;
-9. canonical recovery clears outstanding loss while permanent burglary history remains;
-10. later closed routes and a real hand tool may restore security after recovery;
-11. the canonical bat alone enters through the open trap-door route and retreats with real garlic;
-12. the real black book, skull, or hot bell may create a supernatural house pattern when loose;
-13. the real Cellar quarantine niche plus garlic resolves active supernatural disturbance;
-14. the real Kitchen window, putty, wrench, screwdriver, niche, and garlic perform specific repairs;
-15. exact physical `HOUSE-RISK-01` and `HOUSE-REPAIR-02` Attic records;
-16. parser-native non-turning review and filing with integrity checks;
-17. native save, deliberate corruption, and exact restore of condition, history, repairs, security, filing, actor location, containment, and custody;
-18. no maintenance meters, random disasters, replacement property, copied actors, or Train 12 controller.
+1. canonical `WON-FLAG` is the only master-archive completion gate;
+2. pre-victory correspondence, dossiers, case files, playback, dreams, overnight reports, vulnerability files, and repair logs remain available;
+3. `ARCHIVE EXPEDITION`, `SEAL EXPEDITION`, `REVIEW EXPEDITION`, `STATUS EXPEDITION`, `COMPARE EXPEDITIONS`, and `EXPORT EXPEDITION` are parser-native Attic routes;
+4. each completed history gets its own physical banker box, master file, chronology roll, and final summary;
+5. chronology copies only the bounded consequential playback sequence and records canonical death count separately;
+6. final summaries retain score, deaths, observed outcomes, house incident history, repairs, and security;
+7. box B never overwrites, corrects, or merges box A;
+8. cross-run comparison reports only evidence present in the two sealed receipts;
+9. missing evidence remains missing and no unseen commands, routes, ceremony order, solution text, or outcomes are revealed;
+10. `EXPEDITION-EXPORT-01` is deterministic, human-readable, and schema-versioned;
+11. conservative migration rematerializes physical records without synthesizing unavailable history;
+12. native save, deliberate corruption, and exact restore preserve both histories and their physical custody;
+13. no raw command log, cloud state, modern database, universal telemetry, or sub-beads.
 
-GitHub Actions run `30569998028` passed the complete locked Release `1229` qualification.
+GitHub Actions run `30577224174` passed the complete locked Release `1230` qualification.
 
 ## House of Records status
 
-- 12 trains;
-- 96 beads;
-- Trains 1–11 complete: 88 closed;
-- Train 12 remaining: 8 open;
-- no sub-beads.
+- 12 trains complete;
+- 96 beads closed;
+- 0 beads open;
+- no sub-beads;
+- program complete.
 
 ## Validation coverage
 
 | Coverage | Proof |
 |---|---|
-| Base identity | Exact Release 1228 artifact SHA before staging |
-| Production delta | Fail-closed fourteen-path changed set |
-| Artifact identity | 328,704 bytes / `0xc774e968` / exact SHA-256 |
-| Production isolation | Test incident verbs absent from the production source and artifact |
-| Condition truth | Active state derives from canonical fire, water, actor, object, route, and custody state |
-| Burglary truth | Real painting enters real thief custody; recovery and later security remain separate |
-| Creature truth | Canonical bat crosses the real route and returns to its canonical room |
-| Repair boundary | Specific real tools and containment only; no generic crafting or maintenance loop |
-| Archive integrity | Physical records review and file without mutating score, timer, pronoun, or custody |
-| Persistence | Deliberate condition, filing, actor, containment, and custody corruption followed by native restore |
-| Roadmap integrity | 12 trains / 96 unique beads / 88 closed / 8 open |
+| Base identity | Exact locked Release 1229 artifact SHA before staging |
+| Production delta | Fail-closed four-path changed set |
+| Artifact identity | 337,408 bytes / `0x7febe444` / exact SHA-256 |
+| Production isolation | Train 12 setup and mutation verbs absent from production source and artifact |
+| Completion truth | No master, comparison, or export before canonical victory |
+| Chronology truth | Ordered bounded playback evidence plus canonical deaths; no raw command log |
+| Separate-history truth | A and B master files remain in distinct physical banker boxes |
+| Comparison boundary | Only sealed evidence is compared; missing and unseen alternatives are not disclosed |
+| Export compatibility | Deterministic schema-1 human-readable receipt and conservative rematerialization |
+| Persistence | Deliberate state and physical-record corruption followed by exact native restore |
+| Roadmap integrity | 12 trains / 96 unique beads / 96 closed / 0 open |
 
-## Next dedicated work
+## Program result
 
-`onyx_zork_completed_expedition_archive`
-
-Train 12 completes the victory-gated master expedition archive, chronological timeline, final world and house summary, separate run boxes, bounded comparison, unseen-alternative boundaries, versioned export, and the complete House of Records capstone.
+The House of Records is no longer a roadmap promise. Releases `1219` through `1230` form one locked, qualified Glulx lineage from lived-in house state through a completed-playthrough archive.
