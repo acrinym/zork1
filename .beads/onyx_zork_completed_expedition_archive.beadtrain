@@ -1,0 +1,79 @@
+[train]
+name        = "onyx_zork_completed_expedition_archive"
+title       = "Zork I completed expedition archive"
+description = """
+Seal genuine completed playthroughs into separate physical Attic boxes with bounded chronology, final state, cross-run comparison, export, and native persistence.
+"""
+created     = "2026-07-23"
+status      = "in_progress"
+release     = 1230
+
+[[cars]]
+id = "victory_gate"
+bead = "zork1-expedition-001"
+title = "Victory-gated expedition record"
+parallel_start = true
+depends_on = []
+summary = "Unlock the master archive after genuine completion while preserving partial pre-victory files."
+
+[[cars]]
+id = "timeline"
+bead = "zork1-expedition-002"
+title = "Chronological route and incident timeline"
+parallel_start = true
+depends_on = ["victory_gate"]
+summary = "Reconstruct rooms, discoveries, puzzles, deaths, follies, encounters, and returns home."
+
+[[cars]]
+id = "final_state"
+bead = "zork1-expedition-003"
+title = "Final world and house state summary"
+parallel_start = true
+depends_on = ["victory_gate"]
+summary = "Record mechanisms, actors, treasure, altered objects, letters, archive, and home state."
+
+[[cars]]
+id = "separate_boxes"
+bead = "zork1-expedition-004"
+title = "Separate expedition boxes"
+parallel_start = true
+depends_on = ["victory_gate"]
+summary = "Store completed playthroughs separately so mutually exclusive histories never merge."
+
+[[cars]]
+id = "comparison"
+bead = "zork1-expedition-005"
+title = "Cross-run comparison"
+parallel_start = false
+depends_on = ["timeline", "final_state", "separate_boxes"]
+summary = "Compare actor outcomes, area resolutions, object fates, route order, mail, and house."
+
+[[cars]]
+id = "boundaries"
+bead = "zork1-expedition-006"
+title = "Unseen and alternate-outcome boundaries"
+parallel_start = false
+depends_on = ["comparison"]
+summary = "Indicate alternatives exist without revealing commands, solutions, or unseen text."
+
+[[cars]]
+id = "version_export"
+bead = "zork1-expedition-007"
+title = "Archive versioning, compatibility, and export"
+parallel_start = false
+depends_on = ["boundaries"]
+summary = "Migrate schemas and produce deterministic human-readable expedition receipts."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-expedition-008"
+title = "House of Records program capstone"
+parallel_start = false
+depends_on = ["version_export"]
+summary = "Run whole-game and multi-run qualification, reconcile all trains, and publish final docs."
+
+[meta]
+one_liner = "Seal genuine completed playthroughs into separate physical Attic boxes without merging histories or leaking unseen solutions."
+prior_car = "zork1-house-risk-008"
+couples_with = ["onyx_zork_attic_playback", "onyx_zork_house_vulnerability"]
+watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "completed_expedition_archive", "WON-FLAG", "SAVE", "RESTORE"]
