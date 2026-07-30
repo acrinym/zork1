@@ -1,0 +1,56 @@
+{
+  "edition": "Unofficial Attic Playback Glulx",
+  "release": 1227,
+  "serial": "260729",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../attic-area-case-files/patch-series.json",
+  "base_release": 1226,
+  "base_artifact_sha256": "9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6",
+  "expected_artifact": {
+    "file": "zork1-glulx-attic-playback.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 307712,
+    "checksum_hex": "0xfb794f11",
+    "sha256": "6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0"
+  },
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1226 layer, assign Release 1227, and load bounded archival playback"
+    },
+    {
+      "path": "attic_playback.zil",
+      "source": "overrides/attic_playback.zil",
+      "allow_new": true,
+      "description": "Add curated transcript, cassette, scene-index, and bounded forensic records"
+    }
+  ],
+  "patches": [
+    "patches/001-playback-hooks.json",
+    "patches/002-playback-catalog.json",
+    "patches/003-playback-recap.json"
+  ],
+  "expected_changed_paths": [
+    "assistance.zil",
+    "attic_archive_core.zil",
+    "attic_playback.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "preserved_canonical_state": [
+    "rooms, routes, mechanisms, actors, objects, score, timers, randomness, and parser remain authoritative",
+    "capture is deduplicated and bounded to twelve consequential events already established by canonical state",
+    "printer echoes are normalized labels rather than a verbatim universal command log",
+    "playback restores the prior parser pronoun and is treated as non-turning by threat and timer machinery",
+    "native save and restore preserve capture order, indexes, event bits, and physical custody"
+  ],
+  "excluded_scope": [
+    "unbounded raw command logging, parser surveillance, or verbatim reconstruction of missing dialogue",
+    "time travel, actor replay, object movement, score changes, route changes, timer advancement, or puzzle mutation",
+    "modern media browser, omniscient scene encyclopedia, unseen solution hints, or merged expedition histories",
+    "sub-beads or a parallel planning hierarchy"
+  ]
+}

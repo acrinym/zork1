@@ -1,0 +1,22 @@
+{
+  "id": "Z1-GLULX-1227-PLAYBACK-HOOKS",
+  "path": "shadow_logic.zil",
+  "description": "Capture bounded meaningful events, route playback actions first, and prevent playback from advancing threat/timer machinery",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<NPC-ADVANCE>\n\t<AREA-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<NPC-ADVANCE>\n\t<AREA-ADVANCE>\n\t<PLAYBACK-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<AREA-ACTION-HOOK> <RTRUE>)\n\t      (<NPC-ACTION-HOOK> <RTRUE>)\n\t      (<ARCHIVE-ACTION-HOOK> <RTRUE>)",
+      "new": "\t      (<PLAYBACK-ACTION-HOOK> <RTRUE>)\n\t      (<AREA-ACTION-HOOK> <RTRUE>)\n\t      (<NPC-ACTION-HOOK> <RTRUE>)\n\t      (<ARCHIVE-ACTION-HOOK> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<VERB? SHADOW-FOLLIES SHADOW-LIGHTS SHADOW-WORDS>\n\t       <RTRUE>)>",
+      "new": "\t      (<VERB? SHADOW-FOLLIES SHADOW-LIGHTS SHADOW-WORDS>\n\t       <RTRUE>)\n\t      (<AND <PLAYBACK-RECORD? ,PRSO>\n\t            <VERB? READ EXAMINE PLAY ARCHIVE-REVIEW ARCHIVE-SHOW ARCHIVE-CROSS ARCHIVE-FILE>>\n\t       <RTRUE>)>"
+    }
+  ]
+}

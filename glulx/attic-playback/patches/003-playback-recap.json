@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1227-PLAYBACK-RECAP",
+  "path": "assistance.zil",
+  "description": "Append transcript and playback receipts after regional case-file receipts",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<AREA-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<AREA-RECAP> <SET SEEN T>)>\n\t<COND (<PLAYBACK-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}

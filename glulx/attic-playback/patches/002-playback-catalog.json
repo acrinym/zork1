@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1227-PLAYBACK-CATALOG",
+  "path": "attic_archive_core.zil",
+  "description": "Append bounded playback records after earned regional case files",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <AREA-CATALOG-LIST>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>",
+      "new": "    <AREA-CATALOG-LIST>\n    <PLAYBACK-CATALOG-LIST>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ description = """
 Reconstruct meaningful parts of the player's own adventure through curated line-printer transcripts, cassette playback, command echoes, and scene records.
 """
 created     = "2026-07-23"
-status      = "planned"
+status      = "complete"
 
 [[cars]]
 id = "capture"
