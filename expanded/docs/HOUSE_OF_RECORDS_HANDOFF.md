@@ -1,4 +1,4 @@
-# House of Records Program — Continuation Handoff
+# House of Records Program — Train 12 Continuation Handoff
 
 ## Repository
 
@@ -10,14 +10,14 @@ Default branch: `master`
 
 At the start of the next session:
 
-1. resolve exact `master` and every open PR;
-2. inspect PRs #26, #27, and #28 metadata, comments, reviews, inline threads, heads, bases, mergeability, and checks if they remain open;
-3. read `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md`, `expanded/docs/NEXT_TRAINS.md`, and the Release `1228` README/contract;
-4. validate all twelve trains against all four issue shards;
-5. preserve every locked artifact identity and changed-path boundary;
-6. do not merge PR #26, PR #27, PR #28, or any future PR without Justin's explicit merge whistle.
+1. resolve exact `master` and every open pull request;
+2. inspect PRs #26, #27, #28, and #29 metadata, comments, reviews, inline threads, heads, bases, mergeability, and checks if they remain open;
+3. read `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md`, `expanded/docs/NEXT_TRAINS.md`, the Release `1229` README/contract, and all four House of Records issue shards;
+4. validate all twelve trains and all ninety-six unique beads;
+5. preserve every locked artifact identity and fail-closed changed-path boundary;
+6. do not merge PR #26, PR #27, PR #28, PR #29, or any future production PR without Justin's explicit merge whistle.
 
-Do not trust frozen branch heads or workflow counts without resolving GitHub live.
+Do not trust frozen branch heads, merge refs, workflow counts, or review state without resolving GitHub live.
 
 ## Current production stack
 
@@ -25,23 +25,24 @@ Merged into `master` through Release `1225`:
 
 - PRs #11, #16, #17, #18, #19, #21, #22, and #24.
 
-Open production stack:
+Open production stack at Train 11 closure:
 
 - PR #26: `agent/glulx-attic-area-case-files` — Release `1226`, base `master`;
-- PR #27: `agent/glulx-attic-playback` — Release `1227`, base PR #26 exact closure head;
-- PR #28: `agent/glulx-house-rest-and-dreams` — Release `1228`, base PR #27 exact closure head.
+- PR #27: `agent/glulx-attic-playback` — Release `1227`, stacked above PR #26;
+- PR #28: `agent/glulx-house-rest-and-dreams` — Release `1228`, stacked above PR #27;
+- PR #29: `agent/glulx-house-vulnerability` — Release `1229`, stacked above PR #28.
 
-All remain deliberately unmerged absent Justin's whistle.
+All remain deliberately open and unmerged absent Justin's whistle.
 
 ## Hierarchy rule
 
-The program has exactly 12 trains, 8 beads per train, and 96 beads total. Do not create sub-beads, sub-trains, or a parallel planning document. Execute existing beads directly.
+The program has exactly 12 trains, 8 beads per train, and 96 beads total. Do not create sub-beads, sub-trains, a replacement roadmap, or a parallel planning hierarchy. Execute the eight existing Train 12 beads directly.
 
 ## Current roadmap state
 
-- Trains 1–10 complete;
-- 80 closed beads;
-- 16 open beads across Trains 11–12;
+- Trains 1–11 complete;
+- 88 closed beads;
+- 8 open beads in Train 12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Locked lineage
@@ -58,55 +59,80 @@ The program has exactly 12 trains, 8 beads per train, and 96 beads total. Do not
 | 8 | 1226 | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` |
 | 9 | 1227 | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` |
 | 10 | 1228 | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` |
+| 11 | 1229 | 328,704 | `0xc774e968` | `94a665cb16069b31473dcf9fdf194d49c13e70aa23c32bd75888c78a074c3b4f` |
 
-## Train 10 closure
+## Train 11 closure
 
-Train: `onyx_zork_house_rest_and_dreams`
+Train: `onyx_zork_house_vulnerability`
 
 Status: `complete`
 
-PR: #28
+PR: #29
 
-Release `1228` adds:
+Release `1229` adds:
 
-- a reachable Bedroom above the Living Room;
-- a physical four-poster bed;
-- original `WAIT` / `Z` plus optional `SLEEP`, `REST`, `NAP`, `DOZE`, and `LIE DOWN`;
-- `REST-DREAM-01`;
-- `REST-OVERNIGHT-02`;
-- canonical stepwise clock advancement and authored forced waking;
-- bounded temporary recovery tied to newly earned evidence;
-- deterministic earned-evidence dreams;
-- deterministic reuse of existing mail, visitor, theft, damp, smoke, custody, and archive systems.
+- authored disturbed, smoke, damp, burglary, creature, supernatural, and damage conditions;
+- parser-native house status, security, repair, venting, warding, and bat-driving commands;
+- smoke and Cellar-water propagation;
+- Bedroom forced waking for active smoke;
+- canonical thief burglary using the real painting and real thief custody;
+- canonical property recovery without deleting historical burglary evidence;
+- later security after recovery when the real routes are closed with a real hand tool;
+- canonical bat intrusion and garlic-driven retreat;
+- physical black-book containment in the Cellar quarantine niche;
+- meaningful repair using the Kitchen window, putty, wrench, screwdriver, niche, and garlic;
+- exact physical `HOUSE-RISK-01` and `HOUSE-REPAIR-02` records;
+- native save, deliberate corruption, and exact restore.
 
-Repeated unchanged sleep becomes a shallow doze. Sleep cannot skip danger, farm recovery, restore lost objects, erase permanent consequences, reveal unseen solutions, or create Train 11's vulnerability controllers.
+Locked GitHub Actions run `30569998028` passed:
 
-GitHub Actions run `30547861041` passed exact artifact identity, original waiting, Bedroom access, queued-visitor interruption, canonical clock advancement, bounded recovery, anti-farming, House/forest/Dam dreams, unearned-dream exclusion, exact filing, deliberate state/record/notice corruption, and native save/restore.
+- exact Release `1228` ancestry;
+- fourteen-path fail-closed staging;
+- zero smell errors;
+- exact locked Release `1229` identity;
+- production no-unearned-incident smoke;
+- smoke, damp, burglary, recovery, security, bat, supernatural, containment, and repair routes;
+- parser-native Attic review and filing;
+- native `SAVE` / corruption / `RESTORE`.
 
 Exact identity:
 
-- Release `1228` / serial `260730`;
-- 316,160 bytes;
-- checksum `0x3505b8ad`;
-- SHA-256 `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5`.
+- Release `1229` / serial `260730`;
+- 328,704 bytes;
+- checksum `0xc774e968`;
+- SHA-256 `94a665cb16069b31473dcf9fdf194d49c13e70aa23c32bd75888c78a074c3b4f`.
 
-PR #28 has no unresolved inline review threads or submitted review actions at closure time.
+## Final existing train
 
-## Next existing train
-
-Continue directly with `onyx_zork_house_vulnerability` above PR #28's exact qualified closure head.
+Continue directly with `onyx_zork_completed_expedition_archive` above PR #29's exact qualified closure head.
 
 Its eight existing beads are:
 
-1. house damage and condition transitions;
-2. smoke, damp, and Cellar-water propagation;
-3. thief burglary and display disturbance;
-4. creature and follower intrusion;
-5. mirror, shadow, ritual, and cursed-object effects;
-6. meaningful repair without chores;
-7. vulnerability gameplay and persistence;
-8. house vulnerability capstone.
+1. `zork1-expedition-001` — victory-gated expedition record;
+2. `zork1-expedition-002` — chronological route and incident timeline;
+3. `zork1-expedition-003` — final world and house state summary;
+4. `zork1-expedition-004` — separate expedition boxes;
+5. `zork1-expedition-005` — cross-run comparison;
+6. `zork1-expedition-006` — unseen and alternate-outcome boundaries;
+7. `zork1-expedition-007` — archive versioning, compatibility, and export;
+8. `zork1-expedition-008` — House of Records program capstone.
 
-Train 11 must use authored bounded consequences and canonical actors, objects, routes, timers, museum, Cellar, Bedroom, and archive state. It must not become survival-game upkeep, random universal simulation, duplicate villains, endless repairs, or a sub-bead hierarchy.
+## Train 12 product contract
 
-Keep PR #26, PR #27, PR #28, and future production PRs open and unmerged unless Justin gives the explicit merge whistle.
+Train 12 must build the completed expedition archive from evidence already retained by the canonical game and Trains 1–11.
+
+It must:
+
+- preserve partial records before victory;
+- gate the master completed record on genuine completion;
+- reconstruct only rooms, incidents, puzzles, deaths, follies, encounters, correspondence, visitors, museum events, rest, dreams, damage, repairs, and outcomes actually earned;
+- preserve final canonical object, actor, mechanism, score, and house state;
+- store separate playthroughs in separate expedition boxes;
+- compare runs without merging mutually exclusive histories;
+- acknowledge unseen alternatives without revealing commands, solutions, or unseen prose;
+- export deterministic, human-readable, versioned receipts;
+- prove whole-program native persistence and reconcile all 96 beads.
+
+It must not fabricate history, create universal replay simulation, expose unseen puzzle knowledge, replace canonical victory, merge incompatible runs, create a checklist HUD, or add sub-beads.
+
+Keep PR #29 and the entire unmerged production stack open unless Justin gives the explicit merge whistle.

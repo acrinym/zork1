@@ -2,7 +2,7 @@
 
 ## Status
 
-Active twelve-train, ninety-six-bead program above qualified Glulx Release `1228`.
+Active twelve-train, ninety-six-bead program above qualified Glulx Release `1229`.
 
 - **Trains 1–5 complete:** evolving white-house foundation through correspondence and visitors — Releases `1219`–`1223`.
 - **Train 6 complete:** `onyx_zork_attic_archive_core` — Release `1224`.
@@ -10,21 +10,22 @@ Active twelve-train, ninety-six-bead program above qualified Glulx Release `1228
 - **Train 8 complete:** `onyx_zork_attic_area_case_files` — Release `1226`.
 - **Train 9 complete:** `onyx_zork_attic_playback` — Release `1227`.
 - **Train 10 complete:** `onyx_zork_house_rest_and_dreams` — Release `1228`.
-- **Next existing train:** `onyx_zork_house_vulnerability`.
+- **Train 11 complete:** `onyx_zork_house_vulnerability` — Release `1229`.
+- **Final existing train:** `onyx_zork_completed_expedition_archive`.
 
 Current truth:
 
 - 12 trains;
 - 96 beads;
-- 80 closed beads across Trains 1–10;
-- 16 open beads across Trains 11–12;
+- 88 closed beads across Trains 1–11;
+- 8 open beads in Train 12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
 
 The white house evolves because of the adventure, not because the player performs chores. Meaningful changes follow from discoveries, objects, repairs, damage, returns, visitors, rest, dreams, and consequences.
 
-The Attic is a period-authentic archive of this player's actual run: correspondence, notes, dossiers, case files, maps, photographs, cassettes, printouts, dream notebooks, overnight reports, and separate expedition boxes.
+The Attic is a period-authentic archive of this player's actual run: correspondence, notes, dossiers, case files, maps, photographs, cassettes, printouts, dream notebooks, overnight reports, vulnerability files, repair logs, and separate expedition boxes.
 
 > The house has been quietly writing the history of you.
 
@@ -57,41 +58,46 @@ The Attic is a period-authentic archive of this player's actual run: corresponde
 | 8 | 1226 | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` | Complete |
 | 9 | 1227 | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` | Complete |
 | 10 | 1228 | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` | Complete |
+| 11 | 1229 | 328,704 | `0xc774e968` | `94a665cb16069b31473dcf9fdf194d49c13e70aa23c32bd75888c78a074c3b4f` | Complete |
 
-## Trains 1–9
-
-Trains 1–5 establish the evolving house. Trains 6–9 create the physical Attic archive, player-specific dossiers, regional case files, and bounded playback. Canonical rooms, routes, mechanisms, actors, objects, score, timers, randomness, and parser state remain authoritative.
-
-## Train 10 — Bedroom Rest and Dreams
+## Train 11 — House Vulnerability and Intrusion
 
 Status: `complete`
 
-Release `1228` adds one reachable Bedroom above the Living Room while preserving original `WAIT` / `Z` behavior. The Bedroom provides optional `SLEEP`, `REST`, `NAP`, `DOZE`, and `LIE DOWN`, a physical four-poster bed, `REST-DREAM-01`, and `REST-OVERNIGHT-02`.
+Release `1229` lets specific consequences follow the expedition home without turning Zork into a maintenance game:
 
-Full sleep advances the real canonical clock one step at a time and stops on interruption. It may apply only bounded temporary recovery when newly earned evidence changes the rest signature. Repeated sleep without new evidence becomes a one-turn shallow doze rather than a timer skip or healing farm.
+- authored disturbed, smoky, damp, burglarized, creature-occupied, supernatural, and damaged conditions;
+- live flame and Cellar water propagation;
+- Bedroom forced waking for active smoke;
+- the real painting moved into canonical thief custody during burglary;
+- historical burglary preserved while canonical recovery permits later security;
+- the canonical bat drawn through the real trap-door route and repelled with real garlic;
+- the real black book physically contained in the Cellar quarantine niche;
+- meaningful repairs with the Kitchen window, putty, wrench, screwdriver, niche, and garlic;
+- exact physical `HOUSE-RISK-01` and `HOUSE-REPAIR-02` Attic records;
+- parser-native review and filing;
+- native save, deliberate corruption, and exact restore.
 
-Dreams are deterministic and limited to evidence already earned by this expedition. Overnight consequences reuse existing mail, visitor, theft, water, smoke, custody, and archive systems. Train 10 does not originate Train 11's wider vulnerability, intrusion, damage-propagation, or repair controllers.
-
-GitHub Actions run `30547861041` passed locked identity, original `WAIT` smoke, Bedroom access, queued-visitor forced waking, real clock advancement, bounded recovery, anti-farming, House/forest/Dam dream progression, no-unearned-dream checks, parser-valid filing, deliberate corruption, and native restore.
+Locked GitHub Actions run `30569998028` passed fourteen-path fail-closed staging, zero smell errors, production no-leak smoke, the complete incident and repair journey, filing, and native persistence.
 
 Controlling records:
 
-- `glulx/house-rest-and-dreams/README.md`;
-- `expanded/docs/HOUSE_REST_AND_DREAMS_CONTRACT.md`.
+- `glulx/house-vulnerability/README.md`;
+- `expanded/docs/HOUSE_VULNERABILITY_CONTRACT.md`.
 
-## Next existing train — House Vulnerability and Intrusion
+## Final existing train — Completed Expedition Archive
 
-Continue directly with `onyx_zork_house_vulnerability` above exact qualified Release `1228`.
+Continue directly with the eight existing `zork1-expedition-*` beads above exact qualified Release `1229`.
 
-Train 11 must execute its existing eight beads directly:
+Train 12 must:
 
-1. house damage and condition transitions;
-2. smoke, damp, and Cellar-water propagation;
-3. thief burglary and display disturbance;
-4. creature and follower intrusion;
-5. mirror, shadow, ritual, and cursed-object effects;
-6. meaningful repair without chores;
-7. vulnerability gameplay and persistence;
-8. house vulnerability capstone.
+1. unlock the master expedition record only after genuine completion while retaining partial pre-victory files;
+2. reconstruct the chronological route and incident timeline;
+3. summarize final world and house state;
+4. keep separate expedition boxes for separate runs;
+5. compare runs without merging mutually exclusive histories;
+6. indicate unseen alternatives without leaking commands or solutions;
+7. version and export deterministic human-readable expedition receipts;
+8. qualify and reconcile the complete twelve-train House of Records program.
 
-House vulnerability must remain authored and bounded. It may let earned hazards affect the home, but it must not become survival-game maintenance, a universal simulation, a duplicate actor controller, or a sub-bead hierarchy.
+Do not create sub-beads, universal replay simulation, a hidden checklist HUD, or merged fictional history.

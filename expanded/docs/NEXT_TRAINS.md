@@ -1,12 +1,12 @@
 # Expansion frontier
 
-The Glulx production lineage is qualified through House Rest and Dreams Release `1228`.
+The Glulx production lineage is qualified through House Vulnerability Release `1229`.
 
 ## Current House of Records state
 
-- Trains 1–10 complete — Releases `1219`–`1228`.
-- Train 11 next — `onyx_zork_house_vulnerability`.
-- Roadmap: 12 trains / 96 beads / 80 closed / 16 open.
+- Trains 1–11 complete — Releases `1219`–`1229`.
+- Train 12 final — `onyx_zork_completed_expedition_archive`.
+- Roadmap: 12 trains / 96 beads / 88 closed / 8 open.
 - No sub-beads or parallel planning layers.
 
 ## Qualified production frontier
@@ -23,49 +23,52 @@ The Glulx production lineage is qualified through House Rest and Dreams Release 
 | 1226 | Attic area case files | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` |
 | 1227 | Attic playback | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` |
 | 1228 | House rest and dreams | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` |
+| 1229 | House vulnerability | 328,704 | `0xc774e968` | `94a665cb16069b31473dcf9fdf194d49c13e70aa23c32bd75888c78a074c3b4f` |
 
-## Train 10 closure — Bedroom Rest and Dreams
+## Train 11 closure — House Vulnerability and Intrusion
 
-Release `1228` adds a real upper-floor Bedroom, optional bounded sleep, discovery-driven dreams, deterministic overnight consequences, and physical rest records.
+Release `1229` lets authored consequences follow the adventure home:
+
+- smoke, damp, disturbance, burglary, creature, supernatural, and damage state;
+- Bedroom waking for active house danger;
+- canonical thief custody and recovery of the real painting;
+- canonical bat intrusion and garlic retreat;
+- physical containment of the real black book;
+- meaningful repair with the real window, putty, wrench, screwdriver, niche, and garlic;
+- permanent incident history separated from active danger and later security;
+- physical `HOUSE-RISK-01` and `HOUSE-REPAIR-02` records;
+- native save/corrupt/restore.
 
 Important boundaries:
 
-- original `WAIT` / `Z` remains canonical and separate from sleep;
-- full sleep is Bedroom-only and refuses immediate unsafe conditions;
-- the real clock advances one step at a time and can force waking;
-- unchanged evidence produces only a shallow doze;
-- recovery is limited to one negative strength step and bounded transient state;
-- dreams describe only already-earned evidence and reveal no unseen solution;
-- existing mail, visitors, theft, water, smoke, custody, and archive systems remain authoritative;
-- `REST-DREAM-01` and `REST-OVERNIGHT-02` are physical records;
-- Train 10 does not pre-build Train 11's vulnerability controllers;
-- native restore recovers exact cycles, signatures, dreams, wake evidence, recovery, filing, notices, and custody.
+- no routine upkeep or maintenance meters;
+- no random raids or universal physics;
+- no duplicate actors or replacement property;
+- no automatic recovery of stolen exhibits;
+- no score mutation from review or repair;
+- no Train 12 expedition controller hidden inside Train 11.
 
-GitHub Actions run `30547861041` passed exact identity, original waiting, Bedroom access, queued-visitor interruption, clock advancement, bounded recovery, anti-farming, earned dream progression, no-leak smoke, filing, corruption, and restore.
+Locked GitHub Actions run `30569998028` passed exact identity and the complete production/persistence route.
 
-## Next train — House Vulnerability and Intrusion
+## Final train — Completed Expedition Archive
 
 Continue directly with:
 
-`onyx_zork_house_vulnerability`
+`onyx_zork_completed_expedition_archive`
 
 Execute its existing eight beads:
 
-1. house damage and condition transitions;
-2. smoke, damp, and Cellar-water propagation;
-3. thief burglary and display disturbance;
-4. creature and follower intrusion;
-5. mirror, shadow, ritual, and cursed-object effects;
-6. meaningful repair without chores;
-7. vulnerability gameplay and persistence;
-8. house vulnerability capstone.
+1. victory-gated expedition record;
+2. chronological route and incident timeline;
+3. final world and house state summary;
+4. separate expedition boxes;
+5. cross-run comparison;
+6. unseen and alternate-outcome boundaries;
+7. archive versioning, compatibility, and export;
+8. House of Records program capstone.
 
-### Train 11 product boundary
+### Train 12 product boundary
 
-Let specific underground actions and carried hazards produce a small authored set of home consequences. Reuse canonical actors, objects, routes, timers, museum records, Cellar state, Bedroom rest, and Attic evidence.
+Build a truthful master record of this completed playthrough while retaining partial pre-victory files and keeping separate runs separate. Reuse the canonical archive, dossiers, area files, playback, rest, visitor, museum, Cellar, and vulnerability records.
 
-Do not build universal physics, routine housekeeping, durability meters, random raids, endless repairs, duplicate villains, survival-game maintenance, or a sub-bead hierarchy.
-
-## Final train
-
-- Train 12 — completed expedition archive.
+Do not merge mutually exclusive histories, reveal unseen commands or solutions, fabricate events, create a checklist HUD, build universal replay simulation, or add sub-beads.
