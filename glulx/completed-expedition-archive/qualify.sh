@@ -55,11 +55,12 @@ assert (source / 'completed_expedition_archive.zil').is_file()
 assert not (source / 'completed_expedition_archive_test.zil').exists()
 production = '\n'.join(path.read_text(errors='ignore') for path in source.glob('*.zil'))
 assert not any(token in production for token in (
-    'EXPRESET', 'EXPVICTORYA', 'EXPVICTORYB', 'EXPREPORT', 'EXPMUTATE'))
+    'EXPRESET', 'EXPAWIN', 'EXPBWIN', 'EXPREPORT', 'EXPMUTATE'))
 expedition = (source / 'completed_expedition_archive.zil').read_text()
 for token in (
     '<SYNTAX ARCHIVE OBJECT = V-EXPEDITION-SEAL>',
     '<SYNTAX SEAL OBJECT = V-EXPEDITION-SEAL>',
+    '<SYNTAX STATUS OBJECT = V-EXPEDITION-STATUS>',
     '<SYNTAX COMPARE OBJECT = V-EXPEDITION-COMPARE>',
     '<SYNTAX EXPORT OBJECT = V-EXPEDITION-EXPORT>',
     'EXPEDITION-ARCHIVE-INDEX',
