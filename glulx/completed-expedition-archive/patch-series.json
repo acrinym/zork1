@@ -28,7 +28,8 @@
   ],
   "patches": [
     "patches/001-expedition-catalog.json",
-    "patches/002-expedition-recap.json"
+    "patches/002-expedition-recap.json",
+    "patches/003-expedition-parser-index.json"
   ],
   "expected_changed_paths": [
     "assistance.zil",
