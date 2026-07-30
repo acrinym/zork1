@@ -5,7 +5,7 @@ description = """
 Seal genuine completed playthroughs into separate physical Attic boxes with bounded chronology, final state, cross-run comparison, export, and native persistence.
 """
 created     = "2026-07-23"
-status      = "in_progress"
+status      = "complete"
 release     = 1230
 
 [[cars]]
@@ -77,3 +77,7 @@ one_liner = "Seal genuine completed playthroughs into separate physical Attic bo
 prior_car = "zork1-house-risk-008"
 couples_with = ["onyx_zork_attic_playback", "onyx_zork_house_vulnerability"]
 watch = ["expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md", "completed_expedition_archive", "WON-FLAG", "SAVE", "RESTORE"]
+qualification_run = 30577224174
+artifact_size = 337408
+artifact_checksum = "0x7febe444"
+artifact_sha256 = "b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71"
