@@ -1,4 +1,4 @@
-# Completed Expedition Archive — Release 1230 Candidate
+# Completed Expedition Archive — Qualified Release 1230
 
 Train 12 is the House of Records capstone. It turns a genuinely completed Zork I run into a bounded physical archive without changing the live adventure into telemetry, a raw command log, or a modern database.
 
@@ -38,19 +38,25 @@ The comparison never prints an unseen command, hidden route, ceremony order, sol
 
 Native `SAVE` and `RESTORE` preserve both boxes, their separate chronology sequences, final snapshots, comparison card, export receipt, schema version, and event history. Qualification deliberately removes and corrupts those values before restoring them exactly.
 
-## Qualification boundary
+## Qualification
 
-The dedicated gate proves:
+GitHub Actions run `30577224174` passed:
 
 - exact Release 1229 ancestry;
 - fail-closed four-path production staging;
-- no test controls in production;
+- zero smell errors and no test controls in production;
 - no pre-victory master record;
 - canonical victory gating;
 - bounded chronology, deaths, final state, and unseen-alternative language;
 - two separate physical boxes;
 - non-merging comparison;
 - versioned export;
-- native save, deliberate corruption, and restore.
+- native save, deliberate corruption, and exact restore.
 
-Artifact identity remains unlocked until the first successful candidate run establishes exact Release 1230 bytes.
+## Locked artifact identity
+
+- Release: `1230`
+- Serial: `260730`
+- Size: `337,408` bytes
+- Glulx checksum: `0x7febe444`
+- SHA-256: `b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71`
