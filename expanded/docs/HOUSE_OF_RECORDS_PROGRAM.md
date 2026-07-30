@@ -2,7 +2,7 @@
 
 ## Status
 
-Active twelve-train, ninety-six-bead program above qualified Glulx Release `1229`.
+Complete twelve-train, ninety-six-bead program through qualified Glulx Release `1230`.
 
 - **Trains 1–5 complete:** evolving white-house foundation through correspondence and visitors — Releases `1219`–`1223`.
 - **Train 6 complete:** `onyx_zork_attic_archive_core` — Release `1224`.
@@ -11,21 +11,20 @@ Active twelve-train, ninety-six-bead program above qualified Glulx Release `1229
 - **Train 9 complete:** `onyx_zork_attic_playback` — Release `1227`.
 - **Train 10 complete:** `onyx_zork_house_rest_and_dreams` — Release `1228`.
 - **Train 11 complete:** `onyx_zork_house_vulnerability` — Release `1229`.
-- **Final existing train:** `onyx_zork_completed_expedition_archive`.
+- **Train 12 complete:** `onyx_zork_completed_expedition_archive` — Release `1230`.
 
-Current truth:
+Final truth:
 
-- 12 trains;
-- 96 beads;
-- 88 closed beads across Trains 1–11;
-- 8 open beads in Train 12;
+- 12 trains complete;
+- 96 beads closed;
+- 0 beads open;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
 
 The white house evolves because of the adventure, not because the player performs chores. Meaningful changes follow from discoveries, objects, repairs, damage, returns, visitors, rest, dreams, and consequences.
 
-The Attic is a period-authentic archive of this player's actual run: correspondence, notes, dossiers, case files, maps, photographs, cassettes, printouts, dream notebooks, overnight reports, vulnerability files, repair logs, and separate expedition boxes.
+The Attic is a period-authentic archive of this player's actual run: correspondence, notes, dossiers, case files, maps, photographs, cassettes, printouts, dream notebooks, overnight reports, vulnerability files, repair logs, and separate completed-expedition boxes.
 
 > The house has been quietly writing the history of you.
 
@@ -59,45 +58,33 @@ The Attic is a period-authentic archive of this player's actual run: corresponde
 | 9 | 1227 | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` | Complete |
 | 10 | 1228 | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` | Complete |
 | 11 | 1229 | 328,704 | `0xc774e968` | `94a665cb16069b31473dcf9fdf194d49c13e70aa23c32bd75888c78a074c3b4f` | Complete |
+| 12 | 1230 | 337,408 | `0x7febe444` | `b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71` | Complete |
 
-## Train 11 — House Vulnerability and Intrusion
+## Train 12 — Completed Expedition Archive
 
 Status: `complete`
 
-Release `1229` lets specific consequences follow the expedition home without turning Zork into a maintenance game:
+Release `1230` closes the program with:
 
-- authored disturbed, smoky, damp, burglarized, creature-occupied, supernatural, and damaged conditions;
-- live flame and Cellar water propagation;
-- Bedroom forced waking for active smoke;
-- the real painting moved into canonical thief custody during burglary;
-- historical burglary preserved while canonical recovery permits later security;
-- the canonical bat drawn through the real trap-door route and repelled with real garlic;
-- the real black book physically contained in the Cellar quarantine niche;
-- meaningful repairs with the Kitchen window, putty, wrench, screwdriver, niche, and garlic;
-- exact physical `HOUSE-RISK-01` and `HOUSE-REPAIR-02` Attic records;
-- parser-native review and filing;
+- a master record gated solely by canonical `WON-FLAG`;
+- preservation of every independently earned pre-victory archive layer;
+- physical A and B banker boxes, each with its own master file, chronology roll, and final summary;
+- bounded ordered chronology from existing consequential playback plus canonical deaths;
+- final score, observed outcome, house incident, repair, and security snapshots;
+- cross-run comparison that never merges histories;
+- explicit missing-evidence and unseen-alternative boundaries;
+- deterministic schema-versioned `EXPEDITION-EXPORT-01`;
+- conservative rematerialization from native state;
 - native save, deliberate corruption, and exact restore.
 
-Locked GitHub Actions run `30569998028` passed fourteen-path fail-closed staging, zero smell errors, production no-leak smoke, the complete incident and repair journey, filing, and native persistence.
+GitHub Actions run `30577224174` passed locked Release `1230` staging, zero smell errors, production pre-victory smoke, two completed histories, separate physical custody, chronology, summaries, comparison, export, and persistence.
 
 Controlling records:
 
-- `glulx/house-vulnerability/README.md`;
-- `expanded/docs/HOUSE_VULNERABILITY_CONTRACT.md`.
+- `glulx/completed-expedition-archive/README.md`;
+- `expanded/docs/COMPLETED_EXPEDITION_ARCHIVE_CONTRACT.md`;
+- `.beads/onyx_zork_completed_expedition_archive.beadtrain`.
 
-## Final existing train — Completed Expedition Archive
+## Program result
 
-Continue directly with the eight existing `zork1-expedition-*` beads above exact qualified Release `1229`.
-
-Train 12 must:
-
-1. unlock the master expedition record only after genuine completion while retaining partial pre-victory files;
-2. reconstruct the chronological route and incident timeline;
-3. summarize final world and house state;
-4. keep separate expedition boxes for separate runs;
-5. compare runs without merging mutually exclusive histories;
-6. indicate unseen alternatives without leaking commands or solutions;
-7. version and export deterministic human-readable expedition receipts;
-8. qualify and reconcile the complete twelve-train House of Records program.
-
-Do not create sub-beads, universal replay simulation, a hidden checklist HUD, or merged fictional history.
+The House of Records program is complete at `96/96`. Future Zork work may extend the game, museum, food, fishing, Stalker lane, or other product ideas, but it must not reopen this program by inventing sub-beads or pretending the completed archive is unfinished.
