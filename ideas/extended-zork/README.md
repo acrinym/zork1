@@ -38,6 +38,19 @@ The museum is not merely a completion screen. It is a persistent place with room
 
 See [Museum Ecology and Fishing](museum-ecology-and-fishing.md).
 
+## Community wish archaeology
+
+[Zork Community Wishes and Lost-Idea Archaeology](community-wishes-and-lost-ideas.md) records direct fan wishes, recurring preferences, historical gaps, abandoned fan-project directions, and modern-player pain points.
+
+It explicitly separates:
+
+- things people actually requested;
+- complaints that imply a design problem;
+- historical Dungeon/Zork material that needs source verification;
+- our original extensions, including the museum, ecology, fishing, cooking, hunger, satiation, stamina, and House memory systems.
+
+The research file is evidence and inspiration, not a second Kanban, bead hierarchy, or implementation claim.
+
 ## Design principles
 
 ### Discovery before checklist
