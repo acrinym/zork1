@@ -11,7 +11,7 @@ Complete twelve-train, ninety-six-bead program through qualified Glulx Release `
 - **Train 9 complete:** `onyx_zork_attic_playback` — Release `1227`.
 - **Train 10 complete:** `onyx_zork_house_rest_and_dreams` — Release `1228`.
 - **Train 11 complete:** `onyx_zork_house_vulnerability` — Release `1229`.
-- **Train 12 complete:** `onyx_zork_completed_expedition_archive` — Release `1230`.
+- **Train 12 complete:** `onyx_zork_expedition_archive` — Release `1230`.
 
 Final truth:
 
@@ -83,7 +83,7 @@ Controlling records:
 
 - `glulx/completed-expedition-archive/README.md`;
 - `expanded/docs/COMPLETED_EXPEDITION_ARCHIVE_CONTRACT.md`;
-- `.beads/onyx_zork_completed_expedition_archive.beadtrain`.
+- `.beads/onyx_zork_expedition_archive.beadtrain`.
 
 ## Program result
 
