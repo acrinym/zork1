@@ -29,7 +29,7 @@ GLAZER_BIN="$(realpath "$GLAZER_BIN")"
 "$GLAZER_BIN" --version | tee "$BUILD/glazer-version.txt"
 grep -Fx "glazer 1.2.0" "$BUILD/glazer-version.txt"
 
-python glulx/tools/stage_completed_expedition_archive.py \
+python glulx/completed-expedition-archive/stage.py \
   --upstream .upstream/zork1-glulx \
   --destination "$SRC" \
   --allowed-root "$BUILD" \
