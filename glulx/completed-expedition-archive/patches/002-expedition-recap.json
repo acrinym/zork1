@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1230-EXPEDITION-RECAP",
+  "path": "assistance.zil",
+  "description": "Append sealed expedition, cross-run, export, and migration receipts to RECAP",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<REST-RECAP> <SET SEEN T>)>\n\t<COND (<HOUSE-RISK-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<REST-RECAP> <SET SEEN T>)>\n\t<COND (<HOUSE-RISK-RECAP> <SET SEEN T>)>\n\t<COND (<EXPEDITION-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}
