@@ -1,0 +1,53 @@
+{
+  "edition": "Unofficial Completed Expedition Archive Glulx",
+  "release": 1230,
+  "serial": "260730",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../house-vulnerability/patch-series.json",
+  "base_release": 1229,
+  "base_artifact_sha256": "94a665cb16069b31473dcf9fdf194d49c13e70aa23c32bd75888c78a074c3b4f",
+  "expected_artifact": {
+    "file": "zork1-glulx-completed-expedition-archive.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1229 layer, assign Release 1230, and load the completed expedition archive"
+    },
+    {
+      "path": "completed_expedition_archive.zil",
+      "source": "overrides/completed_expedition_archive.zil",
+      "allow_new": true,
+      "description": "Add victory-gated separate expedition boxes, chronology, summary, comparison, migration, and export"
+    }
+  ],
+  "patches": [
+    "patches/001-expedition-catalog.json",
+    "patches/002-expedition-recap.json"
+  ],
+  "expected_changed_paths": [
+    "assistance.zil",
+    "attic_archive_core.zil",
+    "completed_expedition_archive.zil",
+    "zork1.zil"
+  ],
+  "preserved_canonical_state": [
+    "WON-FLAG remains the sole genuine-completion gate",
+    "bounded playback sequence remains the chronology authority rather than a raw command log",
+    "score, death count, actor outcomes, area outcomes, object custody, correspondence, archive, and house state remain canonical",
+    "each completed history occupies a separate physical banker box and is never merged into another",
+    "native save and restore preserve sealed boxes, snapshots, comparison, export, and migration state"
+  ],
+  "excluded_scope": [
+    "unearned pre-victory master records",
+    "raw command logging, hidden solution text, unseen route disclosure, or invented outcomes",
+    "automatic restart interception or silent cross-save merging",
+    "modern database, cloud account, universal telemetry, or mutable replay",
+    "sub-beads or a replacement planning hierarchy"
+  ]
+}
