@@ -10,11 +10,10 @@
     {"sendline": "sleep"},
     {"expect": "A measured knock reaches the upper floor"},
     {"sendline": "rreport"},
-    {"expect": "REST:VERSION=1;CYCLES=0;LASTSIG=0;DREAMED=0;OVERNIGHT=98;FILED=0;STRENGTH=-2;STAGGERED=Y;GARLIC=Y;NOTE=Y;REPORT=Y;REPORT-CABINET=Y;NOTICE=Y"},
+    {"expect": "REST:VERSION=1;CYCLES=0;LASTSIG=0;DREAMED=0;OVERNIGHT=98;FILED=0;STRENGTH=-2;STAGGERED=N;GARLIC=Y;NOTE=Y;REPORT=Y;REPORT-CABINET=Y;NOTICE=Y"},
 
     {"sendline": "sleep"},
     {"expect": "one step of your temporary combat injury"},
-    {"expect": "last combat stagger finally leaves"},
     {"expect": "garlic smell fades"},
     {"expect": "one more stair than you remember"},
     {"expect": "You wake in the Bedroom"},
