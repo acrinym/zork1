@@ -2,28 +2,29 @@
 
 ## Status
 
-Active twelve-train, ninety-six-bead program above qualified Glulx Release `1227`.
+Active twelve-train, ninety-six-bead program above qualified Glulx Release `1228`.
 
 - **Trains 1–5 complete:** evolving white-house foundation through correspondence and visitors — Releases `1219`–`1223`.
 - **Train 6 complete:** `onyx_zork_attic_archive_core` — Release `1224`.
 - **Train 7 complete:** `onyx_zork_attic_npc_dossiers` — Release `1225`.
 - **Train 8 complete:** `onyx_zork_attic_area_case_files` — Release `1226`.
 - **Train 9 complete:** `onyx_zork_attic_playback` — Release `1227`.
-- **Next existing train:** `onyx_zork_house_rest_and_dreams`.
+- **Train 10 complete:** `onyx_zork_house_rest_and_dreams` — Release `1228`.
+- **Next existing train:** `onyx_zork_house_vulnerability`.
 
 Current truth:
 
 - 12 trains;
 - 96 beads;
-- 72 closed beads across Trains 1–9;
-- 24 open beads across Trains 10–12;
+- 80 closed beads across Trains 1–10;
+- 16 open beads across Trains 11–12;
 - no sub-beads, sub-trains, or planning hierarchy beneath the existing beads.
 
 ## Product thesis
 
-The white house evolves because of the adventure, not because the player performs chores. Meaningful changes follow from discoveries, objects, repairs, damage, returns, visitors, and consequences.
+The white house evolves because of the adventure, not because the player performs chores. Meaningful changes follow from discoveries, objects, repairs, damage, returns, visitors, rest, dreams, and consequences.
 
-The Attic is a period-authentic archive of this player's actual run: correspondence, notes, dossiers, case files, maps, photographs, cassettes, printouts, and separate expedition boxes.
+The Attic is a period-authentic archive of this player's actual run: correspondence, notes, dossiers, case files, maps, photographs, cassettes, printouts, dream notebooks, overnight reports, and separate expedition boxes.
 
 > The house has been quietly writing the history of you.
 
@@ -33,7 +34,7 @@ The Attic is a period-authentic archive of this player's actual run: corresponde
 2. Canonical object and actor identity remains authoritative.
 3. The trophy case keeps canonical scoring.
 4. No unseen solution leakage.
-5. Playback never mutates live state.
+5. Playback and record review never mutate live state.
 6. Mutually exclusive runs remain separate expedition histories.
 7. Every stateful train proves native `SAVE` and `RESTORE` after deliberate corruption.
 8. Actor records describe this player's relationship with the actor.
@@ -55,46 +56,42 @@ The Attic is a period-authentic archive of this player's actual run: corresponde
 | 7 | 1225 | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` | Complete |
 | 8 | 1226 | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` | Complete |
 | 9 | 1227 | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` | Complete |
+| 10 | 1228 | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` | Complete |
 
-## Trains 1–8
+## Trains 1–9
 
-Trains 1–5 establish the evolving house, Train 6 creates the physical Attic archive, Train 7 adds player-specific actor dossiers, and Train 8 builds itemized regional case files and retrospective synthesis. Canonical rooms, routes, mechanisms, actors, objects, score, timers, randomness, and parser state remain authoritative.
+Trains 1–5 establish the evolving house. Trains 6–9 create the physical Attic archive, player-specific dossiers, regional case files, and bounded playback. Canonical rooms, routes, mechanisms, actors, objects, score, timers, randomness, and parser state remain authoritative.
 
-## Train 9 — Attic Playback
+## Train 10 — Bedroom Rest and Dreams
 
 Status: `complete`
 
-Release `1227` adds seven exact physical playback records:
+Release `1228` adds one reachable Bedroom above the Living Room while preserving original `WAIT` / `Z` behavior. The Bedroom provides optional `SLEEP`, `REST`, `NAP`, `DOZE`, and `LIE DOWN`, a physical four-poster bed, `REST-DREAM-01`, and `REST-OVERNIGHT-02`.
 
-- one curated continuous-feed transcript;
-- one textual cassette with labels, pauses, hiss, and environmental cues;
-- incident, actor, place, and chronology scene cards;
-- one bounded twelve-event forensic strip.
+Full sleep advances the real canonical clock one step at a time and stops on interruption. It may apply only bounded temporary recovery when newly earned evidence changes the rest signature. Repeated sleep without new evidence becomes a one-turn shallow doze rather than a timer skip or healing farm.
 
-The system captures only unique consequential events already earned by the run. It suppresses ordinary movement, parser chatter, typos, duplicates, and unseen scenes. Printer echoes are normalized labels rather than claimed verbatim commands, and cassette voices are contextual paraphrases rather than reconstructed missing dialogue.
+Dreams are deterministic and limited to evidence already earned by this expedition. Overnight consequences reuse existing mail, visitor, theft, water, smoke, custody, and archive systems. Train 10 does not originate Train 11's wider vulnerability, intrusion, damage-propagation, or repair controllers.
 
-Every playback action is non-turning and verifies location, score, active Shadow timer, actor locations, parser pronoun, and physical custody. It cannot move objects or actors, alter score, open routes, advance timers, repair evidence, or create a playable past.
-
-GitHub Actions run `30493076701` passed exact identity, production no-unearned-playback smoke, all seven records, twelve-event capacity, deduplication, scene navigation, active-timer integrity, filing, deliberate corruption, and native restore.
+GitHub Actions run `30547861041` passed locked identity, original `WAIT` smoke, Bedroom access, queued-visitor forced waking, real clock advancement, bounded recovery, anti-farming, House/forest/Dam dream progression, no-unearned-dream checks, parser-valid filing, deliberate corruption, and native restore.
 
 Controlling records:
 
-- `glulx/attic-playback/README.md`;
-- `expanded/docs/ATTIC_PLAYBACK_CONTRACT.md`.
+- `glulx/house-rest-and-dreams/README.md`;
+- `expanded/docs/HOUSE_REST_AND_DREAMS_CONTRACT.md`.
 
-## Next existing train — Bedroom Rest and Dreams
+## Next existing train — House Vulnerability and Intrusion
 
-Continue directly with `onyx_zork_house_rest_and_dreams` above exact qualified Release `1227`.
+Continue directly with `onyx_zork_house_vulnerability` above exact qualified Release `1228`.
 
-Train 10 must execute its existing eight beads directly:
+Train 11 must execute its existing eight beads directly:
 
-1. optional rest and wake contract;
-2. timer advancement and exploit prevention;
-3. bounded nonterminal recovery;
-4. discovery-driven dream records;
-5. overnight house changes;
-6. noises, warnings, and forced waking;
-7. rest, dream, and persistence qualification;
-8. Bedroom rest and dreams capstone.
+1. house damage and condition transitions;
+2. smoke, damp, and Cellar-water propagation;
+3. thief burglary and display disturbance;
+4. creature and follower intrusion;
+5. mirror, shadow, ritual, and cursed-object effects;
+6. meaningful repair without chores;
+7. vulnerability gameplay and persistence;
+8. house vulnerability capstone.
 
-Rest must remain optional and bounded. It may advance legitimate queues and authored overnight consequences, but it must not skip danger, farm events, erase permanent consequences, create mandatory sleep cycles, or introduce sub-beads.
+House vulnerability must remain authored and bounded. It may let earned hazards affect the home, but it must not become survival-game maintenance, a universal simulation, a duplicate actor controller, or a sub-bead hierarchy.

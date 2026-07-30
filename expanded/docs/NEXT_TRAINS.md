@@ -1,12 +1,12 @@
 # Expansion frontier
 
-The Glulx production lineage is qualified through Attic Playback Release `1227`.
+The Glulx production lineage is qualified through House Rest and Dreams Release `1228`.
 
 ## Current House of Records state
 
-- Trains 1–9 complete — Releases `1219`–`1227`.
-- Train 10 next — `onyx_zork_house_rest_and_dreams`.
-- Roadmap: 12 trains / 96 beads / 72 closed / 24 open.
+- Trains 1–10 complete — Releases `1219`–`1228`.
+- Train 11 next — `onyx_zork_house_vulnerability`.
+- Roadmap: 12 trains / 96 beads / 80 closed / 16 open.
 - No sub-beads or parallel planning layers.
 
 ## Qualified production frontier
@@ -22,48 +22,50 @@ The Glulx production lineage is qualified through Attic Playback Release `1227`.
 | 1225 | Attic NPC dossiers | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` |
 | 1226 | Attic area case files | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` |
 | 1227 | Attic playback | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` |
+| 1228 | House rest and dreams | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` |
 
-## Train 9 closure — Attic Playback
+## Train 10 closure — Bedroom Rest and Dreams
 
-Release `1227` adds seven physical playback records: a curated continuous-feed transcript, textual cassette, incident/actor/place/chronology cards, and a bounded forensic strip.
+Release `1228` adds a real upper-floor Bedroom, optional bounded sleep, discovery-driven dreams, deterministic overnight consequences, and physical rest records.
 
 Important boundaries:
 
-- capture is limited to twelve unique consequential events;
-- ordinary movement, parser chatter, typos, duplicates, and unseen events are not stored;
-- printer echoes are normalized labels, not claimed verbatim commands;
-- cassette voices are contextual paraphrases, not invented missing dialogue;
-- playback actions are non-turning;
-- location, score, active timer, actor locations, parser pronoun, and physical custody are checked;
-- playback cannot move objects or actors, repair evidence, open routes, change score, advance timers, or create time travel;
-- native restore recovers exact sequence, indexes, records, and custody after deliberate corruption.
+- original `WAIT` / `Z` remains canonical and separate from sleep;
+- full sleep is Bedroom-only and refuses immediate unsafe conditions;
+- the real clock advances one step at a time and can force waking;
+- unchanged evidence produces only a shallow doze;
+- recovery is limited to one negative strength step and bounded transient state;
+- dreams describe only already-earned evidence and reveal no unseen solution;
+- existing mail, visitors, theft, water, smoke, custody, and archive systems remain authoritative;
+- `REST-DREAM-01` and `REST-OVERNIGHT-02` are physical records;
+- Train 10 does not pre-build Train 11's vulnerability controllers;
+- native restore recovers exact cycles, signatures, dreams, wake evidence, recovery, filing, notices, and custody.
 
-GitHub Actions run `30493076701` passed exact identity, production no-leak smoke, all seven records, capacity, deduplication, scene navigation, active-timer integrity, filing, corruption, and restore.
+GitHub Actions run `30547861041` passed exact identity, original waiting, Bedroom access, queued-visitor interruption, clock advancement, bounded recovery, anti-farming, earned dream progression, no-leak smoke, filing, corruption, and restore.
 
-## Next train — Bedroom Rest and Dreams
+## Next train — House Vulnerability and Intrusion
 
 Continue directly with:
 
-`onyx_zork_house_rest_and_dreams`
+`onyx_zork_house_vulnerability`
 
 Execute its existing eight beads:
 
-1. optional rest and wake contract;
-2. timer advancement and exploit prevention;
-3. bounded nonterminal recovery;
-4. discovery-driven dream records;
-5. overnight house changes;
-6. noises, warnings, and forced waking;
-7. rest, dream, and persistence qualification;
-8. Bedroom rest and dreams capstone.
+1. house damage and condition transitions;
+2. smoke, damp, and Cellar-water propagation;
+3. thief burglary and display disturbance;
+4. creature and follower intrusion;
+5. mirror, shadow, ritual, and cursed-object effects;
+6. meaningful repair without chores;
+7. vulnerability gameplay and persistence;
+8. house vulnerability capstone.
 
-### Train 10 product boundary
+### Train 11 product boundary
 
-Rest is optional, not a mandatory cycle. It may advance legitimate queues, authored overnight changes, and bounded temporary recovery, while permanent consequences remain permanent. Discovery-driven dreams may reflect earned objects, actors, rituals, follies, and unresolved evidence without becoming solution hints.
+Let specific underground actions and carried hazards produce a small authored set of home consequences. Reuse canonical actors, objects, routes, timers, museum records, Cellar state, Bedroom rest, and Attic evidence.
 
-Do not build a sleep meter, timer-skipping exploit, event-farming loop, full health reset, generic procedural dream generator, mandatory bedtime, parallel score, or sub-bead hierarchy.
+Do not build universal physics, routine housekeeping, durability meters, random raids, endless repairs, duplicate villains, survival-game maintenance, or a sub-bead hierarchy.
 
-## Later trains
+## Final train
 
-- Train 11 — house vulnerability;
 - Train 12 — completed expedition archive.

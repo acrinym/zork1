@@ -19,6 +19,7 @@
 | Attic NPC Dossiers Glulx | `.ulx` | Release 1225 / `260729` | Train 7 complete |
 | Attic Area Case Files Glulx | `.ulx` | Release 1226 / `260729` | Train 8 complete |
 | Attic Playback Glulx | `.ulx` | Release 1227 / `260729` | Train 9 complete |
+| House Rest and Dreams Glulx | `.ulx` | Release 1228 / `260730` | Train 10 complete |
 
 ## Locked House of Records lineage
 
@@ -33,50 +34,54 @@
 | 1225 | Attic NPC dossiers | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` |
 | 1226 | Attic area case files | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` |
 | 1227 | Attic playback | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` |
+| 1228 | House rest and dreams | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` |
 
-## Release 1227 — Attic Playback
+## Release 1228 — House Rest and Dreams
 
 Qualified behavior:
 
-1. seven exact physical playback records in the canonical Attic archive;
-2. twelve unique consequential event slots with duplicate suppression;
-3. normalized printer labels rather than claimed verbatim player commands;
-4. contextual cassette narration with labels, pauses, hiss, and environmental cues;
-5. scene navigation by incident, actor, place, and first-capture chronology;
-6. bounded forensic event tokens rather than an unlimited raw parser log;
-7. production proof that unearned Dam, Hades, actor, synthesis, and forensic playback remains absent;
-8. non-turning playback with exact location, score, active timer, actor, parser-pronoun, and custody checks;
-9. ordinary parser-valid `TAKE`, `READ`, `PLAY`, `REVIEW`, and `FILE` routes;
-10. native save/corrupt/restore of event masks, order, indexes, records, and custody;
-11. no time travel, actor simulation, object repair, route change, score mutation, timer advancement, or merged expedition history.
+1. one reachable upper-floor Bedroom connected to the canonical Living Room;
+2. original `WAIT` / `Z` retained through canonical `V-WAIT`;
+3. parser-valid `SLEEP`, `REST`, `NAP`, `DOZE`, `LIE DOWN`, and no-object `WAKE`;
+4. unsafe sleep refused for active clothing fire, tied legs, or a hostile Bedroom actor;
+5. canonical clock advancement one step at a time with immediate interruption;
+6. one-step temporary-strength recovery plus bounded transient-state clearing;
+7. unchanged evidence produces a one-turn shallow doze rather than recovery farming;
+8. deterministic dreams derived only from already-earned evidence;
+9. exact physical `REST-DREAM-01` and `REST-OVERNIGHT-02` records;
+10. deterministic reuse of existing mail, visitor, theft, water, smoke, custody, and archive state;
+11. production proof that unearned Hades, actor, folly, museum, and other dream content remains absent;
+12. parser-valid Attic review and filing with non-turning integrity checks;
+13. native save/corrupt/restore of cycles, signatures, dream bits, wake evidence, recovery, filing, notices, and custody;
+14. no mandatory sleep cycle, timer skip, repeated-healing exploit, predictive dream, object resurrection, or Train 11 controller.
 
-GitHub Actions run `30493076701` passed the complete Release `1227` qualification.
+GitHub Actions run `30547861041` passed the complete Release `1228` qualification.
 
 ## House of Records status
 
 - 12 trains;
 - 96 beads;
-- Trains 1–9 complete: 72 closed;
-- Trains 10–12 planned: 24 open;
+- Trains 1–10 complete: 80 closed;
+- Trains 11–12 planned: 16 open;
 - no sub-beads.
 
 ## Validation coverage
 
 | Coverage | Proof |
 |---|---|
-| Base identity | Exact Release 1226 artifact SHA before staging |
-| Production delta | Fail-closed five-path changed set |
-| Artifact identity | 307,712 bytes / `0xfb794f11` / exact SHA-256 |
-| Parser behavior | Native interpreter routes for all seven physical records |
-| Capture truth | Twelve unique consequential events; routine and unearned traffic excluded |
-| Playback integrity | Location, score, timer, actors, pronoun, and custody remain unchanged |
-| No premature reveal | Early-house smoke rejects unearned playback content |
-| Persistence | Deliberate state/media corruption followed by native `SAVE` / `RESTORE` |
-| Test isolation | Setup, mutation, and report verbs excluded from production |
-| Roadmap integrity | 12 trains / 96 unique beads / 72 closed / 24 open |
+| Base identity | Exact Release 1227 artifact SHA before staging |
+| Production delta | Fail-closed eight-path changed set |
+| Artifact identity | 316,160 bytes / `0x3505b8ad` / exact SHA-256 |
+| Parser behavior | Original waiting plus ordinary Bedroom rest, record review, and filing routes |
+| Clock truth | Canonical `CLOCKER` steps and interruption, not a parallel time controller |
+| Recovery boundary | One negative strength step and bounded transient clearing only when evidence changes |
+| Dream truth | Finite deterministic earned-evidence dreams; unearned content absent |
+| Persistence | Deliberate state, record, notice, recovery, and custody corruption followed by native restore |
+| Test isolation | Setup, discovery, mutation, and report verbs excluded from production |
+| Roadmap integrity | 12 trains / 96 unique beads / 80 closed / 16 open |
 
 ## Next dedicated work
 
-`onyx_zork_house_rest_and_dreams`
+`onyx_zork_house_vulnerability`
 
-Train 10 builds optional Bedroom rest, bounded recovery, discovery-driven dreams, deterministic overnight consequences, authored interruptions, and native persistence without timer exploits or mandatory sleep cycles.
+Train 11 builds bounded house conditions, smoke/damp propagation, canonical thief burglary, selected creature intrusion, supernatural effects, meaningful repair, archive evidence, and native persistence without survival-game maintenance.

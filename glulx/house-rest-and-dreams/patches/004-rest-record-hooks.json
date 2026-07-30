@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1228-REST-RECORD-HOOKS",
+  "path": "shadow_logic.zil",
+  "description": "Route Bedroom archive records before older archive layers and keep record review non-turning",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t      (<VERB? SHADOW-FOLLIES SHADOW-LIGHTS SHADOW-WORDS>\n\t       <RTRUE>)\n\t      (<AND <PLAYBACK-RECORD? ,PRSO>\n\t            <VERB? READ EXAMINE PLAY ARCHIVE-REVIEW ARCHIVE-SHOW ARCHIVE-CROSS ARCHIVE-FILE>>\n\t       <RTRUE>)>",
+      "new": "\t      (<VERB? SHADOW-FOLLIES SHADOW-LIGHTS SHADOW-WORDS>\n\t       <RTRUE>)\n\t      (<AND <REST-RECORD? ,PRSO>\n\t            <VERB? READ EXAMINE ARCHIVE-REVIEW ARCHIVE-SHOW ARCHIVE-CROSS ARCHIVE-FILE>>\n\t       <RTRUE>)\n\t      (<AND <PLAYBACK-RECORD? ,PRSO>\n\t            <VERB? READ EXAMINE PLAY ARCHIVE-REVIEW ARCHIVE-SHOW ARCHIVE-CROSS ARCHIVE-FILE>>\n\t       <RTRUE>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<PLAYBACK-ACTION-HOOK> <RTRUE>)\n\t      (<AREA-ACTION-HOOK> <RTRUE>)",
+      "new": "\t      (<HOUSE-REST-ACTION-HOOK> <RTRUE>)\n\t      (<PLAYBACK-ACTION-HOOK> <RTRUE>)\n\t      (<AREA-ACTION-HOOK> <RTRUE>)"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1228-REST-RECAP",
+  "path": "assistance.zil",
+  "description": "Append Bedroom rest, dream, recovery, and overnight receipts after playback",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<COND (<AREA-RECAP> <SET SEEN T>)>\n\t<COND (<PLAYBACK-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>",
+      "new": "\t<COND (<AREA-RECAP> <SET SEEN T>)>\n\t<COND (<PLAYBACK-RECAP> <SET SEEN T>)>\n\t<COND (<REST-RECAP> <SET SEEN T>)>\n\t<COND (<NOT .SEEN>"
+    }
+  ]
+}

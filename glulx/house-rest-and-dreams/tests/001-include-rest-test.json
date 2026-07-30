@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1228-REST-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only rest setup and corruption verbs after the production Bedroom layer",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"house_rest_and_dreams\" T>",
+      "new": "<INSERT-FILE \"house_rest_and_dreams\" T>\n<INSERT-FILE \"house_rest_and_dreams_test\" T>"
+    }
+  ]
+}

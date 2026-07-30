@@ -1,0 +1,172 @@
+name: Zork I Glulx House Rest and Dreams
+
+on:
+  push:
+    branches:
+      - agent/glulx-house-rest-and-dreams
+    paths:
+      - "glulx/house-rest-and-dreams/**"
+      - "glulx/attic-playback/**"
+      - "glulx/attic-area-case-files/**"
+      - "glulx/attic-npc-dossiers/**"
+      - "glulx/attic-archive-core/**"
+      - "glulx/house-correspondence-visitors/**"
+      - "glulx/house-cellar-threshold/**"
+      - "glulx/house-kitchen-laboratory/**"
+      - "glulx/living-room-museum/**"
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-house-rest-and-dreams.yml"
+  pull_request:
+    paths:
+      - "glulx/house-rest-and-dreams/**"
+      - "glulx/attic-playback/**"
+      - "glulx/attic-area-case-files/**"
+      - "glulx/attic-npc-dossiers/**"
+      - "glulx/attic-archive-core/**"
+      - "glulx/house-correspondence-visitors/**"
+      - "glulx/house-cellar-threshold/**"
+      - "glulx/house-kitchen-laboratory/**"
+      - "glulx/living-room-museum/**"
+      - "glulx/house-state-foundation/**"
+      - "glulx/room-density/**"
+      - "glulx/material-consequences/**"
+      - "glulx/ritual-resonance/**"
+      - "glulx/dam-mechanisms/**"
+      - "glulx/absurd-alternates/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/reactive-surface/**"
+      - "glulx/assistance/**"
+      - "glulx/optimized/**"
+      - "glulx/tools/**"
+      - ".github/workflows/glulx-house-rest-and-dreams.yml"
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  ZORK_GLULX_TREE: 02b34128649bbb7fcddf99136e03fb67c032b089
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  REST_SERIAL: "260730"
+  REST_TEST_SERIAL: "990328"
+  REST_FILE: zork1-glulx-house-rest-and-dreams.ulx
+
+jobs:
+  qualify-glulx-house-rest-and-dreams:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check out pinned Tara Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+      - name: Check out pinned Glulx ZILF source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+      - name: Install build and interpreter prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+          python -m pip install pexpect
+      - name: Qualify Release 1228 rest and dreams candidate
+        id: qualify
+        run: bash glulx/house-rest-and-dreams/qualify.sh
+      - name: Publish qualification receipt
+        if: always() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          QUALIFY_OUTCOME: ${{ steps.qualify.outcome }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          {
+            echo "## Train 10 automated qualification"
+            echo
+            echo "Head: \`${GITHUB_SHA}\`"
+            echo "Outcome: **${QUALIFY_OUTCOME}**"
+            if test -f glulx/build/house-rest-and-dreams/story-report.json; then
+              echo
+              echo '```json'
+              cat glulx/build/house-rest-and-dreams/story-report.json
+              echo '```'
+            fi
+            if test -f glulx/build/house-rest-and-dreams/QUALIFICATION-RECEIPT.json; then
+              echo
+              echo "Native Bedroom qualification receipt was produced, including clock advancement, interruption, bounded recovery, anti-farming, dreams, filing, and save/corrupt/restore."
+            else
+              echo
+              echo "No final qualification receipt was produced; inspect the failed workflow step and uploaded logs."
+            fi
+          } > "$RUNNER_TEMP/train10-comment.md"
+          gh pr comment "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/train10-comment.md"
+      - name: Upload candidate artifact and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-house-rest-and-dreams-candidate
+          path: |
+            glulx/build/house-rest-and-dreams/zork1-glulx-house-rest-and-dreams.ulx
+            glulx/build/house-rest-and-dreams/zork1-glulx-house-rest-and-dreams.asm
+            glulx/build/house-rest-and-dreams/story-report.json
+            glulx/build/house-rest-and-dreams/QUALIFICATION-RECEIPT.json
+            glulx/build/house-rest-and-dreams/SERIAL-NORMALIZATION.json
+            glulx/build/house-rest-and-dreams/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/house-rest-and-dreams/src/STAGING-RECEIPT.json
+            glulx/build/house-rest-and-dreams/smell-report.json
+            glulx/build/house-rest-and-dreams/house-rest-and-dreams-transcript.txt
+            glulx/build/house-rest-and-dreams/house-rest-and-dreams-persistence-transcript.txt
+            glulx/build/house-rest-and-dreams/*.sav
+            glulx/build/house-rest-and-dreams/*-compile.log
+            glulx/build/house-rest-and-dreams/*-build.log
+            glulx/build/house-rest-and-dreams/*-assemble.log
+            glulx/build/house-rest-and-dreams/glazer-version.txt
+            glulx/house-rest-and-dreams/patch-series.json
+            glulx/house-rest-and-dreams/tests/house_rest_and_dreams_persistence.json
+          if-no-files-found: warn

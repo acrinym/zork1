@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1228-BEDROOM-ROOM",
+  "path": "1dungeon.zil",
+  "description": "Add one reachable upper-floor Bedroom above the canonical Living Room",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (EAST TO KITCHEN)\n      (WEST TO STRANGE-PASSAGE IF MAGIC-FLAG ELSE \"The door is nailed shut.\")",
+      "new": "      (EAST TO KITCHEN)\n      (UP TO BEDROOM)\n      (WEST TO STRANGE-PASSAGE IF MAGIC-FLAG ELSE \"The door is nailed shut.\")"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (GLOBAL STAIRS)\n      (PSEUDO \"NAILS\" NAILS-PSEUDO \"NAIL\" NAILS-PSEUDO)>",
+      "new": "      (GLOBAL STAIRS)\n      (PSEUDO \"NAILS\" NAILS-PSEUDO \"NAIL\" NAILS-PSEUDO)>\n\n<ROOM BEDROOM\n      (IN ROOMS)\n      (DESC \"Bedroom\")\n      (DOWN TO LIVING-ROOM)\n      (ACTION HOUSE-REST-BEDROOM-FCN)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL STAIRS WHITE-HOUSE)>"
+    }
+  ]
+}
