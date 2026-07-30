@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1226-AREA-HOOKS",
+  "path": "shadow_logic.zil",
+  "description": "Advance regional evidence after NPC dossiers and route area case-file actions before the underlying archive handlers",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<NPC-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<NPC-ADVANCE>\n\t<AREA-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<NPC-ACTION-HOOK> <RTRUE>)\n\t      (<ARCHIVE-ACTION-HOOK> <RTRUE>)\n\t      (<MAIL-ACTION-HOOK> <RTRUE>)",
+      "new": "\t      (<AREA-ACTION-HOOK> <RTRUE>)\n\t      (<NPC-ACTION-HOOK> <RTRUE>)\n\t      (<ARCHIVE-ACTION-HOOK> <RTRUE>)\n\t      (<MAIL-ACTION-HOOK> <RTRUE>)"
+    }
+  ]
+}

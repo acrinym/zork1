@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1226-AREA-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only area setup, mutation, and reporting verbs after every production module",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"attic_area_case_files\" T>",
+      "new": "<INSERT-FILE \"attic_area_case_files\" T>\n<INSERT-FILE \"attic_area_case_files_test\" T>"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1226-AREA-CATALOG",
+  "path": "attic_archive_core.zil",
+  "description": "Append earned regional case files after the existing player-specific actor records",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <NPC-CATALOG-LIST>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>",
+      "new": "    <NPC-CATALOG-LIST>\n    <AREA-CATALOG-LIST>\n    <ARCHIVE-PUT ,AS-EVENT-CATALOG T>\n    <RTRUE>>"
+    }
+  ]
+}

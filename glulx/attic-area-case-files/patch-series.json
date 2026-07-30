@@ -1,0 +1,56 @@
+{
+  "edition": "Unofficial Attic Area Case Files Glulx",
+  "release": 1226,
+  "serial": "260729",
+  "upstream_commit": "1ada70e58ac4933446b907d67949d9cab3119c0e",
+  "upstream_tree": "02b34128649bbb7fcddf99136e03fb67c032b089",
+  "base_manifest": "../attic-npc-dossiers/patch-series.json",
+  "base_release": 1225,
+  "base_artifact_sha256": "e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10",
+  "expected_artifact": {
+    "file": "zork1-glulx-attic-area-case-files.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 298496,
+    "checksum_hex": "0xc6b449e8",
+    "sha256": "9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6"
+  },
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1225 layer, assign Release 1226, and load earned regional case files"
+    },
+    {
+      "path": "attic_area_case_files.zil",
+      "source": "overrides/attic_area_case_files.zil",
+      "allow_new": true,
+      "description": "Add partial and complete Dam, Hades, House, forest, underground, and retrospective synthesis files"
+    }
+  ],
+  "patches": [
+    "patches/001-area-hooks.json",
+    "patches/002-area-catalog.json",
+    "patches/003-area-recap.json"
+  ],
+  "expected_changed_paths": [
+    "assistance.zil",
+    "attic_archive_core.zil",
+    "attic_area_case_files.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "preserved_canonical_state": [
+    "rooms, routes, mechanisms, actors, objects, score, timers, randomness, and parser remain authoritative",
+    "case files derive only from individually retained player-earned observations and existing archive records",
+    "incomplete and missing evidence remains visibly incomplete or redacted",
+    "retrospective synthesis unlocks only after all five regional case contracts are complete",
+    "native save and restore preserve exact case evidence, completion bits, and physical custody"
+  ],
+  "excluded_scope": [
+    "checklist HUD, omniscient region encyclopedia, unseen solution hints, or automatic completion",
+    "duplicate puzzle controllers, route changes, object repair, actor mutation, parallel score, or auto-solves",
+    "raw command logs, merged expedition histories, reconstructed missing evidence, or modern filesystem behavior",
+    "sub-beads or a parallel planning hierarchy"
+  ]
+}
