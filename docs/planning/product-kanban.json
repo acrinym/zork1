@@ -34,12 +34,13 @@
         "acceptance": [
           "staging changes exactly gsyntax.zil and zork1.zil",
           "each selected phrase reaches an existing canonical action",
+          "Release 1211 bounded USE OBJECT assistance remains unchanged",
           "Glulxe transcript proves examination, spatial inspection, plugging, and lamp state changes",
           "ZILF and Glazer produce a checksum-valid Release 1232 artifact",
           "the first hosted artifact identity is locked and reproduced before merge"
         ],
         "boundaries": [
-          "no generic USE verb",
+          "no new or expanded generic USE routing",
           "no guessed puzzle solution",
           "no new parser global or state",
           "no new action routine or response prose",
