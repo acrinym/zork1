@@ -74,11 +74,16 @@ assert stage['base']['artifact_sha256'] == '2cffc734dbfbe346d0ec185c6962d927bc04
 assert stage['changed_paths'] == ['museum_intake_first_gallery.zil', 'zork1.zil']
 assert not smell['errors']
 assert not [item for item in smell['includes'] if not item['resolved']]
+assert overlap['passed'] is True
+assert overlap['source_text_disclosed'] is False
 assert overlap['threshold_violations'] == []
-assert overlap['rare_match_violations'] == []
-assert receipt['profile_id'] == 'zork1-parser-refusal'
-assert receipt['overlap']['threshold_violations'] == 0
-assert receipt['overlap']['rare_match_violations'] == 0
+assert overlap['rare_phrase_matches'] == []
+assert receipt['authority_profile'] == 'zork1-parser-refusal'
+originality = receipt['originality_check']
+assert originality['passed'] is True
+assert originality['source_text_disclosed'] is False
+assert originality['threshold_violation_count'] == 0
+assert originality['rare_phrase_match_count'] == 0
 module = (source / 'museum_intake_first_gallery.zil').read_text()
 for required in (
     '<SYNTAX EXHIBIT OBJECT (MANY HELD HAVE) = V-MUSEUM-EXHIBIT>',
