@@ -32,6 +32,7 @@ class CorpusCausalWarningTests(unittest.TestCase):
     def test_module_uses_canonical_flood_authorities(self) -> None:
         module = (TRAIN / "overrides/corpus_causal_warning.zil").read_text()
         self.assertNotIn("<GLOBAL WATER-LEVEL", module)
+        self.assertNotIn("<GLOBAL MAINT-FLOOD-", module)
         self.assertNotIn("<ROUTINE I-MAINT-ROOM", module)
         self.assertNotIn("<OBJECT LEAK", module)
         self.assertNotIn("<QUEUE CORPUS", module)
@@ -46,14 +47,12 @@ class CorpusCausalWarningTests(unittest.TestCase):
         ):
             self.assertIn(token, module)
 
-    def test_warning_chain_is_bounded_and_state_driven(self) -> None:
+    def test_warning_chain_uses_exact_canonical_crossings(self) -> None:
         module = (TRAIN / "overrides/corpus_causal_warning.zil").read_text()
-        self.assertEqual(module.count("<SETG MAINT-FLOOD-WARNING-STAGE 1>"), 1)
-        self.assertEqual(module.count("<SETG MAINT-FLOOD-WARNING-STAGE 2>"), 1)
-        self.assertEqual(module.count("<SETG MAINT-FLOOD-WARNING-STAGE 3>"), 1)
-        self.assertIn("<G? ,WATER-LEVEL 2>", module)
-        self.assertIn("<G? ,WATER-LEVEL 4>", module)
-        self.assertIn("<G? ,WATER-LEVEL 10>", module)
+        self.assertNotIn("<SETG MAINT-FLOOD-", module)
+        self.assertEqual(module.count("<EQUAL? ,WATER-LEVEL 3>"), 1)
+        self.assertEqual(module.count("<EQUAL? ,WATER-LEVEL 5>"), 1)
+        self.assertEqual(module.count("<EQUAL? ,WATER-LEVEL 11>"), 1)
 
     def test_patch_couples_only_existing_canonical_hooks(self) -> None:
         patch = json.loads(
@@ -114,12 +113,10 @@ class CorpusCausalWarningTests(unittest.TestCase):
             self.assertTrue(receipt["originality_check"]["passed"])
             self.assertTrue(overlap["passed"])
             self.assertEqual(
-                receipt["originality_check"]["threshold_violation_count"],
-                0,
+                receipt["originality_check"]["threshold_violation_count"], 0
             )
             self.assertEqual(
-                receipt["originality_check"]["rare_phrase_match_count"],
-                0,
+                receipt["originality_check"]["rare_phrase_match_count"], 0
             )
             self.assertFalse(
                 receipt["originality_check"]["source_text_disclosed"]
@@ -132,8 +129,7 @@ class CorpusCausalWarningTests(unittest.TestCase):
         entrypoint = (TRAIN / "overrides/zork1.zil").read_text()
         self.assertIn("<CONSTANT RELEASEID 1231>", entrypoint)
         self.assertIn(
-            '<INSERT-FILE "completed_expedition_archive" T>',
-            entrypoint,
+            '<INSERT-FILE "completed_expedition_archive" T>', entrypoint
         )
         self.assertTrue(
             entrypoint.rstrip().endswith(
@@ -150,8 +146,7 @@ class CorpusCausalWarningTests(unittest.TestCase):
         current = board["lanes"]["current"]
         self.assertEqual(len(current), 1)
         self.assertEqual(
-            current[0]["train_id"],
-            "zork-corpus-causal-warning-1231",
+            current[0]["train_id"], "zork-corpus-causal-warning-1231"
         )
         for lane, cards in board["lanes"].items():
             for card in cards:
