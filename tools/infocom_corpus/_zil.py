@@ -131,7 +131,7 @@ def lex_zil(text: str) -> Iterator[Token]:
                 i += 2
                 while i < size:
                     current = text[i]
-                    if current in {"!", "\\"} and i + 1 < size and text[i + 1] == '"':
+                    if current == "\\" and i + 1 < size and text[i + 1] == '"':
                         advance(text[i:i + 2])
                         i += 2
                         continue
@@ -195,7 +195,7 @@ def lex_zil(text: str) -> Iterator[Token]:
                     advance('"')
                     i += 1
                     break
-                if current in {"!", "\\"} and i + 1 < size and text[i + 1] == '"':
+                if current == "\\" and i + 1 < size and text[i + 1] == '"':
                     pieces.append('"')
                     segment = text[i:i + 2]
                     advance(segment)
