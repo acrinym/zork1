@@ -12,13 +12,13 @@ The first corpus consumer is not a prose demo. It is the existing Flood Control 
 
 ## Coupled gameplay
 
-- Pushing the canonical blue button starts the canonical leak and records the visible west/south escape affordance.
-- The existing `I-MAINT-ROOM` event still increments `WATER-LEVEL`; a bounded helper emits warnings at three depth-aligned thresholds and never owns time or water state.
+- Pushing the canonical blue button starts the canonical leak and reports the visible west/south escape affordance.
+- The existing `I-MAINT-ROOM` event still increments `WATER-LEVEL`; a bounded helper speaks only at exact levels 3, 5, and 11.
 - Examining the canonical `LEAK` identifies the east-wall pipe opening and one physical affordance without naming PUTTY or spelling out a command.
 - The existing PUTTY route still calls `FIX-MAINT-LEAK`; Release 1231 reports the pipe shudder and draining water.
 - The terminal Maintenance Room branch still calls `JIGS-UP`; the new death line explains the failed escape and follows the earned warning chain.
 
-The only new gameplay state is `MAINT-FLOOD-WARNING-STAGE`. Three unused cause/examination/repair history flags found during review were removed rather than retained as speculative state.
+Release 1231 adds **zero flood globals**. GitHub-hosted ZILF proved that Release 1230 already occupied all 236 available globals, so the earlier warning-stage variable was removed. Monotonic canonical `WATER-LEVEL` crossings make each warning occur once without shadow state, another timer, or another controller.
 
 ## Corpus coupling
 
@@ -46,7 +46,7 @@ All four candidates pass:
 Exactly three staged paths may change:
 
 - `1actions.zil` — five narrow canonical hook replacements;
-- `corpus_causal_warning.zil` — one bounded warning-stage global and prose helpers;
+- `corpus_causal_warning.zil` — zero-state warning, inspection, repair, and death prose helpers;
 - `zork1.zil` — Release 1231 identity and final module include.
 
 ## Qualification
@@ -54,33 +54,23 @@ Exactly three staged paths may change:
 Direct qualification covers:
 
 - exact Release 1230 base identity;
-- canonical flood ownership and absence of a parallel clock/water state;
-- exactly one new state global;
-- three bounded, depth-consistent warning stages;
+- canonical flood ownership and absence of a parallel clock, water state, or new flood global;
+- three exact, depth-consistent `WATER-LEVEL` crossings;
 - exact hook count and expected production paths;
 - candidate prose equality with ZIL strings;
-- candidate hashes, corpus digest, passing overlap evidence, and receipt authorities;
+- candidate hashes, word counts, corpus digest, passing overlap evidence, and receipt authorities;
 - operational kanban lanes and DONE proof;
-- an executable ZILF → serial normalization → Glazer → ULX verification route.
+- shell syntax and an executable ZILF → serial normalization → Glazer → ULX verification route.
 
-Local requalification after review fixes:
+GitHub-hosted qualification uses:
 
-```text
-python -m unittest discover -s tests -p 'test_corpus_causal_warning*.py' -v
-Ran 9 tests
-OK
+- pinned Zork I Glulx source `1ada70e58ac4933446b907d67949d9cab3119c0e`;
+- pinned Glulx ZILF `45c60f1e37651f266ac92d49ae01748bb4909fa5`;
+- checksum-verified Glazer 1.2.0;
+- Python 3.12 and .NET 10.
 
-python -m py_compile glulx/corpus-causal-warning/stage.py tests/test_corpus_causal_warning*.py
-OK
-
-bash -n glulx/corpus-causal-warning/qualify.sh
-OK
-```
-
-All committed JSON manifests, kanban data, and corpus evidence parse successfully.
-
-The complete `qualify.sh` stages Release 1231, runs the repository ZIL smell checker, compiles with a local ZILF checkout, normalizes serial `260731`, assembles with Glazer, verifies the ULX checksum, and writes an artifact qualification receipt. This environment does not contain `dotnet`, ZILF, or Glazer, so no Release 1231 `.ulx` checksum is claimed or fabricated here. Missing tools fail the full route explicitly rather than producing a partial pass.
+The workflow uploads the compiled ULX, assembly, staging receipt, corpus evidence, smell report, serial receipt, artifact report, final qualification receipt, and build logs. It is direct product CI, not a reusable audit framework.
 
 ## Explicit exclusions
 
-No automatic escape, automatic repair, alternate water meter, generic hazard engine, survival loop, hidden command solution, House bead reopening, archive mutation, S.T.A.L.K.E.R. mixing, Mara, museum intake, cuisine, Zork Plus, sub-beads, or recursive audit system.
+No automatic escape, automatic repair, alternate water meter, generic hazard engine, survival loop, hidden command solution, House bead reopening, archive mutation, S.T.A.L.K.E.R. mixing, Mara, museum intake, cuisine, Zork Plus, sub-beads, recursive audit system, or shared staging-framework refactor.
