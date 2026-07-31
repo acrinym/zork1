@@ -63,7 +63,7 @@ python -m tools.infocom_corpus profile \
 python -m unittest discover -s tests -p 'test_infocom_corpus.py' -v
 ```
 
-The extractor recursively follows the selected `INSERT-FILE` chain. It resolves historical case differences, computes SHA-256 for every source file, records line and byte spans, and classifies strings found in player-visible ZIL forms such as `DESC`, `LDESC`, `FDESC`, and `TELL`. Standalone source comments and compiler banners are excluded.
+The extractor recursively follows the selected `INSERT-FILE` chain. It resolves historical case differences, computes SHA-256 for every source file, records line and true UTF-8 byte spans, and classifies strings found in player-visible ZIL forms such as `DESC`, `LDESC`, `FDESC`, and `TELL`. Standalone source comments and compiler banners are excluded.
 
 The local JSONL contains source text because linguistic analysis requires it. The safe summary contains record hashes, source paths, source hashes, line references, surface classes, authority profiles, and aggregate counts—but no prose.
 
@@ -79,16 +79,17 @@ Fingerprint a local artifact without copying its text into Git:
 
 ```bash
 python -m tools.infocom_corpus fingerprint-local \
+  --repo-root . \
   --artifact-id infocom-zork1-greybox-manual-en-us \
   --source .local/infocom-corpus/sources/zork1-greybox-manual.pdf \
   --page-count 24 \
-  --page-reference 'p. 7: command examples' \
+  --page-reference 'p. 7 / block:command-examples' \
   --out .local/infocom-corpus/fingerprints/zork1-greybox-manual.json
 ```
 
-The output contains SHA-256, byte size, page count, and page references. It does not contain the file path or document text.
+The source must resolve below `.local/infocom-corpus/`. Page references are structural locators such as `p. 7`, `line 42`, `surface:cover`, or `block:command-examples`; quoted source wording is rejected. The output contains SHA-256, byte size, page count, and those structural references. It does not contain the file path or document text.
 
-Correction records for protected artifacts are hash-and-location records. They may identify a page, surface, block, or source line, but raw observed/corrected wording is rejected unless the artifact has verified repository full-text rights.
+Correction records for protected artifacts are hash-and-location records. They must identify at least one concrete page, surface, block, or source line. Raw observed/corrected wording is rejected unless the artifact has verified repository full-text rights.
 
 ```bash
 python -m tools.infocom_corpus validate-corrections \
@@ -127,7 +128,7 @@ python -m tools.infocom_corpus overlap \
 
 The validator checks:
 
-- longest contiguous token overlap;
+- every contiguous source overlap above the configured threshold, including ties and matches hidden behind an allowed longer phrase;
 - uncommon five-token phrase matches containing meaningful content;
 - profile-specific allowed canonical phrases.
 
@@ -147,7 +148,7 @@ python -m tools.infocom_corpus receipt \
   --out path/to/new-prose.style-receipt.json
 ```
 
-The receipt records the candidate hash, actual authorities, excluded voices, retained traits, intentional departures, corpus digest, overlap thresholds, longest overlap, rare-match count, and reviewer. It cannot be issued when overlap validation fails.
+A receipt must name at least one intentional departure and carry a valid canonical corpus digest. It records the candidate hash, actual authorities, excluded voices, retained traits, departures, overlap thresholds, zero threshold violations, zero rare-match violations, and reviewer. It cannot be issued when overlap validation fails.
 
 ## Contract for later product trains
 
