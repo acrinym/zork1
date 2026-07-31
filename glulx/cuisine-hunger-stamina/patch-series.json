@@ -1,0 +1,51 @@
+{
+  "edition": "Unofficial Cuisine, Hunger, and Stamina Glulx",
+  "release": 1235,
+  "serial": "260731",
+  "base_manifest": "../mara-companion/patch-series.json",
+  "base_release": 1234,
+  "base_artifact_sha256": "38b966f47d771e0f5ae6229ff6a7542830ce6e365a3d2291f764581ae0b64a17",
+  "expected_artifact": {
+    "file": "zork1-glulx-cuisine-hunger-stamina.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "overrides": [
+    {
+      "path": "cuisine_hunger_stamina.zil",
+      "source": "overrides/cuisine_hunger_stamina.zil",
+      "allow_new": true,
+      "description": "Add authored meal combinations, bounded exertion strain, rest, appetite status, and prepared-meal recovery"
+    },
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1234 layer, load cuisine gameplay, and assign Release 1235"
+    }
+  ],
+  "patches": [
+    "patches/001-cuisine-hooks.json"
+  ],
+  "expected_changed_paths": [
+    "cuisine_hunger_stamina.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "the real prepared lunch can become an authored garlic-pepper meal using the real sliced garlic",
+    "warming and seasoning produce stronger but still bounded recovery outcomes",
+    "selected exertion creates strain and eventually situational hunger rather than a turn-based survival clock",
+    "REST recovers breath while prepared food fully clears accumulated strain",
+    "CHECK APPETITE reports bounded appetite, strain, and remaining meal-supported exertion"
+  ],
+  "boundaries": [
+    "no hunger increase merely because turns pass",
+    "no thirst meter, real-time decay, starvation death, or permanent debuff",
+    "no universal crafting grid or arbitrary ingredient combinations",
+    "no duplicate lunch, garlic, meal, or inventory object",
+    "no automatic puzzle completion or food-generated score",
+    "no generic stamina requirement across every action",
+    "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
+  ]
+}
