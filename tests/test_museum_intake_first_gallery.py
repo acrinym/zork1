@@ -26,6 +26,14 @@ class MuseumIntakeFirstGalleryTests(unittest.TestCase):
             manifest["expected_changed_paths"],
             ["museum_intake_first_gallery.zil", "zork1.zil"],
         )
+        artifact = manifest["expected_artifact"]
+        self.assertTrue(artifact["locked"])
+        self.assertEqual(artifact["size_bytes"], 338432)
+        self.assertEqual(artifact["checksum_hex"], "0x7065f1fc")
+        self.assertEqual(
+            artifact["sha256"],
+            "4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244",
+        )
 
     def test_intake_uses_existing_museum_surfaces(self) -> None:
         module = (TRAIN / "overrides/museum_intake_first_gallery.zil").read_text()
