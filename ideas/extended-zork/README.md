@@ -38,6 +38,24 @@ The museum is not merely a completion screen. It is a persistent place with room
 
 See [Museum Ecology and Fishing](museum-ecology-and-fishing.md).
 
+## Cuisine, hunger, satiation, and stamina
+
+Food can connect ecology, travel, the museum, regional history, physical exertion, and object provenance without becoming a generic survival layer.
+
+The future system distinguishes:
+
+- slow hunger from immediate exertion;
+- satiation from nutrition and stamina;
+- meaningful preparation from repetitive kitchen busywork;
+- authored contextual effects from interchangeable buff packages;
+- rare specimens as choices between releasing, donating, registering, preserving, selling, researching, or cooking;
+- recipe discovery through experimentation, NPCs, books, museum research, correspondence, and actual preparation;
+- regional cuisine and memorable failures from generic crafting output.
+
+Its governing rule is simple: food must create decisions, discoveries, humor, and stories—not repetitive eating chores or generic survival meters.
+
+See [Cuisine, Hunger, Satiation, and Stamina](cuisine-hunger-satiation-and-stamina.md).
+
 ## Community wish archaeology
 
 [Zork Community Wishes and Lost-Idea Archaeology](community-wishes-and-lost-ideas.md) records direct fan wishes, recurring preferences, historical gaps, abandoned fan-project directions, and modern-player pain points.
