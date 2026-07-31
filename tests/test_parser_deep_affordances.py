@@ -26,6 +26,18 @@ class ParserDeepAffordancesTests(unittest.TestCase):
             manifest["expected_changed_paths"], ["gsyntax.zil", "zork1.zil"]
         )
 
+    def test_hosted_artifact_identity_is_locked(self) -> None:
+        expected = json.loads((TRAIN / "patch-series.json").read_text())[
+            "expected_artifact"
+        ]
+        self.assertTrue(expected["locked"])
+        self.assertEqual(expected["size_bytes"], 337920)
+        self.assertEqual(expected["checksum_hex"], "0x2c2192e1")
+        self.assertEqual(
+            expected["sha256"],
+            "2cffc734dbfbe346d0ec185c6962d927bc046343dccdb53b6a9e4439521b6f2e",
+        )
+
     def test_examination_routes_are_explicit(self) -> None:
         patch = json.loads(
             (TRAIN / "patches/001-parser-intent-routes.json").read_text()
