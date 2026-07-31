@@ -36,6 +36,16 @@ class MuseumIntakeCorpusLexerTests(unittest.TestCase):
         self.assertIn('!\\"', atoms)
         self.assertIn('!,', atoms)
 
+    def test_backslash_escaped_parser_punctuation_is_not_prose(self) -> None:
+        source = '<BUZZ EXCEPT \\. \\, \\" HERE>\n<PRINC "Visible title.">'
+        tokens = list(lex_zil(source))
+        strings = [token.value for token in tokens if token.kind == "string"]
+        atoms = [token.value for token in tokens if token.kind == "atom"]
+        self.assertEqual(strings, ["Visible title."])
+        self.assertIn('\\.', atoms)
+        self.assertIn('\\,', atoms)
+        self.assertIn('\\"', atoms)
+
 
 if __name__ == "__main__":
     unittest.main()
