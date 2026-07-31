@@ -4,7 +4,7 @@
 
 Future-design material for the **Highly Extended Zork** lane.
 
-This document does not create implementation beads, alter the active House of Records train, or claim product progress. The system should be promoted into a complete player-facing train only after Justin explicitly chooses it for implementation.
+This document does not create implementation beads, retroactively alter the completed House of Records program, or claim product progress. The system should be promoted into a complete player-facing train only after Justin explicitly chooses it for implementation.
 
 ## Vision
 
@@ -414,7 +414,7 @@ The kitchen may reveal evidence the museum could not obtain through static inspe
 
 ## House relationship
 
-The House can later support cuisine without turning the active House of Records train into a food train.
+The House can later support cuisine without reopening the completed House of Records program as a food train.
 
 Future possibilities include:
 
@@ -425,7 +425,7 @@ Future possibilities include:
 - damage from smoke, pests, damp, broken windows, power loss, or magical intrusion;
 - preserved meals that carry House chronology into later expeditions.
 
-These are future integration points only. They should not be backfilled into the current House train unless deliberately promoted.
+These are future integration points only. They should not be backfilled into the completed House lineage unless deliberately promoted through a new post-House product train.
 
 ## Parser and presentation
 
@@ -493,7 +493,7 @@ A credible candidate would include:
 11. save/restore continuity;
 12. parser-complete play without optional visual windows.
 
-That train should be designed only after the active House work is closed and Justin explicitly promotes Highly Extended Zork from idea lane to product lane.
+The House dependency is already closed in Release `1230`. This cuisine train should be designed only after Justin explicitly promotes Highly Extended Zork from idea lane to product lane and after the museum and ecology systems provide real ingredients, research, and specimen choices.
 
 ## Promotion rule
 
