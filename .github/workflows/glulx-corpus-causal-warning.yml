@@ -1,0 +1,102 @@
+name: Zork I Glulx Corpus-Coupled Causal Warning
+
+on:
+  push:
+    branches:
+      - agent/corpus-causal-warning-20260731
+    paths:
+      - "glulx/corpus-causal-warning/**"
+      - "tests/test_corpus_causal_warning*.py"
+      - "docs/planning/product-kanban.json"
+      - ".github/workflows/glulx-corpus-causal-warning.yml"
+  pull_request:
+    paths:
+      - "glulx/corpus-causal-warning/**"
+      - "tests/test_corpus_causal_warning*.py"
+      - "docs/planning/product-kanban.json"
+      - ".github/workflows/glulx-corpus-causal-warning.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: glulx-corpus-causal-warning-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+
+jobs:
+  qualify-release-1231:
+    name: qualify-glulx-corpus-causal-warning
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.x"
+
+      - name: Install native build tools
+        run: sudo apt-get update && sudo apt-get install -y build-essential curl
+
+      - name: Check out pinned Zork I Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+
+      - name: Check out pinned Glulx ZILF
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+
+      - name: Prepare pinned Glazer
+        run: |
+          mkdir -p .tooling/glazer-source
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glazer-source.tar.gz" | sha256sum --check
+          tar -xf glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source
+
+      - name: Qualify Release 1231
+        run: bash glulx/corpus-causal-warning/qualify.sh
+
+      - name: Upload Release 1231 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-corpus-causal-warning-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            glulx/build/corpus-causal-warning/zork1-glulx-corpus-causal-warning.ulx
+            glulx/build/corpus-causal-warning/zork1-glulx-corpus-causal-warning.asm
+            glulx/build/corpus-causal-warning/story-report.json
+            glulx/build/corpus-causal-warning/QUALIFICATION-RECEIPT.json
+            glulx/build/corpus-causal-warning/SERIAL-NORMALIZATION.json
+            glulx/build/corpus-causal-warning/smell-report.json
+            glulx/build/corpus-causal-warning/zilf-restore.log
+            glulx/build/corpus-causal-warning/zilf-build.log
+            glulx/build/corpus-causal-warning/zilf-compile.log
+            glulx/build/corpus-causal-warning/glazer-version.txt
+            glulx/build/corpus-causal-warning/glazer-assemble.log
+            glulx/build/corpus-causal-warning/src/STAGING-RECEIPT.json
+            glulx/corpus-causal-warning/patch-series.json
+            glulx/corpus-causal-warning/qualification/corpus-evidence.json
