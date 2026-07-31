@@ -9,10 +9,16 @@
     "artifact_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
     "location": {
       "type": "object",
+      "anyOf": [
+        {"required": ["page"], "properties": {"page": {"type": "integer", "minimum": 1}}},
+        {"required": ["surface"], "properties": {"surface": {"type": "string", "minLength": 1}}},
+        {"required": ["block_id"], "properties": {"block_id": {"type": "string", "minLength": 1}}},
+        {"required": ["line"], "properties": {"line": {"type": "integer", "minimum": 1}}}
+      ],
       "properties": {
         "page": {"type": ["integer", "null"], "minimum": 1},
-        "surface": {"type": ["string", "null"]},
-        "block_id": {"type": ["string", "null"]},
+        "surface": {"type": ["string", "null"], "minLength": 1},
+        "block_id": {"type": ["string", "null"], "minLength": 1},
         "line": {"type": ["integer", "null"], "minimum": 1}
       },
       "additionalProperties": false
