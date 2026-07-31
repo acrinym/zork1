@@ -1,0 +1,42 @@
+{
+  "edition": "Unofficial Parser Deep Affordances Glulx",
+  "release": 1232,
+  "serial": "260731",
+  "base_manifest": "../corpus-causal-warning/patch-series.json",
+  "base_release": 1231,
+  "base_artifact_sha256": "5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609",
+  "expected_artifact": {
+    "file": "zork1-glulx-parser-deep-affordances.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1231 layer and assign Release 1232"
+    }
+  ],
+  "patches": [
+    "patches/001-parser-intent-routes.json"
+  ],
+  "expected_changed_paths": [
+    "gsyntax.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "X and INSPECT reach canonical examination",
+    "EXAMINE UNDER and EXAMINE BEHIND reach canonical spatial inspection",
+    "SWITCH ON and SWITCH OFF reach canonical TURN ON and TURN OFF behavior",
+    "SEAL and MEND reach canonical PLUG behavior and existing missing-tool recovery"
+  ],
+  "boundaries": [
+    "no generic USE verb",
+    "no guessed puzzle solution",
+    "no new parser state or global",
+    "no new action routine when a canonical route already exists",
+    "no synonym dump beyond the selected player intentions",
+    "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
+  ]
+}
