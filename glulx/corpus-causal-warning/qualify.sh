@@ -48,15 +48,12 @@ assert not [item for item in smell['includes'] if not item['resolved']]
 production = '\n'.join(path.read_text(errors='ignore') for path in source.glob('*.zil'))
 assert production.count('<GLOBAL WATER-LEVEL') == 1
 assert production.count('<ROUTINE I-MAINT-ROOM') == 1
-assert production.count('<GLOBAL MAINT-FLOOD-WARNING-STAGE') == 1
-for forbidden in (
-    '<GLOBAL MAINT-FLOOD-CAUSE-SEEN',
-    '<GLOBAL MAINT-FLOOD-LEAK-EXAMINED',
-    '<GLOBAL MAINT-FLOOD-REPAIRED',
-    '<QUEUE CORPUS',
-):
-    assert forbidden not in production
+assert '<GLOBAL MAINT-FLOOD-' not in production
+assert '<SETG MAINT-FLOOD-' not in production
+assert '<QUEUE CORPUS' not in production
 module = (source / 'corpus_causal_warning.zil').read_text()
+for crossing in (3, 5, 11):
+    assert module.count(f'<EQUAL? ,WATER-LEVEL {crossing}>') == 1
 normalized_module = ' '.join(module.split())
 for token in (
     'CORPUS-MAINT-FLOOD-START',
@@ -160,6 +157,7 @@ receipt = {
     },
     'interactive_runtime_transcript': 'not-claimed-by-this-receipt',
     'parallel_flood_controller': False,
+    'new_flood_state': False,
     'automatic_escape_or_repair': False,
     'sub_beads': False,
 }
