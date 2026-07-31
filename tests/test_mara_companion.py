@@ -24,7 +24,11 @@ class MaraCompanionTests(unittest.TestCase):
         )
         self.assertEqual(
             manifest["expected_changed_paths"],
-            ["mara_companion.zil", "zork1.zil"],
+            [
+                "mara_companion.zil",
+                "museum_intake_first_gallery.zil",
+                "zork1.zil",
+            ],
         )
 
     def test_mara_is_a_visible_physical_living_room_actor(self) -> None:
@@ -86,16 +90,32 @@ class MaraCompanionTests(unittest.TestCase):
         self.assertNotIn("<SYNTAX TALK", module)
         self.assertNotIn("<SYNTAX ASK", module)
 
+    def test_museum_specific_classes_precede_generic_treasure(self) -> None:
+        museum = (
+            TRAIN / "overrides/museum_intake_first_gallery.zil"
+        ).read_text()
+        frame = museum.index("<MUSEUM-ACCEPTS? ,MUSEUM-FRAME .OBJ>")
+        weapon = museum.index("<MUSEUM-ACCEPTS? ,MUSEUM-WEAPON-WALL .OBJ>")
+        records = museum.index("<MUSEUM-ACCEPTS? ,MUSEUM-RECORD-SHELF .OBJ>")
+        treasure = museum.index("<G? <GETP .OBJ ,P?TVALUE> 0>")
+        relic = museum.index("<MUSEUM-ACCEPTS? ,MUSEUM-RELIC-STAND .OBJ>")
+        self.assertLess(frame, weapon)
+        self.assertLess(weapon, records)
+        self.assertLess(records, treasure)
+        self.assertLess(treasure, relic)
+        self.assertEqual(museum.count("<RETURN ,MUSEUM-WEAPON-WALL>"), 1)
+        self.assertEqual(museum.count("<RETURN ,TROPHY-CASE>"), 1)
+
     def test_train_does_not_create_generic_companion_machinery(self) -> None:
-        module = (TRAIN / "overrides/mara_companion.zil").read_text()
+        module = (TRAIN / "overrides/mara_companion.zil").read_text().upper()
         for forbidden in (
             "CHATBOT",
             "DIALOGUE-GENERATOR",
             "FOLLOWER-ENGINE",
             "NPC-FRAMEWORK",
-            "BANter".upper(),
+            "BANTER",
         ):
-            self.assertNotIn(forbidden, module.upper())
+            self.assertNotIn(forbidden, module)
 
     def test_entrypoint_retains_release_1233_and_loads_mara_last(self) -> None:
         entrypoint = (TRAIN / "overrides/zork1.zil").read_text()
