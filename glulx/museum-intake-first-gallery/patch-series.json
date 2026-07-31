@@ -1,0 +1,49 @@
+{
+  "edition": "Unofficial Museum Intake and First Gallery Glulx",
+  "release": 1233,
+  "serial": "260731",
+  "base_manifest": "../parser-deep-affordances/patch-series.json",
+  "base_release": 1232,
+  "base_artifact_sha256": "2cffc734dbfbe346d0ec185c6962d927bc046343dccdb53b6a9e4439521b6f2e",
+  "expected_artifact": {
+    "file": "zork1-glulx-museum-intake-first-gallery.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": true,
+    "size_bytes": 338432,
+    "checksum_hex": "0x7065f1fc",
+    "sha256": "4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244"
+  },
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1232 layer, assign Release 1233, and load museum intake"
+    },
+    {
+      "path": "museum_intake_first_gallery.zil",
+      "source": "overrides/museum_intake_first_gallery.zil",
+      "allow_new": true,
+      "description": "Add physical exhibit intake and first-gallery catalog commands over existing museum surfaces"
+    }
+  ],
+  "patches": [],
+  "expected_changed_paths": [
+    "museum_intake_first_gallery.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "EXHIBIT OBJECT selects the correct existing Living Room display",
+    "valuable treasure remains routed through the canonical trophy case and scoring path",
+    "CATALOG MUSEUM and REVIEW MUSEUM project the real current collection",
+    "the displayed canonical object remains the museum record and save-state authority"
+  ],
+  "boundaries": [
+    "no duplicate exhibit objects",
+    "no museum registry global or parallel inventory",
+    "no remote exhibition outside the Living Room",
+    "no bypass of canonical PUT, PUT-ON, trophy scoring, active-field warnings, theft, or save restore",
+    "no omniscient encyclopedia or checklist HUD",
+    "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
+  ]
+}

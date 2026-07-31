@@ -101,7 +101,7 @@ def discover_zil_lineage(repo_root: Path, entrypoint: str) -> list[Path]:
 
 
 def lex_zil(text: str) -> Iterator[Token]:
-    """Yield comments-free ZIL tokens while correctly consuming quote escapes."""
+    """Yield comments-free ZIL tokens while consuming legacy character syntax."""
     line = 1
     column = 1
     i = 0
@@ -125,6 +125,29 @@ def lex_zil(text: str) -> Iterator[Token]:
             i += 1
             continue
         if char == ";":
+            comment_line = line
+            if i + 1 < size and text[i + 1] == '"':
+                advance(text[i:i + 2])
+                i += 2
+                while i < size:
+                    current = text[i]
+                    if current == "\\" and i + 1 < size and text[i + 1] == '"':
+                        advance(text[i:i + 2])
+                        i += 2
+                        continue
+                    if current == "\\" and i + 1 < size:
+                        advance(text[i:i + 2])
+                        i += 2
+                        continue
+                    advance(current)
+                    i += 1
+                    if current == '"':
+                        break
+                else:
+                    raise CorpusError(
+                        f"unterminated ZIL comment string at line {comment_line}"
+                    )
+                continue
             start = i
             while i < size and text[i] != "\n":
                 i += 1
@@ -132,6 +155,26 @@ def lex_zil(text: str) -> Iterator[Token]:
             continue
 
         start_line, start_column, start_offset = line, column, i
+        if char == "\\" and i + 1 < size:
+            value = text[i:i + 2]
+            advance(value)
+            i += 2
+            yield Token(
+                "atom", value, start_line, start_column, start_offset, line, i
+            )
+            continue
+        if char == "!" and i + 1 < size:
+            end = i + 2
+            if text[i + 1] == "\\" and end < size:
+                end += 1
+            value = text[i:end]
+            advance(value)
+            i = end
+            yield Token(
+                "atom", value, start_line, start_column, start_offset, line, i
+            )
+            continue
+
         if char in "<>()":
             kind = {
                 "<": "open-angle", ">": "close-angle",
@@ -152,7 +195,7 @@ def lex_zil(text: str) -> Iterator[Token]:
                     advance('"')
                     i += 1
                     break
-                if current in {"!", "\\"} and i + 1 < size and text[i + 1] == '"':
+                if current == "\\" and i + 1 < size and text[i + 1] == '"':
                     pieces.append('"')
                     segment = text[i:i + 2]
                     advance(segment)
@@ -287,64 +330,68 @@ def extract_player_visible_strings(
         file_sha = _sha256_bytes(raw_bytes)
         source_files.append({"path": relative, "sha256": file_sha, "bytes": len(raw_bytes)})
         stack: list[Frame] = []
-        for token in lex_zil(text):
-            if token.kind in {"open-angle", "open-paren"}:
-                stack.append(Frame(delimiter=token.kind))
-                continue
-            if token.kind in {"close-angle", "close-paren"}:
-                expected = "open-angle" if token.kind == "close-angle" else "open-paren"
-                if stack and stack[-1].delimiter == expected:
-                    stack.pop()
-                else:
-                    for index in range(len(stack) - 1, -1, -1):
-                        if stack[index].delimiter == expected:
-                            del stack[index:]
-                            break
-                continue
-            if token.kind == "atom":
-                if stack:
-                    frame = stack[-1]
-                    atom = token.value.strip().upper()
-                    if atom:
-                        frame.atoms.append(atom)
-                        if frame.head is None:
-                            frame.head = atom
-                continue
-            if token.kind != "string":
-                continue
+        try:
+            tokens = lex_zil(text)
+            for token in tokens:
+                if token.kind in {"open-angle", "open-paren"}:
+                    stack.append(Frame(delimiter=token.kind))
+                    continue
+                if token.kind in {"close-angle", "close-paren"}:
+                    expected = "open-angle" if token.kind == "close-angle" else "open-paren"
+                    if stack and stack[-1].delimiter == expected:
+                        stack.pop()
+                    else:
+                        for index in range(len(stack) - 1, -1, -1):
+                            if stack[index].delimiter == expected:
+                                del stack[index:]
+                                break
+                    continue
+                if token.kind == "atom":
+                    if stack:
+                        frame = stack[-1]
+                        atom = token.value.strip().upper()
+                        if atom:
+                            frame.atoms.append(atom)
+                            if frame.head is None:
+                                frame.head = atom
+                    continue
+                if token.kind != "string":
+                    continue
 
-            context = _nearest_frame(stack, PLAYER_STRING_HEADS)
-            if context is None or context.head is None:
-                continue
-            entity = _nearest_entity(stack)
-            routine = _nearest_routine(stack)
-            surface = classify_surface(context.head, entity, routine)
-            normalized_text = token.value.replace("\r\n", "\n").replace("\r", "\n")
-            if not normalized_text.strip():
-                continue
-            record_hash = _sha256_bytes(normalized_text.encode("utf-8"))
-            record_id = f"{artifact_id}:{relative}:{token.line}:{record_hash[:12]}"
-            records.append({
-                "schema_version": "1.0",
-                "record_id": record_id,
-                "artifact_id": artifact_id,
-                "authority_profile": default_authority_profile(surface),
-                "surface": surface,
-                "text": normalized_text,
-                "text_sha256": record_hash,
-                "source": {
-                    "path": relative,
-                    "file_sha256": file_sha,
-                    "line_start": token.line,
-                    "line_end": token.end_line,
-                    "byte_offset_start": byte_offsets[token.offset],
-                    "byte_offset_end": byte_offsets[token.end_offset],
-                    "context_head": context.head,
-                    "entity_kind": entity.head if entity else None,
-                    "entity_id": entity.name if entity and entity.name else None,
-                    "routine_id": routine,
-                },
-            })
+                context = _nearest_frame(stack, PLAYER_STRING_HEADS)
+                if context is None or context.head is None:
+                    continue
+                entity = _nearest_entity(stack)
+                routine = _nearest_routine(stack)
+                surface = classify_surface(context.head, entity, routine)
+                normalized_text = token.value.replace("\r\n", "\n").replace("\r", "\n")
+                if not normalized_text.strip():
+                    continue
+                record_hash = _sha256_bytes(normalized_text.encode("utf-8"))
+                record_id = f"{artifact_id}:{relative}:{token.line}:{record_hash[:12]}"
+                records.append({
+                    "schema_version": "1.0",
+                    "record_id": record_id,
+                    "artifact_id": artifact_id,
+                    "authority_profile": default_authority_profile(surface),
+                    "surface": surface,
+                    "text": normalized_text,
+                    "text_sha256": record_hash,
+                    "source": {
+                        "path": relative,
+                        "file_sha256": file_sha,
+                        "line_start": token.line,
+                        "line_end": token.end_line,
+                        "byte_offset_start": byte_offsets[token.offset],
+                        "byte_offset_end": byte_offsets[token.end_offset],
+                        "context_head": context.head,
+                        "entity_kind": entity.head if entity else None,
+                        "entity_id": entity.name if entity and entity.name else None,
+                        "routine_id": routine,
+                    },
+                })
+        except CorpusError as exc:
+            raise CorpusError(f"{relative}: {exc}") from exc
 
     summary = {
         "schema_version": "1.0",
