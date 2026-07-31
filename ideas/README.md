@@ -18,14 +18,17 @@ This lane does **not** become part of Zork's fiction, source tree, or House syst
 
 A future Zork-expansion concept lane: deepen the existing game into a much larger persistent world while preserving canonical objects, places, puzzles, and consequences.
 
-The first captured direction is a real museum and natural-history system with:
+Captured directions now include:
 
-- specimens and objects discovered across the Great Underground Empire;
+- a real museum and natural-history system;
 - fish species and circumstance-driven varieties from different waters;
-- donations, loans, documentation, and exhibit upgrades;
-- provenance-aware plaques and research records;
-- revisitable text exhibits;
-- optional Glulx TUI and 2D gallery presentation.
+- donations, loans, documentation, exhibit upgrades, and provenance-aware plaques;
+- revisitable text exhibits with optional Glulx TUI and 2D gallery presentation;
+- cuisine built from fish, plants, fungi, pantry goods, magical ingredients, and creature-derived materials;
+- slow hunger, distinct satiation, exertion-based stamina, regional food traditions, recipe discovery, and memorable failed dishes;
+- choices between releasing, donating, preserving, selling, researching, or cooking rare specimens.
+
+The cuisine direction is governed by a strict guardrail: food must create decisions, discoveries, humor, and stories—not repetitive eating chores or generic survival meters.
 
 ## Separation rules
 
