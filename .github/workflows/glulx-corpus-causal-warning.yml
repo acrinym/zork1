@@ -7,11 +7,13 @@ on:
     paths:
       - "glulx/corpus-causal-warning/**"
       - "tests/test_corpus_causal_warning*.py"
+      - "docs/planning/product-kanban.json"
       - ".github/workflows/glulx-corpus-causal-warning.yml"
   pull_request:
     paths:
       - "glulx/corpus-causal-warning/**"
       - "tests/test_corpus_causal_warning*.py"
+      - "docs/planning/product-kanban.json"
       - ".github/workflows/glulx-corpus-causal-warning.yml"
   workflow_dispatch:
 
