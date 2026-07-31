@@ -57,6 +57,7 @@ for forbidden in (
 ):
     assert forbidden not in production
 module = (source / 'corpus_causal_warning.zil').read_text()
+normalized_module = ' '.join(module.split())
 for token in (
     'CORPUS-MAINT-FLOOD-START',
     'CORPUS-MAINT-FLOOD-TICK',
@@ -66,7 +67,7 @@ for token in (
     'The west and south doorways remain clear -- for now.',
     'The maintenance room keeps the evidence; you do not.',
 ):
-    assert token in module
+    assert ' '.join(token.split()) in normalized_module
 evidence = json.loads(Path(
     'glulx/corpus-causal-warning/qualification/corpus-evidence.json'
 ).read_text())
