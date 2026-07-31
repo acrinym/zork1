@@ -11,10 +11,12 @@ from tools.infocom_corpus.core import (
     annotate_records,
     build_style_receipt,
     check_overlap,
+    corpus_digest,
     derive_profiles,
     extract_player_visible_strings,
     fingerprint_local_artifact,
     load_profiles,
+    public_summary_from_records,
     validate_correction_records,
     validate_manifest,
 )
@@ -23,6 +25,7 @@ from tools.infocom_corpus.core import (
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / "reference/infocom-corpus/manifest/infocom-corpus.json"
 PROFILES_PATH = ROOT / "reference/infocom-corpus/profiles/authority-profiles.json"
+SCHEMA_ROOT = ROOT / "reference/infocom-corpus/schemas"
 
 
 class ManifestTests(unittest.TestCase):
@@ -43,6 +46,44 @@ class ManifestTests(unittest.TestCase):
         artifact["rights"]["verification"] = "verified-for-this-repository"
         with self.assertRaises(CorpusError):
             validate_manifest(unsafe)
+
+    def test_authority_order_rejects_unhashable_or_empty_entries(self) -> None:
+        for invalid in ({"tier": 1}, ""):
+            unsafe = copy.deepcopy(self.manifest)
+            unsafe["authority_order"][0] = invalid
+            with self.subTest(invalid=invalid), self.assertRaises(CorpusError):
+                validate_manifest(unsafe)
+
+
+class SchemaContractTests(unittest.TestCase):
+    def _schema(self, name: str) -> dict:
+        return json.loads((SCHEMA_ROOT / name).read_text(encoding="utf-8"))
+
+    def test_artifact_schema_enforces_all_full_text_rights_gates(self) -> None:
+        rights = self._schema("artifact.schema.json")["properties"]["rights"]
+        then = rights["allOf"][0]["then"]["properties"]
+        self.assertEqual(then["class"]["enum"], ["A", "D"])
+        self.assertEqual(then["verification"]["const"], "verified-for-this-repository")
+        self.assertEqual(then["repository_text_policy"]["const"], "full-text-verified")
+
+    def test_correction_schema_requires_a_non_null_locator(self) -> None:
+        location = self._schema("correction-record.schema.json")["properties"]["location"]
+        self.assertEqual(len(location["anyOf"]), 4)
+        for branch in location["anyOf"]:
+            key = branch["required"][0]
+            self.assertNotIn("null", branch["properties"][key].get("type", []))
+
+    def test_receipt_schema_requires_departure_digest_and_zero_violations(self) -> None:
+        schema = self._schema("style-receipt.schema.json")
+        self.assertEqual(schema["properties"]["intentional_departures"]["minItems"], 1)
+        originality = schema["properties"]["originality_check"]
+        self.assertEqual(originality["properties"]["corpus_digest"]["pattern"], "^[0-9a-f]{64}$")
+        self.assertEqual(originality["properties"]["threshold_violation_count"]["const"], 0)
+
+    def test_record_schema_declares_real_utf8_byte_offsets(self) -> None:
+        source = self._schema("corpus-record.schema.json")["properties"]["source"]["properties"]
+        self.assertIn("UTF-8 byte offset", source["byte_offset_start"]["description"])
+        self.assertIn("UTF-8 byte offset", source["byte_offset_end"]["description"])
 
 
 class ExtractionTests(unittest.TestCase):
@@ -85,6 +126,33 @@ class ExtractionTests(unittest.TestCase):
                 "object-description",
             )
 
+    def test_escaped_backslash_before_closing_quote_is_terminated(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            repo = Path(temp)
+            (repo / "zork1.zil").write_text(
+                '<ROUTINE V-PATH () <TELL "Path ends with \\\\" CR>>\n',
+                encoding="utf-8",
+            )
+            records, _ = extract_player_visible_strings(repo, "zork1.zil", "fixture")
+            self.assertEqual(records[0]["text"], "Path ends with \\")
+
+    def test_offsets_are_utf8_bytes_not_character_indices(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            repo = Path(temp)
+            raw = '; café\n<ROUTINE V-SEE () <TELL "Visible text." CR>>\n'.encode("utf-8")
+            (repo / "zork1.zil").write_bytes(raw)
+            records, _ = extract_player_visible_strings(repo, "zork1.zil", "fixture")
+            source = records[0]["source"]
+            self.assertEqual(source["byte_offset_start"], raw.index(b'"Visible text."'))
+            self.assertEqual(source["byte_offset_end"], raw.index(b'"Visible text."') + len(b'"Visible text."'))
+
+    def test_invalid_utf8_source_raises_corpus_error(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            repo = Path(temp)
+            (repo / "zork1.zil").write_bytes(b'<TELL "bad \xff text">')
+            with self.assertRaisesRegex(CorpusError, "not valid UTF-8"):
+                extract_player_visible_strings(repo, "zork1.zil", "fixture")
+
     def test_annotations_are_traceable_and_non_destructive(self) -> None:
         records = [{
             "record_id": "r1",
@@ -98,6 +166,20 @@ class ExtractionTests(unittest.TestCase):
         self.assertTrue(features["second_person_present"])
         self.assertIn("impossible-action", features["parser_behavior"])
         self.assertIn("physical-obstruction", features["parser_behavior"])
+
+    def test_incomplete_reused_annotation_is_rebuilt(self) -> None:
+        profiles = load_profiles(PROFILES_PATH)
+        record = {
+            "record_id": "r1",
+            "surface": "room-description",
+            "text": "You stand beside a cold iron gate.",
+            "text_sha256": "0" * 64,
+            "authority_profile": "zork1-narrator",
+            "annotation": {"word_count": 999},
+        }
+        output = derive_profiles([record], profiles, "b" * 64)
+        narrator = next(item for item in output["profiles"] if item["profile_id"] == "zork1-narrator")
+        self.assertNotEqual(narrator["derived_statistics"]["word_count"], 999)
 
 
 class OriginalityTests(unittest.TestCase):
@@ -128,8 +210,53 @@ class OriginalityTests(unittest.TestCase):
         )
         self.assertFalse(result["passed"])
         self.assertGreater(result["longest_overlap"]["tokens"], 6)
+        self.assertTrue(result["threshold_violations"])
         self.assertFalse(result["source_text_disclosed"])
         self.assertNotIn("text", result["longest_overlap"])
+
+    def test_allowed_longest_match_does_not_hide_other_violation(self) -> None:
+        records = [
+            {
+                "record_id": "allowed",
+                "text": "one two three four five six seven eight",
+                "text_sha256": "1" * 64,
+            },
+            {
+                "record_id": "blocked",
+                "text": "nine ten eleven twelve thirteen fourteen fifteen",
+                "text_sha256": "2" * 64,
+            },
+        ]
+        candidate = (
+            "one two three four five six seven eight meanwhile "
+            "nine ten eleven twelve thirteen fourteen fifteen"
+        )
+        result = check_overlap(
+            candidate,
+            records,
+            max_allowed_tokens=6,
+            rare_ngram_tokens=5,
+            allowed_phrases=["one two three four five six seven eight"],
+        )
+        self.assertFalse(result["passed"])
+        self.assertTrue(result["longest_overlap"]["allowed_exact_phrase"])
+        self.assertEqual(
+            {item["source_record_id"] for item in result["threshold_violations"]},
+            {"blocked"},
+        )
+
+    def test_tied_threshold_violations_are_all_retained(self) -> None:
+        records = [
+            {"record_id": "a", "text": "red blue green black white gold silver", "text_sha256": "1" * 64},
+            {"record_id": "b", "text": "cat dog bird fish horse sheep goat", "text_sha256": "2" * 64},
+        ]
+        result = check_overlap(
+            "red blue green black white gold silver then cat dog bird fish horse sheep goat",
+            records,
+            max_allowed_tokens=6,
+            rare_ngram_tokens=5,
+        )
+        self.assertEqual(len(result["threshold_violations"]), 2)
 
     def test_original_candidate_can_receive_style_receipt(self) -> None:
         candidate = "A soot-dark hinge complains once, then settles."
@@ -148,7 +275,25 @@ class OriginalityTests(unittest.TestCase):
         )
         self.assertEqual(receipt["authority_profile"], "zork1-narrator")
         self.assertTrue(receipt["originality_check"]["passed"])
+        self.assertEqual(receipt["originality_check"]["threshold_violation_count"], 0)
         self.assertTrue(receipt["excluded_voices"])
+
+    def test_receipt_requires_departure_and_valid_corpus_digest(self) -> None:
+        candidate = "A soot-dark hinge complains once, then settles."
+        overlap = check_overlap(candidate, self.records)
+        profile = load_profiles(PROFILES_PATH)["zork1-narrator"]
+        for digest, departures in (("not-a-hash", ["Reason"]), ("a" * 64, [])):
+            with self.subTest(digest=digest, departures=departures), self.assertRaises(CorpusError):
+                build_style_receipt(
+                    surface_family="test-room-description",
+                    candidate_path="candidate.txt",
+                    candidate_text=candidate,
+                    profile=profile,
+                    overlap=overlap,
+                    corpus_digest=digest,
+                    intentional_departures=departures,
+                    reviewer="unit-test",
+                )
 
     def test_profile_output_contains_no_source_prose(self) -> None:
         annotated = annotate_records(self.records)
@@ -156,12 +301,25 @@ class OriginalityTests(unittest.TestCase):
         output = derive_profiles(annotated, profiles, "b" * 64)
         serialized = json.dumps(output)
         self.assertFalse(output["contains_source_prose"])
-        self.assertNotIn("narrow passage bends", serialized)
+        for record in self.records:
+            self.assertNotIn(record["text"], serialized)
         narrator = next(
             profile for profile in output["profiles"]
             if profile["profile_id"] == "zork1-narrator"
         )
         self.assertIsNotNone(narrator["derived_statistics"])
+
+    def test_extraction_and_public_summary_share_one_digest_definition(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            repo = Path(temp)
+            (repo / "zork1.zil").write_text(
+                '<ROUTINE V-SEE () <TELL "A new sentence appears." CR>>\n',
+                encoding="utf-8",
+            )
+            records, extraction = extract_player_visible_strings(repo, "zork1.zil", "fixture")
+            public = public_summary_from_records(records, artifact_id="fixture", source_files=[])
+            self.assertEqual(extraction["corpus_digest"], public["corpus_digest"])
+            self.assertEqual(extraction["corpus_digest"], corpus_digest(records))
 
 
 class ProtectedStudyCopyTests(unittest.TestCase):
@@ -170,11 +328,14 @@ class ProtectedStudyCopyTests(unittest.TestCase):
 
     def test_fingerprint_contains_hash_not_file_content(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
-            source = Path(temp) / "manual.pdf"
+            repo = Path(temp)
+            source = repo / ".local/infocom-corpus/manual.pdf"
+            source.parent.mkdir(parents=True)
             source.write_bytes(b"protected test bytes")
             record = fingerprint_local_artifact(
                 source,
                 "infocom-zork1-greybox-manual-en-us",
+                repo_root=repo,
                 page_count=12,
                 page_references=["p. 7"],
             )
@@ -182,6 +343,25 @@ class ProtectedStudyCopyTests(unittest.TestCase):
             self.assertTrue(record["safe_to_commit"])
             self.assertFalse(record["contains_source_text"])
             self.assertNotIn("protected test bytes", serialized)
+
+    def test_fingerprint_rejects_outside_path_and_quoted_reference(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            repo = Path(temp)
+            outside = repo / "manual.pdf"
+            outside.write_bytes(b"protected")
+            with self.assertRaisesRegex(CorpusError, "must remain below"):
+                fingerprint_local_artifact(outside, "manual", repo_root=repo)
+
+            inside = repo / ".local/infocom-corpus/manual.pdf"
+            inside.parent.mkdir(parents=True)
+            inside.write_bytes(b"protected")
+            with self.assertRaisesRegex(CorpusError, "structural locator"):
+                fingerprint_local_artifact(
+                    inside,
+                    "manual",
+                    repo_root=repo,
+                    page_references=['p. 7: "quoted source wording"'],
+                )
 
     def test_protected_correction_must_be_hash_only(self) -> None:
         valid = [{
@@ -200,6 +380,22 @@ class ProtectedStudyCopyTests(unittest.TestCase):
         unsafe[0]["corrected_text"] = "Protected source wording"
         with self.assertRaises(CorpusError):
             validate_correction_records(unsafe, self.manifest)
+
+    def test_correction_requires_concrete_typed_locator(self) -> None:
+        base = {
+            "correction_id": "greybox-location",
+            "artifact_id": "infocom-zork1-greybox-manual-en-us",
+            "location": {},
+            "observed_sha256": "a" * 64,
+            "corrected_sha256": "b" * 64,
+            "reason": "Test",
+            "confidence": "certain",
+        }
+        for location in ({}, {"page": None}, {"surface": ""}, {"line": 0}):
+            record = copy.deepcopy(base)
+            record["location"] = location
+            with self.subTest(location=location), self.assertRaises(CorpusError):
+                validate_correction_records([record], self.manifest)
 
 
 if __name__ == "__main__":
