@@ -24,25 +24,26 @@
 <ROUTINE MARA-MEET ()
     <COND (<ZERO? <MARA-GET ,MARA-SLOT-MET>>
            <MARA-PUT ,MARA-SLOT-MET 1>
-           <TELL '"Mara," she says, giving the room one careful look before meeting your eyes. "Show me what matters, not merely what glitters."' CR>)
+           <TELL "Mara gives the room one careful look before meeting your eyes. Show me what matters, she says, not merely what glitters." CR>)
           (<MARA-GET ,MARA-SLOT-LAST-EVIDENCE>
-           <TELL '"I remember the ' D <MARA-GET ,MARA-SLOT-LAST-EVIDENCE> '," Mara says. "You put it in my hands as evidence, not as a story."' CR>)
+           <TELL "Mara remembers the " D <MARA-GET ,MARA-SLOT-LAST-EVIDENCE>
+                 ". You put it in her hands as evidence, not as a story." CR>)
           (T
-           <TELL '"I am still listening," Mara says. "Bring me something real from the expedition."' CR>)>>
+           <TELL "Mara is still listening. Bring her something real from the expedition." CR>)>>
 
 <ROUTINE MARA-ABOUT (TOPIC)
     <COND (<EQUAL? .TOPIC ,MUSEUM-CATALOG-OBJECT>
            <COND (<MARA-GET ,MARA-SLOT-LAST-EVIDENCE>
-                  <TELL '"The museum means more now," Mara says. "I have handled one of its pieces myself."' CR>)
+                  <TELL "The museum means more now, Mara says. She has handled one of its pieces herself." CR>)
                  (T
-                  <TELL '"A room full of trophies can still lie," Mara says. "Let me see one object and the history attached to it."' CR>)>)
+                  <TELL "A room full of trophies can still lie, Mara says. Let her see one object and the history attached to it." CR>)>)
           (<AND .TOPIC
                 <EQUAL? .TOPIC <MARA-GET ,MARA-SLOT-LAST-EVIDENCE>>>
-           <TELL '"That one I know," Mara says. "It was '>
+           <TELL "That one Mara knows. It was ">
            <MUSEUM-PROVENANCE .TOPIC>
-           <TELL '."' CR>)
+           <TELL "." CR>)
           (T
-           <TELL '"I cannot honestly claim that history yet," Mara says. "Show me the evidence first."' CR>)>>
+           <TELL "Mara cannot honestly claim that history yet. Show her the evidence first." CR>)>>
 
 <ROUTINE MARA-FCN ()
     <COND (<VERB? EXAMINE>
@@ -66,10 +67,9 @@
                   <MARA-PUT ,MARA-SLOT-TRUST
                             <+ <MARA-GET ,MARA-SLOT-TRUST> 1>>)>
            <TELL "Mara takes enough time to examine the " D ,PRSO
-                 ", then returns it to you. ">
-           <TELL '"I will remember this one," she says. "It was '>
+                 ", then returns it to you. She will remember that it was ">
            <MUSEUM-PROVENANCE ,PRSO>
-           <TELL '."' CR>)>>
+           <TELL "." CR>)>>
 
 <OBJECT MARA
     (IN LIVING-ROOM)
@@ -77,5 +77,5 @@
     (ADJECTIVE DARK HAIRED WATCHFUL)
     (DESC "Mara")
     (LDESC "Mara sits near the museum displays, watching the room rather than the treasure.")
-    (FLAGS NDESCBIT ACTORBIT TRYTAKEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION MARA-FCN)>
