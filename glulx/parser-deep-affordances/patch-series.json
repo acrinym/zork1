@@ -1,0 +1,50 @@
+{
+  "edition": "Unofficial Parser Deep Affordances Glulx",
+  "release": 1232,
+  "serial": "260731",
+  "base_manifest": "../corpus-causal-warning/patch-series.json",
+  "base_release": 1231,
+  "base_artifact_sha256": "5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609",
+  "expected_artifact": {
+    "file": "zork1-glulx-parser-deep-affordances.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 337920,
+    "checksum_hex": "0x2c2192e1",
+    "sha256": "2cffc734dbfbe346d0ec185c6962d927bc046343dccdb53b6a9e4439521b6f2e",
+    "locked": true
+  },
+  "overrides": [
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1231 layer and assign Release 1232"
+    }
+  ],
+  "patches": [
+    "patches/001-parser-intent-routes.json"
+  ],
+  "expected_changed_paths": [
+    "gsyntax.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "X and INSPECT reach canonical examination",
+    "EXAMINE UNDER and EXAMINE BEHIND reach canonical spatial inspection",
+    "SWITCH ON and SWITCH OFF reach canonical TURN ON and TURN OFF behavior",
+    "SEAL and MEND reach canonical PLUG behavior and existing missing-tool recovery"
+  ],
+  "preserved_parser_behavior": [
+    "Release 1211 bounded USE OBJECT assistance remains unchanged",
+    "existing action routines remain the sole behavior authorities",
+    "existing accumulated synonyms remain present and in their original order after the selected additions"
+  ],
+  "boundaries": [
+    "no new or expanded generic USE routing",
+    "no guessed puzzle solution",
+    "no new parser state or global",
+    "no new action routine when a canonical route already exists",
+    "no synonym dump beyond the selected player intentions",
+    "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "Z1-GLULX-1232-PARSER-INTENT-ROUTES",
+  "path": "gsyntax.zil",
+  "description": "Route selected common player phrases to existing examination, spatial inspection, lamp switching, and repair actions without expanding generic intent guessing",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX EXAMINE OBJECT (MANY) = V-EXAMINE>\n<SYNTAX EXAMINE IN OBJECT (HELD CARRIED IN-ROOM ON-GROUND MANY)\n\t= V-LOOK-INSIDE>\n<SYNTAX EXAMINE ON OBJECT (HELD CARRIED IN-ROOM ON-GROUND MANY)\n\t= V-LOOK-INSIDE>\n<SYNONYM EXAMINE DESCRIBE WHAT WHATS>",
+      "new": "<SYNTAX EXAMINE OBJECT (MANY) = V-EXAMINE>\n<SYNTAX EXAMINE IN OBJECT (HELD CARRIED IN-ROOM ON-GROUND MANY)\n\t= V-LOOK-INSIDE>\n<SYNTAX EXAMINE ON OBJECT (HELD CARRIED IN-ROOM ON-GROUND MANY)\n\t= V-LOOK-INSIDE>\n<SYNTAX EXAMINE UNDER OBJECT = V-LOOK-UNDER>\n<SYNTAX EXAMINE BEHIND OBJECT = V-LOOK-BEHIND>\n<SYNONYM EXAMINE X INSPECT DESCRIBE WHAT WHATS>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNONYM PLUG ",
+      "new": "<SYNONYM PLUG SEAL MEND "
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNONYM TURN ",
+      "new": "<SYNONYM TURN SWITCH "
+    }
+  ]
+}

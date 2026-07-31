@@ -16,18 +16,17 @@ This board answers five different questions: what is being built now, what is al
 
 ## CURRENT
 
-### Release 1231 — Corpus-Coupled Causal Warning
+### Release 1232 — Parser Comprehension and Deep Affordances
 
-**Player outcome:** the canonical Maintenance Room flood becomes readable as a causal sequence rather than a height message followed by a generic death.
+**Player outcome:** selected ordinary interactive-fiction phrases reach world behavior Zork already implements instead of failing at vocabulary or noun-role gaps.
 
-**In production:** blue-button cause, three one-time warnings at exact canonical `WATER-LEVEL` crossings, pipe inspection, canonical repair feedback, and causal drowning prose. `WATER-LEVEL`, `I-MAINT-ROOM`, `LEAK`, PUTTY, the west/south exits, and `JIGS-UP` remain authoritative. The train adds no flood global, timer, or shadow controller.
+**In production:** `X`, `INSPECT`, `EXAMINE UNDER`, `EXAMINE BEHIND`, `SWITCH ON/OFF`, `SEAL`, and `MEND` route to existing examination, spatial inspection, lamp, and plugging actions. The train adds no parser state, action routine, or response prose. Release 1211's bounded `USE OBJECT` assistance remains present and unchanged; Release 1232 does not broaden it.
 
-**Proof required:** exact three-path staging, direct gameplay asset tests, source smell check, four passing style receipts, GitHub-hosted ZILF/Glazer artifact qualification, and no automatic rescue.
+**Proof required:** exact two-path staging, direct parser tests, source smell check, ZILF/Glazer artifact qualification, and a Glulxe transcript proving the actual commands and canonical outputs. PR: **#35**.
 
 ## NEXT
 
-1. **Parser Comprehension and Deep Affordances** — connect reasonable commands to existing canonical actions and improve recoverable refusals without a chatbot parser or hidden solutions.
-2. **Museum Intake and First Gallery** — physical donation, provenance, refusal rules, and earned exhibit descriptions without duplicate treasures or an encyclopedia HUD.
+1. **Museum Intake and First Gallery** — physical donation, provenance, refusal rules, and earned exhibit descriptions without duplicate treasures or an encyclopedia HUD.
 
 ## FUTURE
 
@@ -46,5 +45,6 @@ This board answers five different questions: what is being built now, what is al
 
 - **House of Records / Release 1230:** 12 trains, 96/96 beads, completed expedition archive, merged through PR #32. Locked artifact SHA-256: `b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71`.
 - **Infocom Corpus Foundation:** extraction, rights gates, authority profiles, originality validation, receipts, all review findings and nits resolved, 25 tests green, merged through PR #33 at `d7cc4750507fed9b505af66e0fd6afee2da70ffb`.
+- **Release 1231 Corpus-Coupled Causal Warning:** zero-state flood warnings, inspection, repair feedback, causal death prose, four style receipts, and hosted locked artifact qualification; merged through PR #34 at `28b90fe93a472087e64afcd0fb0e8776f80157f3`. Artifact SHA-256: `5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609`.
 
 The JSON board is authoritative for tooling and card metadata. This Markdown view is the human operating surface.

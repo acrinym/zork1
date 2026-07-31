@@ -143,11 +143,7 @@ class CorpusCausalWarningTests(unittest.TestCase):
             set(board["lanes"]),
             {"current", "next", "future", "parked", "done"},
         )
-        current = board["lanes"]["current"]
-        self.assertEqual(len(current), 1)
-        self.assertEqual(
-            current[0]["train_id"], "zork-corpus-causal-warning-1231"
-        )
+        self.assertEqual(len(board["lanes"]["current"]), 1)
         for lane, cards in board["lanes"].items():
             for card in cards:
                 for key in (
@@ -161,9 +157,22 @@ class CorpusCausalWarningTests(unittest.TestCase):
                         card.get(key),
                         f"{lane}:{card.get('train_id')}:{key}",
                     )
-        done_ids = {card["train_id"] for card in board["lanes"]["done"]}
-        self.assertIn("zork-house-of-records-1230", done_ids)
-        self.assertIn("zork-infocom-corpus-foundation", done_ids)
+        done = {
+            card["train_id"]: card for card in board["lanes"]["done"]
+        }
+        self.assertIn("zork-house-of-records-1230", done)
+        self.assertIn("zork-infocom-corpus-foundation", done)
+        completed = done["zork-corpus-causal-warning-1231"]
+        self.assertEqual(completed["status"], "done")
+        self.assertEqual(completed["pr"], 34)
+        self.assertTrue(completed["proof"])
+        self.assertTrue(
+            any(
+                "5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609"
+                in proof
+                for proof in completed["proof"]
+            )
+        )
 
 
 if __name__ == "__main__":
