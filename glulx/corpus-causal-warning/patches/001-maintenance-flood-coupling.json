@@ -1,0 +1,32 @@
+{
+  "id": "Z1-GLULX-1231-MAINTENANCE-FLOOD-COUPLING",
+  "path": "1actions.zil",
+  "description": "Couple the canonical Maintenance Room flood to bounded warning, inspection, repair, and death prose without creating a parallel hazard controller",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t\t      <SETG WATER-LEVEL 1>\n\t\t\t      <ENABLE <QUEUE I-MAINT-ROOM -1>>",
+      "new": "\t\t\t      <SETG WATER-LEVEL 1>\n\t\t\t      <CORPUS-MAINT-FLOOD-START>\n\t\t\t      <ENABLE <QUEUE I-MAINT-ROOM -1>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t <SETG WATER-LEVEL <+ 1 ,WATER-LEVEL>>\n\t <COND (<NOT <L? ,WATER-LEVEL 14>>",
+      "new": "\t <SETG WATER-LEVEL <+ 1 ,WATER-LEVEL>>\n\t <CORPUS-MAINT-FLOOD-TICK .HERE?>\n\t <COND (<NOT <L? ,WATER-LEVEL 14>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t<COND (.HERE?\n\t\t     <JIGS-UP\n\"I'm afraid you have done drowned yourself.\">)>)",
+      "new": "\t\t<COND (.HERE?\n\t\t     <CORPUS-MAINT-FLOOD-DROWN>)>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE LEAK-FUNCTION ()\n\t<COND (<G? ,WATER-LEVEL 0>\n\t       <COND (<AND <VERB? PUT PUT-ON>\n\t\t\t   <EQUAL? ,PRSO ,PUTTY>>\n\t\t      <FIX-MAINT-LEAK>)\n\t\t     (<VERB? PLUG>\n\t\t      <COND (<EQUAL? ,PRSI ,PUTTY>\n\t\t\t     <FIX-MAINT-LEAK>)\n\t\t\t    (T <WITH-TELL ,PRSI>)>)>)>>",
+      "new": "<ROUTINE LEAK-FUNCTION ()\n\t<COND (<G? ,WATER-LEVEL 0>\n\t       <COND (<VERB? EXAMINE LOOK-INSIDE>\n\t\t      <CORPUS-MAINT-FLOOD-EXAMINE>)\n\t\t     (<AND <VERB? PUT PUT-ON>\n\t\t\t   <EQUAL? ,PRSO ,PUTTY>>\n\t\t      <FIX-MAINT-LEAK>)\n\t\t     (<VERB? PLUG>\n\t\t      <COND (<EQUAL? ,PRSI ,PUTTY>\n\t\t\t     <FIX-MAINT-LEAK>)\n\t\t\t    (T <WITH-TELL ,PRSI>)>)>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE FIX-MAINT-LEAK ()\n\t <SETG WATER-LEVEL -1>\n\t <QUEUE I-MAINT-ROOM 0>\n\t <TELL\n\"By some miracle of Zorkian technology, you have managed to stop the\nleak in the dam.\" CR>>",
+      "new": "<ROUTINE FIX-MAINT-LEAK ()\n\t <SETG WATER-LEVEL -1>\n\t <QUEUE I-MAINT-ROOM 0>\n\t <CORPUS-MAINT-FLOOD-REPAIRED>>"
+    }
+  ]
+}

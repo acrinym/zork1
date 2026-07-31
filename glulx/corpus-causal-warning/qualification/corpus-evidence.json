@@ -1,0 +1,183 @@
+{
+  "candidates": {
+    "maintenance-flood-death": "The water reaches the ceiling before you reach either doorway. The maintenance room keeps the evidence; you do not.",
+    "maintenance-flood-examine": "The break is in the east-wall pipe. The stream is under pressure, but the opening is still small enough to seal.",
+    "maintenance-flood-repair": "The pipe shudders once. The remaining water begins to drain through the floor grating.",
+    "maintenance-flood-warning": "The stream spreads across the floor faster than it drains. The west and south doorways remain clear -- for now.\nCold water closes around your ankles. The break in the east-wall pipe is widening.\nThe water reaches your knees. Loose debris begins to drift toward the control panel.\nThe current is pulling hard across the room. Remaining here is becoming an experiment with one result."
+  },
+  "overlap_results": {
+    "maintenance-flood-death": {
+      "candidate_sha256": "3b858143eabd8cb6e1d686ee591ddb6afb032eed7b372fcd58cd0630ecbccf10",
+      "candidate_word_count": 19,
+      "corpus_digest": "fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3",
+      "corpus_record_count": 10,
+      "longest_overlap": {
+        "allowed_exact_phrase": false,
+        "candidate_span_sha256": "19c3c49cc3074ecb0fe0163d52bbf4fede064cb91dae25536153711389b51014",
+        "candidate_token_end": 2,
+        "candidate_token_start": 0,
+        "source_record_id": "z1:1actions:reservoir-warning",
+        "source_span_sha256": "19c3c49cc3074ecb0fe0163d52bbf4fede064cb91dae25536153711389b51014",
+        "source_token_start": 3,
+        "tokens": 2
+      },
+      "passed": true,
+      "rare_phrase_matches": [],
+      "schema_version": "1.0",
+      "source_text_disclosed": false,
+      "threshold_violations": [],
+      "thresholds": {"max_allowed_tokens": 6, "rare_ngram_tokens": 5}
+    },
+    "maintenance-flood-examine": {
+      "candidate_sha256": "cd2d0989b1aa011dde0d59dbaeec2f2bbde32e796a395915cb3622c7b20abe86",
+      "candidate_word_count": 22,
+      "corpus_digest": "fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3",
+      "corpus_record_count": 10,
+      "longest_overlap": {
+        "allowed_exact_phrase": false,
+        "candidate_span_sha256": "ba5da1daf63f6f06d2f97076b404c1c45efe8c041ac8eec66d55d8bbb15c11eb",
+        "candidate_token_end": 7,
+        "candidate_token_start": 4,
+        "source_record_id": "z1:1actions:blue-button-leak",
+        "source_span_sha256": "ba5da1daf63f6f06d2f97076b404c1c45efe8c041ac8eec66d55d8bbb15c11eb",
+        "source_token_start": 14,
+        "tokens": 3
+      },
+      "passed": true,
+      "rare_phrase_matches": [],
+      "schema_version": "1.0",
+      "source_text_disclosed": false,
+      "threshold_violations": [],
+      "thresholds": {"max_allowed_tokens": 6, "rare_ngram_tokens": 5}
+    },
+    "maintenance-flood-repair": {
+      "candidate_sha256": "fec03e5b9af8df9d48af8ac5089eaf209455a02e2b5fb8671b2e64c650116574",
+      "candidate_word_count": 14,
+      "corpus_digest": "fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3",
+      "corpus_record_count": 10,
+      "longest_overlap": {
+        "allowed_exact_phrase": false,
+        "candidate_span_sha256": "97703c893d221cf583aa54dc4e31eaa943263c72223604951c9e4434c3a74710",
+        "candidate_token_end": 1,
+        "candidate_token_start": 0,
+        "source_record_id": "z1:1actions:blue-button-leak",
+        "source_span_sha256": "97703c893d221cf583aa54dc4e31eaa943263c72223604951c9e4434c3a74710",
+        "source_token_start": 14,
+        "tokens": 1
+      },
+      "passed": true,
+      "rare_phrase_matches": [],
+      "schema_version": "1.0",
+      "source_text_disclosed": false,
+      "threshold_violations": [],
+      "thresholds": {"max_allowed_tokens": 6, "rare_ngram_tokens": 5}
+    },
+    "maintenance-flood-warning": {
+      "candidate_sha256": "901970de5edda864c7299f3f3bc0a2534c61af08ee8dd3fa19cf20ba00994ae4",
+      "candidate_word_count": 65,
+      "corpus_digest": "fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3",
+      "corpus_record_count": 10,
+      "longest_overlap": {
+        "allowed_exact_phrase": false,
+        "candidate_span_sha256": "ba5da1daf63f6f06d2f97076b404c1c45efe8c041ac8eec66d55d8bbb15c11eb",
+        "candidate_token_end": 31,
+        "candidate_token_start": 28,
+        "source_record_id": "z1:1actions:blue-button-leak",
+        "source_span_sha256": "ba5da1daf63f6f06d2f97076b404c1c45efe8c041ac8eec66d55d8bbb15c11eb",
+        "source_token_start": 14,
+        "tokens": 3
+      },
+      "passed": true,
+      "rare_phrase_matches": [],
+      "schema_version": "1.0",
+      "source_text_disclosed": false,
+      "threshold_violations": [],
+      "thresholds": {"max_allowed_tokens": 6, "rare_ngram_tokens": 5}
+    }
+  },
+  "schema_version": "1.0",
+  "source_corpus_receipt": {
+    "contains_source_text": false,
+    "corpus_digest": "fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3",
+    "corpus_id": "zork1-maintenance-room-causal-surface-subset",
+    "record_count": 10,
+    "record_receipts": [
+      {"authority_profile":"zork1-action-response","record_id":"z1:1actions:blue-button-leak","surface":"action-response","text_sha256":"fa7002aa0c56780d1abd56872cc31b349a53882143bc61dc1d303171599cfba0"},
+      {"authority_profile":"zork1-action-response","record_id":"z1:1actions:water-ankles","surface":"action-response","text_sha256":"c7d45f09c86dfcc1d4dd5bf00a4c75c220ad0d083aa61f150cf0de4519fcb058"},
+      {"authority_profile":"zork1-action-response","record_id":"z1:1actions:water-knees","surface":"action-response","text_sha256":"90d58e0f7cce78e7d2ac11f1a160d62ea071072d8543f2a9bd8eb92a37044b76"},
+      {"authority_profile":"zork1-action-response","record_id":"z1:1actions:water-chest","surface":"action-response","text_sha256":"11f32c615756c702288202e377405ebcd5e3b688c3cff07d940d687132bffd8d"},
+      {"authority_profile":"zork1-action-response","record_id":"z1:1actions:water-neck","surface":"action-response","text_sha256":"f25f1e8d08f831ede0968877123b29cd360fa06ec7504f1e8b7e3cc30fb6297d"},
+      {"authority_profile":"zork1-death","record_id":"z1:1actions:drowned","surface":"death","text_sha256":"806987573ac710d1f792333b33d30ca939ce80a978000ff061a7f43866ffd044"},
+      {"authority_profile":"zork1-death","record_id":"z1:1actions:boat-falls","surface":"death","text_sha256":"3338ef2e0ffa8697325d4c576a44337eef3d62765a944446433897768e28ce95"},
+      {"authority_profile":"zork1-action-response","record_id":"z1:1actions:fix-leak","surface":"action-response","text_sha256":"61b18a86793b7ea252a43e24911e012105a7ffef5d2b3b76ceb5bdef920e91bf"},
+      {"authority_profile":"zork1-action-response","record_id":"z1:1actions:reservoir-warning","surface":"action-response","text_sha256":"dc0ce90cfd9a698851d51a93d5b63c150676c0f3081c8b4fa68fd52a924031e1"},
+      {"authority_profile":"zork1-death","record_id":"z1:1actions:reservoir-death","surface":"death","text_sha256":"e908e5ea77bf2e80332ff4652cea44545ccbc9f2a924be973113b7fd3572f681"}
+    ],
+    "schema_version": "1.0",
+    "scope": "Canonical Maintenance Room and related Flood Control Dam #3 warning, repair, and death surfaces used for this gameplay train.",
+    "selection_policy": "Relevant canonical source surfaces only; receipts do not claim whole-lineage coverage.",
+    "source_authority": "infocom-zork1-source-shutdown-snapshot:1actions.zil"
+  },
+  "style_receipts": {
+    "maintenance-flood-death": {
+      "authority_profile": "zork1-death",
+      "candidate": {"path":"glulx/corpus-causal-warning/qualification/corpus-evidence.json#/candidates/maintenance-flood-death","sha256":"3b858143eabd8cb6e1d686ee591ddb6afb032eed7b372fcd58cd0630ecbccf10","word_count":19},
+      "excluded_voices": ["graphic-horror-pastiche","modern-roguelike-taunt","hitchhiker-narrator"],
+      "intentional_departures": ["The terminal line states the exact failed escape and preserves one restrained evidence joke earned by the preceding warning chain."],
+      "originality_check": {"candidate_sha256":"3b858143eabd8cb6e1d686ee591ddb6afb032eed7b372fcd58cd0630ecbccf10","corpus_digest":"fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3","longest_source_overlap_tokens":2,"passed":true,"rare_phrase_match_count":0,"source_text_disclosed":false,"threshold_violation_count":0,"thresholds":{"max_allowed_tokens":6,"rare_ngram_tokens":5}},
+      "primary_authorities": ["infocom-zork1-source-shutdown-snapshot:death-and-restart-routines"],
+      "receipt_id": "maintenance-room-flood-death-3b858143eabd",
+      "retained_linguistic_traits": ["causal clarity","abrupt terminal rhythm","restrained dark humor","player culpability when actually earned"],
+      "reviewed_by": "Onyx / Justin Gargano product train",
+      "reviewed_on": "2026-07-31",
+      "schema_version": "1.0",
+      "secondary_authorities": ["infocom-zork1-invisiclues-booklet-en-us"],
+      "surface_family": "maintenance-room-flood-death"
+    },
+    "maintenance-flood-examine": {
+      "authority_profile": "zork1-object-description",
+      "candidate": {"path":"glulx/corpus-causal-warning/qualification/corpus-evidence.json#/candidates/maintenance-flood-examine","sha256":"cd2d0989b1aa011dde0d59dbaeec2f2bbde32e796a395915cb3622c7b20abe86","word_count":22},
+      "excluded_voices": ["advertising-copy","encyclopedic-lore-dump","bureaucracy-global-parody"],
+      "intentional_departures": ["The inspection names one repair affordance without naming PUTTY or providing a command, preserving discovery while making the physical opening legible."],
+      "originality_check": {"candidate_sha256":"cd2d0989b1aa011dde0d59dbaeec2f2bbde32e796a395915cb3622c7b20abe86","corpus_digest":"fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3","longest_source_overlap_tokens":3,"passed":true,"rare_phrase_match_count":0,"source_text_disclosed":false,"threshold_violation_count":0,"thresholds":{"max_allowed_tokens":6,"rare_ngram_tokens":5}},
+      "primary_authorities": ["infocom-zork1-source-shutdown-snapshot:object-name","infocom-zork1-source-shutdown-snapshot:object-description"],
+      "receipt_id": "maintenance-room-leak-examination-cd2d0989b1aa",
+      "retained_linguistic_traits": ["object-first identification","material specificity","one functional clue at most","economical modifiers"],
+      "reviewed_by": "Onyx / Justin Gargano product train",
+      "reviewed_on": "2026-07-31",
+      "schema_version": "1.0",
+      "secondary_authorities": ["infocom-zork1-greybox-manual-en-us"],
+      "surface_family": "maintenance-room-leak-examination"
+    },
+    "maintenance-flood-repair": {
+      "authority_profile": "zork1-action-response",
+      "candidate": {"path":"glulx/corpus-causal-warning/qualification/corpus-evidence.json#/candidates/maintenance-flood-repair","sha256":"fec03e5b9af8df9d48af8ac5089eaf209455a02e2b5fb8671b2e64c650116574","word_count":14},
+      "excluded_voices": ["generic-rpg-combat-log","constant-quip-narrator","chatbot-explanation"],
+      "intentional_departures": ["The repair response exposes both pipe state and draining state because Release 1231 changes two visible physical conditions."],
+      "originality_check": {"candidate_sha256":"fec03e5b9af8df9d48af8ac5089eaf209455a02e2b5fb8671b2e64c650116574","corpus_digest":"fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3","longest_source_overlap_tokens":1,"passed":true,"rare_phrase_match_count":0,"source_text_disclosed":false,"threshold_violation_count":0,"thresholds":{"max_allowed_tokens":6,"rare_ngram_tokens":5}},
+      "primary_authorities": ["infocom-zork1-source-shutdown-snapshot:verb-and-object-action-routines"],
+      "receipt_id": "maintenance-room-flood-repair-fec03e5b9af8",
+      "retained_linguistic_traits": ["physical cause before joke","short consequence chain","state-aware repetition","canonical object custody"],
+      "reviewed_by": "Onyx / Justin Gargano product train",
+      "reviewed_on": "2026-07-31",
+      "schema_version": "1.0",
+      "secondary_authorities": ["infocom-zork1-sample-transcript-en-us"],
+      "surface_family": "maintenance-room-flood-repair"
+    },
+    "maintenance-flood-warning": {
+      "authority_profile": "zork1-action-response",
+      "candidate": {"path":"glulx/corpus-causal-warning/qualification/corpus-evidence.json#/candidates/maintenance-flood-warning","sha256":"901970de5edda864c7299f3f3bc0a2534c61af08ee8dd3fa19cf20ba00994ae4","word_count":65},
+      "excluded_voices": ["generic-rpg-combat-log","constant-quip-narrator","chatbot-explanation"],
+      "intentional_departures": ["The warning chain adds visible exits and three bounded escalation stages because the canonical one-line water-height report did not identify cause, escape affordance, or urgency."],
+      "originality_check": {"candidate_sha256":"901970de5edda864c7299f3f3bc0a2534c61af08ee8dd3fa19cf20ba00994ae4","corpus_digest":"fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3","longest_source_overlap_tokens":3,"passed":true,"rare_phrase_match_count":0,"source_text_disclosed":false,"threshold_violation_count":0,"thresholds":{"max_allowed_tokens":6,"rare_ngram_tokens":5}},
+      "primary_authorities": ["infocom-zork1-source-shutdown-snapshot:verb-and-object-action-routines"],
+      "receipt_id": "maintenance-room-flood-warning-chain-901970de5edd",
+      "retained_linguistic_traits": ["physical cause before joke","short consequence chain","state-aware repetition","canonical object custody"],
+      "reviewed_by": "Onyx / Justin Gargano product train",
+      "reviewed_on": "2026-07-31",
+      "schema_version": "1.0",
+      "secondary_authorities": ["infocom-zork1-sample-transcript-en-us"],
+      "surface_family": "maintenance-room-flood-warning-chain"
+    }
+  }
+}
