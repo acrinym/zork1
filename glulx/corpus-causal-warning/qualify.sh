@@ -5,6 +5,7 @@ ROOT="${GITHUB_WORKSPACE:-$(git rev-parse --show-toplevel)}"
 BUILD="$ROOT/glulx/build/corpus-causal-warning"
 SRC="$BUILD/src"
 MANIFEST="$ROOT/glulx/corpus-causal-warning/patch-series.json"
+cd "$ROOT"
 rm -rf "$BUILD"
 mkdir -p "$BUILD"
 
