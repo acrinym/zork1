@@ -16,7 +16,9 @@ The selected additions repair vocabulary and noun-role gaps. They do not alter t
 
 ## Explicit boundary
 
-There is deliberately no generic `USE` verb. `USE LANTERN`, `USE SWORD`, or `USE PUTTY` can represent several different intentions, and guessing one would leak solutions or change player meaning. Release 1232 adds only phrases whose destination is unambiguous.
+Release 1211 already contains bounded `USE OBJECT` assistance. It describes plausible affordances and tells the player to choose a concrete verb; it does not execute a guessed action. Release 1232 preserves that command unchanged and adds no new or broader `USE` routing.
+
+`USE LANTERN`, `USE SWORD`, or `USE PUTTY` can represent several different physical intentions. Release 1232 therefore admits only new phrases whose canonical destination is unambiguous.
 
 The train adds:
 
@@ -24,7 +26,8 @@ The train adds:
 - no parser state;
 - no new `V-*` action routine;
 - no new player-visible response prose;
-- no generic synonym inventory.
+- no generic synonym inventory;
+- no change to the bounded Release 1211 assistance layer.
 
 Because all responses remain canonical, this train does not manufacture a new corpus style receipt merely for aliases.
 
