@@ -86,9 +86,10 @@ assert originality['threshold_violation_count'] == 0
 assert originality['rare_phrase_match_count'] == 0
 module = (source / 'museum_intake_first_gallery.zil').read_text()
 for required in (
+    '<BUZZ MUSEUM>',
     '<SYNTAX EXHIBIT OBJECT (MANY HELD HAVE) = V-MUSEUM-EXHIBIT>',
-    '<SYNTAX CATALOG MUSEUM = V-MUSEUM-CATALOG>',
-    '<SYNTAX REVIEW MUSEUM = V-MUSEUM-CATALOG>',
+    '<SYNTAX CATALOG = V-MUSEUM-CATALOG>',
+    '<SYNTAX REVIEW = V-MUSEUM-CATALOG>',
     '<PERFORM ,V?PUT ,PRSO .SURFACE>',
     '<PERFORM ,V?PUT-ON ,PRSO .SURFACE>',
 ):
