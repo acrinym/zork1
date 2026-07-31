@@ -52,7 +52,7 @@ class CorpusCausalWarningTests(unittest.TestCase):
         self.assertEqual(module.count("<SETG MAINT-FLOOD-WARNING-STAGE 2>"), 1)
         self.assertEqual(module.count("<SETG MAINT-FLOOD-WARNING-STAGE 3>"), 1)
         self.assertIn("<G? ,WATER-LEVEL 2>", module)
-        self.assertIn("<G? ,WATER-LEVEL 6>", module)
+        self.assertIn("<G? ,WATER-LEVEL 4>", module)
         self.assertIn("<G? ,WATER-LEVEL 10>", module)
 
     def test_patch_couples_only_existing_canonical_hooks(self) -> None:
@@ -98,7 +98,10 @@ class CorpusCausalWarningTests(unittest.TestCase):
         for candidate_id, text in evidence["candidates"].items():
             for paragraph in text.splitlines():
                 if paragraph.strip():
-                    self.assertIn(re.sub(r"\s+", " ", paragraph.strip()), normalized_module)
+                    self.assertIn(
+                        re.sub(r"\s+", " ", paragraph.strip()),
+                        normalized_module,
+                    )
             receipt = evidence["style_receipts"][candidate_id]
             overlap = evidence["overlap_results"][candidate_id]
             expected_hash = sha256(text.encode("utf-8")).hexdigest()
@@ -107,9 +110,17 @@ class CorpusCausalWarningTests(unittest.TestCase):
             self.assertEqual(overlap["corpus_digest"], digest)
             self.assertTrue(receipt["originality_check"]["passed"])
             self.assertTrue(overlap["passed"])
-            self.assertEqual(receipt["originality_check"]["threshold_violation_count"], 0)
-            self.assertEqual(receipt["originality_check"]["rare_phrase_match_count"], 0)
-            self.assertFalse(receipt["originality_check"]["source_text_disclosed"])
+            self.assertEqual(
+                receipt["originality_check"]["threshold_violation_count"],
+                0,
+            )
+            self.assertEqual(
+                receipt["originality_check"]["rare_phrase_match_count"],
+                0,
+            )
+            self.assertFalse(
+                receipt["originality_check"]["source_text_disclosed"]
+            )
             self.assertTrue(receipt["intentional_departures"])
             self.assertTrue(receipt["primary_authorities"])
             self.assertTrue(receipt["excluded_voices"])
@@ -117,9 +128,14 @@ class CorpusCausalWarningTests(unittest.TestCase):
     def test_release_entrypoint_retains_1230_and_loads_new_module_last(self) -> None:
         entrypoint = (TRAIN / "overrides/zork1.zil").read_text()
         self.assertIn("<CONSTANT RELEASEID 1231>", entrypoint)
-        self.assertIn('<INSERT-FILE "completed_expedition_archive" T>', entrypoint)
+        self.assertIn(
+            '<INSERT-FILE "completed_expedition_archive" T>',
+            entrypoint,
+        )
         self.assertTrue(
-            entrypoint.rstrip().endswith('<INSERT-FILE "corpus_causal_warning" T>')
+            entrypoint.rstrip().endswith(
+                '<INSERT-FILE "corpus_causal_warning" T>'
+            )
         )
 
     def test_product_kanban_has_operational_lanes_and_proof(self) -> None:
@@ -130,11 +146,23 @@ class CorpusCausalWarningTests(unittest.TestCase):
         )
         current = board["lanes"]["current"]
         self.assertEqual(len(current), 1)
-        self.assertEqual(current[0]["train_id"], "zork-corpus-causal-warning-1231")
+        self.assertEqual(
+            current[0]["train_id"],
+            "zork-corpus-causal-warning-1231",
+        )
         for lane, cards in board["lanes"].items():
             for card in cards:
-                for key in ("train_id", "outcome", "scope", "acceptance", "boundaries"):
-                    self.assertTrue(card.get(key), f"{lane}:{card.get('train_id')}:{key}")
+                for key in (
+                    "train_id",
+                    "outcome",
+                    "scope",
+                    "acceptance",
+                    "boundaries",
+                ):
+                    self.assertTrue(
+                        card.get(key),
+                        f"{lane}:{card.get('train_id')}:{key}",
+                    )
         done_ids = {card["train_id"] for card in board["lanes"]["done"]}
         self.assertIn("zork-house-of-records-1230", done_ids)
         self.assertIn("zork-infocom-corpus-foundation", done_ids)
