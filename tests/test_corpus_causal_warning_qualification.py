@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -23,6 +24,17 @@ class CorpusCausalWarningQualificationTests(unittest.TestCase):
         self.assertIn("<EQUAL? ,WATER-LEVEL 5>", module)
         self.assertIn("<EQUAL? ,WATER-LEVEL 11>", module)
 
+    def test_hosted_artifact_identity_is_locked(self) -> None:
+        manifest = json.loads((TRAIN / "patch-series.json").read_text())
+        expected = manifest["expected_artifact"]
+        self.assertTrue(expected["locked"])
+        self.assertEqual(expected["size_bytes"], 337920)
+        self.assertEqual(expected["checksum_hex"], "0x1b994d18")
+        self.assertEqual(
+            expected["sha256"],
+            "5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609",
+        )
+
     def test_full_qualifier_compiles_assembles_and_verifies(self) -> None:
         qualifier_path = TRAIN / "qualify.sh"
         qualifier = qualifier_path.read_text()
@@ -33,6 +45,7 @@ class CorpusCausalWarningQualificationTests(unittest.TestCase):
             '"$GLAZER_BIN" "$ASSEMBLY"',
             "glulx/tools/verify_ulx.py",
             "story['checksum_valid'] is True",
+            "story['sha256'] == expected['sha256']",
             "QUALIFICATION-RECEIPT.json",
         ):
             self.assertIn(required, qualifier)
