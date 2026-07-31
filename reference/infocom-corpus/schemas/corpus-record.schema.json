@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acrinym.github.io/zork1/infocom-corpus/corpus-record.schema.json",
+  "title": "Local player-visible corpus record",
+  "type": "object",
+  "required": ["schema_version", "record_id", "artifact_id", "authority_profile", "surface", "text", "text_sha256", "source"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_id": {"type": "string", "minLength": 1},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "authority_profile": {"type": "string", "minLength": 1},
+    "surface": {"type": "string", "minLength": 1},
+    "text": {"type": "string"},
+    "text_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source": {
+      "type": "object",
+      "required": ["path", "file_sha256", "line_start", "line_end", "byte_offset_start", "byte_offset_end", "context_head"],
+      "properties": {
+        "path": {"type": "string"},
+        "file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "line_start": {"type": "integer", "minimum": 1},
+        "line_end": {"type": "integer", "minimum": 1},
+        "byte_offset_start": {"type": "integer", "minimum": 0},
+        "byte_offset_end": {"type": "integer", "minimum": 0},
+        "context_head": {"type": "string"},
+        "entity_kind": {"type": ["string", "null"]},
+        "entity_id": {"type": ["string", "null"]},
+        "routine_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "annotation": {"type": "object"}
+  },
+  "additionalProperties": false
+}

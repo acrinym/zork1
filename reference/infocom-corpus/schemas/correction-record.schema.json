@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acrinym.github.io/zork1/infocom-corpus/correction-record.schema.json",
+  "title": "Rights-aware transcription correction record",
+  "type": "object",
+  "required": ["correction_id", "artifact_id", "location", "observed_sha256", "corrected_sha256", "reason", "confidence"],
+  "properties": {
+    "correction_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "artifact_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "location": {
+      "type": "object",
+      "properties": {
+        "page": {"type": ["integer", "null"], "minimum": 1},
+        "surface": {"type": ["string", "null"]},
+        "block_id": {"type": ["string", "null"]},
+        "line": {"type": ["integer", "null"], "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "observed_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "corrected_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reason": {"type": "string", "minLength": 1},
+    "confidence": {"enum": ["certain", "probable", "uncertain"]},
+    "observed_text": {"type": "string", "description": "Allowed only when the artifact rights gate permits repository full text."},
+    "corrected_text": {"type": "string", "description": "Allowed only when the artifact rights gate permits repository full text."}
+  },
+  "additionalProperties": false
+}
