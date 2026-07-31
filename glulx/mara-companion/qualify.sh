@@ -71,7 +71,11 @@ overlap = json.loads(Path('glulx/build/mara-companion/mara-prose.overlap.json').
 receipt = json.loads(Path('glulx/build/mara-companion/mara-prose.style-receipt.json').read_text())
 assert stage['base']['release'] == 1233
 assert stage['base']['artifact_sha256'] == '4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244'
-assert stage['changed_paths'] == ['mara_companion.zil', 'zork1.zil']
+assert stage['changed_paths'] == [
+    'mara_companion.zil',
+    'museum_intake_first_gallery.zil',
+    'zork1.zil',
+]
 assert not smell['errors']
 assert not [item for item in smell['includes'] if not item['resolved']]
 assert overlap['passed'] is True
@@ -85,6 +89,7 @@ assert originality['source_text_disclosed'] is False
 assert originality['threshold_violation_count'] == 0
 assert originality['rare_phrase_match_count'] == 0
 module = (source / 'mara_companion.zil').read_text()
+museum = (source / 'museum_intake_first_gallery.zil').read_text()
 for required in (
     '<SYNTAX SHOW OBJECT (HELD CARRIED HAVE) TO OBJECT (FIND ACTORBIT) (IN-ROOM)',
     '<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0>>',
@@ -96,6 +101,7 @@ for required in (
     assert module.count(required) == 1
 for forbidden in ('<GLOBAL', '<MOVE ,PRSO', '<REMOVE ,PRSO', 'FOLLOWER-ENGINE', 'CHATBOT'):
     assert forbidden not in module
+assert museum.index('<MUSEUM-ACCEPTS? ,MUSEUM-WEAPON-WALL .OBJ>') < museum.index('<G? <GETP .OBJ ,P?TVALUE> 0>')
 PY
 
 if ! command -v dotnet >/dev/null 2>&1; then
@@ -232,6 +238,7 @@ receipt = {
         'mara_arrival_runtime': 'passed',
         'unwitnessed_knowledge_runtime': 'passed',
         'evidence_memory_runtime': 'passed',
+        'museum_class_precedence_runtime': 'passed',
         'retained_object_custody_runtime': 'passed',
     },
     'memory_authority': 'canonical-object-identity',
