@@ -147,4 +147,6 @@ The same information remains accessible through commands such as `VIEW AQUATIC G
 
 ## Promotion rule
 
+Before implementation or public/commercial release planning, verify current copyright, trademark, IP, rights-holder permission, repository policy, and release-policy requirements.
+
 When a concept is selected for implementation, define a complete player-facing product train with its real dependencies and qualification journey. Do not treat this folder itself as implementation progress.
