@@ -20,7 +20,7 @@ This board answers five different questions: what is being built now, what is al
 
 **Player outcome:** selected ordinary interactive-fiction phrases reach world behavior Zork already implements instead of failing at vocabulary or noun-role gaps.
 
-**In production:** `X`, `INSPECT`, `EXAMINE UNDER`, `EXAMINE BEHIND`, `SWITCH ON/OFF`, `SEAL`, and `MEND` route to existing examination, spatial inspection, lamp, and plugging actions. The train adds no parser state, action routine, response prose, or generic `USE` engine.
+**In production:** `X`, `INSPECT`, `EXAMINE UNDER`, `EXAMINE BEHIND`, `SWITCH ON/OFF`, `SEAL`, and `MEND` route to existing examination, spatial inspection, lamp, and plugging actions. The train adds no parser state, action routine, or response prose. Release 1211's bounded `USE OBJECT` assistance remains present and unchanged; Release 1232 does not broaden it.
 
 **Proof required:** exact two-path staging, direct parser tests, source smell check, ZILF/Glazer artifact qualification, and a Glulxe transcript proving the actual commands and canonical outputs. PR: **#35**.
 
