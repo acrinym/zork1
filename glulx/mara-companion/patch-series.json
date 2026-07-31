@@ -1,0 +1,56 @@
+{
+  "edition": "Unofficial Mara Arrival and Evidence Memory Glulx",
+  "release": 1234,
+  "serial": "260731",
+  "base_manifest": "../museum-intake-first-gallery/patch-series.json",
+  "base_release": 1233,
+  "base_artifact_sha256": "4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244",
+  "expected_artifact": {
+    "file": "zork1-glulx-mara-arrival-evidence-memory.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": true,
+    "size_bytes": 339712,
+    "checksum_hex": "0x69fd7910",
+    "sha256": "38b966f47d771e0f5ae6229ff6a7542830ce6e365a3d2291f764581ae0b64a17"
+  },
+  "overrides": [
+    {
+      "path": "mara_companion.zil",
+      "source": "overrides/mara_companion.zil",
+      "allow_new": true,
+      "description": "Add Mara as a bounded Living Room actor with witnessed evidence memory"
+    },
+    {
+      "path": "museum_intake_first_gallery.zil",
+      "source": "overrides/museum_intake_first_gallery.zil",
+      "description": "Correct museum intake precedence so explicit display classes outrank generic treasure value"
+    },
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1233 layer, load Mara, and assign Release 1234"
+    }
+  ],
+  "patches": [],
+  "expected_changed_paths": [
+    "mara_companion.zil",
+    "museum_intake_first_gallery.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "Mara appears physically in the Living Room",
+    "TALK TO MARA establishes or revisits the relationship",
+    "SHOW OBJECT TO MARA records the actual canonical object as witnessed evidence",
+    "ASK MARA ABOUT MUSEUM and the shown object reflect only earned knowledge",
+    "explicit museum display classes outrank generic treasure value, so weapons reach the weapon wall"
+  ],
+  "boundaries": [
+    "no generic companion or follower engine",
+    "no chatbot or generated dialogue",
+    "no new global variable",
+    "no duplicate evidence object or remote inventory",
+    "no omniscient knowledge before Mara witnesses evidence",
+    "no museum registry rewrite, House hierarchy work, or S.T.A.L.K.E.R. mixing"
+  ]
+}
