@@ -123,6 +123,43 @@ The romance is not the purpose of the system. The purpose is to let two human be
 
 See [Human Companion, Bond, and Optional Love Interest](human-companion-bond-and-love-interest.md).
 
+## Infocom linguistic corpus and complete document Markdown
+
+Highly Extended Zork must not rely on a generic request for AI to “write in Infocom style.”
+
+The project needs a provenance-aware corpus built from original Infocom source prose, manuals, reference cards, sample transcripts, packaging, feelies, InvisiClues, newsletters, catalogs, advertisements, collection documentation, and other original textual artifacts.
+
+The corpus must preserve distinctions between:
+
+- Zork I narration and parser language;
+- Zork I manual and transcript language;
+- Zork II and Zork III trilogy authority;
+- later Great Underground Empire language;
+- company-wide manual, hint, packaging, and documentation craft;
+- game- and author-specific voices that should remain contrast material rather than being averaged into Zork.
+
+A museum plaque, parser refusal, Mara survey note, death message, House record, recipe failure, and package manual should not all be produced from one undifferentiated style profile.
+
+Every artifact requires:
+
+- stable provenance;
+- edition and release identity;
+- rights status;
+- page or surface anchors;
+- OCR uncertainty tracking;
+- semantic block classification;
+- linguistic annotations;
+- separation of public-repository text from protected local study copies.
+
+Every substantial new prose family should eventually carry a style receipt identifying its source authorities, retained traits, excluded voices, and originality checks.
+
+See:
+
+- [Infocom Linguistic Corpus and Document Markdown Strategy](infocom-linguistic-corpus-and-document-markdown.md)
+- [Infocom Document Corpus Manifest](infocom-document-corpus-manifest.md)
+
+The corpus is a cross-cutting dependency for all future Highly Extended Zork writing. It is not a substitute for human authorship; it is the evidence system that prevents vague imitation and makes period-authentic writing reviewable.
+
 ## Community wish archaeology
 
 [Zork Community Wishes and Lost-Idea Archaeology](community-wishes-and-lost-ideas.md) records direct fan wishes, recurring preferences, historical gaps, abandoned fan-project directions, and modern-player pain points.
@@ -132,7 +169,7 @@ It explicitly separates:
 - things people actually requested;
 - complaints that imply a design problem;
 - historical Dungeon/Zork material that needs source verification;
-- our original extensions, including the Living Zork consequence work, Zork Plus, the museum, ecology, fishing, cooking, hunger, satiation, stamina, human companionship, optional love, and House memory systems.
+- our original extensions, including the Living Zork consequence work, Zork Plus, the museum, ecology, fishing, cooking, hunger, satiation, stamina, human companionship, optional love, the Infocom linguistic corpus, and House memory systems.
 
 The research file is evidence and inspiration, not a second Kanban, bead hierarchy, or implementation claim.
 
@@ -147,8 +184,9 @@ The House dependency is complete, but that does not automatically make the museu
 3. **Museum Intake and First Gallery** — a complete donation, loan, registration, custody, plaque, revisit, and save/restore loop.
 4. **Parser Comprehension and Deep Affordances** — focused noun, verb, two-object, scenery, material, and intent improvements without a universal simulator.
 5. **Companion Expedition Foundation** — one authored human companion, Dam mutual rescue, direct-address grammar, physical and knowledge state, promises, refusal, joint actions, separation, reunion, friendship, and the earliest possibility of romance.
+6. **Infocom Corpus Foundation** — artifact schemas, rights ledger, Zork I source-string extraction, documentation manifest, local protected-source ingestion, linguistic profiles, style receipts, and phrase-overlap review.
 
-These are alternatives for sequencing, not five trains to launch simultaneously.
+These are alternatives for sequencing, not six trains to launch simultaneously.
 
 The museum remains fully retained. The correction is that it is one major product family among several earlier recovered and newly developed directions, and its position must be deliberately chosen rather than assumed.
 
@@ -156,30 +194,30 @@ The museum remains fully retained. The correction is that it is one major produc
 
 ### Deeper before merely larger
 
-A larger map is valuable only when rooms, objects, actors, warnings, relationships, and consequences answer the player more deeply. Existing locations should accumulate additional behavior, evidence, danger, history, alternate outcomes, and human meaning before the world becomes a mass of shallow new rooms.
+A larger map is valuable only when rooms, objects, actors, warnings, relationships, language, and consequences answer the player more deeply. Existing locations should accumulate additional behavior, evidence, danger, history, alternate outcomes, and human meaning before the world becomes a mass of shallow new rooms.
 
 ### Discovery before checklist
 
-The museum, archive, warnings, recipes, companion knowledge, and postgame modes should not reveal every missing object, hidden outcome, or solution immediately. Knowledge must be earned through credible play.
+The museum, archive, warnings, recipes, companion knowledge, corpus, and postgame modes should not reveal every missing object, hidden outcome, or solution immediately. Knowledge must be earned through credible play.
 
 ### Evidence before omniscience
 
-The game may know hidden rules, but player-facing records and companion beliefs retain only what was observed, documented, measured, inferred, remembered, or credibly reported.
+The game may know hidden rules, but player-facing records and companion beliefs retain only what was observed, documented, measured, inferred, remembered, or credibly reported. Writing decisions should likewise identify their original Infocom evidence rather than appeal to a vague house style.
 
 ### Real provenance
 
-An object, specimen, meal, warning, weapon, entrusted possession, or archive record may remember:
+An object, specimen, meal, warning, weapon, entrusted possession, archive record, or source document may remember:
 
 - where it was found;
 - how and when it was acquired;
 - whether it was given, stolen, entrusted, recovered, purchased, caught, grown, prepared, damaged, repaired, or taken from another actor;
 - fire, water, magic, Hades, rainbow, combat, theft, ritual, and environmental exposure;
 - who previously possessed it;
-- whether it is original, altered, restored, a replica, or only documented.
+- whether it is original, altered, restored, a replica, a transcription, or only documented.
 
 ### Canonical authority
 
-Future systems must not fabricate replacement treasures, duplicate unique objects, silently solve puzzles, change score without authored cause, erase custody, merge contradictory expeditions, or replace actor motives and companion autonomy with omniscient generic AI.
+Future systems must not fabricate replacement treasures, duplicate unique objects, silently solve puzzles, change score without authored cause, erase custody, merge contradictory expeditions, replace actor motives and companion autonomy with omniscient generic AI, or flatten distinct Infocom voices into one synthetic narrator.
 
 ### Authored causality
 
@@ -187,11 +225,11 @@ New outcomes should follow from visible information, physical state, preparation
 
 ### Dense authored variety
 
-Variety should come from understandable combinations of place, circumstance, time, environment, history, and player action—not arbitrary procedural naming, generated filler, or endless companion banter.
+Variety should come from understandable combinations of place, circumstance, time, environment, history, player action, and deliberately selected language authority—not arbitrary procedural naming, generated filler, or endless companion banter.
 
 ### Optional presentation layers
 
-The parser remains authoritative and complete. Glulx TUI, 2D illustrations, action controls, maps, sound, companion status presentation, and later renderer experiments may support play without becoming the sole source of required evidence.
+The parser remains authoritative and complete. Glulx TUI, 2D illustrations, action controls, maps, sound, companion status presentation, corpus-backed documentation, and later renderer experiments may support play without becoming the sole source of required evidence.
 
 ## Other future directions
 
@@ -205,11 +243,12 @@ The parser remains authoritative and complete. Glulx TUI, 2D illustrations, acti
 - physical caches, death-site recovery, and Veteran Expedition preparation;
 - playable off-screen stories and alternate actor perspectives;
 - a human companion whose independent testimony, promises, custody, and relationship history alter expeditions without replacing solo play;
-- the House, Attic, museum, correspondence, field records, warnings, companion journals, and NPC testimony presenting different views of the same event;
+- a rights-aware Infocom corpus that supports exact linguistic review without indiscriminate copying or voice flattening;
+- the House, Attic, museum, correspondence, field records, warnings, companion journals, original documentation, and NPC testimony presenting different views of the same event;
 - museum exhibits and archive records becoming active story locations rather than static rewards.
 
 ## Promotion rule
 
-Before implementation or public/commercial release planning, verify current copyright, trademark, IP, rights-holder permission, repository policy, and release-policy requirements.
+Before implementation or public/commercial release planning, verify current copyright, trademark, IP, rights-holder permission, repository policy, source-document redistribution, and release-policy requirements.
 
-When a concept is selected for implementation, define one complete player-facing product train with its real dependencies and qualification journey. Do not treat this folder itself as implementation progress, reopen the completed House bead hierarchy, or silently start unrelated product families together.
+When a concept is selected for implementation, define one complete player-facing product train with its real dependencies and qualification journey. Do not treat this folder itself as implementation progress, reopen the completed House bead hierarchy, publish protected source documents without a verified rights basis, or silently start unrelated product families together.
