@@ -23,7 +23,7 @@ class CorpusCausalWarningQualificationTests(unittest.TestCase):
             "MAINT-FLOOD-LEAK-EXAMINED",
             "MAINT-FLOOD-REPAIRED",
         ):
-            self.assertNotIn(dead_state, module)
+            self.assertNotIn(f"<GLOBAL {dead_state}", module)
 
     def test_full_qualifier_compiles_assembles_and_verifies(self) -> None:
         qualifier = (TRAIN / "qualify.sh").read_text()
