@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acrinym.github.io/zork1/infocom-corpus/artifact.schema.json",
+  "title": "Infocom corpus artifact",
+  "type": "object",
+  "required": ["artifact_id", "product_id", "title", "artifact_type", "edition", "source", "rights", "processing"],
+  "properties": {
+    "artifact_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "product_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "artifact_type": {"enum": ["advertisement", "collection-documentation", "feelie", "game-source", "hint-booklet", "hint-map", "manual", "package-copy", "readme", "reference-card", "sample-transcript"]},
+    "edition": {
+      "type": "object",
+      "required": ["label", "language", "certainty"],
+      "properties": {
+        "label": {"type": "string", "minLength": 1},
+        "release": {"type": ["string", "null"]},
+        "serial": {"type": ["string", "null"]},
+        "platform": {"type": ["string", "null"]},
+        "language": {"type": "string", "minLength": 1},
+        "publication_year": {"type": ["integer", "null"]},
+        "certainty": {"enum": ["repository-observed", "catalog-confirmed", "family-confirmed", "unresolved"]},
+        "edition_scope": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "required": ["kind", "repository_path", "local_source_path", "sha256", "git_blob_sha"],
+      "properties": {
+        "kind": {"enum": ["repository", "physical-local", "external-catalog", "permissioned-preservation", "unknown"]},
+        "repository_path": {"type": ["string", "null"]},
+        "local_source_path": {"type": ["string", "null"], "pattern": "^(\\.local/infocom-corpus/.*)?$"},
+        "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "git_blob_sha": {"type": ["string", "null"], "pattern": "^[0-9a-f]{40}$"},
+        "catalog_references": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "rights": {
+      "type": "object",
+      "required": ["class", "basis", "verification", "repository_text_policy", "full_text_allowed"],
+      "properties": {
+        "class": {"enum": ["A", "B", "C", "D", "E"]},
+        "basis": {"type": "string", "minLength": 1},
+        "verification": {"type": "string", "minLength": 1},
+        "repository_text_policy": {"enum": ["full-text-verified", "metadata-and-derived-analysis-only", "metadata-only", "local-study-only"]},
+        "full_text_allowed": {"type": "boolean"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["full_text_allowed"],
+            "properties": {"full_text_allowed": {"const": true}}
+          },
+          "then": {
+            "properties": {
+              "class": {"enum": ["A", "D"]},
+              "verification": {"const": "verified-for-this-repository"},
+              "repository_text_policy": {"const": "full-text-verified"}
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "processing": {
+      "type": "object",
+      "required": ["transcription_status", "annotation_status", "public_output"],
+      "properties": {
+        "transcription_status": {"type": "string"},
+        "annotation_status": {"type": "string"},
+        "public_output": {"enum": ["full-text-and-analysis", "statistics-hashes-and-references", "metadata-only"]},
+        "page_count": {"type": ["integer", "null"], "minimum": 1},
+        "correction_policy": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

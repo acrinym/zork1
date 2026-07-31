@@ -1,0 +1,5 @@
+# Protected Infocom study copies and generated local corpora
+.local/infocom-corpus/
+*.infocom-corpus.local.jsonl
+__pycache__/
+*.py[cod]
