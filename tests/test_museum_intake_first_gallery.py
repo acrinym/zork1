@@ -76,12 +76,15 @@ class MuseumIntakeFirstGalleryTests(unittest.TestCase):
 
     def test_parser_surface_is_bounded(self) -> None:
         module = (TRAIN / "overrides/museum_intake_first_gallery.zil").read_text()
+        self.assertIn("<BUZZ MUSEUM>", module)
         self.assertIn(
             "<SYNTAX EXHIBIT OBJECT (MANY HELD HAVE) = V-MUSEUM-EXHIBIT>",
             module,
         )
-        self.assertIn("<SYNTAX CATALOG MUSEUM = V-MUSEUM-CATALOG>", module)
-        self.assertIn("<SYNTAX REVIEW MUSEUM = V-MUSEUM-CATALOG>", module)
+        self.assertIn("<SYNTAX CATALOG = V-MUSEUM-CATALOG>", module)
+        self.assertIn("<SYNTAX REVIEW = V-MUSEUM-CATALOG>", module)
+        self.assertNotIn("<SYNTAX CATALOG OBJECT", module)
+        self.assertNotIn("<SYNTAX REVIEW OBJECT", module)
         self.assertNotIn("DONATE", module)
         self.assertNotIn("COLLECT ALL", module)
 
