@@ -7,23 +7,24 @@ This train is the first gameplay consumer of the Infocom Corpus Foundation. It c
 After the blue button breaks the east-wall pipe, the player receives:
 
 - immediate notice that the west and south exits remain open;
-- three deduplicated warnings tied to the real `WATER-LEVEL`;
+- three one-time warnings tied to exact canonical `WATER-LEVEL` crossings;
 - an inspectable physical break with one non-spoiling repair affordance;
 - visible confirmation that a successful repair stops pressure and drains the room;
 - a causal death line if the player remains through the final flood stage.
 
 ## Canonical authority
 
-Release 1231 does not create another flood system:
+Release 1231 does not create another flood system or any new flood state:
 
 - `WATER-LEVEL` is the only water state;
 - `I-MAINT-ROOM` is the only rising-water clock event;
+- exact levels 3, 5, and 11 make the three warnings naturally one-time;
 - `LEAK` is the real break;
 - PUTTY and `FIX-MAINT-LEAK` remain the repair route;
 - the room's west and south exits remain escape routes;
 - `JIGS-UP` remains death/restart authority.
 
-The only new gameplay state is `MAINT-FLOOD-WARNING-STAGE`, which prevents a warning threshold from repeating. Cause, examination, and repair do not acquire shadow history flags.
+Hosted ZILF qualification exposed that Release 1230 already used all available globals. The earlier warning-stage global was removed rather than hidden, compressed, or moved into another controller.
 
 ## Corpus evidence
 
@@ -56,6 +57,6 @@ The complete route:
 7. verifies format, Glulx version, checksum, and nonzero artifact size;
 8. writes `QUALIFICATION-RECEIPT.json`.
 
-The route uses an existing local ZILF checkout or `GLULX_ZILF_DLL`, and an existing local Glazer build or `GLAZER_BIN`. It may build an already present local checkout, but it does not download a toolchain or consume GitHub Actions. Missing tools fail qualification explicitly; they do not produce a false passing artifact receipt.
+`.github/workflows/glulx-corpus-causal-warning.yml` runs that exact route on GitHub-hosted CI using pinned Zork source, pinned Glulx ZILF, and checksum-verified Glazer 1.2.0. It uploads the ULX, assembly, receipts, reports, and build logs.
 
 The receipt deliberately does not claim an interactive runtime transcript. Source coupling, staging, corpus evidence, compilation, assembly, and artifact integrity are the qualified routes in this train.
