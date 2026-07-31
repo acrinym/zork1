@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1235-CUISINE-HOOKS",
+  "path": "shadow_logic.zil",
+  "description": "Advance bounded exertion state after turns and handle prepared-meal consumption before canonical generic actions",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<KITCHEN-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<KITCHEN-ADVANCE>\n\t<CUISINE-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<KITCHEN-ACTION-HOOK> <RTRUE>)\n\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)",
+      "new": "\t      (<KITCHEN-ACTION-HOOK> <RTRUE>)\n\t      (<CUISINE-ACTION-HOOK> <RTRUE>)\n\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)"
+    }
+  ]
+}
