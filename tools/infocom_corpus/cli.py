@@ -13,6 +13,7 @@ from .core import (
     artifact_by_id,
     build_style_receipt,
     check_overlap,
+    corpus_digest,
     derive_profiles,
     ensure_output_policy,
     extract_player_visible_strings,
@@ -29,6 +30,7 @@ from .core import (
 
 
 def _manifest(path: Path) -> dict:
+    """Read and validate one manifest root object."""
     value = read_json(path)
     if not isinstance(value, dict):
         raise CorpusError("manifest root must be an object")
@@ -36,7 +38,16 @@ def _manifest(path: Path) -> dict:
     return value
 
 
+def _read_candidate(path: Path) -> str:
+    """Read candidate prose as strict UTF-8 with a normalized CLI error."""
+    try:
+        return path.read_text(encoding="utf-8", errors="strict")
+    except UnicodeDecodeError as exc:
+        raise CorpusError(f"candidate is not valid UTF-8: {path}: {exc}") from exc
+
+
 def command_validate_manifest(args: argparse.Namespace) -> int:
+    """Validate and optionally persist a safe manifest summary."""
     summary = validate_manifest(_manifest(args.manifest))
     if args.out:
         write_json(args.out, summary)
@@ -45,6 +56,7 @@ def command_validate_manifest(args: argparse.Namespace) -> int:
 
 
 def command_extract(args: argparse.Namespace) -> int:
+    """Extract local prose and write a source-text-free public summary."""
     manifest = _manifest(args.manifest)
     selected = manifest["selected_game_source"]
     artifact = artifact_by_id(manifest, selected["artifact_id"])
@@ -73,6 +85,7 @@ def command_extract(args: argparse.Namespace) -> int:
 
 
 def command_annotate(args: argparse.Namespace) -> int:
+    """Attach fresh linguistic annotations to local corpus records."""
     records = read_jsonl(args.corpus)
     annotated = annotate_records(records)
     write_jsonl(args.out, annotated)
@@ -81,33 +94,19 @@ def command_annotate(args: argparse.Namespace) -> int:
 
 
 def command_profile(args: argparse.Namespace) -> int:
+    """Derive source-text-free authority statistics."""
     records = read_jsonl(args.corpus)
-    if any("annotation" not in record for record in records):
-        records = annotate_records(records)
     contracts = load_profiles(args.profiles)
-    digest = args.corpus_digest or _corpus_digest_from_records(records)
+    digest = args.corpus_digest or corpus_digest(records)
     output = derive_profiles(records, contracts, digest)
     write_json(args.out, output)
     print(f"Derived {output['profile_count']} authority profiles: {args.out}")
     return 0
 
 
-def _corpus_digest_from_records(records: list[dict]) -> str:
-    from .core import stable_json_sha
-
-    return stable_json_sha(
-        [
-            {
-                "record_id": record.get("record_id"),
-                "text_sha256": record.get("text_sha256"),
-            }
-            for record in records
-        ]
-    )
-
-
 def command_overlap(args: argparse.Namespace) -> int:
-    candidate_text = args.candidate.read_text(encoding="utf-8")
+    """Check candidate prose against all protected local corpus records."""
+    candidate_text = _read_candidate(args.candidate)
     records = read_jsonl(args.corpus)
     allowed: list[str] = []
     if args.profile_id:
@@ -126,6 +125,8 @@ def command_overlap(args: argparse.Namespace) -> int:
     write_json(args.out, result)
     print(
         f"Overlap validation {'PASSED' if result['passed'] else 'FAILED'}; "
+        f"{len(result['threshold_violations'])} threshold violation(s), "
+        f"{len(result['rare_phrase_matches'])} rare phrase match(es), "
         f"longest overlap "
         f"{result['longest_overlap']['tokens'] if result['longest_overlap'] else 0} token(s)."
     )
@@ -133,7 +134,8 @@ def command_overlap(args: argparse.Namespace) -> int:
 
 
 def command_receipt(args: argparse.Namespace) -> int:
-    candidate_text = args.candidate.read_text(encoding="utf-8")
+    """Issue a style receipt after a complete passing overlap check."""
+    candidate_text = _read_candidate(args.candidate)
     records = read_jsonl(args.corpus)
     profiles = load_profiles(args.profiles)
     try:
@@ -158,7 +160,7 @@ def command_receipt(args: argparse.Namespace) -> int:
         candidate_text=candidate_text,
         profile=profile,
         overlap=overlap,
-        corpus_digest=args.corpus_digest or _corpus_digest_from_records(records),
+        corpus_digest=args.corpus_digest or corpus_digest(records),
         intentional_departures=args.intentional_departure,
         reviewer=args.reviewer,
     )
@@ -168,9 +170,11 @@ def command_receipt(args: argparse.Namespace) -> int:
 
 
 def command_fingerprint(args: argparse.Namespace) -> int:
+    """Fingerprint a protected local copy without exposing its contents."""
     record = fingerprint_local_artifact(
         args.source,
         args.artifact_id,
+        repo_root=args.repo_root,
         page_count=args.page_count,
         page_references=args.page_reference,
     )
@@ -181,6 +185,7 @@ def command_fingerprint(args: argparse.Namespace) -> int:
 
 
 def command_validate_corrections(args: argparse.Namespace) -> int:
+    """Validate hash-only correction records against artifact rights."""
     manifest = _manifest(args.manifest)
     records = read_jsonl(args.corrections)
     summary = validate_correction_records(records, manifest)
@@ -191,6 +196,7 @@ def command_validate_corrections(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
+    """Build the complete command-line parser."""
     parser = argparse.ArgumentParser(
         prog="python -m tools.infocom_corpus",
         description=(
@@ -253,6 +259,7 @@ def build_parser() -> argparse.ArgumentParser:
         "fingerprint-local",
         help="record hashes and page references without publishing a protected artifact",
     )
+    fingerprint.add_argument("--repo-root", type=Path, default=Path("."))
     fingerprint.add_argument("--artifact-id", required=True)
     fingerprint.add_argument("--source", type=Path, required=True)
     fingerprint.add_argument("--page-count", type=int)
@@ -273,6 +280,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Run one command and normalize user-input failures to exit code two."""
     parser = build_parser()
     args = parser.parse_args(argv)
     if args.command == "overlap" and args.profile_id and not args.profiles:
@@ -281,6 +289,9 @@ def main(argv: list[str] | None = None) -> int:
         return int(args.func(args))
     except CorpusError as exc:
         print(f"infocom-corpus: {exc}", file=sys.stderr)
+        return 2
+    except UnicodeDecodeError as exc:
+        print(f"infocom-corpus: input is not valid UTF-8: {exc}", file=sys.stderr)
         return 2
     except OSError as exc:
         print(f"infocom-corpus: filesystem error: {exc}", file=sys.stderr)
