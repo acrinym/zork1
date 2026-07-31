@@ -9,7 +9,10 @@
     "file": "zork1-glulx-museum-intake-first-gallery.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "locked": true,
+    "size_bytes": 338432,
+    "checksum_hex": "0x7065f1fc",
+    "sha256": "4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244"
   },
   "overrides": [
     {
