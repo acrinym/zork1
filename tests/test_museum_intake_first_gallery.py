@@ -74,17 +74,30 @@ class MuseumIntakeFirstGalleryTests(unittest.TestCase):
         self.assertNotIn("REGISTRY", module)
         self.assertNotIn("DATABASE", module)
 
+    def test_catalog_noun_is_interface_not_collection_state(self) -> None:
+        module = (TRAIN / "overrides/museum_intake_first_gallery.zil").read_text()
+        self.assertIn("<OBJECT MUSEUM-CATALOG-OBJECT", module)
+        self.assertIn("(IN GLOBAL-OBJECTS)", module)
+        self.assertIn("(SYNONYM MUSEUM GALLERY COLLECTION)", module)
+        self.assertIn("(FLAGS NDESCBIT RMUNGBIT)", module)
+        self.assertNotIn("(IN LIVING-ROOM)", module)
+        self.assertNotIn("(ACTION", module.split("<OBJECT MUSEUM-CATALOG-OBJECT", 1)[1].split(">", 1)[0])
+
     def test_parser_surface_is_bounded(self) -> None:
         module = (TRAIN / "overrides/museum_intake_first_gallery.zil").read_text()
-        self.assertIn("<BUZZ MUSEUM>", module)
         self.assertIn(
             "<SYNTAX EXHIBIT OBJECT (MANY HELD HAVE) = V-MUSEUM-EXHIBIT>",
             module,
         )
-        self.assertIn("<SYNTAX CATALOG = V-MUSEUM-CATALOG>", module)
-        self.assertIn("<SYNTAX REVIEW = V-MUSEUM-CATALOG>", module)
-        self.assertNotIn("<SYNTAX CATALOG OBJECT", module)
-        self.assertNotIn("<SYNTAX REVIEW OBJECT", module)
+        self.assertIn(
+            "<SYNTAX CATALOG OBJECT (FIND RMUNGBIT) = V-MUSEUM-CATALOG>",
+            module,
+        )
+        self.assertIn(
+            "<SYNTAX REVIEW OBJECT (FIND RMUNGBIT) = V-MUSEUM-CATALOG>",
+            module,
+        )
+        self.assertNotIn("<BUZZ MUSEUM>", module)
         self.assertNotIn("DONATE", module)
         self.assertNotIn("COLLECT ALL", module)
 
