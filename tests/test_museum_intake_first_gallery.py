@@ -40,12 +40,32 @@ class MuseumIntakeFirstGalleryTests(unittest.TestCase):
         self.assertIn("MUSEUM-ACCEPTS?", module)
         self.assertIn("MUSEUM-PROJECT", module)
 
+    def test_intake_routes_each_class_to_its_exact_surface(self) -> None:
+        module = (TRAIN / "overrides/museum_intake_first_gallery.zil").read_text()
+        for target in (
+            "<RETURN ,TROPHY-CASE>",
+            "<RETURN ,MUSEUM-FRAME>",
+            "<RETURN ,MUSEUM-WEAPON-WALL>",
+            "<RETURN ,MUSEUM-RECORD-SHELF>",
+            "<RETURN ,MUSEUM-RELIC-STAND>",
+        ):
+            self.assertEqual(module.count(target), 1)
+        self.assertIn(
+            "<PERFORM ,V?PUT-ON ,PRSO ,MUSEUM-RELIC-STAND>", module
+        )
+
     def test_intake_delegates_to_canonical_put_actions(self) -> None:
         module = (TRAIN / "overrides/museum_intake_first_gallery.zil").read_text()
         self.assertIn("<PERFORM ,V?PUT ,PRSO .SURFACE>", module)
         self.assertIn("<PERFORM ,V?PUT-ON ,PRSO .SURFACE>", module)
         self.assertNotIn("<MOVE ,PRSO", module)
         self.assertNotIn("<REMOVE ,PRSO", module)
+
+    def test_outside_gallery_refusal_matches_corpus_asset(self) -> None:
+        module = (TRAIN / "overrides/museum_intake_first_gallery.zil").read_text()
+        refusal = (TRAIN / "prose/outside-gallery-refusal.txt").read_text().strip()
+        self.assertEqual(refusal, "There is no museum intake here.")
+        self.assertEqual(module.count(f'<TELL "{refusal}" CR>'), 2)
 
     def test_train_adds_no_parallel_collection_state(self) -> None:
         module = (TRAIN / "overrides/museum_intake_first_gallery.zil").read_text()
