@@ -8,6 +8,7 @@ import json
 import shutil
 import subprocess
 import sys
+import uuid
 from pathlib import Path
 from typing import Any
 
@@ -65,7 +66,9 @@ def main() -> int:
         raise RuntimeError("museum intake patch-series must contain an object")
     base_manifest_path, base_manifest = validate_base_manifest(manifest, manifest_path)
 
-    base_destination = destination.parent / "base-parser-affordances-src"
+    base_destination = (
+        destination.parent / f"base-parser-affordances-src-{uuid.uuid4().hex}"
+    )
     for path in (base_destination, destination):
         try:
             path.relative_to(allowed_root)
