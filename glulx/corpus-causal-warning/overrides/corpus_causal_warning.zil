@@ -1,12 +1,10 @@
 "CORPUS-COUPLED CAUSAL WARNING for Release 1231"
 
-;"This module adds no parallel flood controller. WATER-LEVEL, I-MAINT-ROOM,
-  LEAK, PUTTY, the canonical exits, and JIGS-UP remain authoritative."
-
-<GLOBAL MAINT-FLOOD-WARNING-STAGE 0>
+;"This module adds no parallel flood controller or state. WATER-LEVEL,
+  I-MAINT-ROOM, LEAK, PUTTY, the canonical exits, and JIGS-UP remain
+  authoritative. Exact WATER-LEVEL crossings make each warning occur once."
 
 <ROUTINE CORPUS-MAINT-FLOOD-START ()
-    <SETG MAINT-FLOOD-WARNING-STAGE 0>
     <TELL
 "The stream spreads across the floor faster than it drains. The west and
 south doorways remain clear -- for now." CR>
@@ -14,21 +12,15 @@ south doorways remain clear -- for now." CR>
 
 <ROUTINE CORPUS-MAINT-FLOOD-TICK (HERE?)
     <COND (<NOT .HERE?> <RFALSE>)
-          (<AND <G? ,WATER-LEVEL 10>
-                <L? ,MAINT-FLOOD-WARNING-STAGE 3>>
-           <SETG MAINT-FLOOD-WARNING-STAGE 3>
+          (<EQUAL? ,WATER-LEVEL 11>
            <TELL
 "The current is pulling hard across the room. Remaining here is becoming
 an experiment with one result." CR>)
-          (<AND <G? ,WATER-LEVEL 4>
-                <L? ,MAINT-FLOOD-WARNING-STAGE 2>>
-           <SETG MAINT-FLOOD-WARNING-STAGE 2>
+          (<EQUAL? ,WATER-LEVEL 5>
            <TELL
 "The water reaches your knees. Loose debris begins to drift toward the
 control panel." CR>)
-          (<AND <G? ,WATER-LEVEL 2>
-                <L? ,MAINT-FLOOD-WARNING-STAGE 1>>
-           <SETG MAINT-FLOOD-WARNING-STAGE 1>
+          (<EQUAL? ,WATER-LEVEL 3>
            <TELL
 "Cold water closes around your ankles. The break in the east-wall pipe is
 widening." CR>)>
@@ -46,7 +38,6 @@ opening is still small enough to seal." CR>
 maintenance room keeps the evidence; you do not.">>
 
 <ROUTINE CORPUS-MAINT-FLOOD-REPAIRED ()
-    <SETG MAINT-FLOOD-WARNING-STAGE 0>
     <TELL
 "The pipe shudders once. The remaining water begins to drain through the
 floor grating." CR>
