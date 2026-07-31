@@ -105,7 +105,10 @@ class CorpusCausalWarningTests(unittest.TestCase):
             receipt = evidence["style_receipts"][candidate_id]
             overlap = evidence["overlap_results"][candidate_id]
             expected_hash = sha256(text.encode("utf-8")).hexdigest()
+            expected_words = len(text.split())
             self.assertEqual(receipt["candidate"]["sha256"], expected_hash)
+            self.assertEqual(receipt["candidate"]["word_count"], expected_words)
+            self.assertEqual(overlap["candidate_word_count"], expected_words)
             self.assertEqual(receipt["originality_check"]["corpus_digest"], digest)
             self.assertEqual(overlap["corpus_digest"], digest)
             self.assertTrue(receipt["originality_check"]["passed"])
