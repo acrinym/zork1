@@ -20,7 +20,7 @@ south doorways remain clear -- for now." CR>
            <TELL
 "The current is pulling hard across the room. Remaining here is becoming
 an experiment with one result." CR>)
-          (<AND <G? ,WATER-LEVEL 6>
+          (<AND <G? ,WATER-LEVEL 4>
                 <L? ,MAINT-FLOOD-WARNING-STAGE 2>>
            <SETG MAINT-FLOOD-WARNING-STAGE 2>
            <TELL
