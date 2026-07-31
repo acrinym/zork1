@@ -20,9 +20,9 @@ This board answers five different questions: what is being built now, what is al
 
 **Player outcome:** the canonical Maintenance Room flood becomes readable as a causal sequence rather than a height message followed by a generic death.
 
-**In production:** blue-button cause, three one-time warning thresholds, pipe inspection, canonical repair feedback, and causal drowning prose. `WATER-LEVEL`, `I-MAINT-ROOM`, `LEAK`, PUTTY, the west/south exits, and `JIGS-UP` remain authoritative.
+**In production:** blue-button cause, three one-time warnings at exact canonical `WATER-LEVEL` crossings, pipe inspection, canonical repair feedback, and causal drowning prose. `WATER-LEVEL`, `I-MAINT-ROOM`, `LEAK`, PUTTY, the west/south exits, and `JIGS-UP` remain authoritative. The train adds no flood global, timer, or shadow controller.
 
-**Proof required:** exact three-path staging, direct gameplay asset tests, source smell check, four passing style receipts, no parallel timer or automatic rescue.
+**Proof required:** exact three-path staging, direct gameplay asset tests, source smell check, four passing style receipts, GitHub-hosted ZILF/Glazer artifact qualification, and no automatic rescue.
 
 ## NEXT
 
