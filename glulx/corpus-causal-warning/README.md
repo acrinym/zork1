@@ -23,7 +23,7 @@ Release 1231 does not create another flood system:
 - the room's west and south exits remain escape routes;
 - `JIGS-UP` remains death/restart authority.
 
-The new globals remember only whether cause/examination/repair were seen and which warning stage has already spoken.
+The only new gameplay state is `MAINT-FLOOD-WARNING-STAGE`, which prevents a warning threshold from repeating. Cause, examination, and repair do not acquire shadow history flags.
 
 ## Corpus evidence
 
@@ -32,14 +32,30 @@ The new globals remember only whether cause/examination/repair were seen and whi
 ## Run direct qualification
 
 ```bash
-python -m unittest discover -s tests -p 'test_corpus_causal_warning.py' -v
-python -m py_compile glulx/corpus-causal-warning/stage.py tests/test_corpus_causal_warning.py
+python -m unittest discover -s tests -p 'test_corpus_causal_warning*.py' -v
+python -m py_compile \
+  glulx/corpus-causal-warning/stage.py \
+  tests/test_corpus_causal_warning*.py
+bash -n glulx/corpus-causal-warning/qualify.sh
 ```
 
-Run the complete source/staging route:
+## Run complete source and artifact qualification
 
 ```bash
 bash glulx/corpus-causal-warning/qualify.sh
 ```
 
-The full route stages over locked Release 1230 and runs the repository ZIL smell checker. Artifact compilation requires the existing local ZILF/Glazer toolchain; this train does not download toolchains or consume GitHub Actions merely to manufacture an identity receipt.
+The complete route:
+
+1. runs the direct gameplay, evidence, and kanban tests;
+2. stages exactly three production paths over locked Release 1230;
+3. runs the repository ZIL smell checker;
+4. compiles the staged story to Glulx assembly with ZILF;
+5. normalizes serial `260731`;
+6. assembles the Release 1231 ULX with Glazer;
+7. verifies format, Glulx version, checksum, and nonzero artifact size;
+8. writes `QUALIFICATION-RECEIPT.json`.
+
+The route uses an existing local ZILF checkout or `GLULX_ZILF_DLL`, and an existing local Glazer build or `GLAZER_BIN`. It may build an already present local checkout, but it does not download a toolchain or consume GitHub Actions. Missing tools fail qualification explicitly; they do not produce a false passing artifact receipt.
+
+The receipt deliberately does not claim an interactive runtime transcript. Source coupling, staging, corpus evidence, compilation, assembly, and artifact integrity are the qualified routes in this train.
