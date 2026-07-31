@@ -19,19 +19,20 @@
       "additionalProperties": false
     },
     "authority_profile": {"type": "string", "minLength": 1},
-    "primary_authorities": {"type": "array", "minItems": 1, "items": {"type": "string"}},
-    "secondary_authorities": {"type": "array", "items": {"type": "string"}},
-    "excluded_voices": {"type": "array", "minItems": 1, "items": {"type": "string"}},
-    "retained_linguistic_traits": {"type": "array", "minItems": 1, "items": {"type": "string"}},
-    "intentional_departures": {"type": "array", "items": {"type": "string"}},
+    "primary_authorities": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "secondary_authorities": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "excluded_voices": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "retained_linguistic_traits": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "intentional_departures": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "originality_check": {
       "type": "object",
-      "required": ["corpus_digest", "candidate_sha256", "longest_source_overlap_tokens", "rare_phrase_match_count", "thresholds", "passed", "source_text_disclosed"],
+      "required": ["corpus_digest", "candidate_sha256", "longest_source_overlap_tokens", "threshold_violation_count", "rare_phrase_match_count", "thresholds", "passed", "source_text_disclosed"],
       "properties": {
-        "corpus_digest": {"type": "string"},
+        "corpus_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "candidate_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "longest_source_overlap_tokens": {"type": "integer", "minimum": 0},
-        "rare_phrase_match_count": {"type": "integer", "minimum": 0},
+        "threshold_violation_count": {"const": 0},
+        "rare_phrase_match_count": {"const": 0},
         "thresholds": {"type": "object"},
         "passed": {"const": true},
         "source_text_disclosed": {"const": false}
