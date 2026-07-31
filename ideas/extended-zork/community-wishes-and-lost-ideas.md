@@ -261,7 +261,7 @@ Offer presentation layers without making them separate games:
 **Sources:**
 
 - [Best Zork Format For Future Games? — The Zork Library Forum](https://www.thezorklibrary.com/forum/viewtopic.php?t=315)
-- [New Zork Remake in Development — The Zork Library Forum](https://www.thezorklibrary.com/phpbb/viewtopic.php?p=1585)
+- [New Zork Remake in Development — The Zork Library Forum](https://www.thezorklibrary.com/phpbb/viewtopic.php?t=174)
 - [Graphical Remakes? — r/Zork](https://www.reddit.com/r/zork/comments/jiqrt2)
 - [Zork Revisited — Question 1 — r/Zork](https://www.reddit.com/r/zork/comments/hikrkf)
 
@@ -344,7 +344,7 @@ Our train-and-bead method is valuable precisely because it converts enthusiasm i
 
 **Sources:**
 
-- [New Zork Remake in Development — The Zork Library Forum](https://www.thezorklibrary.com/phpbb/viewtopic.php?p=1585)
+- [New Zork Remake in Development — The Zork Library Forum](https://www.thezorklibrary.com/phpbb/viewtopic.php?t=174)
 - [Welcome & The Future of Zork Game — The Zork Library Forum](https://www.thezorklibrary.com/forum/viewtopic.php?t=553)
 - [A revival? — r/Zork](https://www.reddit.com/r/zork/comments/rgqnj2)
 
@@ -524,7 +524,7 @@ This should remain research, not become a second Kanban or shadow bead system.
 | Source | Date | Evidence extracted | Classification |
 |---|---:|---|---|
 | [Best Zork Format For Future Games?](https://www.thezorklibrary.com/forum/viewtopic.php?t=315) | 2009 | Text, hybrid graphics, full graphics, newcomer orientation, puzzle challenge, anti-grind | Direct wishes and recurring preferences |
-| [New Zork Remake in Development](https://www.thezorklibrary.com/phpbb/viewtopic.php?p=1585) | 2008–2019 | Preserve original rooms, puzzles, descriptions, and interaction; graphical remake ambition; scope/legal concerns | Direct project proposal and historical pattern |
+| [New Zork Remake in Development](https://www.thezorklibrary.com/phpbb/viewtopic.php?t=174) | 2008–2019 | Preserve original rooms, puzzles, descriptions, and interaction; graphical remake ambition; scope/legal concerns | Direct project proposal and historical pattern |
 | [Welcome & The Future of Zork Game](https://www.thezorklibrary.com/forum/viewtopic.php?t=553) | 2012–2013 | New Zork atmosphere, puzzles, humor, graphics-heavy demo, unfinished ambition | Direct project proposal and scope lesson |
 | [Bite-sized fan games](https://www.thezorklibrary.com/forum/viewtopic.php?t=164) | 2007 | Play missing events, legends, Thief/Troll perspectives, transcript consistency | Direct wishes |
 | [Original Zork (Dungeon Adventure)](https://www.thezorklibrary.com/forum/viewtopic.php?t=93) | 2005 | Desire to revisit unified mainframe Dungeon | Historical gap |
@@ -556,8 +556,9 @@ This should remain research, not become a second Kanban or shadow bead system.
 
 Before using any finding as an implementation requirement:
 
-1. verify historical claims against source, shipped game behavior, or primary documentation;
-2. state whether the feature is restoration, reinterpretation, or original extension;
-3. preserve canonical authority and current custody/state systems;
-4. define a complete player-facing product and qualification journey;
-5. do not create sub-beads or a shadow roadmap from this research file.
+1. verify current copyright, trademark, IP, rights-holder, permission, and release-policy requirements before implementation or public-release planning;
+2. verify historical claims against source, shipped game behavior, or primary documentation;
+3. state whether the feature is restoration, reinterpretation, or original extension;
+4. preserve canonical authority and current custody/state systems;
+5. define a complete player-facing product and qualification journey;
+6. do not create sub-beads or a shadow roadmap from this research file.
