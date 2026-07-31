@@ -162,6 +162,9 @@ serial, manifest_path = sys.argv[1:]
 manifest = json.loads(Path(manifest_path).read_text())
 expected = manifest['expected_artifact']
 story = json.loads(Path('glulx/build/parser-deep-affordances/story-report.json').read_text())
+stage = json.loads(Path(
+    'glulx/build/parser-deep-affordances/src/STAGING-RECEIPT.json'
+).read_text())
 assert story['format'] == expected['format']
 assert story['version_hex'] == expected['version_hex']
 assert story['checksum_valid'] is True
@@ -174,10 +177,10 @@ receipt = {
     'qualification_status': 'source-artifact-and-runtime-passed',
     'identity': {'release': 1232, 'serial': serial},
     'base': {
-        'release': 1231,
-        'artifact_sha256': '5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609',
+        'release': stage['base']['release'],
+        'artifact_sha256': stage['base']['artifact_sha256'],
     },
-    'changed_paths': ['gsyntax.zil', 'zork1.zil'],
+    'changed_paths': stage['changed_paths'],
     'artifact': story,
     'artifact_identity_locked': expected.get('locked', False),
     'routes': {
