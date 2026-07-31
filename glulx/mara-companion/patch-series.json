@@ -9,7 +9,10 @@
     "file": "zork1-glulx-mara-arrival-evidence-memory.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "locked": true,
+    "size_bytes": 339712,
+    "checksum_hex": "0x69fd7910",
+    "sha256": "38b966f47d771e0f5ae6229ff6a7542830ce6e365a3d2291f764581ae0b64a17"
   },
   "overrides": [
     {
