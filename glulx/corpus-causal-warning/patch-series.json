@@ -9,7 +9,10 @@
     "file": "zork1-glulx-corpus-causal-warning.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "size_bytes": 337920,
+    "checksum_hex": "0x1b994d18",
+    "sha256": "5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609",
+    "locked": true
   },
   "overrides": [
     {
@@ -21,7 +24,7 @@
       "path": "corpus_causal_warning.zil",
       "source": "overrides/corpus_causal_warning.zil",
       "allow_new": true,
-      "description": "Add bounded Maintenance Room warning, inspection, repair, and death prose using canonical flood state"
+      "description": "Add bounded Maintenance Room warning, inspection, repair, and death prose using canonical flood state and no new flood globals"
     }
   ],
   "patches": [
@@ -35,13 +38,14 @@
   "preserved_canonical_state": [
     "WATER-LEVEL remains the sole Maintenance Room flood state",
     "I-MAINT-ROOM remains the sole rising-water clock event",
+    "exact WATER-LEVEL crossings make warnings one-time without new globals",
     "LEAK and PUTTY remain the physical cause and repair authority",
     "west and south room exits remain canonical escape routes",
     "JIGS-UP remains the death and restart authority",
     "Release 1230 House and completed-expedition state remains unchanged"
   ],
   "excluded_scope": [
-    "parallel hazard timers, alternate water meters, or duplicated leak objects",
+    "parallel hazard timers, alternate water meters, new flood globals, or duplicated leak objects",
     "automatic escape, automatic repair, or hidden-solution command disclosure",
     "generic survival meters or random flood events",
     "House bead reopening or archive mutation",
