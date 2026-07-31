@@ -155,6 +155,18 @@ def lex_zil(text: str) -> Iterator[Token]:
             continue
 
         start_line, start_column, start_offset = line, column, i
+        if char == "!" and i + 1 < size:
+            end = i + 2
+            if text[i + 1] == "\\" and end < size:
+                end += 1
+            value = text[i:end]
+            advance(value)
+            i = end
+            yield Token(
+                "atom", value, start_line, start_column, start_offset, line, i
+            )
+            continue
+
         if char in "<>()":
             kind = {
                 "<": "open-angle", ">": "close-angle",
