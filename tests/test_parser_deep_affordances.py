@@ -35,26 +35,35 @@ class ParserDeepAffordancesTests(unittest.TestCase):
         self.assertIn("<SYNTAX EXAMINE UNDER OBJECT = V-LOOK-UNDER>", joined)
         self.assertIn("<SYNTAX EXAMINE BEHIND OBJECT = V-LOOK-BEHIND>", joined)
 
-    def test_switch_and_repair_routes_reuse_canonical_verbs(self) -> None:
+    def test_switch_and_repair_routes_preserve_accumulated_synonyms(self) -> None:
         patch = json.loads(
             (TRAIN / "patches/001-parser-intent-routes.json").read_text()
         )
-        joined = "\n".join(item["new"] for item in patch["replacements"])
-        self.assertIn("<SYNONYM TURN SWITCH SET FLIP SHUT>", joined)
-        self.assertIn("<SYNONYM PLUG GLUE PATCH REPAIR FIX SEAL MEND>", joined)
+        replacements = patch["replacements"]
+        self.assertEqual(replacements[1]["old"], "<SYNONYM PLUG ")
+        self.assertEqual(replacements[1]["new"], "<SYNONYM PLUG SEAL MEND ")
+        self.assertEqual(replacements[2]["old"], "<SYNONYM TURN ")
+        self.assertEqual(replacements[2]["new"], "<SYNONYM TURN SWITCH ")
+        joined = "\n".join(item["new"] for item in replacements)
         self.assertNotIn("V-SWITCH", joined)
         self.assertNotIn("V-SEAL", joined)
         self.assertNotIn("V-MEND", joined)
 
-    def test_train_does_not_add_a_generic_use_engine(self) -> None:
+    def test_train_does_not_add_or_expand_use_routing(self) -> None:
         manifest = json.loads((TRAIN / "patch-series.json").read_text())
         patch = json.loads(
             (TRAIN / "patches/001-parser-intent-routes.json").read_text()
         )
-        serialized = json.dumps({"manifest": manifest, "patch": patch})
-        self.assertNotIn("V-USE", serialized)
-        self.assertNotIn("SYNTAX USE", serialized)
-        self.assertIn("no generic USE verb", manifest["boundaries"])
+        serialized_patch = json.dumps(patch)
+        self.assertNotIn("V-USE", serialized_patch)
+        self.assertNotIn("SYNTAX USE", serialized_patch)
+        self.assertIn(
+            "no new or expanded generic USE routing", manifest["boundaries"]
+        )
+        self.assertIn(
+            "Release 1211 bounded USE OBJECT assistance remains unchanged",
+            manifest["preserved_parser_behavior"],
+        )
 
     def test_every_replacement_is_single_anchor(self) -> None:
         patch = json.loads(
