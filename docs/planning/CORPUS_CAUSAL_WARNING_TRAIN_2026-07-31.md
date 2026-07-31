@@ -3,6 +3,7 @@
 **Repository:** `acrinym/zork1`  
 **Base:** merged Infocom Corpus Foundation at `d7cc4750507fed9b505af66e0fd6afee2da70ffb`  
 **Branch:** `agent/corpus-causal-warning-20260731`  
+**PR:** `#34`  
 **Date:** July 31, 2026
 
 ## Product decision
@@ -12,10 +13,12 @@ The first corpus consumer is not a prose demo. It is the existing Flood Control 
 ## Coupled gameplay
 
 - Pushing the canonical blue button starts the canonical leak and records the visible west/south escape affordance.
-- The existing `I-MAINT-ROOM` event still increments `WATER-LEVEL`; a bounded helper emits warnings at three thresholds and never owns time or water state.
+- The existing `I-MAINT-ROOM` event still increments `WATER-LEVEL`; a bounded helper emits warnings at three depth-aligned thresholds and never owns time or water state.
 - Examining the canonical `LEAK` identifies the east-wall pipe opening and one physical affordance without naming PUTTY or spelling out a command.
 - The existing PUTTY route still calls `FIX-MAINT-LEAK`; Release 1231 reports the pipe shudder and draining water.
 - The terminal Maintenance Room branch still calls `JIGS-UP`; the new death line explains the failed escape and follows the earned warning chain.
+
+The only new gameplay state is `MAINT-FLOOD-WARNING-STAGE`. Three unused cause/examination/repair history flags found during review were removed rather than retained as speculative state.
 
 ## Corpus coupling
 
@@ -43,7 +46,7 @@ All four candidates pass:
 Exactly three staged paths may change:
 
 - `1actions.zil` — five narrow canonical hook replacements;
-- `corpus_causal_warning.zil` — bounded warning-memory and prose helpers;
+- `corpus_causal_warning.zil` — one bounded warning-stage global and prose helpers;
 - `zork1.zil` — Release 1231 identity and final module include.
 
 ## Qualification
@@ -52,13 +55,31 @@ Direct qualification covers:
 
 - exact Release 1230 base identity;
 - canonical flood ownership and absence of a parallel clock/water state;
-- three bounded warning stages;
+- exactly one new state global;
+- three bounded, depth-consistent warning stages;
 - exact hook count and expected production paths;
 - candidate prose equality with ZIL strings;
 - candidate hashes, corpus digest, passing overlap evidence, and receipt authorities;
-- operational kanban lanes and DONE proof.
+- operational kanban lanes and DONE proof;
+- an executable ZILF → serial normalization → Glazer → ULX verification route.
 
-The full `qualify.sh` also stages Release 1231 and runs the repository ZIL smell checker. It uses an already installed local ZILF toolchain when available; this environment does not contain that binary, so no Release 1231 `.ulx` identity is claimed or fabricated here.
+Local requalification after review fixes:
+
+```text
+python -m unittest discover -s tests -p 'test_corpus_causal_warning*.py' -v
+Ran 9 tests
+OK
+
+python -m py_compile glulx/corpus-causal-warning/stage.py tests/test_corpus_causal_warning*.py
+OK
+
+bash -n glulx/corpus-causal-warning/qualify.sh
+OK
+```
+
+All committed JSON manifests, kanban data, and corpus evidence parse successfully.
+
+The complete `qualify.sh` stages Release 1231, runs the repository ZIL smell checker, compiles with a local ZILF checkout, normalizes serial `260731`, assembles with Glazer, verifies the ULX checksum, and writes an artifact qualification receipt. This environment does not contain `dotnet`, ZILF, or Glazer, so no Release 1231 `.ulx` checksum is claimed or fabricated here. Missing tools fail the full route explicitly rather than producing a partial pass.
 
 ## Explicit exclusions
 
