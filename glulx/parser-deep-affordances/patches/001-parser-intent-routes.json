@@ -1,7 +1,7 @@
 {
   "id": "Z1-GLULX-1232-PARSER-INTENT-ROUTES",
   "path": "gsyntax.zil",
-  "description": "Route selected common player phrases to existing examination, spatial inspection, lamp switching, and repair actions without adding a universal intent engine",
+  "description": "Route selected common player phrases to existing examination, spatial inspection, lamp switching, and repair actions without expanding generic intent guessing",
   "replacements": [
     {
       "expected_count": 1,
@@ -10,13 +10,13 @@
     },
     {
       "expected_count": 1,
-      "old": "<SYNONYM PLUG GLUE PATCH REPAIR FIX>",
-      "new": "<SYNONYM PLUG GLUE PATCH REPAIR FIX SEAL MEND>"
+      "old": "<SYNONYM PLUG ",
+      "new": "<SYNONYM PLUG SEAL MEND "
     },
     {
       "expected_count": 1,
-      "old": "<SYNONYM TURN SET FLIP SHUT>",
-      "new": "<SYNONYM TURN SWITCH SET FLIP SHUT>"
+      "old": "<SYNONYM TURN ",
+      "new": "<SYNONYM TURN SWITCH "
     }
   ]
 }
