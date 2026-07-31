@@ -10,7 +10,9 @@ from typing import Any, Iterable, Mapping, Sequence
 
 RIGHTS_CLASSES = {"A", "B", "C", "D", "E"}
 FULL_TEXT_CLASSES = {"A", "D"}
-REPOSITORY_TEXT_POLICIES = {"full-text-verified", "metadata-and-derived-analysis-only", "metadata-only", "local-study-only"}
+VERIFIED_FOR_REPOSITORY = "verified-for-this-repository"
+FULL_TEXT_VERIFIED_POLICY = "full-text-verified"
+REPOSITORY_TEXT_POLICIES = {FULL_TEXT_VERIFIED_POLICY, "metadata-and-derived-analysis-only", "metadata-only", "local-study-only"}
 TRANSCRIPTION_STATUSES = {"repository-source", "manifest-only", "local-unreviewed", "local-corrected", "repository-text"}
 ANNOTATION_STATUSES = {"none", "extractable", "local-annotated", "derived-profile-qualified"}
 ARTIFACT_TYPES = {"game-source", "manual", "reference-card", "sample-transcript", "package-copy", "feelie", "hint-booklet", "hint-map", "collection-documentation", "advertisement", "readme"}
@@ -187,8 +189,8 @@ def validate_artifact(artifact: Mapping[str, Any]) -> None:
     full_text = rights.get("full_text_allowed")
     if not isinstance(full_text, bool):
         raise CorpusError(f"{artifact_id}.rights.full_text_allowed must be boolean")
-    if full_text and not (rights_class in FULL_TEXT_CLASSES and verification == "verified-for-this-repository" and policy == "full-text-verified"):
-        raise CorpusError(f"{artifact_id}: full text requires rights class A or D, verified-for-this-repository, and full-text-verified")
+    if full_text and not (rights_class in FULL_TEXT_CLASSES and verification == VERIFIED_FOR_REPOSITORY and policy == FULL_TEXT_VERIFIED_POLICY):
+        raise CorpusError(f"{artifact_id}: full text requires rights class A or D, {VERIFIED_FOR_REPOSITORY}, and {FULL_TEXT_VERIFIED_POLICY}")
     if repository_path and artifact_type != "game-source" and not full_text:
         raise CorpusError(f"{artifact_id}: protected document cannot declare a repository full-text path")
 
@@ -261,7 +263,7 @@ def artifact_by_id(manifest: Mapping[str, Any], artifact_id: str) -> Mapping[str
 def rights_allow_text_export(artifact: Mapping[str, Any]) -> bool:
     """Return whether all full-text publication gates are satisfied."""
     rights = artifact["rights"]
-    return rights["class"] in FULL_TEXT_CLASSES and rights["full_text_allowed"] is True and rights["verification"] == "verified-for-this-repository" and rights["repository_text_policy"] == "full-text-verified"
+    return rights["class"] in FULL_TEXT_CLASSES and rights["full_text_allowed"] is True and rights["verification"] == VERIFIED_FOR_REPOSITORY and rights["repository_text_policy"] == FULL_TEXT_VERIFIED_POLICY
 
 
 def ensure_output_policy(output: Path, repo_root: Path, artifact: Mapping[str, Any]) -> None:
