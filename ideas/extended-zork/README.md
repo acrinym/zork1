@@ -2,13 +2,15 @@
 
 ## Status
 
-Future Zork concept lane. This directory is not part of the active House of Records train and does not add sub-beads to it.
+Future Zork concept lane. The House of Records program is complete in Release `1230`; this directory remains outside that closed 12-train, 96-bead lineage and does not retroactively add sub-beads to it.
+
+Highly Extended Zork is now a valid candidate for the next Zork product phase, but this PR remains documentation-only until Justin explicitly promotes the lane into implementation.
 
 ## Core direction
 
 Extend Zork I into a much larger persistent interactive-fiction world while preserving the original game's places, objects, actors, puzzles, score authority, humor, and consequences.
 
-The current House work demonstrates that the world can remember and present far more than a traditional room-and-object parser model:
+The completed House work demonstrates that the world can remember and present far more than a traditional room-and-object parser model:
 
 - object provenance and custody;
 - event chronology;
@@ -68,6 +70,26 @@ It explicitly separates:
 - our original extensions, including the museum, ecology, fishing, cooking, hunger, satiation, stamina, and House memory systems.
 
 The research file is evidence and inspiration, not a second Kanban, bead hierarchy, or implementation claim.
+
+## Post-House product sequence
+
+When Justin promotes Highly Extended Zork, implementation should start from the live post-House `master`, not from this old concept branch.
+
+The first product train should be **Museum Intake and First Gallery**: a complete playable museum beginning with a real route, curator, intake rules, several canonical-safe exhibits, provenance-aware plaques, visible gallery change, parser completeness, and native save/restore.
+
+That avoids two bad starts:
+
+- building abstract museum infrastructure with no enjoyable player loop;
+- jumping directly into hundreds of fish, recipes, or survival variables before the museum has a reason to exist.
+
+A sensible product order is:
+
+1. **Museum Intake and First Gallery** — complete donation, loan, registration, custody, plaque, revisit, and save/restore loop.
+2. **Living Ecology and Fishing** — real water bodies, observation, catching, release, specimen condition, varieties, and museum research.
+3. **Cuisine and Expedition Nourishment** — ingredients, preparation, preservation, slow hunger, distinct satiation, exertion-based stamina, and rare-specimen decisions.
+4. **Regional Expansion** — additional settlements, ecologies, cuisine traditions, expeditions, correspondence, and museum-driven mysteries.
+
+Each item should become a complete product train only when selected. The sequence is directional, not a hidden bead backlog.
 
 ## Design principles
 
