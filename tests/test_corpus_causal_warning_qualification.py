@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
+import subprocess
 import unittest
 
 
@@ -26,7 +27,9 @@ class CorpusCausalWarningQualificationTests(unittest.TestCase):
             self.assertNotIn(f"<GLOBAL {dead_state}", module)
 
     def test_full_qualifier_compiles_assembles_and_verifies(self) -> None:
-        qualifier = (TRAIN / "qualify.sh").read_text()
+        qualifier_path = TRAIN / "qualify.sh"
+        qualifier = qualifier_path.read_text()
+        subprocess.run(["bash", "-n", str(qualifier_path)], check=True)
         for required in (
             'dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile',
             "glulx/tools/normalize_serial.py",
