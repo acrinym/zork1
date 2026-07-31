@@ -47,6 +47,21 @@
         "repository_text_policy": {"enum": ["full-text-verified", "metadata-and-derived-analysis-only", "metadata-only", "local-study-only"]},
         "full_text_allowed": {"type": "boolean"}
       },
+      "allOf": [
+        {
+          "if": {
+            "required": ["full_text_allowed"],
+            "properties": {"full_text_allowed": {"const": true}}
+          },
+          "then": {
+            "properties": {
+              "class": {"enum": ["A", "D"]},
+              "verification": {"const": "verified-for-this-repository"},
+              "repository_text_policy": {"const": "full-text-verified"}
+            }
+          }
+        }
+      ],
       "additionalProperties": false
     },
     "processing": {
