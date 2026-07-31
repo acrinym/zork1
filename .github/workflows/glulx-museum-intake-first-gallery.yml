@@ -1,0 +1,128 @@
+name: Zork I Glulx Museum Intake and First Gallery
+
+on:
+  push:
+    branches:
+      - agent/museum-intake-first-gallery-20260731
+    paths:
+      - "glulx/museum-intake-first-gallery/**"
+      - "tests/test_museum_intake_first_gallery*.py"
+      - ".github/workflows/glulx-museum-intake-first-gallery.yml"
+  pull_request:
+    paths:
+      - "glulx/museum-intake-first-gallery/**"
+      - "tests/test_museum_intake_first_gallery*.py"
+      - ".github/workflows/glulx-museum-intake-first-gallery.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: glulx-museum-intake-first-gallery-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+
+jobs:
+  qualify-release-1233:
+    name: qualify-glulx-museum-intake-first-gallery
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.x"
+
+      - name: Install native build tools
+        run: sudo apt-get update && sudo apt-get install -y build-essential libncurses-dev curl
+
+      - name: Check out pinned Zork I Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Prepare pinned Glazer
+        run: |
+          mkdir -p .tooling/glazer-source
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glazer-source.tar.gz" | sha256sum --check
+          tar -xf glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source
+
+      - name: Qualify Release 1233
+        run: bash glulx/museum-intake-first-gallery/qualify.sh
+
+      - name: Upload Release 1233 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-museum-intake-first-gallery-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            glulx/build/museum-intake-first-gallery/zork1-glulx-museum-intake-first-gallery.ulx
+            glulx/build/museum-intake-first-gallery/zork1-glulx-museum-intake-first-gallery.asm
+            glulx/build/museum-intake-first-gallery/story-report.json
+            glulx/build/museum-intake-first-gallery/QUALIFICATION-RECEIPT.json
+            glulx/build/museum-intake-first-gallery/SERIAL-NORMALIZATION.json
+            glulx/build/museum-intake-first-gallery/smell-report.json
+            glulx/build/museum-intake-first-gallery/museum-intake-transcript.txt
+            glulx/build/museum-intake-first-gallery/commands.txt
+            glulx/build/museum-intake-first-gallery/outside-gallery-refusal.overlap.json
+            glulx/build/museum-intake-first-gallery/outside-gallery-refusal.style-receipt.json
+            glulx/build/museum-intake-first-gallery/corpus/public-summary.json
+            glulx/build/museum-intake-first-gallery/zilf-restore.log
+            glulx/build/museum-intake-first-gallery/zilf-build.log
+            glulx/build/museum-intake-first-gallery/zilf-compile.log
+            glulx/build/museum-intake-first-gallery/glazer-version.txt
+            glulx/build/museum-intake-first-gallery/glazer-assemble.log
+            glulx/build/museum-intake-first-gallery/cheapglk-build.log
+            glulx/build/museum-intake-first-gallery/glulxe-build.log
+            glulx/build/museum-intake-first-gallery/src/STAGING-RECEIPT.json
+            glulx/museum-intake-first-gallery/patch-series.json
