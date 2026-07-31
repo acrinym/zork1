@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from statistics import mean, median
 import re
 from pathlib import Path
@@ -163,9 +164,10 @@ def derive_profiles(
             word for record in selected
             for word in tokenize_words(str(record.get("text", "")))
         ]
+        word_counts = Counter(words)
         function_counts = {
-            word: words.count(word)
-            for word in sorted(FUNCTION_WORDS.intersection(words))
+            word: word_counts[word]
+            for word in sorted(FUNCTION_WORDS.intersection(word_counts))
         }
         total_function = sum(function_counts.values())
         normalized_function = {
