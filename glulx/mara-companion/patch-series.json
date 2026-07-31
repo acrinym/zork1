@@ -19,6 +19,11 @@
       "description": "Add Mara as a bounded Living Room actor with witnessed evidence memory"
     },
     {
+      "path": "museum_intake_first_gallery.zil",
+      "source": "overrides/museum_intake_first_gallery.zil",
+      "description": "Correct museum intake precedence so explicit display classes outrank generic treasure value"
+    },
+    {
       "path": "zork1.zil",
       "source": "overrides/zork1.zil",
       "description": "Retain every qualified Release 1233 layer, load Mara, and assign Release 1234"
@@ -27,13 +32,15 @@
   "patches": [],
   "expected_changed_paths": [
     "mara_companion.zil",
+    "museum_intake_first_gallery.zil",
     "zork1.zil"
   ],
   "player_outcomes": [
     "Mara appears physically in the Living Room",
     "TALK TO MARA establishes or revisits the relationship",
     "SHOW OBJECT TO MARA records the actual canonical object as witnessed evidence",
-    "ASK MARA ABOUT MUSEUM and the shown object reflect only earned knowledge"
+    "ASK MARA ABOUT MUSEUM and the shown object reflect only earned knowledge",
+    "explicit museum display classes outrank generic treasure value, so weapons reach the weapon wall"
   ],
   "boundaries": [
     "no generic companion or follower engine",
@@ -41,6 +48,6 @@
     "no new global variable",
     "no duplicate evidence object or remote inventory",
     "no omniscient knowledge before Mara witnesses evidence",
-    "no museum rewrite, House hierarchy work, or S.T.A.L.K.E.R. mixing"
+    "no museum registry rewrite, House hierarchy work, or S.T.A.L.K.E.R. mixing"
   ]
 }
