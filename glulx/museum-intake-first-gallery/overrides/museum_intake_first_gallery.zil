@@ -4,9 +4,10 @@
   active-field warnings, theft, and save state remain authoritative. This
   module selects a canonical destination and delegates the real action."
 
+<BUZZ MUSEUM>
 <SYNTAX EXHIBIT OBJECT (MANY HELD HAVE) = V-MUSEUM-EXHIBIT>
-<SYNTAX CATALOG MUSEUM = V-MUSEUM-CATALOG>
-<SYNTAX REVIEW MUSEUM = V-MUSEUM-CATALOG>
+<SYNTAX CATALOG = V-MUSEUM-CATALOG>
+<SYNTAX REVIEW = V-MUSEUM-CATALOG>
 
 <ROUTINE MUSEUM-INTAKE-SURFACE (OBJ)
     <COND (<G? <GETP .OBJ ,P?TVALUE> 0>
