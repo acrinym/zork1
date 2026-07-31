@@ -3,16 +3,10 @@
 ;"This module adds no parallel flood controller. WATER-LEVEL, I-MAINT-ROOM,
   LEAK, PUTTY, the canonical exits, and JIGS-UP remain authoritative."
 
-<GLOBAL MAINT-FLOOD-CAUSE-SEEN <>>
 <GLOBAL MAINT-FLOOD-WARNING-STAGE 0>
-<GLOBAL MAINT-FLOOD-LEAK-EXAMINED <>>
-<GLOBAL MAINT-FLOOD-REPAIRED <>>
 
 <ROUTINE CORPUS-MAINT-FLOOD-START ()
-    <SETG MAINT-FLOOD-CAUSE-SEEN T>
     <SETG MAINT-FLOOD-WARNING-STAGE 0>
-    <SETG MAINT-FLOOD-LEAK-EXAMINED <>>
-    <SETG MAINT-FLOOD-REPAIRED <>>
     <TELL
 "The stream spreads across the floor faster than it drains. The west and
 south doorways remain clear -- for now." CR>
@@ -41,7 +35,6 @@ widening." CR>)>
     <RTRUE>>
 
 <ROUTINE CORPUS-MAINT-FLOOD-EXAMINE ()
-    <SETG MAINT-FLOOD-LEAK-EXAMINED T>
     <TELL
 "The break is in the east-wall pipe. The stream is under pressure, but the
 opening is still small enough to seal." CR>
@@ -53,7 +46,6 @@ opening is still small enough to seal." CR>
 maintenance room keeps the evidence; you do not.">>
 
 <ROUTINE CORPUS-MAINT-FLOOD-REPAIRED ()
-    <SETG MAINT-FLOOD-REPAIRED T>
     <SETG MAINT-FLOOD-WARNING-STAGE 0>
     <TELL
 "The pipe shudders once. The remaining water begins to drain through the
