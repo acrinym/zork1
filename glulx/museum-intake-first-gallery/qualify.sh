@@ -6,9 +6,10 @@ BUILD="$ROOT/glulx/build/museum-intake-first-gallery"
 SRC="$BUILD/src"
 MANIFEST="$ROOT/glulx/museum-intake-first-gallery/patch-series.json"
 CANDIDATE="$ROOT/glulx/museum-intake-first-gallery/prose/outside-gallery-refusal.txt"
+CORPUS_LOCAL="$ROOT/.local/infocom-corpus/museum-intake-first-gallery"
 cd "$ROOT"
-rm -rf "$BUILD"
-mkdir -p "$BUILD/corpus"
+rm -rf "$BUILD" "$CORPUS_LOCAL"
+mkdir -p "$BUILD/corpus" "$CORPUS_LOCAL"
 
 IFS=$'\t' read -r MUSEUM_SERIAL MUSEUM_FILE < <(
   python - "$MANIFEST" <<'PY'
@@ -39,20 +40,20 @@ python -m tools.infocom_corpus validate-manifest \
 python -m tools.infocom_corpus extract \
   --repo-root .upstream/zork1-glulx \
   --manifest reference/infocom-corpus/manifest/infocom-corpus.json \
-  --out "$BUILD/corpus/player-visible.jsonl" \
+  --out "$CORPUS_LOCAL/player-visible.jsonl" \
   --summary-out "$BUILD/corpus/public-summary.json"
 python -m tools.infocom_corpus annotate \
-  --corpus "$BUILD/corpus/player-visible.jsonl" \
-  --out "$BUILD/corpus/annotated.jsonl"
+  --corpus "$CORPUS_LOCAL/player-visible.jsonl" \
+  --out "$CORPUS_LOCAL/annotated.jsonl"
 python -m tools.infocom_corpus overlap \
   --candidate "$CANDIDATE" \
-  --corpus "$BUILD/corpus/annotated.jsonl" \
+  --corpus "$CORPUS_LOCAL/annotated.jsonl" \
   --profiles reference/infocom-corpus/profiles/authority-profiles.json \
   --profile-id zork1-parser-refusal \
   --out "$BUILD/outside-gallery-refusal.overlap.json"
 python -m tools.infocom_corpus receipt \
   --candidate "$CANDIDATE" \
-  --corpus "$BUILD/corpus/annotated.jsonl" \
+  --corpus "$CORPUS_LOCAL/annotated.jsonl" \
   --profiles reference/infocom-corpus/profiles/authority-profiles.json \
   --profile-id zork1-parser-refusal \
   --surface-family museum-intake-boundary \
@@ -237,6 +238,6 @@ Path('glulx/build/museum-intake-first-gallery/QUALIFICATION-RECEIPT.json').write
 )
 PY
 
-rm -f "$BUILD/corpus/player-visible.jsonl" "$BUILD/corpus/annotated.jsonl"
+rm -rf "$CORPUS_LOCAL"
 cat "$BUILD/story-report.json"
 cat "$BUILD/QUALIFICATION-RECEIPT.json"
