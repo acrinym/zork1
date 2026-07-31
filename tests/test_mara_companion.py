@@ -30,6 +30,14 @@ class MaraCompanionTests(unittest.TestCase):
                 "zork1.zil",
             ],
         )
+        artifact = manifest["expected_artifact"]
+        self.assertTrue(artifact["locked"])
+        self.assertEqual(artifact["size_bytes"], 339712)
+        self.assertEqual(artifact["checksum_hex"], "0x69fd7910")
+        self.assertEqual(
+            artifact["sha256"],
+            "38b966f47d771e0f5ae6229ff6a7542830ce6e365a3d2291f764581ae0b64a17",
+        )
 
     def test_mara_is_a_visible_physical_living_room_actor(self) -> None:
         module = (TRAIN / "overrides/mara_companion.zil").read_text()
