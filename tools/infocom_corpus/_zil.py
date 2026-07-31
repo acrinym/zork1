@@ -101,7 +101,7 @@ def discover_zil_lineage(repo_root: Path, entrypoint: str) -> list[Path]:
 
 
 def lex_zil(text: str) -> Iterator[Token]:
-    """Yield comments-free ZIL tokens while correctly consuming quote escapes."""
+    """Yield comments-free ZIL tokens while consuming legacy character syntax."""
     line = 1
     column = 1
     i = 0
@@ -155,6 +155,14 @@ def lex_zil(text: str) -> Iterator[Token]:
             continue
 
         start_line, start_column, start_offset = line, column, i
+        if char == "\\" and i + 1 < size:
+            value = text[i:i + 2]
+            advance(value)
+            i += 2
+            yield Token(
+                "atom", value, start_line, start_column, start_offset, line, i
+            )
+            continue
         if char == "!" and i + 1 < size:
             end = i + 2
             if text[i + 1] == "\\" and end < size:
