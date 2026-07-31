@@ -86,15 +86,17 @@ assert originality['threshold_violation_count'] == 0
 assert originality['rare_phrase_match_count'] == 0
 module = (source / 'museum_intake_first_gallery.zil').read_text()
 for required in (
-    '<BUZZ MUSEUM>',
     '<SYNTAX EXHIBIT OBJECT (MANY HELD HAVE) = V-MUSEUM-EXHIBIT>',
-    '<SYNTAX CATALOG = V-MUSEUM-CATALOG>',
-    '<SYNTAX REVIEW = V-MUSEUM-CATALOG>',
+    '<SYNTAX CATALOG OBJECT (FIND RMUNGBIT) = V-MUSEUM-CATALOG>',
+    '<SYNTAX REVIEW OBJECT (FIND RMUNGBIT) = V-MUSEUM-CATALOG>',
+    '<OBJECT MUSEUM-CATALOG-OBJECT',
+    '(IN GLOBAL-OBJECTS)',
+    '(FLAGS NDESCBIT RMUNGBIT)',
     '<PERFORM ,V?PUT ,PRSO .SURFACE>',
     '<PERFORM ,V?PUT-ON ,PRSO .SURFACE>',
 ):
     assert module.count(required) == 1
-for forbidden in ('<GLOBAL', '<TABLE', '<MOVE ,PRSO', '<REMOVE ,PRSO', 'DONATE'):
+for forbidden in ('<GLOBAL', '<TABLE', '<MOVE ,PRSO', '<REMOVE ,PRSO', 'DONATE', '<BUZZ MUSEUM>'):
     assert forbidden not in module
 PY
 
