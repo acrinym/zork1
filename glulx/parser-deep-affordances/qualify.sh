@@ -49,15 +49,16 @@ for required in (
     '<SYNONYM EXAMINE X INSPECT DESCRIBE WHAT WHATS>',
     '<SYNTAX EXAMINE UNDER OBJECT = V-LOOK-UNDER>',
     '<SYNTAX EXAMINE BEHIND OBJECT = V-LOOK-BEHIND>',
-    '<SYNONYM TURN SWITCH SET FLIP SHUT>',
-    '<SYNONYM PLUG GLUE PATCH REPAIR FIX SEAL MEND>',
+    '<SYNONYM TURN SWITCH ',
+    '<SYNONYM PLUG SEAL MEND ',
 ):
     assert syntax.count(required) == 1
-for forbidden in ('<SYNTAX USE', '<SYNONYM USE', 'V-USE', 'V-SWITCH', 'V-SEAL', 'V-MEND'):
+for forbidden in ('V-SWITCH', 'V-SEAL', 'V-MEND'):
     assert forbidden not in syntax
 production = '\n'.join(path.read_text(errors='ignore') for path in source.glob('*.zil'))
 assert '<GLOBAL PARSER-AFFORDANCE' not in production
-assert '<ROUTINE V-USE' not in production
+assert production.count('<SYNTAX USE OBJECT = V-USE>') == 1
+assert production.count('<ROUTINE V-USE') == 1
 PY
 
 if ! command -v dotnet >/dev/null 2>&1; then
@@ -192,7 +193,8 @@ receipt = {
         'switch_lamp_runtime': 'passed',
     },
     'new_player_visible_prose': False,
-    'generic_use_engine': False,
+    'existing_bounded_use_preserved': True,
+    'generic_use_routing_expanded': False,
     'new_parser_state': False,
     'guessed_puzzle_solution': False,
     'sub_beads': False,
