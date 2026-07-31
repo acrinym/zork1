@@ -30,7 +30,7 @@
     },
     "maintenance-flood-examine": {
       "candidate_sha256": "cd2d0989b1aa011dde0d59dbaeec2f2bbde32e796a395915cb3622c7b20abe86",
-      "candidate_word_count": 22,
+      "candidate_word_count": 21,
       "corpus_digest": "fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3",
       "corpus_record_count": 10,
       "longest_overlap": {
@@ -136,7 +136,7 @@
     },
     "maintenance-flood-examine": {
       "authority_profile": "zork1-object-description",
-      "candidate": {"path":"glulx/corpus-causal-warning/qualification/corpus-evidence.json#/candidates/maintenance-flood-examine","sha256":"cd2d0989b1aa011dde0d59dbaeec2f2bbde32e796a395915cb3622c7b20abe86","word_count":22},
+      "candidate": {"path":"glulx/corpus-causal-warning/qualification/corpus-evidence.json#/candidates/maintenance-flood-examine","sha256":"cd2d0989b1aa011dde0d59dbaeec2f2bbde32e796a395915cb3622c7b20abe86","word_count":21},
       "excluded_voices": ["advertising-copy","encyclopedic-lore-dump","bureaucracy-global-parody"],
       "intentional_departures": ["The inspection names one repair affordance without naming PUTTY or providing a command, preserving discovery while making the physical opening legible."],
       "originality_check": {"candidate_sha256":"cd2d0989b1aa011dde0d59dbaeec2f2bbde32e796a395915cb3622c7b20abe86","corpus_digest":"fa0f84c53c9e5c8f4eff49cc02749b2f6ec1a92f0680ce8f2fc7ff1a1f01dfd3","longest_source_overlap_tokens":3,"passed":true,"rare_phrase_match_count":0,"source_text_disclosed":false,"threshold_violation_count":0,"thresholds":{"max_allowed_tokens":6,"rare_ngram_tokens":5}},
