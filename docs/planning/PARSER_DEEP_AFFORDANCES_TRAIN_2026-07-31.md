@@ -22,7 +22,7 @@ Every accepted phrase has one clear canonical destination:
 | `SEAL ... WITH ...` | `V-PLUG` |
 | `MEND ... WITH ...` | `V-PLUG` |
 
-## Why these phrases
+## Product behavior
 
 - `X` and `INSPECT` are common examination intentions and do not alter object behavior.
 - `EXAMINE UNDER/BEHIND` preserves the player’s explicit spatial role instead of collapsing to generic examination.
@@ -33,43 +33,35 @@ The PLUG and TURN changes are prefix additions with exact-count anchors. They pr
 
 ## Existing USE assistance
 
-Release 1211 already added bounded `USE OBJECT` assistance. It describes plausible affordances and redirects the player to concrete verbs; it does not execute a guessed action. Release 1232 preserves that behavior unchanged.
+Release 1211 already added bounded `USE OBJECT` assistance. It describes plausible affordances and redirects the player to concrete verbs; it does not execute a guessed action. Release 1232 preserves that behavior unchanged and adds no new or expanded `USE` routing.
 
-This train therefore adds **no new or expanded USE routing**. It does not pretend the existing assistance command is absent.
+## Production boundary
 
-## What is deliberately absent
-
-The train adds no:
-
-- parser global or state machine;
-- new verb routine;
-- new response prose;
-- universal synonym catalog;
-- guessed puzzle action;
-- change to Release 1211 assistance;
-- House hierarchy work;
-- S.T.A.L.K.E.R. coupling;
-- meta-audit or parser-audit framework.
-
-## Production delta
-
-Exactly two staged source paths may change:
+Exactly two staged source paths change:
 
 - `gsyntax.zil` — three narrow grammar replacements;
 - `zork1.zil` — Release 1232 identity while retaining every Release 1231 layer.
 
-## Acceptance proof
+The train adds no parser global, state machine, new verb routine, response prose, universal synonym catalog, guessed puzzle action, House hierarchy work, S.T.A.L.K.E.R. coupling, or meta-audit framework.
 
-The hosted route must:
+## Hosted qualification result
 
-1. pass the direct Release 1232 tests;
-2. stage exactly over locked Release 1231 SHA-256 `5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609`;
-3. preserve the existing bounded `USE OBJECT` syntax and routine exactly once;
-4. report no ZIL smell errors;
-5. compile and assemble the real Glulx story;
-6. verify the artifact checksum;
-7. run the selected phrases through Glulxe;
-8. prove canonical outputs rather than merely detecting grammar strings;
-9. upload the story, transcript, receipts, and logs.
+The first complete GitHub-hosted route passed seven direct tests, exact Release 1231 staging, ZIL smell checking, ZILF compilation, Glazer assembly, ULX verification, CheapGlk/Glulxe building, and the real runtime transcript.
 
-The first successful hosted artifact will be locked and reproduced before merge.
+The transcript proved:
+
+- `X MAILBOX` and `INSPECT MAILBOX` both returned the canonical closed-mailbox response;
+- `EXAMINE UNDER MAILBOX` returned the canonical dust response;
+- `EXAMINE BEHIND MAILBOX` returned the canonical behind-object response;
+- `SEAL` and `MEND` both reached canonical plugging behavior;
+- `SWITCH ON/OFF LANTERN` changed the real lantern state;
+- none of `X`, `INSPECT`, `SEAL`, `MEND`, or `SWITCH` was rejected as unknown.
+
+Locked Release 1232 artifact:
+
+- serial: `260731`;
+- size: `337920` bytes;
+- checksum: `0x2c2192e1`;
+- SHA-256: `2cffc734dbfbe346d0ec185c6962d927bc046343dccdb53b6a9e4439521b6f2e`.
+
+The locked hosted gate must reproduce this identity before merge. The workflow uploads the story, assembly, runtime transcript, receipts, reports, and build logs.
