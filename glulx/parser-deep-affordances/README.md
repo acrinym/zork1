@@ -18,18 +18,7 @@ The selected additions repair vocabulary and noun-role gaps. They do not alter t
 
 Release 1211 already contains bounded `USE OBJECT` assistance. It describes plausible affordances and tells the player to choose a concrete verb; it does not execute a guessed action. Release 1232 preserves that command unchanged and adds no new or broader `USE` routing.
 
-`USE LANTERN`, `USE SWORD`, or `USE PUTTY` can represent several different physical intentions. Release 1232 therefore admits only new phrases whose canonical destination is unambiguous.
-
-The train adds:
-
-- no parser global;
-- no parser state;
-- no new `V-*` action routine;
-- no new player-visible response prose;
-- no generic synonym inventory;
-- no change to the bounded Release 1211 assistance layer.
-
-Because all responses remain canonical, this train does not manufacture a new corpus style receipt merely for aliases.
+The train adds no parser global, parser state, new `V-*` routine, player-visible response prose, generic synonym inventory, or change to the Release 1211 assistance layer. Because all responses remain canonical, aliases do not require invented replacement prose or artificial style receipts.
 
 ## Qualification
 
@@ -37,14 +26,17 @@ Because all responses remain canonical, this train does not manufacture a new co
 bash glulx/parser-deep-affordances/qualify.sh
 ```
 
-The complete route runs direct tests, stages over locked Release 1231, checks the exact two-file delta, runs the ZIL smell check, compiles with ZILF, assembles with Glazer, verifies the ULX, builds Glulxe/CheapGlk, and types the new phrases into the actual game.
+The complete route runs seven direct tests, stages over locked Release 1231, checks the exact two-file delta, runs the ZIL smell check, compiles with ZILF, assembles with Glazer, verifies the ULX, builds Glulxe/CheapGlk, and types the selected phrases into the actual game.
 
-The runtime transcript must prove:
+The successful runtime transcript proves canonical examination, spatial inspection, plugging, and lantern-state responses. None of the selected words is rejected as unknown.
 
-- both `X` and `INSPECT` examine the mailbox;
-- `EXAMINE UNDER` and `EXAMINE BEHIND` reach canonical spatial responses;
-- `SEAL` and `MEND` reach canonical plugging behavior;
-- `SWITCH ON/OFF LANTERN` changes the real lamp state;
-- none of the selected words is rejected as unknown.
+Locked Release 1232 artifact:
 
-`.github/workflows/glulx-parser-deep-affordances.yml` runs this route on GitHub-hosted CI with pinned source, compiler, assembler, and interpreter revisions and uploads the story, transcript, receipts, and build logs.
+```text
+serial:   260731
+size:     337920 bytes
+checksum: 0x2c2192e1
+sha256:   2cffc734dbfbe346d0ec185c6962d927bc046343dccdb53b6a9e4439521b6f2e
+```
+
+`.github/workflows/glulx-parser-deep-affordances.yml` runs the exact route on GitHub-hosted CI with pinned source, compiler, assembler, and interpreter revisions and uploads the story, transcript, receipts, and build logs. A second hosted run must reproduce the locked identity before merge.
