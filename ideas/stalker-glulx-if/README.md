@@ -119,7 +119,7 @@ Reconstruct the original places, characters, factions, artifacts, quests, and st
 
 ### Original Zone-like game
 
-Build a new exclusion territory, mythology, factions, anomalies, creatures, artifacts, characters, and campaign using the same design strengths. This path permits original release, expansion, and commercialization.
+Build a new exclusion territory, mythology, factions, anomalies, creatures, artifacts, characters, and campaign using the same design strengths. This may offer a potential path to an original releasable or commercial work, but originality alone does not establish clearance. Similarities in naming, branding, protected fictional elements, or trade dress still require legal/IP review before public or commercial release planning.
 
 A future decision must choose the product path before public release planning.
 
