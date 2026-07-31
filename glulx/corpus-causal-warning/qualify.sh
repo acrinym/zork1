@@ -9,14 +9,13 @@ cd "$ROOT"
 rm -rf "$BUILD"
 mkdir -p "$BUILD"
 
-IFS=$'\t' read -r CAUSAL_WARNING_SERIAL CAUSAL_WARNING_FILE CAUSAL_WARNING_FORMAT CAUSAL_WARNING_VERSION < <(
+IFS=$'\t' read -r CAUSAL_WARNING_SERIAL CAUSAL_WARNING_FILE < <(
   python - "$MANIFEST" <<'PY'
 import json
 from pathlib import Path
 import sys
 manifest = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
-expected = manifest['expected_artifact']
-print('\t'.join((manifest['serial'], expected['file'], expected['format'], expected['version_hex'])))
+print('\t'.join((manifest['serial'], manifest['expected_artifact']['file'])))
 PY
 )
 
@@ -69,7 +68,11 @@ evidence = json.loads(Path(
     'glulx/corpus-causal-warning/qualification/corpus-evidence.json'
 ).read_text())
 assert evidence['source_corpus_receipt']['contains_source_text'] is False
-for style in evidence['style_receipts'].values():
+for candidate_id, style in evidence['style_receipts'].items():
+    text = evidence['candidates'][candidate_id]
+    overlap = evidence['overlap_results'][candidate_id]
+    assert style['candidate']['word_count'] == len(text.split())
+    assert overlap['candidate_word_count'] == len(text.split())
     originality = style['originality_check']
     assert originality['passed'] is True
     assert originality['threshold_violation_count'] == 0
@@ -127,16 +130,22 @@ python "$ROOT/glulx/tools/verify_ulx.py" \
   "$BUILD/$CAUSAL_WARNING_FILE" \
   --json "$BUILD/story-report.json"
 
-python - "$CAUSAL_WARNING_SERIAL" "$CAUSAL_WARNING_FORMAT" "$CAUSAL_WARNING_VERSION" <<'PY'
+python - "$CAUSAL_WARNING_SERIAL" "$MANIFEST" <<'PY'
 import json
 from pathlib import Path
 import sys
-serial, expected_format, expected_version = sys.argv[1:]
+serial, manifest_path = sys.argv[1:]
+manifest = json.loads(Path(manifest_path).read_text())
+expected = manifest['expected_artifact']
 story = json.loads(Path('glulx/build/corpus-causal-warning/story-report.json').read_text())
-assert story['format'] == expected_format
-assert story['version_hex'] == expected_version
+assert story['format'] == expected['format']
+assert story['version_hex'] == expected['version_hex']
 assert story['checksum_valid'] is True
 assert story['size_bytes'] > 0
+if expected.get('locked', False):
+    assert story['size_bytes'] == expected['size_bytes']
+    assert story['checksum_hex'] == expected['checksum_hex']
+    assert story['sha256'] == expected['sha256']
 receipt = {
     'qualification_status': 'source-and-artifact-passed',
     'identity': {'release': 1231, 'serial': serial},
@@ -146,6 +155,7 @@ receipt = {
     },
     'changed_paths': ['1actions.zil', 'corpus_causal_warning.zil', 'zork1.zil'],
     'artifact': story,
+    'artifact_identity_locked': expected.get('locked', False),
     'routes': {
         'direct_gameplay_asset_tests': 'passed',
         'exact_release_1230_staging': 'passed',
@@ -154,6 +164,7 @@ receipt = {
         'zilf_glulx_compile': 'passed',
         'glazer_assemble': 'passed',
         'ulx_checksum_verification': 'passed',
+        'locked_artifact_identity': 'passed',
     },
     'interactive_runtime_transcript': 'not-claimed-by-this-receipt',
     'parallel_flood_controller': False,
