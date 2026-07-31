@@ -13,7 +13,7 @@ class MuseumIntakeCorpusLexerTests(unittest.TestCase):
     def test_multiline_comment_string_is_consumed_as_comment(self) -> None:
         source = '''<ROUTINE SAMPLE ()
     ;"This historical comment spans
-      more than one physical source line."
+      more than one physical source line!"
     <TELL "Visible response." CR>>'''
         strings = [token.value for token in lex_zil(source) if token.kind == "string"]
         self.assertEqual(strings, ["Visible response."])
@@ -24,6 +24,11 @@ class MuseumIntakeCorpusLexerTests(unittest.TestCase):
             CorpusError, "unterminated ZIL comment string at line 2"
         ):
             list(lex_zil(source))
+
+    def test_exclamation_before_closing_quote_ends_visible_string(self) -> None:
+        source = '<TELL "Nothing happens here!" CR>\n<TELL "Next response." CR>'
+        strings = [token.value for token in lex_zil(source) if token.kind == "string"]
+        self.assertEqual(strings, ["Nothing happens here!", "Next response."])
 
     def test_quote_character_literal_is_not_a_string(self) -> None:
         source = '''<OR <GASSIGNED? ZILCH>
