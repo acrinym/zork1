@@ -15,16 +15,13 @@ TRAIN = ROOT / "glulx/corpus-causal-warning"
 class CorpusCausalWarningQualificationTests(unittest.TestCase):
     """Check the production state boundary and executable qualification route."""
 
-    def test_warning_stage_is_the_only_new_flood_state(self) -> None:
+    def test_causal_warnings_add_no_flood_globals(self) -> None:
         module = (TRAIN / "overrides/corpus_causal_warning.zil").read_text()
         globals_found = re.findall(r"<GLOBAL (MAINT-FLOOD-[A-Z-]+)", module)
-        self.assertEqual(globals_found, ["MAINT-FLOOD-WARNING-STAGE"])
-        for dead_state in (
-            "MAINT-FLOOD-CAUSE-SEEN",
-            "MAINT-FLOOD-LEAK-EXAMINED",
-            "MAINT-FLOOD-REPAIRED",
-        ):
-            self.assertNotIn(f"<GLOBAL {dead_state}", module)
+        self.assertEqual(globals_found, [])
+        self.assertIn("<EQUAL? ,WATER-LEVEL 3>", module)
+        self.assertIn("<EQUAL? ,WATER-LEVEL 5>", module)
+        self.assertIn("<EQUAL? ,WATER-LEVEL 11>", module)
 
     def test_full_qualifier_compiles_assembles_and_verifies(self) -> None:
         qualifier_path = TRAIN / "qualify.sh"
