@@ -8,7 +8,7 @@ from tools.infocom_corpus.core import CorpusError, lex_zil
 
 
 class MuseumIntakeCorpusLexerTests(unittest.TestCase):
-    """Keep historical multiline ZIL comments out of extracted prose."""
+    """Keep historical comments and character literals out of prose."""
 
     def test_multiline_comment_string_is_consumed_as_comment(self) -> None:
         source = '''<ROUTINE SAMPLE ()
@@ -24,6 +24,17 @@ class MuseumIntakeCorpusLexerTests(unittest.TestCase):
             CorpusError, "unterminated ZIL comment string at line 2"
         ):
             list(lex_zil(source))
+
+    def test_quote_character_literal_is_not_a_string(self) -> None:
+        source = '''<OR <GASSIGNED? ZILCH>
+    <SETG WBREAKS <STRING !\\" !,WBREAKS>>>
+<PRINC "Visible title.">'''
+        tokens = list(lex_zil(source))
+        strings = [token.value for token in tokens if token.kind == "string"]
+        atoms = [token.value for token in tokens if token.kind == "atom"]
+        self.assertEqual(strings, ["Visible title."])
+        self.assertIn('!\\"', atoms)
+        self.assertIn('!,', atoms)
 
 
 if __name__ == "__main__":
