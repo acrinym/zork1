@@ -5,160 +5,80 @@
 **Branch:** `agent/infocom-corpus-foundation-20260731`  
 **Date:** July 31, 2026  
 **House of Records:** closed and untouched  
-**S.T.A.L.K.E.R.:** separate and untouched  
-**Merge policy:** implementation PR remains open until Justin gives the explicit merge whistle
+**S.T.A.L.K.E.R.:** separate and untouched
 
 ## Product result
 
-The Infocom Corpus Foundation is promoted from concept material into an executable Zork-first corpus product.
+The Infocom Corpus Foundation is an executable, rights-aware Zork-first corpus product. It connects source identity to prose approval without treating “sound like Infocom” as a usable specification.
 
-It now provides one connected path from source identity to prose approval:
+The complete path is:
 
 1. identify the selected Zork I source lineage;
 2. validate edition and rights metadata;
-3. extract player-visible ZIL strings locally with exact provenance;
+3. extract player-visible ZIL strings locally with source provenance;
 4. classify prose surfaces and authority profiles;
-5. attach reproducible linguistic annotations;
-6. derive non-expressive statistics without committing protected prose;
-7. fingerprint protected local documents without copying them;
-8. validate hash-only transcription corrections;
-9. compare new prose against source wording;
-10. issue a style receipt naming authorities, exclusions, retained traits, departures, and originality results.
+5. derive non-expressive linguistic annotations and statistics;
+6. fingerprint protected local documents without copying their prose;
+7. validate hash-only corrections;
+8. compare candidate prose against every over-threshold source overlap;
+9. issue a passing style receipt only when rights, authority, and originality gates hold.
 
-## Delivered train
+## Delivered product
 
-### 1. Rights-aware edition manifest
+- Thirteen concrete Zork I artifact and edition records with per-artifact rights gates.
+- Exact `zork1.zil` recursive include lineage with repository blob identities.
+- Case-insensitive historical include resolution confined to the repository root.
+- ZIL tokenization that excludes comments and compiler banners while retaining player-visible forms.
+- True UTF-8 byte offsets, source hashes, line spans, entity/routine context, surface family, and authority profile per record.
+- Ten separate authority contracts for narrator, object, parser, death, action, actor, manual, transcript, institutional documents, and hints.
+- Protected local-copy fingerprints restricted to `.local/infocom-corpus/` and structural page/block/surface/line references.
+- Canonical corpus digest shared by extraction, profiles, public summaries, and style receipts.
+- Full overlap evaluation across all source records, including ties and prohibited matches hidden behind an allowed longer phrase.
+- Style receipts requiring authorities, exclusions, retained traits, intentional departures, valid hashes, and zero originality violations.
+- Standard-library CLI, schemas, documentation, and direct behavioral qualification.
 
-`reference/infocom-corpus/manifest/infocom-corpus.json`
+## Review closure
 
-The manifest contains thirteen concrete Zork-first records:
+The review train fixed every valid major, minor, critical, and nit-level finding:
 
-- the selected development-drive ZIL snapshot;
-- Personal Software zip-bag documentation;
-- early Infocom folio documentation;
-- grey-box manual/browsie;
-- grey-box package surfaces;
-- product sample transcript;
-- InvisiClues booklet;
-- InvisiClues map;
-- Zork Trilogy documentation;
-- Solid Gold manual;
-- Solid Gold integrated hints;
-- Lost Treasures I documentation;
-- platform reference-card edition set.
+- schema-level full-text rights enforcement;
+- concrete correction locators;
+- mandatory receipt departures and SHA-256 corpus digest;
+- all-record source-prose disclosure assertions;
+- canonical digest consistency;
+- typed `authority_order` validation;
+- normalized strict UTF-8 failures;
+- escaped-backslash ZIL string termination;
+- true UTF-8 byte provenance;
+- stale annotation rebuilding;
+- complete per-record overlap violation collection;
+- local fingerprint containment and source-text-safe references;
+- fail-closed extraction output policy for absolute and out-of-repository paths;
+- production docstrings and focused module boundaries rather than artificial coverage padding.
 
-Unknown dates, release numbers, and fingerprints remain explicitly unresolved rather than guessed. Each acquired physical or verified digital variant can be split into a child edition while retaining the stable family identity.
-
-### 2. Exact source-lineage receipt
-
-`reference/infocom-corpus/manifest/zork1-source-lineage.json`
-
-The selected entrypoint and its nine included files are bound to the live base by Git blob SHA. Each file is tagged as Zork I-specific or shared trilogy infrastructure. Local extraction adds content SHA-256, line spans, and record hashes.
-
-### 3. Real extraction
-
-`tools/infocom_corpus/core.py`
-
-The extractor is not a regular-expression dump of every quoted string. It:
-
-- follows recursive `INSERT-FILE` references;
-- resolves historical case differences safely inside the repository root;
-- lexes ZIL strings while ignoring source comments;
-- tracks angle-form and property-form context;
-- excludes standalone documentation strings and compiler output;
-- recognizes player-visible description and output forms;
-- records source file SHA-256, line range, byte range, context head, entity, and routine;
-- assigns a prose surface and default authority profile;
-- emits full text only to the local protected area unless rights are verified.
-
-### 4. Annotation and profiles
-
-The annotation layer records sentence rhythm, fragments, punctuation, function-word ratio, second-person stance, sensory markers, narrator-stance evidence, parser failure class, and comedy-mechanic markers.
-
-Derived profiles contain aggregate statistics and hashes, never source prose. Ten authority contracts separate narrator, object, parser, death, action, actor, manual, transcript, institutional-document, and hint behavior.
-
-### 5. Protected-study workflow
-
-A local scan or PDF can be fingerprinted into a safe record containing SHA-256, byte size, page count, and page references. The tool never copies the source file.
-
-Protected correction records are validated against the artifact rights class. Raw correction text is rejected for metadata-only artifacts; hashes and exact page/block/line references remain allowed.
-
-### 6. Originality validation
-
-The overlap validator checks contiguous phrase reuse and uncommon five-token matches. It records candidate/source span hashes, record IDs, and token positions while withholding protected source wording.
-
-Necessary canonical phrases are profile-scoped. They do not become a broad escape hatch for copied sentences.
-
-### 7. Style receipts
-
-A receipt cannot pass without:
-
-- a named surface family;
-- a real authority profile;
-- non-empty primary authorities;
-- explicit excluded voices;
-- retained linguistic traits;
-- intentional departures;
-- a passing overlap report;
-- candidate and corpus hashes;
-- a reviewer.
-
-This is the enforceable replacement for “make it sound like Infocom.”
+No recursive audit framework, audit-of-audit layer, test generator, or meta-validation system was added. Existing tests were strengthened and one direct regression test was added for the newly discovered output-path vulnerability.
 
 ## Qualification truth
 
-Local qualification performed against the completed implementation:
+Local qualification performed against the published implementation content:
 
 ```text
-python -m unittest discover -s tests -p 'test_infocom_corpus.py' -v
-Ran 9 tests
+python -m unittest discover -s tests -p 'test_infocom_corpus*.py' -v
+Ran 25 tests
+OK
+
+python -m py_compile tools/infocom_corpus/*.py tests/test_infocom_corpus*.py
 OK
 ```
 
-The tests cover:
+The tests directly cover rights gates, schemas, lineage resolution, extraction, escaping, UTF-8 failures, byte offsets, annotations, source-prose exclusion, digest consistency, overlap edge cases, receipts, fingerprints, correction records, and fail-closed output paths.
 
-- rights-complete manifest validation;
-- rejection of unauthorized full-text publication;
-- recursive, case-insensitive source inclusion;
-- player-visible extraction and build-comment exclusion;
-- room/object surface classification;
-- non-destructive linguistic annotation;
-- long phrase-overlap blocking without source disclosure;
-- passing style-receipt generation;
-- non-expressive profile output;
-- protected artifact fingerprint safety;
-- hash-only correction enforcement.
-
-No GitHub Actions workflow was added. The product is standard-library Python and qualifies locally without consuming repository Actions budget.
+No GitHub Actions workflow was added or consumed.
 
 ## Explicit non-work
 
-This train does not:
-
-- reopen any House hierarchy or bead;
-- alter Release 1230 game behavior;
-- create an `INFOCOM_STYLE` average;
-- download or commit manuals, feelies, scans, or OCR;
-- claim the root license clears imported Infocom prose;
-- implement Mara;
-- implement museum intake;
-- implement cuisine, hunger, satiation, or stamina;
-- implement Living Zork deaths;
-- implement Zork Plus or the expedition stash;
-- add S.T.A.L.K.E.R. material.
-
-Those product families remain deliberately sequenced after this foundation.
+This train does not reopen the House hierarchy, alter Release 1230 gameplay, create a universal `INFOCOM_STYLE`, publish protected manuals or OCR, implement Mara, museum intake, cuisine, Living Zork, Zork Plus, expedition storage, or S.T.A.L.K.E.R.
 
 ## Next consumer
 
-The next prose-bearing product train must:
-
-1. choose a surface-specific authority profile;
-2. add a child profile when the existing one is too broad;
-3. name excluded voices;
-4. author original candidate prose;
-5. run local overlap validation;
-6. commit the passing style receipt beside the prose;
-7. keep the source corpus local unless its artifact rights permit publication.
-
-The implementation PR must remain open until Justin explicitly orders the merge.
+The next product train must couple the corpus to real gameplay by selecting named surface profiles, authoring original player-visible prose, validating overlap locally, and committing style receipts beside the gameplay evidence. A version-controlled product kanban will make current, next, future, parked, and completed trains explicit.
