@@ -97,6 +97,32 @@ Its governing rule is simple: food must create decisions, discoveries, humor, an
 
 See [Cuisine, Hunger, Satiation, and Stamina](cuisine-hunger-satiation-and-stamina.md).
 
+## Human companion, bond, and optional love interest
+
+A fully physical human adventuring companion could become one of Highly Extended Zork's most transformative systems.
+
+The strongest form is one deeply authored woman with her own expedition, possessions, incomplete knowledge, goals, boundaries, injuries, judgments, promises, and ability to leave. She is another causal adventurer rather than a follower object, hint dispenser, inventory mule, or romance reward.
+
+The current working candidate is **Mara Tallow**, an independent field surveyor reconstructing the Last Honest Survey of the Great Underground Empire. Her first meeting with the Adventurer would occur during a developing emergency at Flood Control Dam #3, where each person has something the other needs and both can witness whether the other keeps a promise under pressure.
+
+The companion system would support:
+
+- direct-address parser commands;
+- exact location, injury, light, inventory, and custody state;
+- evidence-limited knowledge, theories, errors, and contradictions;
+- two-person rope, machinery, rescue, carrying, rowing, crossing, and watch actions;
+- refusal and bounded autonomy;
+- separate field camp and possible later House integration;
+- promises, trust, respect, resentment, affection, intimacy, and commitment derived from specific events rather than an exposed meter;
+- deep friendship as a complete outcome;
+- optional romance emerging from shared adventure history rather than dating-sim mechanics;
+- separation, reunion, disagreement, repair, departure, injury, and possible death through authored causality;
+- separate journals and expedition records that may disagree without becoming omniscient.
+
+The romance is not the purpose of the system. The purpose is to let two human beings become important to one another because they crossed the Great Underground Empire together and remember exactly what it cost.
+
+See [Human Companion, Bond, and Optional Love Interest](human-companion-bond-and-love-interest.md).
+
 ## Community wish archaeology
 
 [Zork Community Wishes and Lost-Idea Archaeology](community-wishes-and-lost-ideas.md) records direct fan wishes, recurring preferences, historical gaps, abandoned fan-project directions, and modern-player pain points.
@@ -106,7 +132,7 @@ It explicitly separates:
 - things people actually requested;
 - complaints that imply a design problem;
 - historical Dungeon/Zork material that needs source verification;
-- our original extensions, including the Living Zork consequence work, Zork Plus, the museum, ecology, fishing, cooking, hunger, satiation, stamina, and House memory systems.
+- our original extensions, including the Living Zork consequence work, Zork Plus, the museum, ecology, fishing, cooking, hunger, satiation, stamina, human companionship, optional love, and House memory systems.
 
 The research file is evidence and inspiration, not a second Kanban, bead hierarchy, or implementation claim.
 
@@ -120,51 +146,52 @@ The House dependency is complete, but that does not automatically make the museu
 2. **Physical Expedition Stash** — one real House or Cellar locker with exact containment, death fate, recovery, and anti-duplication.
 3. **Museum Intake and First Gallery** — a complete donation, loan, registration, custody, plaque, revisit, and save/restore loop.
 4. **Parser Comprehension and Deep Affordances** — focused noun, verb, two-object, scenery, material, and intent improvements without a universal simulator.
+5. **Companion Expedition Foundation** — one authored human companion, Dam mutual rescue, direct-address grammar, physical and knowledge state, promises, refusal, joint actions, separation, reunion, friendship, and the earliest possibility of romance.
 
-These are alternatives for sequencing, not four trains to launch simultaneously.
+These are alternatives for sequencing, not five trains to launch simultaneously.
 
-The museum remains fully retained. The correction is that it is one major product family among several earlier recovered directions, and its position must be deliberately chosen rather than assumed.
+The museum remains fully retained. The correction is that it is one major product family among several earlier recovered and newly developed directions, and its position must be deliberately chosen rather than assumed.
 
 ## Design principles
 
 ### Deeper before merely larger
 
-A larger map is valuable only when rooms, objects, actors, warnings, and consequences answer the player more deeply. Existing locations should accumulate additional behavior, evidence, danger, history, and alternate outcomes before the world becomes a mass of shallow new rooms.
+A larger map is valuable only when rooms, objects, actors, warnings, relationships, and consequences answer the player more deeply. Existing locations should accumulate additional behavior, evidence, danger, history, alternate outcomes, and human meaning before the world becomes a mass of shallow new rooms.
 
 ### Discovery before checklist
 
-The museum, archive, warnings, recipes, and postgame modes should not reveal every missing object, hidden outcome, or solution immediately. Knowledge must be earned through credible play.
+The museum, archive, warnings, recipes, companion knowledge, and postgame modes should not reveal every missing object, hidden outcome, or solution immediately. Knowledge must be earned through credible play.
 
 ### Evidence before omniscience
 
-The game may know hidden rules, but player-facing records retain only what was observed, documented, measured, inferred, or credibly reported.
+The game may know hidden rules, but player-facing records and companion beliefs retain only what was observed, documented, measured, inferred, remembered, or credibly reported.
 
 ### Real provenance
 
-An object, specimen, meal, warning, weapon, or archive record may remember:
+An object, specimen, meal, warning, weapon, entrusted possession, or archive record may remember:
 
 - where it was found;
 - how and when it was acquired;
-- whether it was given, stolen, recovered, purchased, caught, grown, prepared, damaged, repaired, or taken from another actor;
+- whether it was given, stolen, entrusted, recovered, purchased, caught, grown, prepared, damaged, repaired, or taken from another actor;
 - fire, water, magic, Hades, rainbow, combat, theft, ritual, and environmental exposure;
 - who previously possessed it;
 - whether it is original, altered, restored, a replica, or only documented.
 
 ### Canonical authority
 
-Future systems must not fabricate replacement treasures, duplicate unique objects, silently solve puzzles, change score without authored cause, erase custody, merge contradictory expeditions, or replace actor motives with omniscient generic AI.
+Future systems must not fabricate replacement treasures, duplicate unique objects, silently solve puzzles, change score without authored cause, erase custody, merge contradictory expeditions, or replace actor motives and companion autonomy with omniscient generic AI.
 
 ### Authored causality
 
-New outcomes should follow from visible information, physical state, preparation, timing, motive, position, or risk. Failure should produce comedy, information, a clue, a remembered consequence, or several of these.
+New outcomes should follow from visible information, physical state, preparation, timing, motive, position, promise, relationship history, or risk. Failure should produce comedy, information, a clue, a remembered consequence, or several of these.
 
 ### Dense authored variety
 
-Variety should come from understandable combinations of place, circumstance, time, environment, history, and player action—not arbitrary procedural naming or generated filler.
+Variety should come from understandable combinations of place, circumstance, time, environment, history, and player action—not arbitrary procedural naming, generated filler, or endless companion banter.
 
 ### Optional presentation layers
 
-The parser remains authoritative and complete. Glulx TUI, 2D illustrations, action controls, maps, sound, and later renderer experiments may support play without becoming the sole source of required evidence.
+The parser remains authoritative and complete. Glulx TUI, 2D illustrations, action controls, maps, sound, companion status presentation, and later renderer experiments may support play without becoming the sole source of required evidence.
 
 ## Other future directions
 
@@ -177,7 +204,8 @@ The parser remains authoritative and complete. Glulx TUI, 2D illustrations, acti
 - same-score expeditions with substantially different histories;
 - physical caches, death-site recovery, and Veteran Expedition preparation;
 - playable off-screen stories and alternate actor perspectives;
-- the House, Attic, museum, correspondence, field records, warnings, and NPC testimony presenting different views of the same event;
+- a human companion whose independent testimony, promises, custody, and relationship history alter expeditions without replacing solo play;
+- the House, Attic, museum, correspondence, field records, warnings, companion journals, and NPC testimony presenting different views of the same event;
 - museum exhibits and archive records becoming active story locations rather than static rewards.
 
 ## Promotion rule
