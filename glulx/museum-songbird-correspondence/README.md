@@ -30,6 +30,17 @@ Returning the feather preserves the observation and the real brass-bauble eviden
 - The trophy case retains its canonical open/closed state, treasure behavior, and scoring.
 - The Forest case, canonical nest, plaque, and catalog read actual object locations.
 
+## Release artifact
+
+- File: `zork1-glulx-museum-songbird-correspondence.ulx`
+- Release: `1240`
+- Serial: `260801`
+- Format: Glulx
+- Version: `0x00030103`
+- Size: `363776` bytes
+- Checksum: `0x8c222852`
+- SHA-256: `067ab63fd33bd35a3bb7f4a118e3d49e09f24b268231922ad9f68417c1560630`
+
 ## Boundaries
 
 - no generic bird, nest, ecology, or specimen engine;
