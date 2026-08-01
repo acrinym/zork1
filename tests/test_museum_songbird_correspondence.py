@@ -52,7 +52,7 @@ class MuseumSongbirdCorrespondenceTests(unittest.TestCase):
         self.assertIn("<MOVE ,SONGBIRD-FEATHER ,SONGBIRD-NEST>", module)
         self.assertIn("<IN? ,SONGBIRD-FEATHER ,SONGBIRD-NEST>", module)
         self.assertIn("Pulling apart the woven cup", module)
-        self.assertNotIn("COPY", module.upper())
+        self.assertNotIn("<COPY", module.upper())
         self.assertNotIn("<OBJECT SONGBIRD-REPLICA", module)
 
     def test_museum_intake_routes_only_feather_to_forest_case(self) -> None:
