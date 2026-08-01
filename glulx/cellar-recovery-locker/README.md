@@ -11,10 +11,11 @@ Release 1238 adds one physical recovery locker beneath the existing Cellar stagi
 5. keep carrying anything you are willing to risk;
 6. if canonical death occurs, those carried objects follow Zork’s existing loss and scattering rules;
 7. navigate back through the world to the Cellar;
-8. `OPEN LOCKER` to break the prepared seal;
-9. recover exactly the objects that were physically stored.
+8. use the fixed amber lamp above the locker to reach the cache even when the portable lantern was protected inside;
+9. `OPEN LOCKER` to break the prepared seal;
+10. recover exactly the objects that were physically stored.
 
-The locker holds at most two objects and no more than thirty total size units. The player may break the seal early and change the kit. Nothing is duplicated, teleported, or reconstructed.
+The locker holds at most two objects and no more than thirty total size units. The player may break the seal early and change the kit. Nothing is duplicated, teleported, or reconstructed. The amber lamp is wired into the wall and cannot become a second expedition lantern.
 
 ## Why this matters in play
 
@@ -26,5 +27,6 @@ The locker turns preparation into a meaningful choice. A lantern and rope inside
 - no remote retrieval or menu inventory;
 - no mirrored object IDs, cloud chest, or universal stash network;
 - no protection for anything still carried;
+- no portable duplicate lantern;
 - no duplicate Cellar staging bench, gear hooks, or quarantine niche;
 - no audit framework or recursive planning machinery.
