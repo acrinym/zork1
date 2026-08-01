@@ -25,7 +25,8 @@
     }
   ],
   "patches": [
-    "patches/001-veteran-materialization.json"
+    "patches/001-veteran-materialization.json",
+    "patches/002-veteran-attic-work-light.json"
   ],
   "expected_changed_paths": [
     "completed_expedition_archive.zil",
@@ -33,18 +34,18 @@
     "zork_plus_veteran_expedition.zil"
   ],
   "player_outcomes": [
-    "a genuinely sealed Expedition A physically unlocks the veteran dispatch and Attic hold trunk",
+    "a genuinely sealed Expedition A physically unlocks the veteran dispatch, Attic hold trunk, and fixed archive work light",
     "the player explicitly chooses exactly one canonical brass lantern or rope loadout",
     "all other directly carried objects remain physically in the Attic rather than following as hidden inventory",
     "the lantern and rope create two authored round-trip crossings of the veteran survey cut",
     "the boundary marker is recorded on a physical field card instead of removed or duplicated",
-    "completion seals the veteran survey into separate Expedition Box B with retained-or-left-behind loadout custody"
+    "either route returns to a usable illuminated archive and seals Expedition Box B with retained-or-left-behind loadout custody"
   ],
   "boundaries": [
     "no generic New Game Plus framework or restart menu",
     "no silent change to the canonical first expedition",
     "no TAKE EVERYTHING loadout or universal equipment slots",
-    "no duplicate lantern, rope, treasure, or canonical puzzle object",
+    "no duplicate portable lantern, rope, treasure, or canonical puzzle object",
     "no automatic puzzle completion",
     "no merged Expedition A and B histories",
     "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
