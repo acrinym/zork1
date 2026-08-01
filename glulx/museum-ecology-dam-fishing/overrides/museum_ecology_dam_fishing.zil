@@ -6,8 +6,6 @@
 
 <SYNTAX FISH = V-MUSEUM-FISH>
 <SYNONYM FISH ANGLE>
-<SYNTAX CAST OBJECT (HELD) = V-MUSEUM-FISH>
-<SYNTAX RELEASE OBJECT (HELD HAVE) = V-MUSEUM-RELEASE>
 
 <CONSTANT AQUATIC-SCHEMA 1>
 <CONSTANT AQUATIC-SLOT-VERSION 0>
@@ -139,7 +137,9 @@
     <RTRUE>>
 
 <ROUTINE MUSEUM-FISHING-ROD-FCN ()
-    <COND (<VERB? EXAMINE>
+    <COND (<VERB? EXORCISE>
+           <V-MUSEUM-FISH>)
+          (<VERB? EXAMINE>
            <TELL "The rod is jointed ash with a cork grip, a narrow brass reel, and fine green line. A museum tag calls it field equipment. The reel has enough screws to suggest that its maker expected the fish to argue." CR>
            <RTRUE>)>
     <RFALSE>>
@@ -173,7 +173,9 @@
     <RFALSE>>
 
 <ROUTINE DAM-SILVERFIN-FCN ()
-    <COND (<VERB? EXAMINE>
+    <COND (<VERB? UNTIE>
+           <V-MUSEUM-RELEASE>)
+          (<VERB? EXAMINE>
            <AQUATIC-ENSURE>
            <COND (<EQUAL? <AQUATIC-GET ,AQUATIC-SLOT-VARIETY>
                           ,SILVERFIN-SPILLWAY>
