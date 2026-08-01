@@ -9,7 +9,10 @@
     "file": "zork1-glulx-cellar-recovery-locker.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "locked": true,
+    "size_bytes": 354560,
+    "checksum_hex": "0x8573a0e9",
+    "sha256": "95dd5a7e88be6c76732513e81c8e6b06f3f664053f3a3c8a23ebad0c61242ec8"
   },
   "overrides": [
     {
@@ -35,7 +38,7 @@
   "player_outcomes": [
     "sealing Expedition B physically unlocks one bolted recovery locker and fixed amber lamp in the Cellar",
     "the player chooses at most two real objects with a combined size no greater than thirty",
-    "sealing the locker records the current canonical death count without copying any object",
+    "preparing the locker records the current canonical death count without copying any object",
     "canonical death scatters only inventory still carried by the adventurer",
     "the fixed nonportable amber lamp makes the prepared cache reachable after death without granting a new field light",
     "physically returning to the Cellar and breaking the seal recovers exactly the protected kit",
