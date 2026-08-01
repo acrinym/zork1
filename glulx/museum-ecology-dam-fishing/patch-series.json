@@ -1,0 +1,59 @@
+{
+  "edition": "Unofficial Zork Museum Ecology and Dam Fishing Glulx",
+  "release": 1239,
+  "serial": "260801",
+  "base_manifest": "../cellar-recovery-locker/patch-series.json",
+  "base_release": 1238,
+  "base_artifact_sha256": "95dd5a7e88be6c76732513e81c8e6b06f3f664053f3a3c8a23ebad0c61242ec8",
+  "expected_artifact": {
+    "file": "zork1-glulx-museum-ecology-dam-fishing.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": true,
+    "size_bytes": 360192,
+    "checksum_hex": "0xf238a696",
+    "sha256": "5b81448327cb5a2a60298f28d76062c0c5498ec5fc11f6d627a4873e82cba11f"
+  },
+  "overrides": [
+    {
+      "path": "museum_ecology_dam_fishing.zil",
+      "source": "overrides/museum_ecology_dam_fishing.zil",
+      "allow_new": true,
+      "description": "Add the physical museum rod, field jar, condition-dependent dam silverfin, release record, Waters case, and provenance plaque"
+    },
+    {
+      "path": "museum_intake_first_gallery.zil",
+      "source": "overrides/museum_intake_first_gallery.zil",
+      "description": "Route the real silverfin into the Waters case and include aquatic evidence in museum cataloging"
+    },
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1238 layer, load museum ecology before museum intake, and assign Release 1239"
+    }
+  ],
+  "patches": [],
+  "expected_changed_paths": [
+    "museum_ecology_dam_fishing.zil",
+    "museum_intake_first_gallery.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "a described, takeable ash fishing rod and water-filled specimen jar wait beside the Living Room museum",
+    "the player physically carries both tools to the River Frigid below Flood Control Dam #3",
+    "FISH or CAST ROD catches one real dam silverfin into the real field jar",
+    "existing LOW-TIDE state selects a river or gate-scarred spillway variety",
+    "RELEASE SILVERFIN preserves an earned field record without inventing a museum specimen",
+    "EXHIBIT SILVERFIN moves the actual fish into the Waters of the Empire case",
+    "the plaque reports the real catch condition and whether the specimen is present, absent, or released",
+    "removing the exhibited fish physically empties the living display while retaining truthful prior observation"
+  ],
+  "boundaries": [
+    "no generic fishing engine, procedural species generator, or global catch table",
+    "no aquarium checklist, currency loop, remote donation, or copied specimen",
+    "no replacement dam controller or invented tide state",
+    "no automatic duplicate catches while the known specimen still exists",
+    "no audit framework or recursive planning machinery",
+    "no S.T.A.L.K.E.R. coupling"
+  ]
+}
