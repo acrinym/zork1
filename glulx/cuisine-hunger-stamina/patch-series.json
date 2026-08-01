@@ -16,7 +16,7 @@
       "path": "cuisine_hunger_stamina.zil",
       "source": "overrides/cuisine_hunger_stamina.zil",
       "allow_new": true,
-      "description": "Add authored meal combinations, bounded exertion strain, rest, appetite status, and prepared-meal recovery"
+      "description": "Add authored meal combinations, bounded exertion strain, recovery, appetite status, and prepared-meal recovery"
     },
     {
       "path": "zork1.zil",
@@ -36,7 +36,7 @@
     "the real prepared lunch can become an authored garlic-pepper meal using the real sliced garlic",
     "warming and seasoning produce stronger but still bounded recovery outcomes",
     "selected exertion creates strain and eventually situational hunger rather than a turn-based survival clock",
-    "REST recovers breath while prepared food fully clears accumulated strain",
+    "RECOVER restores breath while preserving hunger, and prepared food fully clears accumulated strain",
     "CHECK APPETITE reports bounded appetite, strain, and remaining meal-supported exertion"
   ],
   "boundaries": [
