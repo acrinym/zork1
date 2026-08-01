@@ -41,12 +41,13 @@ class LivingZorkConsequencesTests(unittest.TestCase):
         self.assertIn("LIVING-CANYON-SLOT-WARNED", module)
         self.assertNotIn("LIVING-CANYON-SLOT-ROPE", module)
 
-    def test_canyon_rim_is_a_physical_local_affordance(self) -> None:
+    def test_canyon_rim_is_a_physical_open_surface(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
         edge = module.split("<OBJECT LIVING-CANYON-EDGE", 1)[1].split(">", 1)[0]
         self.assertIn("(IN CANYON-VIEW)", edge)
         self.assertIn("(SYNONYM EDGE RIM DROP PRECIPICE)", edge)
-        self.assertIn("(FLAGS NDESCBIT)", edge)
+        self.assertIn("(FLAGS NDESCBIT CONTBIT OPENBIT SURFACEBIT)", edge)
+        self.assertIn("(CAPACITY 20)", edge)
         self.assertNotIn("GLOBAL-OBJECTS", edge)
 
     def test_first_bare_leap_warns_through_world_cause(self) -> None:
@@ -70,22 +71,24 @@ class LivingZorkConsequencesTests(unittest.TestCase):
         self.assertIn("<LIVING-CANYON-INTERCEPT?>", replacement["new"])
         self.assertIn("<JIGS-UP", replacement["new"])
 
-    def test_secure_rope_uses_canonical_object_and_physical_location(self) -> None:
+    def test_secure_rope_uses_canonical_object_and_rim_containment(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
         secure = module.split("<ROUTINE V-LIVING-SECURE", 1)[1].split(
             "<ROUTINE LIVING-CANYON-INTERCEPT?", 1
         )[0]
         self.assertIn("<EQUAL? ,PRSO ,ROPE>", secure)
         self.assertIn("<IN? ,ROPE ,WINNER>", secure)
-        self.assertIn("<MOVE ,ROPE ,CANYON-VIEW>", secure)
-        self.assertIn("<IN? ,ROPE ,CANYON-VIEW>", secure)
+        self.assertIn("<MOVE ,ROPE ,LIVING-CANYON-EDGE>", secure)
+        self.assertIn("<IN? ,ROPE ,LIVING-CANYON-EDGE>", secure)
+        self.assertNotIn("<MOVE ,ROPE ,CANYON-VIEW>", secure)
         self.assertNotIn("RESCUE-ROPE", module)
         self.assertNotIn("SAFETY-ROPE", module)
 
-    def test_prepared_leap_uses_only_rope_location_as_authority(self) -> None:
+    def test_prepared_leap_uses_only_secured_rim_location_as_authority(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
         intercept = module.split("<ROUTINE LIVING-CANYON-INTERCEPT?", 1)[1]
-        self.assertIn("<IN? ,ROPE ,CANYON-VIEW>", intercept)
+        self.assertIn("<IN? ,ROPE ,LIVING-CANYON-EDGE>", intercept)
+        self.assertNotIn("<IN? ,ROPE ,CANYON-VIEW>", intercept)
         self.assertIn("the prepared rope snaps taut", intercept)
         self.assertNotIn("LIVING-CANYON-SLOT-ROPE", module)
         self.assertNotIn("LIVING-CANYON-ROPE-HOOK", module)
