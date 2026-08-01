@@ -1,5 +1,15 @@
 The dispatch recognizes one sealed completed expedition and offers a separate veteran survey. In the Attic, choose either the real brass lantern or the real rope, then begin the veteran expedition. Every other directly carried object will remain in the physical hold trunk.
 
+A fixed archive work light casts a steady pool across the expedition boxes.
+
+The archive work light is bolted to the rafters.
+
+The fixed work light has no local switch; it remains on for the expedition archive.
+
+The archive work light is already on.
+
+The fixed lamp illuminates the expedition boxes without becoming another portable field item.
+
 The weathered marker names a survey boundary beyond the first expedition's archived route. Recording it, rather than removing it, is the veteran objective.
 
 You declare the real brass lantern as the single veteran field item. Its actual condition and light state will matter.
