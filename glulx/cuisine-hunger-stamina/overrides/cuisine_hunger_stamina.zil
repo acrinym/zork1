@@ -7,7 +7,7 @@
 <SYNTAX COMBINE OBJECT (HELD CARRIED ON-GROUND IN-ROOM)
     WITH OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-CUISINE-COMBINE>
 <SYNONYM COMBINE MIX SEASON>
-<SYNTAX REST = V-CUISINE-REST>
+<SYNTAX RECOVER = V-CUISINE-REST>
 <SYNTAX CHECK OBJECT (FIND RMUNGBIT) = V-CUISINE-STATUS>
 
 <CONSTANT CUISINE-SCHEMA 1>
@@ -75,7 +75,7 @@
                 <G? <CUISINE-GET ,CS-STRAIN> 2>
                 <ZERO? <CUISINE-GET ,CS-SATIATION>>>
            <CUISINE-PUT ,CS-BLOCKED 1>
-           <TELL "Your strength is not gone, but this repeated exertion has become clumsy. Rest will recover enough to continue; a prepared meal will recover you fully." CR>
+           <TELL "Your strength is not gone, but this repeated exertion has become clumsy. Recovering will let you continue; a prepared meal will recover you fully." CR>
            <RTRUE>)
           (<AND <VERB? EAT>
                 <EQUAL? ,PRSO ,LUNCH>
@@ -109,7 +109,7 @@
                          <TELL "The exertion leaves your breath short. This is fatigue, not a permanent countdown." CR>)
                         (<EQUAL? .STRAIN 3>
                          <CUISINE-PUT ,CS-HUNGER 1>
-                         <TELL "Repeated exertion has made the neglected lunch feel relevant. Rest can steady you; prepared food can restore you." CR>)>)>)>
+                         <TELL "Repeated exertion has made the neglected lunch feel relevant. Recovering can steady you; prepared food can restore you." CR>)>)>)>
     <RFALSE>>
 
 <ROUTINE V-CUISINE-COMBINE ()
