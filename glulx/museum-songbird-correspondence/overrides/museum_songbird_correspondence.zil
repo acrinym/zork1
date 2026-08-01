@@ -3,7 +3,7 @@
 ;"One authored natural-history expedition extends the canonical clockwork
   canary event. The real brass bauble remains canonical. One physical
   songbird feather falls beside it and may be displayed in the Living Room
-  museum or deliberately returned to the real branch nest."
+  museum or deliberately returned to Zork's real bird's nest."
 
 <OBJECT MUSEUM-FOREST-GALLERY-OBJECT
     (IN GLOBAL-OBJECTS)
@@ -29,15 +29,6 @@
     (DESC "songbird correspondence plaque")
     (FLAGS NDESCBIT READBIT)
     (ACTION SONGBIRD-PLAQUE-FCN)>
-
-<OBJECT SONGBIRD-NEST
-    (IN UP-A-TREE)
-    (SYNONYM NEST TWIGS CUP)
-    (ADJECTIVE SONGBIRD BRANCH SMALL WOVEN)
-    (DESC "small branch nest")
-    (FLAGS NDESCBIT CONTBIT OPENBIT SEARCHBIT SURFACEBIT TRYTAKEBIT)
-    (CAPACITY 8)
-    (ACTION SONGBIRD-NEST-FCN)>
 
 <OBJECT SONGBIRD-FEATHER
     (SYNONYM FEATHER PLUME SPECIMEN TRACE)
@@ -67,13 +58,13 @@
                   <TELL "the case holds the real blue-black feather beside a linked record of the brass bauble in the trophy case. Together they document the songbird's bright-object exchange." CR>)
                  (T
                   <TELL "the real blue-black feather is displayed, but the brass bauble that proved the exchange is currently outside museum custody." CR>)>)
-          (<IN? ,SONGBIRD-FEATHER ,SONGBIRD-NEST>
+          (<IN? ,SONGBIRD-FEATHER ,NEST>
            <COND (<IN? ,BAUBLE ,TROPHY-CASE>
-                  <TELL "the real brass bauble is displayed in the trophy case, while the feather has been returned to the branch nest. The museum records observation without pretending to own the trace." CR>)
+                  <TELL "the real brass bauble is displayed in the trophy case, while the feather has been returned to the bird's nest at Up a Tree. The museum records observation without pretending to own the trace." CR>)
                  (T
-                  <TELL "the feather has been returned to the branch nest, and the real brass bauble is also outside museum custody. Only the witnessed exchange remains on record." CR>)>)
+                  <TELL "the feather has been returned to the bird's nest at Up a Tree, and the real brass bauble is also outside museum custody. Only the witnessed exchange remains on record." CR>)>)
           (<IN? ,BAUBLE ,TROPHY-CASE>
-           <TELL "the real brass bauble is displayed in the trophy case, but the songbird feather is currently outside both the forest case and the nest." CR>)
+           <TELL "the real brass bauble is displayed in the trophy case, but the songbird feather is currently outside both the forest case and the bird's nest." CR>)
           (T
            <TELL "the observed exchange is known, but neither the real feather nor the real bauble is in museum custody." CR>)>
     <RTRUE>>
@@ -97,38 +88,23 @@
            <RTRUE>)>
     <RFALSE>>
 
-<ROUTINE SONGBIRD-NEST-FCN ()
-    <COND (<AND <EQUAL? ,PRSI ,SONGBIRD-NEST>
-                <VERB? PUT PUT-ON>>
-           <COND (<NOT <EQUAL? ,PRSO ,SONGBIRD-FEATHER>>
-                  <TELL "The small twig cup is a nest, not a general storage container." CR>)
-                 (<NOT <IN? ,SONGBIRD-FEATHER ,WINNER>>
-                  <TELL "You must physically have the feather before returning it to the nest." CR>)
-                 (T
-                  <MOVE ,SONGBIRD-FEATHER ,SONGBIRD-NEST>
-                  <TELL "You work the real feather into the twig cup. Its blue-black shaft settles among the small branches, restored to the place where the songbird lived rather than copied into a museum case." CR>)>
-           <RTRUE>)
-          (<AND <EQUAL? ,PRSO ,SONGBIRD-NEST>
-                <VERB? EXAMINE LOOK-INSIDE SEARCH>>
-           <COND (<IN? ,SONGBIRD-FEATHER ,SONGBIRD-NEST>
-                  <TELL "The feather is now part of the nest's woven lining. It remains the same field trace that fell after the canary's song." CR>)
-                 (T
-                  <TELL "The shallow twig cup is empty except for grass and a thread of tarnished green ribbon." CR>)>
-           <RTRUE>)
-          (<AND <EQUAL? ,PRSO ,SONGBIRD-NEST>
-                <VERB? TAKE MOVE MUNG>>
-           <TELL "The nest is worked tightly around the branch." CR>
-           <RTRUE>)>
-    <RFALSE>>
-
 <ROUTINE SONGBIRD-FEATHER-FCN ()
-    <COND (<AND <VERB? TAKE MOVE MUNG>
-                <IN? ,SONGBIRD-FEATHER ,SONGBIRD-NEST>>
-           <TELL "You deliberately restored the feather to the nest. Pulling apart the woven cup would turn a field decision into vandalism." CR>
+    <COND (<AND <EQUAL? ,PRSO ,SONGBIRD-FEATHER>
+                <EQUAL? ,PRSI ,NEST>
+                <VERB? PUT PUT-ON>>
+           <COND (<NOT <IN? ,SONGBIRD-FEATHER ,WINNER>>
+                  <TELL "You must physically have the feather before returning it to the bird's nest." CR>)
+                 (T
+                  <MOVE ,SONGBIRD-FEATHER ,NEST>
+                  <TELL "You work the real feather into the bird's nest beside the jeweled egg. Its blue-black shaft settles among the twigs, restored to the place where the songbird lived rather than copied into a museum case." CR>)>
+           <RTRUE>)
+          (<AND <VERB? TAKE MOVE MUNG>
+                <IN? ,SONGBIRD-FEATHER ,NEST>>
+           <TELL "You deliberately restored the feather to the bird's nest. Pulling apart the woven twigs would turn a field decision into vandalism." CR>
            <RTRUE>)
           (<VERB? EXAMINE>
-           <COND (<IN? ,SONGBIRD-FEATHER ,SONGBIRD-NEST>
-                  <TELL "The blue-black flight feather is woven into the branch nest, green at one edge and physically beyond museum custody." CR>)
+           <COND (<IN? ,SONGBIRD-FEATHER ,NEST>
+                  <TELL "The blue-black flight feather is woven into the real bird's nest beside the jeweled egg, green at one edge and physically beyond museum custody." CR>)
                  (<IN? ,SONGBIRD-FEATHER ,MUSEUM-FOREST-CASE>
                   <TELL "The real feather lies beneath the case glass. Its dark vanes flash green near the shaft; no replica stands in for it." CR>)
                  (T
@@ -144,10 +120,10 @@
                   <TELL "SONGBIRD CORRESPONDENCE. Observed after the real golden clockwork canary was wound in the forest: a living songbird answered, dropped the canonical brass bauble, and left one blue-black flight feather. ">
                   <COND (<IN? ,SONGBIRD-FEATHER ,MUSEUM-FOREST-CASE>
                          <TELL "The real feather is displayed in the Forest and Surface Life case.">)
-                        (<IN? ,SONGBIRD-FEATHER ,SONGBIRD-NEST>
-                         <TELL "The real feather was returned to the branch nest and is not represented by a substitute.">)
+                        (<IN? ,SONGBIRD-FEATHER ,NEST>
+                         <TELL "The real feather was returned to the bird's nest at Up a Tree and is not represented by a substitute.">)
                         (T
-                         <TELL "The real feather is currently outside the forest case and nest.">)>
+                         <TELL "The real feather is currently outside the forest case and bird's nest.">)>
                   <COND (<IN? ,BAUBLE ,TROPHY-CASE>
                          <TELL " The real brass bauble is in museum custody in the trophy case." CR>)
                         (T
