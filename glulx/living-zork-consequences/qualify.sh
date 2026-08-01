@@ -186,6 +186,8 @@ leap
 check appetite
 take rope
 inventory
+recover
+check appetite
 leap
 quit
 EOF_COMMANDS
@@ -198,8 +200,10 @@ grep -F 'You work the real rope around a solid projection of the west wall and t
 grep -F 'The shale breaks loose beneath you, but the prepared rope snaps taut against the west wall.' "$BUILD/living-consequences-transcript.txt"
 grep -F 'The exertion leaves your breath short.' "$BUILD/living-consequences-transcript.txt"
 grep -F 'Your appetite is quiet, and your exertion strain is moderate.' "$BUILD/living-consequences-transcript.txt"
+grep -F 'You stop long enough for the accumulated strain to pass.' "$BUILD/living-consequences-transcript.txt"
+grep -F 'Your appetite is quiet, and your exertion strain is clear.' "$BUILD/living-consequences-transcript.txt"
 grep -F 'Nice view, lousy place to jump.' "$BUILD/living-consequences-transcript.txt"
-for word in secure anchor edge rim; do
+for word in secure anchor edge rim recover; do
   if grep -Fi "I don't know the word \"$word\"" "$BUILD/living-consequences-transcript.txt"; then
     echo "Living consequences vocabulary was not recognized: $word" >&2
     exit 1
@@ -212,10 +216,14 @@ secure_tail = text.split('You work the real rope around a solid projection', 1)[
 first_inventory = secure_tail.split('The shale breaks loose beneath you', 1)[0]
 assert 'You are carrying:' in first_inventory
 assert 'rope' not in first_inventory.lower().split('You are carrying:', 1)[1]
-after_take = text.split('>take rope', 1)[1]
-second_inventory = after_take.split('>leap', 1)[0]
-assert 'rope' in second_inventory.lower()
-assert text.index('The shale breaks loose beneath you') < text.index('Nice view, lousy place to jump.')
+after_take = text.rsplit('Taken.', 1)[1]
+second_inventory = after_take.split('You stop long enough for the accumulated strain to pass.', 1)[0]
+assert 'You are carrying:' in second_inventory
+assert 'rope' in second_inventory.lower().split('You are carrying:', 1)[1]
+rescue = text.index('The shale breaks loose beneath you')
+recovery = text.index('You stop long enough for the accumulated strain to pass.')
+death = text.index('Nice view, lousy place to jump.')
+assert rescue < recovery < death
 PY
 
 python - "$LIVING_SERIAL" "$MANIFEST" <<'PY'
@@ -259,6 +267,7 @@ receipt = {
         'prepared_near_fall_runtime': 'passed',
         'bounded_strain_runtime': 'passed',
         'canonical_rope_retrieval_runtime': 'passed',
+        'recover_before_deliberate_leap_runtime': 'passed',
         'canonical_lethal_consequence_runtime': 'passed',
     },
     'generic_hazard_engine': False,
