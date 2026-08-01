@@ -138,7 +138,8 @@
 
 <ROUTINE MUSEUM-FISHING-ROD-FCN ()
     <COND (<VERB? EXORCISE>
-           <V-MUSEUM-FISH>)
+           <V-MUSEUM-FISH>
+           <RTRUE>)
           (<VERB? EXAMINE>
            <TELL "The rod is jointed ash with a cork grip, a narrow brass reel, and fine green line. A museum tag calls it field equipment. The reel has enough screws to suggest that its maker expected the fish to argue." CR>
            <RTRUE>)>
@@ -174,7 +175,8 @@
 
 <ROUTINE DAM-SILVERFIN-FCN ()
     <COND (<VERB? UNTIE>
-           <V-MUSEUM-RELEASE>)
+           <V-MUSEUM-RELEASE>
+           <RTRUE>)
           (<VERB? EXAMINE>
            <AQUATIC-ENSURE>
            <COND (<EQUAL? <AQUATIC-GET ,AQUATIC-SLOT-VARIETY>
