@@ -6,7 +6,7 @@
     {
       "expected_count": 1,
       "old": "\t\t\t\t\t (T ,HERE)>>)\n\t\t\t    (T",
-      "new": "\t\t\t\t\t (T ,HERE)>>)\n\t\t\t     <MUSEUM-SONGBIRD-OBSERVED>\n\t\t\t    (T"
+      "new": "\t\t\t\t\t (T ,HERE)>>\n\t\t\t     <MUSEUM-SONGBIRD-OBSERVED>)\n\t\t\t    (T"
     }
   ]
 }
