@@ -90,7 +90,8 @@ for required in (
     '<SYNTAX SECURE OBJECT',
     '<OBJECT LIVING-CANYON-EDGE',
     '<CONSTANT LIVING-CANYON-STATE <TABLE LIVING-CANYON-SCHEMA 0>>',
-    '<MOVE ,ROPE ,CANYON-VIEW>',
+    '<MOVE ,ROPE ,LIVING-CANYON-EDGE>',
+    '<IN? ,ROPE ,LIVING-CANYON-EDGE>',
     '<ROUTINE LIVING-CANYON-INTERCEPT?',
     '<CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>',
 ):
@@ -99,6 +100,7 @@ assert '<GLOBAL' not in module
 assert 'Nice view, lousy place to jump.' not in module
 assert 'LIVING-CANYON-SLOT-ROPE' not in module
 assert 'LIVING-CANYON-ROPE-HOOK' not in module
+assert '<IN? ,ROPE ,CANYON-VIEW>' not in module
 assert dungeon.count('<LIVING-CANYON-INTERCEPT?>') == 1
 assert dungeon.count('Nice view, lousy place to jump.') == 1
 for forbidden in ('HAZARD-ENGINE', 'HAZARD-REGISTRY', 'RESCUE-CHANCE', 'INJURY-METER'):
