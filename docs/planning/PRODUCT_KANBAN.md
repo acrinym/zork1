@@ -16,25 +16,22 @@ This board answers five different questions: what is being built now, what is al
 
 ## CURRENT
 
-### Release 1232 — Parser Comprehension and Deep Affordances
+### Release 1236 — Living Zork Consequences: Great Canyon Fall
 
-**Player outcome:** selected ordinary interactive-fiction phrases reach world behavior Zork already implements instead of failing at vocabulary or noun-role gaps.
+**Player outcome:** the Great Canyon’s lethal leap becomes physically legible before death, and a player who deliberately prepares the real rope can experience a real near-fall and recovery instead of an unexplained binary trap.
 
-**In production:** `X`, `INSPECT`, `EXAMINE UNDER`, `EXAMINE BEHIND`, `SWITCH ON/OFF`, `SEAL`, and `MEND` route to existing examination, spatial inspection, lamp, and plugging actions. The train adds no parser state, action routine, or response prose. Release 1211's bounded `USE OBJECT` assistance remains present and unchanged; Release 1232 does not broaden it.
+**In production:** the Canyon View gains an inspectable rim; the first unprepared leap produces a concrete footing warning; `SECURE ROPE` uses the canonical Attic rope and leaves it physically at the canyon; a prepared leap catches the player at the rim and creates bounded exertion strain; taking the rope removes that protection; a knowingly repeated unprotected leap preserves the canonical death.
 
-**Proof required:** exact two-path staging, direct parser tests, source smell check, ZILF/Glazer artifact qualification, and a Glulxe transcript proving the actual commands and canonical outputs. PR: **#35**.
+**Proof required:** exact Release 1235 staging, direct consequence tests, rights-safe corpus originality qualification, ZILF/Glazer artifact qualification, and a Glulxe transcript proving warning, rope preparation, near-fall recovery, physical rope retrieval, and canonical lethal consequence. Branch: `agent/living-zork-consequences-20260801`.
 
 ## NEXT
 
-1. **Museum Intake and First Gallery** — physical donation, provenance, refusal rules, and earned exhibit descriptions without duplicate treasures or an encyclopedia HUD.
+1. **Zork Plus / Veteran Expedition** — explicit post-victory content that recognizes completed history without invalidating canonical Zork I.
+2. **Physical Expedition Stash** — bounded real-object staging, capacity, provenance, and later retrieval for post-victory expeditions.
 
 ## FUTURE
 
-- **Mara Companion** — bounded knowledge, presence, relationship memory, and a dedicated dialogue profile.
-- **Cuisine, Hunger, and Stamina** — authored combinations and situational consequences without survival grind.
-- **Living Zork Consequences** — extend the Release 1231 cause-warning-consequence pattern across selected canonical dangers.
-- **Zork Plus / Veteran Expedition** — explicit post-victory content recognizing completed history.
-- **Physical Expedition Stash** — real-object staging and capacity for later expeditions.
+- **Living Zork Consequences — additional families** — machinery, water, fire, and creature-danger continuations only after the Great Canyon fall loop is complete; each remains a direct authored product, never a generic hazard engine.
 
 ## PARKED
 
@@ -45,6 +42,10 @@ This board answers five different questions: what is being built now, what is al
 
 - **House of Records / Release 1230:** 12 trains, 96/96 beads, completed expedition archive, merged through PR #32. Locked artifact SHA-256: `b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71`.
 - **Infocom Corpus Foundation:** extraction, rights gates, authority profiles, originality validation, receipts, all review findings and nits resolved, 25 tests green, merged through PR #33 at `d7cc4750507fed9b505af66e0fd6afee2da70ffb`.
-- **Release 1231 Corpus-Coupled Causal Warning:** zero-state flood warnings, inspection, repair feedback, causal death prose, four style receipts, and hosted locked artifact qualification; merged through PR #34 at `28b90fe93a472087e64afcd0fb0e8776f80157f3`. Artifact SHA-256: `5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609`.
+- **Release 1231 — Corpus-Coupled Causal Warning:** canonical flood warnings and repair affordance, merged through PR #34. Locked artifact: `337920` bytes, checksum `0x1b994d18`, SHA-256 `5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609`.
+- **Release 1232 — Parser Comprehension and Deep Affordances:** selected ordinary IF phrases route to canonical behavior, merged through PR #35 at `ce5be325a0d0f762edaa23362e5227d4788953d6`. Locked artifact: `337920` bytes, checksum `0x2c2192e1`, SHA-256 `2cffc734dbfbe346d0ec185c6962d927bc046343dccdb53b6a9e4439521b6f2e`.
+- **Release 1233 — Museum Intake and First Gallery:** physical exhibit custody, catalog, review, and earned classification, merged through PR #36 at `f0bdd696d447cdb727b82229b218abf7a6905f91`. Locked artifact: `338432` bytes, checksum `0x7065f1fc`, SHA-256 `4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244`.
+- **Release 1234 — Mara Arrival and Evidence Memory:** Mara’s physical presence and exact witnessed-object memory, merged through PR #37 at `76f1e451a4fb70dcf6ea1d41cb8705f2ad5236d4`. Locked artifact: `339712` bytes, checksum `0x69fd7910`, SHA-256 `38b966f47d771e0f5ae6229ff6a7542830ce6e365a3d2291f764581ae0b64a17`.
+- **Release 1235 — Cuisine, Hunger, and Stamina:** authored canonical lunch-and-garlic meal, bounded exertion, situational hunger, `RECOVER`, and physical ingredient custody, squash-merged through PR #38 at `e2e5c9c3e269d8e18bb3ed1c75dd72baacbd495a`. Locked artifact: `342784` bytes, checksum `0x282c807e`, SHA-256 `14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf`.
 
 The JSON board is authoritative for tooling and card metadata. This Markdown view is the human operating surface.
