@@ -1,0 +1,141 @@
+name: Zork I Glulx Zork Plus Veteran Expedition
+
+on:
+  push:
+    branches:
+      - agent/zork-plus-veteran-expedition-20260801
+    paths:
+      - "glulx/zork-plus-veteran-expedition/**"
+      - "tests/test_zork_plus_veteran_expedition*.py"
+      - "docs/planning/PRODUCT_KANBAN.md"
+      - "docs/planning/product-kanban.json"
+      - ".github/workflows/glulx-zork-plus-veteran-expedition.yml"
+  pull_request:
+    paths:
+      - "glulx/zork-plus-veteran-expedition/**"
+      - "tests/test_zork_plus_veteran_expedition*.py"
+      - "docs/planning/PRODUCT_KANBAN.md"
+      - "docs/planning/product-kanban.json"
+      - ".github/workflows/glulx-zork-plus-veteran-expedition.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: glulx-zork-plus-veteran-expedition-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+
+jobs:
+  qualify-release-1237:
+    name: qualify-glulx-zork-plus-veteran-expedition
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.x"
+
+      - name: Install native build tools
+        run: sudo apt-get update && sudo apt-get install -y build-essential libncurses-dev curl
+
+      - name: Check out pinned Zork I Glulx source
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulx ZILF
+        uses: actions/checkout@v4
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@v4
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Prepare pinned Glazer
+        run: |
+          mkdir -p .tooling/glazer-source
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer-source.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glazer-source.tar.gz" | sha256sum --check
+          tar -xf glazer-source.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source
+
+      - name: Qualify Release 1237
+        run: bash glulx/zork-plus-veteran-expedition/qualify.sh
+
+      - name: Upload Release 1237 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zork1-glulx-zork-plus-veteran-expedition-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            glulx/build/zork-plus-veteran-expedition/zork1-glulx-zork-plus-veteran-expedition.ulx
+            glulx/build/zork-plus-veteran-expedition/zork1-glulx-zork-plus-veteran-expedition.asm
+            glulx/build/zork-plus-veteran-expedition/zork1-glulx-zork-plus-veteran-expedition-test.ulx
+            glulx/build/zork-plus-veteran-expedition/zork1-glulx-zork-plus-veteran-expedition-test.asm
+            glulx/build/zork-plus-veteran-expedition/story-report.json
+            glulx/build/zork-plus-veteran-expedition/QUALIFICATION-RECEIPT.json
+            glulx/build/zork-plus-veteran-expedition/SERIAL-NORMALIZATION.json
+            glulx/build/zork-plus-veteran-expedition/TEST-SERIAL-NORMALIZATION.json
+            glulx/build/zork-plus-veteran-expedition/smell-report.json
+            glulx/build/zork-plus-veteran-expedition/pre-victory-transcript.txt
+            glulx/build/zork-plus-veteran-expedition/lantern-transcript.txt
+            glulx/build/zork-plus-veteran-expedition/rope-transcript.txt
+            glulx/build/zork-plus-veteran-expedition/pre-victory-commands.txt
+            glulx/build/zork-plus-veteran-expedition/lantern-commands.txt
+            glulx/build/zork-plus-veteran-expedition/rope-commands.txt
+            glulx/build/zork-plus-veteran-expedition/veteran-expedition-prose.overlap.json
+            glulx/build/zork-plus-veteran-expedition/veteran-expedition-prose.style-receipt.json
+            glulx/build/zork-plus-veteran-expedition/corpus/public-summary.json
+            glulx/build/zork-plus-veteran-expedition/zilf-restore.log
+            glulx/build/zork-plus-veteran-expedition/zilf-build.log
+            glulx/build/zork-plus-veteran-expedition/zilf-compile.log
+            glulx/build/zork-plus-veteran-expedition/test-zilf-compile.log
+            glulx/build/zork-plus-veteran-expedition/glazer-version.txt
+            glulx/build/zork-plus-veteran-expedition/glazer-assemble.log
+            glulx/build/zork-plus-veteran-expedition/test-glazer-assemble.log
+            glulx/build/zork-plus-veteran-expedition/cheapglk-build.log
+            glulx/build/zork-plus-veteran-expedition/glulxe-build.log
+            glulx/build/zork-plus-veteran-expedition/src/STAGING-RECEIPT.json
+            glulx/zork-plus-veteran-expedition/patch-series.json
