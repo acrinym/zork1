@@ -83,15 +83,16 @@ class CuisineHungerStaminaTests(unittest.TestCase):
         self.assertIn("<RETURN 1>", module)
         self.assertIn("<CUISINE-PUT ,CS-SATIATION .LEVEL>", module)
 
-    def test_rest_recovers_without_erasing_situational_hunger(self) -> None:
+    def test_recover_preserves_bedroom_rest_and_situational_hunger(self) -> None:
         module = (TRAIN / "overrides/cuisine_hunger_stamina.zil").read_text()
-        self.assertIn("<SYNTAX REST = V-CUISINE-REST>", module)
-        rest = module.split("<ROUTINE V-CUISINE-REST", 1)[1].split(
+        self.assertIn("<SYNTAX RECOVER = V-CUISINE-REST>", module)
+        self.assertNotIn("<SYNTAX REST = V-CUISINE-REST>", module)
+        recover = module.split("<ROUTINE V-CUISINE-REST", 1)[1].split(
             "<ROUTINE V-CUISINE-STATUS", 1
         )[0]
-        self.assertIn("<CUISINE-PUT ,CS-STRAIN 1>", rest)
-        self.assertIn("<CUISINE-PUT ,CS-STRAIN 0>", rest)
-        self.assertNotIn("<CUISINE-PUT ,CS-HUNGER 0>", rest)
+        self.assertIn("<CUISINE-PUT ,CS-STRAIN 1>", recover)
+        self.assertIn("<CUISINE-PUT ,CS-STRAIN 0>", recover)
+        self.assertNotIn("<CUISINE-PUT ,CS-HUNGER 0>", recover)
 
     def test_appetite_status_is_interface_not_inventory(self) -> None:
         module = (TRAIN / "overrides/cuisine_hunger_stamina.zil").read_text()
