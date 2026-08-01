@@ -20,7 +20,8 @@ Selected strenuous actions—climbing and leaping—accumulate strain. Ordinary 
 
 - early strain produces feedback but does not block play;
 - repeated exertion can make the player situationally hungry;
-- `REST` recovers enough breath to continue even without food;
+- `RECOVER` restores enough breath to continue even without food while preserving situational hunger;
+- Bedroom `REST` remains part of the established sleep system and is untouched;
 - a prepared meal clears strain and grants a small number of supported exertions;
 - there is no starvation death, permanent debuff, or mandatory meal schedule.
 
@@ -41,4 +42,4 @@ This train adds no:
 
 ## Qualification direction
 
-Hosted qualification will stage exactly over locked Release 1234, compile and assemble the real story, and run a complete interpreter route that prepares and seasons the canonical lunch, creates exertion strain, rests, eats the meal, verifies recovery, and proves the garlic remains available while the lunch is consumed.
+Hosted qualification stages exactly over locked Release 1234, compiles and assembles the real story, and runs a complete interpreter route that prepares and seasons the canonical lunch, creates exertion strain, uses `RECOVER`, eats the meal, verifies recovery, and proves the garlic remains available while the lunch is consumed.
