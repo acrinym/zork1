@@ -15,7 +15,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
     """Verify one real post-victory expedition without NG+ machinery."""
 
     def test_manifest_is_release_1237_over_locked_release_1236(self) -> None:
-        manifest = json.loads((TRAIN / "patch-series.json").read_text())
+        manifest = json.loads(
+            (TRAIN / "patch-series.json").read_text(encoding="utf-8")
+        )
         self.assertEqual(manifest["release"], 1237)
         self.assertEqual(manifest["base_release"], 1236)
         self.assertEqual(
@@ -32,7 +34,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         )
 
     def test_state_is_saveable_table_without_new_global(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         self.assertIn(
             "<CONSTANT VETERAN-STATE <TABLE VETERAN-SCHEMA 0 0 0 0 0 0>>",
             module,
@@ -49,7 +53,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
             self.assertIn(slot, module)
 
     def test_unlock_requires_sealed_expedition_a_not_bare_won_flag(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         unlocked = module.split("<ROUTINE VETERAN-UNLOCKED?", 1)[1].split(
             "<ROUTINE VETERAN-MATERIALIZE", 1
         )[0]
@@ -60,7 +66,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
 
     def test_materialization_is_one_exact_archive_hook(self) -> None:
         patch = json.loads(
-            (TRAIN / "patches/001-veteran-materialization.json").read_text()
+            (TRAIN / "patches/001-veteran-materialization.json").read_text(
+                encoding="utf-8"
+            )
         )
         self.assertEqual(patch["path"], "completed_expedition_archive.zil")
         self.assertEqual(len(patch["replacements"]), 1)
@@ -71,7 +79,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         )
 
     def test_loadout_is_exactly_lantern_or_rope(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         choose = module.split("<ROUTINE V-VETERAN-CHOOSE", 1)[1].split(
             "<ROUTINE VETERAN-STOW-OTHER-GEAR", 1
         )[0]
@@ -82,7 +92,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         self.assertNotIn("LOADOUT-SLOT", module.upper())
 
     def test_unselected_direct_inventory_moves_to_physical_trunk(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         stow = module.split("<ROUTINE VETERAN-STOW-OTHER-GEAR", 1)[1].split(
             "<ROUTINE V-VETERAN-BEGIN", 1
         )[0]
@@ -95,7 +107,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         self.assertIn("SEARCHBIT", trunk)
 
     def test_begin_is_explicit_and_preserves_first_history(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         begin = module.split("<ROUTINE V-VETERAN-BEGIN", 1)[1].split(
             "<ROUTINE VETERAN-CROSS-LANTERN", 1
         )[0]
@@ -104,34 +118,42 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         )
         self.assertIn("<OBJECT VETERAN-EXPEDITION-INTERFACE", module)
         self.assertIn("<EQUAL? ,PRSO ,VETERAN-EXPEDITION-INTERFACE>", begin)
-        self.assertIn("<MOVE ,WINNER ,VETERAN-TRAILHEAD>", begin)
+        self.assertIn("<GOTO ,VETERAN-TRAILHEAD>", begin)
         self.assertIn("Expedition A remains sealed behind you as a separate history", begin)
         self.assertNotIn("RESTART", begin.upper())
         self.assertNotIn("WON-FLAG", begin)
 
     def test_lantern_route_requires_real_lit_lantern(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         route = module.split("<ROUTINE VETERAN-CROSS-LANTERN", 1)[1].split(
             "<ROUTINE VETERAN-CROSS-ROPE", 1
         )[0]
         self.assertIn("<IN? ,LAMP ,WINNER>", route)
         self.assertIn("<FSET? ,LAMP ,ONBIT>", route)
-        self.assertIn("<MOVE ,WINNER ,VETERAN-OVERLOOK>", route)
+        self.assertIn("<GOTO ,VETERAN-OVERLOOK>", route)
         self.assertIn("<CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>", route)
         self.assertNotIn("<MOVE ,LAMP", route)
 
     def test_rope_route_physically_secures_canonical_rope(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         route = module.split("<ROUTINE VETERAN-CROSS-ROPE", 1)[1].split(
             "<ROUTINE V-VETERAN-CROSS", 1
         )[0]
         self.assertIn("<MOVE ,ROPE ,VETERAN-CUT-NEAR>", route)
         self.assertIn("<IN? ,ROPE ,VETERAN-CUT-NEAR>", route)
+        self.assertIn("<GOTO ,VETERAN-OVERLOOK>", route)
+        self.assertIn("<GOTO ,VETERAN-TRAILHEAD>", route)
         self.assertNotIn("RESCUE-ROPE", module)
         self.assertNotIn("VETERAN-ROPE", module)
 
     def test_marker_is_recorded_not_taken_or_duplicated(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         record = module.split("<ROUTINE V-VETERAN-RECORD", 1)[1].split(
             "<ROUTINE V-VETERAN-COMPLETE", 1
         )[0]
@@ -141,7 +163,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         self.assertNotIn("<REMOVE ,VETERAN-MARKER>", record)
 
     def test_completion_seals_separate_box_b_and_field_card(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        )
         complete = module.split("<ROUTINE V-VETERAN-COMPLETE", 1)[1].split(
             "<ROUTINE V-VETERAN-STATUS", 1
         )[0]
@@ -150,6 +174,7 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
             module,
         )
         self.assertIn("<EQUAL? ,PRSO ,VETERAN-EXPEDITION-INTERFACE>", complete)
+        self.assertIn("<GOTO ,ATTIC>", complete)
         self.assertIn("<EXPEDITION-CAPTURE-B>", complete)
         self.assertIn("<MOVE ,VETERAN-FIELD-CARD ,EXPEDITION-BOX-B>", complete)
         self.assertIn("<EXPEDITION-HAS? ,ES-SEALED 2>", complete)
@@ -157,7 +182,9 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         self.assertNotIn("EXPEDITION-CAPTURE-A", complete)
 
     def test_train_contains_no_generic_ng_plus_or_duplicate_objects(self) -> None:
-        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text().upper()
+        module = (TRAIN / "overrides/zork_plus_veteran_expedition.zil").read_text(
+            encoding="utf-8"
+        ).upper()
         for forbidden in (
             "NEW-GAME-PLUS-ENGINE",
             "MODE-REGISTRY",
@@ -170,7 +197,7 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
             self.assertNotIn(forbidden, module)
 
     def test_entrypoint_retains_release_1236_and_loads_zork_plus_last(self) -> None:
-        entrypoint = (TRAIN / "overrides/zork1.zil").read_text()
+        entrypoint = (TRAIN / "overrides/zork1.zil").read_text(encoding="utf-8")
         self.assertIn("<CONSTANT RELEASEID 1237>", entrypoint)
         self.assertIn('<INSERT-FILE "living_zork_consequences" T>', entrypoint)
         self.assertTrue(
