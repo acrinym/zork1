@@ -71,7 +71,7 @@ overlap = json.loads(Path('glulx/build/living-zork-consequences/living-consequen
 receipt = json.loads(Path('glulx/build/living-zork-consequences/living-consequences-prose.style-receipt.json').read_text())
 assert stage['base']['release'] == 1235
 assert stage['base']['artifact_sha256'] == '14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf'
-assert stage['changed_paths'] == ['1actions.zil', '1dungeon.zil', 'living_zork_consequences.zil', 'zork1.zil']
+assert stage['changed_paths'] == ['1dungeon.zil', 'living_zork_consequences.zil', 'zork1.zil']
 assert not smell['errors']
 assert not [item for item in smell['includes'] if not item['resolved']]
 assert overlap['passed'] is True
@@ -86,11 +86,10 @@ assert originality['threshold_violation_count'] == 0
 assert originality['rare_phrase_match_count'] == 0
 module = (source / 'living_zork_consequences.zil').read_text()
 dungeon = (source / '1dungeon.zil').read_text()
-actions = (source / '1actions.zil').read_text()
 for required in (
     '<SYNTAX SECURE OBJECT',
     '<OBJECT LIVING-CANYON-EDGE',
-    '<CONSTANT LIVING-CANYON-STATE <TABLE LIVING-CANYON-SCHEMA 0 0>>',
+    '<CONSTANT LIVING-CANYON-STATE <TABLE LIVING-CANYON-SCHEMA 0>>',
     '<MOVE ,ROPE ,CANYON-VIEW>',
     '<ROUTINE LIVING-CANYON-INTERCEPT?',
     '<CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>',
@@ -98,9 +97,10 @@ for required in (
     assert required in module
 assert '<GLOBAL' not in module
 assert 'Nice view, lousy place to jump.' not in module
+assert 'LIVING-CANYON-SLOT-ROPE' not in module
+assert 'LIVING-CANYON-ROPE-HOOK' not in module
 assert dungeon.count('<LIVING-CANYON-INTERCEPT?>') == 1
 assert dungeon.count('Nice view, lousy place to jump.') == 1
-assert actions.count('<LIVING-CANYON-ROPE-HOOK>') == 1
 for forbidden in ('HAZARD-ENGINE', 'HAZARD-REGISTRY', 'RESCUE-CHANCE', 'INJURY-METER'):
     assert forbidden not in module.upper()
 PY
@@ -273,7 +273,7 @@ receipt = {
     'generic_hazard_engine': False,
     'random_death': False,
     'automatic_rescue': False,
-    'duplicate_rope': False,
+    'duplicate_rope_state': False,
     'new_global_variable': False,
     'sub_beads': False,
 }
