@@ -9,7 +9,10 @@
     "file": "zork1-glulx-museum-ecology-dam-fishing.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "locked": true,
+    "size_bytes": 360192,
+    "checksum_hex": "0xf238a696",
+    "sha256": "5b81448327cb5a2a60298f28d76062c0c5498ec5fc11f6d627a4873e82cba11f"
   },
   "overrides": [
     {
