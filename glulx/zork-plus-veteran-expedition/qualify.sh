@@ -90,10 +90,11 @@ archive = (source / 'completed_expedition_archive.zil').read_text()
 entrypoint = (source / 'zork1.zil').read_text()
 for required in (
     '<SYNTAX CHOOSE OBJECT',
-    '<SYNTAX BEGIN VETERAN = V-VETERAN-BEGIN>',
+    '<SYNTAX BEGIN OBJECT (FIND RMUNGBIT) = V-VETERAN-BEGIN>',
     '<SYNTAX CROSS OBJECT',
     '<SYNTAX RECORD OBJECT',
-    '<SYNTAX COMPLETE EXPEDITION = V-VETERAN-COMPLETE>',
+    '<SYNTAX COMPLETE OBJECT (FIND RMUNGBIT) = V-VETERAN-COMPLETE>',
+    '<OBJECT VETERAN-EXPEDITION-INTERFACE',
     '<CONSTANT VETERAN-STATE <TABLE VETERAN-SCHEMA 0 0 0 0 0 0>>',
     '<EXPEDITION-HAS? ,ES-SEALED 1>',
     '<MOVE .ITEM ,VETERAN-HOLD-TRUNK>',
@@ -243,7 +244,7 @@ cross cut
 record marker
 read field card
 cross cut
-complete expedition
+complete veteran
 look in trunk
 status expedition
 examine field card
@@ -274,7 +275,7 @@ cross cut
 inventory
 record marker
 cross cut
-complete expedition
+complete veteran
 look in trunk
 status expedition
 examine field card
