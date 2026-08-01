@@ -16,7 +16,8 @@
     (SYNONYM EDGE RIM DROP PRECIPICE)
     (ADJECTIVE CANYON GREAT SHEER)
     (DESC "canyon rim")
-    (FLAGS NDESCBIT)
+    (FLAGS NDESCBIT CONTBIT OPENBIT SURFACEBIT)
+    (CAPACITY 20)
     (ACTION LIVING-CANYON-EDGE-F)>
 
 <ROUTINE LIVING-CANYON-GET (SLOT)
@@ -47,19 +48,19 @@
            <TELL "The useful preparation here is the real rope, not a general safety system." CR>)
           (<NOT <EQUAL? ,HERE ,CANYON-VIEW>>
            <TELL "There is no Great Canyon rim here to prepare." CR>)
-          (<IN? ,ROPE ,CANYON-VIEW>
+          (<IN? ,ROPE ,LIVING-CANYON-EDGE>
            <TELL "The real rope is already secured at the canyon rim." CR>)
           (<NOT <IN? ,ROPE ,WINNER>>
            <TELL "You must be carrying the real rope before you can secure it." CR>)
           (T
-           <MOVE ,ROPE ,CANYON-VIEW>
+           <MOVE ,ROPE ,LIVING-CANYON-EDGE>
            <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-WARNED 1>
-           <TELL "You work the real rope around a solid projection of the west wall and test the knot with your full weight. The rope now lies physically at Canyon View; nothing imaginary or remote will catch you." CR>)>
+           <TELL "You work the real rope around a solid projection of the west wall and test the knot with your full weight. The rope now lies physically on the canyon rim; nothing imaginary or remote will catch you." CR>)>
     <RTRUE>>
 
 <ROUTINE LIVING-CANYON-INTERCEPT? ()
     <LIVING-CANYON-ENSURE>
-    <COND (<IN? ,ROPE ,CANYON-VIEW>
+    <COND (<IN? ,ROPE ,LIVING-CANYON-EDGE>
            <CUISINE-ENSURE>
            <COND (<ZERO? <CUISINE-GET ,CUISINE-SLOT-STRAIN>>
                   <CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>)>
