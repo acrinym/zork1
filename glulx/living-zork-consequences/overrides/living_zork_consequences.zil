@@ -72,7 +72,7 @@
            <RFALSE>)>
     <RFALSE>>
 
-<ROUTINE LIVING-CANYON-LEAP ()
+<ROUTINE LIVING-CANYON-INTERCEPT? ()
     <LIVING-CANYON-ENSURE>
     <COND (<AND <LIVING-CANYON-GET ,LIVING-CANYON-SLOT-ROPE>
                 <IN? ,ROPE ,CANYON-VIEW>>
@@ -84,7 +84,5 @@
           (<ZERO? <LIVING-CANYON-GET ,LIVING-CANYON-SLOT-WARNED>>
            <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-WARNED 1>
            <TELL "Your first shift of weight sends loose shale skittering over the rim. The stone gives you one unmistakable warning: another unprotected step would be a deliberate leap into the canyon." CR>
-           <RTRUE>)
-          (T
-           <JIGS-UP "Nice view, lousy place to jump.">
-           <RTRUE>)>>
+           <RTRUE>)>
+    <RFALSE>>
