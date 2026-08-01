@@ -99,7 +99,11 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         begin = module.split("<ROUTINE V-VETERAN-BEGIN", 1)[1].split(
             "<ROUTINE VETERAN-CROSS-LANTERN", 1
         )[0]
-        self.assertIn("<SYNTAX BEGIN VETERAN = V-VETERAN-BEGIN>", module)
+        self.assertIn(
+            "<SYNTAX BEGIN OBJECT (FIND RMUNGBIT) = V-VETERAN-BEGIN>", module
+        )
+        self.assertIn("<OBJECT VETERAN-EXPEDITION-INTERFACE", module)
+        self.assertIn("<EQUAL? ,PRSO ,VETERAN-EXPEDITION-INTERFACE>", begin)
         self.assertIn("<MOVE ,WINNER ,VETERAN-TRAILHEAD>", begin)
         self.assertIn("Expedition A remains sealed behind you as a separate history", begin)
         self.assertNotIn("RESTART", begin.upper())
@@ -141,6 +145,11 @@ class ZorkPlusVeteranExpeditionTests(unittest.TestCase):
         complete = module.split("<ROUTINE V-VETERAN-COMPLETE", 1)[1].split(
             "<ROUTINE V-VETERAN-STATUS", 1
         )[0]
+        self.assertIn(
+            "<SYNTAX COMPLETE OBJECT (FIND RMUNGBIT) = V-VETERAN-COMPLETE>",
+            module,
+        )
+        self.assertIn("<EQUAL? ,PRSO ,VETERAN-EXPEDITION-INTERFACE>", complete)
         self.assertIn("<EXPEDITION-CAPTURE-B>", complete)
         self.assertIn("<MOVE ,VETERAN-FIELD-CARD ,EXPEDITION-BOX-B>", complete)
         self.assertIn("<EXPEDITION-HAS? ,ES-SEALED 2>", complete)
