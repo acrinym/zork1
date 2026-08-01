@@ -25,22 +25,21 @@ class LivingZorkConsequencesTests(unittest.TestCase):
         self.assertEqual(
             manifest["expected_changed_paths"],
             [
-                "1actions.zil",
                 "1dungeon.zil",
                 "living_zork_consequences.zil",
                 "zork1.zil",
             ],
         )
 
-    def test_state_is_saveable_table_without_new_global(self) -> None:
+    def test_state_is_saveable_warning_table_without_new_global(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
         self.assertIn(
-            "<CONSTANT LIVING-CANYON-STATE <TABLE LIVING-CANYON-SCHEMA 0 0>>",
+            "<CONSTANT LIVING-CANYON-STATE <TABLE LIVING-CANYON-SCHEMA 0>>",
             module,
         )
         self.assertNotIn("<GLOBAL", module)
         self.assertIn("LIVING-CANYON-SLOT-WARNED", module)
-        self.assertIn("LIVING-CANYON-SLOT-ROPE", module)
+        self.assertNotIn("LIVING-CANYON-SLOT-ROPE", module)
 
     def test_canyon_rim_is_a_physical_local_affordance(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
@@ -74,20 +73,23 @@ class LivingZorkConsequencesTests(unittest.TestCase):
     def test_secure_rope_uses_canonical_object_and_physical_location(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
         secure = module.split("<ROUTINE V-LIVING-SECURE", 1)[1].split(
-            "<ROUTINE LIVING-CANYON-ROPE-HOOK", 1
+            "<ROUTINE LIVING-CANYON-INTERCEPT?", 1
         )[0]
         self.assertIn("<EQUAL? ,PRSO ,ROPE>", secure)
         self.assertIn("<IN? ,ROPE ,WINNER>", secure)
         self.assertIn("<MOVE ,ROPE ,CANYON-VIEW>", secure)
+        self.assertIn("<IN? ,ROPE ,CANYON-VIEW>", secure)
         self.assertNotIn("RESCUE-ROPE", module)
         self.assertNotIn("SAFETY-ROPE", module)
 
-    def test_prepared_leap_requires_rope_at_canyon(self) -> None:
+    def test_prepared_leap_uses_only_rope_location_as_authority(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
         intercept = module.split("<ROUTINE LIVING-CANYON-INTERCEPT?", 1)[1]
-        self.assertIn("<LIVING-CANYON-GET ,LIVING-CANYON-SLOT-ROPE>", intercept)
         self.assertIn("<IN? ,ROPE ,CANYON-VIEW>", intercept)
         self.assertIn("the prepared rope snaps taut", intercept)
+        self.assertNotIn("LIVING-CANYON-SLOT-ROPE", module)
+        self.assertNotIn("LIVING-CANYON-ROPE-HOOK", module)
+        self.assertNotIn("<VERB? TAKE>", module)
 
     def test_near_fall_reuses_bounded_cuisine_strain(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
@@ -98,35 +100,24 @@ class LivingZorkConsequencesTests(unittest.TestCase):
         self.assertNotIn("INJURY", module.upper())
         self.assertNotIn("LIVING-STAMINA", module)
 
-    def test_taking_rope_removes_protection_without_replacing_take(self) -> None:
+    def test_ordinary_take_removes_protection_by_moving_real_rope(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
-        hook = module.split("<ROUTINE LIVING-CANYON-ROPE-HOOK", 1)[1].split(
-            "<ROUTINE LIVING-CANYON-INTERCEPT?", 1
-        )[0]
-        self.assertIn("<VERB? TAKE>", hook)
-        self.assertIn("<LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-ROPE 0>", hook)
-        self.assertIn("<RFALSE>", hook)
-        self.assertNotIn("<MOVE ,ROPE ,WINNER>", hook)
+        manifest = json.loads((TRAIN / "patch-series.json").read_text())
+        self.assertEqual(manifest["patches"], ["patches/001-canyon-view-leap.json"])
+        self.assertNotIn("1actions.zil", manifest["expected_changed_paths"])
+        self.assertNotIn("LIVING-CANYON-ROPE-HOOK", module)
+        self.assertNotIn("LIVING-CANYON-SLOT-ROPE", module)
 
-    def test_patches_are_exact_single_integration_points(self) -> None:
+    def test_patch_is_one_exact_canonical_integration_point(self) -> None:
         canyon = json.loads(
             (TRAIN / "patches/001-canyon-view-leap.json").read_text()
         )
-        rope = json.loads(
-            (TRAIN / "patches/002-canyon-rope-custody.json").read_text()
-        )
         self.assertEqual(canyon["path"], "1dungeon.zil")
-        self.assertEqual(rope["path"], "1actions.zil")
         self.assertEqual(canyon["replacements"][0]["expected_count"], 1)
-        self.assertEqual(rope["replacements"][0]["expected_count"], 1)
         self.assertEqual(
             canyon["replacements"][0]["new"].count(
                 "<LIVING-CANYON-INTERCEPT?>"
             ),
-            1,
-        )
-        self.assertEqual(
-            rope["replacements"][0]["new"].count("<LIVING-CANYON-ROPE-HOOK>"),
             1,
         )
 
