@@ -43,7 +43,7 @@ assert stage['changed_paths'] == [
 assert not smell['errors']
 module = (source / 'cellar_recovery_locker.zil').read_text(encoding='utf-8')
 for token in (
-    '<SYNTAX SEAL OBJECT = V-RECOVERY-LOCKER-SEAL>',
+    '<SYNTAX PREPARE OBJECT = V-RECOVERY-LOCKER-PREPARE>',
     '<OBJECT EXPEDITION-RECOVERY-LOCKER',
     '<OBJECT RECOVERY-LOCKER-AMBER-LAMP',
     '<EXPEDITION-HAS? ,ES-SEALED 2>',
@@ -122,7 +122,7 @@ put lantern in locker
 put rope in locker
 put garlic in locker
 look in locker
-seal locker
+prepare locker
 stashdie
 east
 south
@@ -151,16 +151,16 @@ grep -F 'Whatever remains on your body is still exposed to the Great Underground
 grep -F '****  You have died  ****' "$BUILD/runtime-transcript.txt"
 grep -F 'The prepared seal breaks. After death scattered what remained on your body' "$BUILD/runtime-transcript.txt"
 grep -F 'brass lantern' "$BUILD/runtime-transcript.txt"
-grep -F 'coil of rope' "$BUILD/runtime-transcript.txt"
+grep -F 'rope' "$BUILD/runtime-transcript.txt"
 grep -F 'Taken.' "$BUILD/runtime-transcript.txt"
 python - <<'PY'
 from pathlib import Path
 text = Path('glulx/build/cellar-recovery-locker/runtime-transcript.txt').read_text(encoding='utf-8')
 after = text.split('The prepared seal breaks.', 1)[1]
 assert 'brass lantern' in after
-assert 'coil of rope' in after
+assert 'rope' in after
 assert 'clove of garlic' not in after.split('You are carrying:', 1)[-1]
-for word in ('stashready', 'stashdie', 'seal', 'locker'):
+for word in ('stashready', 'stashdie', 'prepare', 'locker'):
     assert f'I don\'t know the word "{word}"' not in text
 PY
 
