@@ -35,13 +35,16 @@ class CuisineHungerStaminaTests(unittest.TestCase):
         )
         self.assertNotIn("<GLOBAL", module)
         for slot in (
-            "CS-STRAIN",
-            "CS-HUNGER",
-            "CS-SATIATION",
-            "CS-RECIPE",
-            "CS-MEALS",
+            "CUISINE-SLOT-VERSION",
+            "CUISINE-SLOT-STRAIN",
+            "CUISINE-SLOT-HUNGER",
+            "CUISINE-SLOT-SATIATION",
+            "CUISINE-SLOT-RECIPE",
+            "CUISINE-SLOT-MEALS",
+            "CUISINE-SLOT-BLOCKED",
         ):
             self.assertIn(slot, module)
+        self.assertNotIn("<CONSTANT CS-VERSION", module)
 
     def test_hunger_changes_only_after_selected_exertion(self) -> None:
         module = (TRAIN / "overrides/cuisine_hunger_stamina.zil").read_text()
@@ -60,7 +63,7 @@ class CuisineHungerStaminaTests(unittest.TestCase):
         self.assertIn("<KITCHEN-GET ,KS-LUNCH-PREPARED>", module)
         self.assertIn("<KITCHEN-GET ,KS-GARLIC-SLICED>", module)
         self.assertIn(
-            "<CUISINE-PUT ,CS-RECIPE ,CUISINE-RECIPE-GARLIC-PEPPER>",
+            "<CUISINE-PUT ,CUISINE-SLOT-RECIPE ,CUISINE-RECIPE-GARLIC-PEPPER>",
             module,
         )
 
@@ -81,7 +84,7 @@ class CuisineHungerStaminaTests(unittest.TestCase):
         self.assertIn("<RETURN 3>", module)
         self.assertIn("<RETURN 2>", module)
         self.assertIn("<RETURN 1>", module)
-        self.assertIn("<CUISINE-PUT ,CS-SATIATION .LEVEL>", module)
+        self.assertIn("<CUISINE-PUT ,CUISINE-SLOT-SATIATION .LEVEL>", module)
 
     def test_recover_preserves_bedroom_rest_and_situational_hunger(self) -> None:
         module = (TRAIN / "overrides/cuisine_hunger_stamina.zil").read_text()
@@ -90,9 +93,9 @@ class CuisineHungerStaminaTests(unittest.TestCase):
         recover = module.split("<ROUTINE V-CUISINE-REST", 1)[1].split(
             "<ROUTINE V-CUISINE-STATUS", 1
         )[0]
-        self.assertIn("<CUISINE-PUT ,CS-STRAIN 1>", recover)
-        self.assertIn("<CUISINE-PUT ,CS-STRAIN 0>", recover)
-        self.assertNotIn("<CUISINE-PUT ,CS-HUNGER 0>", recover)
+        self.assertIn("<CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>", recover)
+        self.assertIn("<CUISINE-PUT ,CUISINE-SLOT-STRAIN 0>", recover)
+        self.assertNotIn("<CUISINE-PUT ,CUISINE-SLOT-HUNGER 0>", recover)
 
     def test_appetite_status_is_interface_not_inventory(self) -> None:
         module = (TRAIN / "overrides/cuisine_hunger_stamina.zil").read_text()
