@@ -8,12 +8,12 @@ Release 1237 turns a genuinely archived victory into one complete, explicitly se
 2. read the physical veteran dispatch that appears inside that sealed box;
 3. carry either the canonical brass lantern or the canonical rope to the Attic;
 4. `CHOOSE LANTERN` or `CHOOSE ROPE` as the one field loadout;
-5. `BEGIN VETERAN EXPEDITION`;
+5. `BEGIN VETERAN`;
 6. leave every other directly carried object in the physical Attic veteran hold trunk;
 7. arrive at the survey trailhead near the white house carrying only the chosen canonical item and the mission field card;
 8. cross the abandoned survey cut through the chosen item’s authored method;
 9. `RECORD MARKER` at the veteran overlook;
-10. cross back and `COMPLETE EXPEDITION` at the trailhead;
+10. cross back and `COMPLETE VETERAN` at the trailhead;
 11. return to the Attic and seal the veteran history separately in Expedition Box B.
 
 The lantern route requires the real lantern to be lit and uses a narrow illuminated shelf. The rope route physically secures the canonical rope at the near side of the cut for both crossings. The selected item may be retained or left behind, and the final field card records that physical outcome.
@@ -39,7 +39,7 @@ This train adds no:
 - automatic puzzle completion;
 - merged Expedition A and B histories;
 - universal equipment-slot system;
-- House bead reopening;
+- House hierarchy reopening;
 - S.T.A.L.K.E.R. coupling.
 
 ## Qualification direction
