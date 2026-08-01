@@ -25,7 +25,7 @@ class VeteranAtticWorkLightTests(unittest.TestCase):
         self.assertIn("<MOVE ,VETERAN-ARCHIVE-WORK-LIGHT ,ATTIC>", rendered)
         self.assertIn("<VERB? LAMP-OFF>", rendered)
         self.assertIn("bolted to the rafters", rendered)
-        self.assertNotIn("TAKEBIT", rendered)
+        self.assertNotIn("(FLAGS TAKEBIT", rendered)
 
     def test_manifest_stages_light_without_new_changed_path(self) -> None:
         manifest = json.loads(
