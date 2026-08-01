@@ -1,0 +1,22 @@
+{
+  "id": "Z1-GLULX-1238-RECOVERY-LOCKER-AMBER-LAMP",
+  "path": "cellar_recovery_locker.zil",
+  "description": "Keep the post-death recovery locker physically reachable with one fixed nonportable Cellar lamp",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RLS-RECOVERIES 2>\n<CONSTANT RECOVERY-LOCKER-STATE <TABLE RECOVERY-LOCKER-SCHEMA 0 0>>\n\n<OBJECT EXPEDITION-RECOVERY-LOCKER",
+      "new": "<CONSTANT RLS-RECOVERIES 2>\n<CONSTANT RECOVERY-LOCKER-STATE <TABLE RECOVERY-LOCKER-SCHEMA 0 0>>\n\n<OBJECT RECOVERY-LOCKER-AMBER-LAMP\n    (SYNONYM LAMP LIGHT BEACON)\n    (ADJECTIVE FIXED AMBER RECOVERY CELLAR)\n    (DESC \"fixed amber recovery lamp\")\n    (LDESC \"A fixed amber lamp glows above the recovery locker.\")\n    (FLAGS LIGHTBIT ONBIT TRYTAKEBIT)\n    (ACTION RECOVERY-LOCKER-AMBER-LAMP-FCN)>\n\n<OBJECT EXPEDITION-RECOVERY-LOCKER"
+    },
+    {
+      "expected_count": 1,
+      "old": "           <MOVE ,EXPEDITION-RECOVERY-LOCKER ,CELLAR>)>\n    <RFALSE>>",
+      "new": "           <MOVE ,EXPEDITION-RECOVERY-LOCKER ,CELLAR>)>\n    <COND (<AND <RECOVERY-LOCKER-UNLOCKED?>\n                <NOT <LOC ,RECOVERY-LOCKER-AMBER-LAMP>>>\n           <MOVE ,RECOVERY-LOCKER-AMBER-LAMP ,CELLAR>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE EXPEDITION-RECOVERY-LOCKER-CONTFCN ()",
+      "new": "<ROUTINE RECOVERY-LOCKER-AMBER-LAMP-FCN ()\n    <COND (<VERB? TAKE MOVE MUNG>\n           <TELL \"The amber recovery lamp is wired into the Cellar wall.\" CR>\n           <RTRUE>)\n          (<VERB? LAMP-OFF>\n           <TELL \"The recovery lamp has no local switch; it remains lit so a prepared cache can be reached after disaster.\" CR>\n           <RTRUE>)\n          (<VERB? LAMP-ON>\n           <TELL \"The amber recovery lamp is already on.\" CR>\n           <RTRUE>)\n          (<VERB? EXAMINE>\n           <TELL \"Its low amber glow illuminates the Cellar locker without becoming portable expedition gear.\" CR>\n           <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE EXPEDITION-RECOVERY-LOCKER-CONTFCN ()"
+    }
+  ]
+}
