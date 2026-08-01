@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1237-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only sealed-victory precondition commands after the complete production lineage",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"zork_plus_veteran_expedition\" T>",
+      "new": "<INSERT-FILE \"zork_plus_veteran_expedition\" T>\n<INSERT-FILE \"zork_plus_veteran_expedition_test\" T>"
+    }
+  ]
+}
