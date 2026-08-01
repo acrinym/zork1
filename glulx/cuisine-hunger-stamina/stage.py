@@ -109,7 +109,7 @@ def main() -> int:
             patch = load_json(patch_path)
             if not isinstance(patch, dict):
                 raise RuntimeError(f"patch must contain an object: {patch_path}")
-            patches.append(apply_patch(patch, patch_path, destination))
+            patches.append(apply_patch(patch_path, destination))
 
         final_files = inventory(destination)
         changed = {
