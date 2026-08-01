@@ -45,8 +45,10 @@ module = (source / 'cellar_recovery_locker.zil').read_text(encoding='utf-8')
 for token in (
     '<SYNTAX SEAL OBJECT = V-RECOVERY-LOCKER-SEAL>',
     '<OBJECT EXPEDITION-RECOVERY-LOCKER',
+    '<OBJECT RECOVERY-LOCKER-AMBER-LAMP',
     '<EXPEDITION-HAS? ,ES-SEALED 2>',
     '<RECOVERY-LOCKER-PUT ,RLS-DEATHS-AT-SEAL ,DEATHS>',
+    '<RECOVERY-LOCKER-PUT ,RLS-SEALED 1>',
     '<G? ,DEATHS',
     '(CAPACITY 30)',
 ):
@@ -148,7 +150,8 @@ grep -F 'The recovery locker has only two real kit positions.' "$BUILD/runtime-t
 grep -F 'Whatever remains on your body is still exposed to the Great Underground Empire' "$BUILD/runtime-transcript.txt"
 grep -F '****  You have died  ****' "$BUILD/runtime-transcript.txt"
 grep -F 'The prepared seal breaks. After death scattered what remained on your body' "$BUILD/runtime-transcript.txt"
-grep -F 'brass lantern and coil of rope' "$BUILD/runtime-transcript.txt"
+grep -F 'brass lantern' "$BUILD/runtime-transcript.txt"
+grep -F 'coil of rope' "$BUILD/runtime-transcript.txt"
 grep -F 'Taken.' "$BUILD/runtime-transcript.txt"
 python - <<'PY'
 from pathlib import Path
