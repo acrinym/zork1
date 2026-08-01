@@ -9,8 +9,7 @@
 <CONSTANT LIVING-CANYON-SCHEMA 1>
 <CONSTANT LIVING-CANYON-SLOT-VERSION 0>
 <CONSTANT LIVING-CANYON-SLOT-WARNED 1>
-<CONSTANT LIVING-CANYON-SLOT-ROPE 2>
-<CONSTANT LIVING-CANYON-STATE <TABLE LIVING-CANYON-SCHEMA 0 0>>
+<CONSTANT LIVING-CANYON-STATE <TABLE LIVING-CANYON-SCHEMA 0>>
 
 <OBJECT LIVING-CANYON-EDGE
     (IN CANYON-VIEW)
@@ -31,8 +30,7 @@
                         ,LIVING-CANYON-SCHEMA>>
            <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-VERSION
                               ,LIVING-CANYON-SCHEMA>
-           <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-WARNED 0>
-           <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-ROPE 0>)>
+           <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-WARNED 0>)>
     <RFALSE>>
 
 <ROUTINE LIVING-CANYON-EDGE-F ()
@@ -49,33 +47,19 @@
            <TELL "The useful preparation here is the real rope, not a general safety system." CR>)
           (<NOT <EQUAL? ,HERE ,CANYON-VIEW>>
            <TELL "There is no Great Canyon rim here to prepare." CR>)
-          (<AND <LIVING-CANYON-GET ,LIVING-CANYON-SLOT-ROPE>
-                <IN? ,ROPE ,CANYON-VIEW>>
+          (<IN? ,ROPE ,CANYON-VIEW>
            <TELL "The real rope is already secured at the canyon rim." CR>)
           (<NOT <IN? ,ROPE ,WINNER>>
            <TELL "You must be carrying the real rope before you can secure it." CR>)
           (T
            <MOVE ,ROPE ,CANYON-VIEW>
            <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-WARNED 1>
-           <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-ROPE 1>
            <TELL "You work the real rope around a solid projection of the west wall and test the knot with your full weight. The rope now lies physically at Canyon View; nothing imaginary or remote will catch you." CR>)>
     <RTRUE>>
 
-<ROUTINE LIVING-CANYON-ROPE-HOOK ()
-    <LIVING-CANYON-ENSURE>
-    <COND (<AND <EQUAL? ,HERE ,CANYON-VIEW>
-                <EQUAL? ,PRSO ,ROPE>
-                <VERB? TAKE>
-                <LIVING-CANYON-GET ,LIVING-CANYON-SLOT-ROPE>
-                <IN? ,ROPE ,CANYON-VIEW>>
-           <LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-ROPE 0>
-           <RFALSE>)>
-    <RFALSE>>
-
 <ROUTINE LIVING-CANYON-INTERCEPT? ()
     <LIVING-CANYON-ENSURE>
-    <COND (<AND <LIVING-CANYON-GET ,LIVING-CANYON-SLOT-ROPE>
-                <IN? ,ROPE ,CANYON-VIEW>>
+    <COND (<IN? ,ROPE ,CANYON-VIEW>
            <CUISINE-ENSURE>
            <COND (<ZERO? <CUISINE-GET ,CUISINE-SLOT-STRAIN>>
                   <CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>)>
