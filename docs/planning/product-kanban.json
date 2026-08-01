@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "board_id": "highly-extended-zork-product-kanban",
-  "updated_on": "2026-07-31",
+  "updated_on": "2026-08-01",
   "operating_rules": [
     "CURRENT contains exactly one product train.",
     "NEXT is ordered and contains only work with a concrete player outcome and acceptance contract.",
@@ -13,89 +13,58 @@
   "lanes": {
     "current": [
       {
-        "train_id": "zork-living-consequences-great-canyon-1236",
-        "title": "Living Zork Consequences: Great Canyon Fall",
+        "train_id": "zork-plus-veteran-expedition-1237",
+        "title": "Zork Plus: Veteran Survey Expedition",
         "status": "current",
         "owner": "Justin Gargano / Onyx",
-        "branch": "agent/living-zork-consequences-20260801",
-        "pr": 39,
-        "outcome": "Make the Great Canyon leap physically legible and let deliberate preparation with the canonical rope produce a real near-fall and recovery while preserving the canonical lethal consequence for a knowingly unprotected leap.",
+        "branch": "agent/zork-plus-veteran-expedition-20260801",
+        "pr": null,
+        "outcome": "Turn a genuinely sealed canonical victory into one explicitly selected, physically prepared postgame survey with its own objective, custody outcome, and separate Expedition Box B history.",
         "scope": [
-          "inspectable open-surface Great Canyon rim",
-          "first unprepared-leap footing warning",
-          "SECURE ROPE using the canonical Attic rope",
-          "prepared near-fall and bounded exertion strain",
-          "physical rope retrieval that removes protection",
-          "RECOVER before a later deliberate leap",
-          "canonical death after a knowingly repeated unprotected leap"
+          "physical veteran dispatch in sealed Expedition Box A",
+          "exact one-item brass-lantern or rope loadout",
+          "physical Attic hold trunk for every other directly carried object",
+          "lantern and rope round-trip survey-cut routes",
+          "boundary-marker recording on a physical field card",
+          "separate Expedition Box B completion with retained-or-left-behind custody"
         ],
         "dependencies": [
-          "Release 1235 squash merge e2e5c9c3e269d8e18bb3ed1c75dd72baacbd495a",
-          "Release 1235 artifact SHA-256 14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf",
-          "Release 1231 causal-warning pattern"
+          "Release 1236 squash merge eaf92ed19156088954ce5e0ab828a8d021f0920d",
+          "Release 1236 artifact SHA-256 26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7",
+          "completed expedition archive with separate boxes A and B"
         ],
         "acceptance": [
-          "staging changes exactly 1dungeon.zil, living_zork_consequences.zil, and zork1.zil",
-          "the first bare leap warns through physical cause rather than hidden state or a generic confirmation prompt",
-          "SECURE ROPE moves the canonical rope onto the LIVING-CANYON-EDGE open surface and creates no duplicate rope or protection state",
-          "merely dropping the rope in Canyon View does not satisfy the secured-rim containment authority",
-          "a secured leap catches the player at the rim and creates bounded cuisine strain",
-          "ordinary TAKE ROPE restores physical custody and naturally removes protection",
-          "RECOVER clears accumulated strain before the later deliberate leap",
-          "a knowingly repeated unprotected leap reaches the untouched canonical death line",
-          "original prose passes the rights-safe corpus profile",
-          "public hosted run 30683325463 passes ZILF, Glazer, ULX verification, and the complete Glulxe route",
-          "the 344320-byte candidate with checksum 0x8cb988cc and SHA-256 26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7 is locked and reproduced before merge"
+          "production staging changes exactly completed_expedition_archive.zil, zork1.zil, and zork_plus_veteran_expedition.zil",
+          "Veteran Expedition remains unavailable before Expedition A is genuinely sealed",
+          "the player explicitly chooses only the canonical brass lantern or canonical rope",
+          "every unselected directly carried object moves into the physical Attic hold trunk",
+          "the production artifact contains no test setup verbs",
+          "a separate test-only precondition build seeds sealed Expedition A and then uses only real player commands",
+          "both lantern and rope routes complete round trips in Glulxe",
+          "the boundary marker is recorded rather than removed or duplicated",
+          "Expedition Box B seals separately and records retained-versus-left-behind item custody",
+          "the first green production artifact is locked and reproduced before squash merge"
         ],
         "boundaries": [
-          "no generic hazard engine",
-          "no random deaths",
-          "no automatic rescue without preparation",
-          "no duplicate rope state or canyon inventory object",
-          "no parallel world simulation",
-          "no House bead reopening",
-          "no S.T.A.L.K.E.R. mixing"
+          "no generic New Game Plus framework or restart menu",
+          "no silent change to the canonical first expedition",
+          "no TAKE EVERYTHING loadout or universal equipment slots",
+          "no duplicate lantern, rope, treasure, or canonical puzzle object",
+          "no automatic puzzle completion",
+          "no merged Expedition A and B histories",
+          "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
         ]
       }
     ],
     "next": [
       {
-        "train_id": "zork-plus-veteran-expedition",
-        "title": "Zork Plus / Veteran Expedition",
+        "train_id": "zork-physical-expedition-stash",
+        "title": "Physical Expedition Stash",
         "status": "next-1",
         "owner": "Justin Gargano / Onyx",
         "branch": null,
         "pr": null,
-        "outcome": "Provide a deeper post-victory expedition that recognizes completed history without invalidating canonical Zork I.",
-        "scope": [
-          "post-victory routes",
-          "veteran state",
-          "new consequences",
-          "bounded replay recognition"
-        ],
-        "dependencies": [
-          "completed expedition archive",
-          "Living Zork Consequences Great Canyon train"
-        ],
-        "acceptance": [
-          "canonical victory remains valid",
-          "new content is explicitly post-victory",
-          "histories stay separate"
-        ],
-        "boundaries": [
-          "no rewrite of canonical puzzles",
-          "no merged mutually exclusive saves",
-          "no mandatory new-game-plus"
-        ]
-      },
-      {
-        "train_id": "zork-physical-expedition-stash",
-        "title": "Physical Expedition Stash",
-        "status": "next-2",
-        "owner": "Justin Gargano / Onyx",
-        "branch": null,
-        "pr": null,
-        "outcome": "Create bounded physical staging and retrieval for later expeditions using real object custody.",
+        "outcome": "Create bounded physical staging and later retrieval for veteran expeditions using real object custody.",
         "scope": [
           "stash surfaces",
           "capacity",
@@ -103,7 +72,7 @@
           "revisit behavior"
         ],
         "dependencies": [
-          "post-victory expedition design"
+          "completed Veteran Survey Expedition"
         ],
         "acceptance": [
           "objects remain canonical",
@@ -125,7 +94,7 @@
         "owner": "Justin Gargano / Onyx",
         "branch": null,
         "pr": null,
-        "outcome": "Extend direct cause-warning-consequence continuity to selected machinery, water, fire, and creature dangers after the Great Canyon fall is complete.",
+        "outcome": "Extend direct cause-warning-consequence continuity to selected machinery, water, fire, and creature dangers.",
         "scope": [
           "machinery",
           "water",
@@ -301,6 +270,22 @@
           "Release 1235 checksum 0x282c807e",
           "Release 1235 artifact SHA-256 14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf",
           "public hosted CI run 30682376696 reproduced the locked artifact and full Glulxe route"
+        ]
+      },
+      {
+        "train_id": "zork-living-consequences-great-canyon-1236",
+        "title": "Living Zork Consequences: Great Canyon Fall",
+        "status": "done",
+        "owner": "Justin Gargano / Onyx",
+        "branch": "master",
+        "pr": 39,
+        "outcome": "Make the Great Canyon leap physically legible and let deliberate canonical-rope preparation produce a real near-fall while preserving the canonical death.",
+        "proof": [
+          "squash merge eaf92ed19156088954ce5e0ab828a8d021f0920d",
+          "Release 1236 artifact size 344320 bytes",
+          "Release 1236 checksum 0x8cb988cc",
+          "Release 1236 artifact SHA-256 26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7",
+          "public hosted CI run 30683473531 reproduced the locked artifact and complete Glulxe route"
         ]
       }
     ]
