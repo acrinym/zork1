@@ -1,6 +1,6 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** July 31, 2026  
+**Updated:** August 1, 2026  
 **Board data:** `docs/planning/product-kanban.json`
 
 This board answers five different questions: what is being built now, what is already sequenced next, what remains real but later, what is intentionally parked, and what is actually finished. A card is not “done” because a document mentions it. Done requires merged or immutable proof.
@@ -16,22 +16,21 @@ This board answers five different questions: what is being built now, what is al
 
 ## CURRENT
 
-### Release 1236 — Living Zork Consequences: Great Canyon Fall
+### Release 1237 — Zork Plus: Veteran Survey Expedition
 
-**Player outcome:** the Great Canyon’s lethal leap becomes physically legible before death, and a player who deliberately prepares the real rope can experience a real near-fall and recovery instead of an unexplained binary trap.
+**Player outcome:** a genuinely sealed canonical victory unlocks one explicitly chosen, physically prepared postgame survey with its own route, field objective, item-custody outcome, and separate Expedition Box B history.
 
-**In production:** Canyon View gains an inspectable open-surface rim; the first unprepared leap produces a concrete footing warning; `SECURE ROPE` places the canonical Attic rope physically on that rim; only that real containment provides protection; a prepared leap catches the player and creates bounded exertion strain; ordinary `TAKE ROPE` restores custody and naturally removes protection; `RECOVER` permits a later deliberate unprotected leap; the untouched canonical death remains authoritative.
+**In production:** Expedition Box A materializes a physical veteran dispatch after genuine sealing; the player chooses exactly the canonical brass lantern or canonical rope; every other directly carried object enters a real Attic hold trunk; the lantern and rope provide two authored round-trip crossings of an abandoned survey cut; the player records an old boundary marker on a physical field card; completion returns to the Attic and seals Expedition B separately, including whether the selected item was retained or left in the field.
 
-**Qualification:** PR **#39** on `agent/living-zork-consequences-20260801`. Public hosted run **30683325463** passed exact Release 1235 staging, 12 direct consequence tests, rights-safe prose originality, ZILF compilation, Glazer assembly, ULX verification, and the complete Glulxe route. The candidate artifact is `344320` bytes, checksum `0x8cb988cc`, SHA-256 `26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7`; the final gate is exact locked reproduction and review closure.
+**Qualification:** branch `agent/zork-plus-veteran-expedition-20260801`. Public CI stages exactly over locked Release 1236, compiles a production artifact with no test verbs, and uses a separate test-only precondition build to seed a legitimately sealed Expedition A before exercising both complete player-command routes in Glulxe.
 
 ## NEXT
 
-1. **Zork Plus / Veteran Expedition** — explicit post-victory content that recognizes completed history without invalidating canonical Zork I.
-2. **Physical Expedition Stash** — bounded real-object staging, capacity, provenance, and later retrieval for post-victory expeditions.
+1. **Physical Expedition Stash** — bounded real-object staging, capacity, provenance, and later retrieval for veteran expeditions.
 
 ## FUTURE
 
-- **Living Zork Consequences — additional families** — machinery, water, fire, and creature-danger continuations only after the Great Canyon fall loop is complete; each remains a direct authored product, never a generic hazard engine.
+- **Living Zork Consequences — additional families** — machinery, water, fire, and creature-danger continuations; each remains a direct authored product, never a generic hazard engine.
 
 ## PARKED
 
@@ -47,5 +46,6 @@ This board answers five different questions: what is being built now, what is al
 - **Release 1233 — Museum Intake and First Gallery:** physical exhibit custody, catalog, review, and earned classification, merged through PR #36 at `f0bdd696d447cdb727b82229b218abf7a6905f91`. Locked artifact: `338432` bytes, checksum `0x7065f1fc`, SHA-256 `4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244`.
 - **Release 1234 — Mara Arrival and Evidence Memory:** Mara’s physical presence and exact witnessed-object memory, merged through PR #37 at `76f1e451a4fb70dcf6ea1d41cb8705f2ad5236d4`. Locked artifact: `339712` bytes, checksum `0x69fd7910`, SHA-256 `38b966f47d771e0f5ae6229ff6a7542830ce6e365a3d2291f764581ae0b64a17`.
 - **Release 1235 — Cuisine, Hunger, and Stamina:** authored canonical lunch-and-garlic meal, bounded exertion, situational hunger, `RECOVER`, and physical ingredient custody, squash-merged through PR #38 at `e2e5c9c3e269d8e18bb3ed1c75dd72baacbd495a`. Locked artifact: `342784` bytes, checksum `0x282c807e`, SHA-256 `14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf`.
+- **Release 1236 — Living Zork Consequences: Great Canyon Fall:** physical cause warning, canonical rope preparation, earned near-fall rescue, bounded strain, ordinary rope retrieval, recovery, and preserved canonical death, squash-merged through PR #39 at `eaf92ed19156088954ce5e0ab828a8d021f0920d`. Locked artifact: `344320` bytes, checksum `0x8cb988cc`, SHA-256 `26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7`; public hosted reproduction run `30683473531`.
 
 The JSON board is authoritative for tooling and card metadata. This Markdown view is the human operating surface.
