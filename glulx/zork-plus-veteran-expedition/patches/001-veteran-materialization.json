@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1237-VETERAN-MATERIALIZATION",
+  "path": "completed_expedition_archive.zil",
+  "description": "Materialize the veteran dispatch, hold trunk, and completed field card from the authoritative separate-expedition archive state",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<NOT <0? <EXPEDITION-GET ,ES-EXPORTED>>>\n           <COND (<NOT <LOC ,EXPEDITION-EXPORT-PRINTOUT>>\n                  <MOVE ,EXPEDITION-EXPORT-PRINTOUT ,ARCHIVE-CABINET>)>)>\n    <RFALSE>>",
+      "new": "    <COND (<NOT <0? <EXPEDITION-GET ,ES-EXPORTED>>>\n           <COND (<NOT <LOC ,EXPEDITION-EXPORT-PRINTOUT>>\n                  <MOVE ,EXPEDITION-EXPORT-PRINTOUT ,ARCHIVE-CABINET>)>)>\n    <VETERAN-MATERIALIZE>\n    <RFALSE>>"
+    }
+  ]
+}
