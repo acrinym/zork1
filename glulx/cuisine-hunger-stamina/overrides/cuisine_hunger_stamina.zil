@@ -11,13 +11,13 @@
 <SYNTAX CHECK OBJECT (FIND RMUNGBIT) = V-CUISINE-STATUS>
 
 <CONSTANT CUISINE-SCHEMA 1>
-<CONSTANT CS-VERSION 0>
-<CONSTANT CS-STRAIN 1>
-<CONSTANT CS-HUNGER 2>
-<CONSTANT CS-SATIATION 3>
-<CONSTANT CS-RECIPE 4>
-<CONSTANT CS-MEALS 5>
-<CONSTANT CS-BLOCKED 6>
+<CONSTANT CUISINE-SLOT-VERSION 0>
+<CONSTANT CUISINE-SLOT-STRAIN 1>
+<CONSTANT CUISINE-SLOT-HUNGER 2>
+<CONSTANT CUISINE-SLOT-SATIATION 3>
+<CONSTANT CUISINE-SLOT-RECIPE 4>
+<CONSTANT CUISINE-SLOT-MEALS 5>
+<CONSTANT CUISINE-SLOT-BLOCKED 6>
 <CONSTANT CUISINE-STATE <TABLE CUISINE-SCHEMA 0 0 0 0 0 0>>
 
 <CONSTANT CUISINE-RECIPE-NONE 0>
@@ -43,26 +43,26 @@
     <RFALSE>>
 
 <ROUTINE CUISINE-ENSURE ()
-    <COND (<NOT <EQUAL? <CUISINE-GET ,CS-VERSION> ,CUISINE-SCHEMA>>
-           <CUISINE-PUT ,CS-VERSION ,CUISINE-SCHEMA>
-           <CUISINE-PUT ,CS-STRAIN 0>
-           <CUISINE-PUT ,CS-HUNGER 0>
-           <CUISINE-PUT ,CS-SATIATION 0>
-           <CUISINE-PUT ,CS-RECIPE
+    <COND (<NOT <EQUAL? <CUISINE-GET ,CUISINE-SLOT-VERSION> ,CUISINE-SCHEMA>>
+           <CUISINE-PUT ,CUISINE-SLOT-VERSION ,CUISINE-SCHEMA>
+           <CUISINE-PUT ,CUISINE-SLOT-STRAIN 0>
+           <CUISINE-PUT ,CUISINE-SLOT-HUNGER 0>
+           <CUISINE-PUT ,CUISINE-SLOT-SATIATION 0>
+           <CUISINE-PUT ,CUISINE-SLOT-RECIPE
                         <COND (<KITCHEN-GET ,KS-LUNCH-PREPARED>
                                ,CUISINE-RECIPE-PREPARED)
                               (T ,CUISINE-RECIPE-NONE)>>
-           <CUISINE-PUT ,CS-MEALS 0>
-           <CUISINE-PUT ,CS-BLOCKED 0>)>
+           <CUISINE-PUT ,CUISINE-SLOT-MEALS 0>
+           <CUISINE-PUT ,CUISINE-SLOT-BLOCKED 0>)>
     <RFALSE>>
 
 <ROUTINE CUISINE-MEAL-LEVEL ()
     <CUISINE-ENSURE>
-    <COND (<EQUAL? <CUISINE-GET ,CS-RECIPE>
+    <COND (<EQUAL? <CUISINE-GET ,CUISINE-SLOT-RECIPE>
                    ,CUISINE-RECIPE-GARLIC-PEPPER>
            <COND (<G? <KITCHEN-GET ,KS-LUNCH-WARM> 0> <RETURN 3>)
                  (T <RETURN 2>)>)
-          (<EQUAL? <CUISINE-GET ,CS-RECIPE>
+          (<EQUAL? <CUISINE-GET ,CUISINE-SLOT-RECIPE>
                    ,CUISINE-RECIPE-PREPARED>
            <COND (<G? <KITCHEN-GET ,KS-LUNCH-WARM> 0> <RETURN 2>)
                  (T <RETURN 1>)>)>
@@ -71,10 +71,10 @@
 <ROUTINE CUISINE-ACTION-HOOK ()
     <CUISINE-ENSURE>
     <COND (<AND <CUISINE-EXERTION?>
-                <G? <CUISINE-GET ,CS-HUNGER> 0>
-                <G? <CUISINE-GET ,CS-STRAIN> 2>
-                <ZERO? <CUISINE-GET ,CS-SATIATION>>>
-           <CUISINE-PUT ,CS-BLOCKED 1>
+                <G? <CUISINE-GET ,CUISINE-SLOT-HUNGER> 0>
+                <G? <CUISINE-GET ,CUISINE-SLOT-STRAIN> 2>
+                <ZERO? <CUISINE-GET ,CUISINE-SLOT-SATIATION>>>
+           <CUISINE-PUT ,CUISINE-SLOT-BLOCKED 1>
            <TELL "Your strength is not gone, but this repeated exertion has become clumsy. Recovering will let you continue; a prepared meal will recover you fully." CR>
            <RTRUE>)
           (<AND <VERB? EAT>
@@ -89,26 +89,26 @@
     <COND (<SHADOW-NON-TURN-COMMAND?> <RFALSE>)>
     <COND (<AND <VERB? KITCHEN-PREPARE>
                 <KITCHEN-GET ,KS-LUNCH-PREPARED>
-                <ZERO? <CUISINE-GET ,CS-RECIPE>>>
-           <CUISINE-PUT ,CS-RECIPE ,CUISINE-RECIPE-PREPARED>)>
-    <COND (<CUISINE-GET ,CS-BLOCKED>
-           <CUISINE-PUT ,CS-BLOCKED 0>
+                <ZERO? <CUISINE-GET ,CUISINE-SLOT-RECIPE>>>
+           <CUISINE-PUT ,CUISINE-SLOT-RECIPE ,CUISINE-RECIPE-PREPARED>)>
+    <COND (<CUISINE-GET ,CUISINE-SLOT-BLOCKED>
+           <CUISINE-PUT ,CUISINE-SLOT-BLOCKED 0>
            <RFALSE>)>
     <COND (<CUISINE-EXERTION?>
-           <COND (<G? <CUISINE-GET ,CS-SATIATION> 0>
-                  <CUISINE-PUT ,CS-SATIATION
-                               <- <CUISINE-GET ,CS-SATIATION> 1>>
-                  <COND (<G? <CUISINE-GET ,CS-STRAIN> 0>
-                         <CUISINE-PUT ,CS-STRAIN
-                                      <- <CUISINE-GET ,CS-STRAIN> 1>>)>)
+           <COND (<G? <CUISINE-GET ,CUISINE-SLOT-SATIATION> 0>
+                  <CUISINE-PUT ,CUISINE-SLOT-SATIATION
+                               <- <CUISINE-GET ,CUISINE-SLOT-SATIATION> 1>>
+                  <COND (<G? <CUISINE-GET ,CUISINE-SLOT-STRAIN> 0>
+                         <CUISINE-PUT ,CUISINE-SLOT-STRAIN
+                                      <- <CUISINE-GET ,CUISINE-SLOT-STRAIN> 1>>)>)
                  (T
-                  <SET STRAIN <+ <CUISINE-GET ,CS-STRAIN> 1>>
+                  <SET STRAIN <+ <CUISINE-GET ,CUISINE-SLOT-STRAIN> 1>>
                   <COND (<G? .STRAIN 3> <SET STRAIN 3>)>
-                  <CUISINE-PUT ,CS-STRAIN .STRAIN>
+                  <CUISINE-PUT ,CUISINE-SLOT-STRAIN .STRAIN>
                   <COND (<EQUAL? .STRAIN 2>
                          <TELL "The exertion leaves your breath short. This is fatigue, not a permanent countdown." CR>)
                         (<EQUAL? .STRAIN 3>
-                         <CUISINE-PUT ,CS-HUNGER 1>
+                         <CUISINE-PUT ,CUISINE-SLOT-HUNGER 1>
                          <TELL "Repeated exertion has made the neglected lunch feel relevant. Recovering can steady you; prepared food can restore you." CR>)>)>)>
     <RFALSE>>
 
@@ -129,7 +129,7 @@
           (<NOT <KITCHEN-GET ,KS-GARLIC-SLICED>>
            <TELL "Slice the garlic with a real blade before using it as seasoning." CR>)
           (T
-           <CUISINE-PUT ,CS-RECIPE ,CUISINE-RECIPE-GARLIC-PEPPER>
+           <CUISINE-PUT ,CUISINE-SLOT-RECIPE ,CUISINE-RECIPE-GARLIC-PEPPER>
            <KITCHEN-PUT ,KS-WORKTOP-RESIDUE T>
            <TELL "You work a small amount of sliced garlic into the prepared hot-pepper sandwich. The real garlic remains available; the lunch now carries the authored garlic-pepper combination." CR>)>
     <RTRUE>>
@@ -137,12 +137,12 @@
 <ROUTINE CUISINE-EAT-MEAL ("AUX" LEVEL)
     <SET LEVEL <CUISINE-MEAL-LEVEL>>
     <REMOVE ,LUNCH>
-    <CUISINE-PUT ,CS-STRAIN 0>
-    <CUISINE-PUT ,CS-HUNGER 0>
-    <CUISINE-PUT ,CS-SATIATION .LEVEL>
-    <CUISINE-PUT ,CS-MEALS <+ <CUISINE-GET ,CS-MEALS> 1>>
+    <CUISINE-PUT ,CUISINE-SLOT-STRAIN 0>
+    <CUISINE-PUT ,CUISINE-SLOT-HUNGER 0>
+    <CUISINE-PUT ,CUISINE-SLOT-SATIATION .LEVEL>
+    <CUISINE-PUT ,CUISINE-SLOT-MEALS <+ <CUISINE-GET ,CUISINE-SLOT-MEALS> 1>>
     <TELL "You eat the real prepared lunch">
-    <COND (<EQUAL? <CUISINE-GET ,CS-RECIPE>
+    <COND (<EQUAL? <CUISINE-GET ,CUISINE-SLOT-RECIPE>
                    ,CUISINE-RECIPE-GARLIC-PEPPER>
            <TELL ", its garlic and hot pepper forming a sharp deliberate meal">)>
     <COND (<G? <KITCHEN-GET ,KS-LUNCH-WARM> 0>
@@ -152,31 +152,31 @@
 
 <ROUTINE V-CUISINE-REST ()
     <CUISINE-ENSURE>
-    <COND (<ZERO? <CUISINE-GET ,CS-STRAIN>>
+    <COND (<ZERO? <CUISINE-GET ,CUISINE-SLOT-STRAIN>>
            <TELL "You are already physically steady." CR>)
-          (<G? <CUISINE-GET ,CS-HUNGER> 0>
-           <CUISINE-PUT ,CS-STRAIN 1>
+          (<G? <CUISINE-GET ,CUISINE-SLOT-HUNGER> 0>
+           <CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>
            <TELL "You stop and recover your breath. The immediate fatigue eases, though exertion has still made you hungry." CR>)
           (T
-           <CUISINE-PUT ,CS-STRAIN 0>
+           <CUISINE-PUT ,CUISINE-SLOT-STRAIN 0>
            <TELL "You stop long enough for the accumulated strain to pass." CR>)>
     <RTRUE>>
 
 <ROUTINE V-CUISINE-STATUS ()
     <CUISINE-ENSURE>
     <TELL "Your appetite is ">
-    <COND (<G? <CUISINE-GET ,CS-HUNGER> 0> <TELL "noticeable">)
+    <COND (<G? <CUISINE-GET ,CUISINE-SLOT-HUNGER> 0> <TELL "noticeable">)
           (T <TELL "quiet">)>
     <TELL ", and your exertion strain is ">
-    <COND (<ZERO? <CUISINE-GET ,CS-STRAIN>> <TELL "clear">)
-          (<EQUAL? <CUISINE-GET ,CS-STRAIN> 1> <TELL "light">)
-          (<EQUAL? <CUISINE-GET ,CS-STRAIN> 2> <TELL "moderate">)
+    <COND (<ZERO? <CUISINE-GET ,CUISINE-SLOT-STRAIN>> <TELL "clear">)
+          (<EQUAL? <CUISINE-GET ,CUISINE-SLOT-STRAIN> 1> <TELL "light">)
+          (<EQUAL? <CUISINE-GET ,CUISINE-SLOT-STRAIN> 2> <TELL "moderate">)
           (T <TELL "high">)>
     <TELL ".">
-    <COND (<G? <CUISINE-GET ,CS-SATIATION> 0>
-           <TELL " A prepared meal still supports " N <CUISINE-GET ,CS-SATIATION>
+    <COND (<G? <CUISINE-GET ,CUISINE-SLOT-SATIATION> 0>
+           <TELL " A prepared meal still supports " N <CUISINE-GET ,CUISINE-SLOT-SATIATION>
                  " exertion">
-           <COND (<NOT <EQUAL? <CUISINE-GET ,CS-SATIATION> 1>>
+           <COND (<NOT <EQUAL? <CUISINE-GET ,CUISINE-SLOT-SATIATION> 1>>
                   <TELL "s">)>
            <TELL ".">)>
     <CRLF>
