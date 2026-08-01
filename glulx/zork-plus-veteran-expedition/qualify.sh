@@ -262,7 +262,7 @@ grep -F 'The lit lantern reveals a narrow shelf under the broken survey edge.' "
 grep -F "You copy the marker's weathered boundary notation onto the veteran field card." "$BUILD/lantern-transcript.txt"
 grep -F 'The same lit shelf carries you back to the veteran trailhead.' "$BUILD/lantern-transcript.txt"
 grep -F 'You return to the Attic and seal the veteran survey as Expedition B.' "$BUILD/lantern-transcript.txt"
-grep -F 'Expedition B: sealed' "$BUILD/lantern-transcript.txt"
+grep -F 'Completed expedition archive status: boxes A and B sealed separately.' "$BUILD/lantern-transcript.txt"
 grep -F 'The selected canonical item was retained at completion.' "$BUILD/lantern-transcript.txt"
 grep -F 'rope' "$BUILD/lantern-transcript.txt"
 
@@ -291,7 +291,7 @@ grep -F 'You declare the real rope as the single veteran field item.' "$BUILD/ro
 grep -F 'You secure the real rope across the abandoned cut and cross hand over hand.' "$BUILD/rope-transcript.txt"
 grep -F 'You cross back along the same physically secured rope.' "$BUILD/rope-transcript.txt"
 grep -F 'You return to the Attic and seal the veteran survey as Expedition B.' "$BUILD/rope-transcript.txt"
-grep -F 'Expedition B: sealed' "$BUILD/rope-transcript.txt"
+grep -F 'Completed expedition archive status: boxes A and B sealed separately.' "$BUILD/rope-transcript.txt"
 grep -F 'The selected canonical item was left in the field at completion.' "$BUILD/rope-transcript.txt"
 grep -F 'brass lantern' "$BUILD/rope-transcript.txt"
 
@@ -323,8 +323,9 @@ assert 'brass lantern' not in rope_inventory
 rope_after_cross = rope.split('You secure the real rope across the abandoned cut', 1)[1].split("You copy the marker's", 1)[0]
 assert 'You are carrying:' in rope_after_cross
 assert 'rope' not in rope_after_cross.lower().split('you are carrying:', 1)[1]
-assert lamp.index('The lit lantern reveals') < lamp.index('Expedition B: sealed')
-assert rope.index('You secure the real rope') < rope.index('Expedition B: sealed')
+status = 'Completed expedition archive status: boxes A and B sealed separately.'
+assert lamp.index('The lit lantern reveals') < lamp.index(status)
+assert rope.index('You secure the real rope') < rope.index(status)
 PY
 
 python - "$VETERAN_SERIAL" "$MANIFEST" <<'PY'
