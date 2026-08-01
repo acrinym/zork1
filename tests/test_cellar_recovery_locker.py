@@ -24,22 +24,28 @@ class CellarRecoveryLockerTests(unittest.TestCase):
     def test_locker_is_real_bounded_and_cellar_materialized(self) -> None:
         module = MODULE.read_text(encoding="utf-8")
         self.assertIn("<OBJECT EXPEDITION-RECOVERY-LOCKER", module)
+        self.assertIn("<OBJECT RECOVERY-LOCKER-AMBER-LAMP", module)
         self.assertIn("(CAPACITY 30)", module)
         self.assertIn("<MOVE ,EXPEDITION-RECOVERY-LOCKER ,CELLAR>", module)
+        self.assertIn("<MOVE ,RECOVERY-LOCKER-AMBER-LAMP ,CELLAR>", module)
         self.assertIn("<G? <RECOVERY-LOCKER-COUNT> 1>", module)
         self.assertNotIn("<GLOBAL", module)
 
     def test_unlock_requires_sealed_expedition_b(self) -> None:
         module = MODULE.read_text(encoding="utf-8")
-        unlocked = module.split("<ROUTINE RECOVERY-LOCKER-UNLOCKED?", 1)[1].split(
-            "<ROUTINE RECOVERY-LOCKER-MATERIALIZE", 1
-        )[0]
+        start_marker = "<ROUTINE RECOVERY-LOCKER-UNLOCKED?"
+        end_marker = "<ROUTINE RECOVERY-LOCKER-MATERIALIZE"
+        before, found_start, tail = module.partition(start_marker)
+        self.assertTrue(found_start, f"missing routine marker: {start_marker}")
+        unlocked, found_end, _ = tail.partition(end_marker)
+        self.assertTrue(found_end, f"missing routine marker: {end_marker}")
         self.assertIn("<EXPEDITION-HAS? ,ES-SEALED 2>", unlocked)
         self.assertNotIn("WON-FLAG", unlocked)
 
     def test_seal_uses_canonical_death_count_not_object_copies(self) -> None:
         module = MODULE.read_text(encoding="utf-8")
         self.assertIn("<RECOVERY-LOCKER-PUT ,RLS-DEATHS-AT-SEAL ,DEATHS>", module)
+        self.assertIn("<RECOVERY-LOCKER-PUT ,RLS-SEALED 1>", module)
         self.assertIn("<G? ,DEATHS", module)
         for forbidden in ("JIGS-UP", "RANDOMIZE-OBJECTS", "OBJECT-ID", "REMOTE-RETRIEVE"):
             self.assertNotIn(forbidden, module)
