@@ -1,0 +1,35 @@
+The dispatch recognizes one sealed completed expedition and offers a separate veteran survey. In the Attic, choose either the real brass lantern or the real rope, then begin the veteran expedition. Every other directly carried object will remain in the physical hold trunk.
+
+A fixed archive work light casts a steady pool across the expedition boxes.
+
+The archive work light is bolted to the rafters.
+
+The fixed work light has no local switch; it remains on for the expedition archive.
+
+The archive work light is already on.
+
+The fixed lamp illuminates the expedition boxes without becoming another portable field item.
+
+The weathered marker names a survey boundary beyond the first expedition's archived route. Recording it, rather than removing it, is the veteran objective.
+
+You declare the real brass lantern as the single veteran field item. Its actual condition and light state will matter.
+
+You declare the real rope as the single veteran field item. It will leave your hands when physically secured at the survey cut.
+
+You close the Attic hold trunk on every unselected carried object and descend to the veteran trailhead with one canonical field item and the mission card. Expedition A remains sealed behind you as a separate history.
+
+The cut hides its narrow shelf in darkness. Turn on the real lantern before trusting that route.
+
+The lit lantern reveals a narrow shelf under the broken survey edge. You move sideways through the dark, carrying the light and feeling the crossing in your legs, until the overlook opens ahead.
+
+The same lit shelf carries you back to the veteran trailhead. The lantern remains the exact object you brought.
+
+You secure the real rope across the abandoned cut and cross hand over hand. The rope remains physically on the near-side anchor rather than following you as imaginary equipment.
+
+The already secured canonical rope carries you across to the overlook.
+
+You cross back along the same physically secured rope. It remains on the near-side anchor until you deliberately take it.
+
+You copy the marker's weathered boundary notation onto the veteran field card. The record names what you actually reached without removing or duplicating the marker.
+
+You return to the Attic and seal the veteran survey as Expedition B. Its field card, selected route, retained-or-left-behind item outcome, score, deaths, and bounded history remain physically separate from Expedition A.

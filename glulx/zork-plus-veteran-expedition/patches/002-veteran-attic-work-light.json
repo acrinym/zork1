@@ -1,0 +1,22 @@
+{
+  "id": "Z1-GLULX-1237-VETERAN-ATTIC-WORK-LIGHT",
+  "path": "zork_plus_veteran_expedition.zil",
+  "description": "Give the post-victory Attic a fixed physical work light so either veteran loadout can return to and use the archive",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT VETERAN-HOLD-TRUNK\n    (SYNONYM TRUNK HOLD LOCKER CHEST)\n    (ADJECTIVE VETERAN ATTIC FIELD)\n    (DESC \"veteran hold trunk\")\n    (LDESC \"A stout veteran hold trunk waits beside the completed-expedition boxes.\")\n    (FLAGS CONTBIT OPENBIT SEARCHBIT TRYTAKEBIT)\n    (CAPACITY 200)>",
+      "new": "<OBJECT VETERAN-HOLD-TRUNK\n    (SYNONYM TRUNK HOLD LOCKER CHEST)\n    (ADJECTIVE VETERAN ATTIC FIELD)\n    (DESC \"veteran hold trunk\")\n    (LDESC \"A stout veteran hold trunk waits beside the completed-expedition boxes.\")\n    (FLAGS CONTBIT OPENBIT SEARCHBIT TRYTAKEBIT)\n    (CAPACITY 200)>\n\n<OBJECT VETERAN-ARCHIVE-WORK-LIGHT\n    (SYNONYM LIGHT LAMP FIXTURE)\n    (ADJECTIVE FIXED ARCHIVE WORK ATTIC)\n    (DESC \"fixed archive work light\")\n    (LDESC \"A fixed archive work light casts a steady pool across the expedition boxes.\")\n    (FLAGS LIGHTBIT ONBIT TRYTAKEBIT)\n    (ACTION VETERAN-ARCHIVE-WORK-LIGHT-FCN)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "           <COND (<NOT <LOC ,VETERAN-HOLD-TRUNK>>\n                  <MOVE ,VETERAN-HOLD-TRUNK ,ATTIC>)>)>",
+      "new": "           <COND (<NOT <LOC ,VETERAN-HOLD-TRUNK>>\n                  <MOVE ,VETERAN-HOLD-TRUNK ,ATTIC>)>\n           <COND (<NOT <LOC ,VETERAN-ARCHIVE-WORK-LIGHT>>\n                  <MOVE ,VETERAN-ARCHIVE-WORK-LIGHT ,ATTIC>)>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE VETERAN-DISPATCH-FCN ()",
+      "new": "<ROUTINE VETERAN-ARCHIVE-WORK-LIGHT-FCN ()\n    <COND (<VERB? TAKE>\n           <TELL \"The archive work light is bolted to the rafters.\" CR>\n           <RTRUE>)\n          (<VERB? LAMP-OFF>\n           <TELL \"The fixed work light has no local switch; it remains on for the expedition archive.\" CR>\n           <RTRUE>)\n          (<VERB? LAMP-ON>\n           <TELL \"The archive work light is already on.\" CR>\n           <RTRUE>)\n          (<VERB? EXAMINE>\n           <TELL \"The fixed lamp illuminates the expedition boxes without becoming another portable field item.\" CR>\n           <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE VETERAN-DISPATCH-FCN ()"
+    }
+  ]
+}
