@@ -20,9 +20,9 @@ This board answers five different questions: what is being built now, what is al
 
 **Player outcome:** the Great Canyon’s lethal leap becomes physically legible before death, and a player who deliberately prepares the real rope can experience a real near-fall and recovery instead of an unexplained binary trap.
 
-**In production:** the Canyon View gains an inspectable rim; the first unprepared leap produces a concrete footing warning; `SECURE ROPE` uses the canonical Attic rope and leaves it physically at the canyon; a prepared leap catches the player at the rim and creates bounded exertion strain; taking the rope removes that protection; a knowingly repeated unprotected leap preserves the canonical death.
+**In production:** Canyon View gains an inspectable open-surface rim; the first unprepared leap produces a concrete footing warning; `SECURE ROPE` places the canonical Attic rope physically on that rim; only that real containment provides protection; a prepared leap catches the player and creates bounded exertion strain; ordinary `TAKE ROPE` restores custody and naturally removes protection; `RECOVER` permits a later deliberate unprotected leap; the untouched canonical death remains authoritative.
 
-**Proof required:** exact Release 1235 staging, direct consequence tests, rights-safe corpus originality qualification, ZILF/Glazer artifact qualification, and a Glulxe transcript proving warning, rope preparation, near-fall recovery, physical rope retrieval, and canonical lethal consequence. Branch: `agent/living-zork-consequences-20260801`.
+**Qualification:** PR **#39** on `agent/living-zork-consequences-20260801`. Public hosted run **30683325463** passed exact Release 1235 staging, 12 direct consequence tests, rights-safe prose originality, ZILF compilation, Glazer assembly, ULX verification, and the complete Glulxe route. The candidate artifact is `344320` bytes, checksum `0x8cb988cc`, SHA-256 `26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7`; the final gate is exact locked reproduction and review closure.
 
 ## NEXT
 
