@@ -9,7 +9,10 @@
     "file": "zork1-glulx-museum-songbird-correspondence.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "size_bytes": 363776,
+    "checksum_hex": "0x8c222852",
+    "sha256": "067ab63fd33bd35a3bb7f4a118e3d49e09f24b268231922ad9f68417c1560630",
+    "locked": true
   },
   "overrides": [
     {
