@@ -16,7 +16,7 @@
       "path": "museum_songbird_correspondence.zil",
       "source": "overrides/museum_songbird_correspondence.zil",
       "allow_new": true,
-      "description": "Add the physical songbird feather, branch nest, Forest and Surface Life case, linked canonical-bauble evidence, and provenance plaque"
+      "description": "Add the physical songbird feather, reuse Zork's canonical bird nest, and add the Forest and Surface Life case, linked canonical-bauble evidence, and provenance plaque"
     },
     {
       "path": "museum_intake_first_gallery.zil",
@@ -42,14 +42,14 @@
     "winding the real intact golden clockwork canary in a canonical forest room still produces the canonical brass bauble",
     "the same authored event drops one real blue-black songbird feather beside that bauble",
     "the player may physically carry the feather to the Living Room and EXHIBIT FEATHER in the Forest and Surface Life case",
-    "the existing EXHIBIT BAUBLE path moves the actual canonical treasure into the trophy case and preserves canonical scoring",
-    "the player may instead carry the feather to Up a Tree and PUT FEATHER IN NEST, permanently returning the same trace to the branch nest",
+    "opening the canonical trophy case and using EXHIBIT BAUBLE moves the actual canonical treasure inside and preserves canonical scoring",
+    "the player may instead carry the feather to Up a Tree and PUT FEATHER IN NEST, permanently returning the same trace to Zork's existing bird nest beside the jeweled egg",
     "CATALOG FOREST and READ SONGBIRD PLAQUE report the actual locations of the feather and brass bauble",
     "taking either displayed object away immediately makes the linked exhibit truthful about what is absent"
   ],
   "boundaries": [
     "no generic bird, nest, ecology, or specimen engine",
-    "no duplicate brass bauble, canary, feather, or substitute specimen",
+    "no second nest and no duplicate brass bauble, canary, feather, or substitute specimen",
     "no remote donation or abstract collection registry",
     "no checklist of forest species or procedural wildlife",
     "no replacement canary event or forest controller",
