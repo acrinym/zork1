@@ -9,7 +9,16 @@
 <CONSTANT RLS-VERSION 0>
 <CONSTANT RLS-DEATHS-AT-SEAL 1>
 <CONSTANT RLS-RECOVERIES 2>
-<CONSTANT RECOVERY-LOCKER-STATE <TABLE RECOVERY-LOCKER-SCHEMA 0 0>>
+<CONSTANT RLS-SEALED 3>
+<CONSTANT RECOVERY-LOCKER-STATE <TABLE RECOVERY-LOCKER-SCHEMA 0 0 0>>
+
+<OBJECT RECOVERY-LOCKER-AMBER-LAMP
+    (SYNONYM LAMP LIGHT BEACON)
+    (ADJECTIVE FIXED AMBER RECOVERY CELLAR)
+    (DESC "fixed amber recovery lamp")
+    (LDESC "A fixed amber lamp glows above the recovery locker.")
+    (FLAGS LIGHTBIT ONBIT TRYTAKEBIT)
+    (ACTION RECOVERY-LOCKER-AMBER-LAMP-FCN)>
 
 <OBJECT EXPEDITION-RECOVERY-LOCKER
     (SYNONYM LOCKER CACHE STASH CHEST)
@@ -32,7 +41,8 @@
                         ,RECOVERY-LOCKER-SCHEMA>>
            <RECOVERY-LOCKER-PUT ,RLS-VERSION ,RECOVERY-LOCKER-SCHEMA>
            <RECOVERY-LOCKER-PUT ,RLS-DEATHS-AT-SEAL 0>
-           <RECOVERY-LOCKER-PUT ,RLS-RECOVERIES 0>)>
+           <RECOVERY-LOCKER-PUT ,RLS-RECOVERIES 0>
+           <RECOVERY-LOCKER-PUT ,RLS-SEALED 0>)>
     <RFALSE>>
 
 <ROUTINE RECOVERY-LOCKER-UNLOCKED? ()
@@ -45,6 +55,9 @@
     <COND (<AND <RECOVERY-LOCKER-UNLOCKED?>
                 <NOT <LOC ,EXPEDITION-RECOVERY-LOCKER>>>
            <MOVE ,EXPEDITION-RECOVERY-LOCKER ,CELLAR>)>
+    <COND (<AND <RECOVERY-LOCKER-UNLOCKED?>
+                <NOT <LOC ,RECOVERY-LOCKER-AMBER-LAMP>>>
+           <MOVE ,RECOVERY-LOCKER-AMBER-LAMP ,CELLAR>)>
     <RFALSE>>
 
 <ROUTINE RECOVERY-LOCKER-COUNT ("AUX" ITEM (COUNT 0))
@@ -68,8 +81,23 @@
            <TELL ".">)>
     <RTRUE>>
 
+<ROUTINE RECOVERY-LOCKER-AMBER-LAMP-FCN ()
+    <COND (<VERB? TAKE MOVE MUNG>
+           <TELL "The amber recovery lamp is wired into the Cellar wall." CR>
+           <RTRUE>)
+          (<VERB? LAMP-OFF>
+           <TELL "The recovery lamp has no local switch; it remains lit so a prepared cache can be reached after disaster." CR>
+           <RTRUE>)
+          (<VERB? LAMP-ON>
+           <TELL "The amber recovery lamp is already on." CR>
+           <RTRUE>)
+          (<VERB? EXAMINE>
+           <TELL "Its low amber glow illuminates the Cellar locker without becoming portable expedition gear." CR>
+           <RTRUE>)>
+    <RFALSE>>
+
 <ROUTINE EXPEDITION-RECOVERY-LOCKER-CONTFCN ()
-    <COND (<AND <FSET? ,EXPEDITION-RECOVERY-LOCKER ,LOCKEDBIT>
+    <COND (<AND <RECOVERY-LOCKER-GET ,RLS-SEALED>
                 <VERB? TAKE>>
            <TELL "The prepared seal must be broken before anything can leave the recovery locker." CR>
            <RTRUE>)>
@@ -83,7 +111,7 @@
            <RTRUE>)
           (<AND <EQUAL? ,PRSI ,EXPEDITION-RECOVERY-LOCKER>
                 <VERB? PUT>
-                <FSET? ,EXPEDITION-RECOVERY-LOCKER ,LOCKEDBIT>>
+                <RECOVERY-LOCKER-GET ,RLS-SEALED>>
            <TELL "The recovery locker is sealed. Break the seal before changing the kit." CR>
            <RTRUE>)
           (<AND <EQUAL? ,PRSI ,EXPEDITION-RECOVERY-LOCKER>
@@ -93,8 +121,8 @@
            <RTRUE>)
           (<AND <EQUAL? ,PRSO ,EXPEDITION-RECOVERY-LOCKER>
                 <VERB? OPEN>
-                <FSET? ,EXPEDITION-RECOVERY-LOCKER ,LOCKEDBIT>>
-           <FCLEAR ,EXPEDITION-RECOVERY-LOCKER ,LOCKEDBIT>
+                <RECOVERY-LOCKER-GET ,RLS-SEALED>>
+           <RECOVERY-LOCKER-PUT ,RLS-SEALED 0>
            <FSET ,EXPEDITION-RECOVERY-LOCKER ,OPENBIT>
            <COND (<G? ,DEATHS
                       <RECOVERY-LOCKER-GET ,RLS-DEATHS-AT-SEAL>>
@@ -107,7 +135,7 @@
           (<AND <EQUAL? ,PRSO ,EXPEDITION-RECOVERY-LOCKER>
                 <VERB? EXAMINE LOOK-INSIDE SEARCH>>
            <TELL "The bolted locker accepts two physical objects with a combined size no greater than thirty. ">
-           <COND (<FSET? ,EXPEDITION-RECOVERY-LOCKER ,LOCKEDBIT>
+           <COND (<RECOVERY-LOCKER-GET ,RLS-SEALED>
                   <TELL "Its prepared seal is intact.">)
                  (T <TELL "It is available for deliberate expedition staging.">)>
            <RECOVERY-LOCKER-LIST>
@@ -123,13 +151,13 @@
            <TELL "The recovery locker is not available until Expedition B is sealed." CR>)
           (<NOT <EQUAL? ,HERE ,CELLAR>>
            <TELL "The locker must be sealed physically in the Cellar." CR>)
-          (<FSET? ,EXPEDITION-RECOVERY-LOCKER ,LOCKEDBIT>
+          (<RECOVERY-LOCKER-GET ,RLS-SEALED>
            <TELL "The recovery locker is already sealed." CR>)
           (<NOT <FIRST? ,EXPEDITION-RECOVERY-LOCKER>>
            <TELL "An empty locker is not a recovery kit. Place one or two real objects inside first." CR>)
           (T
            <FCLEAR ,EXPEDITION-RECOVERY-LOCKER ,OPENBIT>
-           <FSET ,EXPEDITION-RECOVERY-LOCKER ,LOCKEDBIT>
+           <RECOVERY-LOCKER-PUT ,RLS-SEALED 1>
            <RECOVERY-LOCKER-PUT ,RLS-DEATHS-AT-SEAL ,DEATHS>
            <TELL "You close the iron door and press the numbered expedition seal across it. Whatever remains on your body is still exposed to the Great Underground Empire; only these physical contents are protected here." CR>)>
     <RTRUE>>
