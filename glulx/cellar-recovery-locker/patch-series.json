@@ -16,7 +16,7 @@
       "path": "cellar_recovery_locker.zil",
       "source": "overrides/cellar_recovery_locker.zil",
       "allow_new": true,
-      "description": "Add the Expedition B-gated physical two-object recovery locker and prepared seal behavior"
+      "description": "Add the Expedition B-gated physical two-object recovery locker, saveable prepared seal, and fixed nonportable Cellar lamp"
     },
     {
       "path": "zork1.zil",
@@ -25,8 +25,7 @@
     }
   ],
   "patches": [
-    "patches/001-recovery-locker-materialization.json",
-    "patches/002-recovery-locker-amber-lamp.json"
+    "patches/001-recovery-locker-materialization.json"
   ],
   "expected_changed_paths": [
     "cellar_recovery_locker.zil",
