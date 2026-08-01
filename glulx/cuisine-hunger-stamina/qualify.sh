@@ -88,13 +88,14 @@ module = (source / 'cuisine_hunger_stamina.zil').read_text()
 shadow = (source / 'shadow_logic.zil').read_text()
 for required in (
     '<SYNTAX COMBINE OBJECT',
-    '<SYNTAX REST = V-CUISINE-REST>',
+    '<SYNTAX RECOVER = V-CUISINE-REST>',
     '<SYNTAX CHECK OBJECT (FIND RMUNGBIT) = V-CUISINE-STATUS>',
     '<CONSTANT CUISINE-STATE <TABLE CUISINE-SCHEMA 0 0 0 0 0 0>>',
     '<CUISINE-PUT ,CS-RECIPE ,CUISINE-RECIPE-GARLIC-PEPPER>',
     '<REMOVE ,LUNCH>',
 ):
     assert required in module
+assert '<SYNTAX REST = V-CUISINE-REST>' not in module
 assert module.count('<GLOBAL') == 0
 assert shadow.count('<CUISINE-ADVANCE>') == 1
 assert shadow.count('<CUISINE-ACTION-HOOK>') == 1
@@ -165,12 +166,16 @@ north
 east
 open window
 west
-open sack
-take lunch
-take garlic
+west
+take lantern
+turn on lantern
 up
 take knife
 down
+east
+open sack
+take lunch
+take garlic
 put lunch on worktop
 prepare lunch
 put garlic on worktop
@@ -184,7 +189,7 @@ jump
 jump
 jump
 check appetite
-rest
+recover
 check appetite
 eat lunch
 check appetite
@@ -198,7 +203,7 @@ EOF_COMMANDS
   2>&1 | tee "$BUILD/cuisine-transcript.txt"
 
 grep -F 'You unwrap and arrange the hot-pepper sandwich on the worktop.' "$BUILD/cuisine-transcript.txt"
-grep -F 'You slice the real clove.' "$BUILD/cuisine-transcript.txt"
+grep -F 'You cut the garlic into usable slices.' "$BUILD/cuisine-transcript.txt"
 grep -F 'You work a small amount of sliced garlic into the prepared hot-pepper sandwich.' "$BUILD/cuisine-transcript.txt"
 grep -F 'The exertion leaves your breath short.' "$BUILD/cuisine-transcript.txt"
 grep -F 'Repeated exertion has made the neglected lunch feel relevant.' "$BUILD/cuisine-transcript.txt"
@@ -207,7 +212,7 @@ grep -F 'You stop and recover your breath.' "$BUILD/cuisine-transcript.txt"
 grep -F 'You eat the real prepared lunch, its garlic and hot pepper forming a sharp deliberate meal.' "$BUILD/cuisine-transcript.txt"
 grep -F 'Your appetite is quiet, and your exertion strain is clear.' "$BUILD/cuisine-transcript.txt"
 grep -F 'A clove of garlic' "$BUILD/cuisine-transcript.txt"
-for word in combine season appetite stamina; do
+for word in combine season appetite stamina recover; do
   if grep -Fi "I don't know the word \"$word\"" "$BUILD/cuisine-transcript.txt"; then
     echo "Cuisine vocabulary was not recognized: $word" >&2
     exit 1
@@ -258,7 +263,7 @@ receipt = {
         'ulx_checksum_verification': 'passed',
         'physical_recipe_runtime': 'passed',
         'bounded_exertion_runtime': 'passed',
-        'rest_runtime': 'passed',
+        'recover_runtime': 'passed',
         'meal_recovery_runtime': 'passed',
         'canonical_garlic_retention_runtime': 'passed',
         'canonical_lunch_consumption_runtime': 'passed',
