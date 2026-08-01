@@ -9,7 +9,10 @@
     "file": "zork1-glulx-cuisine-hunger-stamina.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "size_bytes": 342784,
+    "checksum_hex": "0x282c807e",
+    "sha256": "14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf",
+    "locked": true
   },
   "overrides": [
     {
