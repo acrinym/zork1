@@ -47,13 +47,13 @@ intake = (source / 'museum_intake_first_gallery.zil').read_text(encoding='utf-8'
 actions = (source / '1actions.zil').read_text(encoding='utf-8')
 for token in (
     '<OBJECT SONGBIRD-FEATHER',
-    '<OBJECT SONGBIRD-NEST',
     '<OBJECT MUSEUM-FOREST-CASE',
     '<MOVE ,SONGBIRD-FEATHER <LOC ,BAUBLE>>',
-    '<MOVE ,SONGBIRD-FEATHER ,SONGBIRD-NEST>',
+    '<MOVE ,SONGBIRD-FEATHER ,NEST>',
     '<IN? ,BAUBLE ,TROPHY-CASE>',
 ):
     assert token in module
+assert '<OBJECT SONGBIRD-NEST' not in module
 assert '<MUSEUM-SONGBIRD-OBSERVED>' in actions
 assert '<RETURN ,MUSEUM-FOREST-CASE>' in intake
 production = '\n'.join(path.read_text(encoding='utf-8', errors='ignore') for path in source.glob('*.zil'))
@@ -130,9 +130,10 @@ take feather
 nesthigh
 examine nest
 put feather in nest
-examine nest
+examine feather
 take feather from nest
 museumhome
+open trophy case
 exhibit bauble
 catalog forest
 read songbird plaque
@@ -141,6 +142,7 @@ wind canary
 take bauble
 take feather
 museumhome
+open trophy case
 exhibit feather
 exhibit bauble
 catalog forest
@@ -157,21 +159,22 @@ EOF_COMMANDS
 grep -F 'TEST PRECONDITION: intact canary carried to the forest path' "$BUILD/runtime-transcript.txt"
 grep -F 'From out of the greenery flies a lovely songbird' "$BUILD/runtime-transcript.txt"
 grep -F 'A single blue-black flight feather turns once after the bauble' "$BUILD/runtime-transcript.txt"
-grep -F 'You work the real feather into the twig cup' "$BUILD/runtime-transcript.txt"
-grep -F 'The feather is now part of the nest' "$BUILD/runtime-transcript.txt"
-grep -F 'Pulling apart the woven cup would turn a field decision into vandalism' "$BUILD/runtime-transcript.txt"
-grep -F 'the real brass bauble is displayed in the trophy case, while the feather has been returned to the branch nest' "$BUILD/runtime-transcript.txt"
+grep -F "You work the real feather into the bird's nest beside the jeweled egg" "$BUILD/runtime-transcript.txt"
+grep -F "The blue-black flight feather is woven into the real bird's nest beside the jeweled egg" "$BUILD/runtime-transcript.txt"
+grep -F 'Pulling apart the woven twigs would turn a field decision into vandalism' "$BUILD/runtime-transcript.txt"
+grep -F "the real brass bauble is displayed in the trophy case, while the feather has been returned to the bird's nest at Up a Tree" "$BUILD/runtime-transcript.txt"
 grep -F 'the case holds the real blue-black feather beside a linked record of the brass bauble in the trophy case' "$BUILD/runtime-transcript.txt"
 grep -F 'neither the real feather nor the real bauble is in museum custody' "$BUILD/runtime-transcript.txt"
 python - <<'PY'
 from pathlib import Path
 text = Path('glulx/build/museum-songbird-correspondence/runtime-transcript.txt').read_text(encoding='utf-8')
 assert text.index('From out of the greenery flies a lovely songbird') < text.index('blue-black flight feather turns once')
-assert text.index('work the real feather into the twig cup') < text.index('feather is now part of the nest')
-assert text.index('returned to the branch nest') < text.index('case holds the real blue-black feather')
+assert text.index("work the real feather into the bird's nest") < text.index("woven into the real bird's nest")
+assert text.index("returned to the bird's nest at Up a Tree") < text.index('case holds the real blue-black feather')
 assert text.index('case holds the real blue-black feather') < text.index('neither the real feather nor the real bauble')
 for word in ('birdready', 'nesthigh', 'museumhome', 'wind', 'canary', 'feather', 'nest', 'exhibit', 'catalog', 'forest', 'songbird', 'plaque'):
     assert f'I don\'t know the word "{word}"' not in text
+assert 'Which nest do you mean' not in text
 PY
 
 python - "$SERIAL" "$MANIFEST" <<'PY'
@@ -196,7 +199,7 @@ receipt = {
     'gameplay': {
         'canonical_canary_exchange': 'passed',
         'physical_feather_drop': 'passed',
-        'nest_return_choice': 'passed',
+        'canonical_nest_return_choice': 'passed',
         'permanent_nest_custody': 'passed',
         'physical_forest_case_exhibit': 'passed',
         'canonical_bauble_trophy_custody': 'passed',
@@ -204,6 +207,7 @@ receipt = {
         'physical_removal_updates_gallery': 'passed'
     },
     'generic_bird_engine': False,
+    'second_nest': False,
     'procedural_wildlife': False,
     'object_copy': False
 }
