@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1238-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only recovery locker commands after production sources",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"cellar_recovery_locker\" T>",
+      "new": "<INSERT-FILE \"cellar_recovery_locker\" T>\n<INSERT-FILE \"cellar_recovery_locker_test\" T>"
+    }
+  ]
+}
