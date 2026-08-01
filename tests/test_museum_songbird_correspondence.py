@@ -23,17 +23,17 @@ class MuseumSongbirdCorrespondenceTests(unittest.TestCase):
             "5b81448327cb5a2a60298f28d76062c0c5498ec5fc11f6d627a4873e82cba11f",
         )
 
-    def test_feather_case_nest_and_plaque_are_physical_objects(self) -> None:
+    def test_feather_case_and_plaque_are_physical_objects_without_second_nest(self) -> None:
         module = MODULE.read_text(encoding="utf-8")
         for object_name in (
             "MUSEUM-FOREST-CASE",
             "SONGBIRD-PLAQUE",
-            "SONGBIRD-NEST",
             "SONGBIRD-FEATHER",
         ):
             self.assertIn(f"<OBJECT {object_name}", module)
-        self.assertIn("(IN UP-A-TREE)", module)
         self.assertIn("(IN LIVING-ROOM)", module)
+        self.assertNotIn("<OBJECT SONGBIRD-NEST", module)
+        self.assertIn("<EQUAL? ,PRSI ,NEST>", module)
 
     def test_canonical_canary_event_drops_one_real_feather_beside_bauble(self) -> None:
         patch = json.loads(PATCH.read_text(encoding="utf-8"))
@@ -49,9 +49,10 @@ class MuseumSongbirdCorrespondenceTests(unittest.TestCase):
 
     def test_nest_return_moves_same_feather_and_blocks_vandalism(self) -> None:
         module = MODULE.read_text(encoding="utf-8")
-        self.assertIn("<MOVE ,SONGBIRD-FEATHER ,SONGBIRD-NEST>", module)
-        self.assertIn("<IN? ,SONGBIRD-FEATHER ,SONGBIRD-NEST>", module)
-        self.assertIn("Pulling apart the woven cup", module)
+        self.assertIn("<MOVE ,SONGBIRD-FEATHER ,NEST>", module)
+        self.assertIn("<IN? ,SONGBIRD-FEATHER ,NEST>", module)
+        self.assertIn("beside the jeweled egg", module)
+        self.assertIn("Pulling apart the woven twigs", module)
         self.assertNotIn("<COPY", module.upper())
         self.assertNotIn("<OBJECT SONGBIRD-REPLICA", module)
 
@@ -67,7 +68,7 @@ class MuseumSongbirdCorrespondenceTests(unittest.TestCase):
         module = MODULE.read_text(encoding="utf-8")
         for token in (
             "<IN? ,SONGBIRD-FEATHER ,MUSEUM-FOREST-CASE>",
-            "<IN? ,SONGBIRD-FEATHER ,SONGBIRD-NEST>",
+            "<IN? ,SONGBIRD-FEATHER ,NEST>",
             "<IN? ,BAUBLE ,TROPHY-CASE>",
         ):
             self.assertIn(token, module)
