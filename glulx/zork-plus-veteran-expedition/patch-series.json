@@ -9,7 +9,10 @@
     "file": "zork1-glulx-zork-plus-veteran-expedition.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "locked": true,
+    "size_bytes": 351744,
+    "checksum_hex": "0x9be33749",
+    "sha256": "f2748088e7440419cc871877e396b9e85b8e662f735ff535433dcbf17f06fa0c"
   },
   "overrides": [
     {
