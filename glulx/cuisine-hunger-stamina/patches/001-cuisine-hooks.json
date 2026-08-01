@@ -5,8 +5,8 @@
   "replacements": [
     {
       "expected_count": 1,
-      "old": "\t<KITCHEN-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
-      "new": "\t<KITCHEN-ADVANCE>\n\t<CUISINE-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+      "old": "<KITCHEN-ADVANCE>",
+      "new": "<KITCHEN-ADVANCE>\n\t<CUISINE-ADVANCE>"
     },
     {
       "expected_count": 1,
