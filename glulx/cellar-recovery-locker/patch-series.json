@@ -1,0 +1,51 @@
+{
+  "edition": "Unofficial Zork Cellar Recovery Locker Glulx",
+  "release": 1238,
+  "serial": "260801",
+  "base_manifest": "../zork-plus-veteran-expedition/patch-series.json",
+  "base_release": 1237,
+  "base_artifact_sha256": "f2748088e7440419cc871877e396b9e85b8e662f735ff535433dcbf17f06fa0c",
+  "expected_artifact": {
+    "file": "zork1-glulx-cellar-recovery-locker.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "overrides": [
+    {
+      "path": "cellar_recovery_locker.zil",
+      "source": "overrides/cellar_recovery_locker.zil",
+      "allow_new": true,
+      "description": "Add the Expedition B-gated physical two-object recovery locker and prepared seal behavior"
+    },
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1237 layer, load the recovery locker last, and assign Release 1238"
+    }
+  ],
+  "patches": [
+    "patches/001-recovery-locker-materialization.json"
+  ],
+  "expected_changed_paths": [
+    "cellar_recovery_locker.zil",
+    "completed_expedition_archive.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "sealing Expedition B physically unlocks one bolted recovery locker in the Cellar",
+    "the player chooses at most two real objects with a combined size no greater than thirty",
+    "sealing the locker records the current canonical death count without copying any object",
+    "canonical death scatters only inventory still carried by the adventurer",
+    "physically returning to the Cellar and breaking the seal recovers exactly the protected kit",
+    "the seal may be broken early, making preparation reversible rather than a permanent trap"
+  ],
+  "boundaries": [
+    "no death hook or replacement death routine",
+    "no remote retrieval, inventory ledger, or duplicated item state",
+    "no universal stash network or cloud chest",
+    "no immunity for objects left on the player's body",
+    "no recursive audit or planning framework",
+    "no S.T.A.L.K.E.R. coupling"
+  ]
+}
