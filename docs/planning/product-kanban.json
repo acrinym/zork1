@@ -13,38 +13,46 @@
   "lanes": {
     "current": [
       {
-        "train_id": "zork-parser-deep-affordances-1232",
-        "title": "Parser Comprehension and Deep Affordances",
+        "train_id": "zork-living-consequences-great-canyon-1236",
+        "title": "Living Zork Consequences: Great Canyon Fall",
         "status": "current",
         "owner": "Justin Gargano / Onyx",
-        "branch": "agent/parser-deep-affordances-20260731",
-        "pr": 35,
-        "outcome": "Let selected reasonable player intentions reach existing canonical world behavior instead of failing at vocabulary or noun-role gaps.",
+        "branch": "agent/living-zork-consequences-20260801",
+        "pr": 39,
+        "outcome": "Make the Great Canyon leap physically legible and let deliberate preparation with the canonical rope produce a real near-fall and recovery while preserving the canonical lethal consequence for a knowingly unprotected leap.",
         "scope": [
-          "X and INSPECT examination aliases",
-          "EXAMINE UNDER and EXAMINE BEHIND spatial roles",
-          "SWITCH ON and SWITCH OFF lamp routing",
-          "SEAL and MEND plugging and repair routing",
-          "Glulxe runtime transcript proving canonical outputs"
+          "inspectable open-surface Great Canyon rim",
+          "first unprepared-leap footing warning",
+          "SECURE ROPE using the canonical Attic rope",
+          "prepared near-fall and bounded exertion strain",
+          "physical rope retrieval that removes protection",
+          "RECOVER before a later deliberate leap",
+          "canonical death after a knowingly repeated unprotected leap"
         ],
         "dependencies": [
-          "Release 1231 merge 28b90fe93a472087e64afcd0fb0e8776f80157f3",
-          "Release 1231 artifact SHA-256 5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609"
+          "Release 1235 squash merge e2e5c9c3e269d8e18bb3ed1c75dd72baacbd495a",
+          "Release 1235 artifact SHA-256 14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf",
+          "Release 1231 causal-warning pattern"
         ],
         "acceptance": [
-          "staging changes exactly gsyntax.zil and zork1.zil",
-          "each selected phrase reaches an existing canonical action",
-          "Release 1211 bounded USE OBJECT assistance remains unchanged",
-          "Glulxe transcript proves examination, spatial inspection, plugging, and lamp state changes",
-          "ZILF and Glazer produce a checksum-valid Release 1232 artifact",
-          "the first hosted artifact identity is locked and reproduced before merge"
+          "staging changes exactly 1dungeon.zil, living_zork_consequences.zil, and zork1.zil",
+          "the first bare leap warns through physical cause rather than hidden state or a generic confirmation prompt",
+          "SECURE ROPE moves the canonical rope onto the LIVING-CANYON-EDGE open surface and creates no duplicate rope or protection state",
+          "merely dropping the rope in Canyon View does not satisfy the secured-rim containment authority",
+          "a secured leap catches the player at the rim and creates bounded cuisine strain",
+          "ordinary TAKE ROPE restores physical custody and naturally removes protection",
+          "RECOVER clears accumulated strain before the later deliberate leap",
+          "a knowingly repeated unprotected leap reaches the untouched canonical death line",
+          "original prose passes the rights-safe corpus profile",
+          "public hosted run 30683325463 passes ZILF, Glazer, ULX verification, and the complete Glulxe route",
+          "the 344320-byte candidate with checksum 0x8cb988cc and SHA-256 26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7 is locked and reproduced before merge"
         ],
         "boundaries": [
-          "no new or expanded generic USE routing",
-          "no guessed puzzle solution",
-          "no new parser global or state",
-          "no new action routine or response prose",
-          "no synonym dump",
+          "no generic hazard engine",
+          "no random deaths",
+          "no automatic rescue without preparation",
+          "no duplicate rope state or canyon inventory object",
+          "no parallel world simulation",
           "no House bead reopening",
           "no S.T.A.L.K.E.R. mixing"
         ]
@@ -52,126 +60,9 @@
     ],
     "next": [
       {
-        "train_id": "zork-museum-intake-first-gallery",
-        "title": "Museum Intake and First Gallery",
-        "status": "next-1",
-        "owner": "Justin Gargano / Onyx",
-        "branch": null,
-        "pr": null,
-        "outcome": "Turn discoveries into a persistent, navigable collection with physical custody and authored exhibit context.",
-        "scope": [
-          "donation and refusal rules",
-          "first exhibit family",
-          "collection provenance",
-          "gallery navigation and descriptions"
-        ],
-        "dependencies": [
-          "parser affordance train",
-          "object-description and institutional-document child profiles"
-        ],
-        "acceptance": [
-          "donated objects retain canonical identity and custody",
-          "gallery descriptions reveal only earned facts",
-          "intake, viewing, save, and restore are qualified"
-        ],
-        "boundaries": [
-          "no duplicate treasure objects",
-          "no checklist HUD",
-          "no omniscient encyclopedia"
-        ]
-      }
-    ],
-    "future": [
-      {
-        "train_id": "zork-mara-companion",
-        "title": "Mara Companion",
-        "status": "future",
-        "owner": "Justin Gargano / Onyx",
-        "branch": null,
-        "pr": null,
-        "outcome": "Add Mara as a bounded, stateful person whose knowledge, movement, and dialogue arise from canonical events.",
-        "scope": [
-          "named dialogue profile",
-          "bounded presence",
-          "relationship memory",
-          "physical consequences"
-        ],
-        "dependencies": [
-          "parser affordances",
-          "dedicated Mara authority profile"
-        ],
-        "acceptance": [
-          "no omniscient dialogue",
-          "no duplicate puzzle authority",
-          "save/restore continuity"
-        ],
-        "boundaries": [
-          "no generic follower AI",
-          "no universal companion banter",
-          "no forced romance path"
-        ]
-      },
-      {
-        "train_id": "zork-cuisine-hunger-stamina",
-        "title": "Cuisine, Hunger, and Stamina",
-        "status": "future",
-        "owner": "Justin Gargano / Onyx",
-        "branch": null,
-        "pr": null,
-        "outcome": "Make food combinations and exertion matter without converting Zork into constant meter maintenance.",
-        "scope": [
-          "bounded hunger",
-          "cooking combinations",
-          "satiation",
-          "situational stamina"
-        ],
-        "dependencies": [
-          "museum/object custody foundations",
-          "dedicated cuisine prose profiles"
-        ],
-        "acceptance": [
-          "food has authored combinations and consequences",
-          "meters remain bounded and optional outside relevant situations"
-        ],
-        "boundaries": [
-          "no survival grind",
-          "no universal crafting grid",
-          "no real-time decay"
-        ]
-      },
-      {
-        "train_id": "zork-living-consequences",
-        "title": "Living Zork Consequences",
-        "status": "future",
-        "owner": "Justin Gargano / Onyx",
-        "branch": null,
-        "pr": null,
-        "outcome": "Extend warnings, failures, rescues, and aftermath across canonical lethal and near-lethal systems.",
-        "scope": [
-          "falls",
-          "machinery",
-          "water",
-          "fire",
-          "creature danger",
-          "rescue preparation"
-        ],
-        "dependencies": [
-          "Release 1231 causal-warning pattern"
-        ],
-        "acceptance": [
-          "each family has cause-warning-consequence continuity",
-          "no generic hazard engine"
-        ],
-        "boundaries": [
-          "no random deaths",
-          "no gore escalation",
-          "no parallel world simulation"
-        ]
-      },
-      {
         "train_id": "zork-plus-veteran-expedition",
         "title": "Zork Plus / Veteran Expedition",
-        "status": "future",
+        "status": "next-1",
         "owner": "Justin Gargano / Onyx",
         "branch": null,
         "pr": null,
@@ -184,7 +75,7 @@
         ],
         "dependencies": [
           "completed expedition archive",
-          "multiple mature product families"
+          "Living Zork Consequences Great Canyon train"
         ],
         "acceptance": [
           "canonical victory remains valid",
@@ -200,7 +91,7 @@
       {
         "train_id": "zork-physical-expedition-stash",
         "title": "Physical Expedition Stash",
-        "status": "future",
+        "status": "next-2",
         "owner": "Justin Gargano / Onyx",
         "branch": null,
         "pr": null,
@@ -223,6 +114,36 @@
           "no cloud inventory",
           "no duplicate items",
           "no automatic loadouts"
+        ]
+      }
+    ],
+    "future": [
+      {
+        "train_id": "zork-living-consequences-additional-families",
+        "title": "Living Zork Consequences: Additional Families",
+        "status": "future",
+        "owner": "Justin Gargano / Onyx",
+        "branch": null,
+        "pr": null,
+        "outcome": "Extend direct cause-warning-consequence continuity to selected machinery, water, fire, and creature dangers after the Great Canyon fall is complete.",
+        "scope": [
+          "machinery",
+          "water",
+          "fire",
+          "creature danger",
+          "authored rescue preparation"
+        ],
+        "dependencies": [
+          "completed Great Canyon fall train"
+        ],
+        "acceptance": [
+          "each selected danger remains a concrete authored loop",
+          "each family is independently playable and qualified"
+        ],
+        "boundaries": [
+          "no generic hazard engine",
+          "no gore escalation",
+          "no parallel world simulation"
         ]
       }
     ],
@@ -288,29 +209,6 @@
         "branch": "master",
         "pr": 32,
         "outcome": "Deliver the complete 12-train, 96-bead House program through Release 1230.",
-        "scope": [
-          "House state",
-          "museum foundation",
-          "Kitchen",
-          "Cellar",
-          "correspondence",
-          "Attic archives",
-          "rest",
-          "vulnerability",
-          "completed expedition archive"
-        ],
-        "dependencies": [
-          "merged House train lineage"
-        ],
-        "acceptance": [
-          "96/96 beads closed",
-          "Release 1230 merged",
-          "completed expedition archive qualified"
-        ],
-        "boundaries": [
-          "hierarchy remains closed",
-          "no reopening through later kanban work"
-        ],
         "proof": [
           "PR #32 merged",
           "Release 1230 artifact SHA-256 b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71"
@@ -324,27 +222,6 @@
         "branch": "master",
         "pr": 33,
         "outcome": "Create rights-aware extraction, annotation, authority profiles, originality checks, and style receipts.",
-        "scope": [
-          "13 artifact records",
-          "10 authority profiles",
-          "ZIL extraction",
-          "protected local workflow",
-          "overlap checks",
-          "style receipts"
-        ],
-        "dependencies": [
-          "merged post-House planning handoff"
-        ],
-        "acceptance": [
-          "all review findings and nits resolved",
-          "25 direct tests pass",
-          "PR #33 merged"
-        ],
-        "boundaries": [
-          "no generic INFOCOM_STYLE",
-          "no protected prose publication",
-          "no audit-of-audit layer"
-        ],
         "proof": [
           "merge d7cc4750507fed9b505af66e0fd6afee2da70ffb",
           "PR #33"
@@ -357,37 +234,73 @@
         "owner": "Justin Gargano / Onyx",
         "branch": "master",
         "pr": 34,
-        "outcome": "Make the canonical Maintenance Room flood legible through original corpus-qualified warnings, inspection, repair feedback, and causal death prose.",
-        "scope": [
-          "zero-state canonical WATER-LEVEL warning crossings",
-          "inspectable east-wall pipe break",
-          "canonical PUTTY repair feedback",
-          "causal drowning line",
-          "four passing style receipts",
-          "GitHub-hosted artifact qualification"
-        ],
-        "dependencies": [
-          "Release 1230 merge",
-          "Infocom Corpus Foundation"
-        ],
-        "acceptance": [
-          "zero new flood globals, timers, or controllers",
-          "10 direct tests pass",
-          "ZILF compile and Glazer assembly pass",
-          "locked artifact identity reproduces",
-          "PR #34 merged"
-        ],
-        "boundaries": [
-          "no parallel hazard controller",
-          "no automatic rescue or repair",
-          "no House bead reopening",
-          "no S.T.A.L.K.E.R. mixing"
-        ],
+        "outcome": "Make the canonical Maintenance Room flood legible through original warnings, inspection, repair feedback, and causal death prose.",
         "proof": [
           "merge 28b90fe93a472087e64afcd0fb0e8776f80157f3",
           "Release 1231 artifact size 337920 bytes",
           "Release 1231 checksum 0x1b994d18",
           "Release 1231 artifact SHA-256 5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609"
+        ]
+      },
+      {
+        "train_id": "zork-parser-deep-affordances-1232",
+        "title": "Parser Comprehension and Deep Affordances",
+        "status": "done",
+        "owner": "Justin Gargano / Onyx",
+        "branch": "master",
+        "pr": 35,
+        "outcome": "Let selected reasonable player intentions reach existing canonical world behavior.",
+        "proof": [
+          "merge ce5be325a0d0f762edaa23362e5227d4788953d6",
+          "Release 1232 artifact size 337920 bytes",
+          "Release 1232 checksum 0x2c2192e1",
+          "Release 1232 artifact SHA-256 2cffc734dbfbe346d0ec185c6962d927bc046343dccdb53b6a9e4439521b6f2e"
+        ]
+      },
+      {
+        "train_id": "zork-museum-intake-first-gallery-1233",
+        "title": "Museum Intake and First Gallery",
+        "status": "done",
+        "owner": "Justin Gargano / Onyx",
+        "branch": "master",
+        "pr": 36,
+        "outcome": "Turn discoveries into a persistent physical collection with earned exhibit context.",
+        "proof": [
+          "merge f0bdd696d447cdb727b82229b218abf7a6905f91",
+          "Release 1233 artifact size 338432 bytes",
+          "Release 1233 checksum 0x7065f1fc",
+          "Release 1233 artifact SHA-256 4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244"
+        ]
+      },
+      {
+        "train_id": "zork-mara-companion-1234",
+        "title": "Mara Arrival and Evidence Memory",
+        "status": "done",
+        "owner": "Justin Gargano / Onyx",
+        "branch": "master",
+        "pr": 37,
+        "outcome": "Add Mara as a physically present person whose exact witnessed-object knowledge is earned from canonical events.",
+        "proof": [
+          "merge 76f1e451a4fb70dcf6ea1d41cb8705f2ad5236d4",
+          "Release 1234 artifact size 339712 bytes",
+          "Release 1234 checksum 0x69fd7910",
+          "Release 1234 artifact SHA-256 38b966f47d771e0f5ae6229ff6a7542830ce6e365a3d2291f764581ae0b64a17"
+        ]
+      },
+      {
+        "train_id": "zork-cuisine-hunger-stamina-1235",
+        "title": "Cuisine, Hunger, and Stamina",
+        "status": "done",
+        "owner": "Justin Gargano / Onyx",
+        "branch": "master",
+        "pr": 38,
+        "outcome": "Make canonical food preparation and selected exertion matter without survival grind.",
+        "proof": [
+          "squash merge e2e5c9c3e269d8e18bb3ed1c75dd72baacbd495a",
+          "Release 1235 artifact size 342784 bytes",
+          "Release 1235 checksum 0x282c807e",
+          "Release 1235 artifact SHA-256 14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf",
+          "public hosted CI run 30682376696 reproduced the locked artifact and full Glulxe route"
         ]
       }
     ]

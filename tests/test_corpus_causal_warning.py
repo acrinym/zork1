@@ -146,17 +146,22 @@ class CorpusCausalWarningTests(unittest.TestCase):
         self.assertEqual(len(board["lanes"]["current"]), 1)
         for lane, cards in board["lanes"].items():
             for card in cards:
-                for key in (
-                    "train_id",
-                    "outcome",
-                    "scope",
-                    "acceptance",
-                    "boundaries",
-                ):
+                for key in ("train_id", "outcome"):
                     self.assertTrue(
                         card.get(key),
                         f"{lane}:{card.get('train_id')}:{key}",
                     )
+                if lane == "done":
+                    self.assertTrue(
+                        card.get("proof"),
+                        f"{lane}:{card.get('train_id')}:proof",
+                    )
+                else:
+                    for key in ("scope", "acceptance", "boundaries"):
+                        self.assertTrue(
+                            card.get(key),
+                            f"{lane}:{card.get('train_id')}:{key}",
+                        )
         done = {
             card["train_id"]: card for card in board["lanes"]["done"]
         }

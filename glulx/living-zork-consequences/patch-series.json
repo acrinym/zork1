@@ -1,0 +1,54 @@
+{
+  "edition": "Unofficial Living Zork Consequences Glulx",
+  "release": 1236,
+  "serial": "260801",
+  "base_manifest": "../cuisine-hunger-stamina/patch-series.json",
+  "base_release": 1235,
+  "base_artifact_sha256": "14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf",
+  "expected_artifact": {
+    "file": "zork1-glulx-living-zork-consequences.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 344320,
+    "checksum_hex": "0x8cb988cc",
+    "sha256": "26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7",
+    "locked": true
+  },
+  "overrides": [
+    {
+      "path": "living_zork_consequences.zil",
+      "source": "overrides/living_zork_consequences.zil",
+      "allow_new": true,
+      "description": "Add the Great Canyon rim affordance, visible fall warning, physical rope preparation, prepared near-fall, and bounded strain consequence"
+    },
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1235 layer, load Living Zork Consequences last, and assign Release 1236"
+    }
+  ],
+  "patches": [
+    "patches/001-canyon-view-leap.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "living_zork_consequences.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "the first unprotected Canyon View leap exposes loose footing and the sheer drop before death",
+    "SECURE ROPE uses and physically relocates the canonical Attic rope onto the canyon-rim surface",
+    "a prepared leap produces a real near-fall rescue and bounded Release 1235 exertion strain",
+    "ordinary TAKE ROPE restores canonical custody and removes canyon protection because secured physical containment is the sole authority",
+    "a knowingly repeated unprotected leap preserves the canonical death"
+  ],
+  "boundaries": [
+    "no generic hazard engine or hazard registry",
+    "no random death or hidden rescue roll",
+    "no automatic rescue without physical preparation",
+    "no duplicate rope state, safety item, or canyon inventory object",
+    "no injury meter, permanent debuff, or second stamina system",
+    "no parallel canyon map or world simulation",
+    "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
+  ]
+}

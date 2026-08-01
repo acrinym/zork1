@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1236-CANYON-VIEW-LEAP",
+  "path": "1dungeon.zil",
+  "description": "Insert one authored warning and prepared-rope interception immediately before the untouched canonical Canyon View death",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t     <NOT ,PRSO>>\n\t\t<JIGS-UP",
+      "new": "\t\t     <NOT ,PRSO>>\n\t\t<COND (<LIVING-CANYON-INTERCEPT?> <RTRUE>)>\n\t\t<JIGS-UP"
+    }
+  ]
+}
