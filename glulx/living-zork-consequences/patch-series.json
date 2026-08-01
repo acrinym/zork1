@@ -25,11 +25,9 @@
     }
   ],
   "patches": [
-    "patches/001-canyon-view-leap.json",
-    "patches/002-canyon-rope-custody.json"
+    "patches/001-canyon-view-leap.json"
   ],
   "expected_changed_paths": [
-    "1actions.zil",
     "1dungeon.zil",
     "living_zork_consequences.zil",
     "zork1.zil"
@@ -38,14 +36,14 @@
     "the first unprotected Canyon View leap exposes loose footing and the sheer drop before death",
     "SECURE ROPE uses and physically relocates the canonical Attic rope",
     "a prepared leap produces a real near-fall rescue and bounded Release 1235 exertion strain",
-    "TAKE ROPE restores canonical custody and removes canyon protection",
+    "ordinary TAKE ROPE restores canonical custody and removes canyon protection because physical location is the sole authority",
     "a knowingly repeated unprotected leap preserves the canonical death"
   ],
   "boundaries": [
     "no generic hazard engine or hazard registry",
     "no random death or hidden rescue roll",
     "no automatic rescue without physical preparation",
-    "no duplicate rope, safety item, or canyon inventory object",
+    "no duplicate rope state, safety item, or canyon inventory object",
     "no injury meter, permanent debuff, or second stamina system",
     "no parallel canyon map or world simulation",
     "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
