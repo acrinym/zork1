@@ -52,21 +52,24 @@ class LivingZorkConsequencesTests(unittest.TestCase):
 
     def test_first_bare_leap_warns_through_world_cause(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
-        leap = module.split("<ROUTINE LIVING-CANYON-LEAP", 1)[1]
+        intercept = module.split("<ROUTINE LIVING-CANYON-INTERCEPT?", 1)[1]
         warning = "Your first shift of weight sends loose shale skittering over the rim."
-        self.assertIn(warning, leap)
-        self.assertIn("LIVING-CANYON-SLOT-WARNED 1", leap)
-        self.assertNotIn("ARE YOU SURE", leap.upper())
-        self.assertNotIn("CONFIRM", leap.upper())
+        self.assertIn(warning, intercept)
+        self.assertIn("LIVING-CANYON-SLOT-WARNED 1", intercept)
+        self.assertNotIn("ARE YOU SURE", intercept.upper())
+        self.assertNotIn("CONFIRM", intercept.upper())
 
-    def test_canonical_death_is_preserved_after_warning(self) -> None:
+    def test_canonical_death_stays_in_upstream_routine(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
-        self.assertIn('<JIGS-UP "Nice view, lousy place to jump.">', module)
         patch = json.loads(
             (TRAIN / "patches/001-canyon-view-leap.json").read_text()
         )
-        self.assertIn('Nice view, lousy place to jump.', patch["replacements"][0]["old"])
-        self.assertIn("<LIVING-CANYON-LEAP>", patch["replacements"][0]["new"])
+        replacement = patch["replacements"][0]
+        self.assertNotIn("Nice view, lousy place to jump.", module)
+        self.assertNotIn("Nice view, lousy place to jump.", replacement["old"])
+        self.assertNotIn("Nice view, lousy place to jump.", replacement["new"])
+        self.assertIn("<LIVING-CANYON-INTERCEPT?>", replacement["new"])
+        self.assertIn("<JIGS-UP", replacement["new"])
 
     def test_secure_rope_uses_canonical_object_and_physical_location(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
@@ -81,24 +84,24 @@ class LivingZorkConsequencesTests(unittest.TestCase):
 
     def test_prepared_leap_requires_rope_at_canyon(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
-        leap = module.split("<ROUTINE LIVING-CANYON-LEAP", 1)[1]
-        self.assertIn("<LIVING-CANYON-GET ,LIVING-CANYON-SLOT-ROPE>", leap)
-        self.assertIn("<IN? ,ROPE ,CANYON-VIEW>", leap)
-        self.assertIn("the prepared rope snaps taut", leap)
+        intercept = module.split("<ROUTINE LIVING-CANYON-INTERCEPT?", 1)[1]
+        self.assertIn("<LIVING-CANYON-GET ,LIVING-CANYON-SLOT-ROPE>", intercept)
+        self.assertIn("<IN? ,ROPE ,CANYON-VIEW>", intercept)
+        self.assertIn("the prepared rope snaps taut", intercept)
 
     def test_near_fall_reuses_bounded_cuisine_strain(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
-        leap = module.split("<ROUTINE LIVING-CANYON-LEAP", 1)[1]
-        self.assertIn("<CUISINE-ENSURE>", leap)
-        self.assertIn("<CUISINE-GET ,CUISINE-SLOT-STRAIN>", leap)
-        self.assertIn("<CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>", leap)
+        intercept = module.split("<ROUTINE LIVING-CANYON-INTERCEPT?", 1)[1]
+        self.assertIn("<CUISINE-ENSURE>", intercept)
+        self.assertIn("<CUISINE-GET ,CUISINE-SLOT-STRAIN>", intercept)
+        self.assertIn("<CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>", intercept)
         self.assertNotIn("INJURY", module.upper())
         self.assertNotIn("LIVING-STAMINA", module)
 
     def test_taking_rope_removes_protection_without_replacing_take(self) -> None:
         module = (TRAIN / "overrides/living_zork_consequences.zil").read_text()
         hook = module.split("<ROUTINE LIVING-CANYON-ROPE-HOOK", 1)[1].split(
-            "<ROUTINE LIVING-CANYON-LEAP", 1
+            "<ROUTINE LIVING-CANYON-INTERCEPT?", 1
         )[0]
         self.assertIn("<VERB? TAKE>", hook)
         self.assertIn("<LIVING-CANYON-PUT ,LIVING-CANYON-SLOT-ROPE 0>", hook)
@@ -116,6 +119,12 @@ class LivingZorkConsequencesTests(unittest.TestCase):
         self.assertEqual(rope["path"], "1actions.zil")
         self.assertEqual(canyon["replacements"][0]["expected_count"], 1)
         self.assertEqual(rope["replacements"][0]["expected_count"], 1)
+        self.assertEqual(
+            canyon["replacements"][0]["new"].count(
+                "<LIVING-CANYON-INTERCEPT?>"
+            ),
+            1,
+        )
         self.assertEqual(
             rope["replacements"][0]["new"].count("<LIVING-CANYON-ROPE-HOOK>"),
             1,
