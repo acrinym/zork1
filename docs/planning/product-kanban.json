@@ -18,14 +18,15 @@
         "status": "current",
         "owner": "Justin Gargano / Onyx",
         "branch": "agent/living-zork-consequences-20260801",
-        "pr": null,
+        "pr": 39,
         "outcome": "Make the Great Canyon leap physically legible and let deliberate preparation with the canonical rope produce a real near-fall and recovery while preserving the canonical lethal consequence for a knowingly unprotected leap.",
         "scope": [
-          "inspectable Great Canyon rim",
+          "inspectable open-surface Great Canyon rim",
           "first unprepared-leap footing warning",
           "SECURE ROPE using the canonical Attic rope",
           "prepared near-fall and bounded exertion strain",
           "physical rope retrieval that removes protection",
+          "RECOVER before a later deliberate leap",
           "canonical death after a knowingly repeated unprotected leap"
         ],
         "dependencies": [
@@ -34,21 +35,23 @@
           "Release 1231 causal-warning pattern"
         ],
         "acceptance": [
-          "staging changes exactly 1actions.zil, 1dungeon.zil, living_zork_consequences.zil, and zork1.zil",
+          "staging changes exactly 1dungeon.zil, living_zork_consequences.zil, and zork1.zil",
           "the first bare leap warns through physical cause rather than hidden state or a generic confirmation prompt",
-          "SECURE ROPE moves the canonical rope to Canyon View and creates no duplicate rope",
+          "SECURE ROPE moves the canonical rope onto the LIVING-CANYON-EDGE open surface and creates no duplicate rope or protection state",
+          "merely dropping the rope in Canyon View does not satisfy the secured-rim containment authority",
           "a secured leap catches the player at the rim and creates bounded cuisine strain",
-          "TAKE ROPE restores physical custody and removes protection",
-          "a knowingly repeated unprotected leap reaches the canonical death line",
+          "ordinary TAKE ROPE restores physical custody and naturally removes protection",
+          "RECOVER clears accumulated strain before the later deliberate leap",
+          "a knowingly repeated unprotected leap reaches the untouched canonical death line",
           "original prose passes the rights-safe corpus profile",
-          "ZILF, Glazer, ULX verification, and a real Glulxe route pass",
-          "the first green artifact identity is locked and reproduced before merge"
+          "public hosted run 30683325463 passes ZILF, Glazer, ULX verification, and the complete Glulxe route",
+          "the 344320-byte candidate with checksum 0x8cb988cc and SHA-256 26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7 is locked and reproduced before merge"
         ],
         "boundaries": [
           "no generic hazard engine",
           "no random deaths",
           "no automatic rescue without preparation",
-          "no duplicate rope or canyon inventory object",
+          "no duplicate rope state or canyon inventory object",
           "no parallel world simulation",
           "no House bead reopening",
           "no S.T.A.L.K.E.R. mixing"
