@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1236-CANYON-VIEW-LEAP",
+  "path": "1dungeon.zil",
+  "description": "Route the canonical Canyon View leap through one authored warning, prepared rope rescue, and preserved lethal consequence",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE CANYON-VIEW-F (RARG)\n\t <COND (<AND <==? .RARG ,M-BEG>\n\t\t     <VERB? LEAP>\n\t\t     <NOT ,PRSO>>\n\t\t<JIGS-UP \"Nice view, lousy place to jump.\">\n\t\t<RTRUE>)>>",
+      "new": "<ROUTINE CANYON-VIEW-F (RARG)\n\t <COND (<AND <==? .RARG ,M-BEG>\n\t\t     <VERB? LEAP>\n\t\t     <NOT ,PRSO>>\n\t\t<LIVING-CANYON-LEAP>\n\t\t<RTRUE>)>>"
+    }
+  ]
+}
