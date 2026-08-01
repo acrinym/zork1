@@ -14,9 +14,9 @@ Release 1237 turns a genuinely archived victory into one complete, explicitly se
 8. cross the abandoned survey cut through the chosen item’s authored method;
 9. `RECORD MARKER` at the veteran overlook;
 10. cross back and `COMPLETE VETERAN` at the trailhead;
-11. return to the Attic and seal the veteran history separately in Expedition Box B.
+11. return to the illuminated Attic archive and seal the veteran history separately in Expedition Box B.
 
-The lantern route requires the real lantern to be lit and uses a narrow illuminated shelf. The rope route physically secures the canonical rope at the near side of the cut for both crossings. The selected item may be retained or left behind, and the final field card records that physical outcome.
+The lantern route requires the real lantern to be lit and uses a narrow illuminated shelf. The rope route physically secures the canonical rope at the near side of the cut for both crossings. A fixed, nonportable archive work light keeps the expedition boxes usable when the brass lantern was not selected. The selected field item may be retained or left behind, and the final field card records that physical outcome.
 
 ## Separation and custody
 
@@ -25,6 +25,7 @@ The lantern route requires the real lantern to be lit and uses a narrow illumina
 - Exactly one supported canonical field item is selected.
 - No selected object is duplicated at its original map location.
 - All other directly carried objects move into one real Attic hold trunk.
+- The fixed archive work light is bolted to the rafters and cannot become a second portable lantern.
 - The veteran field card becomes a physical record in Expedition Box B.
 - The existing completed-expedition archive remains the authority for separate histories.
 
@@ -35,7 +36,7 @@ This train adds no:
 - generic New Game Plus framework;
 - restart-time menu or automatic mode switch;
 - `TAKE EVERYTHING` loadout;
-- duplicate lantern, rope, treasure, or puzzle object;
+- duplicate portable lantern, rope, treasure, or puzzle object;
 - automatic puzzle completion;
 - merged Expedition A and B histories;
 - universal equipment-slot system;
@@ -44,4 +45,4 @@ This train adds no:
 
 ## Qualification direction
 
-Public hosted CI will stage exactly over locked Release 1236, qualify only the new prose against the rights-safe corpus, compile with ZILF, assemble with Glazer, and run complete lantern and rope Glulxe routes. Qualification must prove the sealed-victory gate, one-item loadout, physical hold trunk, both authored crossings, marker recording, retained-versus-left-behind custody, separate Expedition Box B materialization, and exact artifact reproduction before squash merge.
+Public hosted CI stages exactly over locked Release 1236, qualifies only the new prose against the rights-safe corpus, compiles with ZILF, assembles with Glazer, and runs complete lantern and rope Glulxe routes. Qualification proves the sealed-victory gate, one-item loadout, physical hold trunk, both authored crossings, marker recording, retained-versus-left-behind custody, usable illuminated archive return, separate Expedition Box B materialization, and exact artifact reproduction before squash merge.
