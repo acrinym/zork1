@@ -238,7 +238,7 @@
            <VETERAN-PUT ,VETERAN-SLOT-RECORDED 0>
            <VETERAN-PUT ,VETERAN-SLOT-COMPLETED 0>
            <VETERAN-PUT ,VETERAN-SLOT-RETAINED 0>
-           <MOVE ,WINNER ,VETERAN-TRAILHEAD>
+           <GOTO ,VETERAN-TRAILHEAD>
            <TELL "You close the Attic hold trunk on every unselected carried object and descend to the veteran trailhead with one canonical field item and the mission card. Expedition A remains sealed behind you as a separate history." CR>)>
     <RTRUE>>
 
@@ -249,13 +249,13 @@
            <TELL "The cut hides its narrow shelf in darkness. Turn on the real lantern before trusting that route." CR>)
           (T
            <COND (.OUTBOUND
-                  <MOVE ,WINNER ,VETERAN-OVERLOOK>
+                  <GOTO ,VETERAN-OVERLOOK>
                   <CUISINE-ENSURE>
                   <COND (<ZERO? <CUISINE-GET ,CUISINE-SLOT-STRAIN>>
                          <CUISINE-PUT ,CUISINE-SLOT-STRAIN 1>)>
                   <TELL "The lit lantern reveals a narrow shelf under the broken survey edge. You move sideways through the dark, carrying the light and feeling the crossing in your legs, until the overlook opens ahead." CR>)
                  (T
-                  <MOVE ,WINNER ,VETERAN-TRAILHEAD>
+                  <GOTO ,VETERAN-TRAILHEAD>
                   <TELL "The same lit shelf carries you back to the veteran trailhead. The lantern remains the exact object you brought." CR>)>
            <RTRUE>)>
     <RTRUE>>
@@ -264,16 +264,16 @@
     <COND (.OUTBOUND
            <COND (<IN? ,ROPE ,WINNER>
                   <MOVE ,ROPE ,VETERAN-CUT-NEAR>
-                  <MOVE ,WINNER ,VETERAN-OVERLOOK>
+                  <GOTO ,VETERAN-OVERLOOK>
                   <TELL "You secure the real rope across the abandoned cut and cross hand over hand. The rope remains physically on the near-side anchor rather than following you as imaginary equipment." CR>)
                  (<IN? ,ROPE ,VETERAN-CUT-NEAR>
-                  <MOVE ,WINNER ,VETERAN-OVERLOOK>
+                  <GOTO ,VETERAN-OVERLOOK>
                   <TELL "The already secured canonical rope carries you across to the overlook." CR>)
                  (T
                   <TELL "The declared rope is neither in your hands nor secured at the survey cut." CR>)>)
           (T
            <COND (<IN? ,ROPE ,VETERAN-CUT-NEAR>
-                  <MOVE ,WINNER ,VETERAN-TRAILHEAD>
+                  <GOTO ,VETERAN-TRAILHEAD>
                   <TELL "You cross back along the same physically secured rope. It remains on the near-side anchor until you deliberately take it." CR>)
                  (T
                   <TELL "Without the real rope on the near-side anchor, that return route does not exist." CR>)>)>
@@ -333,10 +333,10 @@
                  (T <VETERAN-PUT ,VETERAN-SLOT-RETAINED 0>)>
            <VETERAN-PUT ,VETERAN-SLOT-ACTIVE 0>
            <VETERAN-PUT ,VETERAN-SLOT-COMPLETED 1>
-           <MOVE ,WINNER ,ATTIC>
+           <GOTO ,ATTIC>
            <EXPEDITION-CAPTURE-B>
            <MOVE ,VETERAN-FIELD-CARD ,EXPEDITION-BOX-B>
-           <TELL "You return to the Attic and seal the veteran survey as Expedition B. Its field card, selected route, retained-or-lost item outcome, score, deaths, and bounded history remain physically separate from Expedition A." CR>)>
+           <TELL "You return to the Attic and seal the veteran survey as Expedition B. Its field card, selected route, retained-or-left-behind item outcome, score, deaths, and bounded history remain physically separate from Expedition A." CR>)>
     <RTRUE>>
 
 <ROUTINE V-VETERAN-STATUS ()
