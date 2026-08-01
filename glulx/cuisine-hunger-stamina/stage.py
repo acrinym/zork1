@@ -36,6 +36,15 @@ def validate_base_manifest(
     if not isinstance(value, str) or not value:
         raise RuntimeError("cuisine manifest must declare base_manifest")
     base_path = (manifest_path.parent / value).resolve()
+    lineage_root = Path(__file__).resolve().parents[1]
+    try:
+        base_path.relative_to(lineage_root)
+    except ValueError as exc:
+        raise RuntimeError(
+            f"cuisine base manifest escaped Glulx lineage root: {base_path}"
+        ) from exc
+    if not base_path.is_file():
+        raise RuntimeError(f"cuisine base manifest is missing: {base_path}")
     base = load_json(base_path)
     if not isinstance(base, dict):
         raise RuntimeError(f"base manifest {base_path} must contain an object")
