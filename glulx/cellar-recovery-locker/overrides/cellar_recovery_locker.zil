@@ -3,7 +3,7 @@
 ;"A post-victory physical cache that protects only the real objects placed
   inside it. Canonical death remains authoritative for carried inventory."
 
-<SYNTAX SEAL OBJECT = V-RECOVERY-LOCKER-SEAL>
+<SYNTAX PREPARE OBJECT = V-RECOVERY-LOCKER-PREPARE>
 
 <CONSTANT RECOVERY-LOCKER-SCHEMA 1>
 <CONSTANT RLS-VERSION 0>
@@ -143,16 +143,16 @@
            <RTRUE>)>
     <RFALSE>>
 
-<ROUTINE V-RECOVERY-LOCKER-SEAL ()
+<ROUTINE V-RECOVERY-LOCKER-PREPARE ()
     <RECOVERY-LOCKER-MATERIALIZE>
     <COND (<NOT <EQUAL? ,PRSO ,EXPEDITION-RECOVERY-LOCKER>>
-           <TELL "Only the expedition recovery locker accepts this prepared seal." CR>)
+           <TELL "Only the expedition recovery locker accepts this preparation." CR>)
           (<NOT <RECOVERY-LOCKER-UNLOCKED?>>
            <TELL "The recovery locker is not available until Expedition B is sealed." CR>)
           (<NOT <EQUAL? ,HERE ,CELLAR>>
-           <TELL "The locker must be sealed physically in the Cellar." CR>)
+           <TELL "The locker must be prepared physically in the Cellar." CR>)
           (<RECOVERY-LOCKER-GET ,RLS-SEALED>
-           <TELL "The recovery locker is already sealed." CR>)
+           <TELL "The recovery locker is already prepared and sealed." CR>)
           (<NOT <FIRST? ,EXPEDITION-RECOVERY-LOCKER>>
            <TELL "An empty locker is not a recovery kit. Place one or two real objects inside first." CR>)
           (T
