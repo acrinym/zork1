@@ -217,11 +217,11 @@ text = Path('glulx/build/living-zork-consequences/living-consequences-transcript
 secure_tail = text.split('You work the real rope around a solid projection', 1)[1]
 first_inventory = secure_tail.split('The shale breaks loose beneath you', 1)[0]
 assert 'You are carrying:' in first_inventory
-assert 'rope' not in first_inventory.lower().split('You are carrying:', 1)[1]
+assert 'rope' not in first_inventory.lower().split('you are carrying:', 1)[1]
 after_take = text.rsplit('Taken.', 1)[1]
 second_inventory = after_take.split('You stop long enough for the accumulated strain to pass.', 1)[0]
 assert 'You are carrying:' in second_inventory
-assert 'rope' in second_inventory.lower().split('You are carrying:', 1)[1]
+assert 'rope' in second_inventory.lower().split('you are carrying:', 1)[1]
 rescue = text.index('The shale breaks loose beneath you')
 recovery = text.index('You stop long enough for the accumulated strain to pass.')
 death = text.index('Nice view, lousy place to jump.')
