@@ -5,14 +5,12 @@
 
 <SYNTAX CHOOSE OBJECT (HELD CARRIED) = V-VETERAN-CHOOSE>
 <SYNONYM CHOOSE SELECT DECLARE>
-<SYNTAX BEGIN VETERAN = V-VETERAN-BEGIN>
-<SYNTAX BEGIN EXPEDITION = V-VETERAN-BEGIN>
+<SYNTAX BEGIN OBJECT (FIND RMUNGBIT) = V-VETERAN-BEGIN>
 <SYNTAX CROSS OBJECT (ON-GROUND IN-ROOM) = V-VETERAN-CROSS>
 <SYNONYM CROSS TRAVERSE>
 <SYNTAX RECORD OBJECT (ON-GROUND IN-ROOM) = V-VETERAN-RECORD>
 <SYNONYM RECORD COPY SURVEY>
-<SYNTAX COMPLETE EXPEDITION = V-VETERAN-COMPLETE>
-<SYNTAX REVIEW VETERAN = V-VETERAN-STATUS>
+<SYNTAX COMPLETE OBJECT (FIND RMUNGBIT) = V-VETERAN-COMPLETE>
 
 <CONSTANT VETERAN-SCHEMA 1>
 <CONSTANT VETERAN-SLOT-VERSION 0>
@@ -27,6 +25,14 @@
 <CONSTANT VETERAN-ROUTE-NONE 0>
 <CONSTANT VETERAN-ROUTE-LANTERN 1>
 <CONSTANT VETERAN-ROUTE-ROPE 2>
+
+<OBJECT VETERAN-EXPEDITION-INTERFACE
+    (IN GLOBAL-OBJECTS)
+    (SYNONYM VETERAN)
+    (ADJECTIVE POSTGAME SURVEY)
+    (DESC "veteran expedition")
+    (FLAGS NDESCBIT RMUNGBIT)
+    (ACTION VETERAN-EXPEDITION-INTERFACE-FCN)>
 
 <ROOM VETERAN-TRAILHEAD
     (IN ROOMS)
@@ -121,9 +127,20 @@
            <MOVE ,VETERAN-FIELD-CARD ,EXPEDITION-BOX-B>)>
     <RFALSE>>
 
+<ROUTINE VETERAN-COMMAND-MATERIALIZE ()
+    <EXPEDITION-ENSURE>
+    <VETERAN-MATERIALIZE>
+    <RTRUE>>
+
+<ROUTINE VETERAN-EXPEDITION-INTERFACE-FCN ()
+    <COND (<VERB? REVIEW EXAMINE>
+           <V-VETERAN-STATUS>
+           <RTRUE>)>
+    <RFALSE>>
+
 <ROUTINE VETERAN-DISPATCH-FCN ()
     <COND (<VERB? READ EXAMINE>
-           <TELL "The dispatch recognizes one sealed completed expedition and offers a separate veteran survey. In the Attic, choose either the real brass lantern or the real rope, then BEGIN VETERAN EXPEDITION. Every other directly carried object will remain in the physical hold trunk." CR>
+           <TELL "The dispatch recognizes one sealed completed expedition and offers a separate veteran survey. In the Attic, choose either the real brass lantern or the real rope, then BEGIN VETERAN. Every other directly carried object will remain in the physical hold trunk." CR>
            <RTRUE>)>
     <RFALSE>>
 
@@ -163,7 +180,7 @@
     <RFALSE>>
 
 <ROUTINE V-VETERAN-CHOOSE ()
-    <VETERAN-MATERIALIZE>
+    <VETERAN-COMMAND-MATERIALIZE>
     <COND (<NOT <EQUAL? ,HERE ,ATTIC>>
            <TELL "Veteran loadout selection belongs beside the sealed expedition boxes and hold trunk in the Attic." CR>)
           (<NOT <VETERAN-UNLOCKED?>>
@@ -197,9 +214,11 @@
     <RTRUE>>
 
 <ROUTINE V-VETERAN-BEGIN ("AUX" SELECTED)
-    <VETERAN-MATERIALIZE>
+    <VETERAN-COMMAND-MATERIALIZE>
     <SET SELECTED <VETERAN-GET ,VETERAN-SLOT-SELECTED>>
-    <COND (<NOT <EQUAL? ,HERE ,ATTIC>>
+    <COND (<NOT <EQUAL? ,PRSO ,VETERAN-EXPEDITION-INTERFACE>>
+           <TELL "Begin the veteran expedition by naming VETERAN." CR>)
+          (<NOT <EQUAL? ,HERE ,ATTIC>>
            <TELL "Begin the veteran expedition beside its physical dispatch and hold trunk in the Attic." CR>)
           (<NOT <VETERAN-UNLOCKED?>>
            <TELL "A sealed Expedition A is required before any veteran departure." CR>)
@@ -273,7 +292,7 @@
                 <EQUAL? ,PRSO ,VETERAN-CUT-FAR>>
            <COND (<EQUAL? <VETERAN-GET ,VETERAN-SLOT-ROUTE>
                           ,VETERAN-ROUTE-LANTERN>
-                  <VETERAN-CROSS-LANTERN <>>) 
+                  <VETERAN-CROSS-LANTERN <>>)
                  (T <VETERAN-CROSS-ROPE <>>)>)
           (T
            <TELL "The veteran survey cut is not here." CR>)>
@@ -295,9 +314,11 @@
     <RTRUE>>
 
 <ROUTINE V-VETERAN-COMPLETE ("AUX" SELECTED)
-    <VETERAN-ENSURE>
+    <VETERAN-COMMAND-MATERIALIZE>
     <SET SELECTED <VETERAN-GET ,VETERAN-SLOT-SELECTED>>
-    <COND (<NOT <VETERAN-GET ,VETERAN-SLOT-ACTIVE>>
+    <COND (<NOT <EQUAL? ,PRSO ,VETERAN-EXPEDITION-INTERFACE>>
+           <TELL "Complete the veteran expedition by naming VETERAN." CR>)
+          (<NOT <VETERAN-GET ,VETERAN-SLOT-ACTIVE>>
            <TELL "No veteran expedition is active." CR>)
           (<NOT <EQUAL? ,HERE ,VETERAN-TRAILHEAD>>
            <TELL "Return physically to the veteran trailhead before completing the expedition." CR>)
@@ -318,7 +339,7 @@
     <RTRUE>>
 
 <ROUTINE V-VETERAN-STATUS ()
-    <VETERAN-MATERIALIZE>
+    <VETERAN-COMMAND-MATERIALIZE>
     <COND (<NOT <VETERAN-UNLOCKED?>>
            <TELL "Veteran Expedition remains locked until a genuine completed Expedition A is sealed." CR>)
           (T
