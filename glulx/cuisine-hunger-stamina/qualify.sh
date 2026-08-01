@@ -206,6 +206,8 @@ EOF_COMMANDS
   2>&1 | tee "$BUILD/cuisine-transcript.txt"
 
 grep -F 'You unwrap and arrange the hot-pepper sandwich on the worktop.' "$BUILD/cuisine-transcript.txt"
+grep -F 'You wash the nasty knife until its blade is clean enough for deliberate food preparation.' "$BUILD/cuisine-transcript.txt"
+grep -F 'You dry the nasty knife thoroughly.' "$BUILD/cuisine-transcript.txt"
 grep -F 'You slice the real clove.' "$BUILD/cuisine-transcript.txt"
 grep -F 'You work a small amount of sliced garlic into the prepared hot-pepper sandwich.' "$BUILD/cuisine-transcript.txt"
 grep -F 'The exertion leaves your breath short.' "$BUILD/cuisine-transcript.txt"
@@ -217,6 +219,7 @@ grep -F 'You eat the real prepared lunch, its garlic and hot pepper forming a sh
 grep -F 'Your appetite is quiet, and your exertion strain is clear.' "$BUILD/cuisine-transcript.txt"
 grep -F 'A prepared meal still supports 2 exertions.' "$BUILD/cuisine-transcript.txt"
 grep -F 'A clove of garlic' "$BUILD/cuisine-transcript.txt"
+grep -F "You can't see any lunch here!" "$BUILD/cuisine-transcript.txt"
 for word in combine season appetite stamina recover; do
   if grep -Fi "I don't know the word \"$word\"" "$BUILD/cuisine-transcript.txt"; then
     echo "Cuisine vocabulary was not recognized: $word" >&2
@@ -226,9 +229,10 @@ done
 python - <<'PY'
 from pathlib import Path
 text = Path('glulx/build/cuisine-hunger-stamina/cuisine-transcript.txt').read_text()
-final_inventory = text.rsplit('You are carrying:', 1)[-1]
-assert 'clove of garlic' in final_inventory.lower()
-assert 'lunch' not in final_inventory.lower().split('examine lunch', 1)[0]
+inventory_block = text.rsplit('You are carrying:', 1)[-1].split('\n\n>', 1)[0]
+assert 'clove of garlic' in inventory_block.lower()
+assert 'lunch' not in inventory_block.lower()
+assert "You can't see any lunch here!" in text
 PY
 
 python - "$CUISINE_SERIAL" "$MANIFEST" <<'PY'
