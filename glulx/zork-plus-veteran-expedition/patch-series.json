@@ -1,0 +1,52 @@
+{
+  "edition": "Unofficial Zork Plus Veteran Expedition Glulx",
+  "release": 1237,
+  "serial": "260801",
+  "base_manifest": "../living-zork-consequences/patch-series.json",
+  "base_release": 1236,
+  "base_artifact_sha256": "26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7",
+  "expected_artifact": {
+    "file": "zork1-glulx-zork-plus-veteran-expedition.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "overrides": [
+    {
+      "path": "zork_plus_veteran_expedition.zil",
+      "source": "overrides/zork_plus_veteran_expedition.zil",
+      "allow_new": true,
+      "description": "Add the genuinely victory-gated veteran dispatch, bounded one-item loadout, physical hold trunk, two survey-cut routes, field objective, and separate Expedition B completion"
+    },
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1236 layer, load Zork Plus last, and assign Release 1237"
+    }
+  ],
+  "patches": [
+    "patches/001-veteran-materialization.json"
+  ],
+  "expected_changed_paths": [
+    "completed_expedition_archive.zil",
+    "zork1.zil",
+    "zork_plus_veteran_expedition.zil"
+  ],
+  "player_outcomes": [
+    "a genuinely sealed Expedition A physically unlocks the veteran dispatch and Attic hold trunk",
+    "the player explicitly chooses exactly one canonical brass lantern or rope loadout",
+    "all other directly carried objects remain physically in the Attic rather than following as hidden inventory",
+    "the lantern and rope create two authored round-trip crossings of the veteran survey cut",
+    "the boundary marker is recorded on a physical field card instead of removed or duplicated",
+    "completion seals the veteran survey into separate Expedition Box B with retained-or-left-behind loadout custody"
+  ],
+  "boundaries": [
+    "no generic New Game Plus framework or restart menu",
+    "no silent change to the canonical first expedition",
+    "no TAKE EVERYTHING loadout or universal equipment slots",
+    "no duplicate lantern, rope, treasure, or canonical puzzle object",
+    "no automatic puzzle completion",
+    "no merged Expedition A and B histories",
+    "no House hierarchy reopening or S.T.A.L.K.E.R. mixing"
+  ]
+}
