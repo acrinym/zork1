@@ -8,17 +8,20 @@ Release 1236 begins the Living Zork Consequences family with one complete canoni
 2. travel through the clearing to Canyon View;
 3. inspect the canyon rim or attempt one unprepared leap;
 4. receive a physical warning about the loose footing and sheer drop;
-5. `SECURE ROPE` at the rim;
+5. `SECURE ROPE`, placing the real rope on the physical canyon-rim surface;
 6. leap while deliberately protected;
 7. experience the real rope catching the fall and bounded exertion strain;
-8. `TAKE ROPE` to recover canonical custody and remove that protection;
-9. knowingly leap again without protection and reach the canonical death.
+8. `TAKE ROPE` to recover canonical custody and naturally remove that protection;
+9. `RECOVER` so the established exertion system permits another deliberate leap;
+10. knowingly leap again without protection and reach the canonical death.
 
-The first warning is not a generic confirmation prompt. It describes the cause in the world. The rescue is not automatic: it exists only after the player brings and secures the real rope.
+The first warning is not a generic confirmation prompt. It describes the cause in the world. The rescue is not automatic: it exists only after the player brings and secures the real rope. Merely dropping the rope somewhere in Canyon View does not secure it.
 
 ## State and custody
 
-The train uses one saveable constant table and no new global variable. The canonical rope physically moves from the player to Canyon View when secured and returns through ordinary `TAKE ROPE` behavior. No rescue rope, safety inventory, hazard record, or duplicate canyon object is created.
+The train uses one saveable warning table and no new global variable. `SECURE ROPE` physically moves the canonical rope onto the open canyon-rim surface. That containment is the sole protection authority. Ordinary `TAKE ROPE` restores player custody and naturally removes protection, with no parallel rope flag or TAKE hook to desynchronize from the world.
+
+No rescue rope, safety inventory, hazard record, duplicate protection state, or duplicate canyon object is created.
 
 The prepared near-fall feeds the bounded Release 1235 exertion state. It does not create injury points, permanent debuffs, or a second stamina system.
 
@@ -29,12 +32,18 @@ This train adds no:
 - generic hazard engine;
 - random death or hidden dice roll;
 - automatic rescue without preparation;
-- duplicate rope;
+- duplicate rope or rope-protection state;
 - gore escalation;
 - alternate canyon map or parallel simulation;
 - House hierarchy work;
 - S.T.A.L.K.E.R. coupling.
 
-## Qualification direction
+## Qualification
 
-Hosted qualification stages exactly over locked Release 1235, corpus-qualifies only the new player-visible prose, compiles and assembles the real story, and runs a Glulxe route proving warning, physical rope preparation, safe near-fall, bounded strain, rope retrieval, and the preserved canonical lethal consequence.
+Public hosted qualification stages exactly over locked Release 1235, corpus-qualifies only the new player-visible prose, compiles and assembles the real story, and runs a Glulxe route proving warning, physical rim preparation, safe near-fall, bounded strain, ordinary rope retrieval, recovery, and the preserved canonical lethal consequence.
+
+The locked Release 1236 artifact is:
+
+- size: `344320` bytes;
+- checksum: `0x8cb988cc`;
+- SHA-256: `26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7`.
