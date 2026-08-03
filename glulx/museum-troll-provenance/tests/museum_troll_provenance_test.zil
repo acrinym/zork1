@@ -13,19 +13,22 @@
     <FSET ,AXE ,WEAPONBIT>
     <FCLEAR ,TROLL ,FIGHTBIT>
     <SETG TROLL-FLAG <>>
+    <MOVE ,LAMP ,WINNER>
+    <FSET ,LAMP ,ONBIT>
     <GOTO ,TROLL-ROOM>
     <RFALSE>>
 
 <ROUTINE V-MUSEUM-TROLL-TEST-SUBDUE ()
     <MUSEUM-TROLL-TEST-RESET>
     <TROLL-FCN ,F-UNCONSCIOUS>
-    <TELL "TEST PRECONDITION: the canonical troll was rendered unconscious in the Troll Room." CR>
+    <TELL "TEST PRECONDITION: the canonical troll was rendered unconscious in the lit Troll Room." CR>
     <RTRUE>>
 
 <ROUTINE V-MUSEUM-TROLL-TEST-KILL ()
     <MUSEUM-TROLL-TEST-RESET>
+    <REMOVE ,TROLL>
     <TROLL-FCN ,F-DEAD>
-    <TELL "TEST PRECONDITION: the canonical troll was killed in the Troll Room." CR>
+    <TELL "TEST PRECONDITION: the canonical troll was killed in the lit Troll Room." CR>
     <RTRUE>>
 
 <ROUTINE V-MUSEUM-TROLL-TEST-HOME ()
