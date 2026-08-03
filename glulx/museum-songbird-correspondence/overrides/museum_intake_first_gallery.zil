@@ -1,0 +1,56 @@
+"MUSEUM INTAKE, FIRST GALLERY, WATERS, AND FOREST for Release 1240"
+
+;"Physical intake keeps explicit display classes ahead of generic treasure
+  value and adds one authored forest-trace destination while preserving the
+  real canonical brass bauble in the trophy case."
+
+<SYNTAX EXHIBIT OBJECT (MANY HELD HAVE) = V-MUSEUM-EXHIBIT>
+<SYNTAX CATALOG OBJECT (FIND RMUNGBIT) = V-MUSEUM-CATALOG>
+<SYNTAX REVIEW OBJECT (FIND RMUNGBIT) = V-MUSEUM-CATALOG>
+
+<OBJECT MUSEUM-CATALOG-OBJECT
+    (IN GLOBAL-OBJECTS)
+    (SYNONYM MUSEUM GALLERY COLLECTION)
+    (ADJECTIVE LIVING ROOM PRIVATE)
+    (DESC "museum collection")
+    (FLAGS NDESCBIT RMUNGBIT)>
+
+<ROUTINE MUSEUM-INTAKE-SURFACE (OBJ)
+    <COND (<MUSEUM-AQUATIC-ACCEPTS? .OBJ>
+           <RETURN ,MUSEUM-WATERS-CASE>)
+          (<MUSEUM-FOREST-ACCEPTS? .OBJ>
+           <RETURN ,MUSEUM-FOREST-CASE>)
+          (<MUSEUM-ACCEPTS? ,MUSEUM-FRAME .OBJ>
+           <RETURN ,MUSEUM-FRAME>)
+          (<MUSEUM-ACCEPTS? ,MUSEUM-WEAPON-WALL .OBJ>
+           <RETURN ,MUSEUM-WEAPON-WALL>)
+          (<MUSEUM-ACCEPTS? ,MUSEUM-RECORD-SHELF .OBJ>
+           <RETURN ,MUSEUM-RECORD-SHELF>)
+          (<G? <GETP .OBJ ,P?TVALUE> 0>
+           <RETURN ,TROPHY-CASE>)
+          (<MUSEUM-ACCEPTS? ,MUSEUM-RELIC-STAND .OBJ>
+           <RETURN ,MUSEUM-RELIC-STAND>)>
+    <RFALSE>>
+
+<ROUTINE V-MUSEUM-EXHIBIT ("AUX" SURFACE)
+    <COND (<NOT <EQUAL? ,HERE ,LIVING-ROOM>>
+           <TELL "There is no museum intake here." CR>)
+          (<SET SURFACE <MUSEUM-INTAKE-SURFACE ,PRSO>>
+           <COND (<EQUAL? .SURFACE ,TROPHY-CASE>
+                  <PERFORM ,V?PUT ,PRSO .SURFACE>)
+                 (T
+                  <PERFORM ,V?PUT-ON ,PRSO .SURFACE>)>)
+          (T
+           <PERFORM ,V?PUT-ON ,PRSO ,MUSEUM-RELIC-STAND>)>>
+
+<ROUTINE V-MUSEUM-CATALOG ()
+    <COND (<NOT <EQUAL? ,HERE ,LIVING-ROOM>>
+           <TELL "There is no museum intake here." CR>)
+          (<EQUAL? ,PRSO ,MUSEUM-AQUATIC-GALLERY-OBJECT>
+           <MUSEUM-AQUATIC-PROJECT>)
+          (<EQUAL? ,PRSO ,MUSEUM-FOREST-GALLERY-OBJECT>
+           <MUSEUM-FOREST-PROJECT>)
+          (T
+           <MUSEUM-PROJECT>
+           <MUSEUM-AQUATIC-PROJECT>
+           <MUSEUM-FOREST-PROJECT>)>>

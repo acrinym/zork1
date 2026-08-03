@@ -1,0 +1,61 @@
+{
+  "edition": "Unofficial Zork Museum Songbird Correspondence Glulx",
+  "release": 1240,
+  "serial": "260801",
+  "base_manifest": "../museum-ecology-dam-fishing/patch-series.json",
+  "base_release": 1239,
+  "base_artifact_sha256": "5b81448327cb5a2a60298f28d76062c0c5498ec5fc11f6d627a4873e82cba11f",
+  "expected_artifact": {
+    "file": "zork1-glulx-museum-songbird-correspondence.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 363776,
+    "checksum_hex": "0x8c222852",
+    "sha256": "067ab63fd33bd35a3bb7f4a118e3d49e09f24b268231922ad9f68417c1560630",
+    "locked": true
+  },
+  "overrides": [
+    {
+      "path": "museum_songbird_correspondence.zil",
+      "source": "overrides/museum_songbird_correspondence.zil",
+      "allow_new": true,
+      "description": "Add the physical songbird feather, reuse Zork's canonical bird nest, and add the Forest and Surface Life case, linked canonical-bauble evidence, and provenance plaque"
+    },
+    {
+      "path": "museum_intake_first_gallery.zil",
+      "source": "overrides/museum_intake_first_gallery.zil",
+      "description": "Route the real feather into the forest case while keeping the canonical brass bauble in the trophy case and catalog both by actual custody"
+    },
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1239 layer, load songbird correspondence before museum intake, and assign Release 1240"
+    }
+  ],
+  "patches": [
+    "patches/001-canary-songbird-feather.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "museum_intake_first_gallery.zil",
+    "museum_songbird_correspondence.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "winding the real intact golden clockwork canary in a canonical forest room still produces the canonical brass bauble",
+    "the same authored event drops one real blue-black songbird feather beside that bauble",
+    "the player may physically carry the feather to the Living Room and EXHIBIT FEATHER in the Forest and Surface Life case",
+    "opening the canonical trophy case and using EXHIBIT BAUBLE moves the actual canonical treasure inside and preserves canonical scoring",
+    "the player may instead carry the feather to Up a Tree and PUT FEATHER IN NEST, permanently returning the same trace to Zork's existing bird nest beside the jeweled egg",
+    "CATALOG FOREST and READ SONGBIRD PLAQUE report the actual locations of the feather and brass bauble",
+    "taking either displayed object away immediately makes the linked exhibit truthful about what is absent"
+  ],
+  "boundaries": [
+    "no generic bird, nest, ecology, or specimen engine",
+    "no second nest and no duplicate brass bauble, canary, feather, or substitute specimen",
+    "no remote donation or abstract collection registry",
+    "no checklist of forest species or procedural wildlife",
+    "no replacement canary event or forest controller",
+    "no audit framework, recursive qualification machinery, or S.T.A.L.K.E.R. coupling"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1240-CANARY-SONGBIRD-FEATHER",
+  "path": "1actions.zil",
+  "description": "Extend the one canonical forest canary exchange by dropping one physical songbird feather beside the real brass bauble",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t\t\t\t (T ,HERE)>>)\n\t\t\t    (T",
+      "new": "\t\t\t\t\t (T ,HERE)>>\n\t\t\t     <MUSEUM-SONGBIRD-OBSERVED>)\n\t\t\t    (T"
+    }
+  ]
+}
