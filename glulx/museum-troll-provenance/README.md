@@ -30,6 +30,17 @@ Only the first real trace is created. If the troll later revives or suffers anot
 - The Creatures case and plaque read the tuft's real object location.
 - One bounded saveable table stores only the historical outcome that produced that same physical trace.
 
+## Release artifact
+
+- File: `zork1-glulx-museum-troll-provenance.ulx`
+- Release: `1241`
+- Serial: `260802`
+- Format: Glulx
+- Version: `0x00030103`
+- Size: `366848` bytes
+- Checksum: `0x9932e3ed`
+- SHA-256: `df85a46f5fde5fc8623a347604a7e200f888918416db2c501061a41c4926b303`
+
 ## Boundaries
 
 - no combat rewrite or replacement fighting routine;
