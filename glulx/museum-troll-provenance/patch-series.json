@@ -1,0 +1,56 @@
+{
+  "edition": "Unofficial Zork Museum Troll Provenance Glulx",
+  "release": 1241,
+  "serial": "260802",
+  "base_manifest": "../museum-songbird-correspondence/patch-series.json",
+  "base_release": 1240,
+  "base_artifact_sha256": "067ab63fd33bd35a3bb7f4a118e3d49e09f24b268231922ad9f68417c1560630",
+  "expected_artifact": {
+    "file": "zork1-glulx-museum-troll-provenance.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "overrides": [
+    {
+      "path": "museum_troll_provenance.zil",
+      "source": "overrides/museum_troll_provenance.zil",
+      "allow_new": true,
+      "description": "Add the one physical troll tuft, outcome-aware provenance, creature case, and plaque"
+    },
+    {
+      "path": "museum_intake_first_gallery.zil",
+      "source": "overrides/museum_intake_first_gallery.zil",
+      "description": "Route the real troll tuft into the Creatures case and catalog it by actual custody"
+    },
+    {
+      "path": "zork1.zil",
+      "source": "overrides/zork1.zil",
+      "description": "Retain every qualified Release 1240 layer, load troll provenance before museum intake, and assign Release 1241"
+    }
+  ],
+  "patches": [
+    "patches/001-troll-outcome-trace.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "museum_intake_first_gallery.zil",
+    "museum_troll_provenance.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "the canonical troll fight remains the sole authority for whether the troll is rendered unconscious or killed",
+    "the first real unconscious or dead outcome sheds one physical iron-grey troll tuft in the Troll Room",
+    "the tuft records whether it came from a subdued living troll or a confirmed kill",
+    "the player may carry the actual tuft to the Living Room and EXHIBIT FUR in the Creatures and Monstrous Zoology case",
+    "CATALOG CREATURES and READ TROLL PLAQUE report the actual provenance and physical custody of the tuft",
+    "taking the displayed tuft away immediately weakens the exhibit instead of leaving a false completion flag"
+  ],
+  "boundaries": [
+    "no combat rewrite, generic monster engine, bestiary checklist, or encounter registry",
+    "no duplicate troll, axe, corpse, fur tuft, or substitute specimen",
+    "no remote donation or abstract collection transaction",
+    "no altered troll passage authority, fighting probability, weapon behavior, or resurrection behavior",
+    "no audit framework, recursive qualification machinery, or S.T.A.L.K.E.R. coupling"
+  ]
+}
