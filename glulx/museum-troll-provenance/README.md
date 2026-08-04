@@ -9,10 +9,11 @@ Release 1241 gives the canonical troll encounter a lasting physical consequence 
 3. When the real troll is first rendered unconscious or killed, one coarse iron-grey tuft falls in the room.
 4. Recover that physical tuft.
 5. Carry it to the Living Room and `EXHIBIT FUR` in the Creatures and Monstrous Zoology case.
-6. `CATALOG CREATURES` or `READ TROLL PLAQUE` reports whether the trace came from:
+6. The Living Room description points to a small provenance plaque beside the case, so `READ TROLL PLAQUE` is discoverable during ordinary play.
+7. `CATALOG CREATURES` or `READ TROLL PLAQUE` reports whether the trace came from:
    - a subdued, still-living troll whose unconsciousness opened the passages; or
    - a confirmed kill after the bloody axe fell.
-7. Take the tuft back from the case normally. The exhibit immediately admits that the real trace is outside museum custody.
+8. Take the tuft back from the case normally. The exhibit immediately admits that the real trace is outside museum custody.
 
 ## Consequence
 
@@ -30,6 +31,10 @@ Only the first real trace is created. If the troll later revives or suffers anot
 - The Creatures case and plaque read the tuft's real object location.
 - One bounded saveable table stores only the historical outcome that produced that same physical trace.
 
+## Natural-play correction
+
+A review found that the provenance plaque worked but was hidden from room listings, leaving ordinary players no reason to try reading it. The Creatures case description now explicitly mentions the nearby plaque. The corrected build was replayed through both subdued and killed troll routes before its artifact identity was relocked.
+
 ## Release artifact
 
 - File: `zork1-glulx-museum-troll-provenance.ulx`
@@ -38,8 +43,8 @@ Only the first real trace is created. If the troll later revives or suffers anot
 - Format: Glulx
 - Version: `0x00030103`
 - Size: `366848` bytes
-- Checksum: `0x9932e3ed`
-- SHA-256: `df85a46f5fde5fc8623a347604a7e200f888918416db2c501061a41c4926b303`
+- Checksum: `0xec89dfcd`
+- SHA-256: `95f5d3428b366cbae6bf5c83eccb750caeea2fe1d747b83a1112dee18eb3263f`
 
 ## Boundaries
 
