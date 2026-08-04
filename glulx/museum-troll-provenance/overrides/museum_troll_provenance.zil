@@ -23,7 +23,7 @@
     (SYNONYM CASE DISPLAY TRAY CABINET)
     (ADJECTIVE CREATURE MONSTER TROLL ZOOLOGY MUSEUM)
     (DESC "Creatures and Monstrous Zoology case")
-    (LDESC "A dark-backed case marked CREATURES AND MONSTROUS ZOOLOGY stands beyond the Forest display.")
+    (LDESC "A dark-backed case marked CREATURES AND MONSTROUS ZOOLOGY stands beyond the Forest display. A small provenance plaque sits beside it.")
     (FLAGS CONTBIT OPENBIT SEARCHBIT SURFACEBIT TRYTAKEBIT)
     (CAPACITY 20)
     (ACTION MUSEUM-MONSTER-CASE-FCN)>
