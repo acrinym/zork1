@@ -9,10 +9,7 @@
     "file": "zork1-glulx-museum-troll-provenance.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": true,
-    "size_bytes": 366848,
-    "checksum_hex": "0x9932e3ed",
-    "sha256": "df85a46f5fde5fc8623a347604a7e200f888918416db2c501061a41c4926b303"
+    "locked": false
   },
   "overrides": [
     {
