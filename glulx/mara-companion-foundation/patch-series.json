@@ -9,10 +9,10 @@
     "file": "zork1-glulx-mara-companion-foundation.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "unlocked",
-    "sha256": "unlocked",
-    "locked": false
+    "size_bytes": 380672,
+    "checksum_hex": "0x4758dedc",
+    "sha256": "8d3f4bf555ba15be82d4d4e849c1501fa61bb3f57630f0a4e91061e89560d629",
+    "locked": true
   },
   "overrides": [
     {
