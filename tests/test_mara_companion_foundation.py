@@ -49,11 +49,12 @@ class MaraCompanionFoundationTests(unittest.TestCase):
     def test_direct_address_and_joint_actions_are_real_parser_actions(self) -> None:
         for grammar in (
             "<SYNTAX BRACE OBJECT = V-MARA-BRACE>",
-            "<SYNTAX SURVEY OBJECT WITH OBJECT",
+            "<SYNTAX RECORD OBJECT WITH OBJECT",
             "<SYNTAX THANK OBJECT",
             "<SYNTAX APOLOGIZE TO OBJECT",
         ):
             self.assertIn(grammar, self.module)
+        self.assertIn("<SYNONYM SURVEY MEASURE>", self.module)
         self.assertIn("<AND <EQUAL? ,WINNER ,MARA> <VERB? FOLLOW>>", self.module)
         self.assertIn("<AND <EQUAL? ,WINNER ,MARA> <VERB? WAIT>>", self.module)
         self.assertIn("MARA, BRACE PANEL", self.module)
