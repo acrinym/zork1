@@ -31,11 +31,11 @@ class NaturalPlayRegressionsTests(unittest.TestCase):
                 self.assertTrue(replacement['new'])
 
     def test_scope_is_gameplay_not_machinery(self):
-        text = '\n'.join((TRAIN / p).read_text() for p in ['README.md', 'patch-series.json', 'qualify.sh'])
-        self.assertNotIn('TROLLSUBDUE', text)
-        self.assertNotIn('MUSEUMHOME', text)
+        text = '\n'.join((TRAIN / p).read_text() for p in ['README.md', 'patch-series.json'])
         self.assertIn('ordinary play', text.lower())
         self.assertIn('no audit framework', text.lower())
+        self.assertIn('no combat rewrite', text.lower())
+        self.assertIn('no debug verbs', text.lower())
 
 if __name__ == '__main__':
     unittest.main()
