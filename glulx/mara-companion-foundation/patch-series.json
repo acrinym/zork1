@@ -17,9 +17,34 @@
   "overrides": [
     {
       "source": "overrides/mara_companion.zil",
-      "destination": "mara_companion.zil",
+      "path": "mara_companion.zil",
+      "description": "Provide Mara companion foundation source: mara_companion.zil",
       "expected_base_sha256": "3084214bafb50b6f5995173e2c5555c51176c29a69a5080d04a406c693903734",
-      "expected_sha256": "86e687c6159efd9f11cbe75b9b262211b48f76106a228a1a336cfb744577b67b"
+      "expected_sha256": "6b2195661ed56edd327980dd22047ff3f0755f8023cec0d10d6ba33b73352dc5"
+    },
+    {
+      "source": "overrides/mara_companion_state.zil",
+      "path": "mara_companion_state.zil",
+      "description": "Provide Mara companion foundation source: mara_companion_state.zil",
+      "allow_new": true
+    },
+    {
+      "source": "overrides/mara_companion_movement.zil",
+      "path": "mara_companion_movement.zil",
+      "description": "Provide Mara companion foundation source: mara_companion_movement.zil",
+      "allow_new": true
+    },
+    {
+      "source": "overrides/mara_companion_actions.zil",
+      "path": "mara_companion_actions.zil",
+      "description": "Provide Mara companion foundation source: mara_companion_actions.zil",
+      "allow_new": true
+    },
+    {
+      "source": "overrides/mara_companion_actor.zil",
+      "path": "mara_companion_actor.zil",
+      "description": "Provide Mara companion foundation source: mara_companion_actor.zil",
+      "allow_new": true
     }
   ],
   "patches": [
@@ -33,6 +58,10 @@
     "dam_mechanisms.zil",
     "gverbs.zil",
     "mara_companion.zil",
+    "mara_companion_actions.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_movement.zil",
+    "mara_companion_state.zil",
     "museum_ecology_dam_fishing.zil",
     "shadow_logic.zil",
     "zork1.zil"
