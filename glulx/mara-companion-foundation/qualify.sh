@@ -192,7 +192,7 @@ assert t.index('Repetition does not turn gratitude into currency') < t.index('I 
 assert t.index('I will wait here, she says, not everywhere and not forever') < t.index('For the routes we have actually agreed to share, yes')
 assert t.index('do not call the result unforeseeable') < t.index('She retreats to the lobby')
 assert t.index('An apology that leaves the water running') < t.index('That is a beginning, she says')
-assert t.index('narrow silver fish comes up fighting') < t.index('Evidence observed, animal alive, custody closed')
+assert t.index('broad-tailed silverfin breaks the surface') < t.index('Evidence observed, animal alive, custody closed')
 for word in ('mara', 'brace', 'survey', 'thank', 'apologize'):
     assert f'I don\'t know the word "{word}"' not in t
 assert 'You may know how to do that, but I don\'t.' not in t
