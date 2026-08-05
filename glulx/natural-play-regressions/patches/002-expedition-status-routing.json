@@ -1,0 +1,22 @@
+{
+  "id": "002_EXPEDITION_STATUS_ROUTING",
+  "path": "completed_expedition_archive.zil",
+  "description": "Return STATUS HOUSE to the house feature and reject unrelated objects instead of reporting expedition state",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-EXPEDITION-STATUS ()\n    <EXPEDITION-ENSURE>",
+      "new": "<ROUTINE V-EXPEDITION-STATUS ()\n    <COND (<EQUAL? ,PRSO ,WHITE-HOUSE>\n           <V-HOUSE-RISK-STATUS>\n           <RTRUE>)\n          (<NOT <EQUAL? ,PRSO ,EXPEDITION-ARCHIVE-INDEX>>\n           <TELL \"Only the completed expedition index has an archive status.\" CR>\n           <SETG CLOCK-WAIT T>\n           <RTRUE>)>\n    <EXPEDITION-ENSURE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE FIRST EXPEDITION BANKER A)",
+      "new": "    (ADJECTIVE FIRST COMPLETED EXPEDITION BANKER A)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE SECOND EXPEDITION BANKER B)",
+      "new": "    (ADJECTIVE SECOND COMPLETED EXPEDITION BANKER B)"
+    }
+  ]
+}

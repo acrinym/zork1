@@ -1,0 +1,12 @@
+{
+  "id": "004_PREPARE_COMMAND_ROUTING",
+  "path": "cellar_recovery_locker.zil",
+  "description": "Return PREPARE LUNCH and other non-locker preparation to the established Kitchen handler",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-RECOVERY-LOCKER-PREPARE ()\n    <RECOVERY-LOCKER-MATERIALIZE>\n    <COND (<NOT <EQUAL? ,PRSO ,EXPEDITION-RECOVERY-LOCKER>>\n           <TELL \"Only the expedition recovery locker accepts this preparation.\" CR>)\n          (<NOT <RECOVERY-LOCKER-UNLOCKED?>>",
+      "new": "<ROUTINE V-RECOVERY-LOCKER-PREPARE ()\n    <COND (<NOT <EQUAL? ,PRSO ,EXPEDITION-RECOVERY-LOCKER>>\n           <V-KITCHEN-PREPARE>\n           <RTRUE>)>\n    <RECOVERY-LOCKER-MATERIALIZE>\n    <COND (<NOT <RECOVERY-LOCKER-UNLOCKED?>>"
+    }
+  ]
+}

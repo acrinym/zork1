@@ -1,0 +1,27 @@
+{
+  "id": "008_RELEASE_1242",
+  "path": "zork1.zil",
+  "description": "Assign Release 1242 and describe the natural-play regression repair layer",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 MUSEUM TROLL PROVENANCE GLULX for",
+      "new": "\"ZORK1 NATURAL PLAY REGRESSIONS GLULX for"
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local monstrous-zoology train. Release 1241 retains every\n  qualified Release 1240 behavior and couples the canonical troll combat\n  outcome to one physical trace and truthful museum custody.\"",
+      "new": ";\"Repository-local natural-play repair train. Release 1242 retains every\n  qualified Release 1241 behavior while restoring command ownership, printed\n  object vocabulary, and final troll provenance discovered through play.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1241>",
+      "new": "<CONSTANT RELEASEID 1242>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Museum Troll Provenance Glulx ZORK I: The Great Underground Empire",
+      "new": "<PRINC \"Natural Play Regressions Glulx ZORK I: The Great Underground Empire"
+    }
+  ]
+}
