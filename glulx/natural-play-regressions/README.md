@@ -14,7 +14,7 @@ Release 1242 fixes integration failures found by launching the actual Release 12
 - The existing physical tuft is never duplicated. A later canonical kill upgrades its provenance from subdued to killed.
 - Broad later handlers delegate by the real parsed object: house commands return to house vulnerability, lunch returns to Kitchen preparation, and appetite/expedition commands keep their meanings.
 - Inspecting the house from within the authored house reports its vulnerability state while exterior examination remains canonical.
-- Printed vocabulary now accepts `CREATURES CASE`, `MONSTROUS ... CASE`, `ARCHIVE CABINET`, `COMPACT VIEWER`, `BROAD WORKTOP`, `CAST-IRON RANGE`, and completed-expedition box wording.
+- Printed vocabulary now accepts `CREATURES CASE`, `MONSTROUS ... CASE`, `ARCHIVE CABINET`, `COMPACT VIEWER`, `BROAD WORKTOP`, `CAST-IRON RANGE`, and completed expedition box wording. The Attic now prints the four-word box name the parser can accept rather than an unusable five-word variant.
 
 ## Runtime qualification
 

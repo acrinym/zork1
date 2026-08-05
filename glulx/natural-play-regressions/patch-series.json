@@ -37,7 +37,7 @@
     "STATUS HOUSE, CHECK HOUSE, and INSPECT HOUSE reach the house vulnerability feature instead of later broad command handlers",
     "CHECK APPETITE and STATUS EXPEDITION retain their own established meanings",
     "PREPARE LUNCH reaches the Kitchen even though the later recovery locker also uses PREPARE",
-    "the exact printed phrases Creatures case, archive cabinet, compact viewer, broad worktop, cast-iron range, and completed-expedition banker box are parser-recognizable"
+    "the exact printed phrases Creatures case, archive cabinet, compact viewer, broad worktop, cast-iron range, and completed expedition box are parser-recognizable"
   ],
   "boundaries": [
     "no combat rewrite, duplicate troll trace, generic command registry, or parser audit framework",

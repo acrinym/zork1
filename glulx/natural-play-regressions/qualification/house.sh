@@ -22,7 +22,7 @@ prepare lunch
 up
 examine archive cabinet
 examine compact viewer
-examine first completed expedition banker box
+examine first completed expedition box
 status expedition
 quit
 yes
@@ -42,6 +42,7 @@ from pathlib import Path
 t = Path('glulx/build/natural-play-regressions/house-transcript.txt').read_text()
 assert t.count('House vulnerability status:') == 3
 assert 'Only the expedition recovery locker accepts this preparation.' not in t
+assert 'A first completed expedition box waits beneath the chronology shelf.' in t
 for word in ('creatures','monstrous','broad','cast','archive','compact','completed'):
     assert f'I don\'t know the word "{word}"' not in t.lower()
 PY_HOUSE

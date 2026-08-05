@@ -1,7 +1,7 @@
 {
   "id": "002_EXPEDITION_STATUS_ROUTING",
   "path": "completed_expedition_archive.zil",
-  "description": "Return STATUS HOUSE to the house feature and reject unrelated objects instead of reporting expedition state",
+  "description": "Return STATUS HOUSE to the house feature, reject unrelated objects, and print completed expedition boxes with parser-supported names",
   "replacements": [
     {
       "expected_count": 1,
@@ -15,8 +15,18 @@
     },
     {
       "expected_count": 1,
+      "old": "    (LDESC \"A first completed-expedition banker box waits beneath the chronology shelf.\")",
+      "new": "    (LDESC \"A first completed expedition box waits beneath the chronology shelf.\")"
+    },
+    {
+      "expected_count": 1,
       "old": "    (ADJECTIVE SECOND EXPEDITION BANKER B)",
       "new": "    (ADJECTIVE SECOND COMPLETED EXPEDITION BANKER B)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (LDESC \"A second completed-expedition banker box remains physically separate from the first.\")",
+      "new": "    (LDESC \"A second completed expedition box remains physically separate from the first.\")"
     }
   ]
 }
