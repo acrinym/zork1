@@ -1,0 +1,86 @@
+{
+  "edition": "Unofficial Zork Mara Companion Expedition Foundation Glulx",
+  "release": 1243,
+  "serial": "260805",
+  "base_manifest": "../natural-play-regressions/patch-series.json",
+  "base_release": 1242,
+  "base_artifact_sha256": "1e6b61f68a32289e6085e784493518f0662083907390bdba900557548a53f173",
+  "expected_artifact": {
+    "file": "zork1-glulx-mara-companion-foundation.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 380672,
+    "checksum_hex": "0x4758dedc",
+    "sha256": "8d3f4bf555ba15be82d4d4e849c1501fa61bb3f57630f0a4e91061e89560d629",
+    "locked": true
+  },
+  "overrides": [
+    {
+      "source": "overrides/mara_companion.zil",
+      "path": "mara_companion.zil",
+      "description": "Provide Mara companion foundation source: mara_companion.zil",
+      "expected_base_sha256": "3084214bafb50b6f5995173e2c5555c51176c29a69a5080d04a406c693903734",
+      "expected_sha256": "b8cfd6f527c80a26d63e175394bdbfc44af19e928edb1633950bdb62d844cc1d"
+    },
+    {
+      "source": "overrides/mara_companion_state.zil",
+      "path": "mara_companion_state.zil",
+      "description": "Provide Mara companion foundation source: mara_companion_state.zil",
+      "allow_new": true
+    },
+    {
+      "source": "overrides/mara_companion_movement.zil",
+      "path": "mara_companion_movement.zil",
+      "description": "Provide Mara companion foundation source: mara_companion_movement.zil",
+      "allow_new": true
+    },
+    {
+      "source": "overrides/mara_companion_actions.zil",
+      "path": "mara_companion_actions.zil",
+      "description": "Provide Mara companion foundation source: mara_companion_actions.zil",
+      "allow_new": true
+    },
+    {
+      "source": "overrides/mara_companion_actor.zil",
+      "path": "mara_companion_actor.zil",
+      "description": "Provide Mara companion foundation source: mara_companion_actor.zil",
+      "allow_new": true
+    }
+  ],
+  "patches": [
+    "patches/001-mara-action-lifecycle.json",
+    "patches/002-mara-physical-following.json",
+    "patches/003-mara-dam-causality.json",
+    "patches/004-mara-dam-ecology-memory.json",
+    "patches/005-release-1243.json"
+  ],
+  "expected_changed_paths": [
+    "dam_mechanisms.zil",
+    "gverbs.zil",
+    "mara_companion.zil",
+    "mara_companion_actions.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_movement.zil",
+    "mara_companion_state.zil",
+    "museum_ecology_dam_fishing.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "Mara Tallow begins at Flood Control Dam #3 as an independent field surveyor rather than appearing as museum furniture",
+    "TALK TO MARA establishes her Last Honest Survey goal and ASK MARA ABOUT SURVEY, DAM, COMPANY, HOUSE, MUSEUM, and witnessed evidence remains knowledge-limited",
+    "MARA, FOLLOW ME and MARA, WAIT move or retain one physical actor through authored Dam and earned House routes without teleporting her",
+    "MARA, BRACE PANEL plus the canonical yellow interlock, wrench, and bolt creates a jointly witnessed gate cycle without bypassing the original puzzle",
+    "SURVEY DAM WITH MARA creates one physical joint survey sheet in Mara's custody and establishes a functional alliance",
+    "Mara warns against the blue pipe circuit, refuses an order to trigger it, retreats if the player ignores her, and remembers repair and a specific apology",
+    "Mara witnesses the real silverfin only when present and distinguishes capture from live release",
+    "Mara owns a physical pack, notebook, rope, lantern, and survey sheet; companionship does not grant automatic custody",
+    "KISS MARA cannot force intimacy and receives a history-aware boundary rather than a romance reward"
+  ],
+  "boundaries": [
+    "no generic follower framework, party system, pathfinding simulator, chatbot, dialogue tree, approval meter, inventory mule, hint engine, or romance economy",
+    "no replacement of canonical Dam controls, solo puzzle solvability, troll combat, museum custody, fishing specimen identity, or House systems",
+    "no omniscient Mara knowledge, remote observation, duplicated evidence, free second puzzle light, automatic ownership, or teleported reunion",
+    "no debug verbs, test-only production actors, audit-of-audit machinery, recursive qualification framework, or S.T.A.L.K.E.R. coupling"
+  ]
+}

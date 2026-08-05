@@ -1,0 +1,17 @@
+{
+  "id": "003_MARA_DAM_CAUSALITY",
+  "path": "dam_mechanisms.zil",
+  "description": "Connect Mara to witnessed gate load and leak outcomes without changing canonical Dam controls",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t      (<VERB? TURN>\n\t       <SETG DAM-MECH-BOLT-ATTEMPTED T>\n\t       <SET BEFORE ,GATES-OPEN>\n\t       <BOLT-F>\n\t       <COND (<NOT <EQUAL? .BEFORE ,GATES-OPEN>>\n\t              <SETG DAM-MECH-GATES-CYCLED T>)>\n\t       <RTRUE>)",
+      "new": "\t      (<VERB? TURN>\n\t       <SETG DAM-MECH-BOLT-ATTEMPTED T>\n\t       <SET BEFORE ,GATES-OPEN>\n\t       <BOLT-F>\n\t       <COND (<NOT <EQUAL? .BEFORE ,GATES-OPEN>>\n\t              <SETG DAM-MECH-GATES-CYCLED T>)>\n\t       <MARA-DAM-AFTER-BOLT .BEFORE>\n\t       <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t      (<VERB? PUSH>\n\t       <SET BEFORE ,WATER-LEVEL>\n\t       <BUTTON-F>\n\t       <COND (<EQUAL? ,PRSO ,YELLOW-BUTTON>\n\t              <SETG DAM-MECH-INTERLOCK-SEEN T>)\n\t             (<EQUAL? ,PRSO ,BROWN-BUTTON>\n\t              <SETG DAM-MECH-INTERLOCK-SEEN T>)\n\t             (<EQUAL? ,PRSO ,RED-BUTTON>\n\t              <SETG DAM-MECH-LIGHTS-TOGGLED T>)\n\t             (<AND <EQUAL? ,PRSO ,BLUE-BUTTON>\n\t                   <EQUAL? .BEFORE 0>\n\t                   <G? ,WATER-LEVEL 0>>\n\t              <SETG DAM-MECH-LEAK-TRIGGERED T>)>\n\t       <RTRUE>)",
+      "new": "\t      (<VERB? PUSH>\n\t       <SET BEFORE ,WATER-LEVEL>\n\t       <BUTTON-F>\n\t       <COND (<EQUAL? ,PRSO ,YELLOW-BUTTON>\n\t              <SETG DAM-MECH-INTERLOCK-SEEN T>)\n\t             (<EQUAL? ,PRSO ,BROWN-BUTTON>\n\t              <SETG DAM-MECH-INTERLOCK-SEEN T>)\n\t             (<EQUAL? ,PRSO ,RED-BUTTON>\n\t              <SETG DAM-MECH-LIGHTS-TOGGLED T>)\n\t             (<AND <EQUAL? ,PRSO ,BLUE-BUTTON>\n\t                   <EQUAL? .BEFORE 0>\n\t                   <G? ,WATER-LEVEL 0>>\n\t              <SETG DAM-MECH-LEAK-TRIGGERED T>)>\n\t       <MARA-DAM-AFTER-BUTTON ,PRSO .BEFORE>\n\t       <RTRUE>)"
+    }
+  ]
+}

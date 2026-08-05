@@ -1,0 +1,12 @@
+{
+  "id": "001_MARA_ACTION_LIFECYCLE",
+  "path": "shadow_logic.zil",
+  "description": "Advance Mara state and give her authored warning/refusal hook before general action handling",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE SHADOW-ACTION-HOOK ()\n\t<COND (,SHADOW-INTERNAL-ACTION <RFALSE>)>\n\t<SHADOW-ADVANCE-THREATS>\n\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<CUISINE-ADVANCE>\n\t<CELLAR-ADVANCE>\n\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<NPC-ADVANCE>\n\t<AREA-ADVANCE>\n\t<PLAYBACK-ADVANCE>\n\t<COND (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "<ROUTINE SHADOW-ACTION-HOOK ()\n\t<COND (,SHADOW-INTERNAL-ACTION <RFALSE>)>\n\t<MARA-ADVANCE>\n\t<SHADOW-ADVANCE-THREATS>\n\t<MATERIAL-ADVANCE>\n\t<KITCHEN-ADVANCE>\n\t<CUISINE-ADVANCE>\n\t<CELLAR-ADVANCE>\n\t<MAIL-ADVANCE>\n\t<ARCHIVE-ADVANCE>\n\t<NPC-ADVANCE>\n\t<AREA-ADVANCE>\n\t<PLAYBACK-ADVANCE>\n\t<COND (<MARA-ACTION-HOOK> <RTRUE>)\n\t      (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)"
+    }
+  ]
+}

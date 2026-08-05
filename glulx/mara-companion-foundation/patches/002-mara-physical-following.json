@@ -1,0 +1,22 @@
+{
+  "id": "002_MARA_PHYSICAL_FOLLOWING",
+  "path": "gverbs.zil",
+  "description": "Move Mara only through the exact exit the Adventurer just traversed, preserving physical location and authored refusal",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-FOLLOW ()\n\t <TELL \"You're nuts!\" CR>>",
+      "new": "<ROUTINE V-FOLLOW ()\n\t <COND (<EQUAL? ,WINNER ,MARA>\n\t\t<MARA-REQUEST-FOLLOW>)\n\t       (T\n\t\t<TELL \"You're nuts!\" CR>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-WAIT (\"OPTIONAL\" (NUM 3))\n\t <TELL \"Time passes...\" CR>\n\t <REPEAT ()\n\t\t <COND (<L? <SET NUM <- .NUM 1>> 0> <RETURN>)\n\t\t       (<CLOCKER> <RETURN>)>>\n\t <SETG CLOCK-WAIT T>>",
+      "new": "<ROUTINE V-WAIT (\"OPTIONAL\" (NUM 3))\n\t <COND (<EQUAL? ,WINNER ,MARA>\n\t\t<MARA-WAIT-HERE>)\n\t       (T\n\t\t<TELL \"Time passes...\" CR>\n\t\t<REPEAT ()\n\t\t\t<COND (<L? <SET NUM <- .NUM 1>> 0> <RETURN>)\n\t\t\t      (<CLOCKER> <RETURN>)>>\n\t\t<SETG CLOCK-WAIT T>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t<APPLY <GETP ,HERE ,P?ACTION> ,M-ENTER>\n\t\t<SCORE-OBJ .RM>",
+      "new": "\t\t<APPLY <GETP ,HERE ,P?ACTION> ,M-ENTER>\n\t\t<COND (<AND <EQUAL? ,WINNER ,ADVENTURER>\n\t\t            <EQUAL? ,HERE .RM>>\n\t\t       <MARA-AFTER-PLAYER-MOVE .OHERE .RM>)>\n\t\t<SCORE-OBJ .RM>"
+    }
+  ]
+}

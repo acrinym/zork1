@@ -1,0 +1,17 @@
+{
+  "id": "004_MARA_DAM_ECOLOGY_MEMORY",
+  "path": "museum_ecology_dam_fishing.zil",
+  "description": "Let Mara witness the real silverfin catch and release only when physically present",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "           <COND (<EQUAL? .VARIETY ,SILVERFIN-SPILLWAY>\n                  <TELL \"You cast beneath the dam into the sharpened spillway current. The ash rod bows, the brass reel chatters, and a broad-tailed silverfin breaks the surface with a pale gate scar along its flank. You transfer the living fish to the water-filled field jar.\" CR>)\n                 (T\n                  <TELL \"You cast into the cold, steady run beside the dam. The green line draws tight and a narrow silver fish comes up fighting the River Frigid. You transfer the living dam silverfin to the water-filled field jar.\" CR>)>)>\n    <RTRUE>>",
+      "new": "           <COND (<EQUAL? .VARIETY ,SILVERFIN-SPILLWAY>\n                  <TELL \"You cast beneath the dam into the sharpened spillway current. The ash rod bows, the brass reel chatters, and a broad-tailed silverfin breaks the surface with a pale gate scar along its flank. You transfer the living fish to the water-filled field jar.\" CR>)\n                 (T\n                  <TELL \"You cast into the cold, steady run beside the dam. The green line draws tight and a narrow silver fish comes up fighting the River Frigid. You transfer the living dam silverfin to the water-filled field jar.\" CR>)>\n           <MARA-WITNESS-FISH .VARIETY>)>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "           <TELL \" into the River Frigid. It holds against the current for a moment, then disappears beneath the dam's shadow. The museum keeps the earned field record, not a fictional replacement specimen.\" CR>)>\n    <RTRUE>>",
+      "new": "           <TELL \" into the River Frigid. It holds against the current for a moment, then disappears beneath the dam's shadow. The museum keeps the earned field record, not a fictional replacement specimen.\" CR>\n           <MARA-WITNESS-RELEASE>)>\n    <RTRUE>>"
+    }
+  ]
+}
