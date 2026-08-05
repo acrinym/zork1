@@ -9,7 +9,10 @@
     "file": "zork1-glulx-natural-play-regressions.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "size_bytes": 367104,
+    "checksum_hex": "0x3936d2e4",
+    "sha256": "1e6b61f68a32289e6085e784493518f0662083907390bdba900557548a53f173",
+    "locked": true
   },
   "overrides": [],
   "patches": [
