@@ -1,0 +1,17 @@
+{
+  "id": "Z1-GLULX-1241-TROLL-OUTCOME-TRACE",
+  "path": "1actions.zil",
+  "description": "Couple the canonical troll death and unconscious combat outcomes to one physical museum trace without replacing combat",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t       <SETG TROLL-FLAG T>)\n\t      (<EQUAL? .MODE ,F-UNCONSCIOUS>",
+      "new": "\t       <SETG TROLL-FLAG T>\n\t       <MUSEUM-TROLL-TRACE 2>)\n\t      (<EQUAL? .MODE ,F-UNCONSCIOUS>"
+    },
+    {
+      "expected_count": 1,
+      "old": "out of the room are open.\">\n\t       <SETG TROLL-FLAG T>)\n\t      (<EQUAL? .MODE ,F-CONSCIOUS>",
+      "new": "out of the room are open.\">\n\t       <SETG TROLL-FLAG T>\n\t       <MUSEUM-TROLL-TRACE 1>)\n\t      (<EQUAL? .MODE ,F-CONSCIOUS>"
+    }
+  ]
+}
