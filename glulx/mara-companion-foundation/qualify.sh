@@ -133,6 +133,11 @@ mara, brace control panel
 turn bolt with wrench
 survey control panel with mara
 thank mara
+thank mara
+mara, wait
+north
+south
+mara, follow me
 ask mara about company
 kiss mara
 north
@@ -164,6 +169,9 @@ grep -F 'As far as the Dam survey takes us' "$BUILD/mara-transcript.txt"
 grep -F 'Mara plants one boot against the stone curb and braces the control panel' "$BUILD/mara-transcript.txt"
 grep -F 'Mara keeps both hands against the shuddering panel while the bolt turns' "$BUILD/mara-transcript.txt"
 grep -F 'The first shared entry in the Last Honest Survey now exists as a physical document' "$BUILD/mara-transcript.txt"
+grep -F 'Repetition does not turn gratitude into currency' "$BUILD/mara-transcript.txt"
+grep -F 'I will wait here, she says, not everywhere and not forever' "$BUILD/mara-transcript.txt"
+grep -F 'For the routes we have actually agreed to share, yes' "$BUILD/mara-transcript.txt"
 grep -F 'The boundary is calm and complete' "$BUILD/mara-transcript.txt"
 grep -F 'you may not issue it as hers' "$BUILD/mara-transcript.txt"
 grep -F 'do not call the result unforeseeable' "$BUILD/mara-transcript.txt"
@@ -180,12 +188,15 @@ t = Path('glulx/build/mara-companion-foundation/mara-transcript.txt').read_text(
 assert 'Release 1243 / Serial number 260805' in t
 assert 'Mara sits near the museum displays' not in t
 assert t.count('The first shared entry in the Last Honest Survey now exists as a physical document') == 1
+assert t.index('Repetition does not turn gratitude into currency') < t.index('I will wait here, she says, not everywhere and not forever')
+assert t.index('I will wait here, she says, not everywhere and not forever') < t.index('For the routes we have actually agreed to share, yes')
 assert t.index('do not call the result unforeseeable') < t.index('She retreats to the lobby')
 assert t.index('An apology that leaves the water running') < t.index('That is a beginning, she says')
 assert t.index('narrow silver fish comes up fighting') < t.index('Evidence observed, animal alive, custody closed')
 for word in ('mara', 'brace', 'survey', 'thank', 'apologize'):
     assert f'I don\'t know the word "{word}"' not in t
 assert 'You may know how to do that, but I don\'t.' not in t
+assert "You're nuts!" not in t
 PY_TRANSCRIPT
 
 python - "$SERIAL" "$MANIFEST" <<'PY_RECEIPT'
@@ -214,6 +225,7 @@ receipt = {
         'physical_authored_movement': 'passed',
         'joint_canonical_gate_cycle': 'passed',
         'physical_joint_survey_sheet': 'passed',
+        'non_grindable_gratitude': 'passed',
         'warning_refusal_retreat': 'passed',
         'repair_and_specific_apology': 'passed',
         'witnessed_silverfin_release': 'passed',
