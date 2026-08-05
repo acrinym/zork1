@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TRAIN = ROOT / "glulx" / "mara-companion-foundation"
 MANIFEST = TRAIN / "patch-series.json"
 MODULE = TRAIN / "overrides" / "mara_companion.zil"
+MODULE_PARTS = sorted((TRAIN / "overrides").glob("mara_companion*.zil"))
 STATUS = ROOT / "ideas" / "extended-zork" / "mara-tallow-implementation-status.md"
 
 
@@ -16,7 +17,7 @@ class MaraCompanionFoundationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-        cls.module = MODULE.read_text(encoding="utf-8")
+        cls.module = "\n".join(path.read_text(encoding="utf-8") for path in MODULE_PARTS)
 
     def test_release_lineage_is_locked_to_release_1242(self) -> None:
         self.assertEqual(self.manifest["release"], 1243)
@@ -29,7 +30,7 @@ class MaraCompanionFoundationTests(unittest.TestCase):
 
     def test_override_identity_is_exact(self) -> None:
         override = self.manifest["overrides"][0]
-        self.assertEqual(override["destination"], "mara_companion.zil")
+        self.assertEqual(override["path"], "mara_companion.zil")
         self.assertEqual(
             hashlib.sha256(MODULE.read_bytes()).hexdigest(),
             override["expected_sha256"],
@@ -107,6 +108,10 @@ class MaraCompanionFoundationTests(unittest.TestCase):
                 "dam_mechanisms.zil",
                 "gverbs.zil",
                 "mara_companion.zil",
+                "mara_companion_state.zil",
+                "mara_companion_movement.zil",
+                "mara_companion_actions.zil",
+                "mara_companion_actor.zil",
                 "museum_ecology_dam_fishing.zil",
                 "shadow_logic.zil",
                 "zork1.zil",
