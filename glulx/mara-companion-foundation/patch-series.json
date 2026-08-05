@@ -20,7 +20,7 @@
       "path": "mara_companion.zil",
       "description": "Provide Mara companion foundation source: mara_companion.zil",
       "expected_base_sha256": "3084214bafb50b6f5995173e2c5555c51176c29a69a5080d04a406c693903734",
-      "expected_sha256": "6b2195661ed56edd327980dd22047ff3f0755f8023cec0d10d6ba33b73352dc5"
+      "expected_sha256": "b8cfd6f527c80a26d63e175394bdbfc44af19e928edb1633950bdb62d844cc1d"
     },
     {
       "source": "overrides/mara_companion_state.zil",
