@@ -38,7 +38,7 @@
            <MARA-INCREASE ,MARA-SLOT-TRUST 3>
            <MARA-INCREASE ,MARA-SLOT-RESPECT 3>
            <MOVE ,MARA-DAM-SURVEY-SHEET ,MARA>
-           <TELL "You compare the armed circuit, bolt travel, gate state, reservoir trend, vibration delay, and old pressure scars. Mara records her measurements beside yours, crosses out the official claim of independent controls, and folds one waxed sheet into her coat. The first shared entry in the Last Honest Survey now exists as a physical document. Functional alliance has become chosen company—within the routes you have actually earned together." CR>)>
+           <TELL "You compare the armed circuit, bolt travel, gate state, reservoir trend, vibration delay, and old pressure scars. Mara records her measurements beside yours, crosses out the official claim of independent controls, and folds one waxed sheet into her coat. The first shared entry in the Last Honest Survey now exists as a physical document. Functional alliance has become chosen company within the routes you have actually earned together." CR>)>
     <RTRUE>>
 
 <ROUTINE V-MARA-SHOW ()
