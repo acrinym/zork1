@@ -1,0 +1,12 @@
+{
+  "id": "002_MARA_PHYSICAL_FOLLOWING",
+  "path": "gverbs.zil",
+  "description": "Move Mara only through the exact exit the Adventurer just traversed, preserving physical location and authored refusal",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t<APPLY <GETP ,HERE ,P?ACTION> ,M-ENTER>\n\t\t<SCORE-OBJ .RM>",
+      "new": "\t\t<APPLY <GETP ,HERE ,P?ACTION> ,M-ENTER>\n\t\t<COND (<AND <EQUAL? ,WINNER ,ADVENTURER>\n\t\t            <EQUAL? ,HERE .RM>>\n\t\t       <MARA-AFTER-PLAYER-MOVE .OHERE .RM>)>\n\t\t<SCORE-OBJ .RM>"
+    }
+  ]
+}
