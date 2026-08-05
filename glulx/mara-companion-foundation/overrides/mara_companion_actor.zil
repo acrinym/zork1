@@ -73,7 +73,11 @@
            <CRLF>
            <RTRUE>)
           (<VERB? TELL>
-           <COND (,PRSI <MARA-ABOUT ,PRSI>)
+           <COND (,P-CONT
+                  <SETG WINNER ,MARA>
+                  <SETG HERE <LOC ,MARA>>
+                  <RTRUE>)
+                 (,PRSI <MARA-ABOUT ,PRSI>)
                  (T <MARA-MEET>)>)
           (<AND <VERB? GIVE> <EQUAL? ,PRSI ,MARA>>
            <TELL "Mara does not accept permanent custody merely because an object was offered. SHOW it to her if the point is evidence; keep it if the point is ownership." CR>
