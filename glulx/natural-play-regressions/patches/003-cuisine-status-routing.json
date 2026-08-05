@@ -1,0 +1,12 @@
+{
+  "id": "003_CUISINE_STATUS_ROUTING",
+  "path": "cuisine_hunger_stamina.zil",
+  "description": "Return CHECK HOUSE to house vulnerability while retaining CHECK APPETITE for bounded cuisine state",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-CUISINE-STATUS ()\n    <CUISINE-ENSURE>",
+      "new": "<ROUTINE V-CUISINE-STATUS ()\n    <COND (<EQUAL? ,PRSO ,WHITE-HOUSE>\n           <V-HOUSE-RISK-STATUS>\n           <RTRUE>)\n          (<NOT <EQUAL? ,PRSO ,CUISINE-BODY>>\n           <TELL \"Only your appetite and stamina have this bounded status.\" CR>\n           <SETG CLOCK-WAIT T>\n           <RTRUE>)>\n    <CUISINE-ENSURE>"
+    }
+  ]
+}

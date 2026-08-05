@@ -1,0 +1,32 @@
+{
+  "id": "002_EXPEDITION_STATUS_ROUTING",
+  "path": "completed_expedition_archive.zil",
+  "description": "Return STATUS HOUSE to the house feature, reject unrelated objects, and print completed expedition boxes with parser-supported names",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-EXPEDITION-STATUS ()\n    <EXPEDITION-ENSURE>",
+      "new": "<ROUTINE V-EXPEDITION-STATUS ()\n    <COND (<EQUAL? ,PRSO ,WHITE-HOUSE>\n           <V-HOUSE-RISK-STATUS>\n           <RTRUE>)\n          (<NOT <EQUAL? ,PRSO ,EXPEDITION-ARCHIVE-INDEX>>\n           <TELL \"Only the completed expedition index has an archive status.\" CR>\n           <SETG CLOCK-WAIT T>\n           <RTRUE>)>\n    <EXPEDITION-ENSURE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE FIRST EXPEDITION BANKER A)",
+      "new": "    (ADJECTIVE FIRST COMPLETED EXPEDITION BANKER A)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (LDESC \"A first completed-expedition banker box waits beneath the chronology shelf.\")",
+      "new": "    (LDESC \"A first completed expedition box waits beneath the chronology shelf.\")"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE SECOND EXPEDITION BANKER B)",
+      "new": "    (ADJECTIVE SECOND COMPLETED EXPEDITION BANKER B)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (LDESC \"A second completed-expedition banker box remains physically separate from the first.\")",
+      "new": "    (LDESC \"A second completed expedition box remains physically separate from the first.\")"
+    }
+  ]
+}

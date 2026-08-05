@@ -1,0 +1,51 @@
+{
+  "edition": "Unofficial Zork Natural Play Regressions Glulx",
+  "release": 1242,
+  "serial": "260805",
+  "base_manifest": "../museum-troll-provenance/patch-series.json",
+  "base_release": 1241,
+  "base_artifact_sha256": "95f5d3428b366cbae6bf5c83eccb750caeea2fe1d747b83a1112dee18eb3263f",
+  "expected_artifact": {
+    "file": "zork1-glulx-natural-play-regressions.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 367104,
+    "checksum_hex": "0x3936d2e4",
+    "sha256": "1e6b61f68a32289e6085e784493518f0662083907390bdba900557548a53f173",
+    "locked": true
+  },
+  "overrides": [],
+  "patches": [
+    "patches/001-troll-final-outcome.json",
+    "patches/002-expedition-status-routing.json",
+    "patches/003-cuisine-status-routing.json",
+    "patches/004-prepare-command-routing.json",
+    "patches/005-house-inspection-routing.json",
+    "patches/006-attic-visible-vocabulary.json",
+    "patches/007-kitchen-visible-vocabulary.json",
+    "patches/008-release-1242.json"
+  ],
+  "expected_changed_paths": [
+    "attic_archive_core.zil",
+    "cellar_recovery_locker.zil",
+    "completed_expedition_archive.zil",
+    "cuisine_hunger_stamina.zil",
+    "house_kitchen_laboratory.zil",
+    "museum_troll_provenance.zil",
+    "reactive_surface.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "a troll first rendered unconscious and then killed leaves one physical tuft whose provenance upgrades to the final canonical death outcome",
+    "STATUS HOUSE, CHECK HOUSE, and INSPECT HOUSE reach the house vulnerability feature instead of later broad command handlers",
+    "CHECK APPETITE and STATUS EXPEDITION retain their own established meanings",
+    "PREPARE LUNCH reaches the Kitchen even though the later recovery locker also uses PREPARE",
+    "the exact printed phrases Creatures case, archive cabinet, compact viewer, broad worktop, cast-iron range, and completed expedition box are parser-recognizable"
+  ],
+  "boundaries": [
+    "no combat rewrite, duplicate troll trace, generic command registry, or parser audit framework",
+    "no change to canonical troll health, attack probability, death, passage, or resurrection behavior",
+    "no replacement cuisine, expedition archive, recovery locker, house vulnerability, or museum system",
+    "no debug verbs, teleport controls, test-only production objects, recursive qualification machinery, or S.T.A.L.K.E.R. coupling"
+  ]
+}

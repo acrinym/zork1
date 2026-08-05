@@ -1,0 +1,17 @@
+{
+  "id": "006_ATTIC_VISIBLE_VOCABULARY",
+  "path": "attic_archive_core.zil",
+  "description": "Accept the exact archive cabinet and compact viewer wording printed in the Attic",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE STEEL FILING GRAY)",
+      "new": "    (ADJECTIVE ARCHIVE STEEL FILING GRAY)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE FILM SLIDE MICROFICHE)",
+      "new": "    (ADJECTIVE COMPACT FILM SLIDE MICROFICHE)"
+    }
+  ]
+}
