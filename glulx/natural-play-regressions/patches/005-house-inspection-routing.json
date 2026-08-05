@@ -1,0 +1,12 @@
+{
+  "id": "005_HOUSE_INSPECTION_ROUTING",
+  "path": "reactive_surface.zil",
+  "description": "Make EXAMINE or INSPECT HOUSE inside the authored house report the house vulnerability state",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE SURFACE-WHITE-HOUSE-F ()\n\t<COND (<AND <NOT <SURFACE-AT-HOUSE?>>",
+      "new": "<ROUTINE SURFACE-WHITE-HOUSE-F ()\n\t<COND (<AND <VERB? EXAMINE>\n\t            <HOUSE-RISK-HERE?>>\n\t       <HOUSE-RISK-STATUS>)\n\t      (<AND <NOT <SURFACE-AT-HOUSE?>>"
+    }
+  ]
+}

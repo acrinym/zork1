@@ -1,0 +1,17 @@
+{
+  "id": "001_TROLL_FINAL_OUTCOME",
+  "path": "museum_troll_provenance.zil",
+  "description": "Keep the one physical troll tuft while upgrading its provenance when a naturally subdued troll is subsequently killed",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE CREATURE MONSTER TROLL ZOOLOGY MUSEUM)",
+      "new": "    (ADJECTIVE CREATURE CREATURES MONSTER MONSTROUS TROLL ZOOLOGY MUSEUM)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MUSEUM-TROLL-TRACE (OUTCOME)\n    <COND (<NOT <LOC ,TROLL-FUR>>\n           <PUT ,TROLL-TRACE-STATE 0 .OUTCOME>\n           <MOVE ,TROLL-FUR ,HERE>\n           <COND (<EQUAL? .OUTCOME ,TROLL-OUTCOME-KILLED>\n                  <TELL \"A coarse iron-grey tuft clings briefly to the fallen axe, then drops beside it.\" CR>)\n                 (T\n                  <TELL \"A coarse iron-grey tuft shakes loose from the sprawled troll and catches against one of the bloodstained wall scratches.\" CR>)>)>\n    <RTRUE>>",
+      "new": "<ROUTINE MUSEUM-TROLL-TRACE (OUTCOME)\n    <COND (<LOC ,TROLL-FUR>\n           <COND (<AND <EQUAL? .OUTCOME ,TROLL-OUTCOME-KILLED>\n                       <EQUAL? <TROLL-TRACE-OUTCOME> ,TROLL-OUTCOME-SUBDUED>>\n                  <PUT ,TROLL-TRACE-STATE 0 ,TROLL-OUTCOME-KILLED>)>\n           <RTRUE>)>\n    <PUT ,TROLL-TRACE-STATE 0 .OUTCOME>\n    <MOVE ,TROLL-FUR ,HERE>\n    <COND (<EQUAL? .OUTCOME ,TROLL-OUTCOME-KILLED>\n           <TELL \"A coarse iron-grey tuft clings briefly to the fallen axe, then drops beside it.\" CR>)\n          (T\n           <TELL \"A coarse iron-grey tuft shakes loose from the sprawled troll and catches against one of the bloodstained wall scratches.\" CR>)>\n    <RTRUE>>"
+    }
+  ]
+}

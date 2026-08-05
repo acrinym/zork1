@@ -1,0 +1,17 @@
+{
+  "id": "007_KITCHEN_VISIBLE_VOCABULARY",
+  "path": "house_kitchen_laboratory.zil",
+  "description": "Accept the exact broad worktop and cast-iron range wording printed in the Kitchen",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE KITCHEN WOODEN WORK)",
+      "new": "    (ADJECTIVE BROAD KITCHEN WOODEN WORK)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE KITCHEN IRON)",
+      "new": "    (ADJECTIVE CAST KITCHEN IRON)"
+    }
+  ]
+}
