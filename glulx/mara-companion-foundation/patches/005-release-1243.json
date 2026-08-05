@@ -1,0 +1,27 @@
+{
+  "id": "005_RELEASE_1243",
+  "path": "zork1.zil",
+  "description": "Assign Release 1243 to the Mara Companion Expedition Foundation",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 NATURAL PLAY REGRESSIONS GLULX for",
+      "new": "\"ZORK1 MARA COMPANION EXPEDITION FOUNDATION GLULX for"
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local natural-play repair train. Release 1242 retains every\n  qualified Release 1241 behavior while restoring command ownership, printed\n  object vocabulary, and final troll provenance discovered through play.\"",
+      "new": ";\"Repository-local Mara companion train. Release 1243 retains every\n  qualified Release 1242 behavior while giving Mara Tallow a physical Dam\n  introduction, authored regional company, autonomy, and causal memory.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1242>",
+      "new": "<CONSTANT RELEASEID 1243>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Natural Play Regressions Glulx ZORK I: The Great Underground Empire",
+      "new": "<PRINC \"Mara Companion Expedition Foundation Glulx ZORK I: The Great Underground Empire"
+    }
+  ]
+}
