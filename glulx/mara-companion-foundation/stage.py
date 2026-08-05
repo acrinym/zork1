@@ -39,7 +39,9 @@ def validate_base_manifest(
     if not base_path.is_file():
         raise RuntimeError(f"Mara base manifest is missing: {base_path}")
     base = load_json(base_path)
-    artifact = base.get("expected_artifact") if isinstance(base, dict) else None
+    if not isinstance(base, dict):
+        raise RuntimeError(f"Mara base manifest must contain an object: {base_path}")
+    artifact = base.get("expected_artifact")
     actual_sha = artifact.get("sha256") if isinstance(artifact, dict) else None
     if base.get("release") != manifest.get("base_release"):
         raise RuntimeError("Mara base release drift")
