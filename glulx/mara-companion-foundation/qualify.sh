@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euxo pipefail
+
 ROOT="${GITHUB_WORKSPACE:-$(git rev-parse --show-toplevel)}"
 BUILD="$ROOT/glulx/build/mara-companion-foundation"
 SRC="$BUILD/src"
@@ -24,6 +25,7 @@ python glulx/mara-companion-foundation/stage.py \
   --allowed-root "$BUILD" \
   --manifest "$MANIFEST"
 python optimized/tools/zil_smell_check.py --source "$SRC" --json "$BUILD/smell-report.json"
+
 python - <<'PY_STATIC'
 import json
 from pathlib import Path
@@ -81,6 +83,7 @@ python glulx/tools/normalize_serial.py "$ASSEMBLY" --serial "$SERIAL" \
   --receipt "$BUILD/SERIAL-NORMALIZATION.json"
 "$GLAZER_BIN" "$ASSEMBLY" -o "$BUILD/$STORY_FILE" 2>&1 | tee "$BUILD/glazer-assemble.log"
 python glulx/tools/verify_ulx.py "$BUILD/$STORY_FILE" --json "$BUILD/story-report.json"
+
 make -C .tooling/cheapglk 2>&1 | tee "$BUILD/cheapglk-build.log"
 make -C .tooling/glulxe GLKDIR="$ROOT/.tooling/cheapglk" \
   GLKLIB="$ROOT/.tooling/cheapglk/libcheapglk.a" 2>&1 | tee "$BUILD/glulxe-build.log"
@@ -107,7 +110,7 @@ attack troll with sword
 east
 east
 north
-northeast
+ne
 east
 down
 look
@@ -161,7 +164,6 @@ grep -F 'As far as the Dam survey takes us' "$BUILD/mara-transcript.txt"
 grep -F 'Mara plants one boot against the stone curb and braces the control panel' "$BUILD/mara-transcript.txt"
 grep -F 'Mara keeps both hands against the shuddering panel while the bolt turns' "$BUILD/mara-transcript.txt"
 grep -F 'The first shared entry in the Last Honest Survey now exists as a physical document' "$BUILD/mara-transcript.txt"
-grep -F 'Repetition does not turn gratitude into currency' "$BUILD/mara-transcript.txt" || true
 grep -F 'The boundary is calm and complete' "$BUILD/mara-transcript.txt"
 grep -F 'you may not issue it as hers' "$BUILD/mara-transcript.txt"
 grep -F 'do not call the result unforeseeable' "$BUILD/mara-transcript.txt"
@@ -171,6 +173,7 @@ grep -F 'Repair first; interpretation afterward' "$BUILD/mara-transcript.txt"
 grep -F 'That is a beginning, she says' "$BUILD/mara-transcript.txt"
 grep -F 'Evidence observed, animal alive, custody closed' "$BUILD/mara-transcript.txt"
 grep -F 'she is not its curator' "$BUILD/mara-transcript.txt"
+
 python - <<'PY_TRANSCRIPT'
 from pathlib import Path
 t = Path('glulx/build/mara-companion-foundation/mara-transcript.txt').read_text(encoding='utf-8')
