@@ -11,6 +11,7 @@ check house
 inspect house
 check appetite
 examine creatures case
+examine monstrous zoology case
 east
 examine broad worktop
 examine cast iron range
@@ -41,8 +42,9 @@ python - <<'PY_HOUSE'
 from pathlib import Path
 t = Path('glulx/build/natural-play-regressions/house-transcript.txt').read_text()
 assert t.count('House vulnerability status:') == 3
+assert t.count('Creatures and Monstrous Zoology: the troll case is empty.') == 2
 assert 'Only the expedition recovery locker accepts this preparation.' not in t
 assert 'A first completed expedition box waits beneath the chronology shelf.' in t
 for word in ('creatures','monstrous','broad','cast','archive','compact','completed'):
-    assert f'I don\'t know the word "{word}"' not in t.lower()
+    assert f'i don\'t know the word "{word}"' not in t.lower()
 PY_HOUSE
