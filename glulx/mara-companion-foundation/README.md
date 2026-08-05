@@ -11,7 +11,7 @@ The player can:
 - `TALK TO MARA` and ask about her survey, the Dam, company, the House, the museum, the silverfin, and evidence she actually witnessed;
 - use natural direct address such as `MARA, FOLLOW ME`, `MARA, WAIT`, `MARA, PUSH YELLOW BUTTON`, and `MARA, BRACE PANEL`;
 - operate the canonical yellow interlock, wrench, bolt, and sluice gates with Mara physically bracing the real control panel;
-- `SURVEY DAM WITH MARA` after a jointly witnessed gate cycle, producing one physical waxed survey sheet in Mara's custody;
+- `SURVEY CONTROL PANEL WITH MARA` after a jointly witnessed gate cycle, producing one physical waxed survey sheet in Mara's custody;
 - thank her once without grinding a relationship currency;
 - ignore her warning about the blue pipe circuit, witness her autonomous retreat, repair the leak, and make a specific apology that does not erase the event;
 - fish and release the real dam silverfin while Mara records only what she physically witnesses;
