@@ -9,7 +9,10 @@
     "file": "zork1-glulx-creative-natural-play.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "locked": true,
+    "size_bytes": 388352,
+    "checksum_hex": "0x522a9f0b",
+    "sha256": "483efb2b777cea3df0863382f3c145585fbd223f8d1f05f5a2e3194f54acef48"
   },
   "patches": [
     "patches/001d-kitchen-natural-cook.json",
