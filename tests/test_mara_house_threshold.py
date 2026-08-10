@@ -35,9 +35,18 @@ class MaraHouseThresholdTests(unittest.TestCase):
         self.assertIn("TRAPDOOR DOOR HATCH", rendered)
         self.assertIn("CELLAR-THRESHOLD", rendered)
 
+    def test_cellar_proxy_dispatches_unbar_before_observational_fallback(self) -> None:
+        patch = json.loads((PATCHES / "004-cellar-threshold-dispatch.json").read_text(encoding="utf-8"))
+        rendered = "\n".join(item["new"] for item in patch["replacements"])
+        dispatch = rendered.index("<VERB? MARA-UNBAR-THRESHOLD>")
+        examine = rendered.index("<VERB? EXAMINE SEARCH TOUCH>")
+        self.assertLess(dispatch, examine)
+        self.assertIn("<V-MARA-UNBAR-THRESHOLD>", rendered)
+
     def test_manifest_records_solo_canonical_boundary(self) -> None:
         manifest = json.loads((EDITION / "patch-series.json").read_text(encoding="utf-8"))
         self.assertIn("house_cellar_threshold.zil", manifest["expected_changed_paths"])
+        self.assertIn("patches/004-cellar-threshold-dispatch.json", manifest["patches"])
         boundaries = "\n".join(manifest["boundaries"])
         self.assertIn("canonical barred trap door remains canonical for solo play", boundaries)
         self.assertIn("no duplicate trap door", boundaries)
