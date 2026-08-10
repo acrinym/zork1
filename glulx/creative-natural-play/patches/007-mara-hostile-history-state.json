@@ -1,17 +1,17 @@
 {
   "id": "007_MARA_HOSTILE_HISTORY_STATE",
   "path": "mara_companion_state.zil",
-  "description": "Carry restraint and combat-order history through saves and schema migration",
+  "description": "Carry restraint, combat-order, and bound-troll route history through saves and schema migration",
   "replacements": [
     {
       "expected_count": 1,
       "old": "    <MARA-PUT ,MARA-SLOT-HOUSE-STAY 0>\n    <MARA-PUT ,MARA-SLOT-MEAL-SHARED 0>\n    <RTRUE>>",
-      "new": "    <MARA-PUT ,MARA-SLOT-HOUSE-STAY 0>\n    <MARA-PUT ,MARA-SLOT-MEAL-SHARED 0>\n    <MARA-PUT ,MARA-SLOT-RESTRAINT-ATTEMPTED 0>\n    <MARA-PUT ,MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0>\n    <RTRUE>>"
+      "new": "    <MARA-PUT ,MARA-SLOT-HOUSE-STAY 0>\n    <MARA-PUT ,MARA-SLOT-MEAL-SHARED 0>\n    <MARA-PUT ,MARA-SLOT-RESTRAINT-ATTEMPTED 0>\n    <MARA-PUT ,MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0>\n    <MARA-PUT ,MARA-SLOT-BOUND-TROLL-WITNESSED 0>\n    <RTRUE>>"
     },
     {
       "expected_count": 1,
       "old": "           <MARA-PUT ,MARA-SLOT-HOUSE-INVITED 0>\n           <MARA-PUT ,MARA-SLOT-PACK-RETRIEVED 0>\n           <MARA-PUT ,MARA-SLOT-HOUSE-STAY 0>\n           <MARA-PUT ,MARA-SLOT-MEAL-SHARED 0>)",
-      "new": "           ;\"Release 1244 saves retain every witnessed House and Dam event.\"\n           <MARA-PUT ,MARA-SLOT-RESTRAINT-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0>)"
+      "new": "           ;\"Release 1244 saves retain every witnessed House and Dam event.\"\n           <MARA-PUT ,MARA-SLOT-RESTRAINT-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-BOUND-TROLL-WITNESSED 0>)"
     }
   ]
 }
