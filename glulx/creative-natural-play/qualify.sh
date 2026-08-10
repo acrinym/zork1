@@ -35,6 +35,7 @@ actor=(s/'mara_companion_actor.zil').read_text()
 state=(s/'mara_companion_state.zil').read_text()
 move=(s/'mara_companion_movement.zil').read_text()
 assert '<DO-SL ,WINNER ,SH ,SC>' in g
+assert '<EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>' in g
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
 assert '<ROUTINE V-KITCHEN-COOK ()' in k
 assert '(ADJECTIVE KITCHEN CAST IRON)' in k
@@ -207,12 +208,12 @@ south
 east
 open window
 enter
-west
-take lantern
-take sword
 up
 take rope
 down
+west
+take lantern
+take sword
 move rug
 open trap door
 turn on lantern
