@@ -1,7 +1,7 @@
 {
   "id": "006_MARA_HOSTILE_HISTORY_SCHEMA",
   "path": "mara_companion.zil",
-  "description": "Persist restraint and combat-order boundary violations without exposing a relationship meter",
+  "description": "Persist restraint, combat-order, and bound-troll route history without exposing a relationship meter",
   "replacements": [
     {
       "expected_count": 1,
@@ -11,7 +11,7 @@
     {
       "expected_count": 1,
       "old": "<CONSTANT MARA-SLOT-MEAL-SHARED 22>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>",
-      "new": "<CONSTANT MARA-SLOT-MEAL-SHARED 22>\n<CONSTANT MARA-SLOT-RESTRAINT-ATTEMPTED 23>\n<CONSTANT MARA-SLOT-COMBAT-ORDER-ATTEMPTED 24>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
+      "new": "<CONSTANT MARA-SLOT-MEAL-SHARED 22>\n<CONSTANT MARA-SLOT-RESTRAINT-ATTEMPTED 23>\n<CONSTANT MARA-SLOT-COMBAT-ORDER-ATTEMPTED 24>\n<CONSTANT MARA-SLOT-BOUND-TROLL-WITNESSED 25>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
     }
   ]
 }
