@@ -5,8 +5,8 @@
   "replacements": [
     {
       "expected_count": 1,
-      "old": "<ROUTINE CELLAR-THRESHOLD-FCN ()\n    <COND (<VERB? EXAMINE SEARCH TOUCH>",
-      "new": "<ROUTINE CELLAR-THRESHOLD-FCN ()\n    <COND (<VERB? MARA-UNBAR-THRESHOLD>\n           <V-MARA-UNBAR-THRESHOLD>)\n          (<VERB? EXAMINE SEARCH TOUCH>"
+      "old": "<ROUTINE CELLAR-THRESHOLD-FCN ()\n    <COND (<VERB? EXAMINE SEARCH RUB>",
+      "new": "<ROUTINE CELLAR-THRESHOLD-FCN ()\n    <COND (<VERB? MARA-UNBAR-THRESHOLD>\n           <V-MARA-UNBAR-THRESHOLD>)\n          (<VERB? EXAMINE SEARCH RUB>"
     }
   ]
 }
