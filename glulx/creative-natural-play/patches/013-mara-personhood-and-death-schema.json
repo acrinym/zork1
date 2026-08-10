@@ -1,0 +1,17 @@
+{
+  "id": "013_MARA_PERSONHOOD_AND_DEATH_SCHEMA",
+  "path": "mara_companion.zil",
+  "description": "Advance Mara state for witnessed player death and the one-time offscreen comedy history",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SCHEMA 4>\n<CONSTANT MARA-PREVIOUS-SCHEMA 3>",
+      "new": "<CONSTANT MARA-SCHEMA 5>\n<CONSTANT MARA-PREVIOUS-SCHEMA 4>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SLOT-BOUND-TROLL-WITNESSED 25>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>",
+      "new": "<CONSTANT MARA-SLOT-BOUND-TROLL-WITNESSED 25>\n<CONSTANT MARA-SLOT-DEATH-WITNESSED 26>\n<CONSTANT MARA-SLOT-OFFSCREEN-GAG 27>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
+    }
+  ]
+}
