@@ -37,6 +37,7 @@ drop mara
 throw mara
 put mara in sack
 eat mara
+kiss mara
 squeeze mara
 squeeze mara
 examine mara
@@ -56,6 +57,7 @@ grep -F 'Mara Tallow looks down at your hands, then back at you. Take what, exac
 test "$(grep -F -c 'Mara Tallow is not an object you get to relocate.' "$TRANSCRIPT")" -ge 4
 grep -F 'Mara Tallow looks at the brown sack, then at you. That holds sandwiches' "$TRANSCRIPT"
 grep -F 'Mara Tallow lowers the field notebook very slowly. No, she says.' "$TRANSCRIPT"
+grep -F 'Mara steps back. You have mistaken a shared location for a shared history, she says.' "$TRANSCRIPT"
 grep -F 'There is an indeterminate amount of suspicious offscreen activity.' "$TRANSCRIPT"
 grep -F 'Mara returns flushed, slightly out of breath, and looking entirely too pleased with herself.' "$TRANSCRIPT"
 grep -F 'We are not turning that into a repeatable field procedure' "$TRANSCRIPT"
