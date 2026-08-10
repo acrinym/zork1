@@ -28,6 +28,8 @@ The player can:
 - prepare the canonical lunch on the real Kitchen worktop;
 - `SHARE LUNCH WITH MARA`, consuming the single real meal once and splitting its benefit rather than duplicating food.
 
+If the player immediately tries `SHARE LUNCH WITH MARA` again, the ordinary parser now reports that there is no lunch present. That is intentional: the one physical meal has already been eaten and is no longer in scope.
+
 ## Why this matters
 
 The relationship now contains events that have physical cost and history:
@@ -59,3 +61,16 @@ Release 1244 does not create:
 A solo adventurer encountering the barred trap door still gets canonical Zork behavior. The authored exception exists only because Mara is physically present, the Dam partnership already happened, and two people perform the work together.
 
 The canonical Dam, troll, House, Kitchen, cuisine, museum, fishing, and ordinary solo-game behavior remain authoritative.
+
+## Locked candidate artifact
+
+The fully qualified Release 1244 candidate is locked to:
+
+- file: `zork1-glulx-mara-house-company.ulx`
+- serial: `260810`
+- size: `386560` bytes
+- checksum: `0xd192afd1`
+- SHA-256: `d7d52e66316425ed1c15b06fcf483a4b0d5e9fb037b9b9fa886f15ef88b83b17`
+- Glulx version: `0x00030103`
+
+The release remains a branch/PR candidate until explicitly merged.
