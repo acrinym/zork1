@@ -1,0 +1,12 @@
+{
+  "id": "010_MARA_BOUND_TROLL_WITNESS",
+  "path": "mara_companion_movement.zil",
+  "description": "Make Mara acknowledge the real bound-troll consequence once when she enters the now-passable Troll Room",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "                  <MOVE ,MARA .TO>\n                  <COND (<AND <EQUAL? .TO ,LIVING-ROOM>\n                              <ZERO? <MARA-GET ,MARA-SLOT-HOUSE-VISITED>>>",
+      "new": "                  <MOVE ,MARA .TO>\n                  <COND (<AND <EQUAL? .TO ,TROLL-ROOM>\n                              ,GLULX-ALT-TROLL-BOUND\n                              <ZERO? <MARA-GET ,MARA-SLOT-BOUND-TROLL-WITNESSED>>>\n                         <MARA-PUT ,MARA-SLOT-BOUND-TROLL-WITNESSED 1>\n                         <TELL \"Mara steps into the Troll Room only after studying the knots from the threshold. Alive, disarmed, and actually restrained, she says. That changes the route.\" CR>)\n                        (<AND <EQUAL? .TO ,LIVING-ROOM>\n                              <ZERO? <MARA-GET ,MARA-SLOT-HOUSE-VISITED>>>"
+    }
+  ]
+}
