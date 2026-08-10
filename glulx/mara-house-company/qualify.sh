@@ -200,7 +200,7 @@ grep -F 'Her field pack remains in the Attic where she chose to set it down.' "$
 grep -F 'one physical meal becomes two eaten portions' "$BUILD/house-company-transcript.txt"
 grep -F 'That is friendship with weight in the world.' "$BUILD/house-company-transcript.txt"
 grep -F 'not permission to skip the history that has not happened yet' "$BUILD/house-company-transcript.txt"
-grep -F 'Repeating a social command cannot recreate the consumed lunch.' "$BUILD/house-company-transcript.txt"
+grep -F "You can't see any lunch here!" "$BUILD/house-company-transcript.txt"
 
 python - <<'PY_TRANSCRIPT'
 from pathlib import Path
@@ -212,6 +212,8 @@ assert t.index('my field pack is still at the Dam') < t.index('Nothing changes c
 assert t.index('Nothing changes custody: the pack was hers at the Dam and is hers on the road') < t.index('For now, the House contains one more actual life.')
 assert t.index('For now, the House contains one more actual life.') < t.index('one physical meal becomes two eaten portions')
 assert t.count('one physical meal becomes two eaten portions') == 1
+assert t.index('one physical meal becomes two eaten portions') < t.rindex("You can't see any lunch here!")
+assert t.count("You can't see any lunch here!") == 1
 for word in ('mara', 'invite', 'share', 'unbar'):
     assert f'I don\'t know the word "{word}"' not in t
 assert 'You may know how to do that, but I don\'t.' not in t
@@ -247,6 +249,7 @@ receipt = {
         'mara_exact_pack_custody': 'passed',
         'attic_residence_by_consent': 'passed',
         'single_real_shared_meal': 'passed',
+        'consumed_meal_removed_from_parser_scope': 'passed',
         'friendship_history_without_romance_reward': 'passed'
     },
     'generic_housing_system': False,
