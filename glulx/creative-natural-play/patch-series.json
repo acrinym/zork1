@@ -9,7 +9,7 @@
     "file": "zork1-glulx-creative-natural-play.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": true,
+    "locked": false,
     "size_bytes": 388352,
     "checksum_hex": "0x522a9f0b",
     "sha256": "483efb2b777cea3df0863382f3c145585fbd223f8d1f05f5a2e3194f54acef48"
@@ -26,9 +26,15 @@
     "patches/007-mara-hostile-history-state.json",
     "patches/008-mara-hostile-interaction-refusals.json",
     "patches/009-mara-bound-troll-route.json",
-    "patches/010-mara-bound-troll-witness.json"
+    "patches/010-mara-bound-troll-witness.json",
+    "patches/011-mara-person-target-grammar.json",
+    "patches/012-mara-person-rendering-and-comedy.json",
+    "patches/013-mara-personhood-and-death-schema.json",
+    "patches/014-mara-personhood-and-death-state.json",
+    "patches/015-mara-jigs-up-death-awareness.json"
   ],
   "expected_changed_paths": [
+    "1actions.zil",
     "gparser.zil",
     "house_kitchen_laboratory.zil",
     "mara_companion.zil",
@@ -51,14 +57,21 @@
     "SEND MARA AFTER TROLL WITH AXE is accepted as natural player language despite the legacy parser's two-noun syntax ceiling and is refused in Mara's own voice",
     "combat-order language records attempted coercion without making Mara a controllable combat unit",
     "Mara distinguishes an alert troll from the real absurd-alternate bound troll and may enter the now-passable Troll Room only after that physical consequence exists",
-    "Mara remembers the first time she witnesses the living bound troll instead of treating the cross-release consequence as invisible"
+    "Mara remembers the first time she witnesses the living bound troll instead of treating the cross-release consequence as invisible",
+    "Mara's manipulation fallbacks share one proper-name person renderer so absurd verbs cannot regress to 'the Mara' or generic masculine actor prose",
+    "TAKE MARA, EAT MARA, and KISS MARA remain deliberately authored character responses while PUSH/PULL/DROP/THROW share one dry relocation boundary",
+    "PUT MARA IN SACK gets one image-specific joke without making Mara carryable or changing the canonical brown sack",
+    "SQUEEZE MARA can trigger one clean offscreen cutaway whose unexplained aftermath is remembered and refuses to become a repeatable interaction loop",
+    "JIGS-UP tells Mara about the adventurer's death only when she is physically present to witness it, ends automatic following, and preserves that witnessed history"
   ],
   "boundaries": [
     "no generic cooking or crafting engine",
     "no actor inventory transfer framework or companion mule behavior",
     "no generic companion combat AI or combat-command framework",
     "no exposed approval, trust, or romance meter",
-    "no copied pack, meal, range, nest, actor, troll, rope, or room",
+    "no generic personhood or comedy framework; these paths remain authored Mara behavior",
+    "no explicit sexual simulation; the offscreen cutaway remains deliberately unexplained and P-Grue-13",
+    "no copied pack, meal, range, nest, actor, troll, rope, room, or sack",
     "no new relationship progression or story train",
     "no test-only production verbs, QA framework, audit hierarchy, TODOs, stubs, or no-op architecture"
   ]
