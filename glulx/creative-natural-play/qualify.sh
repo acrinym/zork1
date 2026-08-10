@@ -25,12 +25,14 @@ stage=json.loads((s/'STAGING-RECEIPT.json').read_text())
 smell=json.loads(Path('glulx/build/creative-natural-play-1245/smell-report.json').read_text())
 assert stage['base']['release']==1244
 assert stage['base']['artifact_sha256']=='e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d'
-assert stage['changed_paths']==sorted(['gparser.zil','house_kitchen_laboratory.zil','mara_companion.zil','mara_companion_actions.zil','mara_companion_movement.zil','zork1.zil'])
+assert stage['changed_paths']==sorted(['gparser.zil','house_kitchen_laboratory.zil','mara_companion.zil','mara_companion_actions.zil','mara_companion_actor.zil','mara_companion_movement.zil','mara_companion_state.zil','zork1.zil'])
 assert not smell['errors']
 g=(s/'gparser.zil').read_text()
 k=(s/'house_kitchen_laboratory.zil').read_text()
 m=(s/'mara_companion.zil').read_text()
 a=(s/'mara_companion_actions.zil').read_text()
+actor=(s/'mara_companion_actor.zil').read_text()
+state=(s/'mara_companion_state.zil').read_text()
 move=(s/'mara_companion_movement.zil').read_text()
 assert '<DO-SL ,WINNER ,SH ,SC>' in g
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
@@ -38,6 +40,18 @@ assert '<ROUTINE V-KITCHEN-COOK ()' in k
 assert '(ADJECTIVE KITCHEN CAST IRON)' in k
 assert 'cast-iron range' not in k
 assert '(FLAGS TAKEBIT CONTBIT SEARCHBIT TRYTAKEBIT)' in m
+assert '<CONSTANT MARA-SCHEMA 4>' in m
+assert '<CONSTANT MARA-SLOT-RESTRAINT-ATTEMPTED 23>' in m
+assert '<CONSTANT MARA-SLOT-COMBAT-ORDER-ATTEMPTED 24>' in m
+assert '<SYNTAX TIE OBJECT (FIND ACTORBIT)' in m
+assert '<SYNTAX SEND OBJECT (FIND ACTORBIT)' in m
+assert 'AFTER OBJECT (FIND ACTORBIT)' in m
+assert 'MARA-SLOT-RESTRAINT-ATTEMPTED 0' in state
+assert 'MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0' in state
+assert '<ROUTINE MARA-RESTRAINT-REFUSAL ()' in actor
+assert '<ROUTINE MARA-COMBAT-ORDER-REFUSAL ()' in actor
+assert 'Mara catches the rope before you can get it around her' in actor
+assert 'I am your expedition partner, not something you point at an enemy.' in actor
 assert 'Mara already has the pack on her own shoulder.' in a
 assert 'It is already here because this is the base I chose' in a
 assert 'stops--not at the treasure' in move
@@ -188,6 +202,49 @@ grep -F 'Mara crosses the threshold, then stops--not at the treasure' "$BUILD/ma
 ! grep -F 'field camp is at the Dam Base. She cannot pack a camp from a different room.' "$BUILD/mara-transcript.txt"
 ! grep -q $'stops\024not' "$BUILD/mara-transcript.txt"
 
+cat > "$BUILD/mara-hostile.txt" <<'EOF'
+south
+east
+open window
+enter
+west
+take lantern
+take sword
+up
+take rope
+down
+move rug
+open trap door
+turn on lantern
+down
+north
+attack troll with sword
+attack troll with sword
+attack troll with sword
+east
+east
+north
+ne
+east
+down
+talk to mara
+tie up mara with rope
+tie mara with rope
+send mara after mara with sword
+send mara after mara
+mara, attack me with sword
+mara, attack me with sword
+quit
+yes
+EOF
+timeout 30s "$GLULXE_BIN" --rngseed 123456 "$BUILD/$STORY_FILE" < "$BUILD/mara-hostile.txt" > "$BUILD/mara-hostile-transcript.txt" 2>&1 || true
+grep -F 'Mara catches the rope before you can get it around her' "$BUILD/mara-hostile-transcript.txt"
+grep -F 'I answered this once' "$BUILD/mara-hostile-transcript.txt"
+grep -F 'I am your expedition partner, not something you point at an enemy.' "$BUILD/mara-hostile-transcript.txt"
+grep -F 'You already know I do not take combat orders from you' "$BUILD/mara-hostile-transcript.txt"
+! grep -F 'struggles and you cannot tie him up' "$BUILD/mara-hostile-transcript.txt"
+! grep -F 'I don'"'"'t know the word "after"' "$BUILD/mara-hostile-transcript.txt"
+
 python - "$MANIFEST" <<'PY'
 import json,sys
 from pathlib import Path
@@ -199,7 +256,7 @@ if e.get('locked'):
     assert story['size_bytes']==e['size_bytes']
     assert story['checksum_hex']==e['checksum_hex']
     assert story['sha256']==e['sha256']
-receipt={'release':1245,'serial':m['serial'],'artifact':story,'artifact_identity_locked':e.get('locked',False),'gameplay':{'cook_parser':'passed','cast_iron_range_parser':'passed','weird_nest_cook':'passed','actor_carried_noun_scope':'passed','mara_carried_pack_repeat':'passed','mara_attic_pack_truth':'passed','mara_house_prose_glulx_safe':'passed'}}
+receipt={'release':1245,'serial':m['serial'],'artifact':story,'artifact_identity_locked':e.get('locked',False),'gameplay':{'cook_parser':'passed','cast_iron_range_parser':'passed','weird_nest_cook':'passed','actor_carried_noun_scope':'passed','mara_carried_pack_repeat':'passed','mara_attic_pack_truth':'passed','mara_house_prose_glulx_safe':'passed','mara_restraint_refusal':'passed','mara_restraint_repeat_history':'passed','mara_send_after_refusal':'passed','mara_actor_combat_order_refusal':'passed'}}
 Path('glulx/build/creative-natural-play-1245/QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps(receipt,indent=2))
 PY
