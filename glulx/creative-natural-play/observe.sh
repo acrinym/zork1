@@ -19,7 +19,10 @@ run_probe() {
   local name="$1"
   local seed="$2"
   local commands="$BUILD/$name-commands.txt"
-  "$GLULXE_BIN" --rngseed "$seed" "$STORY" < "$commands" \
+  # Exploratory input may reach a death/restart, save, disambiguation, or other
+  # interactive prompt we did not predict. Preserve that as evidence instead of
+  # allowing one session to block the rest of the play train.
+  timeout 20s "$GLULXE_BIN" --rngseed "$seed" "$STORY" < "$commands" \
     > "$BUILD/$name-transcript.txt" 2>&1 || true
 }
 
@@ -371,6 +374,7 @@ for transcript in sorted(build.glob('*-transcript.txt')):
     text = transcript.read_text(encoding='utf-8', errors='replace')
     item = {
         'lines': len(text.splitlines()),
+        'timed_out': text.rstrip().endswith('Terminated'),
         'unknown_words': sorted(set(patterns['unknown_word'].findall(text))),
         'generic_failures': len(patterns['generic_failure'].findall(text)),
         'cant_see': sorted(set(patterns['cant_see'].findall(text))),
