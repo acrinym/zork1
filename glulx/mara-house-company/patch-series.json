@@ -37,6 +37,7 @@
     "patches/001-mara-threshold-grammar.json",
     "patches/002-mara-threshold-action.json",
     "patches/003-cellar-threshold-vocabulary.json",
+    "patches/004-cellar-threshold-dispatch.json",
     "patches/004-release-1244.json"
   ],
   "expected_changed_paths": [
@@ -49,7 +50,7 @@
   ],
   "player_outcomes": [
     "after the joint Dam survey, Mara can physically accompany the adventurer through the old passages to the canonical barred Cellar threshold",
-    "UNBAR TRAP DOOR WITH MARA uses Mara's own measured rope plus the adventurer's lift to draw the real upper bar and set the real trap door open; solo Zork remains unchanged",
+    "UNBAR TRAP DOOR WITH MARA is dispatched by the existing Cellar threshold before its observational fallback, then uses Mara's own measured rope plus the adventurer's lift to draw the real upper bar and set the real trap door open; solo Zork remains unchanged",
     "natural TRAP DOOR, DOOR, HATCH, and THRESHOLD language in the Cellar resolves to the existing observational threshold instead of a duplicate door object",
     "after physically crossing the reopened stair, Mara can judge the white House from direct experience",
     "INVITE MARA does not teleport her camp or convert the House into an automatic residence",
