@@ -208,15 +208,17 @@ south
 east
 open window
 enter
+west
+take lantern
+turn on lantern
+east
 up
 take rope
 down
 west
-take lantern
 take sword
 move rug
 open trap door
-turn on lantern
 down
 north
 attack troll with sword
