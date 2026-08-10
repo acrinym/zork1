@@ -9,11 +9,9 @@ on:
       - "glulx/mara-house-company/**"
       - "glulx/mara-companion-foundation/**"
       - "glulx/cuisine-hunger-stamina/**"
+      - "glulx/house-kitchen-laboratory/**"
       - "glulx/tools/**"
       - "optimized/tools/zil_smell_check.py"
-      - "tests/test_mara_companion_foundation.py"
-      - "tests/test_mara_house_company.py"
-      - "tests/test_mara_house_threshold.py"
       - ".github/workflows/glulx-creative-natural-play.yml"
   pull_request:
     paths:
@@ -21,11 +19,9 @@ on:
       - "glulx/mara-house-company/**"
       - "glulx/mara-companion-foundation/**"
       - "glulx/cuisine-hunger-stamina/**"
+      - "glulx/house-kitchen-laboratory/**"
       - "glulx/tools/**"
       - "optimized/tools/zil_smell_check.py"
-      - "tests/test_mara_companion_foundation.py"
-      - "tests/test_mara_house_company.py"
-      - "tests/test_mara_house_threshold.py"
       - ".github/workflows/glulx-creative-natural-play.yml"
   workflow_dispatch:
 
@@ -42,7 +38,7 @@ env:
   GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
   CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
 jobs:
-  observe-current-game:
+  qualify-and-play:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -68,10 +64,10 @@ jobs:
           echo "$GLAZER_SOURCE_SHA256  glazer.tar.gz" | sha256sum --check
           tar -xf glazer.tar.gz --strip-components=1 -C .tooling/glazer-source
           make -C .tooling/glazer-source
-      - name: Play the damned game
+      - name: Qualify Release 1245
         run: |
           set -o pipefail
-          bash glulx/creative-natural-play/observe.sh 2>&1 | tee creative-natural-play.log
+          bash glulx/creative-natural-play/qualify.sh 2>&1 | tee creative-natural-play.log
       - name: Upload creative play evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -81,6 +77,4 @@ jobs:
           retention-days: 14
           path: |
             creative-natural-play.log
-            glulx/build/creative-natural-play/*
-            glulx/build/mara-house-company/house-company-transcript.txt
-            glulx/build/mara-house-company/QUALIFICATION-RECEIPT.json
+            glulx/build/creative-natural-play-1245/*
