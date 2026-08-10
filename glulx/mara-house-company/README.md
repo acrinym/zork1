@@ -4,19 +4,26 @@ Release 1244 carries Mara Tallow beyond her first Dam chapter and lets the relat
 
 ## Player-facing chapter
 
-After completing the joint Dam survey, the adventurer can physically bring Mara through the old passages to the white House.
+After completing the joint Dam survey, the adventurer can physically bring Mara through the old passages toward the white House.
 
-The House does not automatically become Mara's home.
+The original game correctly fights that plan at the Cellar: after the first descent, the canonical trap door has crashed shut and been barred from above. Release 1244 preserves that canonical solo behavior.
+
+The earned two-person exception is physical rather than magical. With Mara present after the Dam survey, the player can use `UNBAR TRAP DOOR WITH MARA`. Mara threads her own measured survey rope through the seam while the adventurer lifts from below; together they draw the real upper bar. The action sets the existing trap door open and preserves its existing first-descent history. No second door or exit is created.
+
+The House still does not automatically become Mara's home.
 
 The player can:
 
-- bring Mara to the House through the authored Dam → Deep Canyon → North-South Passage → Round Room → East-West Passage → Troll Room → Cellar route;
+- bring Mara through the real Dam → Deep Canyon → North-South Passage → Round Room → East-West Passage → Troll Room → Cellar route;
+- target the existing Cellar-side threshold naturally as `TRAP DOOR`, `DOOR`, `HATCH`, or `THRESHOLD`;
+- `UNBAR TRAP DOOR WITH MARA` only after the partnership has earned enough shared competence to make the two-person operation credible;
+- walk up the real reopened stair into the Living Room, with Mara following physically;
 - `ASK MARA ABOUT HOUSE` after she has actually crossed the threshold;
 - `INVITE MARA`, which creates a concrete problem rather than an instant relationship state: her field camp still exists at the Dam;
-- return physically with Mara to the Dam Base;
+- return physically with Mara to the Dam Base through the same world;
 - use `MARA, TAKE PACK` for the one authored case where Mara retrieves her own field pack;
 - carry that same pack back inside Mara's actual custody;
-- show Mara the Attic and `INVITE MARA` again there;
+- show Mara the Attic through the canonical Kitchen stair and `INVITE MARA` again there;
 - let Mara inspect the room and choose to set her own pack there as a temporary base;
 - prepare the canonical lunch on the real Kitchen worktop;
 - `SHARE LUNCH WITH MARA`, consuming the single real meal once and splitting its benefit rather than duplicating food.
@@ -25,9 +32,10 @@ The player can:
 
 The relationship now contains events that have physical cost and history:
 
-- a joint dangerous operation;
+- a joint dangerous Dam operation;
 - a completed field record;
-- a trip from one base to another;
+- a second two-person operation that solves a canonical physical obstruction rather than deleting it;
+- a round trip between two real bases;
 - exact custody of Mara's camp;
 - a residence decision made by consent;
 - one meal that cannot be repeated because the food is gone.
@@ -38,6 +46,8 @@ Mara's later House, company, and intimacy dialogue reads those events directly. 
 
 Release 1244 does not create:
 
+- a second trap door or alternate Cellar exit;
+- a general trap-door unlocking power for Mara;
 - a generic housing system;
 - a party inventory;
 - a follower/pathfinding framework;
@@ -46,4 +56,6 @@ Release 1244 does not create:
 - free food or duplicated equipment;
 - teleportation of Mara or her belongings.
 
-The canonical Dam, troll, House, Kitchen, cuisine, museum, fishing, and solo-game behavior remain authoritative.
+A solo adventurer encountering the barred trap door still gets canonical Zork behavior. The authored exception exists only because Mara is physically present, the Dam partnership already happened, and two people perform the work together.
+
+The canonical Dam, troll, House, Kitchen, cuisine, museum, fishing, and ordinary solo-game behavior remain authoritative.
