@@ -1,0 +1,42 @@
+{
+  "id": "001C_KITCHEN_NATURAL_COOK",
+  "path": "house_kitchen_laboratory.zil",
+  "description": "Accept ordinary COOK language and print a parser-valid cast iron range name",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX WARM OBJECT ON OBJECT = V-KITCHEN-WARM-ON>\n<SYNTAX HEAT OBJECT ON OBJECT = V-KITCHEN-WARM-ON>\n<SYNTAX COOL OBJECT = V-KITCHEN-COOL>",
+      "new": "<SYNTAX WARM OBJECT ON OBJECT = V-KITCHEN-WARM-ON>\n<SYNTAX HEAT OBJECT ON OBJECT = V-KITCHEN-WARM-ON>\n<SYNTAX COOK OBJECT = V-KITCHEN-COOK>\n<SYNTAX COOK OBJECT ON OBJECT = V-KITCHEN-WARM-ON>\n<SYNTAX COOL OBJECT = V-KITCHEN-COOL>"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ADJECTIVE CAST KITCHEN IRON)\n    (DESC \"cast-iron range\")",
+      "new": "    (ADJECTIVE KITCHEN CAST IRON)\n    (DESC \"cast iron range\")"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-KITCHEN-WARM-ON ()",
+      "new": "<ROUTINE V-KITCHEN-COOK ()\n    <COND (<NOT <KITCHEN-HERE?>>\n           <TELL \"The white-house Kitchen is where the cooking fixtures are.\" CR>)\n          (<EQUAL? ,PRSO ,LUNCH>\n           <COND (<IN? ,LUNCH ,KITCHEN-WORKTOP>\n                  <V-KITCHEN-PREPARE>)\n                 (<IN? ,LUNCH ,KITCHEN-RANGE>\n                  <SETG PRSI ,KITCHEN-RANGE>\n                  <V-KITCHEN-WARM-ON>)\n                 (T\n                  <TELL \"Put the lunch on the worktop to prepare it, or on the hot range to cook it further.\" CR>)>)\n          (<IN? ,PRSO ,KITCHEN-RANGE>\n           <SETG PRSI ,KITCHEN-RANGE>\n           <V-KITCHEN-WARM-ON>)\n          (<KITCHEN-RANGE-ACCEPTS? ,PRSO>\n           <TELL \"Put the \" D ,PRSO \" on the cast iron range before cooking it.\" CR>)\n          (<EQUAL? ,PRSO ,NEST>\n           <TELL \"The woven nest is tinder, not food; the range would burn it rather than cook it.\" CR>)\n          (T\n           <TELL \"There is no sensible way to cook the \" D ,PRSO \" with the Kitchen fixtures.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE V-KITCHEN-WARM-ON ()"
+    },
+    {
+      "expected_count": 1,
+      "old": "The last heat fades from the cast-iron range.",
+      "new": "The last heat fades from the cast iron range."
+    },
+    {
+      "expected_count": 1,
+      "old": "A cast-iron range can be lit with a real held flame.",
+      "new": "A cast iron range can be lit with a real held flame."
+    },
+    {
+      "expected_count": 1,
+      "old": "a cast-iron range.",
+      "new": "a cast iron range."
+    },
+    {
+      "expected_count": 1,
+      "old": "The authored warming surface is the cast-iron Kitchen range.",
+      "new": "The authored warming surface is the cast iron Kitchen range."
+    }
+  ]
+}
