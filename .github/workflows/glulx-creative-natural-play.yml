@@ -68,6 +68,8 @@ jobs:
         run: |
           set -o pipefail
           bash glulx/creative-natural-play/qualify.sh 2>&1 | tee creative-natural-play.log
+      - name: Play exact Mara bound-troll order
+        run: bash glulx/creative-natural-play/exact-hostile-lap.sh
       - name: Play second creative abuse lap
         run: bash glulx/creative-natural-play/chaos-lap.sh
       - name: Upload creative play evidence
