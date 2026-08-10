@@ -6,14 +6,24 @@ on:
       - agent/mara-house-company-20260810
     paths:
       - "glulx/mara-house-company/**"
+      - "glulx/mara-companion-foundation/**"
+      - "glulx/cuisine-hunger-stamina/**"
+      - "glulx/tools/**"
+      - "optimized/tools/zil_smell_check.py"
       - "ideas/extended-zork/mara-tallow-implementation-status.md"
+      - "tests/test_mara_companion_foundation.py"
       - "tests/test_mara_house_company.py"
       - "tests/test_mara_house_threshold.py"
       - ".github/workflows/glulx-mara-house-company.yml"
   pull_request:
     paths:
       - "glulx/mara-house-company/**"
+      - "glulx/mara-companion-foundation/**"
+      - "glulx/cuisine-hunger-stamina/**"
+      - "glulx/tools/**"
+      - "optimized/tools/zil_smell_check.py"
       - "ideas/extended-zork/mara-tallow-implementation-status.md"
+      - "tests/test_mara_companion_foundation.py"
       - "tests/test_mara_house_company.py"
       - "tests/test_mara_house_threshold.py"
       - ".github/workflows/glulx-mara-house-company.yml"
