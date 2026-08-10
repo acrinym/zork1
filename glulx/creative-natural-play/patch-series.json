@@ -33,8 +33,7 @@
     "patches/013-mara-personhood-and-death-schema.json",
     "patches/014-mara-personhood-and-death-state.json",
     "patches/015-mara-jigs-up-death-awareness.json",
-    "patches/016-mara-release-1245-schema-stability.json",
-    "patches/017-mara-release-1244-save-migration.json"
+    "patches/016-mara-release-1245-schema-stability.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -67,7 +66,7 @@
     "PUT MARA IN SACK gets one image-specific joke without making Mara carryable or changing the canonical brown sack",
     "SQUEEZE MARA can trigger one clean offscreen cutaway whose unexplained aftermath is remembered and refuses to become a repeatable interaction loop",
     "JIGS-UP tells Mara about the adventurer's death only when she is physically present to witness it, ends automatic following, and preserves that witnessed history",
-    "Release 1244 Mara saves migrate into the single Release 1245 schema step with every new 1245 history field initialized rather than resetting established history"
+    "both Release 1244 schema-3 Mara saves and earlier qualified Release 1245 schema-4 saves migrate into the current state without erasing already witnessed history"
   ],
   "boundaries": [
     "no generic cooking or crafting engine",
