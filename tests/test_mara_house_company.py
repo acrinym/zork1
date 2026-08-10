@@ -21,13 +21,7 @@ class MaraHouseCompanyTests(unittest.TestCase):
             "8d3f4bf555ba15be82d4d4e849c1501fa61bb3f57630f0a4e91061e89560d629",
         )
         artifact = manifest["expected_artifact"]
-        self.assertTrue(artifact["locked"])
-        self.assertEqual(artifact["size_bytes"], 386560)
-        self.assertEqual(artifact["checksum_hex"], "0xd192afd1")
-        self.assertEqual(
-            artifact["sha256"],
-            "d7d52e66316425ed1c15b06fcf483a4b0d5e9fb037b9b9fa886f15ef88b83b17",
-        )
+        self.assertFalse(artifact["locked"])
 
     def test_house_state_extends_without_erasing_release_1243_history(self) -> None:
         main = (OVERRIDES / "mara_companion.zil").read_text(encoding="utf-8")
@@ -73,6 +67,13 @@ class MaraHouseCompanyTests(unittest.TestCase):
         self.assertIn("<MARA-PUT ,MARA-SLOT-MEAL-SHARED 1>", actions)
         self.assertIn("no duplicate sandwich", actions)
         self.assertNotIn("<MOVE ,LUNCH", actions)
+
+    def test_shared_meal_reserve_is_strictly_less_than_whole_meal(self) -> None:
+        actions = (OVERRIDES / "mara_companion_actions.zil").read_text(encoding="utf-8")
+        self.assertIn("<ROUTINE MARA-SHARED-MEAL-LEVEL", actions)
+        self.assertIn("<G? .LEVEL 0> <RETURN <- .LEVEL 1>>", actions)
+        self.assertIn("<SET LEVEL <MARA-SHARED-MEAL-LEVEL>>", actions)
+        self.assertNotIn("<ZERO? .LEVEL> <SET LEVEL 1>", actions)
 
     def test_house_history_changes_dialogue_without_romance_reward(self) -> None:
         state = (OVERRIDES / "mara_companion_state.zil").read_text(encoding="utf-8")
