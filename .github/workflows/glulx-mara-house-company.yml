@@ -77,4 +77,5 @@ jobs:
             glulx/build/mara-house-company/*.txt
             glulx/build/mara-house-company/*.log
             glulx/build/mara-house-company/src/STAGING-RECEIPT.json
+            glulx/build/mara-house-company/src/house_cellar_threshold.zil
             glulx/mara-house-company/patch-series.json
