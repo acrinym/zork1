@@ -1,0 +1,12 @@
+{
+  "id": "015_MARA_JIGS_UP_DEATH_AWARENESS",
+  "path": "1actions.zil",
+  "description": "Give physically present Mara one global chance to witness JIGS-UP before the canonical death flow continues",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "I am not such a talent. Sorry.\" CR>\n\t\t<FINISH>)>\n\t <TELL .DESC CR>",
+      "new": "I am not such a talent. Sorry.\" CR>\n\t\t<FINISH>)>\n\t <MARA-WITNESS-PLAYER-DEATH>\n\t <TELL .DESC CR>"
+    }
+  ]
+}
