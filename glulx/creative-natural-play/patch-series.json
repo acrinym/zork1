@@ -12,7 +12,7 @@
     "locked": false
   },
   "patches": [
-    "patches/001c-kitchen-natural-cook.json",
+    "patches/001d-kitchen-natural-cook.json",
     "patches/002-mara-pack-parser-truth.json",
     "patches/003-mara-pack-custody-replies.json",
     "patches/004-mara-house-prose-ascii.json",
@@ -27,7 +27,7 @@
   ],
   "player_outcomes": [
     "ordinary COOK language reaches the existing bounded Kitchen preparation and heating mechanics instead of failing as an unknown word",
-    "the Kitchen prints cast iron range wording that can be typed back into the parser",
+    "every player-visible Kitchen range name uses parser-typeable cast iron wording",
     "deliberately strange COOK targets receive physical authored refusals rather than an unknown verb",
     "MARA, TAKE PACK can resolve the real pack after Mara herself is carrying it while player theft remains blocked by the pack action",
     "repeated Mara pack commands report actual custody and never falsely relocate the camp to the Dam after she has based it in the Attic",
