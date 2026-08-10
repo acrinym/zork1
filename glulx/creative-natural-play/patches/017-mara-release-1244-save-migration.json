@@ -1,0 +1,12 @@
+{
+  "id": "017_MARA_RELEASE_1244_SAVE_MIGRATION",
+  "path": "mara_companion_state.zil",
+  "description": "Initialize every Release 1245-only Mara history field when migrating a Release 1244 schema-3 save",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "           ;\"Release 1243 saves keep every witnessed event. Only the new\n             House-company fields begin empty.\"\n           <PUT ,MARA-STATE 0 ,MARA-SCHEMA>\n           ;\"Release 1245 saves retain all existing Mara history. Only the\n             newly introduced death-witness and offscreen-comedy fields begin empty.\"\n           <MARA-PUT ,MARA-SLOT-DEATH-WITNESSED 0>\n           <MARA-PUT ,MARA-SLOT-OFFSCREEN-GAG 0>)",
+      "new": "           ;\"Release 1244 saves retain every witnessed House and Dam event.\"\n           <PUT ,MARA-STATE 0 ,MARA-SCHEMA>\n           <MARA-PUT ,MARA-SLOT-RESTRAINT-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-BOUND-TROLL-WITNESSED 0>\n           <MARA-PUT ,MARA-SLOT-DEATH-WITNESSED 0>\n           <MARA-PUT ,MARA-SLOT-OFFSCREEN-GAG 0>)"
+    }
+  ]
+}
