@@ -9,10 +9,7 @@
     "file": "zork1-glulx-mara-house-company.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": true,
-    "size_bytes": 386560,
-    "checksum_hex": "0xd192afd1",
-    "sha256": "d7d52e66316425ed1c15b06fcf483a4b0d5e9fb037b9b9fa886f15ef88b83b17"
+    "locked": false
   },
   "overrides": [
     {
@@ -60,7 +57,7 @@
     "the first invitation creates a concrete return trip to the Dam Base, where MARA, TAKE PACK makes Mara retrieve her own physical field pack",
     "the pack then travels inside Mara's actual custody along the authored route back to the House",
     "Mara accepts the House only from the Attic after inspecting the place and sets her own pack there by explicit consent",
-    "SHARE LUNCH WITH MARA consumes the one real prepared lunch once, feeds both characters in fiction, and leaves the player a smaller stamina reserve than eating the entire meal alone",
+    "SHARE LUNCH WITH MARA consumes the one real prepared lunch once, feeds both characters in fiction, and leaves the player a strictly smaller stamina reserve than eating the entire meal alone, including the minimal unwarmed prepared lunch",
     "after that meal is consumed, a repeated SHARE LUNCH command fails naturally because the physical lunch is no longer in parser scope",
     "House and company dialogue changes because these events happened, without exposing an approval score or converting friendship into romance",
     "Release 1243 save history is preserved when the Mara state schema advances"
