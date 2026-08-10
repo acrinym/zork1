@@ -150,7 +150,7 @@
                  (<MARA-GET ,MARA-SLOT-HOUSE-VISITED>
                   <TELL "The House is a base with the alarming habit of becoming a life, Mara says. She noticed the archive, the kitchen, the damage, and the fact that you returned to it rather than merely storing treasure there." CR>)
                  (<MARA-GET ,MARA-SLOT-DAM-SURVEY>
-                  <TELL "You have described a House above the old routes, Mara says. Finish this survey honestly and she will consider seeing whether it is a base or another legend with furniture." CR>)
+                  <TELL "The Dam survey is honest now, Mara says. You have described a House above the old routes; she will see whether it is a working base or another legend with furniture when you can actually get there together." CR>)
                  (T
                   <TELL "Mara has no earned knowledge of your House yet. She does not promote a claim to geography merely because someone says it confidently." CR>)>)
           (<EQUAL? .TOPIC ,MARA ,ME>
