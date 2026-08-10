@@ -29,6 +29,7 @@
     "patches/010-mara-bound-troll-witness.json",
     "patches/011-mara-person-target-grammar.json",
     "patches/012-mara-person-rendering-and-comedy.json",
+    "patches/012a-mara-person-target-scope.json",
     "patches/013-mara-personhood-and-death-schema.json",
     "patches/014-mara-personhood-and-death-state.json",
     "patches/015-mara-jigs-up-death-awareness.json"
@@ -59,6 +60,7 @@
     "Mara distinguishes an alert troll from the real absurd-alternate bound troll and may enter the now-passable Troll Room only after that physical consequence exists",
     "Mara remembers the first time she witnesses the living bound troll instead of treating the cross-release consequence as invisible",
     "Mara's manipulation fallbacks share one proper-name person renderer so absurd verbs cannot regress to 'the Mara' or generic masculine actor prose",
+    "personhood refusals are scoped to Mara as the target and do not steal addressed commands such as MARA, PUSH YELLOW BUTTON",
     "TAKE MARA, EAT MARA, and KISS MARA remain deliberately authored character responses while PUSH/PULL/DROP/THROW share one dry relocation boundary",
     "PUT MARA IN SACK gets one image-specific joke without making Mara carryable or changing the canonical brown sack",
     "SQUEEZE MARA can trigger one clean offscreen cutaway whose unexplained aftermath is remembered and refuses to become a repeatable interaction loop",
