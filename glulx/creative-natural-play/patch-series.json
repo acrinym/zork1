@@ -15,6 +15,7 @@
     "patches/001d-kitchen-natural-cook.json",
     "patches/002-mara-pack-parser-truth.json",
     "patches/002a-actor-carried-noun-scope.json",
+    "patches/002b-send-after-with-normalization.json",
     "patches/003-mara-pack-custody-replies.json",
     "patches/004-mara-house-prose-ascii.json",
     "patches/005-release-1245.json",
@@ -42,7 +43,8 @@
     "Mara's first House threshold line renders without a Glulxe control glyph",
     "TIE UP MARA WITH ROPE and TIE MARA WITH ROPE stay inside Mara's authored character instead of falling into vanilla masculine actor prose",
     "attempted physical restraint becomes durable Mara history and ends automatic following rather than disappearing after the refusal",
-    "combat-order language is refused in Mara's own voice and records the attempted coercion without making her a controllable combat unit"
+    "SEND MARA AFTER TROLL WITH AXE is accepted as natural player language despite the legacy parser's two-noun syntax ceiling and is refused in Mara's own voice",
+    "combat-order language records attempted coercion without making Mara a controllable combat unit"
   ],
   "boundaries": [
     "no generic cooking or crafting engine",
