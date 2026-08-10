@@ -64,7 +64,7 @@ for token in (
 ):
     assert token in module
 assert 'TRAPDOOR DOOR HATCH' in threshold
-assert threshold.count('<OBJECT CELLAR-THRESHOLD') == 1
+assert threshold.count('<OBJECT CELLAR-THRESHOLD\n') == 1
 production = '\n'.join(p.read_text(encoding='utf-8', errors='ignore') for p in s.glob('*.zil'))
 for forbidden in ('MARATELEPORT', 'MARAAPPROVAL', 'MARAROMANCE', 'MARAQUESTLOG', 'MARADEBUG'):
     assert forbidden not in production
