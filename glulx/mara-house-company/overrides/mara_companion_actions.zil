@@ -136,6 +136,11 @@
            <TELL "Mara kneels at the waxed pack, checks the notebook seal, coils the loose camp cord, and shoulders the weight herself. Nothing changes custody: the pack was hers at the Dam and is hers on the road. All right, she says. Now we can see whether your House can hold a second route without swallowing it." CR>)>
     <RTRUE>>
 
+<ROUTINE MARA-SHARED-MEAL-LEVEL ("AUX" LEVEL)
+    <SET LEVEL <CUISINE-MEAL-LEVEL>>
+    <COND (<G? .LEVEL 0> <RETURN <- .LEVEL 1>>)>
+    <RETURN 0>>
+
 <ROUTINE V-MARA-SHARE-MEAL ("AUX" LEVEL)
     <MARA-ENSURE>
     <COND (<NOT <EQUAL? ,PRSI ,MARA>>
@@ -155,9 +160,7 @@
           (<ZERO? <KITCHEN-GET ,KS-LUNCH-PREPARED>>
            <TELL "Prepare the lunch before offering half of it as an actual meal." CR>)
           (T
-           <SET LEVEL <CUISINE-MEAL-LEVEL>>
-           <COND (<G? .LEVEL 1> <SET LEVEL <- .LEVEL 1>>)
-                 (<ZERO? .LEVEL> <SET LEVEL 1>)>
+           <SET LEVEL <MARA-SHARED-MEAL-LEVEL>>
            <REMOVE ,LUNCH>
            <CUISINE-PUT ,CUISINE-SLOT-STRAIN 0>
            <CUISINE-PUT ,CUISINE-SLOT-HUNGER 0>
