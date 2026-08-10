@@ -12,7 +12,7 @@
     "locked": false
   },
   "patches": [
-    "patches/001b-kitchen-natural-cook.json",
+    "patches/001c-kitchen-natural-cook.json",
     "patches/002-mara-pack-parser-truth.json",
     "patches/003-mara-pack-custody-replies.json",
     "patches/004-mara-house-prose-ascii.json",
