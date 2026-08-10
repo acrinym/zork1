@@ -21,7 +21,9 @@
     "patches/005-release-1245.json",
     "patches/006-mara-hostile-history-schema.json",
     "patches/007-mara-hostile-history-state.json",
-    "patches/008-mara-hostile-interaction-refusals.json"
+    "patches/008-mara-hostile-interaction-refusals.json",
+    "patches/009-mara-bound-troll-route.json",
+    "patches/010-mara-bound-troll-witness.json"
   ],
   "expected_changed_paths": [
     "gparser.zil",
@@ -44,14 +46,16 @@
     "TIE UP MARA WITH ROPE and TIE MARA WITH ROPE stay inside Mara's authored character instead of falling into vanilla masculine actor prose",
     "attempted physical restraint becomes durable Mara history and ends automatic following rather than disappearing after the refusal",
     "SEND MARA AFTER TROLL WITH AXE is accepted as natural player language despite the legacy parser's two-noun syntax ceiling and is refused in Mara's own voice",
-    "combat-order language records attempted coercion without making Mara a controllable combat unit"
+    "combat-order language records attempted coercion without making Mara a controllable combat unit",
+    "Mara distinguishes an alert troll from the real absurd-alternate bound troll and may enter the now-passable Troll Room only after that physical consequence exists",
+    "Mara remembers the first time she witnesses the living bound troll instead of treating the cross-release consequence as invisible"
   ],
   "boundaries": [
     "no generic cooking or crafting engine",
     "no actor inventory transfer framework or companion mule behavior",
     "no generic companion combat AI or combat-command framework",
     "no exposed approval, trust, or romance meter",
-    "no copied pack, meal, range, nest, actor, or room",
+    "no copied pack, meal, range, nest, actor, troll, rope, or room",
     "no new relationship progression or story train",
     "no test-only production verbs, QA framework, audit hierarchy, TODOs, stubs, or no-op architecture"
   ]
