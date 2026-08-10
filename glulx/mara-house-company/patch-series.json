@@ -9,7 +9,10 @@
     "file": "zork1-glulx-mara-house-company.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "locked": true,
+    "size_bytes": 386560,
+    "checksum_hex": "0x098863ac",
+    "sha256": "e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d"
   },
   "overrides": [
     {
