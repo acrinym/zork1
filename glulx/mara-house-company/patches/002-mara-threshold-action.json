@@ -1,0 +1,12 @@
+{
+  "id": "002_MARA_THRESHOLD_ACTION",
+  "path": "mara_companion_actions.zil",
+  "description": "Let the earned Dam partnership reopen the real barred trap door from below without changing solo Zork",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-MARA-INVITE-STAY ()",
+      "new": "<ROUTINE V-MARA-UNBAR-THRESHOLD ()\n    <MARA-ENSURE>\n    <COND (<NOT <EQUAL? ,PRSO ,CELLAR-THRESHOLD>>\n           <TELL \"The authored two-person unbarring applies to the real trap-door threshold above the Cellar.\" CR>)\n          (<NOT <EQUAL? ,PRSI ,MARA>>\n           <TELL \"The second set of hands here belongs to Mara, not an interchangeable tool.\" CR>)\n          (<NOT <EQUAL? ,HERE ,CELLAR>>\n           <TELL \"The barred underside of the House trap door is reached from the Cellar.\" CR>)\n          (<NOT <MARA-HERE?>>\n           <TELL \"Mara must be physically beside you in the Cellar to work the upper bar.\" CR>)\n          (<ZERO? <MARA-GET ,MARA-SLOT-DAM-SURVEY>>\n           <TELL \"Mara studies the seam and shakes her head. We have not worked together well enough for me to put my rope where your hands cannot reach, she says.\" CR>)\n          (<FSET? ,TRAP-DOOR ,OPENBIT>\n           <TELL \"The real trap door is already open. No second route needs to be invented.\" CR>)\n          (T\n           <TELL \"Mara uncoils her own measured rope and works its narrow end through the real trap-door seam. You lift from below until the wood takes some of the weight; she feeds the line across the hidden upper bar, catches it, and draws while you keep the door from dropping. The bar scrapes once across the floor above, then comes free.\" CR CR>\n           <FSET ,TRAP-DOOR ,OPENBIT>\n           <FSET ,TRAP-DOOR ,TOUCHBIT>\n           <TELL \"The same trap door that locked behind you now stands open above the same stair. Mara recoils her rope herself. Up is physically possible again, but only because two people just did the work.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE V-MARA-INVITE-STAY ()"
+    }
+  ]
+}
