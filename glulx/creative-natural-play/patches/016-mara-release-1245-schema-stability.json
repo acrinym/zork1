@@ -1,0 +1,12 @@
+{
+  "id": "016_MARA_RELEASE_1245_SCHEMA_STABILITY",
+  "path": "mara_companion.zil",
+  "description": "Keep the still-unmerged Release 1245 on its single schema increment from Release 1244 while retaining the new personhood-history fields",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SCHEMA 5>\n<CONSTANT MARA-PREVIOUS-SCHEMA 4>",
+      "new": "<CONSTANT MARA-SCHEMA 4>\n<CONSTANT MARA-PREVIOUS-SCHEMA 3>"
+    }
+  ]
+}
