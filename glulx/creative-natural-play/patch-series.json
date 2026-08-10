@@ -14,11 +14,13 @@
   "patches": [
     "patches/001d-kitchen-natural-cook.json",
     "patches/002-mara-pack-parser-truth.json",
+    "patches/002a-actor-carried-noun-scope.json",
     "patches/003-mara-pack-custody-replies.json",
     "patches/004-mara-house-prose-ascii.json",
     "patches/005-release-1245.json"
   ],
   "expected_changed_paths": [
+    "gparser.zil",
     "house_kitchen_laboratory.zil",
     "mara_companion.zil",
     "mara_companion_actions.zil",
@@ -29,13 +31,14 @@
     "ordinary COOK language reaches the existing bounded Kitchen preparation and heating mechanics instead of failing as an unknown word",
     "every player-visible Kitchen range name uses parser-typeable cast iron wording",
     "deliberately strange COOK targets receive physical authored refusals rather than an unknown verb",
-    "MARA, TAKE PACK can resolve the real pack after Mara herself is carrying it while player theft remains blocked by the pack action",
+    "addressed actor commands can naturally name real objects carried by that actor instead of searching only the adventurer's pockets",
+    "MARA, TAKE PACK resolves the real pack after Mara herself is carrying it while player theft remains blocked by the pack action",
     "repeated Mara pack commands report actual custody and never falsely relocate the camp to the Dam after she has based it in the Attic",
     "Mara's first House threshold line renders without a Glulxe control glyph"
   ],
   "boundaries": [
     "no generic cooking or crafting engine",
-    "no generic actor inventory system or companion mule behavior",
+    "no actor inventory transfer framework or companion mule behavior",
     "no copied pack, meal, range, nest, actor, or room",
     "no new relationship progression or story train",
     "no test-only production verbs, QA framework, audit hierarchy, TODOs, stubs, or no-op architecture"
