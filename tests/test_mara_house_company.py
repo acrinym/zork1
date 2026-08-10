@@ -20,7 +20,14 @@ class MaraHouseCompanyTests(unittest.TestCase):
             manifest["base_artifact_sha256"],
             "8d3f4bf555ba15be82d4d4e849c1501fa61bb3f57630f0a4e91061e89560d629",
         )
-        self.assertFalse(manifest["expected_artifact"]["locked"])
+        artifact = manifest["expected_artifact"]
+        self.assertTrue(artifact["locked"])
+        self.assertEqual(artifact["size_bytes"], 386560)
+        self.assertEqual(artifact["checksum_hex"], "0xd192afd1")
+        self.assertEqual(
+            artifact["sha256"],
+            "d7d52e66316425ed1c15b06fcf483a4b0d5e9fb037b9b9fa886f15ef88b83b17",
+        )
 
     def test_house_state_extends_without_erasing_release_1243_history(self) -> None:
         main = (OVERRIDES / "mara_companion.zil").read_text(encoding="utf-8")
@@ -70,6 +77,8 @@ class MaraHouseCompanyTests(unittest.TestCase):
     def test_house_history_changes_dialogue_without_romance_reward(self) -> None:
         state = (OVERRIDES / "mara_companion_state.zil").read_text(encoding="utf-8")
         actor = (OVERRIDES / "mara_companion_actor.zil").read_text(encoding="utf-8")
+        self.assertIn("The Dam survey is honest now", state)
+        self.assertNotIn("Finish this survey honestly", state)
         self.assertIn("That is friendship with weight in the world", state)
         self.assertIn("My pack is in the Attic by consent", state)
         self.assertIn("A shared base and a shared meal are history", actor)
