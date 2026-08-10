@@ -25,7 +25,7 @@ stage=json.loads((s/'STAGING-RECEIPT.json').read_text())
 smell=json.loads(Path('glulx/build/creative-natural-play-1245/smell-report.json').read_text())
 assert stage['base']['release']==1244
 assert stage['base']['artifact_sha256']=='e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d'
-assert stage['changed_paths']==sorted(['gparser.zil','house_kitchen_laboratory.zil','mara_companion.zil','mara_companion_actions.zil','mara_companion_actor.zil','mara_companion_movement.zil','mara_companion_state.zil','zork1.zil'])
+assert stage['changed_paths']==sorted(['1actions.zil','gparser.zil','house_kitchen_laboratory.zil','mara_companion.zil','mara_companion_actions.zil','mara_companion_actor.zil','mara_companion_movement.zil','mara_companion_state.zil','zork1.zil'])
 assert not smell['errors']
 g=(s/'gparser.zil').read_text()
 k=(s/'house_kitchen_laboratory.zil').read_text()
@@ -34,6 +34,7 @@ a=(s/'mara_companion_actions.zil').read_text()
 actor=(s/'mara_companion_actor.zil').read_text()
 state=(s/'mara_companion_state.zil').read_text()
 move=(s/'mara_companion_movement.zil').read_text()
+actions=(s/'1actions.zil').read_text()
 assert '<DO-SL ,WINNER ,SH ,SC>' in g
 assert '<EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>' in g
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
@@ -41,18 +42,30 @@ assert '<ROUTINE V-KITCHEN-COOK ()' in k
 assert '(ADJECTIVE KITCHEN CAST IRON)' in k
 assert 'cast-iron range' not in k
 assert '(FLAGS TAKEBIT CONTBIT SEARCHBIT TRYTAKEBIT)' in m
-assert '<CONSTANT MARA-SCHEMA 4>' in m
+assert '<CONSTANT MARA-SCHEMA 5>' in m
 assert '<CONSTANT MARA-SLOT-RESTRAINT-ATTEMPTED 23>' in m
 assert '<CONSTANT MARA-SLOT-COMBAT-ORDER-ATTEMPTED 24>' in m
+assert '<CONSTANT MARA-SLOT-DEATH-WITNESSED 26>' in m
+assert '<CONSTANT MARA-SLOT-OFFSCREEN-GAG 27>' in m
 assert '<SYNTAX TIE OBJECT (FIND ACTORBIT)' in m
 assert '<SYNTAX SEND OBJECT (FIND ACTORBIT)' in m
 assert 'AFTER OBJECT (FIND ACTORBIT)' in m
+assert '<SYNTAX EAT OBJECT (FIND ACTORBIT)' in m
+assert '<SYNTAX PUT OBJECT (FIND ACTORBIT)' in m
 assert 'MARA-SLOT-RESTRAINT-ATTEMPTED 0' in state
 assert 'MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0' in state
+assert 'MARA-SLOT-DEATH-WITNESSED 0' in state
+assert 'MARA-SLOT-OFFSCREEN-GAG 0' in state
+assert '<ROUTINE MARA-PRINT-NAME ()' in actor
+assert '<ROUTINE MARA-RELOCATION-REFUSAL ()' in actor
+assert '<ROUTINE MARA-SQUEEZE-GAG ()' in actor
+assert '<ROUTINE MARA-WITNESS-PLAYER-DEATH ()' in actor
 assert '<ROUTINE MARA-RESTRAINT-REFUSAL ()' in actor
 assert '<ROUTINE MARA-COMBAT-ORDER-REFUSAL ()' in actor
 assert 'Mara catches the rope before you can get it around her' in actor
 assert 'I am your expedition partner, not something you point at an enemy.' in actor
+assert 'There is an indeterminate amount of suspicious offscreen activity.' in actor
+assert '<MARA-WITNESS-PLAYER-DEATH>' in actions
 assert 'Mara already has the pack on her own shoulder.' in a
 assert 'It is already here because this is the base I chose' in a
 assert 'stops--not at the treasure' in move
