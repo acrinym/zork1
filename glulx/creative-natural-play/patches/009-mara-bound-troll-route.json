@@ -1,0 +1,12 @@
+{
+  "id": "009_MARA_BOUND_TROLL_ROUTE",
+  "path": "mara_companion_state.zil",
+  "description": "Do not treat the absurd-alternate securely bound troll as the same active killing-ground threat as an alert troll",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (<AND <EQUAL? .RM ,TROLL-ROOM>\n                <IN? ,TROLL ,TROLL-ROOM>>\n           <RFALSE>)",
+      "new": "          (<AND <EQUAL? .RM ,TROLL-ROOM>\n                <IN? ,TROLL ,TROLL-ROOM>\n                <NOT ,GLULX-ALT-TROLL-BOUND>>\n           <RFALSE>)"
+    }
+  ]
+}
