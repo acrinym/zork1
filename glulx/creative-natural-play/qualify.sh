@@ -81,7 +81,7 @@ yes
 EOF
 timeout 20s "$GLULXE_BIN" --rngseed 41001 "$BUILD/$STORY_FILE" < "$BUILD/kitchen.txt" > "$BUILD/kitchen-transcript.txt" 2>&1 || true
 grep -F 'A cast iron range can be lit with a real held flame.' "$BUILD/kitchen-transcript.txt"
-grep -F 'You split the peppery lunch into workable portions' "$BUILD/kitchen-transcript.txt"
+grep -F 'You unwrap and arrange the hot-pepper sandwich on the worktop.' "$BUILD/kitchen-transcript.txt"
 grep -F 'There is no sensible way to cook the brown sack with the Kitchen fixtures.' "$BUILD/kitchen-transcript.txt"
 ! grep -F 'I don'"'"'t know the word "cook"' "$BUILD/kitchen-transcript.txt"
 ! grep -F 'I don'"'"'t know the word "cast"' "$BUILD/kitchen-transcript.txt"
