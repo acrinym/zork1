@@ -39,7 +39,7 @@ class MaraHouseThresholdTests(unittest.TestCase):
         patch = json.loads((PATCHES / "004-cellar-threshold-dispatch.json").read_text(encoding="utf-8"))
         rendered = "\n".join(item["new"] for item in patch["replacements"])
         dispatch = rendered.index("<VERB? MARA-UNBAR-THRESHOLD>")
-        examine = rendered.index("<VERB? EXAMINE SEARCH TOUCH>")
+        examine = rendered.index("<VERB? EXAMINE SEARCH RUB>")
         self.assertLess(dispatch, examine)
         self.assertIn("<V-MARA-UNBAR-THRESHOLD>", rendered)
 
