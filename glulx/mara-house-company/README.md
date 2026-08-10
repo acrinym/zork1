@@ -28,9 +28,9 @@ The player can:
 - prepare the canonical lunch on the real Kitchen worktop;
 - `SHARE LUNCH WITH MARA`, consuming the single real meal once and splitting its benefit rather than duplicating food.
 
-The shared-meal reserve is now strictly lower than the reserve from eating that same whole meal alone. This includes the minimal unwarmed prepared lunch: sharing it still clears existing strain, but half of that smallest meal leaves no extra exertion reserve.
+The shared-meal reserve is strictly lower than the reserve from eating that same whole meal alone. This includes the minimal unwarmed prepared lunch: sharing it still clears existing strain, but half of that smallest meal leaves no extra exertion reserve.
 
-If the player immediately tries `SHARE LUNCH WITH MARA` again, the ordinary parser now reports that there is no lunch present. That is intentional: the one physical meal has already been eaten and is no longer in scope.
+If the player immediately tries `SHARE LUNCH WITH MARA` again, the ordinary parser reports that there is no lunch present. The one physical meal has already been eaten and is no longer in scope.
 
 ## Why this matters
 
