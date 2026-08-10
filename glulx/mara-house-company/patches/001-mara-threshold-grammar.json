@@ -1,0 +1,12 @@
+{
+  "id": "001_MARA_THRESHOLD_GRAMMAR",
+  "path": "mara_companion.zil",
+  "description": "Add an authored two-person command for the canonical barred cellar trap door",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNONYM SHARE SPLIT>\n\n<CONSTANT MARA-SCHEMA 3>",
+      "new": "<SYNONYM SHARE SPLIT>\n<SYNTAX UNBAR OBJECT (ON-GROUND IN-ROOM)\n    WITH OBJECT (FIND ACTORBIT) (IN-ROOM) = V-MARA-UNBAR-THRESHOLD>\n<SYNONYM UNBAR>\n\n<CONSTANT MARA-SCHEMA 3>"
+    }
+  ]
+}
