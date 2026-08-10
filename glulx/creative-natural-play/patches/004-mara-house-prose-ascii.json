@@ -1,0 +1,12 @@
+{
+  "id": "004_MARA_HOUSE_PROSE_ASCII",
+  "path": "mara_companion_movement.zil",
+  "description": "Replace a player-visible Unicode dash that renders as a control glyph in Glulxe",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "Mara crosses the threshold, then stops—not at the treasure, but at the signs that the House has been repaired, damaged, used, and returned to.",
+      "new": "Mara crosses the threshold, then stops--not at the treasure, but at the signs that the House has been repaired, damaged, used, and returned to."
+    }
+  ]
+}
