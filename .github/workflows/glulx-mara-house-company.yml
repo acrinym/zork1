@@ -59,7 +59,9 @@ jobs:
           tar -xf glazer.tar.gz --strip-components=1 -C .tooling/glazer-source
           make -C .tooling/glazer-source
       - name: Qualify Release 1244
-        run: bash glulx/mara-house-company/qualify.sh
+        run: |
+          set -o pipefail
+          bash glulx/mara-house-company/qualify.sh 2>&1 | tee mara-house-company-qualification.log
       - name: Upload Mara House gameplay evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -68,6 +70,7 @@ jobs:
           if-no-files-found: error
           retention-days: 14
           path: |
+            mara-house-company-qualification.log
             glulx/build/mara-house-company/*.ulx
             glulx/build/mara-house-company/*.asm
             glulx/build/mara-house-company/*.json
