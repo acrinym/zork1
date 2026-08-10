@@ -28,6 +28,8 @@ The player can:
 - prepare the canonical lunch on the real Kitchen worktop;
 - `SHARE LUNCH WITH MARA`, consuming the single real meal once and splitting its benefit rather than duplicating food.
 
+The shared-meal reserve is now strictly lower than the reserve from eating that same whole meal alone. This includes the minimal unwarmed prepared lunch: sharing it still clears existing strain, but half of that smallest meal leaves no extra exertion reserve.
+
 If the player immediately tries `SHARE LUNCH WITH MARA` again, the ordinary parser now reports that there is no lunch present. That is intentional: the one physical meal has already been eaten and is no longer in scope.
 
 ## Why this matters
@@ -69,8 +71,8 @@ The fully qualified Release 1244 candidate is locked to:
 - file: `zork1-glulx-mara-house-company.ulx`
 - serial: `260810`
 - size: `386560` bytes
-- checksum: `0xd192afd1`
-- SHA-256: `d7d52e66316425ed1c15b06fcf483a4b0d5e9fb037b9b9fa886f15ef88b83b17`
+- checksum: `0x098863ac`
+- SHA-256: `e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d`
 - Glulx version: `0x00030103`
 
 The release remains a branch/PR candidate until explicitly merged.
