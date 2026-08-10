@@ -1,0 +1,63 @@
+{
+  "edition": "Unofficial Zork Mara House Company Glulx",
+  "release": 1244,
+  "serial": "260810",
+  "base_manifest": "../mara-companion-foundation/patch-series.json",
+  "base_release": 1243,
+  "base_artifact_sha256": "8d3f4bf555ba15be82d4d4e849c1501fa61bb3f57630f0a4e91061e89560d629",
+  "expected_artifact": {
+    "file": "zork1-glulx-mara-house-company.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "overrides": [
+    {
+      "source": "overrides/mara_companion.zil",
+      "path": "mara_companion.zil",
+      "description": "Extend Mara state and grammar for House company"
+    },
+    {
+      "source": "overrides/mara_companion_state.zil",
+      "path": "mara_companion_state.zil",
+      "description": "Preserve Release 1243 history while adding House-specific memory"
+    },
+    {
+      "source": "overrides/mara_companion_actions.zil",
+      "path": "mara_companion_actions.zil",
+      "description": "Add invitation, physical camp retrieval, and shared meal actions"
+    },
+    {
+      "source": "overrides/mara_companion_actor.zil",
+      "path": "mara_companion_actor.zil",
+      "description": "Let Mara act on her own pack and respond to earned House history"
+    }
+  ],
+  "patches": [
+    "patches/001-release-1244.json"
+  ],
+  "expected_changed_paths": [
+    "mara_companion.zil",
+    "mara_companion_actions.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_state.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "after the joint Dam survey, Mara can physically accompany the adventurer to the white House and judge it from direct experience",
+    "INVITE MARA does not teleport her camp or convert the House into an automatic residence",
+    "the first invitation creates a concrete return trip to the Dam Base, where MARA, TAKE PACK makes Mara retrieve her own physical field pack",
+    "the pack then travels inside Mara's actual custody along the authored route back to the House",
+    "Mara accepts the House only from the Attic after inspecting the place and sets her own pack there by explicit consent",
+    "SHARE LUNCH WITH MARA consumes the one real prepared lunch once, feeds both characters in fiction, and leaves the player a smaller stamina reserve than eating the entire meal alone",
+    "House and company dialogue changes because these events happened, without exposing an approval score or converting friendship into romance",
+    "Release 1243 save history is preserved when the Mara state schema advances"
+  ],
+  "boundaries": [
+    "no generic housing system, follower framework, party inventory, approval meter, dating simulator, or romance reward",
+    "no teleporting Mara, her camp, her equipment, the lunch, or relationship history",
+    "no duplicated food, survey sheets, or field equipment",
+    "no replacement of canonical Dam, troll, House, Kitchen, cuisine, museum, or fishing mechanics",
+    "no new audit framework, validator-of-validator machinery, debug actors, TODOs, stubs, or no-op architecture"
+  ]
+}
