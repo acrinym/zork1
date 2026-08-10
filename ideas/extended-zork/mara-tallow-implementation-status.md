@@ -38,6 +38,25 @@ Release 1243 corrects the introduction and implements her first complete field c
 - an earned route toward House integration;
 - early intimacy boundaries without romance progression machinery.
 
+## Release 1244 candidate — Mara House Company
+
+The active Release 1244 branch carries that earned Dam partnership into the existing House rather than introducing another companion subsystem.
+
+The candidate chapter adds:
+
+- a second physical two-person operation at the canonical barred Cellar trap door;
+- preservation of the original solo slam-and-bar behavior while Mara's own measured rope and the Adventurer's lift can together draw the real upper bar after the Dam survey;
+- physical arrival at the Living Room through the reopened real stair rather than teleportation;
+- a House invitation that does not relocate Mara or her camp automatically;
+- a required return to Flood Control Dam #3 so Mara can retrieve her own waxed field pack herself;
+- exact pack custody during the return journey;
+- Attic residence by explicit consent, with Mara choosing where to set her own pack;
+- one shared Kitchen meal made from the canonical prepared lunch and consumed exactly once;
+- House, company, and intimacy dialogue grounded in those events rather than an exposed relationship score;
+- schema migration that preserves Release 1243 witnessed history instead of resetting it.
+
+This release remains a candidate until its complete natural-play qualification passes and the branch is explicitly merged.
+
 ## Still ahead
 
-Future Mara trains should build from concrete shared history rather than broad companion infrastructure. Major remaining directions include injuries and recovery, exact temporary custody, promises, route schedules, separation and reunion, House residence by consent, shared cuisine, archive disagreement, thief manipulation, troll judgment, reciprocal rescue, deeper friendship, emotional intimacy, and only then any truthful romantic recognition.
+Future Mara trains should build from concrete shared history rather than broad companion infrastructure. Major remaining directions include injuries and recovery, exact temporary custody of an important shared object, promises that can be kept or broken, route schedules, separation and reunion, archive disagreement, thief manipulation, troll judgment, reciprocal rescue beyond the threshold operation, deeper friendship, emotional intimacy, and only then any truthful romantic recognition.

@@ -1,0 +1,76 @@
+{
+  "edition": "Unofficial Zork Mara House Company Glulx",
+  "release": 1244,
+  "serial": "260810",
+  "base_manifest": "../mara-companion-foundation/patch-series.json",
+  "base_release": 1243,
+  "base_artifact_sha256": "8d3f4bf555ba15be82d4d4e849c1501fa61bb3f57630f0a4e91061e89560d629",
+  "expected_artifact": {
+    "file": "zork1-glulx-mara-house-company.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": true,
+    "size_bytes": 386560,
+    "checksum_hex": "0x098863ac",
+    "sha256": "e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d"
+  },
+  "overrides": [
+    {
+      "source": "overrides/mara_companion.zil",
+      "path": "mara_companion.zil",
+      "description": "Extend Mara state and grammar for House company"
+    },
+    {
+      "source": "overrides/mara_companion_state.zil",
+      "path": "mara_companion_state.zil",
+      "description": "Preserve Release 1243 history while adding House-specific memory"
+    },
+    {
+      "source": "overrides/mara_companion_actions.zil",
+      "path": "mara_companion_actions.zil",
+      "description": "Add invitation, physical camp retrieval, and shared meal actions"
+    },
+    {
+      "source": "overrides/mara_companion_actor.zil",
+      "path": "mara_companion_actor.zil",
+      "description": "Let Mara act on her own pack and respond to earned House history"
+    }
+  ],
+  "patches": [
+    "patches/001-mara-threshold-grammar.json",
+    "patches/002-mara-threshold-action.json",
+    "patches/003-cellar-threshold-vocabulary.json",
+    "patches/004-cellar-threshold-dispatch.json",
+    "patches/004-release-1244.json"
+  ],
+  "expected_changed_paths": [
+    "house_cellar_threshold.zil",
+    "mara_companion.zil",
+    "mara_companion_actions.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_state.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "after the joint Dam survey, Mara can physically accompany the adventurer through the old passages to the canonical barred Cellar threshold",
+    "UNBAR TRAP DOOR WITH MARA is dispatched by the existing Cellar threshold before its observational fallback, then uses Mara's own measured rope plus the adventurer's lift to draw the real upper bar and set the real trap door open; solo Zork remains unchanged",
+    "natural TRAP DOOR, DOOR, HATCH, and THRESHOLD language in the Cellar resolves to the existing observational threshold instead of a duplicate door object",
+    "after physically crossing the reopened stair, Mara can judge the white House from direct experience",
+    "INVITE MARA does not teleport her camp or convert the House into an automatic residence",
+    "the first invitation creates a concrete return trip to the Dam Base, where MARA, TAKE PACK makes Mara retrieve her own physical field pack",
+    "the pack then travels inside Mara's actual custody along the authored route back to the House",
+    "Mara accepts the House only from the Attic after inspecting the place and sets her own pack there by explicit consent",
+    "SHARE LUNCH WITH MARA consumes the one real prepared lunch once, feeds both characters in fiction, and leaves the player a strictly smaller stamina reserve than eating the entire meal alone, including the minimal unwarmed prepared lunch",
+    "after that meal is consumed, a repeated SHARE LUNCH command fails naturally because the physical lunch is no longer in parser scope",
+    "House and company dialogue changes because these events happened, without exposing an approval score or converting friendship into romance",
+    "Release 1243 save history is preserved when the Mara state schema advances"
+  ],
+  "boundaries": [
+    "the canonical barred trap door remains canonical for solo play; only the earned, physical Mara-assisted action creates the authored two-person exception",
+    "no duplicate trap door, generic housing system, follower framework, party inventory, approval meter, dating simulator, or romance reward",
+    "no teleporting Mara, her camp, her equipment, the lunch, or relationship history",
+    "no duplicated food, survey sheets, field equipment, routes, or door objects",
+    "no replacement of canonical Dam, troll, House, Kitchen, cuisine, museum, or fishing mechanics",
+    "no new audit framework, validator-of-validator machinery, debug actors, TODOs, stubs, or no-op architecture"
+  ]
+}

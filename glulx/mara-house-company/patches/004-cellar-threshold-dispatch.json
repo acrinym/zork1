@@ -1,0 +1,12 @@
+{
+  "id": "004_CELLAR_THRESHOLD_DISPATCH",
+  "path": "house_cellar_threshold.zil",
+  "description": "Let the existing Cellar threshold hand the authored Mara-assisted unbar verb to its real two-person action before its observational fallback",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE CELLAR-THRESHOLD-FCN ()\n    <COND (<VERB? EXAMINE SEARCH RUB>",
+      "new": "<ROUTINE CELLAR-THRESHOLD-FCN ()\n    <COND (<VERB? MARA-UNBAR-THRESHOLD>\n           <V-MARA-UNBAR-THRESHOLD>)\n          (<VERB? EXAMINE SEARCH RUB>"
+    }
+  ]
+}

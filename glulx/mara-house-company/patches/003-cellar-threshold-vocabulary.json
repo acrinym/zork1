@@ -1,0 +1,12 @@
+{
+  "id": "003_CELLAR_THRESHOLD_VOCABULARY",
+  "path": "house_cellar_threshold.zil",
+  "description": "Let natural trap-door language resolve to the existing Cellar-side observational threshold without creating another door object",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT CELLAR-THRESHOLD\n    (IN CELLAR)\n    (SYNONYM THRESHOLD BOUNDARY CROSSING)\n    (ADJECTIVE CELLAR EXPEDITION HOUSE)",
+      "new": "<OBJECT CELLAR-THRESHOLD\n    (IN CELLAR)\n    (SYNONYM THRESHOLD BOUNDARY CROSSING TRAPDOOR DOOR HATCH)\n    (ADJECTIVE CELLAR EXPEDITION HOUSE TRAP BARRED)"
+    }
+  ]
+}
