@@ -21,7 +21,13 @@ class MaraHouseCompanyTests(unittest.TestCase):
             "8d3f4bf555ba15be82d4d4e849c1501fa61bb3f57630f0a4e91061e89560d629",
         )
         artifact = manifest["expected_artifact"]
-        self.assertFalse(artifact["locked"])
+        self.assertTrue(artifact["locked"])
+        self.assertEqual(artifact["size_bytes"], 386560)
+        self.assertEqual(artifact["checksum_hex"], "0x098863ac")
+        self.assertEqual(
+            artifact["sha256"],
+            "e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d",
+        )
 
     def test_house_state_extends_without_erasing_release_1243_history(self) -> None:
         main = (OVERRIDES / "mara_companion.zil").read_text(encoding="utf-8")
