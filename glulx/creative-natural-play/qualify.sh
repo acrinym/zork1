@@ -25,12 +25,14 @@ stage=json.loads((s/'STAGING-RECEIPT.json').read_text())
 smell=json.loads(Path('glulx/build/creative-natural-play-1245/smell-report.json').read_text())
 assert stage['base']['release']==1244
 assert stage['base']['artifact_sha256']=='e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d'
-assert stage['changed_paths']==sorted(['house_kitchen_laboratory.zil','mara_companion.zil','mara_companion_actions.zil','mara_companion_movement.zil','zork1.zil'])
+assert stage['changed_paths']==sorted(['gparser.zil','house_kitchen_laboratory.zil','mara_companion.zil','mara_companion_actions.zil','mara_companion_movement.zil','zork1.zil'])
 assert not smell['errors']
+g=(s/'gparser.zil').read_text()
 k=(s/'house_kitchen_laboratory.zil').read_text()
 m=(s/'mara_companion.zil').read_text()
 a=(s/'mara_companion_actions.zil').read_text()
 move=(s/'mara_companion_movement.zil').read_text()
+assert '<DO-SL ,WINNER ,SH ,SC>' in g
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
 assert '<ROUTINE V-KITCHEN-COOK ()' in k
 assert '(ADJECTIVE KITCHEN CAST IRON)' in k
@@ -197,7 +199,7 @@ if e.get('locked'):
     assert story['size_bytes']==e['size_bytes']
     assert story['checksum_hex']==e['checksum_hex']
     assert story['sha256']==e['sha256']
-receipt={'release':1245,'serial':m['serial'],'artifact':story,'artifact_identity_locked':e.get('locked',False),'gameplay':{'cook_parser':'passed','cast_iron_range_parser':'passed','weird_nest_cook':'passed','mara_carried_pack_repeat':'passed','mara_attic_pack_truth':'passed','mara_house_prose_glulx_safe':'passed'}}
+receipt={'release':1245,'serial':m['serial'],'artifact':story,'artifact_identity_locked':e.get('locked',False),'gameplay':{'cook_parser':'passed','cast_iron_range_parser':'passed','weird_nest_cook':'passed','actor_carried_noun_scope':'passed','mara_carried_pack_repeat':'passed','mara_attic_pack_truth':'passed','mara_house_prose_glulx_safe':'passed'}}
 Path('glulx/build/creative-natural-play-1245/QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps(receipt,indent=2))
 PY
