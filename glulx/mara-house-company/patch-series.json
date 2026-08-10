@@ -34,9 +34,13 @@
     }
   ],
   "patches": [
-    "patches/001-release-1244.json"
+    "patches/001-mara-threshold-grammar.json",
+    "patches/002-mara-threshold-action.json",
+    "patches/003-cellar-threshold-vocabulary.json",
+    "patches/004-release-1244.json"
   ],
   "expected_changed_paths": [
+    "house_cellar_threshold.zil",
     "mara_companion.zil",
     "mara_companion_actions.zil",
     "mara_companion_actor.zil",
@@ -44,7 +48,10 @@
     "zork1.zil"
   ],
   "player_outcomes": [
-    "after the joint Dam survey, Mara can physically accompany the adventurer to the white House and judge it from direct experience",
+    "after the joint Dam survey, Mara can physically accompany the adventurer through the old passages to the canonical barred Cellar threshold",
+    "UNBAR TRAP DOOR WITH MARA uses Mara's own measured rope plus the adventurer's lift to draw the real upper bar and set the real trap door open; solo Zork remains unchanged",
+    "natural TRAP DOOR, DOOR, HATCH, and THRESHOLD language in the Cellar resolves to the existing observational threshold instead of a duplicate door object",
+    "after physically crossing the reopened stair, Mara can judge the white House from direct experience",
     "INVITE MARA does not teleport her camp or convert the House into an automatic residence",
     "the first invitation creates a concrete return trip to the Dam Base, where MARA, TAKE PACK makes Mara retrieve her own physical field pack",
     "the pack then travels inside Mara's actual custody along the authored route back to the House",
@@ -54,9 +61,10 @@
     "Release 1243 save history is preserved when the Mara state schema advances"
   ],
   "boundaries": [
-    "no generic housing system, follower framework, party inventory, approval meter, dating simulator, or romance reward",
+    "the canonical barred trap door remains canonical for solo play; only the earned, physical Mara-assisted action creates the authored two-person exception",
+    "no duplicate trap door, generic housing system, follower framework, party inventory, approval meter, dating simulator, or romance reward",
     "no teleporting Mara, her camp, her equipment, the lunch, or relationship history",
-    "no duplicated food, survey sheets, or field equipment",
+    "no duplicated food, survey sheets, field equipment, routes, or door objects",
     "no replacement of canonical Dam, troll, House, Kitchen, cuisine, museum, or fishing mechanics",
     "no new audit framework, validator-of-validator machinery, debug actors, TODOs, stubs, or no-op architecture"
   ]
