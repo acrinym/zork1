@@ -1,0 +1,17 @@
+{
+  "id": "018_ADVENTURER_SELF_IDENTITY",
+  "path": "gglobals.zil",
+  "description": "Make self a real reflexive noun rather than a generic object whose printable description is literally 'you'",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF CRETIN)\n\t(DESC \"you\")\n\t(FLAGS ACTORBIT)\n\t(ACTION CRETIN-FCN)>",
+      "new": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF YOU CRETIN)\n\t(DESC \"yourself\")\n\t(FLAGS ACTORBIT)\n\t(ACTION CRETIN-FCN)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t       (<VERB? MAKE>\n\t\t<TELL \"Only you can do that.\" CR>)",
+      "new": "\t       (<VERB? COMMAND>\n\t\t<TELL \"You are already in command of yourself.\" CR>)\n\t       (<AND <VERB? PUT PUT-ON> <EQUAL? ,PRSO ,ME>>\n\t\t<TELL \"You cannot put yourself \">\n\t\t<COND (<VERB? PUT-ON> <TELL \"on \">)\n\t\t      (T <TELL \"into \">)>\n\t\t<TELL \"the \" D ,PRSI \".\" CR>)\n\t       (<VERB? MAKE>\n\t\t<TELL \"Only you can do that.\" CR>)"
+    }
+  ]
+}
