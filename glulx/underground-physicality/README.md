@@ -39,7 +39,9 @@ Release 1249 does not create a second sensory command framework.
 
 The real loose field stone and existing hard tools can strike an underground wall. A sufficiently hard impact leaves a persistent, scoreless cosmetic chip/score associated with that authored room.
 
-The scar is stored in nine new bounded slots of the **existing** `MATERIAL-DESTRUCTION-STATE` table established by the environmental-destruction train. It does **not** set `RMUNGBIT` on the room itself: canonical `GOTO` treats an `RMUNGBIT` destination as impassable, so movement state and cosmetic damage must remain separate.
+The scar stays inside the existing material-consequence authority in a bounded nine-slot constant companion table shared by production and dev/test. This preserves Release 1246's existing dev-mode state slot exactly as authored while giving Release 1249 room-specific cosmetic memory without a new global variable.
+
+It does **not** set `RMUNGBIT` on the room itself: canonical `GOTO` treats an `RMUNGBIT` destination as impassable, so movement state and cosmetic damage must remain separate.
 
 The damage is observable later and can be cleared only by the already-bounded dev/test environmental reset. It never opens a route, bypasses a lock, clears a cave-in, defeats the troll, or creates a new puzzle solution.
 
