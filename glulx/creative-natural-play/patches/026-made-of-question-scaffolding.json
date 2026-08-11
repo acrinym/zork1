@@ -6,7 +6,7 @@
     {
       "expected_count": 1,
       "old": "\t<COND (<EQUAL? <SET WRD <GET ,P-LEXV .PTR>> ,W?OOPS>",
-      "new": "\t<SET LEN ,P-LEXSTART>\n\t<SET CNT ,P-LEN>\n\t<REPEAT ()\n\t       <COND (<L? .CNT 2> <RETURN>)>\n\t       <COND (<AND <EQUAL? <GET ,P-LEXV .LEN> ,W?MADE>\n\t\t\t   <EQUAL? <GET ,P-LEXV <+ .LEN ,P-LEXELEN>> ,W?OF>>\n\t\t      <PUT ,P-LEXV <+ .LEN ,P-LEXELEN> ,W?IS>)>\n\t       <SET LEN <+ .LEN ,P-LEXELEN>>\n\t       <SET CNT <- .CNT 1>>>\n\t<COND (<EQUAL? <SET WRD <GET ,P-LEXV .PTR>> ,W?OOPS>"
+      "new": "\t<SET LEN ,P-LEXSTART>\n\t<SET CNT ,P-LEN>\n\t<REPEAT ()\n\t       <COND (<L? .CNT 2> <RETURN>)>\n\t       <SET LW <GET ,P-LEXV .LEN>>\n\t       <COND (<AND <EQUAL? .LW ,W?MADE>\n\t\t\t   <EQUAL? <GET ,P-LEXV <+ .LEN ,P-LEXELEN>> ,W?OF>>\n\t\t      <PUT ,P-LEXV <+ .LEN ,P-LEXELEN> ,W?IS>)>\n\t       <SET LEN <+ .LEN ,P-LEXELEN>>\n\t       <SET CNT <- .CNT 1>>>\n\t<SET LW 0>\n\t<COND (<EQUAL? <SET WRD <GET ,P-LEXV .PTR>> ,W?OOPS>"
     }
   ]
 }
