@@ -1,0 +1,12 @@
+{
+  "id": "002_NARRATIVE_PHYSICALITY_HOOK",
+  "path": "shadow_logic.zil",
+  "description": "Run authored House physicality after Release 1246 destruction authority and before generic material handling",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t      (<MATERIAL-DESTRUCTION-HOOK> <RTRUE>)\n\t      (<MATERIAL-TOOL-STATE-HOOK> <RTRUE>)",
+      "new": "\t      (<MATERIAL-DESTRUCTION-HOOK> <RTRUE>)\n\t      (<NARRATIVE-PHYSICALITY-HOOK> <RTRUE>)\n\t      (<MATERIAL-TOOL-STATE-HOOK> <RTRUE>)"
+    }
+  ]
+}
