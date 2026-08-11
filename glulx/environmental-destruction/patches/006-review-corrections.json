@@ -1,0 +1,22 @@
+{
+  "id": "006_REVIEW_CORRECTIONS",
+  "path": "material_consequences.zil",
+  "description": "Preserve bare mailbox attack delegation and distinguish resettable dev state from authored breakage",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MATERIAL-DAMAGE-PRESENT? ()\n    <COND (<OR <G? ,MATERIAL-MAILBOX-DAMAGE 0> ,MATERIAL-WINDOW-BROKEN>\n           <RTRUE>)>\n    <RFALSE>>",
+      "new": "<ROUTINE MATERIAL-DAMAGE-PRESENT? ()\n    <COND (<OR <G? ,MATERIAL-MAILBOX-DAMAGE 0> ,MATERIAL-WINDOW-BROKEN>\n           <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE MATERIAL-RESETTABLE-STATE? ()\n    <COND (<OR <MATERIAL-DAMAGE-PRESENT?>\n               <NOT <IN? ,FIELD-STONE ,WEST-OF-HOUSE>>>\n           <RTRUE>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<NOT <MATERIAL-DAMAGE-PRESENT?>>\n           <TELL \"No authored environmental breakage currently needs a developer reset.\" CR>)",
+      "new": "<NOT <MATERIAL-RESETTABLE-STATE?>>\n           <TELL \"No authored environmental breakage or moved test stone currently needs a developer reset.\" CR>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MATERIAL-DIRECT-DESTRUCTION-HOOK ()\n    <COND (<AND <OR <VERB? MUNG CUT ATTACK>\n                   <AND <VERB? KICK> <EQUAL? ,PRSO ,MAILBOX>>>\n                <EQUAL? ,PRSO ,MAILBOX>>\n           <COND (<VERB? KICK>\n                  <MATERIAL-REMEMBER-MAILBOX-STATE>\n                  <COND (<0? ,MATERIAL-MAILBOX-DAMAGE> <SETG MATERIAL-MAILBOX-DAMAGE 1>)>\n                  <TELL \"You kick the mailbox hard enough to dent it and immediately receive a detailed report from your foot about the relative hardness of sheet metal.\" CR>)\n                 (<AND ,PRSI <MATERIAL-DESTRUCTIVE-IMPACT? ,PRSI>>\n                  <MATERIAL-DAMAGE-MAILBOX ,PRSI <>> )\n                 (T <RFALSE>)>\n           <RTRUE>)\n          (<AND <VERB? MUNG CUT ATTACK>\n                <EQUAL? ,PRSO ,KITCHEN-WINDOW>\n                ,PRSI\n                <MATERIAL-DESTRUCTIVE-IMPACT? ,PRSI>>\n           <MATERIAL-BREAK-WINDOW ,PRSI>\n           <RTRUE>)>\n    <RFALSE>>",
+      "new": "<ROUTINE MATERIAL-DIRECT-DESTRUCTION-HOOK ()\n    <COND (<AND <OR <VERB? MUNG CUT ATTACK>\n                   <AND <VERB? KICK> <EQUAL? ,PRSO ,MAILBOX>>>\n                <EQUAL? ,PRSO ,MAILBOX>>\n           <COND (<VERB? KICK>\n                  <MATERIAL-REMEMBER-MAILBOX-STATE>\n                  <COND (<0? ,MATERIAL-MAILBOX-DAMAGE> <SETG MATERIAL-MAILBOX-DAMAGE 1>)>\n                  <TELL \"You kick the mailbox hard enough to dent it and immediately receive a detailed report from your foot about the relative hardness of sheet metal.\" CR>\n                  <RTRUE>)\n                 (<AND ,PRSI <MATERIAL-DESTRUCTIVE-IMPACT? ,PRSI>>\n                  <MATERIAL-DAMAGE-MAILBOX ,PRSI <>>\n                  <RTRUE>)\n                 (T <RFALSE>)>)\n          (<AND <VERB? MUNG CUT ATTACK>\n                <EQUAL? ,PRSO ,KITCHEN-WINDOW>\n                ,PRSI\n                <MATERIAL-DESTRUCTIVE-IMPACT? ,PRSI>>\n           <MATERIAL-BREAK-WINDOW ,PRSI>\n           <RTRUE>)>\n    <RFALSE>>"
+    }
+  ]
+}
