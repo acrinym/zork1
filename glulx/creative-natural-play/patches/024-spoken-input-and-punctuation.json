@@ -1,7 +1,7 @@
 {
   "id": "024_SPOKEN_INPUT_AND_PUNCTUATION",
   "path": "gparser.zil",
-  "description": "Capture SAY/SPEAK utterance tokens in the parser's existing OOPS scratch table after SEND normalization, without consuming scarce global slots, and split natural question/exclamation punctuation cleanly",
+  "description": "Capture SAY/SPEAK utterance tokens after the parser resets its ordinary numeric state, reusing dormant parser globals for the lifetime of the SAY action, and split natural question/exclamation punctuation cleanly",
   "replacements": [
     {
       "expected_count": 1,
@@ -10,8 +10,8 @@
     },
     {
       "expected_count": 1,
-      "old": "\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<AND <EQUAL? ,P-LEN 6>\n\t\t    <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 2 ,P-LEXELEN>>> ,W?AFTER>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 4 ,P-LEXELEN>>> ,W?WITH>>\n\t\t   <SETG P-LEN 4>\n\t\t   <PUTB ,P-LEXV ,P-LEXWORDS 4>)>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>",
-      "new": "\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<AND <EQUAL? ,P-LEN 6>\n\t\t    <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 2 ,P-LEXELEN>>> ,W?AFTER>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 4 ,P-LEXELEN>>> ,W?WITH>>\n\t\t   <SETG P-LEN 4>\n\t\t   <PUTB ,P-LEXV ,P-LEXWORDS 4>)>\n\t<COND (<AND <G? ,P-LEN 1>\n\t\t    <OR <EQUAL? <GET ,P-LEXV .PTR> ,W?SAY>\n\t\t\t<EQUAL? <GET ,P-LEXV .PTR> ,W?SPEAK>>>\n\t       <PUT ,OOPS-TABLE ,O-START <+ .PTR ,P-LEXELEN>>\n\t       <PUT ,OOPS-TABLE ,O-LENGTH <- ,P-LEN 1>>\n\t       <PUT ,OOPS-TABLE ,O-END -1>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS 1>\n\t       <SETG P-LEN 1>)>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>"
+      "old": "\t       <COND (<NOT <EQUAL? .WRD ,W?AGAIN ,W?G>>\n\t\t      <SETG P-NUMBER 0>)>\n\t       <PUT ,OOPS-TABLE ,O-END <>>)>\n\t<COND (<EQUAL? <GET ,P-LEXV .PTR> ,W?AGAIN ,W?G>",
+      "new": "\t       <COND (<NOT <EQUAL? .WRD ,W?AGAIN ,W?G>>\n\t\t      <SETG P-NUMBER 0>)>\n\t       <PUT ,OOPS-TABLE ,O-END <>>)>\n\t<COND (<AND <G? ,P-LEN 1>\n\t\t    <OR <EQUAL? .WRD ,W?SAY>\n\t\t\t<EQUAL? .WRD ,W?SPEAK>>>\n\t       <SETG P-ADVERB <+ .PTR ,P-LEXELEN>>\n\t       <SETG P-NUMBER <- ,P-LEN 1>>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS 1>\n\t       <SETG P-LEN 1>)>\n\t<COND (<EQUAL? <GET ,P-LEXV .PTR> ,W?AGAIN ,W?G>"
     }
   ]
 }
