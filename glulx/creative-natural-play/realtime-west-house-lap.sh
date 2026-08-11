@@ -10,6 +10,7 @@ cat > "$BUILD/realtime-west-house.txt" <<'EOF'
 yell at mailbox
 shout at mailbox
 kill mailbox
+self
 put self into mailbox
 speak xyzzy
 say xyzzy
@@ -43,6 +44,7 @@ timeout 30s "$GLULXE_BIN" --rngseed 260811 "$STORY" \
 T="$BUILD/realtime-west-house-transcript.txt"
 test "$(grep -F -c 'You yell at the small mailbox. It does not respond.' "$T")" -ge 2
 grep -F 'fighting a small mailbox?' "$T"
+! grep -F 'Suicide is not the answer.' "$T"
 grep -F 'You cannot put yourself into the small mailbox.' "$T"
 test "$(grep -F -c 'You say "xyzzy."' "$T")" -ge 2
 grep -F 'You say "haha."' "$T"
