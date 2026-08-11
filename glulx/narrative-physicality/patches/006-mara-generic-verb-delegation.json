@@ -1,0 +1,27 @@
+{
+  "id": "006_MARA_GENERIC_VERB_DELEGATION",
+  "path": "mara_companion_actor.zil",
+  "description": "Preserve absurd actor commands while delegating non-actor EAT/DROP/THROW/PUT commands back to canonical Zork verb authorities",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-MARA-EAT-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-EAT-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"Eating yourself is not a useful interpretation of that command.\" CR>)\n          (T <TELL \"That is a person, not food.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE V-MARA-EAT-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-EAT-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"Eating yourself is not a useful interpretation of that command.\" CR>)\n          (<FSET? ,PRSO ,ACTORBIT> <TELL \"That is a person, not food.\" CR>)\n          (T <V-EAT>)>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-MARA-DROP-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-RELOCATION-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"You are already standing on your own behalf.\" CR>)\n          (T <TELL \"You are not carrying that person.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE V-MARA-DROP-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-RELOCATION-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"You are already standing on your own behalf.\" CR>)\n          (<FSET? ,PRSO ,ACTORBIT> <TELL \"You are not carrying that person.\" CR>)\n          (T <V-DROP>)>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-MARA-THROW-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-RELOCATION-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"You cannot throw yourself as though you were inventory.\" CR>)\n          (T <TELL \"You cannot throw a person as though they were inventory.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE V-MARA-THROW-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-RELOCATION-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"You cannot throw yourself as though you were inventory.\" CR>)\n          (<FSET? ,PRSO ,ACTORBIT> <TELL \"You cannot throw a person as though they were inventory.\" CR>)\n          (T <V-THROW>)>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-MARA-PUT-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA>\n           <COND (<EQUAL? ,PRSI ,SANDWICH-BAG> <MARA-SACK-REFUSAL>)\n                 (T <MARA-RELOCATION-REFUSAL>)>)\n          (<EQUAL? ,PRSO ,ME>\n           <TELL \"You cannot put yourself into the \" D ,PRSI \".\" CR>)\n          (T <TELL \"You cannot put a person into an object as though they were inventory.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE V-MARA-PUT-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA>\n           <COND (<EQUAL? ,PRSI ,SANDWICH-BAG> <MARA-SACK-REFUSAL>)\n                 (T <MARA-RELOCATION-REFUSAL>)>)\n          (<EQUAL? ,PRSO ,ME>\n           <TELL \"You cannot put yourself into the \" D ,PRSI \".\" CR>)\n          (<FSET? ,PRSO ,ACTORBIT>\n           <TELL \"You cannot put a person into an object as though they were inventory.\" CR>)\n          (T <V-PUT>)>\n    <RTRUE>>"
+    }
+  ]
+}
