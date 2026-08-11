@@ -65,6 +65,8 @@ actions=(s/'1actions.zil').read_text()
 zork=(s/'zork1.zil').read_text()
 assert '<OBJECT FIELD-STONE' in material
 assert '(SYNONYM ROCK STONE)' in material
+assert '<OBJECT ENVIRONMENTAL-DAMAGE' in material
+assert '(SYNONYM DAMAGE ENVIRONMENT BREAKAGE)' in material
 assert '<CONSTANT MD-MAILBOX-DAMAGE 0>' in material
 assert '<CONSTANT MD-DEV-MODE 5>' in material
 assert '<CONSTANT MATERIAL-DESTRUCTION-STATE <TABLE 0 <> <> <> <> <>>>' in material
@@ -82,6 +84,7 @@ assert '<ROUTINE MATERIAL-DESTRUCTION-COMPLETION-PROMPT ()' in material
 assert '<AND <MATERIAL-DESTRUCTION-GET ,MD-DEV-MODE> <MATERIAL-DAMAGE-PRESENT?>>' in material
 assert '<ROUTINE MATERIAL-DESTRUCTION-HOOK ()' in material
 assert '<MATERIAL-DESTRUCTION-HOOK> <RTRUE>' in shadow
+assert '<SYNTAX RESET OBJECT (FIND RMUNGBIT) = V-RESET-DAMAGE>' in syntax
 assert '<SYNTAX RESET DAMAGE = V-RESET-DAMAGE>' in syntax
 assert '<SYNTAX RESET ENVIRONMENT = V-RESET-DAMAGE>' in syntax
 assert '<SYNTAX RESET BREAKAGE = V-RESET-DAMAGE>' in syntax
@@ -206,7 +209,6 @@ open window
 enter
 west
 take lantern
-take sword
 turn on lantern
 east
 up
@@ -215,15 +217,16 @@ down
 west
 move rug
 open trap door
-turn on lantern
 down
 north
 trick troll
 tie up troll with rope
 take axe
 south
-up
+south
 east
+north
+up
 east
 south
 west
@@ -300,7 +303,8 @@ receipt={
     'dev_stone_only_reset':'passed',
     'troll_throw_delegation':'passed',
     'completion_dev_prompt_static_scope':'passed',
-    'compact_state_without_new_globals':'passed'
+    'compact_state_without_new_globals':'passed',
+    'real_axe_return_via_chimney':'passed'
   }
 }
 (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
