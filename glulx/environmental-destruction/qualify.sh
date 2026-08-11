@@ -6,6 +6,8 @@ BUILD="$ROOT/glulx/build/environmental-destruction-1246"
 BASE_SRC="$BUILD/base-1245-src"
 SRC="$BUILD/src"
 DEV_SRC="$BUILD/dev-src"
+PROD_COMPLETION_SRC="$BUILD/completion-production-src"
+DEV_COMPLETION_SRC="$BUILD/completion-dev-src"
 MANIFEST="$ROOT/glulx/environmental-destruction/patch-series.json"
 rm -rf "$BUILD"
 mkdir -p "$BUILD"
@@ -94,6 +96,9 @@ assert '<SYNTAX THROW OBJECT (HELD CARRIED HAVE)\n\tWITH OBJECT (ON-GROUND IN-RO
 assert actions.count('<MATERIAL-DESTRUCTION-COMPLETION-PROMPT>') == 1
 assert 'ZORK: The Great Underground Empire.|" CR>)>\n\t\t<MATERIAL-DESTRUCTION-COMPLETION-PROMPT>\n\t\t<FINISH>)>>' in actions
 assert '<CONSTANT RELEASEID 1246>' in zork
+assert not (s/'environmental_destruction_completion_test.zil').exists()
+assert not (d/'environmental_destruction_completion_test.zil').exists()
+assert 'EDWIN' not in zork
 PY
 
 GLULX_ZILF_DLL="$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit 2>/dev/null || true)"
@@ -129,6 +134,32 @@ DEV_ASSEMBLY="$BUILD/environmental-destruction-dev.asm"
 DEV_STORY="$BUILD/zork1-glulx-environmental-destruction-dev.ulx"
 compile_story "$DEV_SRC" "$DEV_ASSEMBLY" "$DEV_STORY" dev
 python glulx/tools/verify_ulx.py "$DEV_STORY" --json "$BUILD/dev-story-report.json"
+
+rm -rf "$PROD_COMPLETION_SRC" "$DEV_COMPLETION_SRC"
+cp -a "$SRC" "$PROD_COMPLETION_SRC"
+cp -a "$DEV_SRC" "$DEV_COMPLETION_SRC"
+cp glulx/environmental-destruction/tests/environmental_destruction_completion_test.zil \
+  "$PROD_COMPLETION_SRC/environmental_destruction_completion_test.zil"
+cp glulx/environmental-destruction/tests/environmental_destruction_completion_test.zil \
+  "$DEV_COMPLETION_SRC/environmental_destruction_completion_test.zil"
+python - <<'PY'
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('glulx/tools').resolve()))
+from stage_release120 import apply_patch
+patch=Path('glulx/environmental-destruction/tests/001-include-completion-test.json').resolve()
+for target in (
+    Path('glulx/build/environmental-destruction-1246/completion-production-src').resolve(),
+    Path('glulx/build/environmental-destruction-1246/completion-dev-src').resolve(),
+):
+    apply_patch(patch, target)
+PY
+PROD_COMPLETION_STORY="$BUILD/zork1-glulx-environmental-destruction-completion-production-test.ulx"
+DEV_COMPLETION_STORY="$BUILD/zork1-glulx-environmental-destruction-completion-dev-test.ulx"
+compile_story "$PROD_COMPLETION_SRC" "$BUILD/completion-production.asm" "$PROD_COMPLETION_STORY" completion-production
+compile_story "$DEV_COMPLETION_SRC" "$BUILD/completion-dev.asm" "$DEV_COMPLETION_STORY" completion-dev
+python glulx/tools/verify_ulx.py "$PROD_COMPLETION_STORY" --json "$BUILD/completion-production-story-report.json"
+python glulx/tools/verify_ulx.py "$DEV_COMPLETION_STORY" --json "$BUILD/completion-dev-story-report.json"
 
 make -C .tooling/cheapglk >/dev/null
 make -C .tooling/glulxe GLKDIR="$ROOT/.tooling/cheapglk" GLKLIB="$ROOT/.tooling/cheapglk/libcheapglk.a" >/dev/null
@@ -268,6 +299,49 @@ TROLL_OUT="$BUILD/troll-rock-transcript.txt"
 if grep -qF 'I don'"'"'t understand that sentence.' "$TROLL_OUT"; then exit 1; fi
 if grep -qF 'I don'"'"'t know the word "rock"' "$TROLL_OUT"; then exit 1; fi
 
+cat > "$BUILD/completion-production.txt" <<'EOF'
+take rock
+throw rock at mailbox
+edwin
+enter
+quit
+EOF
+timeout 20s "$GLULXE_BIN" --rngseed 1246010 "$PROD_COMPLETION_STORY" \
+  < "$BUILD/completion-production.txt" > "$BUILD/completion-production-transcript.txt" 2>&1
+COMP_PROD="$BUILD/completion-production-transcript.txt"
+grep -F 'Inside the Barrow' "$COMP_PROD"
+grep -F 'completed a great and perilous adventure' "$COMP_PROD"
+if grep -qF 'Dev/test world damage remains.' "$COMP_PROD"; then exit 1; fi
+if grep -qF 'Developer reset complete.' "$COMP_PROD"; then exit 1; fi
+
+cat > "$BUILD/completion-dev-damage.txt" <<'EOF'
+take rock
+throw rock at mailbox
+edwin
+enter
+yes
+quit
+EOF
+timeout 20s "$GLULXE_BIN" --rngseed 1246011 "$DEV_COMPLETION_STORY" \
+  < "$BUILD/completion-dev-damage.txt" > "$BUILD/completion-dev-damage-transcript.txt" 2>&1
+COMP_DEV="$BUILD/completion-dev-damage-transcript.txt"
+grep -F 'Inside the Barrow' "$COMP_DEV"
+grep -F 'Dev/test world damage remains. Reset environmental breakages before ending this completed run?' "$COMP_DEV"
+grep -F 'Developer reset complete. The next test run starts from an undamaged authored environment.' "$COMP_DEV"
+
+cat > "$BUILD/completion-dev-stone-only.txt" <<'EOF'
+take rock
+edwin
+enter
+quit
+EOF
+timeout 20s "$GLULXE_BIN" --rngseed 1246012 "$DEV_COMPLETION_STORY" \
+  < "$BUILD/completion-dev-stone-only.txt" > "$BUILD/completion-dev-stone-only-transcript.txt" 2>&1
+COMP_STONE="$BUILD/completion-dev-stone-only-transcript.txt"
+grep -F 'Inside the Barrow' "$COMP_STONE"
+if grep -qF 'Dev/test world damage remains.' "$COMP_STONE"; then exit 1; fi
+if grep -qF 'Developer reset complete.' "$COMP_STONE"; then exit 1; fi
+
 test -f "$BUILD/story-report.json"
 python - "$MANIFEST" <<'PY'
 import json,sys
@@ -302,10 +376,14 @@ receipt={
     'dev_reset':'passed',
     'dev_stone_only_reset':'passed',
     'troll_throw_delegation':'passed',
-    'completion_dev_prompt_static_scope':'passed',
+    'completion_production_no_meta_prompt':'passed',
+    'completion_dev_breakage_prompt_and_reset':'passed',
+    'completion_dev_stone_only_no_prompt':'passed',
     'compact_state_without_new_globals':'passed',
     'real_axe_return_via_chimney':'passed'
-  }
+  },
+  'production_contains_completion_fixture':False,
+  'dev_artifact_contains_completion_fixture':False
 }
 (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps(receipt,indent=2))
