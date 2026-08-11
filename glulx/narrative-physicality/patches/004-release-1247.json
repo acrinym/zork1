@@ -1,0 +1,27 @@
+{
+  "id": "004_RELEASE_1247",
+  "path": "zork1.zil",
+  "description": "Assign Release 1247 to the first dense narrative-physicality train",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 ENVIRONMENTAL DESTRUCTION GLULX for",
+      "new": "\"ZORK1 NARRATIVE PHYSICALITY GLULX for"
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local environmental destruction. Release 1246 retains every\n  qualified Release 1245 behavior while adding bounded physical breakage whose\n  consequences remain real without making a required journey route impossible.\"",
+      "new": ";\"Repository-local narrative physicality. Release 1247 retains every qualified\n  Release 1246 behavior while deepening Infocom-style narration, sensory density,\n  absurd-command understanding, and bounded persistent House damage.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1246>",
+      "new": "<CONSTANT RELEASEID 1247>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Environmental Destruction Glulx ZORK I: The Great Underground Empire",
+      "new": "<PRINC \"Narrative Physicality Glulx ZORK I: The Great Underground Empire"
+    }
+  ]
+}
