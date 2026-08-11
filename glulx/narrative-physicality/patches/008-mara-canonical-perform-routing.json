@@ -1,0 +1,27 @@
+{
+  "id": "008_MARA_CANONICAL_PERFORM_ROUTING",
+  "path": "mara_companion_actor.zil",
+  "description": "Re-perform canonical actions for non-actors so object ACTION routines see canonical PRSA instead of inherited Mara actor parser actions",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "(T <V-EAT>)",
+      "new": "(T <PERFORM ,V?EAT ,PRSO>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "(T <V-DROP>)",
+      "new": "(T <PERFORM ,V?DROP ,PRSO>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "(T <V-THROW>)",
+      "new": "(T <PERFORM ,V?THROW ,PRSO>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "(T <V-PUT>)",
+      "new": "(T <PERFORM ,V?PUT ,PRSO ,PRSI>)"
+    }
+  ]
+}

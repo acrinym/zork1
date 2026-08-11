@@ -1,0 +1,60 @@
+{
+  "edition": "Unofficial Zork Narrative Physicality Glulx",
+  "release": 1247,
+  "serial": "260811",
+  "base_manifest": "../environmental-destruction/patch-series.json",
+  "base_release": 1246,
+  "base_artifact_sha256": "28ee345b8a393aedce28c0d9514785d8034aa78026783cdcf8c518bfc584bcf1",
+  "expected_artifact": {
+    "file": "zork1-glulx-narrative-physicality.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": true,
+    "size_bytes": 403712,
+    "checksum_hex": "0x57c1bada",
+    "sha256": "71def5651d7f956016f769abd9b007f1b88f12eb2935d2510e75122f46ad8cb5"
+  },
+  "patches": [
+    "patches/001-house-physicality.json",
+    "patches/002-house-narration.json",
+    "patches/003-bottle-narration.json",
+    "patches/004-release-1247.json",
+    "patches/005-touch-rub-correction.json",
+    "patches/006-mara-generic-verb-delegation.json",
+    "patches/007-mara-put-physicality-routing.json",
+    "patches/008-mara-canonical-perform-routing.json",
+    "patches/009-kitchen-broken-window-narration.json",
+    "patches/010-review-sack-spill.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "mara_companion_actor.zil",
+    "material_consequences.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "ordinary House play receives richer Infocom-style room and object narration",
+    "the parser seriously understands sensory and absurd interactions with the white house, boards, table, sack, bottle, rug, and Kitchen window",
+    "board abuse can leave persistent visible damage without bypassing the canonical House-entry puzzle",
+    "the kitchen table can be battered and remain a usable canonical surface",
+    "the brown sack can be torn with a suitable edge, spill every object currently inside it, and remain observably torn",
+    "the oriental rug can be frayed without breaking the canonical trap-door puzzle",
+    "existing bottle destruction receives richer physical narration while retaining canonical removal semantics",
+    "ordinary EAT, DROP, THROW, and PUT commands re-enter canonical action dispatch instead of becoming person-only Mara refusals",
+    "canonical object ACTION routines still see their normal verbs after inherited Mara grammar recognizes a non-actor noun",
+    "absurd attempts involving actual actors remain under Mara's personhood and boundary authority",
+    "developer environmental reset clears Release 1247 cosmetic physical scars without rewinding puzzle progress or relocating ordinary objects",
+    "a shattered Kitchen window is described as shattered from both Behind House and inside the Kitchen",
+    "absurd impossibilities such as TAKE HOUSE are understood and answered specifically rather than treated as parser ignorance"
+  ],
+  "boundaries": [
+    "no universal physics engine or arbitrary object-pair simulator",
+    "no alternate replacement for canonical object routines or puzzle state machines",
+    "no board destruction that bypasses the canonical early House-entry route",
+    "no score awarded for environmental abuse",
+    "no new global variables",
+    "no recursive audit or meta-test machinery",
+    "no TODO, stub, placeholder behavior, or production cheat verb"
+  ]
+}

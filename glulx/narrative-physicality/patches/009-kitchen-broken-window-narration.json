@@ -1,0 +1,12 @@
+{
+  "id": "009_KITCHEN_BROKEN_WINDOW_NARRATION",
+  "path": "1actions.zil",
+  "description": "Make the interior Kitchen room description distinguish a shattered Kitchen window from an ordinarily open sash",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<COND (<FSET? ,KITCHEN-WINDOW ,OPENBIT>\n\t\t      <TELL \"open.\" CR>)\n\t\t     (T\n\t\t      <TELL \"slightly ajar.\" CR>)>",
+      "new": "<COND (<MATERIAL-DESTRUCTION-GET ,MD-WINDOW-BROKEN>\n\t\t      <TELL \"shattered out; jagged remnants frame an opening large enough to use.\" CR>)\n\t\t     (<FSET? ,KITCHEN-WINDOW ,OPENBIT>\n\t\t      <TELL \"open.\" CR>)\n\t\t     (T\n\t\t      <TELL \"slightly ajar.\" CR>)>"
+    }
+  ]
+}

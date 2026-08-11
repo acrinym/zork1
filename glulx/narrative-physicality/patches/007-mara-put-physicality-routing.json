@@ -1,0 +1,12 @@
+{
+  "id": "007_MARA_PUT_PHYSICALITY_ROUTING",
+  "path": "material_consequences.zil",
+  "description": "Treat the inherited MARA-PUT-ACTOR parser action as ordinary PUT when PRSO is not an actor so torn-container physicality remains authoritative",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<AND <VERB? PUT> <EQUAL? ,PRSI ,SANDWICH-BAG> <FSET? ,SANDWICH-BAG ,RMUNGBIT>>",
+      "new": "<AND <VERB? PUT MARA-PUT-ACTOR> <EQUAL? ,PRSI ,SANDWICH-BAG> <FSET? ,SANDWICH-BAG ,RMUNGBIT>>"
+    }
+  ]
+}

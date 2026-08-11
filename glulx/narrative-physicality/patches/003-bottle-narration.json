@@ -1,0 +1,42 @@
+{
+  "id": "003_HOUSE_AND_BOTTLE_NARRATION",
+  "path": "1actions.zil",
+  "description": "Deepen ordinary House room imagery, expose broken-window state in room prose, and enrich existing bottle destruction narration",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "You are standing in an open field west of a white house, with a boarded\nfront door.",
+      "new": "You are standing in an open field west of a large white colonial house. The grass has gone a little wild around it, and the silence has the settled quality of a place left alone too long. Weathered boards cross the front door."
+    },
+    {
+      "expected_count": 1,
+      "old": "You are behind the white house. A path leads into the forest\nto the east. In one corner of the house there is a small window\nwhich is ",
+      "new": "You are behind the white house, where the painted wall gives way to weeds, old foundation stone, and the darker edge of the forest. A path leads east. In one corner of the house, the small kitchen window is "
+    },
+    {
+      "expected_count": 1,
+      "old": "You are in the kitchen of the white house. A table seems to\nhave been used recently for the preparation of food. A passage\nleads to the west and a dark staircase can be seen leading\nupward. A dark chimney leads down and to the east is a small\nwindow which is ",
+      "new": "You are in the kitchen of the white house. The room still carries small signs of interrupted domestic life: crumbs, preparation marks on the heavy table, and the faint stale trace of food. A passage leads west, a dark staircase climbs upward, and a soot-dark chimney descends. To the east, the small window is "
+    },
+    {
+      "expected_count": 1,
+      "old": "<COND (<FSET? ,KITCHEN-WINDOW ,OPENBIT>\n\t\t       <TELL \"open.\">)\n\t\t      (T <TELL \"slightly ajar.\">)>",
+      "new": "<COND (<MATERIAL-DESTRUCTION-GET ,MD-WINDOW-BROKEN>\n\t\t       <TELL \"shattered out; jagged remnants frame an opening large enough to use.\">)\n\t\t      (<FSET? ,KITCHEN-WINDOW ,OPENBIT>\n\t\t       <TELL \"open.\">)\n\t\t      (T <TELL \"slightly ajar.\">)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "You are in the living room. There is a doorway to the east",
+      "new": "You are in the living room of the white house. Dust softens the abandoned grandeur of the place, but the room still feels inhabited by its furniture and by whatever history has not quite left. There is a doorway to the east"
+    },
+    {
+      "expected_count": 1,
+      "old": "The bottle hits the far wall and shatters.",
+      "new": "The bottle crosses the room with admirable commitment and meets the far wall with less success. Glass snaps outward in a brief glittering spray; the bottle is finished."
+    },
+    {
+      "expected_count": 1,
+      "old": "A brilliant maneuver destroys the bottle.",
+      "new": "Glass, unlike your intentions, has very little flexibility. The bottle cracks apart under the assault."
+    }
+  ]
+}
