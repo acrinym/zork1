@@ -5,8 +5,8 @@
   "replacements": [
     {
       "expected_count": 1,
-      "old": "\"ZORK: The Great Underground Empire.|\" CR>)>\n\t\t<FINISH>)>>",
-      "new": "\"ZORK: The Great Underground Empire.|\" CR>)>\n\t\t<MATERIAL-DESTRUCTION-COMPLETION-PROMPT>\n\t\t<FINISH>)>>"
+      "old": "<TELL \"\nZORK: The Great Underground Empire.|\" CR>)>\n\t\t<FINISH>)>>",
+      "new": "<TELL \"\nZORK: The Great Underground Empire.|\" CR>)>\n\t\t<MATERIAL-DESTRUCTION-COMPLETION-PROMPT>\n\t\t<FINISH>)>>"
     }
   ]
 }
