@@ -1,12 +1,12 @@
 {
   "id": "025_SPOKEN_ACTION_DISPATCH",
   "path": "gverbs.zil",
-  "description": "Let the ordinary SAY action print utterance text captured in the parser's existing scratch table before falling back to canonical quote behavior",
+  "description": "Let the ordinary SAY action print utterance text captured in existing parser globals before falling back to canonical quote behavior",
   "replacements": [
     {
       "expected_count": 1,
       "old": "<ROUTINE V-SAY (\"AUX\" V)\n\t %<COND",
-      "new": "<ROUTINE V-SAY (\"AUX\" V)\n\t <COND (<EQUAL? <GET ,OOPS-TABLE ,O-END> -1>\n\t\t<PRINT-SPOKEN-INPUT>\n\t\t<RTRUE>)>\n\t %<COND"
+      "new": "<ROUTINE V-SAY (\"AUX\" V)\n\t <COND (<AND ,P-ADVERB <G? ,P-NUMBER 0>>\n\t\t<PRINT-SPOKEN-INPUT>\n\t\t<RTRUE>)>\n\t %<COND"
     }
   ]
 }
