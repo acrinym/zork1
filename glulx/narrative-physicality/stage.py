@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply the Release 1247 Narrative Physicality patch series to Release 1246."""
+"""Apply the Release 1247 Narrative Physicality patch series to its declared base."""
 from __future__ import annotations
 
 import argparse
@@ -16,6 +16,7 @@ from stage_release120 import digest, load_json
 
 
 def inventory(root: Path) -> dict[str, str]:
+    """Return content digests for every file below *root*."""
     return {
         p.relative_to(root).as_posix(): digest(p.read_bytes())
         for p in sorted(root.rglob("*"))
@@ -24,6 +25,7 @@ def inventory(root: Path) -> dict[str, str]:
 
 
 def validate_manifest(manifest: dict[str, Any], manifest_path: Path) -> dict[str, Any]:
+    """Validate the declared locked base manifest and return it."""
     base_value = manifest.get("base_manifest")
     if not isinstance(base_value, str) or not base_value:
         raise RuntimeError("Release 1247 must declare its Release 1246 base manifest")
@@ -39,14 +41,16 @@ def validate_manifest(manifest: dict[str, Any], manifest_path: Path) -> dict[str
     return base
 
 
-def validate_base_source(base_source: Path) -> dict[str, Any]:
+def validate_base_source(base_source: Path, base_release: Any) -> dict[str, Any]:
+    """Validate that *base_source* is a staged tree for the declared base release."""
     receipt = load_json(base_source / "STAGING-RECEIPT.json")
-    if not isinstance(receipt, dict) or receipt.get("release") != 1246:
-        raise RuntimeError("base source is not a staged Release 1246 tree")
+    if not isinstance(receipt, dict) or receipt.get("release") != base_release:
+        raise RuntimeError(f"base source is not a staged Release {base_release} tree")
     return receipt
 
 
 def main() -> int:
+    """Stage Release 1247 into a new destination and write its receipt."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-source", type=Path, required=True)
     parser.add_argument("--destination", type=Path, required=True)
@@ -63,7 +67,7 @@ def main() -> int:
     if not isinstance(manifest, dict):
         raise RuntimeError("Release 1247 patch-series must contain an object")
     base_manifest = validate_manifest(manifest, manifest_path)
-    base_receipt = validate_base_source(base_source)
+    base_receipt = validate_base_source(base_source, manifest.get("base_release"))
 
     base_files = inventory(base_source)
     shutil.copytree(base_source, destination)
