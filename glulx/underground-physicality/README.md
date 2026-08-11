@@ -30,13 +30,16 @@ Descriptions distinguish close masonry, rough passage stone, cave-in dust, damp 
 
 Release 1249 does not create a second sensory command framework.
 
-- `SMELL AIR` and `LISTEN TO AIR` use the already-global `LUNGS`/air object and canonical `V-SMELL` / `V-LISTEN` actions.
-- `EXAMINE`, `RUB`, `SMELL`, `LISTEN`, `KICK`, and `TAKE` against the existing global wall objects receive room-aware physical answers.
+- Ambient smelling and listening use the canonical `V-SMELL` / `V-LISTEN` actions and existing air/draft vocabulary. The Cellar deliberately keeps its established `CELLAR-DRAFTS` authority, while the rest of the authored circuit supplies room-specific air and acoustic responses through existing objects.
+- `EXAMINE`, `RUB`, `SMELL`, `LISTEN`, `KICK`, and `TAKE` against the existing wall objects receive room-aware physical answers.
+- Plain `WALL` resolves to the local surrounding wall in the authored underground circuit; an explicit `GRANITE WALL` can still reach the canonical granite-wall object.
 - Existing `STAIRS` and `CRACK` objects receive authored inspection and touch/listen/smell responses where those objects are already in room scope.
 
 ## Stone can be struck without becoming a shortcut
 
-The real loose field stone and existing hard tools can strike an underground wall. A sufficiently hard impact leaves a persistent, scoreless cosmetic chip/score on **that room**, stored with the room object's existing flag capacity rather than a new global variable.
+The real loose field stone and existing hard tools can strike an underground wall. A sufficiently hard impact leaves a persistent, scoreless cosmetic chip/score associated with that authored room.
+
+The scar is stored in nine new bounded slots of the **existing** `MATERIAL-DESTRUCTION-STATE` table established by the environmental-destruction train. It does **not** set `RMUNGBIT` on the room itself: canonical `GOTO` treats an `RMUNGBIT` destination as impassable, so movement state and cosmetic damage must remain separate.
 
 The damage is observable later and can be cleared only by the already-bounded dev/test environmental reset. It never opens a route, bypasses a lock, clears a cave-in, defeats the troll, or creates a new puzzle solution.
 
@@ -53,6 +56,7 @@ The Chasm keeps its canonical pseudo-object authority. Objects deliberately thro
 - no universal physics or trajectory engine;
 - no arbitrary object-pair matrix;
 - no new global variables;
+- no room `RMUNGBIT` mutation for cosmetic underground scars;
 - no new passage opened by damaging walls;
 - no alternate bottle, egg, lantern, troll, chasm, Loud Room, movement, death, or scoring authority;
 - no score for destruction or absurdity;
@@ -66,6 +70,8 @@ The Chasm keeps its canonical pseudo-object authority. Objects deliberately thro
 The hosted qualification reconstructs the complete locked lineage through Release 1248 for production and dev/test, binds the exact staged Release 1248 source identities, smell-checks and compiles both Release 1249 trees, verifies Glulx checksums, and naturally plays the new circuit.
 
 The natural play starts at West of House, takes the real loose field stone, enters through the real Kitchen window, retrieves the real brass lantern and sword, opens the real trap door, descends into the Cellar, defeats the canonical troll under the same fixed combat seed already used by Release 1242, solves the canonical Loud Room with `ECHO`, reaches the Damp Cave and Chasm, and exercises the new physical/sensory behavior without teleporting or fabricating objects.
+
+Crucially, the natural route damages the East-West Passage wall and then later walks **back through that same room** on the way to the Chasm. That proves a cosmetic wall scar cannot accidentally become canonical movement damage.
 
 A separate dev/test lap proves that an underground wall scar is cleared by the existing bounded environmental reset while production behavior remains persistent.
 
