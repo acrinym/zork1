@@ -13,6 +13,7 @@
   },
   "patches": [
     "patches/001-forest-consequence-core.json",
+    "patches/005-fix-hook-composition.json",
     "patches/002-forest-narration.json",
     "patches/003-authored-fatal-consequences.json",
     "patches/003b-canyon-fatal-precedent.json",

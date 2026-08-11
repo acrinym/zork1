@@ -1,0 +1,12 @@
+{
+  "id": "005_FIX_NARRATIVE_HOOK_COMPOSITION",
+  "path": "material_consequences.zil",
+  "description": "Collapse the duplicated Narrative Physicality routine declaration introduced when the forest hook and existing hook-insertion patches compose in sequence",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE NARRATIVE-PHYSICALITY-HOOK ()\n\n<ROUTINE NARRATIVE-PHYSICALITY-HOOK ()",
+      "new": "<ROUTINE NARRATIVE-PHYSICALITY-HOOK ()"
+    }
+  ]
+}
