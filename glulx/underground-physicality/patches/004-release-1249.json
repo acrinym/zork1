@@ -1,0 +1,27 @@
+{
+  "id": "004_RELEASE_1249",
+  "path": "zork1.zil",
+  "description": "Assign Release 1249 to Underground Sensory & Physical World",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 FOREST CONSEQUENCE PHYSICALITY GLULX for",
+      "new": "\"ZORK1 UNDERGROUND SENSORY PHYSICALITY GLULX for"
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local forest consequence physicality. Release 1248 retains every\n  qualified Release 1247 behavior while treating absurd forest actions as world\n  actions, adding compound container impacts, height consequences, and richer\n  authored fatal choices without inferring anything about the human player.\"",
+      "new": ";\"Repository-local underground sensory physicality. Release 1249 retains every\n  qualified Release 1248 behavior while making an early cross-section of the Great\n  Underground Empire materially denser through authored stone, air, acoustics,\n  passage, chasm, and projectile consequences without a universal simulator.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1248>",
+      "new": "<CONSTANT RELEASEID 1249>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Forest Consequence Physicality Glulx ZORK I: The Great Underground Empire",
+      "new": "<PRINC \"Underground Sensory Physicality Glulx ZORK I: The Great Underground Empire"
+    }
+  ]
+}
