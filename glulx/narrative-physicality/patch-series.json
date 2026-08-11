@@ -19,7 +19,8 @@
     "patches/005-touch-rub-correction.json",
     "patches/006-mara-generic-verb-delegation.json",
     "patches/007-mara-put-physicality-routing.json",
-    "patches/008-mara-canonical-perform-routing.json"
+    "patches/008-mara-canonical-perform-routing.json",
+    "patches/009-kitchen-broken-window-narration.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -40,7 +41,7 @@
     "canonical object ACTION routines still see their normal verbs after inherited Mara grammar recognizes a non-actor noun",
     "absurd attempts involving actual actors remain under Mara's personhood and boundary authority",
     "developer environmental reset clears Release 1247 cosmetic physical scars without rewinding puzzle progress or relocating ordinary objects",
-    "broken Kitchen-window state is reflected directly in room narration rather than merely looking open",
+    "a shattered Kitchen window is described as shattered from both Behind House and inside the Kitchen",
     "absurd impossibilities such as TAKE HOUSE are understood and answered specifically rather than treated as parser ignorance"
   ],
   "boundaries": [
