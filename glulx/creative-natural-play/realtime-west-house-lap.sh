@@ -42,6 +42,7 @@ timeout 30s "$GLULXE_BIN" --rngseed 260811 "$STORY" \
   < "$BUILD/realtime-west-house.txt" > "$BUILD/realtime-west-house-transcript.txt" 2>&1 || true
 
 T="$BUILD/realtime-west-house-transcript.txt"
+cat "$T"
 test "$(grep -F -c 'You yell at the small mailbox. It does not respond.' "$T")" -ge 2
 grep -F 'fighting a small mailbox?' "$T"
 ! grep -F 'Suicide is not the answer.' "$T"
