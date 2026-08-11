@@ -1,0 +1,32 @@
+{
+  "id": "019_REALTIME_NATURAL_LANGUAGE_SYNTAX",
+  "path": "gsyntax.zil",
+  "description": "Accept the natural self, speech, directed-yell, help, and harmless vocalization forms exposed by realtime West of House play",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<BUZZ A AN THE IS AND OF THEN ALL ONE BUT EXCEPT \\. \\, \\\" YES NO Y HERE>",
+      "new": "<BUZZ A AN THE IS AND OF THEN ALL ONE BUT EXCEPT MADE \\. \\, \\\" YES NO Y HERE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX COMMAND OBJECT (FIND ACTORBIT) = V-COMMAND>",
+      "new": "<SYNTAX COMMAND = V-COMMAND-SELF>\n<SYNTAX COMMAND OBJECT (FIND ACTORBIT) = V-COMMAND>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX KILL OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM)\n\tWITH OBJECT (FIND WEAPONBIT) (HELD CARRIED HAVE) = V-ATTACK>",
+      "new": "<SYNTAX KILL OBJECT (ON-GROUND IN-ROOM HELD CARRIED) = V-ATTACK>\n<SYNTAX KILL OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM)\n\tWITH OBJECT (FIND WEAPONBIT) (HELD CARRIED HAVE) = V-ATTACK>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX TALK TO OBJECT (FIND ACTORBIT) (IN-ROOM) = V-TELL>\n<SYNTAX SAY = V-SAY>",
+      "new": "<SYNTAX TALK = V-TALK-UNSPECIFIED>\n<SYNTAX TALK TO OBJECT (FIND ACTORBIT) (IN-ROOM) = V-TELL>\n<SYNTAX SAY XYZZY = V-SAY-XYZZY>\n<SYNTAX SAY HAHA = V-SAY-HAHA>\n<SYNTAX SAY HELLO = V-SAY-HELLO>\n<SYNTAX SAY = V-SAY>\n<SYNONYM SAY SPEAK>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX YELL = V-YELL>\n<SYNONYM YELL SCREAM SHOUT>\n\n<SYNTAX ZORK = V-ZORK>",
+      "new": "<SYNTAX HELP = V-HELP>\n\n<SYNTAX MOO = V-MOO>\n<SYNTAX BARK = V-BARK>\n\n<SYNTAX YELL = V-YELL>\n<SYNTAX YELL AT ZORK = V-YELL-AT-ZORK>\n<SYNTAX YELL AT OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-YELL-AT>\n<SYNONYM YELL SCREAM SHOUT>\n\n<SYNTAX ZORK = V-ZORK>"
+    }
+  ]
+}
