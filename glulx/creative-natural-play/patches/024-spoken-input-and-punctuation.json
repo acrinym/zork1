@@ -15,8 +15,8 @@
     },
     {
       "expected_count": 1,
-      "old": "\t       <COND (<NOT ,SUPER-BRIEF> <CRLF>)>\n\t       <TELL \">\">\n\t       <READ ,P-INBUF ,P-LEXV>)>",
-      "new": "\t       <COND (<NOT ,SUPER-BRIEF> <CRLF>)>\n\t       <SETG P-SPOKEN-PTR 0>\n\t       <SETG P-SPOKEN-COUNT 0>\n\t       <TELL \">\">\n\t       <READ ,P-INBUF ,P-LEXV>)>"
+      "old": "\t       <READ ,P-INBUF ,P-LEXV>)>",
+      "new": "\t       <READ ,P-INBUF ,P-LEXV>\n\t       <SETG P-SPOKEN-PTR 0>\n\t       <SETG P-SPOKEN-COUNT 0>)>"
     },
     {
       "expected_count": 1,
