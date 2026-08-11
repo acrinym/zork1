@@ -6,7 +6,7 @@
     {
       "expected_count": 1,
       "old": "<BUZZ A AN THE IS AND OF THEN ALL ONE BUT EXCEPT \\. \\, \\\" YES NO Y HERE>",
-      "new": "<BUZZ A AN THE IS AND OF THEN ALL ONE BUT EXCEPT MADE \\. \\, \\\" YES NO Y HERE>\n<SYNONYM \\. \\? \\!>"
+      "new": "<BUZZ A AN THE IS AND OF THEN ALL ONE BUT EXCEPT MADE \\? \\! \\. \\, \\\" YES NO Y HERE>"
     },
     {
       "expected_count": 1,
