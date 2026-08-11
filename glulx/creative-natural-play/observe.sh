@@ -2,15 +2,14 @@
 set -euo pipefail
 
 ROOT="${GITHUB_WORKSPACE:-$(git rev-parse --show-toplevel)}"
-BASE_BUILD="$ROOT/glulx/build/mara-house-company"
 BUILD="$ROOT/glulx/build/creative-natural-play"
-STORY="$BASE_BUILD/zork1-glulx-mara-house-company.ulx"
+STORY="$ROOT/glulx/build/creative-natural-play-1245/zork1-glulx-creative-natural-play.ulx"
 rm -rf "$BUILD"
 mkdir -p "$BUILD"
 cd "$ROOT"
 
-# Rebuild and qualify the exact current Release 1244 production story first.
-bash glulx/mara-house-company/qualify.sh
+# Rebuild and qualify the exact current Release 1245 production story first.
+bash glulx/creative-natural-play/qualify.sh
 
 GLULXE_BIN="$(realpath .tooling/glulxe/glulxe)"
 [[ -f "$STORY" ]]
@@ -19,11 +18,13 @@ run_probe() {
   local name="$1"
   local seed="$2"
   local commands="$BUILD/$name-commands.txt"
+  local status=0
   # Exploratory input may reach a death/restart, save, disambiguation, or other
   # interactive prompt we did not predict. Preserve that as evidence instead of
   # allowing one session to block the rest of the play train.
   timeout 20s "$GLULXE_BIN" --rngseed "$seed" "$STORY" < "$commands" \
-    > "$BUILD/$name-transcript.txt" 2>&1 || true
+    > "$BUILD/$name-transcript.txt" 2>&1 || status=$?
+  printf '%s\n' "$status" > "$BUILD/$name-status.txt"
 }
 
 cat > "$BUILD/house-kitchen-rest-mail-commands.txt" <<'EOF'
@@ -372,9 +373,12 @@ patterns = {
 }
 for transcript in sorted(build.glob('*-transcript.txt')):
     text = transcript.read_text(encoding='utf-8', errors='replace')
+    status_path = transcript.with_name(transcript.name.replace('-transcript.txt', '-status.txt'))
+    status = int(status_path.read_text().strip())
     item = {
         'lines': len(text.splitlines()),
-        'timed_out': text.rstrip().endswith('Terminated'),
+        'probe_status': status,
+        'timed_out': status == 124,
         'unknown_words': sorted(set(patterns['unknown_word'].findall(text))),
         'generic_failures': len(patterns['generic_failure'].findall(text)),
         'cant_see': sorted(set(patterns['cant_see'].findall(text))),
@@ -386,4 +390,4 @@ print(json.dumps(summary, indent=2))
 PY
 
 # Observation is intentionally non-failing on player-facing surprises. Build and
-# Release 1244 qualification failures still fail the job; weird play is evidence.
+# Release 1245 qualification failures still fail the job; weird play is evidence.
