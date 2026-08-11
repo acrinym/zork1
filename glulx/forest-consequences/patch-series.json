@@ -14,6 +14,7 @@
   "patches": [
     "patches/001-forest-consequence-core.json",
     "patches/005-fix-hook-composition.json",
+    "patches/006-expand-flexible-sack-capacity.json",
     "patches/002-forest-narration.json",
     "patches/003-authored-fatal-consequences.json",
     "patches/003b-canyon-fatal-precedent.json",
@@ -29,6 +30,7 @@
     "forest commands are interpreted as actions in the game world rather than evidence about the real person at the keyboard",
     "the Forest Path tree supports richer examination, touch, smell, listening, kicking, cutting, and impact responses",
     "TIE ROPE TO TREE and USE ROPE ON TREE reuse the existing recoverable material-rope authority instead of creating a second rope system",
+    "the elongated brown sack has enough flexible capacity for Release 1248's bottle, stone, and fragile-treasure experiments while existing WEIGHT accounting still charges the player for everything carried",
     "an intact sack thrown at a tree travels with its contents and lands as one container rather than teleporting its children back to the player",
     "an open or torn sack can spill surviving contents at the impact destination",
     "a glass bottle carried inside a thrown sack can break internally while preserving the canonical bottle-and-water destruction end state",
