@@ -13,7 +13,10 @@
     "file": "zork1-glulx-forest-consequences.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "size_bytes": 408320,
+    "checksum_hex": "0x50b07f00",
+    "sha256": "efd06838a2196144435643f636ec7cafe712fca2ea07089c08c998464ac93d56",
+    "locked": true
   },
   "patches": [
     "patches/001-forest-consequence-core.json",
