@@ -1,0 +1,12 @@
+{
+  "id": "003B_CANYON_FATAL_PRECEDENT",
+  "path": "1dungeon.zil",
+  "description": "Enrich the canonical Canyon View fatal leap as an authored environmental consequence rather than a player-state judgment",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "Nice view, lousy place to jump.",
+      "new": "The view remains magnificent for the brief interval in which it becomes a falling view. The canyon below is considerably less forgiving than the scenery."
+    }
+  ]
+}

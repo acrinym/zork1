@@ -1,0 +1,52 @@
+{
+  "edition": "Unofficial Zork Forest Consequence Physicality Glulx",
+  "release": 1248,
+  "serial": "260811",
+  "base_manifest": "../narrative-physicality/patch-series.json",
+  "base_release": 1247,
+  "base_artifact_sha256": "71def5651d7f956016f769abd9b007f1b88f12eb2935d2510e75122f46ad8cb5",
+  "expected_artifact": {
+    "file": "zork1-glulx-forest-consequences.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "patches": [
+    "patches/001-forest-consequence-core.json",
+    "patches/002-forest-narration.json",
+    "patches/003-authored-fatal-consequences.json",
+    "patches/003b-canyon-fatal-precedent.json",
+    "patches/004-release-1248.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "material_consequences.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "forest commands are interpreted as actions in the game world rather than evidence about the real person at the keyboard",
+    "the Forest Path tree supports richer examination, touch, smell, listening, kicking, cutting, and impact responses",
+    "TIE ROPE TO TREE and USE ROPE ON TREE reuse the existing recoverable material-rope authority instead of creating a second rope system",
+    "an intact sack thrown at a tree travels with its contents and lands as one container rather than teleporting its children back to the player",
+    "an open or torn sack can spill surviving contents at the impact destination",
+    "a glass bottle carried inside a thrown sack can break internally while preserving the canonical bottle-and-water destruction end state",
+    "the jewel-encrusted egg carried inside a thrown or dropped sack can become the canonical broken egg without inventing a replacement treasure",
+    "THROW BOTTLE AT TREE, THROW EGG AT TREE, and ordinary thrown objects receive object-specific forest consequences",
+    "throwing or dropping fragile objects from Up a Tree respects the ten-foot height and places surviving objects on the Forest Path below",
+    "the large Forest Path tree can retain a scoreless cosmetic scar without becoming a shortcut around the canonical egg or forest journey",
+    "the existing Up a Tree and Canyon View fatal leap choices retain canonical JIGS-UP authority while receiving fuller physical narration",
+    "developer environmental reset also clears the Release 1248 cosmetic tree scar without rewinding canonical puzzle progress"
+  ],
+  "boundaries": [
+    "no player mental-state inference, diagnosis, sadness detector, or behavioral profiling",
+    "no real-world self-harm procedure, knot tutorial, suspension model, or instructional injury simulation",
+    "no universal physics engine or arbitrary object-pair simulator",
+    "no new global variables",
+    "no alternate egg, bottle, rope, death, or scoring authority",
+    "no felling the journey-critical Forest Path tree or deleting access to the canonical nest and egg",
+    "no score awarded for reckless, destructive, or fatal experimentation",
+    "no recursive audit or meta-test machinery",
+    "no TODO, stub, placeholder behavior, or production cheat verb"
+  ]
+}

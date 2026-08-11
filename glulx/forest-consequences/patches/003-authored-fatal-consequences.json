@@ -1,0 +1,17 @@
+{
+  "id": "003_AUTHORED_FATAL_CONSEQUENCES",
+  "path": "1actions.zil",
+  "description": "Enrich the canonical Up a Tree fatal leap and canopy narration while keeping JIGS-UP as the sole death authority",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "You are about 10 feet above the ground nestled among some large\nbranches. The nearest branch above you is above your reach.",
+      "new": "You are about ten feet above the Forest Path, wedged among broad branches whose bark presses close on every side. Needles and leaves break the view into moving fragments, but the ground remains plainly visible below. The nearest branch above you is still beyond your reach."
+    },
+    {
+      "expected_count": 1,
+      "old": "That was just a bit too far down.",
+      "new": "You leave the branch behind. For one astonished instant the forest opens beneath you; then branches whip past and the ground arrives with brutal certainty. That was several feet farther down than wisdom suggested."
+    }
+  ]
+}
