@@ -9,7 +9,10 @@
     "file": "zork1-glulx-environmental-destruction.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": false
+    "locked": true,
+    "size_bytes": 398080,
+    "checksum_hex": "0xdddf2fc7",
+    "sha256": "28ee345b8a393aedce28c0d9514785d8034aa78026783cdcf8c518bfc584bcf1"
   },
   "patches": [
     "patches/001-material-destruction-core.json",
@@ -55,6 +58,7 @@
     "production play has no successful meta reset command",
     "dev reset changes only Release 1246 environmental breakage state and the loose field stone position",
     "no damage event is written into Mara relationship history, House archive history, or any cross-run QA memory",
-    "no test-only positioning verb, recursive audit system, TODO, stub, or no-op framework"
+    "no test-only positioning verb in production or dev artifacts; the qualification-only Stone Barrow fixture is excluded from shipped sources",
+    "no recursive audit system, TODO, stub, or no-op framework"
   ]
 }
