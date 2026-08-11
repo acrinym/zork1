@@ -1,0 +1,12 @@
+{
+  "id": "021_PARSER_TOO_MANY_NOUNS_GUIDANCE",
+  "path": "gparser.zil",
+  "description": "Turn the legacy too-many-nouns dead end into actionable guidance for natural multi-action input",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t\t\t    (<EQUAL? ,P-NCN 2>\n\t\t\t\t     <TELL\n\"There were too many nouns in that sentence.\" CR>\n\t\t\t\t     <RFALSE>)",
+      "new": "\t\t\t\t    (<EQUAL? ,P-NCN 2>\n\t\t\t\t     <TELL\n\"That sentence contains more objects than one command can handle. Split sequential actions with a comma or THEN.\" CR>\n\t\t\t\t     <RFALSE>)"
+    }
+  ]
+}
