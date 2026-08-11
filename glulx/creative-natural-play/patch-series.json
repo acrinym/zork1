@@ -38,7 +38,10 @@
     "patches/019-realtime-natural-language-syntax.json",
     "patches/020-realtime-natural-language-actions.json",
     "patches/021-parser-too-many-nouns-guidance.json",
-    "patches/022-self-preaction-ownership.json"
+    "patches/022-self-preaction-ownership.json",
+    "patches/023-actor-grammar-self-boundary.json",
+    "patches/024-spoken-input-and-punctuation.json",
+    "patches/025-spoken-action-dispatch.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -78,12 +81,14 @@
     "ME, MYSELF, SELF, and YOU identify the adventurer as yourself instead of exposing the internal self-object as the noun you",
     "PUT SELF INTO MAILBOX and COMMAND no longer produce article-mangled phrases such as the you, the yourself, or you do not have the you",
     "self-targeted PUT and GIVE commands bypass generic inventory ownership prose before it can describe the adventurer as a possessed object",
+    "broad actor grammar used for Mara preserves SELF as the adventurer instead of degrading it to a generic person",
     "YELL, SHOUT, and SCREAM accept AT targets including ordinary objects, yourself, and Zork",
-    "SPEAK/SAY XYZZY, SAY HAHA, and SAY HELLO parse as spoken utterances instead of unknown-word or malformed-syntax failures",
+    "SAY and SPEAK capture arbitrary unquoted utterance text before noun parsing, including unknown dictionary words such as HAHA",
     "HELP, MOO, and BARK are understood as lightweight natural player commands",
     "KILL MAILBOX rejects fighting a non-actor immediately rather than asking which weapon should be used",
     "DRINK MAILBOX reports that the mailbox is not drinkable instead of anthropomorphizing it as an object that might disagree",
-    "MADE is tolerated in natural inspection questions so what is the ground beneath made of no longer dies on an unknown word",
+    "question and exclamation punctuation split cleanly so natural inspection questions do not invent unknown tokens such as of?",
+    "MADE is tolerated in natural inspection questions so what is the ground beneath made of? reaches the existing ground interpretation",
     "multi-action sentences that overflow the legacy two-noun clause model explain how to split actions with a comma or THEN"
   ],
   "boundaries": [
@@ -94,7 +99,7 @@
     "no generic personhood or comedy framework; these paths remain authored Mara behavior",
     "no explicit sexual simulation; the offscreen cutaway remains deliberately unexplained and P-Grue-13",
     "no copied pack, meal, range, nest, actor, troll, rope, room, or sack",
-    "no free-form natural-language interpreter layered over the classic parser",
+    "no free-form natural-language interpreter layered over the classic parser; spoken-input capture only protects literal player utterance text from noun parsing",
     "no new relationship progression or story train",
     "no test-only production verbs, QA framework, audit hierarchy, TODOs, stubs, or no-op architecture"
   ]
