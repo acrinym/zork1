@@ -43,9 +43,10 @@ assert '<EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>' in g
 assert 'Split sequential actions with a comma or THEN.' in g
 assert '(SYNONYM ME MYSELF SELF YOU CRETIN)' in globals_
 assert '(DESC "yourself")' in globals_
+assert '<OBJECT ZORK-INTERFACE' in globals_
+assert '(DESC "Zork")' in globals_
 assert '<SYNTAX COMMAND = V-COMMAND-SELF>' in syntax
 assert '<SYNTAX YELL AT OBJECT' in syntax
-assert '<SYNTAX YELL AT ZORK = V-YELL-AT-ZORK>' in syntax
 assert '<SYNONYM SAY SPEAK>' in syntax
 assert '<SYNTAX SAY XYZZY = V-SAY-XYZZY>' in syntax
 assert '<SYNTAX SAY HAHA = V-SAY-HAHA>' in syntax
@@ -55,6 +56,7 @@ assert '<SYNTAX MOO = V-MOO>' in syntax
 assert '<SYNTAX BARK = V-BARK>' in syntax
 assert '<ROUTINE V-COMMAND-SELF ()' in verbs
 assert '<ROUTINE V-YELL-AT ()' in verbs
+assert '<EQUAL? ,PRSO ,ZORK-INTERFACE>' in verbs
 assert '<ROUTINE V-TALK-UNSPECIFIED ()' in verbs
 assert 'is not something you can drink.' in verbs
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
