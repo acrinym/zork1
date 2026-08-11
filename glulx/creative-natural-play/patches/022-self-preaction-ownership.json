@@ -1,0 +1,17 @@
+{
+  "id": "022_SELF_PREACTION_OWNERSHIP",
+  "path": "gverbs.zil",
+  "description": "Prevent reflexive self commands from entering ordinary inventory-ownership checks before the self object can respond",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE PRE-GIVE ()\n\t <COND (<NOT <HELD? ,PRSO>>\n\t\t<TELL \n\"That's easy for you to say since you don't even have the \" D ,PRSO \".\" CR>)>>",
+      "new": "<ROUTINE PRE-GIVE ()\n\t <COND (<EQUAL? ,PRSO ,ME>\n\t\t<TELL \"You can't give yourself away.\" CR>\n\t\t<RTRUE>)\n\t       (<NOT <HELD? ,PRSO>>\n\t\t<TELL \n\"That's easy for you to say since you don't even have the \" D ,PRSO \".\" CR>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE PRE-PUT ()\n\t <COND %<COND (<==? ,ZORK-NUMBER 3>",
+      "new": "<ROUTINE PRE-PUT ()\n\t <COND (<EQUAL? ,PRSO ,ME>\n\t\t<TELL \"You cannot put yourself \">\n\t\t<COND (<VERB? PUT-ON> <TELL \"on \">)\n\t\t      (T <TELL \"into \">)>\n\t\t<TELL \"the \" D ,PRSI \".\" CR>\n\t\t<RTRUE>)\n\t       %<COND (<==? ,ZORK-NUMBER 3>"
+    }
+  ]
+}
