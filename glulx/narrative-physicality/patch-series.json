@@ -23,7 +23,8 @@
     "patches/006-mara-generic-verb-delegation.json",
     "patches/007-mara-put-physicality-routing.json",
     "patches/008-mara-canonical-perform-routing.json",
-    "patches/009-kitchen-broken-window-narration.json"
+    "patches/009-kitchen-broken-window-narration.json",
+    "patches/010-review-sack-spill.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -37,7 +38,7 @@
     "the parser seriously understands sensory and absurd interactions with the white house, boards, table, sack, bottle, rug, and Kitchen window",
     "board abuse can leave persistent visible damage without bypassing the canonical House-entry puzzle",
     "the kitchen table can be battered and remain a usable canonical surface",
-    "the brown sack can be torn with a suitable edge, spill its current contents, and remain observably torn",
+    "the brown sack can be torn with a suitable edge, spill every object currently inside it, and remain observably torn",
     "the oriental rug can be frayed without breaking the canonical trap-door puzzle",
     "existing bottle destruction receives richer physical narration while retaining canonical removal semantics",
     "ordinary EAT, DROP, THROW, and PUT commands re-enter canonical action dispatch instead of becoming person-only Mara refusals",
