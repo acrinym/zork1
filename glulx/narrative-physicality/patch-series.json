@@ -11,8 +11,8 @@
     "version_hex": "0x00030103",
     "locked": true,
     "size_bytes": 403712,
-    "checksum_hex": "0x43ae7bd9",
-    "sha256": "548f2e38cf045e51ecd8fad6b4387d8f379f189afa55e4cc015d1062b4613094"
+    "checksum_hex": "0x57c1bada",
+    "sha256": "71def5651d7f956016f769abd9b007f1b88f12eb2935d2510e75122f46ad8cb5"
   },
   "patches": [
     "patches/001-house-physicality.json",
