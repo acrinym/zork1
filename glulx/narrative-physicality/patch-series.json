@@ -15,7 +15,8 @@
     "patches/001-house-physicality.json",
     "patches/002-house-narration.json",
     "patches/003-bottle-narration.json",
-    "patches/004-release-1247.json"
+    "patches/004-release-1247.json",
+    "patches/005-touch-rub-correction.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
