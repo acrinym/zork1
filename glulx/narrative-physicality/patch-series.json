@@ -18,7 +18,8 @@
     "patches/004-release-1247.json",
     "patches/005-touch-rub-correction.json",
     "patches/006-mara-generic-verb-delegation.json",
-    "patches/007-mara-put-physicality-routing.json"
+    "patches/007-mara-put-physicality-routing.json",
+    "patches/008-mara-canonical-perform-routing.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -35,7 +36,8 @@
     "the brown sack can be torn with a suitable edge, spill its current contents, and remain observably torn",
     "the oriental rug can be frayed without breaking the canonical trap-door puzzle",
     "existing bottle destruction receives richer physical narration while retaining canonical removal semantics",
-    "ordinary EAT, DROP, THROW, and PUT commands no longer become person-only Mara refusals merely because actor grammar exists",
+    "ordinary EAT, DROP, THROW, and PUT commands re-enter canonical action dispatch instead of becoming person-only Mara refusals",
+    "canonical object ACTION routines still see their normal verbs after inherited Mara grammar recognizes a non-actor noun",
     "absurd attempts involving actual actors remain under Mara's personhood and boundary authority",
     "developer environmental reset clears Release 1247 cosmetic physical scars without rewinding puzzle progress or relocating ordinary objects",
     "broken Kitchen-window state is reflected directly in room narration rather than merely looking open",
