@@ -1,7 +1,7 @@
 {
   "id": "024_SPOKEN_INPUT_AND_PUNCTUATION",
   "path": "gparser.zil",
-  "description": "Capture SAY/SPEAK utterance tokens before the legacy noun parser tries to interpret them, and split natural question/exclamation punctuation cleanly",
+  "description": "Capture SAY/SPEAK utterance tokens after existing SEND normalization but before noun parsing, and split natural question/exclamation punctuation cleanly",
   "replacements": [
     {
       "expected_count": 1,
@@ -15,8 +15,13 @@
     },
     {
       "expected_count": 1,
-      "old": "\t       <COND (<NOT ,SUPER-BRIEF> <CRLF>)>\n\t       <TELL \">\">\n\t       <READ ,P-INBUF ,P-LEXV>)>\n\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>",
-      "new": "\t       <COND (<NOT ,SUPER-BRIEF> <CRLF>)>\n\t       <SETG P-SPOKEN-PTR 0>\n\t       <SETG P-SPOKEN-COUNT 0>\n\t       <TELL \">\">\n\t       <READ ,P-INBUF ,P-LEXV>)>\n\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<AND <G? ,P-LEN 1>\n\t\t    <OR <EQUAL? <GET ,P-LEXV .PTR> ,W?SAY>\n\t\t\t<EQUAL? <GET ,P-LEXV .PTR> ,W?SPEAK>>>\n\t       <SETG P-SPOKEN-PTR <+ .PTR ,P-LEXELEN>>\n\t       <SETG P-SPOKEN-COUNT <- ,P-LEN 1>>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS 1>\n\t       <SETG P-LEN 1>)>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>"
+      "old": "\t       <COND (<NOT ,SUPER-BRIEF> <CRLF>)>\n\t       <TELL \">\">\n\t       <READ ,P-INBUF ,P-LEXV>)>",
+      "new": "\t       <COND (<NOT ,SUPER-BRIEF> <CRLF>)>\n\t       <SETG P-SPOKEN-PTR 0>\n\t       <SETG P-SPOKEN-COUNT 0>\n\t       <TELL \">\">\n\t       <READ ,P-INBUF ,P-LEXV>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<AND <EQUAL? ,P-LEN 6>\n\t\t    <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 2 ,P-LEXELEN>>> ,W?AFTER>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 4 ,P-LEXELEN>>> ,W?WITH>>\n\t\t   <SETG P-LEN 4>\n\t\t   <PUTB ,P-LEXV ,P-LEXWORDS 4>)>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>",
+      "new": "\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<AND <EQUAL? ,P-LEN 6>\n\t\t    <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 2 ,P-LEXELEN>>> ,W?AFTER>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 4 ,P-LEXELEN>>> ,W?WITH>>\n\t\t   <SETG P-LEN 4>\n\t\t   <PUTB ,P-LEXV ,P-LEXWORDS 4>)>\n\t<COND (<AND <G? ,P-LEN 1>\n\t\t    <OR <EQUAL? <GET ,P-LEXV .PTR> ,W?SAY>\n\t\t\t<EQUAL? <GET ,P-LEXV .PTR> ,W?SPEAK>>>\n\t       <SETG P-SPOKEN-PTR <+ .PTR ,P-LEXELEN>>\n\t       <SETG P-SPOKEN-COUNT <- ,P-LEN 1>>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS 1>\n\t       <SETG P-LEN 1>)>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>"
     }
   ]
 }
