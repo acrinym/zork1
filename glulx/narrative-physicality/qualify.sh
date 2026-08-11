@@ -81,10 +81,10 @@ assert '<FSET? ,SANDWICH-BAG ,RMUNGBIT>' in material
 assert '<FSET? ,RUG ,RMUNGBIT>' in material
 assert '<FCLEAR ,SANDWICH-BAG ,RMUNGBIT>' in material
 assert '<FCLEAR ,RUG ,RMUNGBIT>' in material
-assert '(T <V-EAT>)' in actor
-assert '(T <V-DROP>)' in actor
-assert '(T <V-THROW>)' in actor
-assert '(T <V-PUT>)' in actor
+assert '(T <PERFORM ,V?EAT ,PRSO>)' in actor
+assert '(T <PERFORM ,V?DROP ,PRSO>)' in actor
+assert '(T <PERFORM ,V?THROW ,PRSO>)' in actor
+assert '(T <PERFORM ,V?PUT ,PRSO ,PRSI>)' in actor
 assert 'large white colonial house' in actions
 assert 'small kitchen window is ' in actions
 assert 'interrupted domestic life' in actions
@@ -250,7 +250,7 @@ receipt={
   'serial':manifest['serial'],
   'production':{'file':story.name,'size_bytes':story.stat().st_size,'sha256':hashlib.sha256(story.read_bytes()).hexdigest(),'report':report},
   'dev':{'file':dev.name,'size_bytes':dev.stat().st_size,'sha256':hashlib.sha256(dev.read_bytes()).hexdigest(),'report':dev_report},
-  'qualification':['staging','smell-check','compile','artifact-checksum','House natural-play abuse','Mara generic-verb delegation','persistent damage narration','broken-window room narration','bounded dev reset']
+  'qualification':['staging','smell-check','compile','artifact-checksum','House natural-play abuse','Mara canonical PERFORM delegation','persistent damage narration','broken-window room narration','bounded dev reset']
 }
 Path('glulx/build/narrative-physicality-1247/QUALIFICATION.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
 print(json.dumps(receipt,indent=2,sort_keys=True))
