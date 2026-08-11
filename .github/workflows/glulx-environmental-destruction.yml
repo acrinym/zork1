@@ -1,0 +1,81 @@
+name: Zork I Environmental Destruction
+
+on:
+  push:
+    branches:
+      - agent/environmental-destruction-dev-reset-20260811
+    paths:
+      - "glulx/environmental-destruction/**"
+      - "glulx/creative-natural-play/**"
+      - "glulx/material-consequences/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/tools/**"
+      - "optimized/tools/zil_smell_check.py"
+      - ".github/workflows/glulx-environmental-destruction.yml"
+  pull_request:
+    paths:
+      - "glulx/environmental-destruction/**"
+      - "glulx/creative-natural-play/**"
+      - "glulx/material-consequences/**"
+      - "glulx/shadow-logic/**"
+      - "glulx/tools/**"
+      - "optimized/tools/zil_smell_check.py"
+      - ".github/workflows/glulx-environmental-destruction.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: glulx-environmental-destruction-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+
+jobs:
+  qualify-production-and-dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - uses: actions/setup-dotnet@v5
+        with: {dotnet-version: "10.x"}
+      - run: sudo apt-get update && sudo apt-get install -y build-essential libncurses-dev curl
+      - uses: actions/checkout@v4
+        with: {repository: taradinoc/zork1, ref: "${{ env.ZORK_GLULX_COMMIT }}", path: .upstream/zork1-glulx, persist-credentials: false}
+      - uses: actions/checkout@v4
+        with: {repository: taradinoc/zilf, ref: "${{ env.GLULX_ZILF_COMMIT }}", path: .tooling/zilf-glulx, persist-credentials: false}
+      - uses: actions/checkout@v4
+        with: {repository: erkyrath/glulxe, ref: "${{ env.GLULXE_COMMIT }}", path: .tooling/glulxe, persist-credentials: false}
+      - uses: actions/checkout@v4
+        with: {repository: erkyrath/cheapglk, ref: "${{ env.CHEAPGLK_COMMIT }}", path: .tooling/cheapglk, persist-credentials: false}
+      - name: Prepare Glazer
+        run: |
+          mkdir -p .tooling/glazer-source
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glazer.tar.gz" | sha256sum --check
+          tar -xf glazer.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source
+      - name: Qualify Release 1246 production and dev profiles
+        run: |
+          set -o pipefail
+          bash glulx/environmental-destruction/qualify.sh 2>&1 | tee environmental-destruction.log
+      - name: Upload Release 1246 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environmental-destruction-${{ github.sha }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            environmental-destruction.log
+            glulx/build/environmental-destruction-1246/*
