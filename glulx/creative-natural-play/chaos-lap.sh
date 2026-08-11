@@ -8,8 +8,10 @@ GLULXE_BIN="$(realpath .tooling/glulxe/glulxe)"
 
 run_probe() {
   local name="$1" seed="$2" seconds="$3"
+  local status=0
   timeout "$seconds" "$GLULXE_BIN" --rngseed "$seed" "$STORY" \
-    < "$BUILD/$name-commands.txt" > "$BUILD/$name-transcript.txt" 2>&1 || true
+    < "$BUILD/$name-commands.txt" > "$BUILD/$name-transcript.txt" 2>&1 || status=$?
+  printf '%s\n' "$status" > "$BUILD/$name-status.txt"
 }
 
 # Correctly acquire and light the old House equipment before combining the
@@ -233,6 +235,8 @@ build=Path('glulx/build/creative-natural-play-1245')
 summary={}
 for p in sorted(build.glob('chaos-*-transcript.txt')):
     text=p.read_text(errors='replace')
+    status_path=p.with_name(p.name.replace('-transcript.txt','-status.txt'))
+    status=int(status_path.read_text().strip())
     summary[p.name]={
         'lines':len(text.splitlines()),
         'unknown_words':sorted(set(re.findall(r'I don\'t know the word "([^"]+)"',text))),
@@ -242,7 +246,8 @@ for p in sorted(build.glob('chaos-*-transcript.txt')):
         'death_count':len(re.findall(r'You have died|\*\*\*\*  You have died',text)),
         'contains_stale_pack_dam_claim':'field camp is at the Dam Base. She cannot pack a camp from a different room.' in text,
         'contains_control_glyph':'\x14' in text,
-        'timed_out':text.rstrip().endswith('Terminated'),
+        'probe_status':status,
+        'timed_out':status == 124,
     }
 (build/'CHAOS-LAP-SUMMARY.json').write_text(json.dumps(summary,indent=2)+'\n')
 print(json.dumps(summary,indent=2))
