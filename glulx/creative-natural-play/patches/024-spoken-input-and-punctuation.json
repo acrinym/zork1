@@ -1,7 +1,7 @@
 {
   "id": "024_SPOKEN_INPUT_AND_PUNCTUATION",
   "path": "gparser.zil",
-  "description": "Capture the raw SAY/SPEAK character span after the parser resets its ordinary numeric state, reusing dormant parser globals for the lifetime of the SAY action, and split natural question/exclamation punctuation cleanly",
+  "description": "Capture the raw SAY/SPEAK character span using the parser's canonical lex-entry length and source-position bytes, reusing dormant parser globals for the lifetime of the SAY action, and split natural question/exclamation punctuation cleanly",
   "replacements": [
     {
       "expected_count": 1,
@@ -16,7 +16,7 @@
     {
       "expected_count": 1,
       "old": "\t       <COND (<NOT <EQUAL? .WRD ,W?AGAIN ,W?G>>\n\t\t      <SETG P-NUMBER 0>)>\n\t       <PUT ,OOPS-TABLE ,O-END <>>)>\n\t<COND (<EQUAL? <GET ,P-LEXV .PTR> ,W?AGAIN ,W?G>",
-      "new": "\t       <COND (<NOT <EQUAL? .WRD ,W?AGAIN ,W?G>>\n\t\t      <SETG P-NUMBER 0>)>\n\t       <PUT ,OOPS-TABLE ,O-END <>>)>\n\t<COND (<AND <G? ,P-LEN 1>\n\t\t    <OR <EQUAL? .WRD ,W?SAY>\n\t\t\t<EQUAL? .WRD ,W?SPEAK>>>\n\t       <SET SPTR <GETB ,P-LEXV <+ <* .PTR ,P-LEXELEN> 7>>>\n\t       <SET LPTR <+ .PTR <* <- ,P-LEN 1> ,P-LEXELEN>>>\n\t       <SET EPTR <+ <GETB ,P-LEXV <+ <* .LPTR 2> 3>>\n\t\t\t    <GETB ,P-LEXV <+ <* .LPTR 2> 2>>>>\n\t       <SETG P-ADVERB .SPTR>\n\t       <SETG P-NUMBER <- .EPTR .SPTR>>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS 1>\n\t       <SETG P-LEN 1>)>\n\t<COND (<EQUAL? <GET ,P-LEXV .PTR> ,W?AGAIN ,W?G>"
+      "new": "\t       <COND (<NOT <EQUAL? .WRD ,W?AGAIN ,W?G>>\n\t\t      <SETG P-NUMBER 0>)>\n\t       <PUT ,OOPS-TABLE ,O-END <>>)>\n\t<COND (<AND <G? ,P-LEN 1>\n\t\t    <OR <EQUAL? .WRD ,W?SAY>\n\t\t\t<EQUAL? .WRD ,W?SPEAK>>>\n\t       <SET SPTR <+ <GETB ,P-LEXV <+ <* .PTR ,P-LEXELEN> 7>>\n\t\t\t    <GETB ,P-LEXV <+ <* .PTR ,P-LEXELEN> 6>>>>\n\t       <SET LPTR <+ .PTR <* <- ,P-LEN 1> ,P-LEXELEN>>>\n\t       <SET EPTR <+ <GETB ,P-LEXV <+ <* .LPTR ,P-LEXELEN> 7>>\n\t\t\t    <GETB ,P-LEXV <+ <* .LPTR ,P-LEXELEN> 6>>>>\n\t       <SETG P-ADVERB .SPTR>\n\t       <SETG P-NUMBER <- .EPTR .SPTR>>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS 1>\n\t       <SETG P-LEN 1>)>\n\t<COND (<EQUAL? <GET ,P-LEXV .PTR> ,W?AGAIN ,W?G>"
     }
   ]
 }
