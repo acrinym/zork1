@@ -50,13 +50,11 @@ def validate_base_source(base_source: Path) -> dict[str, Any]:
 def enable_dev_profile(destination: Path) -> None:
     target = destination / "material_consequences.zil"
     text = target.read_text(encoding="utf-8")
-    old = "<GLOBAL MATERIAL-DESTRUCTION-DEV-MODE <>>"
+    old = "<CONSTANT MATERIAL-DESTRUCTION-STATE <TABLE 0 <> <> <> <> <>>>"
+    new = "<CONSTANT MATERIAL-DESTRUCTION-STATE <TABLE 0 <> <> <> <> T>>"
     if text.count(old) != 1:
-        raise RuntimeError("dev profile could not find its single reset-mode switch")
-    target.write_text(
-        text.replace(old, "<GLOBAL MATERIAL-DESTRUCTION-DEV-MODE T>", 1),
-        encoding="utf-8",
-    )
+        raise RuntimeError("dev profile could not find its single compact reset-mode switch")
+    target.write_text(text.replace(old, new, 1), encoding="utf-8")
 
 
 def main() -> int:
