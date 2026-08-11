@@ -1,0 +1,12 @@
+{
+  "id": "005_TOUCH_RUB_CORRECTION",
+  "path": "material_consequences.zil",
+  "description": "Route TOUCH/FEEL/PAT/PET responses through the canonical RUB action emitted by existing Zork grammar",
+  "replacements": [
+    {
+      "expected_count": 6,
+      "old": "<VERB? TOUCH>",
+      "new": "<VERB? RUB>"
+    }
+  ]
+}
