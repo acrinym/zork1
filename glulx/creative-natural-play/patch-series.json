@@ -41,8 +41,7 @@
     "patches/022-self-preaction-ownership.json",
     "patches/023-actor-grammar-self-boundary.json",
     "patches/024-spoken-input-and-punctuation.json",
-    "patches/025-spoken-action-dispatch.json",
-    "patches/026-made-of-question-scaffolding.json"
+    "patches/025-spoken-action-dispatch.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -88,8 +87,8 @@
     "HELP, MOO, and BARK are understood as lightweight natural player commands",
     "KILL MAILBOX rejects fighting a non-actor immediately rather than asking which weapon should be used",
     "DRINK MAILBOX reports that the mailbox is not drinkable instead of anthropomorphizing it as an object that might disagree",
-    "question and exclamation punctuation split cleanly so natural inspection questions do not invent unknown tokens such as of?",
-    "MADE OF is treated as transparent question scaffolding so what is the ground beneath made of? reaches the existing ground interpretation",
+    "terminal question and exclamation punctuation is removed from ordinary grammar while remaining intact in raw spoken text",
+    "trailing MADE OF is removed as question scaffolding so what is the ground beneath made of? reaches the same classic command as what is the ground beneath",
     "multi-action sentences that overflow the legacy two-noun clause model explain how to split actions with a comma or THEN"
   ],
   "boundaries": [
