@@ -1,0 +1,53 @@
+{
+  "edition": "Unofficial Zork Underground Sensory Physicality Glulx",
+  "release": 1249,
+  "serial": "260811",
+  "base_manifest": "../forest-consequences/patch-series.json",
+  "base_release": 1248,
+  "base_artifact_sha256": "efd06838a2196144435643f636ec7cafe712fca2ea07089c08c998464ac93d56",
+  "base_source_sha256": {
+    "production": "1d2efa4cf54506659fc23c05af20cac0e5c10b4f003df6c069f864514cbd8978",
+    "dev": "a74704a842f3b9abe2ff0b3941ab622c864d31d34b0722062e1457a17f54c735"
+  },
+  "expected_artifact": {
+    "file": "zork1-glulx-underground-sensory-physicality.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "patches": [
+    "patches/001-underground-physicality-core.json",
+    "patches/002-underground-narration.json",
+    "patches/003-underground-room-actions.json",
+    "patches/004-release-1249.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "material_consequences.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "an early cross-section of the Great Underground Empire reads as materially distinct stone, earth, air, damp, dust, echo, and height rather than interchangeable room text",
+    "SMELL AIR and LISTEN TO AIR use the existing global air object and sensory verbs to report authored room-specific underground conditions",
+    "walls in the Cellar, Troll Room, East-West Passage, Round Room, Loud Room, Damp Cave, North-South Passage, Chasm, and Deep Canyon support authored examination, touch, smell, listening, kicking, taking, tool impacts, and thrown-object responses",
+    "hard existing tools and the real loose field stone can leave a persistent scoreless cosmetic scar on the current underground room without creating a universal destruction system or a new passage",
+    "ordinary thrown objects strike underground stone and remain where they land instead of teleporting back into inventory",
+    "the canonical bottle, jewel-encrusted egg, and brass lantern are deliberately excluded from generic underground projectile handling so their existing object authorities remain in charge",
+    "existing stone stairs and narrow cracks gain room-aware examination and sensory responses without a second movement or opening system",
+    "the Loud Room retains its canonical ECHO puzzle and special command loop while its ordinary prose and post-ECHO sensory behavior become more physical",
+    "the Chasm retains its canonical pseudo-object removal and crossing authority while impossible DOWN, LEAP, CROSS, and THROW-OFF outcomes are described in physical rather than player-psychological terms",
+    "developer environmental reset clears Release 1249 cosmetic underground scars together with existing bounded physical damage and does not rewind canonical puzzle progress"
+  ],
+  "boundaries": [
+    "no universal physics engine, arbitrary object-pair matrix, generic trajectory simulator, or generic cave generator",
+    "no new global variables",
+    "no alternate bottle, egg, lantern, chasm, Loud Room, combat, death, movement, or scoring authority",
+    "no wall destruction that opens an unearned route or bypasses canonical locks, puzzles, troll gating, or cave-ins",
+    "no score for wall damage, throwing objects, or reckless experimentation",
+    "no player mental-state inference or moralizing refusal where a physical explanation is available",
+    "no production cheat/reset verb and no reset of Mara history, score, treasures, or unrelated puzzle state",
+    "no recursive audit machinery",
+    "no TODO, stub, placeholder behavior, or no-op scaffolding"
+  ]
+}
