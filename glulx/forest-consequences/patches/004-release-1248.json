@@ -1,0 +1,27 @@
+{
+  "id": "004_RELEASE_1248",
+  "path": "zork1.zil",
+  "description": "Assign Release 1248 to Forest Consequence Physicality",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 NARRATIVE PHYSICALITY GLULX for",
+      "new": "\"ZORK1 FOREST CONSEQUENCE PHYSICALITY GLULX for"
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local narrative physicality. Release 1247 retains every qualified\n  Release 1246 behavior while deepening Infocom-style narration, sensory density,\n  absurd-command understanding, and bounded persistent House damage.\"",
+      "new": ";\"Repository-local forest consequence physicality. Release 1248 retains every\n  qualified Release 1247 behavior while treating absurd forest actions as world\n  actions, adding compound container impacts, height consequences, and richer\n  authored fatal choices without inferring anything about the human player.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1247>",
+      "new": "<CONSTANT RELEASEID 1248>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Narrative Physicality Glulx ZORK I: The Great Underground Empire",
+      "new": "<PRINC \"Forest Consequence Physicality Glulx ZORK I: The Great Underground Empire"
+    }
+  ]
+}

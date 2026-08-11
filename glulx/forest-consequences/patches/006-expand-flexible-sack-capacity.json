@@ -1,0 +1,12 @@
+{
+  "id": "006_EXPAND_FLEXIBLE_SACK_CAPACITY",
+  "path": "1dungeon.zil",
+  "description": "Let the elongated brown sack accept the larger absurd cargo combinations Release 1248 explicitly makes physical while preserving carried weight accounting",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT SANDWICH-BAG\n\t(IN KITCHEN-TABLE)\n\t(SYNONYM BAG SACK)\n\t(ADJECTIVE BROWN ELONGATED SMELLY)\n\t(DESC \"brown sack\")\n\t(FLAGS TAKEBIT CONTBIT BURNBIT)\n\t(FDESC\n\"On the table is an elongated brown sack, smelling of hot peppers.\")\n\t(CAPACITY 9)\n\t(SIZE 9)",
+      "new": "<OBJECT SANDWICH-BAG\n\t(IN KITCHEN-TABLE)\n\t(SYNONYM BAG SACK)\n\t(ADJECTIVE BROWN ELONGATED SMELLY)\n\t(DESC \"brown sack\")\n\t(FLAGS TAKEBIT CONTBIT BURNBIT)\n\t(FDESC\n\"On the table is an elongated brown sack, smelling of hot peppers.\")\n\t(CAPACITY 24)\n\t(SIZE 9)"
+    }
+  ]
+}

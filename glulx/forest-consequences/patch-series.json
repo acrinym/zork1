@@ -1,0 +1,64 @@
+{
+  "edition": "Unofficial Zork Forest Consequence Physicality Glulx",
+  "release": 1248,
+  "serial": "260811",
+  "base_manifest": "../narrative-physicality/patch-series.json",
+  "base_release": 1247,
+  "base_artifact_sha256": "71def5651d7f956016f769abd9b007f1b88f12eb2935d2510e75122f46ad8cb5",
+  "base_source_sha256": {
+    "production": "da7b7b8c0c1f36a7e7d5f1137b5e8274e2b7fc5d4fba581122fcc0377f59c30d",
+    "dev": "c1167ca9db8d87d7c4a080b1425ba49862161192ba7f0a99e3d621ba3a36b2c6"
+  },
+  "expected_artifact": {
+    "file": "zork1-glulx-forest-consequences.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 408320,
+    "checksum_hex": "0x50b07f00",
+    "sha256": "efd06838a2196144435643f636ec7cafe712fca2ea07089c08c998464ac93d56",
+    "locked": true
+  },
+  "patches": [
+    "patches/001-forest-consequence-core.json",
+    "patches/005-fix-hook-composition.json",
+    "patches/006-expand-flexible-sack-capacity.json",
+    "patches/002-forest-narration.json",
+    "patches/003-authored-fatal-consequences.json",
+    "patches/007-repair-tree-leap-authority.json",
+    "patches/003b-canyon-fatal-precedent.json",
+    "patches/004-release-1248.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "material_consequences.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "forest commands are interpreted as actions in the game world rather than evidence about the real person at the keyboard",
+    "the Forest Path tree supports richer examination, touch, smell, listening, kicking, cutting, and impact responses",
+    "TIE ROPE TO TREE and USE ROPE ON TREE reuse the existing recoverable material-rope authority instead of creating a second rope system",
+    "the elongated brown sack has enough flexible capacity for Release 1248's bottle, stone, and fragile-treasure experiments while existing WEIGHT accounting still charges the player for everything carried",
+    "an intact sack thrown at a tree travels with its contents and lands as one container rather than teleporting its children back to the player",
+    "an open or torn sack can spill surviving contents at the impact destination",
+    "a glass bottle carried inside a thrown sack can break internally while preserving the canonical bottle-and-water destruction end state",
+    "the jewel-encrusted egg carried inside a thrown or dropped sack can become the canonical broken egg without inventing a replacement treasure",
+    "THROW BOTTLE AT TREE, THROW EGG AT TREE, and ordinary thrown objects receive object-specific forest consequences",
+    "throwing or dropping fragile objects from Up a Tree respects the ten-foot height and places surviving objects on the Forest Path below",
+    "the large Forest Path tree can retain a scoreless cosmetic scar without becoming a shortcut around the canonical egg or forest journey",
+    "the dormant authored Up a Tree LEAP death is repaired as a reachable TREE-ROOM action and retains JIGS-UP as its sole death authority",
+    "the existing Up a Tree and Canyon View fatal leap choices retain canonical JIGS-UP authority while receiving fuller physical narration",
+    "developer environmental reset also clears the Release 1248 cosmetic tree scar without rewinding canonical puzzle progress"
+  ],
+  "boundaries": [
+    "no player mental-state inference, diagnosis, sadness detector, or behavioral profiling",
+    "no real-world self-harm procedure, knot tutorial, suspension model, or instructional injury simulation",
+    "no universal physics engine or arbitrary object-pair simulator",
+    "no new global variables",
+    "no alternate egg, bottle, rope, death, or scoring authority",
+    "no felling the journey-critical Forest Path tree or deleting access to the canonical nest and egg",
+    "no score awarded for reckless, destructive, or fatal experimentation",
+    "no recursive audit or meta-test machinery",
+    "no TODO, stub, placeholder behavior, or production cheat verb"
+  ]
+}

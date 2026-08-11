@@ -1,0 +1,12 @@
+{
+  "id": "007_REPAIR_TREE_LEAP_AUTHORITY",
+  "path": "1actions.zil",
+  "description": "Repair the canonical TREE-ROOM structure so its authored LEAP death is a reachable room action instead of an unreachable clause nested inside DROP",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t\t     (<NOT <EQUAL? ,PRSO ,WINNER ,TREE>>\n\t\t\t      <MOVE ,PRSO ,PATH>\n\t\t\t      <TELL\n\"The \" D ,PRSO \" falls to the ground.\" CR>)\n\t\t\t     (<VERB? LEAP>\n\t\t\t      <JIGS-UP\n\t\t\t        \"You leave the branch behind. For one astonished instant the forest opens beneath you; then branches whip past and the ground arrives with brutal certainty. That was several feet farther down than wisdom suggested.\">)>)>)",
+      "new": "\t\t\t     (<NOT <EQUAL? ,PRSO ,WINNER ,TREE>>\n\t\t\t      <MOVE ,PRSO ,PATH>\n\t\t\t      <TELL\n\"The \" D ,PRSO \" falls to the ground.\" CR>)>)\n\t\t      (<VERB? LEAP>\n\t\t       <JIGS-UP\n\t\t         \"You leave the branch behind. For one astonished instant the forest opens beneath you; then branches whip past and the ground arrives with brutal certainty. That was several feet farther down than wisdom suggested.\">)>)"
+    }
+  ]
+}

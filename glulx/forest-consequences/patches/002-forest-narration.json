@@ -1,0 +1,22 @@
+{
+  "id": "002_FOREST_NARRATION",
+  "path": "1dungeon.zil",
+  "description": "Deepen Infocom-style forest and Forest Path imagery while preserving canonical exits and room authorities",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "This is a forest, with trees in all directions. To the east,\nthere appears to be sunlight.",
+      "new": "Pines and hemlocks close around you in every direction, their trunks layered in dim green distance. Needles soften the ground and catch at the undergrowth. To the east, the canopy thins enough for a clear wash of sunlight."
+    },
+    {
+      "expected_count": 2,
+      "old": "This is a dimly lit forest, with large trees all around.",
+      "new": "This is a dim forest of large pines and hemlocks. Their branches knit the light into narrow shafts, while roots and old needles make the ground look easier to cross than the undergrowth actually permits."
+    },
+    {
+      "expected_count": 1,
+      "old": "This is a path winding through a dimly lit forest. The path heads\nnorth-south here. One particularly large tree with some low branches\nstands at the edge of the path.",
+      "new": "A narrow path winds north and south through the dim forest. Pines and hemlocks crowd close on either side, but one particularly large tree claims the edge of the path, its roots humped above the soil and several broad lower branches hanging within climbing reach."
+    }
+  ]
+}
