@@ -37,7 +37,8 @@
     "patches/018-adventurer-self-identity.json",
     "patches/019-realtime-natural-language-syntax.json",
     "patches/020-realtime-natural-language-actions.json",
-    "patches/021-parser-too-many-nouns-guidance.json"
+    "patches/021-parser-too-many-nouns-guidance.json",
+    "patches/022-self-preaction-ownership.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -76,6 +77,7 @@
     "both Release 1244 schema-3 Mara saves and earlier qualified Release 1245 schema-4 saves migrate into the current state without erasing already witnessed history",
     "ME, MYSELF, SELF, and YOU identify the adventurer as yourself instead of exposing the internal self-object as the noun you",
     "PUT SELF INTO MAILBOX and COMMAND no longer produce article-mangled phrases such as the you, the yourself, or you do not have the you",
+    "self-targeted PUT and GIVE commands bypass generic inventory ownership prose before it can describe the adventurer as a possessed object",
     "YELL, SHOUT, and SCREAM accept AT targets including ordinary objects, yourself, and Zork",
     "SPEAK/SAY XYZZY, SAY HAHA, and SAY HELLO parse as spoken utterances instead of unknown-word or malformed-syntax failures",
     "HELP, MOO, and BARK are understood as lightweight natural player commands",
