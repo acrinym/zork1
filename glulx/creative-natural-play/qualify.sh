@@ -44,7 +44,9 @@ assert 'Split sequential actions with a comma or THEN.' in g
 assert '<SETG SIBREAKS ".,\\\"?!">' in g
 assert '<SET SPTR <GETB ,P-LEXV <+ <* .PTR ,P-LEXELEN> 7>>>' in g
 assert '<SETG P-NUMBER <- .EPTR .SPTR>>' in g
-assert '<EQUAL? .LW ,W?MADE>' in g
+assert '<EQUAL? <GET ,P-LEXV .LEN> ,W?OF>' in g
+assert '<EQUAL? <GET ,P-LEXV <- .LEN ,P-LEXELEN>> ,W?MADE>' in g
+assert '<SETG P-LEN <- ,P-LEN 2>>' in g
 assert ',W?SPEAK' in g
 assert '(SYNONYM ME MYSELF SELF YOU CRETIN)' in globals_
 assert '(DESC "yourself")' in globals_
@@ -142,8 +144,8 @@ timeout 20s "$GLULXE_BIN" --rngseed 41001 "$BUILD/$STORY_FILE" < "$BUILD/kitchen
 grep -F 'A cast iron range can be lit with a real held flame.' "$BUILD/kitchen-transcript.txt"
 grep -F 'You unwrap and arrange the hot-pepper sandwich on the worktop.' "$BUILD/kitchen-transcript.txt"
 grep -F 'There is no sensible way to cook the brown sack with the Kitchen fixtures.' "$BUILD/kitchen-transcript.txt"
-! grep -F 'I don'"'"'t know the word "cook"' "$BUILD/kitchen-transcript.txt"
-! grep -F 'I don'"'"'t know the word "cast"' "$BUILD/kitchen-transcript.txt"
+grep -qF 'I don'"'"'t know the word "cook"' "$BUILD/kitchen-transcript.txt" && exit 1
+grep -qF 'I don'"'"'t know the word "cast"' "$BUILD/kitchen-transcript.txt" && exit 1
 
 cat > "$BUILD/nest.txt" <<'EOF'
 north
@@ -162,7 +164,7 @@ yes
 EOF
 timeout 20s "$GLULXE_BIN" --rngseed 41003 "$BUILD/$STORY_FILE" < "$BUILD/nest.txt" > "$BUILD/nest-transcript.txt" 2>&1 || true
 grep -F 'The woven nest is tinder, not food; the range would burn it rather than cook it.' "$BUILD/nest-transcript.txt"
-! grep -F 'I don'"'"'t know the word "cook"' "$BUILD/nest-transcript.txt"
+grep -qF 'I don'"'"'t know the word "cook"' "$BUILD/nest-transcript.txt" && exit 1
 
 cat > "$BUILD/mara.txt" <<'EOF'
 south
@@ -241,9 +243,9 @@ timeout 30s "$GLULXE_BIN" --rngseed 123456 "$BUILD/$STORY_FILE" < "$BUILD/mara.t
 grep -F 'Mara already has the pack on her own shoulder.' "$BUILD/mara-transcript.txt"
 grep -F 'It is already here because this is the base I chose' "$BUILD/mara-transcript.txt"
 grep -F 'Mara crosses the threshold, then stops--not at the treasure' "$BUILD/mara-transcript.txt"
-! grep -F 'seems confused. "I don'"'"'t see any pack here!"' "$BUILD/mara-transcript.txt"
-! grep -F 'field camp is at the Dam Base. She cannot pack a camp from a different room.' "$BUILD/mara-transcript.txt"
-! grep -q $'stops\024not' "$BUILD/mara-transcript.txt"
+grep -qF 'seems confused. "I don'"'"'t see any pack here!"' "$BUILD/mara-transcript.txt" && exit 1
+grep -qF 'field camp is at the Dam Base. She cannot pack a camp from a different room.' "$BUILD/mara-transcript.txt" && exit 1
+grep -q $'stops\024not' "$BUILD/mara-transcript.txt" && exit 1
 
 cat > "$BUILD/mara-hostile.txt" <<'EOF'
 south
@@ -287,8 +289,8 @@ grep -F 'Mara catches the rope before you can get it around her' "$BUILD/mara-ho
 grep -F 'I answered this once' "$BUILD/mara-hostile-transcript.txt"
 grep -F 'I am your expedition partner, not something you point at an enemy.' "$BUILD/mara-hostile-transcript.txt"
 grep -F 'You already know I do not take combat orders from you' "$BUILD/mara-hostile-transcript.txt"
-! grep -F 'struggles and you cannot tie him up' "$BUILD/mara-hostile-transcript.txt"
-! grep -F 'I don'"'"'t know the word "after"' "$BUILD/mara-hostile-transcript.txt"
+grep -qF 'struggles and you cannot tie him up' "$BUILD/mara-hostile-transcript.txt" && exit 1
+grep -qF 'I don'"'"'t know the word "after"' "$BUILD/mara-hostile-transcript.txt" && exit 1
 
 python - "$MANIFEST" <<'PY'
 import json,sys
