@@ -1,0 +1,12 @@
+{
+  "id": "004_COMPLETION_DEV_RESET_PROMPT",
+  "path": "1actions.zil",
+  "description": "Offer the environmental reset only at the actual Stone Barrow completion path; ordinary deaths keep the canonical FINISH flow",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK: The Great Underground Empire.|\" CR>)>\n\t\t<FINISH>)>>",
+      "new": "\"ZORK: The Great Underground Empire.|\" CR>)>\n\t\t<MATERIAL-DESTRUCTION-COMPLETION-PROMPT>\n\t\t<FINISH>)>>"
+    }
+  ]
+}
