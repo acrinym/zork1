@@ -1,0 +1,12 @@
+{
+  "id": "023_ACTOR_GRAMMAR_SELF_BOUNDARY",
+  "path": "mara_companion_actor.zil",
+  "description": "The broad actor grammar needed for Mara must preserve the adventurer's reflexive identity instead of describing SELF as a generic person",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-MARA-EAT-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-EAT-REFUSAL>)\n          (T <TELL \"That is a person, not food.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE V-MARA-DROP-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-RELOCATION-REFUSAL>)\n          (T <TELL \"You are not carrying that person.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE V-MARA-THROW-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-RELOCATION-REFUSAL>)\n          (T <TELL \"You cannot throw a person as though they were inventory.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE V-MARA-PUT-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA>\n           <COND (<EQUAL? ,PRSI ,SANDWICH-BAG> <MARA-SACK-REFUSAL>)\n                 (T <MARA-RELOCATION-REFUSAL>)>)\n          (T <TELL \"You cannot put a person into an object as though they were inventory.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE V-MARA-EAT-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-EAT-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"Eating yourself is not a useful interpretation of that command.\" CR>)\n          (T <TELL \"That is a person, not food.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE V-MARA-DROP-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-RELOCATION-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"You are already standing on your own behalf.\" CR>)\n          (T <TELL \"You are not carrying that person.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE V-MARA-THROW-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA> <MARA-RELOCATION-REFUSAL>)\n          (<EQUAL? ,PRSO ,ME> <TELL \"You cannot throw yourself as though you were inventory.\" CR>)\n          (T <TELL \"You cannot throw a person as though they were inventory.\" CR>)>\n    <RTRUE>>\n\n<ROUTINE V-MARA-PUT-ACTOR ()\n    <COND (<EQUAL? ,PRSO ,MARA>\n           <COND (<EQUAL? ,PRSI ,SANDWICH-BAG> <MARA-SACK-REFUSAL>)\n                 (T <MARA-RELOCATION-REFUSAL>)>)\n          (<EQUAL? ,PRSO ,ME>\n           <TELL \"You cannot put yourself into the \" D ,PRSI \".\" CR>)\n          (T <TELL \"You cannot put a person into an object as though they were inventory.\" CR>)>\n    <RTRUE>>"
+    }
+  ]
+}
