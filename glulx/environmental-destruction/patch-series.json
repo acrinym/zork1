@@ -18,7 +18,9 @@
     "patches/004-completion-dev-reset-prompt.json",
     "patches/005-release-1246.json",
     "patches/006-review-corrections.json",
-    "patches/007-close-window-damage-tell.json"
+    "patches/007-close-window-damage-tell.json",
+    "patches/008-compact-destruction-state.json",
+    "patches/009-reset-only-damaged-surfaces.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -38,9 +40,10 @@
     "broken-window and damaged-mailbox examination and operation report the retained physical state instead of reverting to pristine prose",
     "ordinary production play retains authored environmental damage for the current playthrough and RESET DAMAGE explicitly refuses to erase it",
     "the dev/test build enables RESET DAMAGE, RESET ENVIRONMENT, and RESET BREAKAGE without changing score, treasures, relationship history, or unrelated puzzle progress",
-    "dev reset restores the loose field stone even when moving it is the only resettable test state, while the completion prompt remains limited to actual authored breakage",
+    "dev reset restores the loose field stone even when moving it is the only resettable test state, without changing untouched mailbox or Kitchen-window state",
     "actual game completion offers the environmental reset prompt only in dev/test mode and only when authored breakage exists",
-    "THROW ROCK AT TROLL continues through the existing troll/combat authority rather than creating a duplicate troll damage system"
+    "THROW ROCK AT TROLL continues through the existing troll/combat authority rather than creating a duplicate troll damage system",
+    "Release 1246 destruction state uses compact table storage rather than consuming the legacy engine's exhausted global-variable slots"
   ],
   "boundaries": [
     "no universal physics engine or arbitrary object-pair simulation",
