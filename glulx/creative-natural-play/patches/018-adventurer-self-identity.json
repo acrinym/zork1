@@ -1,12 +1,12 @@
 {
   "id": "018_ADVENTURER_SELF_IDENTITY",
   "path": "gglobals.zil",
-  "description": "Make self a real reflexive noun rather than a generic object whose printable description is literally 'you'",
+  "description": "Make self a real reflexive noun rather than a generic object whose printable description is literally 'you', and expose Zork only as a nonphysical parser-interface noun token",
   "replacements": [
     {
       "expected_count": 1,
       "old": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF CRETIN)\n\t(DESC \"you\")\n\t(FLAGS ACTORBIT)\n\t(ACTION CRETIN-FCN)>",
-      "new": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF YOU CRETIN)\n\t(DESC \"yourself\")\n\t(FLAGS ACTORBIT)\n\t(ACTION CRETIN-FCN)>"
+      "new": "<OBJECT ME\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ME MYSELF SELF YOU CRETIN)\n\t(DESC \"yourself\")\n\t(FLAGS ACTORBIT)\n\t(ACTION CRETIN-FCN)>\n\n<OBJECT ZORK-INTERFACE\n\t(IN GLOBAL-OBJECTS)\n\t(SYNONYM ZORK)\n\t(DESC \"Zork\")\n\t(FLAGS NDESCBIT)\n\t(ACTION ZORK-INTERFACE-FCN)>\n\n<ROUTINE ZORK-INTERFACE-FCN ()\n\t <COND (<VERB? EXAMINE>\n\t\t<TELL \"Zork is the interface through which you address the adventure, not a physical thing in the world.\" CR>)\n\t       (T <RFALSE>)>>"
     },
     {
       "expected_count": 1,
