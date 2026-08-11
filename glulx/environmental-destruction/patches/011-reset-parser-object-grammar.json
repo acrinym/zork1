@@ -1,0 +1,12 @@
+{
+  "id": "011_RESET_PARSER_OBJECT_GRAMMAR",
+  "path": "gsyntax.zil",
+  "description": "Add a noun-taking RESET syntax so DAMAGE can parse despite also being a synonym of DESTROY",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX RESET DAMAGE = V-RESET-DAMAGE>\n<SYNTAX RESET ENVIRONMENT = V-RESET-DAMAGE>\n<SYNTAX RESET BREAKAGE = V-RESET-DAMAGE>",
+      "new": "<SYNTAX RESET OBJECT (FIND RMUNGBIT) = V-RESET-DAMAGE>\n<SYNTAX RESET DAMAGE = V-RESET-DAMAGE>\n<SYNTAX RESET ENVIRONMENT = V-RESET-DAMAGE>\n<SYNTAX RESET BREAKAGE = V-RESET-DAMAGE>"
+    }
+  ]
+}
