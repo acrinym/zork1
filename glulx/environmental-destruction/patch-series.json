@@ -1,0 +1,51 @@
+{
+  "edition": "Unofficial Zork Environmental Destruction Glulx",
+  "release": 1246,
+  "serial": "260811",
+  "base_manifest": "../creative-natural-play/patch-series.json",
+  "base_release": 1245,
+  "base_artifact_sha256": "d84c724aa34afc30312d69e7ac2064c5f9f182311a441681cf5b585ec83a0a16",
+  "expected_artifact": {
+    "file": "zork1-glulx-environmental-destruction.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "patches": [
+    "patches/001-material-destruction-core.json",
+    "patches/002-material-destruction-hook.json",
+    "patches/003-destruction-grammar.json",
+    "patches/004-completion-dev-reset-prompt.json",
+    "patches/005-release-1246.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "gsyntax.zil",
+    "material_consequences.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "a real scoreless loose field stone at West of House gives ordinary ROCK and STONE commands a physical projectile",
+    "THROW ROCK AT MAILBOX dents and repeated impacts can mangle the real mailbox without deleting its contents",
+    "a direct blow from the bloody axe can cut the mailbox post and turn the same real mailbox into carryable damaged property",
+    "sword and other hard impacts damage the mailbox according to their physical character rather than producing one universal destruction result",
+    "bare KILL MAILBOX retains the existing absurd-fight refusal while KILL MAILBOX WITH AXE can reach a real physical consequence",
+    "THROW ROCK AT WINDOW and THROW ROCK THROUGH WINDOW can shatter the real Kitchen window and move the thrown object through the new opening",
+    "the shattered Kitchen window remains traversable so environmental experimentation cannot permanently brick the canonical House-entry journey",
+    "broken-window and damaged-mailbox examination and operation report the retained physical state instead of reverting to pristine prose",
+    "ordinary production play retains authored environmental damage for the current playthrough and RESET DAMAGE explicitly refuses to erase it",
+    "the dev/test build enables RESET DAMAGE, RESET ENVIRONMENT, and RESET BREAKAGE without changing score, treasures, relationship history, or unrelated puzzle progress",
+    "actual game completion offers the environmental reset prompt only in dev/test mode and only when authored breakage exists",
+    "THROW ROCK AT TROLL continues through the existing troll/combat authority rather than creating a duplicate troll damage system"
+  ],
+  "boundaries": [
+    "no universal physics engine or arbitrary object-pair simulation",
+    "no permanent deletion of a journey-critical route or required canonical object",
+    "environmental damage itself awards no score and removes no earned score",
+    "production play has no successful meta reset command",
+    "dev reset changes only Release 1246 environmental breakage state and the loose field stone position",
+    "no damage event is written into Mara relationship history, House archive history, or any cross-run QA memory",
+    "no test-only positioning verb, recursive audit system, TODO, stub, or no-op framework"
+  ]
+}
