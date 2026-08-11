@@ -1,12 +1,12 @@
 {
   "id": "026_MADE_OF_QUESTION_SCAFFOLDING",
   "path": "gparser.zil",
-  "description": "Normalize adjacent MADE OF at the lexical stage by turning only the OF token into an already-ignored scaffolding word, so material questions reach the same classic interpretation as their shorter form without hardcoding a noun or sentence.",
+  "description": "When a command ends in MADE OF, optionally followed by question punctuation already normalized to PERIOD, remove that trailing English scaffolding from the lexical command so the classic parser receives exactly the same semantic words as the shorter form.",
   "replacements": [
     {
       "expected_count": 1,
       "old": "\t<COND (<EQUAL? <SET WRD <GET ,P-LEXV .PTR>> ,W?OOPS>",
-      "new": "\t<SET LEN ,P-LEXSTART>\n\t<SET CNT ,P-LEN>\n\t<REPEAT ()\n\t       <COND (<L? .CNT 2> <RETURN>)>\n\t       <SET LW <GET ,P-LEXV .LEN>>\n\t       <COND (<AND <EQUAL? .LW ,W?MADE>\n\t\t\t   <EQUAL? <GET ,P-LEXV <+ .LEN ,P-LEXELEN>> ,W?OF>>\n\t\t      <PUT ,P-LEXV <+ .LEN ,P-LEXELEN> ,W?IS>)>\n\t       <SET LEN <+ .LEN ,P-LEXELEN>>\n\t       <SET CNT <- .CNT 1>>>\n\t<SET LW 0>\n\t<COND (<EQUAL? <SET WRD <GET ,P-LEXV .PTR>> ,W?OOPS>"
+      "new": "\t<SET LEN <+ ,P-LEXSTART <* <- ,P-LEN 1> ,P-LEXELEN>>>\n\t<COND (<AND <G? ,P-LEN 2>\n\t\t    <EQUAL? <GET ,P-LEXV .LEN> ,W?PERIOD>\n\t\t    <EQUAL? <GET ,P-LEXV <- .LEN ,P-LEXELEN>> ,W?OF>\n\t\t    <EQUAL? <GET ,P-LEXV <- .LEN <* 2 ,P-LEXELEN>>> ,W?MADE>>\n\t       <SETG P-LEN <- ,P-LEN 3>>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS ,P-LEN>)\n\t      (<AND <G? ,P-LEN 1>\n\t\t    <EQUAL? <GET ,P-LEXV .LEN> ,W?OF>\n\t\t    <EQUAL? <GET ,P-LEXV <- .LEN ,P-LEXELEN>> ,W?MADE>>\n\t       <SETG P-LEN <- ,P-LEN 2>>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS ,P-LEN>)>\n\t<COND (<EQUAL? <SET WRD <GET ,P-LEXV .PTR>> ,W?OOPS>"
     }
   ]
 }
