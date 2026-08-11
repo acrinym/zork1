@@ -42,10 +42,9 @@ assert '<DO-SL ,WINNER ,SH ,SC>' in g
 assert '<EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>' in g
 assert 'Split sequential actions with a comma or THEN.' in g
 assert '<SETG SIBREAKS ".,\\\"?!">' in g
-assert '<GLOBAL P-SPOKEN-PTR 0>' in g
-assert '<GLOBAL P-SPOKEN-COUNT 0>' in g
-assert '<SETG P-SPOKEN-PTR <+ .PTR ,P-LEXELEN>>' in g
-assert '<SETG P-SPOKEN-COUNT <- ,P-LEN 1>>' in g
+assert '<PUT ,OOPS-TABLE ,O-START <+ .PTR ,P-LEXELEN>>' in g
+assert '<PUT ,OOPS-TABLE ,O-LENGTH <- ,P-LEN 1>>' in g
+assert '<PUT ,OOPS-TABLE ,O-END -1>' in g
 assert ',W?SPEAK' in g
 assert '(SYNONYM ME MYSELF SELF YOU CRETIN)' in globals_
 assert '(DESC "yourself")' in globals_
@@ -63,7 +62,7 @@ assert '<ROUTINE V-YELL-AT ()' in verbs
 assert '<EQUAL? ,PRSO ,ZORK-INTERFACE>' in verbs
 assert '<ROUTINE V-TALK-UNSPECIFIED ()' in verbs
 assert '<ROUTINE PRINT-SPOKEN-INPUT' in verbs
-assert '<COND (,P-SPOKEN-COUNT' in verbs
+assert '<EQUAL? <GET ,OOPS-TABLE ,O-END> -1>' in verbs
 assert 'is not something you can drink.' in verbs
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
 assert '<ROUTINE V-KITCHEN-COOK ()' in k
