@@ -1,0 +1,102 @@
+{
+  "id": "008_COMPACT_DESTRUCTION_STATE",
+  "path": "material_consequences.zil",
+  "description": "Move Release 1246 mutable state out of exhausted global slots and into a compact table",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<GLOBAL MATERIAL-MAILBOX-DAMAGE 0>\n<GLOBAL MATERIAL-MAILBOX-OPEN-BEFORE-DAMAGE <>>\n<GLOBAL MATERIAL-WINDOW-BROKEN <>>\n<GLOBAL MATERIAL-WINDOW-OPEN-BEFORE-DAMAGE <>>\n<GLOBAL MATERIAL-WINDOW-FLAG-BEFORE-DAMAGE <>>\n<GLOBAL MATERIAL-DESTRUCTION-DEV-MODE <>>",
+      "new": "<CONSTANT MD-MAILBOX-DAMAGE 0>\n<CONSTANT MD-MAILBOX-OPEN-BEFORE-DAMAGE 1>\n<CONSTANT MD-WINDOW-BROKEN 2>\n<CONSTANT MD-WINDOW-OPEN-BEFORE-DAMAGE 3>\n<CONSTANT MD-WINDOW-FLAG-BEFORE-DAMAGE 4>\n<CONSTANT MD-DEV-MODE 5>\n<CONSTANT MATERIAL-DESTRUCTION-STATE <TABLE 0 <> <> <> <> <>>>\n\n<ROUTINE MATERIAL-DESTRUCTION-GET (SLOT)\n    <GET ,MATERIAL-DESTRUCTION-STATE .SLOT>>\n\n<ROUTINE MATERIAL-DESTRUCTION-PUT (SLOT VALUE)\n    <PUT ,MATERIAL-DESTRUCTION-STATE .SLOT .VALUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-MAILBOX-DAMAGE 0>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-MAILBOX-DAMAGE 0>"
+    },
+    {
+      "expected_count": 2,
+      "old": "<SETG MATERIAL-MAILBOX-DAMAGE 1>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-MAILBOX-DAMAGE 1>"
+    },
+    {
+      "expected_count": 2,
+      "old": "<SETG MATERIAL-MAILBOX-DAMAGE 2>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-MAILBOX-DAMAGE 2>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-MAILBOX-DAMAGE 3>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-MAILBOX-DAMAGE 3>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-MAILBOX-OPEN-BEFORE-DAMAGE <FSET? ,MAILBOX ,OPENBIT>>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-MAILBOX-OPEN-BEFORE-DAMAGE <FSET? ,MAILBOX ,OPENBIT>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-MAILBOX-OPEN-BEFORE-DAMAGE <>>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-MAILBOX-OPEN-BEFORE-DAMAGE <>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-WINDOW-BROKEN <>>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-WINDOW-BROKEN <>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-WINDOW-BROKEN T>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-WINDOW-BROKEN T>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-WINDOW-OPEN-BEFORE-DAMAGE <FSET? ,KITCHEN-WINDOW ,OPENBIT>>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-WINDOW-OPEN-BEFORE-DAMAGE <FSET? ,KITCHEN-WINDOW ,OPENBIT>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-WINDOW-OPEN-BEFORE-DAMAGE <>>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-WINDOW-OPEN-BEFORE-DAMAGE <>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-WINDOW-FLAG-BEFORE-DAMAGE ,KITCHEN-WINDOW-FLAG>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-WINDOW-FLAG-BEFORE-DAMAGE ,KITCHEN-WINDOW-FLAG>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SETG MATERIAL-WINDOW-FLAG-BEFORE-DAMAGE <>>",
+      "new": "<MATERIAL-DESTRUCTION-PUT ,MD-WINDOW-FLAG-BEFORE-DAMAGE <>>"
+    },
+    {
+      "expected_count": 11,
+      "old": ",MATERIAL-MAILBOX-DAMAGE",
+      "new": "<MATERIAL-DESTRUCTION-GET ,MD-MAILBOX-DAMAGE>"
+    },
+    {
+      "expected_count": 1,
+      "old": ",MATERIAL-MAILBOX-OPEN-BEFORE-DAMAGE",
+      "new": "<MATERIAL-DESTRUCTION-GET ,MD-MAILBOX-OPEN-BEFORE-DAMAGE>"
+    },
+    {
+      "expected_count": 6,
+      "old": ",MATERIAL-WINDOW-BROKEN",
+      "new": "<MATERIAL-DESTRUCTION-GET ,MD-WINDOW-BROKEN>"
+    },
+    {
+      "expected_count": 1,
+      "old": ",MATERIAL-WINDOW-OPEN-BEFORE-DAMAGE",
+      "new": "<MATERIAL-DESTRUCTION-GET ,MD-WINDOW-OPEN-BEFORE-DAMAGE>"
+    },
+    {
+      "expected_count": 1,
+      "old": ",MATERIAL-WINDOW-FLAG-BEFORE-DAMAGE",
+      "new": "<MATERIAL-DESTRUCTION-GET ,MD-WINDOW-FLAG-BEFORE-DAMAGE>"
+    },
+    {
+      "expected_count": 2,
+      "old": ",MATERIAL-DESTRUCTION-DEV-MODE",
+      "new": "<MATERIAL-DESTRUCTION-GET ,MD-DEV-MODE>"
+    }
+  ]
+}
