@@ -68,7 +68,7 @@ grep -F 'Mara steps into the Troll Room only after studying the knots from the t
 grep -F 'Alive, disarmed, and actually restrained, she says. That changes the route.' "$TRANSCRIPT"
 grep -F 'I am your expedition partner, not something you point at an enemy.' "$TRANSCRIPT"
 grep -F 'You already know I do not take combat orders from you' "$TRANSCRIPT"
-! grep -F 'I don'"'"'t know the word "after"' "$TRANSCRIPT"
-! grep -F 'I don'"'"'t know the word "with"' "$TRANSCRIPT"
-! grep -F 'I don'"'"'t see any troll here' "$TRANSCRIPT"
-! grep -F 'Mara stops short of the Troll Room' "$TRANSCRIPT"
+grep -qF 'I don'"'"'t know the word "after"' "$TRANSCRIPT" && exit 1
+grep -qF 'I don'"'"'t know the word "with"' "$TRANSCRIPT" && exit 1
+grep -qF 'I don'"'"'t see any troll here' "$TRANSCRIPT" && exit 1
+grep -qF 'Mara stops short of the Troll Room' "$TRANSCRIPT" && exit 1
