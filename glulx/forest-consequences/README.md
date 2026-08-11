@@ -31,7 +31,7 @@ There is no generic mass simulator. These are authored interactions among existi
 
 ### Trees, projectiles, and height
 
-`THROW BOTTLE AT TREE`, `THROW EGG AT TREE`, `THROW NEST AT TREE`, ordinary objects thrown at the tree, and throws from`UP-A-TREE` now respect the material and location involved.
+`THROW BOTTLE AT TREE`, `THROW EGG AT TREE`, `THROW NEST AT TREE`, ordinary objects thrown at the tree, and throws from `UP-A-TREE` now respect the material and location involved.
 
 The bottle retains the canonical destruction end state: the bottle is removed and contained water is removed. The egg retains the canonical `BAD-EGG` / `BROKEN-EGG` authority. The release does not create shadow copies of either object.
 
@@ -63,6 +63,8 @@ The release qualification stages the full locked Glulx lineage through Release 1
 1. a bottle inside a thrown closed sack;
 2. a field stone spilled from an open thrown sack;
 3. the jewel-encrusted egg broken inside a sack dropped from the tree;
-4. persistent tree scarring and the canonical fatal tree leap.
+4. persistent tree scarring and the canonical fatal tree leap;
+5. both `TIE ROPE TO TREE` and `USE ROPE ON TREE`, the inherited movement limit, and canonical `UNTIE` recovery;
+6. bounded dev/test reset of the cosmetic tree scar.
 
-The final production artifact is locked in `patch-series.json` after the first measured CI build.
+The production artifact is locked in `patch-series.json` at 408,320 bytes, checksum `0x50b07f00`, and SHA-256 `efd06838a2196144435643f636ec7cafe712fca2ea07089c08c998464ac93d56`.
