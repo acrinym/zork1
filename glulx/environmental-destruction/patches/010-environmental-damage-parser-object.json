@@ -1,0 +1,12 @@
+{
+  "id": "010_ENVIRONMENTAL_DAMAGE_PARSER_OBJECT",
+  "path": "material_consequences.zil",
+  "description": "Represent DAMAGE, ENVIRONMENT, and BREAKAGE as one nonphysical global parser target for RESET commands",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MATERIAL-DESTRUCTIVE-IMPACT? (OBJ)",
+      "new": "<OBJECT ENVIRONMENTAL-DAMAGE\n    (IN GLOBAL-OBJECTS)\n    (SYNONYM DAMAGE ENVIRONMENT BREAKAGE)\n    (ADJECTIVE ENVIRONMENTAL WORLD)\n    (DESC \"environmental damage\")\n    (FLAGS NDESCBIT RMUNGBIT)>\n\n<ROUTINE MATERIAL-DESTRUCTIVE-IMPACT? (OBJ)"
+    }
+  ]
+}
