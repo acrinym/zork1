@@ -87,6 +87,10 @@ jobs:
         run: |
           set -o pipefail
           bash glulx/forest-consequences/qualify.sh 2>&1 | tee forest-consequences.log
+      - name: Qualify Release 1248 tree rope authority
+        run: |
+          set -o pipefail
+          bash glulx/forest-consequences/qualify-rope.sh 2>&1 | tee forest-consequences-rope.log
       - name: Upload Release 1248 evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -96,4 +100,5 @@ jobs:
           retention-days: 14
           path: |
             forest-consequences.log
+            forest-consequences-rope.log
             glulx/build/forest-consequences-1248/*
