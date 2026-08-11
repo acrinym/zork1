@@ -19,7 +19,8 @@
     "patches/001-underground-physicality-core.json",
     "patches/002-underground-narration.json",
     "patches/003-underground-room-actions.json",
-    "patches/004-release-1249.json"
+    "patches/004-release-1249.json",
+    "patches/005-underground-scar-state.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -29,9 +30,10 @@
   ],
   "player_outcomes": [
     "an early cross-section of the Great Underground Empire reads as materially distinct stone, earth, air, damp, dust, echo, and height rather than interchangeable room text",
-    "SMELL AIR and LISTEN TO AIR use the existing global air object and sensory verbs to report authored room-specific underground conditions",
+    "ambient smelling and listening use existing sensory verbs and existing air/draft objects; the Cellar deliberately preserves its established cross-draft authority while other authored underground rooms provide room-specific air and acoustic responses",
     "walls in the Cellar, Troll Room, East-West Passage, Round Room, Loud Room, Damp Cave, North-South Passage, Chasm, and Deep Canyon support authored examination, touch, smell, listening, kicking, taking, tool impacts, and thrown-object responses",
-    "hard existing tools and the real loose field stone can leave a persistent scoreless cosmetic scar on the current underground room without creating a universal destruction system or a new passage",
+    "plain WALL resolves to the local surrounding stone in the authored underground circuit while explicit GRANITE WALL remains available to the canonical granite-wall object",
+    "hard existing tools and the real loose field stone can leave a persistent scoreless cosmetic scar tied to the current authored underground room without changing that room's canonical movement flags, creating a universal destruction system, or opening a new passage",
     "ordinary thrown objects strike underground stone and remain where they land instead of teleporting back into inventory",
     "the canonical bottle, jewel-encrusted egg, and brass lantern are deliberately excluded from generic underground projectile handling so their existing object authorities remain in charge",
     "existing stone stairs and narrow cracks gain room-aware examination and sensory responses without a second movement or opening system",
@@ -41,7 +43,8 @@
   ],
   "boundaries": [
     "no universal physics engine, arbitrary object-pair matrix, generic trajectory simulator, or generic cave generator",
-    "no new global variables",
+    "no new global variables; underground scar state extends the existing bounded MATERIAL-DESTRUCTION-STATE table authority",
+    "no room RMUNGBIT mutation for cosmetic underground scars because canonical GOTO treats RMUNGBIT destinations as impassable",
     "no alternate bottle, egg, lantern, chasm, Loud Room, combat, death, movement, or scoring authority",
     "no wall destruction that opens an unearned route or bypasses canonical locks, puzzles, troll gating, or cave-ins",
     "no score for wall damage, throwing objects, or reckless experimentation",
