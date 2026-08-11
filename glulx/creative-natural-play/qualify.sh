@@ -41,6 +41,12 @@ actions=(s/'1actions.zil').read_text()
 assert '<DO-SL ,WINNER ,SH ,SC>' in g
 assert '<EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>' in g
 assert 'Split sequential actions with a comma or THEN.' in g
+assert '<SETG SIBREAKS ".,\\\"?!">' in g
+assert '<GLOBAL P-SPOKEN-PTR 0>' in g
+assert '<GLOBAL P-SPOKEN-COUNT 0>' in g
+assert '<SETG P-SPOKEN-PTR <+ .PTR ,P-LEXELEN>>' in g
+assert '<SETG P-SPOKEN-COUNT <- ,P-LEN 1>>' in g
+assert ',W?SPEAK' in g
 assert '(SYNONYM ME MYSELF SELF YOU CRETIN)' in globals_
 assert '(DESC "yourself")' in globals_
 assert '<OBJECT ZORK-INTERFACE' in globals_
@@ -48,9 +54,7 @@ assert '(DESC "Zork")' in globals_
 assert '<SYNTAX COMMAND = V-COMMAND-SELF>' in syntax
 assert '<SYNTAX YELL AT OBJECT' in syntax
 assert '<SYNONYM SAY SPEAK>' in syntax
-assert '<SYNTAX SAY XYZZY = V-SAY-XYZZY>' in syntax
-assert '<SYNTAX SAY HAHA = V-SAY-HAHA>' in syntax
-assert '<SYNTAX SAY HELLO = V-SAY-HELLO>' in syntax
+assert '<SYNTAX SAY = V-SAY>' in syntax
 assert '<SYNTAX HELP = V-HELP>' in syntax
 assert '<SYNTAX MOO = V-MOO>' in syntax
 assert '<SYNTAX BARK = V-BARK>' in syntax
@@ -58,6 +62,8 @@ assert '<ROUTINE V-COMMAND-SELF ()' in verbs
 assert '<ROUTINE V-YELL-AT ()' in verbs
 assert '<EQUAL? ,PRSO ,ZORK-INTERFACE>' in verbs
 assert '<ROUTINE V-TALK-UNSPECIFIED ()' in verbs
+assert '<ROUTINE PRINT-SPOKEN-INPUT' in verbs
+assert '<COND (,P-SPOKEN-COUNT' in verbs
 assert 'is not something you can drink.' in verbs
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
 assert '<ROUTINE V-KITCHEN-COOK ()' in k
@@ -74,6 +80,7 @@ assert '<SYNTAX SEND OBJECT (FIND ACTORBIT)' in m
 assert 'AFTER OBJECT (FIND ACTORBIT)' in m
 assert '<SYNTAX EAT OBJECT (FIND ACTORBIT)' in m
 assert '<SYNTAX PUT OBJECT (FIND ACTORBIT)' in m
+assert 'You cannot put yourself into the ' in actor
 assert 'MARA-SLOT-RESTRAINT-ATTEMPTED 0' in state
 assert 'MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0' in state
 assert 'MARA-SLOT-DEATH-WITNESSED 0' in state
