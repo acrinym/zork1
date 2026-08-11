@@ -1,0 +1,12 @@
+{
+  "id": "016_MARA_SAVE_MIGRATION_CHAIN",
+  "path": "mara_companion_state.zil",
+  "description": "Migrate both Release 1244 schema-3 state and the earlier qualified Release 1245 schema-4 state into the current schema without erasing witnessed history",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<EQUAL? <GET ,MARA-STATE 0> ,MARA-PREVIOUS-SCHEMA>\n           ;\"Release 1243 saves keep every witnessed event. Only the new\n             House-company fields begin empty.\"\n           <PUT ,MARA-STATE 0 ,MARA-SCHEMA>\n           ;\"Release 1245 saves retain all existing Mara history. Only the\n             newly introduced death-witness and offscreen-comedy fields begin empty.\"\n           <MARA-PUT ,MARA-SLOT-DEATH-WITNESSED 0>\n           <MARA-PUT ,MARA-SLOT-OFFSCREEN-GAG 0>)\n          (<NOT <EQUAL? <GET ,MARA-STATE 0> ,MARA-SCHEMA>>\n           <MARA-RESET-STATE>)>",
+      "new": "    <COND (<EQUAL? <GET ,MARA-STATE 0> 3>\n           ;\"Release 1244 saves retain every witnessed House and Dam event; all Release 1245-only history begins empty.\"\n           <PUT ,MARA-STATE 0 ,MARA-SCHEMA>\n           <MARA-PUT ,MARA-SLOT-RESTRAINT-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-BOUND-TROLL-WITNESSED 0>\n           <MARA-PUT ,MARA-SLOT-DEATH-WITNESSED 0>\n           <MARA-PUT ,MARA-SLOT-OFFSCREEN-GAG 0>)\n          (<EQUAL? <GET ,MARA-STATE 0> ,MARA-PREVIOUS-SCHEMA>\n           ;\"Earlier qualified Release 1245 saves retain restraint, combat-order, and bound-troll history; only the new fields begin empty.\"\n           <PUT ,MARA-STATE 0 ,MARA-SCHEMA>\n           <MARA-PUT ,MARA-SLOT-DEATH-WITNESSED 0>\n           <MARA-PUT ,MARA-SLOT-OFFSCREEN-GAG 0>)\n          (<NOT <EQUAL? <GET ,MARA-STATE 0> ,MARA-SCHEMA>>\n           <MARA-RESET-STATE>)>"
+    }
+  ]
+}

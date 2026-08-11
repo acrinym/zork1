@@ -1,0 +1,12 @@
+{
+  "id": "002_MARA_PACK_PARSER_TRUTH",
+  "path": "mara_companion.zil",
+  "description": "Let actor TAKE grammar resolve Mara's real pack while its object action still protects it from player theft",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    (FLAGS CONTBIT SEARCHBIT TRYTAKEBIT)\n    (CAPACITY 30)",
+      "new": "    (FLAGS TAKEBIT CONTBIT SEARCHBIT TRYTAKEBIT)\n    (CAPACITY 30)"
+    }
+  ]
+}

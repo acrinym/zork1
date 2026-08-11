@@ -1,0 +1,12 @@
+{
+  "id": "002A_ACTOR_CARRIED_NOUN_SCOPE",
+  "path": "gparser.zil",
+  "description": "When an actor is the current WINNER, let ordinary noun lookup see that actor's real carried objects as well as the room and player inventory",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t      <DO-SL ,PLAYER ,SH ,SC>)>",
+      "new": "\t\t      <DO-SL ,PLAYER ,SH ,SC>\n\t\t      <COND (<NOT <EQUAL? ,WINNER ,PLAYER>>\n\t\t             <DO-SL ,WINNER ,SH ,SC>)>)>"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "014_MARA_PERSONHOOD_AND_DEATH_STATE",
+  "path": "mara_companion_state.zil",
+  "description": "Initialize and migrate death/offscreen history and let Mara answer the deliberately unexplained cutaway",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <MARA-PUT ,MARA-SLOT-BOUND-TROLL-WITNESSED 0>\n    <RTRUE>>",
+      "new": "    <MARA-PUT ,MARA-SLOT-BOUND-TROLL-WITNESSED 0>\n    <MARA-PUT ,MARA-SLOT-DEATH-WITNESSED 0>\n    <MARA-PUT ,MARA-SLOT-OFFSCREEN-GAG 0>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "           ;\"Release 1244 saves retain every witnessed House and Dam event.\"\n           <MARA-PUT ,MARA-SLOT-RESTRAINT-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-COMBAT-ORDER-ATTEMPTED 0>\n           <MARA-PUT ,MARA-SLOT-BOUND-TROLL-WITNESSED 0>)",
+      "new": "           ;\"Release 1245 saves retain all existing Mara history. Only the\n             newly introduced death-witness and offscreen-comedy fields begin empty.\"\n           <MARA-PUT ,MARA-SLOT-DEATH-WITNESSED 0>\n           <MARA-PUT ,MARA-SLOT-OFFSCREEN-GAG 0>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    <COND (<EQUAL? .TOPIC ,MARA-SURVEY-TOPIC ,MAP>",
+      "new": "    <COND (<EQUAL? .TOPIC ,MARA-UNEXPLAINED-TOPIC>\n           <COND (<ZERO? <MARA-GET ,MARA-SLOT-OFFSCREEN-GAG>>\n                  <TELL \"Mara looks genuinely puzzled. Nothing happened, she says.\" CR>)\n                 (<EQUAL? <MARA-GET ,MARA-SLOT-OFFSCREEN-GAG> 1>\n                  <MARA-PUT ,MARA-SLOT-OFFSCREEN-GAG 2>\n                  <TELL \"No, Mara says.\" CR>)\n                 (T\n                  <TELL \"Absolutely not, Mara says.\" CR>)>)\n          (<EQUAL? .TOPIC ,MARA-SURVEY-TOPIC ,MAP>"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "012A_MARA_PERSON_TARGET_SCOPE",
+  "path": "mara_companion_actor.zil",
+  "description": "Keep player-on-Mara personhood refusals scoped to Mara as the target so addressed Mara actions still reach their actual objects",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (<VERB? MARA-EAT-ACTOR>\n           <MARA-EAT-REFUSAL>)\n          (<VERB? MARA-DROP-ACTOR MARA-THROW-ACTOR>\n           <MARA-RELOCATION-REFUSAL>)\n          (<VERB? MARA-PUT-ACTOR>\n           <COND (<EQUAL? ,PRSI ,SANDWICH-BAG> <MARA-SACK-REFUSAL>)\n                 (T <MARA-RELOCATION-REFUSAL>)>)\n          (<VERB? SQUEEZE>\n           <MARA-SQUEEZE-GAG>)\n          (<VERB? HELLO>\n           <TELL \"Mara gives you a small nod. Hello, she says. Still here.\" CR>\n           <RTRUE>)\n          (<VERB? TAKE>\n           <MARA-TAKE-REFUSAL>)\n          (<VERB? PUSH MOVE DROP THROW PUT PUT-ON>\n           <MARA-RELOCATION-REFUSAL>)\n          (<VERB? MUNG ATTACK>\n           <TELL \"Mara steps clear before the action can become force. She is another adventurer, not an obtainable object.\" CR>\n           <RTRUE>)",
+      "new": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MARA-EAT-ACTOR>>\n           <MARA-EAT-REFUSAL>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MARA-DROP-ACTOR MARA-THROW-ACTOR>>\n           <MARA-RELOCATION-REFUSAL>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MARA-PUT-ACTOR>>\n           <COND (<EQUAL? ,PRSI ,SANDWICH-BAG> <MARA-SACK-REFUSAL>)\n                 (T <MARA-RELOCATION-REFUSAL>)>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? SQUEEZE>>\n           <MARA-SQUEEZE-GAG>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? HELLO>>\n           <TELL \"Mara gives you a small nod. Hello, she says. Still here.\" CR>\n           <RTRUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? TAKE>>\n           <MARA-TAKE-REFUSAL>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? PUSH MOVE DROP THROW PUT PUT-ON>>\n           <MARA-RELOCATION-REFUSAL>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MUNG ATTACK>>\n           <TELL \"Mara steps clear before the action can become force. She is another adventurer, not an obtainable object.\" CR>\n           <RTRUE>)"
+    }
+  ]
+}

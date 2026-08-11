@@ -1,0 +1,90 @@
+name: Zork I Creative Natural Play
+
+on:
+  push:
+    branches:
+      - agent/extended-natural-chaos-20260810
+    paths:
+      - "glulx/creative-natural-play/**"
+      - "glulx/mara-house-company/**"
+      - "glulx/mara-companion-foundation/**"
+      - "glulx/cuisine-hunger-stamina/**"
+      - "glulx/house-kitchen-laboratory/**"
+      - "glulx/tools/**"
+      - "optimized/tools/zil_smell_check.py"
+      - ".github/workflows/glulx-creative-natural-play.yml"
+  pull_request:
+    paths:
+      - "glulx/creative-natural-play/**"
+      - "glulx/mara-house-company/**"
+      - "glulx/mara-companion-foundation/**"
+      - "glulx/cuisine-hunger-stamina/**"
+      - "glulx/house-kitchen-laboratory/**"
+      - "glulx/tools/**"
+      - "optimized/tools/zil_smell_check.py"
+      - ".github/workflows/glulx-creative-natural-play.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: glulx-creative-natural-play-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+jobs:
+  qualify-and-play:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - uses: actions/setup-dotnet@v5
+        with: {dotnet-version: "10.x"}
+      - run: sudo apt-get update && sudo apt-get install -y build-essential libncurses-dev curl
+      - uses: actions/checkout@v4
+        with: {repository: taradinoc/zork1, ref: "${{ env.ZORK_GLULX_COMMIT }}", path: .upstream/zork1-glulx, persist-credentials: false}
+      - uses: actions/checkout@v4
+        with: {repository: taradinoc/zilf, ref: "${{ env.GLULX_ZILF_COMMIT }}", path: .tooling/zilf-glulx, persist-credentials: false}
+      - uses: actions/checkout@v4
+        with: {repository: erkyrath/glulxe, ref: "${{ env.GLULXE_COMMIT }}", path: .tooling/glulxe, persist-credentials: false}
+      - uses: actions/checkout@v4
+        with: {repository: erkyrath/cheapglk, ref: "${{ env.CHEAPGLK_COMMIT }}", path: .tooling/cheapglk, persist-credentials: false}
+      - name: Prepare Glazer
+        run: |
+          mkdir -p .tooling/glazer-source
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glazer.tar.gz" | sha256sum --check
+          tar -xf glazer.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source
+      - name: Qualify Release 1245
+        run: |
+          set -o pipefail
+          bash glulx/creative-natural-play/qualify.sh 2>&1 | tee creative-natural-play.log
+      - name: Replay realtime West of House abuse
+        run: bash glulx/creative-natural-play/realtime-west-house-lap.sh
+      - name: Play exact Mara bound-troll order
+        run: bash glulx/creative-natural-play/exact-hostile-lap.sh
+      - name: Play Mara personhood abuse lap
+        run: bash glulx/creative-natural-play/personhood-lap.sh
+      - name: Play Mara death-awareness lap
+        run: bash glulx/creative-natural-play/death-awareness-lap.sh
+      - name: Play second creative abuse lap
+        run: bash glulx/creative-natural-play/chaos-lap.sh
+      - name: Upload creative play evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: creative-natural-play-${{ github.sha }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            creative-natural-play.log
+            glulx/build/creative-natural-play-1245/*

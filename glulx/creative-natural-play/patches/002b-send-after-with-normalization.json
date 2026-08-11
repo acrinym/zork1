@@ -1,0 +1,12 @@
+{
+  "id": "002B_SEND_AFTER_WITH_NORMALIZATION",
+  "path": "gparser.zil",
+  "description": "Let the legacy two-object parser accept the natural six-word SEND actor AFTER actor WITH weapon surface by preserving the actor and target noun clauses and discarding only the refused weapon qualifier before ordinary syntax resolution",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>",
+      "new": "\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<AND <EQUAL? ,P-LEN 6>\n\t\t    <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 2 ,P-LEXELEN>>> ,W?AFTER>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 4 ,P-LEXELEN>>> ,W?WITH>>\n\t\t   <SETG P-LEN 4>\n\t\t   <PUTB ,P-LEXV ,P-LEXWORDS 4>)>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "024_SPOKEN_INPUT_AND_PUNCTUATION",
+  "path": "gparser.zil",
+  "description": "For ordinary commands, remove terminal question/exclamation punctuation and a trailing MADE OF phrase from the grammar-visible token count so natural material questions become the exact same classic command as their shorter form. SAY/SPEAK is excluded and continues to replay the untouched raw input buffer.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SETG SIBREAKS \".,\\\"\">",
+      "new": "<SETG SIBREAKS \".,\\\"?!\">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE PARSER (\"AUX\" (PTR ,P-LEXSTART) WRD (VAL 0) (VERB <>) (OF-FLAG <>)\n\t\t       OWINNER OMERGED LEN (DIR <>) (NW 0) (LW 0) (CNT -1))",
+      "new": "<ROUTINE PARSER (\"AUX\" (PTR ,P-LEXSTART) WRD (VAL 0) (VERB <>) (OF-FLAG <>)\n\t\t       OWINNER OMERGED LEN (DIR <>) (NW 0) (LW 0) (CNT -1)\n\t\t       (SPTR 0) (EPTR 0))"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<AND <EQUAL? ,P-LEN 6>\n\t\t    <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 2 ,P-LEXELEN>>> ,W?AFTER>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 4 ,P-LEXELEN>>> ,W?WITH>>\n\t\t   <SETG P-LEN 4>\n\t\t   <PUTB ,P-LEXV ,P-LEXWORDS 4>)>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>",
+      "new": "\t<SETG P-LEN <GETB ,P-LEXV ,P-LEXWORDS>>\n\t<COND (<NOT <OR <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SAY>\n\t\t\t <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SPEAK>>>\n\t       <SET LEN <GETB ,P-INBUF 1>>\n\t       <COND (<AND <G? ,P-LEN 0> <G? .LEN 0>\n\t\t\t   <OR <EQUAL? <GETB ,P-INBUF <+ .LEN 1>> 63>\n\t\t\t       <EQUAL? <GETB ,P-INBUF <+ .LEN 1>> 33>>>\n\t\t      <SETG P-LEN <- ,P-LEN 1>>\n\t\t      <PUTB ,P-LEXV ,P-LEXWORDS ,P-LEN>)>\n\t       <COND (<G? ,P-LEN 1>\n\t\t      <SET LEN <+ ,P-LEXSTART <* <- ,P-LEN 1> ,P-LEXELEN>>>\n\t\t      <COND (<AND <EQUAL? <GET ,P-LEXV .LEN> ,W?OF>\n\t\t\t\t  <EQUAL? <GET ,P-LEXV <- .LEN ,P-LEXELEN>> ,W?MADE>>\n\t\t\t     <SETG P-LEN <- ,P-LEN 2>>\n\t\t\t     <PUTB ,P-LEXV ,P-LEXWORDS ,P-LEN>)>)>)>\n\t<COND (<AND <EQUAL? ,P-LEN 6>\n\t\t    <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 2 ,P-LEXELEN>>> ,W?AFTER>\n\t\t    <EQUAL? <GET ,P-LEXV <+ ,P-LEXSTART <* 4 ,P-LEXELEN>>> ,W?WITH>>\n\t\t   <SETG P-LEN 4>\n\t\t   <PUTB ,P-LEXV ,P-LEXWORDS 4>)>\n\t<COND (<AND <G? ,P-LEN 1>\n\t\t    <OR <EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SAY>\n\t\t\t<EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SPEAK>>>\n\t       <SET SPTR <GETB ,P-LEXV <+ <* .PTR ,P-LEXELEN> 7>>>\n\t       <SET SPTR <+ .SPTR <GETB ,P-LEXV <+ <* .PTR ,P-LEXELEN> 6>>>>\n\t       <SET EPTR <+ .SPTR 1>>\n\t       <PUTB ,P-LEXV ,P-LEXWORDS 1>\n\t       <SETG P-LEN 1>)>\n\t<COND (<ZERO? ,P-LEN> <TELL \"I beg your pardon?\" CR> <RFALSE>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t       <COND (<NOT <EQUAL? .WRD ,W?AGAIN ,W?G>>\n\t\t      <SETG P-NUMBER 0>)>\n\t       <PUT ,OOPS-TABLE ,O-END <>>)>\n\t<COND (<EQUAL? <GET ,P-LEXV .PTR> ,W?AGAIN ,W?G>",
+      "new": "\t       <COND (<NOT <EQUAL? .WRD ,W?AGAIN ,W?G>>\n\t\t      <SETG P-NUMBER 0>)>\n\t       <PUT ,OOPS-TABLE ,O-END <>>)>\n\t<COND (<G? .SPTR 0>\n\t       <SETG P-ADVERB .SPTR>\n\t       <SETG P-NUMBER <- .EPTR .SPTR>>)>\n\t<COND (<EQUAL? <GET ,P-LEXV .PTR> ,W?AGAIN ,W?G>"
+    }
+  ]
+}

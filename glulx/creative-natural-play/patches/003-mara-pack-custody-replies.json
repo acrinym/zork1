@@ -1,0 +1,12 @@
+{
+  "id": "003_MARA_PACK_CUSTODY_REPLIES",
+  "path": "mara_companion_actions.zil",
+  "description": "Make repeated pack retrieval report the real object state rather than a stale Dam location",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<NOT <MARA-HERE?>>\n           <TELL \"Mara is not here to take custody of her pack.\" CR>)\n          (<ZERO? <MARA-GET ,MARA-SLOT-HOUSE-INVITED>>\n           <TELL \"Mara leaves the pack where it is. I still have field work based here, she says. Give me a reason to move camp before turning it into luggage.\" CR>)\n          (<NOT <EQUAL? ,HERE ,DAM-BASE>>\n           <TELL \"Mara's field camp is at the Dam Base. She cannot pack a camp from a different room.\" CR>)\n          (<IN? ,MARA-FIELD-PACK ,MARA>\n           <TELL \"Mara already has the pack on her own shoulder.\" CR>)\n          (<NOT <IN? ,MARA-FIELD-PACK ,DAM-BASE>>\n           <TELL \"The field pack is no longer resting at the Dam Base, so there is nothing here for Mara to retrieve.\" CR>)",
+      "new": "    <COND (<NOT <MARA-HERE?>>\n           <TELL \"Mara is not here to take custody of her pack.\" CR>)\n          (<IN? ,MARA-FIELD-PACK ,MARA>\n           <TELL \"Mara already has the pack on her own shoulder.\" CR>)\n          (<ZERO? <MARA-GET ,MARA-SLOT-HOUSE-INVITED>>\n           <TELL \"Mara leaves the pack where it is. I still have field work based here, she says. Give me a reason to move camp before turning it into luggage.\" CR>)\n          (<AND <EQUAL? ,HERE ,ATTIC>\n                <IN? ,MARA-FIELD-PACK ,ATTIC>\n                <MARA-GET ,MARA-SLOT-HOUSE-STAY>>\n           <TELL \"Mara rests a hand on the waxed pack. It is already here because this is the base I chose, she says. I leave the camp here while the base remains here.\" CR>)\n          (<NOT <EQUAL? ,HERE ,DAM-BASE>>\n           <TELL \"Mara's field pack is not here for her to retrieve. Its real location has not changed merely because you asked.\" CR>)\n          (<NOT <IN? ,MARA-FIELD-PACK ,DAM-BASE>>\n           <TELL \"The field pack is no longer resting at the Dam Base, so there is nothing here for Mara to retrieve.\" CR>)"
+    }
+  ]
+}
