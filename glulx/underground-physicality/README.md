@@ -68,3 +68,5 @@ The hosted qualification reconstructs the complete locked lineage through Releas
 The natural play starts at West of House, takes the real loose field stone, enters through the real Kitchen window, retrieves the real brass lantern and sword, opens the real trap door, descends into the Cellar, defeats the canonical troll under the same fixed combat seed already used by Release 1242, solves the canonical Loud Room with `ECHO`, reaches the Damp Cave and Chasm, and exercises the new physical/sensory behavior without teleporting or fabricating objects.
 
 A separate dev/test lap proves that an underground wall scar is cleared by the existing bounded environmental reset while production behavior remains persistent.
+
+As with the preceding releases, the final reviewable state locks the exact production ULX identity in `patch-series.json`; the unlocked identity exists only as a bootstrap step in branch history.
