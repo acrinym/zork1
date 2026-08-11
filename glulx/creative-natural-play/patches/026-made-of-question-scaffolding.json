@@ -1,0 +1,17 @@
+{
+  "id": "026_MADE_OF_QUESTION_SCAFFOLDING",
+  "path": "gparser.zil",
+  "description": "Treat MADE OF as transparent natural-language scaffolding so material questions can fall through to the classic object's existing examination/understanding path",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t\t     (<EQUAL? .WRD ,W?OF>\n\t\t\t      <COND (<OR <NOT .OF-FLAG>\n\t\t\t\t\t <EQUAL? .NW ,W?PERIOD ,W?THEN>>\n\t\t\t\t     <CANT-USE .PTR>\n\t\t\t\t     <RFALSE>)\n\t\t\t\t    (T\n\t\t\t\t     <SET OF-FLAG <>>)>)",
+      "new": "\t\t\t     (<EQUAL? .WRD ,W?OF>\n\t\t\t      <COND (<EQUAL? .LW ,W?MADE>\n\t\t\t\t     T)\n\t\t\t\t    (<OR <NOT .OF-FLAG>\n\t\t\t\t\t <EQUAL? .NW ,W?PERIOD ,W?THEN>>\n\t\t\t\t     <CANT-USE .PTR>\n\t\t\t\t     <RFALSE>)\n\t\t\t\t    (T\n\t\t\t\t     <SET OF-FLAG <>>)>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t\t     (<OR <EQUAL? .WRD ,W?THEN ,W?PERIOD>\n\t\t\t\t  <AND <WT? .WRD ,PS?PREPOSITION>\n\t\t\t\t       <GET ,P-ITBL ,P-VERB>\n\t\t\t\t          ;\"ADDED 4/27 FOR TURTLE,UP\"\n\t\t\t\t       <NOT .FIRST??>>>\n\t\t\t      <SETG P-LEN <+ ,P-LEN 1>>",
+      "new": "\t\t\t     (<AND <EQUAL? .WRD ,W?OF> <EQUAL? .LW ,W?MADE>>\n\t\t\t      T)\n\t\t\t     (<OR <EQUAL? .WRD ,W?THEN ,W?PERIOD>\n\t\t\t\t  <AND <WT? .WRD ,PS?PREPOSITION>\n\t\t\t\t       <GET ,P-ITBL ,P-VERB>\n\t\t\t\t          ;\"ADDED 4/27 FOR TURTLE,UP\"\n\t\t\t\t       <NOT .FIRST??>>>\n\t\t\t      <SETG P-LEN <+ ,P-LEN 1>>"
+    }
+  ]
+}
