@@ -1,12 +1,22 @@
 {
   "id": "002_UNDERGROUND_NARRATION",
   "path": "1dungeon.zil",
-  "description": "Deepen early-GUE room density and replace a player-psychoanalyzing chasm refusal with a physical explanation while preserving exits and room authorities",
+  "description": "Deepen early-GUE room density, make plain WALL resolve to the room's surrounding wall in the authored underground circuit, and replace a player-psychoanalyzing chasm refusal with a physical explanation while preserving exits and room authorities",
   "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (GLOBAL TRAP-DOOR SLIDE STAIRS WHITE-HOUSE)>",
+      "new": "      (GLOBAL TRAP-DOOR SLIDE STAIRS WHITE-HOUSE WALL)>"
+    },
     {
       "expected_count": 1,
       "old": "This is a small room with passages to the east and south and a\nforbidding hole leading west. Bloodstains and deep scratches\n(perhaps made by an axe) mar the walls.",
       "new": "The Troll Room is small enough that the stone feels close around you. Passages run east and south, while a forbidding hole opens west. Old bloodstains have dried almost black against the walls, and deep scratches -- plausibly made by an axe -- score the stone where violence once had room to swing."
+    },
+    {
+      "expected_count": 1,
+      "old": "      (ACTION TROLL-ROOM-F)\n      (PSEUDO \"BLOOD\" ROOM-DENSITY-BLOOD-F",
+      "new": "      (ACTION TROLL-ROOM-F)\n      (GLOBAL WALL)\n      (PSEUDO \"BLOOD\" ROOM-DENSITY-BLOOD-F"
     },
     {
       "expected_count": 1,
@@ -15,8 +25,23 @@
     },
     {
       "expected_count": 1,
+      "old": "      (VALUE 5)\n      (GLOBAL STAIRS)>",
+      "new": "      (VALUE 5)\n      (GLOBAL STAIRS WALL)>"
+    },
+    {
+      "expected_count": 1,
       "old": "This is a circular stone room with passages in all directions. Several\nof them have unfortunately been blocked by cave-ins.",
       "new": "This circular chamber is shaped from stone and intersected by passages in nearly every direction. Several routes end immediately in old cave-ins, where broken rock softens the room's otherwise clean echoes and leaves pale dust among the rubble."
+    },
+    {
+      "expected_count": 1,
+      "old": "      (SE TO ENGRAVINGS-CAVE)\n      (FLAGS RLANDBIT)>",
+      "new": "      (SE TO ENGRAVINGS-CAVE)\n      (FLAGS RLANDBIT)\n      (GLOBAL WALL)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (ACTION LOUD-ROOM-FCN)\n      (FLAGS RLANDBIT)\n      (GLOBAL STAIRS)>",
+      "new": "      (ACTION LOUD-ROOM-FCN)\n      (FLAGS RLANDBIT)\n      (GLOBAL STAIRS WALL)>"
     },
     {
       "expected_count": 1,
@@ -25,8 +50,18 @@
     },
     {
       "expected_count": 1,
+      "old": "      (SOUTH \"It is too narrow for most insects.\")\n      (FLAGS RLANDBIT)\n      (GLOBAL CRACK)>",
+      "new": "      (SOUTH \"It is too narrow for most insects.\")\n      (FLAGS RLANDBIT)\n      (GLOBAL CRACK WALL)>"
+    },
+    {
+      "expected_count": 1,
       "old": "This is a high north-south passage, which forks to the northeast.",
       "new": "A high north-south passage cuts through rough stone and forks toward the northeast. The ceiling rises beyond the strongest pool of ordinary lantern light, giving footsteps more echo than the passage's width seems to deserve."
+    },
+    {
+      "expected_count": 1,
+      "old": "      (SOUTH TO ROUND-ROOM)\n      (FLAGS RLANDBIT)>",
+      "new": "      (SOUTH TO ROUND-ROOM)\n      (FLAGS RLANDBIT)\n      (GLOBAL WALL)>"
     },
     {
       "expected_count": 1,
@@ -37,6 +72,16 @@
       "expected_count": 1,
       "old": "      (DOWN \"Are you out of your mind?\")",
       "new": "      (DOWN \"There is no downward route here; the chasm edge simply falls away into darkness.\")"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (GLOBAL CRACK STAIRS)\n      (PSEUDO \"CHASM\" CHASM-PSEUDO)>",
+      "new": "      (GLOBAL CRACK STAIRS WALL)\n      (PSEUDO \"CHASM\" CHASM-PSEUDO)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (ACTION DEEP-CANYON-F)\n      (GLOBAL STAIRS)>",
+      "new": "      (ACTION DEEP-CANYON-F)\n      (GLOBAL STAIRS WALL)>"
     }
   ]
 }
