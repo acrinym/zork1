@@ -20,7 +20,9 @@
     "patches/006-review-corrections.json",
     "patches/007-close-window-damage-tell.json",
     "patches/008-compact-destruction-state.json",
-    "patches/009-reset-only-damaged-surfaces.json"
+    "patches/009-reset-only-damaged-surfaces.json",
+    "patches/010-environmental-damage-parser-object.json",
+    "patches/011-reset-parser-object-grammar.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
@@ -40,6 +42,7 @@
     "broken-window and damaged-mailbox examination and operation report the retained physical state instead of reverting to pristine prose",
     "ordinary production play retains authored environmental damage for the current playthrough and RESET DAMAGE explicitly refuses to erase it",
     "the dev/test build enables RESET DAMAGE, RESET ENVIRONMENT, and RESET BREAKAGE without changing score, treasures, relationship history, or unrelated puzzle progress",
+    "DAMAGE, ENVIRONMENT, and BREAKAGE share one nonphysical parser object so RESET phrases do not collide with DAMAGE also being a synonym of DESTROY",
     "dev reset restores the loose field stone even when moving it is the only resettable test state, without changing untouched mailbox or Kitchen-window state",
     "actual game completion offers the environmental reset prompt only in dev/test mode and only when authored breakage exists",
     "THROW ROCK AT TROLL continues through the existing troll/combat authority rather than creating a duplicate troll damage system",
