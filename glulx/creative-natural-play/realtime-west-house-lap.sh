@@ -15,6 +15,7 @@ speak xyzzy
 say xyzzy
 say haha
 say hello
+speak blorp flargle
 what is the ground beneath made of?
 scream at self
 yell at you
@@ -46,8 +47,11 @@ grep -F 'You cannot put yourself into the small mailbox.' "$T"
 test "$(grep -F -c 'You say "xyzzy."' "$T")" -ge 2
 grep -F 'You say "haha."' "$T"
 grep -F 'You say "hello."' "$T"
+grep -F 'You say "blorp flargle."' "$T"
 ! grep -F 'I don'"'"'t know the word "speak"' "$T"
 ! grep -F 'I don'"'"'t know the word "made"' "$T"
+! grep -F 'I don'"'"'t know the word "of?"' "$T"
+grep -F 'There is nothing but dust there.' "$T"
 grep -F 'You yell at yourself. You hear yourself perfectly well.' "$T"
 grep -F 'You yell at Zork. At your service!' "$T"
 grep -F 'Try direct commands such as LOOK, INVENTORY, TAKE, OPEN, TALK TO, SAY, or YELL AT.' "$T"
