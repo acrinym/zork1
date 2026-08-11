@@ -9,7 +9,7 @@
     "file": "zork1-glulx-creative-natural-play.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "locked": true,
+    "locked": false,
     "size_bytes": 391168,
     "checksum_hex": "0xfe00113f",
     "sha256": "e8d23ed657aae27f62011b4821f4b0ef2e88a27f1aba0a513e508a5764ced800"
@@ -33,11 +33,18 @@
     "patches/013-mara-personhood-and-death-schema.json",
     "patches/014-mara-personhood-and-death-state.json",
     "patches/015-mara-jigs-up-death-awareness.json",
-    "patches/016-mara-release-1245-schema-stability.json"
+    "patches/016-mara-release-1245-schema-stability.json",
+    "patches/018-adventurer-self-identity.json",
+    "patches/019-realtime-natural-language-syntax.json",
+    "patches/020-realtime-natural-language-actions.json",
+    "patches/021-parser-too-many-nouns-guidance.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
+    "gglobals.zil",
     "gparser.zil",
+    "gsyntax.zil",
+    "gverbs.zil",
     "house_kitchen_laboratory.zil",
     "mara_companion.zil",
     "mara_companion_actions.zil",
@@ -54,19 +61,28 @@
     "MARA, TAKE PACK resolves the real pack after Mara herself is carrying it while player theft remains blocked by the pack action",
     "repeated Mara pack commands report actual custody and never falsely relocate the camp to the Dam after she has based it in the Attic",
     "Mara's first House threshold line renders without a Glulxe control glyph",
-    "TIE UP MARA WITH ROPE and TIE MARA WITH ROPE stay inside Mara's authored character instead of falling into vanilla masculine actor prose",
+    "TIE UP MARA WITH ROPE and TIE MARA WITH ROPE stay inside Mara's authored character instead of falling into vanilla actor prose with the hard-coded masculine him",
     "attempted physical restraint becomes durable Mara history and ends automatic following rather than disappearing after the refusal",
     "SEND MARA AFTER TROLL WITH AXE is accepted as natural player language despite the legacy parser's two-noun syntax ceiling and is refused in Mara's own voice",
     "combat-order language records attempted coercion without making Mara a controllable combat unit",
     "Mara distinguishes an alert troll from the real absurd-alternate bound troll and may enter the now-passable Troll Room only after that physical consequence exists",
     "Mara remembers the first time she witnesses the living bound troll instead of treating the cross-release consequence as invisible",
-    "Mara's manipulation fallbacks share one proper-name person renderer so absurd verbs cannot regress to 'the Mara' or generic masculine actor prose",
+    "Mara's manipulation fallbacks share one proper-name person renderer so absurd verbs cannot regress to the Mara or generic masculine actor prose",
     "personhood refusals are scoped to Mara as the target and do not steal addressed commands such as MARA, PUSH YELLOW BUTTON",
     "TAKE MARA, EAT MARA, and KISS MARA remain deliberately authored character responses while PUSH/PULL/DROP/THROW share one dry relocation boundary",
     "PUT MARA IN SACK gets one image-specific joke without making Mara carryable or changing the canonical brown sack",
     "SQUEEZE MARA can trigger one clean offscreen cutaway whose unexplained aftermath is remembered and refuses to become a repeatable interaction loop",
     "JIGS-UP tells Mara about the adventurer's death only when she is physically present to witness it, ends automatic following, and preserves that witnessed history",
-    "both Release 1244 schema-3 Mara saves and earlier qualified Release 1245 schema-4 saves migrate into the current state without erasing already witnessed history"
+    "both Release 1244 schema-3 Mara saves and earlier qualified Release 1245 schema-4 saves migrate into the current state without erasing already witnessed history",
+    "ME, MYSELF, SELF, and YOU identify the adventurer as yourself instead of exposing the internal self-object as the noun you",
+    "PUT SELF INTO MAILBOX and COMMAND no longer produce article-mangled phrases such as the you, the yourself, or you do not have the you",
+    "YELL, SHOUT, and SCREAM accept AT targets including ordinary objects, yourself, and Zork",
+    "SPEAK/SAY XYZZY, SAY HAHA, and SAY HELLO parse as spoken utterances instead of unknown-word or malformed-syntax failures",
+    "HELP, MOO, and BARK are understood as lightweight natural player commands",
+    "KILL MAILBOX rejects fighting a non-actor immediately rather than asking which weapon should be used",
+    "DRINK MAILBOX reports that the mailbox is not drinkable instead of anthropomorphizing it as an object that might disagree",
+    "MADE is tolerated in natural inspection questions so what is the ground beneath made of no longer dies on an unknown word",
+    "multi-action sentences that overflow the legacy two-noun clause model explain how to split actions with a comma or THEN"
   ],
   "boundaries": [
     "no generic cooking or crafting engine",
@@ -76,6 +92,7 @@
     "no generic personhood or comedy framework; these paths remain authored Mara behavior",
     "no explicit sexual simulation; the offscreen cutaway remains deliberately unexplained and P-Grue-13",
     "no copied pack, meal, range, nest, actor, troll, rope, room, or sack",
+    "no free-form natural-language interpreter layered over the classic parser",
     "no new relationship progression or story train",
     "no test-only production verbs, QA framework, audit hierarchy, TODOs, stubs, or no-op architecture"
   ]
