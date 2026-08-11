@@ -61,24 +61,30 @@ smell=json.loads((build/'smell-report.json').read_text())
 dev_smell=json.loads((build/'dev-smell-report.json').read_text())
 assert stage['release']==1247 and stage['base']['release']==1246
 assert stage['base']['artifact_sha256']=='28ee345b8a393aedce28c0d9514785d8034aa78026783cdcf8c518bfc584bcf1'
-assert stage['changed_paths']==sorted(['1actions.zil','material_consequences.zil','shadow_logic.zil','zork1.zil'])
+assert stage['changed_paths']==sorted(['1actions.zil','mara_companion_actor.zil','material_consequences.zil','shadow_logic.zil','zork1.zil'])
 assert stage['dev_mode'] is False and dev['dev_mode'] is True
 assert not smell['errors'] and not dev_smell['errors']
 material=(s/'material_consequences.zil').read_text()
 base_material=(b/'material_consequences.zil').read_text()
 shadow=(s/'shadow_logic.zil').read_text()
 actions=(s/'1actions.zil').read_text()
+actor=(s/'mara_companion_actor.zil').read_text()
 zork=(s/'zork1.zil').read_text()
 assert material.count('<GLOBAL ') == base_material.count('<GLOBAL ')
 assert '<ROUTINE NARRATIVE-PHYSICALITY-HOOK ()' in material
 assert '<ROUTINE NARRATIVE-SPILL-SACK-CONTENTS ()' in material
 assert '<NARRATIVE-PHYSICALITY-HOOK> <RTRUE>' in shadow
+assert '<VERB? PUT MARA-PUT-ACTOR>' in material
 assert '<FSET? ,WHITE-HOUSE ,RMUNGBIT>' in material
 assert '<FSET? ,KITCHEN-TABLE ,RMUNGBIT>' in material
 assert '<FSET? ,SANDWICH-BAG ,RMUNGBIT>' in material
 assert '<FSET? ,RUG ,RMUNGBIT>' in material
 assert '<FCLEAR ,SANDWICH-BAG ,RMUNGBIT>' in material
 assert '<FCLEAR ,RUG ,RMUNGBIT>' in material
+assert '(T <V-EAT>)' in actor
+assert '(T <V-DROP>)' in actor
+assert '(T <V-THROW>)' in actor
+assert '(T <V-PUT>)' in actor
 assert 'large white colonial house' in actions
 assert 'small kitchen window is ' in actions
 assert 'interrupted domestic life' in actions
@@ -129,7 +135,7 @@ look
 examine house
 touch house
 smell house
-listen house
+listen to house
 take house
 kick house
 take rock
@@ -165,6 +171,7 @@ timeout 35s "$GLULXE_BIN" --rngseed 1247001 "$STORY" \
 OUT="$BUILD/house-abuse-transcript.txt"
 grep -F 'large white colonial house' "$OUT"
 grep -F 'The house, having foundations and several rooms, wins immediately.' "$OUT"
+grep -F 'The house contributes creaks, settling wood, and a silence too large to be reassuring.' "$OUT"
 grep -F 'One weathered surface is newly scarred' "$OUT"
 grep -F 'fresh dents, cuts, and bruised grain' "$OUT"
 grep -F 'interrupted domestic life' "$OUT"
@@ -177,6 +184,8 @@ grep -F 'torn seam makes it a poor container' "$OUT"
 grep -F 'Glass snaps outward in a brief glittering spray' "$OUT"
 if grep -qF 'I don'"'"'t know the word "house"' "$OUT"; then exit 1; fi
 if grep -qF 'I don'"'"'t know the word "rug"' "$OUT"; then exit 1; fi
+if grep -qF 'You cannot put a person into an object as though they were inventory.' "$OUT"; then exit 1; fi
+if grep -qF 'You cannot throw a person as though they were inventory.' "$OUT"; then exit 1; fi
 
 cat > "$BUILD/broken-window-room.txt" <<'EOF'
 take rock
@@ -241,7 +250,7 @@ receipt={
   'serial':manifest['serial'],
   'production':{'file':story.name,'size_bytes':story.stat().st_size,'sha256':hashlib.sha256(story.read_bytes()).hexdigest(),'report':report},
   'dev':{'file':dev.name,'size_bytes':dev.stat().st_size,'sha256':hashlib.sha256(dev.read_bytes()).hexdigest(),'report':dev_report},
-  'qualification':['staging','smell-check','compile','artifact-checksum','House natural-play abuse','persistent damage narration','broken-window room narration','bounded dev reset']
+  'qualification':['staging','smell-check','compile','artifact-checksum','House natural-play abuse','Mara generic-verb delegation','persistent damage narration','broken-window room narration','bounded dev reset']
 }
 Path('glulx/build/narrative-physicality-1247/QUALIFICATION.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
 print(json.dumps(receipt,indent=2,sort_keys=True))
