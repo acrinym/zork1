@@ -68,6 +68,8 @@ jobs:
         run: |
           set -o pipefail
           bash glulx/creative-natural-play/qualify.sh 2>&1 | tee creative-natural-play.log
+      - name: Replay realtime West of House abuse
+        run: bash glulx/creative-natural-play/realtime-west-house-lap.sh
       - name: Play exact Mara bound-troll order
         run: bash glulx/creative-natural-play/exact-hostile-lap.sh
       - name: Play Mara personhood abuse lap
