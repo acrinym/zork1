@@ -79,8 +79,11 @@ zork=(s/'zork1.zil').read_text()
 assert material.count('<GLOBAL ') == base_material.count('<GLOBAL ')
 assert '<ROUTINE UNDERGROUND-PHYSICALITY-HOOK ()' in material
 assert '<UNDERGROUND-PHYSICALITY-HOOK> <RTRUE>' in material
-assert '<FSET ,HERE ,RMUNGBIT>' in material
-assert '<FCLEAR ,CHASM-ROOM ,RMUNGBIT>' in material
+assert '<FSET ,HERE ,RMUNGBIT>' not in material
+assert '<FSET? ,EW-PASSAGE ,RMUNGBIT>' not in material
+assert '<FCLEAR ,EW-PASSAGE ,RMUNGBIT>' not in material
+assert '<CONSTANT MD-UNDERGROUND-EW-PASSAGE-SCAR 8>' in material
+assert '<MATERIAL-DESTRUCTION-PUT ,MD-UNDERGROUND-CHASM-SCAR <>>' in material
 assert '<NOT <EQUAL? ,PRSO ,BOTTLE ,EGG ,LAMP>>>' in material
 assert 'The cellar masonry is cool, damp, and load-bearing' in material
 assert 'The rushing roar occupies the room completely.' in material
@@ -310,7 +313,7 @@ receipt={
   'artifact_identity_locked':expected.get('locked') is True,
   'production':{**identity,'report':report},
   'dev':{'file':dev.name,'size_bytes':dev.stat().st_size,'sha256':dev_sha,'report':dev_report},
-  'qualification':['exact Release 1248 source provenance','no-new-globals','smell-check','compile','Glulx-checksum','natural early-GUE sensory and wall physicality','plain WALL parser resolution in authored underground rooms','canonical troll gate and Loud Room ECHO','canonical chasm object-loss authority','canonical bottle delegation','bounded dev underground-scar reset'],
+  'qualification':['exact Release 1248 source provenance','no-new-globals','smell-check','compile','Glulx-checksum','natural early-GUE sensory and wall physicality','plain WALL parser resolution in authored underground rooms','underground cosmetic scar state isolated from canonical room movement flags','canonical troll gate and Loud Room ECHO','canonical chasm object-loss authority','canonical bottle delegation','bounded dev underground-scar reset'],
 }
 (build/'QUALIFICATION.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
 print(json.dumps(receipt,indent=2,sort_keys=True))
