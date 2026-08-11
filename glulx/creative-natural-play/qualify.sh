@@ -42,8 +42,9 @@ assert '<DO-SL ,WINNER ,SH ,SC>' in g
 assert '<EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>' in g
 assert 'Split sequential actions with a comma or THEN.' in g
 assert '<SETG SIBREAKS ".,\\\"?!">' in g
-assert '<SETG P-ADVERB <+ .PTR ,P-LEXELEN>>' in g
-assert '<SETG P-NUMBER <- ,P-LEN 1>>' in g
+assert '<SET SPTR <GETB ,P-LEXV <+ <* .PTR ,P-LEXELEN> 7>>>' in g
+assert '<SETG P-NUMBER <- .EPTR .SPTR>>' in g
+assert '<EQUAL? .LW ,W?MADE>' in g
 assert ',W?SPEAK' in g
 assert '(SYNONYM ME MYSELF SELF YOU CRETIN)' in globals_
 assert '(DESC "yourself")' in globals_
@@ -61,6 +62,7 @@ assert '<ROUTINE V-YELL-AT ()' in verbs
 assert '<EQUAL? ,PRSO ,ZORK-INTERFACE>' in verbs
 assert '<ROUTINE V-TALK-UNSPECIFIED ()' in verbs
 assert '<ROUTINE PRINT-SPOKEN-INPUT' in verbs
+assert '<PRINTC .CHR>' in verbs
 assert '<AND ,P-ADVERB <G? ,P-NUMBER 0>>' in verbs
 assert 'is not something you can drink.' in verbs
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
