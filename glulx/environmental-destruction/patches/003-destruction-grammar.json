@@ -1,0 +1,22 @@
+{
+  "id": "003_DESTRUCTION_GRAMMAR",
+  "path": "gsyntax.zil",
+  "description": "Accept explicit environmental reset commands and broaden weapon/throw targets so natural physical commands can reach authored Release 1246 consequences",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX RESTART = V-RESTART>\n\n<SYNTAX RESTORE = V-RESTORE>",
+      "new": "<SYNTAX RESTART = V-RESTART>\n\n<SYNTAX RESET DESTROY = V-RESET-DAMAGE>\n<SYNTAX RESET ENVIRONMENT = V-RESET-DAMAGE>\n<SYNTAX RESET BREAKAGE = V-RESET-DAMAGE>\n\n<SYNTAX RESTORE = V-RESTORE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX KILL OBJECT (ON-GROUND IN-ROOM HELD CARRIED) = V-ATTACK>\n<SYNTAX KILL OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM)\n\tWITH OBJECT (FIND WEAPONBIT) (HELD CARRIED HAVE) = V-ATTACK>",
+      "new": "<SYNTAX KILL OBJECT (ON-GROUND IN-ROOM HELD CARRIED) = V-ATTACK>\n<SYNTAX KILL OBJECT (ON-GROUND IN-ROOM HELD CARRIED)\n\tWITH OBJECT (FIND WEAPONBIT) (HELD CARRIED HAVE) = V-ATTACK>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX THROW OBJECT (HELD CARRIED HAVE)\n\tAT OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM) = V-THROW>\n<SYNTAX THROW OBJECT (HELD CARRIED HAVE)\n\tWITH OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM) = V-THROW>",
+      "new": "<SYNTAX THROW OBJECT (HELD CARRIED HAVE)\n\tAT OBJECT (ON-GROUND IN-ROOM) = V-THROW>\n<SYNTAX THROW OBJECT (HELD CARRIED HAVE)\n\tWITH OBJECT (ON-GROUND IN-ROOM) = V-THROW>"
+    }
+  ]
+}
