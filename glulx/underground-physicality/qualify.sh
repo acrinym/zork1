@@ -82,8 +82,9 @@ assert '<UNDERGROUND-PHYSICALITY-HOOK> <RTRUE>' in material
 assert '<FSET ,HERE ,RMUNGBIT>' not in material
 assert '<FSET? ,EW-PASSAGE ,RMUNGBIT>' not in material
 assert '<FCLEAR ,EW-PASSAGE ,RMUNGBIT>' not in material
-assert '<CONSTANT MD-UNDERGROUND-EW-PASSAGE-SCAR 8>' in material
-assert '<MATERIAL-DESTRUCTION-PUT ,MD-UNDERGROUND-CHASM-SCAR <>>' in material
+assert '<CONSTANT MD-UNDERGROUND-EW-PASSAGE-SCAR 2>' in material
+assert '<CONSTANT MATERIAL-UNDERGROUND-SCAR-STATE <TABLE <> <> <> <> <> <> <> <> <>>>' in material
+assert '<PUT ,MATERIAL-UNDERGROUND-SCAR-STATE ,MD-UNDERGROUND-CHASM-SCAR <>>' in material
 assert '<NOT <EQUAL? ,PRSO ,BOTTLE ,EGG ,LAMP>>>' in material
 assert 'The cellar masonry is cool, damp, and load-bearing' in material
 assert 'The rushing roar occupies the room completely.' in material
