@@ -85,6 +85,8 @@ assert '<NOT <EQUAL? ,PRSO ,BOTTLE ,EGG ,LAMP>>>' in material
 assert 'The cellar masonry is cool, damp, and load-bearing' in material
 assert 'The rushing roar occupies the room completely.' in material
 assert 'The Troll Room is small enough that the stone feels close around you.' in dungeon
+assert '(GLOBAL TRAP-DOOR SLIDE STAIRS WHITE-HOUSE WALL)' in dungeon
+assert '(GLOBAL CRACK STAIRS WALL)' in dungeon
 assert 'There is no downward route here; the chasm edge simply falls away into darkness.' in dungeon
 assert 'Hard walls rise on every side, giving the room exactly the architecture an echo would have ordered.' in actions
 assert 'The near edge gives you no usable landing line' in actions
@@ -192,18 +194,28 @@ timeout 55s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
   < "$BUILD/underground-natural.txt" > "$BUILD/underground-natural-transcript.txt" 2>&1 || true
 OUT="$BUILD/underground-natural-transcript.txt"
 grep -F 'dark, damp cellar where cool masonry holds the day' "$OUT"
-grep -F 'damp masonry, old dust' "$OUT"
+grep -F 'With the trap door shut, the cross-draft belongs entirely to the underground passages.' "$OUT"
+grep -F 'The cellar masonry is cool, damp, and load-bearing' "$OUT"
 grep -F 'strikes stone with a hard report' "$OUT"
 grep -F 'Fresh pale chips and a new score interrupt the older surface.' "$OUT"
 grep -F 'The unconscious troll cannot defend himself: He dies.' "$OUT"
+grep -F 'Stone, old iron, stale air' "$OUT"
 grep -F 'A narrow passage runs east and west between close rough walls.' "$OUT"
+grep -F 'The narrow stone stair descends from the north end of the passage toward the chasm.' "$OUT"
+grep -F 'The narrow passage smells mostly of cool stone and settled grit.' "$OUT"
 grep -F 'This circular chamber is shaped from stone' "$OUT"
+grep -F 'Dry stone dust hangs faintly in the round room' "$OUT"
 grep -F 'The acoustics of the room change subtly.' "$OUT"
 grep -F 'The famous acoustics are still here, but the room is eerily subdued' "$OUT"
 grep -F 'This low cave opens east and west and pinches southward into a narrow crack.' "$OUT"
+grep -F 'A faint draft whispers at the crack' "$OUT"
 grep -F 'A dark chasm cuts southwest to northeast' "$OUT"
 grep -F 'clears the edge, falls cleanly into darkness, and is lost to sight' "$OUT"
 grep -F 'There is no downward route here; the chasm edge simply falls away into darkness.' "$OUT"
+if grep -qF 'Which wall do you mean' "$OUT"; then
+  echo "Release 1249 left plain WALL ambiguous in its authored underground circuit" >&2
+  exit 1
+fi
 if grep -qF 'Are you out of your mind?' "$OUT"; then
   echo "Release 1249 regressed to player-psychological chasm narration" >&2
   exit 1
@@ -229,6 +241,10 @@ timeout 35s "$GLULXE_BIN" --rngseed 1249002 "$STORY" \
   < "$BUILD/canonical-fragile.txt" > "$BUILD/canonical-fragile-transcript.txt" 2>&1
 FRAGILE="$BUILD/canonical-fragile-transcript.txt"
 grep -F 'The bottle hits the far wall and shatters.' "$FRAGILE" || grep -F 'Glass snaps outward in a brief glittering spray; the bottle is finished.' "$FRAGILE"
+if grep -qF 'Which wall do you mean' "$FRAGILE"; then
+  echo "plain WALL remained ambiguous for canonical fragile projectiles" >&2
+  exit 1
+fi
 if grep -qF 'remains an object rather than a geological event' "$FRAGILE"; then
   echo "generic underground projectile handling stole canonical bottle authority" >&2
   exit 1
@@ -259,6 +275,10 @@ DEV_OUT="$BUILD/dev-underground-reset-transcript.txt"
 grep -F 'Fresh pale chips and a new score interrupt the older surface.' "$DEV_OUT"
 grep -F 'Developer reset restored the authored environmental breakages' "$DEV_OUT"
 grep -F 'The cellar masonry is cool, damp, and load-bearing' "$DEV_OUT"
+if grep -qF 'Which wall do you mean' "$DEV_OUT"; then
+  echo "dev/test Release 1249 left plain WALL ambiguous" >&2
+  exit 1
+fi
 python - "$DEV_OUT" <<'PY'
 from pathlib import Path
 import sys
@@ -290,7 +310,7 @@ receipt={
   'artifact_identity_locked':expected.get('locked') is True,
   'production':{**identity,'report':report},
   'dev':{'file':dev.name,'size_bytes':dev.stat().st_size,'sha256':dev_sha,'report':dev_report},
-  'qualification':['exact Release 1248 source provenance','no-new-globals','smell-check','compile','Glulx-checksum','natural early-GUE sensory and wall physicality','canonical troll gate and Loud Room ECHO','canonical chasm object-loss authority','canonical bottle delegation','bounded dev underground-scar reset'],
+  'qualification':['exact Release 1248 source provenance','no-new-globals','smell-check','compile','Glulx-checksum','natural early-GUE sensory and wall physicality','plain WALL parser resolution in authored underground rooms','canonical troll gate and Loud Room ECHO','canonical chasm object-loss authority','canonical bottle delegation','bounded dev underground-scar reset'],
 }
 (build/'QUALIFICATION.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
 print(json.dumps(receipt,indent=2,sort_keys=True))
