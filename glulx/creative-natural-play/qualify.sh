@@ -25,9 +25,12 @@ stage=json.loads((s/'STAGING-RECEIPT.json').read_text())
 smell=json.loads(Path('glulx/build/creative-natural-play-1245/smell-report.json').read_text())
 assert stage['base']['release']==1244
 assert stage['base']['artifact_sha256']=='e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d'
-assert stage['changed_paths']==sorted(['1actions.zil','gparser.zil','house_kitchen_laboratory.zil','mara_companion.zil','mara_companion_actions.zil','mara_companion_actor.zil','mara_companion_movement.zil','mara_companion_state.zil','zork1.zil'])
+assert stage['changed_paths']==sorted(['1actions.zil','gglobals.zil','gparser.zil','gsyntax.zil','gverbs.zil','house_kitchen_laboratory.zil','mara_companion.zil','mara_companion_actions.zil','mara_companion_actor.zil','mara_companion_movement.zil','mara_companion_state.zil','zork1.zil'])
 assert not smell['errors']
 g=(s/'gparser.zil').read_text()
+globals_=(s/'gglobals.zil').read_text()
+syntax=(s/'gsyntax.zil').read_text()
+verbs=(s/'gverbs.zil').read_text()
 k=(s/'house_kitchen_laboratory.zil').read_text()
 m=(s/'mara_companion.zil').read_text()
 a=(s/'mara_companion_actions.zil').read_text()
@@ -37,6 +40,23 @@ move=(s/'mara_companion_movement.zil').read_text()
 actions=(s/'1actions.zil').read_text()
 assert '<DO-SL ,WINNER ,SH ,SC>' in g
 assert '<EQUAL? <GET ,P-LEXV ,P-LEXSTART> ,W?SEND>' in g
+assert 'Split sequential actions with a comma or THEN.' in g
+assert '(SYNONYM ME MYSELF SELF YOU CRETIN)' in globals_
+assert '(DESC "yourself")' in globals_
+assert '<SYNTAX COMMAND = V-COMMAND-SELF>' in syntax
+assert '<SYNTAX YELL AT OBJECT' in syntax
+assert '<SYNTAX YELL AT ZORK = V-YELL-AT-ZORK>' in syntax
+assert '<SYNONYM SAY SPEAK>' in syntax
+assert '<SYNTAX SAY XYZZY = V-SAY-XYZZY>' in syntax
+assert '<SYNTAX SAY HAHA = V-SAY-HAHA>' in syntax
+assert '<SYNTAX SAY HELLO = V-SAY-HELLO>' in syntax
+assert '<SYNTAX HELP = V-HELP>' in syntax
+assert '<SYNTAX MOO = V-MOO>' in syntax
+assert '<SYNTAX BARK = V-BARK>' in syntax
+assert '<ROUTINE V-COMMAND-SELF ()' in verbs
+assert '<ROUTINE V-YELL-AT ()' in verbs
+assert '<ROUTINE V-TALK-UNSPECIFIED ()' in verbs
+assert 'is not something you can drink.' in verbs
 assert '<SYNTAX COOK OBJECT = V-KITCHEN-COOK>' in k
 assert '<ROUTINE V-KITCHEN-COOK ()' in k
 assert '(ADJECTIVE KITCHEN CAST IRON)' in k
