@@ -6,7 +6,7 @@
     {
       "expected_count": 1,
       "old": "<ROUTINE NARRATIVE-SPILL-SACK-CONTENTS ()\n    <COND (<IN? ,LUNCH ,SANDWICH-BAG> <MOVE ,LUNCH ,HERE>)>\n    <COND (<IN? ,GARLIC ,SANDWICH-BAG> <MOVE ,GARLIC ,HERE>)>\n    <RTRUE>>",
-      "new": "<ROUTINE NARRATIVE-SPILL-SACK-CONTENTS (\"AUX\" X NXT)\n    <COND (<SET X <FIRST? ,SANDWICH-BAG>>\n           <REPEAT ()\n              <SET NXT <NEXT? .X>>\n              <MOVE .X ,HERE>\n              <COND (<NOT .NXT> <RETURN>)>\n              <SET X .NXT>>)>\n    <RTRUE>>"
+      "new": "<ROUTINE NARRATIVE-SPILL-SACK-CONTENTS ()\n    <REPEAT ()\n       <COND (<FIRST? ,SANDWICH-BAG>\n              <MOVE <FIRST? ,SANDWICH-BAG> ,HERE>)\n             (T <RETURN>)>>\n    <RTRUE>>"
     }
   ]
 }
