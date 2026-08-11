@@ -43,7 +43,7 @@
   ],
   "boundaries": [
     "no universal physics engine, arbitrary object-pair matrix, generic trajectory simulator, or generic cave generator",
-    "no new global variables; underground scar state extends the existing bounded MATERIAL-DESTRUCTION-STATE table authority",
+    "no new global variables; underground scar state remains inside the existing material-consequence authority in a bounded constant companion table shared by production and dev/test",
     "no room RMUNGBIT mutation for cosmetic underground scars because canonical GOTO treats RMUNGBIT destinations as impassable",
     "no alternate bottle, egg, lantern, chasm, Loud Room, combat, death, movement, or scoring authority",
     "no wall destruction that opens an unearned route or bypasses canonical locks, puzzles, troll gating, or cave-ins",
