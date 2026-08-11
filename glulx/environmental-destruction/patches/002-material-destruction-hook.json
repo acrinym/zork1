@@ -1,0 +1,12 @@
+{
+  "id": "002_MATERIAL_DESTRUCTION_HOOK",
+  "path": "shadow_logic.zil",
+  "description": "Run Release 1246 destruction handling inside the established material-consequence action authority before generic material prose",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)\n\t      (<MATERIAL-NEST-HOOK> <RTRUE>)\n\t      (<MATERIAL-TOOL-STATE-HOOK> <RTRUE>)\n\t      (<SHADOW-MATERIAL-HOOK> <RTRUE>)>",
+      "new": "\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)\n\t      (<MATERIAL-NEST-HOOK> <RTRUE>)\n\t      (<MATERIAL-DESTRUCTION-HOOK> <RTRUE>)\n\t      (<MATERIAL-TOOL-STATE-HOOK> <RTRUE>)\n\t      (<SHADOW-MATERIAL-HOOK> <RTRUE>)>"
+    }
+  ]
+}

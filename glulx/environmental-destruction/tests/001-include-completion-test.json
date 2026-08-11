@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1246-COMPLETION-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load the Release 1246 completion fixture only in qualification copies after all production sources",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"cellar_recovery_locker\" T>",
+      "new": "<INSERT-FILE \"cellar_recovery_locker\" T>\n<INSERT-FILE \"environmental_destruction_completion_test\" T>"
+    }
+  ]
+}

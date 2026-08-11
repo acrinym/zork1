@@ -1,0 +1,12 @@
+{
+  "id": "007_CLOSE_WINDOW_DAMAGE_TELL",
+  "path": "material_consequences.zil",
+  "description": "Close the introductory TELL form before selecting OPEN versus CLOSE wording for an already-broken Kitchen window",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "           <TELL \"There is no meaningful pane left to \"\n           <COND (<VERB? OPEN> <TELL \"open\">) (T <TELL \"close\">)>",
+      "new": "           <TELL \"There is no meaningful pane left to \">\n           <COND (<VERB? OPEN> <TELL \"open\">) (T <TELL \"close\">)>"
+    }
+  ]
+}
