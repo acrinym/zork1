@@ -17,6 +17,7 @@ IFS=$'\t' read -r SERIAL STORY_FILE < <(python - "$MANIFEST" <<'PY'
 import json,sys
 from pathlib import Path
 m=json.loads(Path(sys.argv[1]).read_text())
+assert m['expected_artifact']['locked'] is True
 print('\t'.join((m['serial'],m['expected_artifact']['file'])))
 PY
 )
@@ -88,7 +89,7 @@ assert '(T <PERFORM ,V?PUT ,PRSO ,PRSI>)' in actor
 assert 'large white colonial house' in actions
 assert 'small kitchen window is ' in actions
 assert 'interrupted domestic life' in actions
-assert 'shattered out; jagged remnants frame an opening' in actions
+assert actions.count('shattered out; jagged remnants frame an opening') >= 2
 assert 'Dust softens the abandoned grandeur' in actions
 assert 'Glass snaps outward in a brief glittering spray' in actions
 assert '<CONSTANT RELEASEID 1247>' in zork
@@ -202,7 +203,8 @@ timeout 25s "$GLULXE_BIN" --rngseed 1247002 "$STORY" \
   < "$BUILD/broken-window-room.txt" > "$BUILD/broken-window-room-transcript.txt" 2>&1
 BROKEN="$BUILD/broken-window-room-transcript.txt"
 grep -F 'punches through the Kitchen window' "$BROKEN"
-grep -F 'shattered out; jagged remnants frame an opening large enough to use.' "$BROKEN"
+grep -F 'small kitchen window is shattered out; jagged remnants frame an opening large enough to use.' "$BROKEN"
+grep -F 'small window is shattered out; jagged remnants frame an opening large enough to use.' "$BROKEN"
 
 cat > "$BUILD/dev-reset.txt" <<'EOF'
 take rock
@@ -244,13 +246,23 @@ from pathlib import Path
 story=Path(sys.argv[1]); dev=Path(sys.argv[2]); manifest=json.loads(Path(sys.argv[3]).read_text())
 report=json.loads(Path('glulx/build/narrative-physicality-1247/story-report.json').read_text())
 dev_report=json.loads(Path('glulx/build/narrative-physicality-1247/dev-story-report.json').read_text())
+expected=manifest['expected_artifact']
+story_sha=hashlib.sha256(story.read_bytes()).hexdigest()
+dev_sha=hashlib.sha256(dev.read_bytes()).hexdigest()
 assert report['checksum_valid'] is True and dev_report['checksum_valid'] is True
+assert expected['locked'] is True
+assert expected['file']==story.name
+assert expected['version_hex']==report['version_hex']
+assert expected['size_bytes']==story.stat().st_size==report['size_bytes']
+assert expected['checksum_hex']==report['checksum_hex']
+assert expected['sha256']==story_sha==report['sha256']
 receipt={
   'release':1247,
   'serial':manifest['serial'],
-  'production':{'file':story.name,'size_bytes':story.stat().st_size,'sha256':hashlib.sha256(story.read_bytes()).hexdigest(),'report':report},
-  'dev':{'file':dev.name,'size_bytes':dev.stat().st_size,'sha256':hashlib.sha256(dev.read_bytes()).hexdigest(),'report':dev_report},
-  'qualification':['staging','smell-check','compile','artifact-checksum','House natural-play abuse','Mara canonical PERFORM delegation','persistent damage narration','broken-window room narration','bounded dev reset']
+  'artifact_identity_locked':True,
+  'production':{'file':story.name,'size_bytes':story.stat().st_size,'sha256':story_sha,'report':report},
+  'dev':{'file':dev.name,'size_bytes':dev.stat().st_size,'sha256':dev_sha,'report':dev_report},
+  'qualification':['staging','smell-check','compile','locked-artifact-checksum','House natural-play abuse','Mara canonical PERFORM delegation','persistent damage narration','two-sided broken-window room narration','bounded dev reset']
 }
 Path('glulx/build/narrative-physicality-1247/QUALIFICATION.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
 print(json.dumps(receipt,indent=2,sort_keys=True))
