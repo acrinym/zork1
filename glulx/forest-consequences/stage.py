@@ -24,6 +24,14 @@ def inventory(root: Path) -> dict[str, str]:
     }
 
 
+def source_identity(root: Path) -> str:
+    """Return a path-stable identity for staged source content, excluding its receipt."""
+    files = inventory(root)
+    files.pop("STAGING-RECEIPT.json", None)
+    payload = json.dumps(files, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return digest(payload)
+
+
 def validate_manifest(manifest: dict[str, Any], manifest_path: Path) -> dict[str, Any]:
     """Validate the declared locked base manifest and return it."""
     base_value = manifest.get("base_manifest")
@@ -41,11 +49,26 @@ def validate_manifest(manifest: dict[str, Any], manifest_path: Path) -> dict[str
     return base
 
 
-def validate_base_source(base_source: Path, base_release: Any) -> dict[str, Any]:
-    """Validate that *base_source* is a staged tree for the declared base release."""
+def validate_base_source(
+    base_source: Path, base_release: Any, manifest: dict[str, Any]
+) -> dict[str, Any]:
+    """Bind *base_source* to the immutable Release 1247 production/dev source identity."""
     receipt = load_json(base_source / "STAGING-RECEIPT.json")
     if not isinstance(receipt, dict) or receipt.get("release") != base_release:
         raise RuntimeError(f"base source is not a staged Release {base_release} tree")
+
+    identities = manifest.get("base_source_sha256")
+    if not isinstance(identities, dict):
+        raise RuntimeError("Release 1248 must pin Release 1247 staged source identities")
+    profile = "dev" if bool(receipt.get("dev_mode")) else "production"
+    expected = identities.get(profile)
+    if not isinstance(expected, str) or not expected:
+        raise RuntimeError(f"Release 1248 has no pinned Release 1247 {profile} source identity")
+    actual = source_identity(base_source)
+    if actual != expected:
+        raise RuntimeError(
+            f"Release 1247 {profile} source identity drift: expected {expected}, got {actual}"
+        )
     return receipt
 
 
@@ -67,7 +90,8 @@ def main() -> int:
     if not isinstance(manifest, dict):
         raise RuntimeError("Release 1248 patch-series must contain an object")
     base_manifest = validate_manifest(manifest, manifest_path)
-    base_receipt = validate_base_source(base_source, manifest.get("base_release"))
+    base_receipt = validate_base_source(base_source, manifest.get("base_release"), manifest)
+    base_source_sha256 = source_identity(base_source)
 
     base_files = inventory(base_source)
     shutil.copytree(base_source, destination)
@@ -94,6 +118,7 @@ def main() -> int:
         "base": {
             "release": base_manifest.get("release"),
             "artifact_sha256": (base_manifest.get("expected_artifact") or {}).get("sha256"),
+            "source_sha256": base_source_sha256,
             "staging_receipt_sha256": digest((base_source / "STAGING-RECEIPT.json").read_bytes()),
             "changed_paths": base_receipt.get("changed_paths"),
         },

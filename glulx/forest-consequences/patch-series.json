@@ -5,6 +5,10 @@
   "base_manifest": "../narrative-physicality/patch-series.json",
   "base_release": 1247,
   "base_artifact_sha256": "71def5651d7f956016f769abd9b007f1b88f12eb2935d2510e75122f46ad8cb5",
+  "base_source_sha256": {
+    "production": "da7b7b8c0c1f36a7e7d5f1137b5e8274e2b7fc5d4fba581122fcc0377f59c30d",
+    "dev": "c1167ca9db8d87d7c4a080b1425ba49862161192ba7f0a99e3d621ba3a36b2c6"
+  },
   "expected_artifact": {
     "file": "zork1-glulx-forest-consequences.ulx",
     "format": "Glulx",
