@@ -17,6 +17,10 @@ south
 east
 open window
 enter
+west
+take lamp
+turn on lamp
+east
 up
 take rope
 down
@@ -38,20 +42,30 @@ timeout 35s "$GLULXE_BIN" --rngseed 1248006 "$STORY" \
   < "$BUILD/tree-rope-authority.txt" > "$BUILD/tree-rope-authority-transcript.txt" 2>&1
 ROPE_OUT="$BUILD/tree-rope-authority-transcript.txt"
 
-ANCHOR_COUNT="$(grep -Fc 'You tie one end of the rope securely to the tree.' "$ROPE_OUT")"
-LIMIT_COUNT="$(grep -Fc 'The anchored rope reaches its useful limit and checks your movement.' "$ROPE_OUT")"
-UNTIE_COUNT="$(grep -Fc 'You undo the knot around the tree. The rope is fully available again.' "$ROPE_OUT")"
+count_phrase() {
+  local phrase="$1"
+  local count
+  count="$(grep -Fc "$phrase" "$ROPE_OUT" || true)"
+  printf '%s' "$count"
+}
+
+ANCHOR_COUNT="$(count_phrase 'You tie one end of the rope securely to the tree.')"
+LIMIT_COUNT="$(count_phrase 'The anchored rope reaches its useful limit and checks your movement.')"
+UNTIE_COUNT="$(count_phrase 'You undo the knot around the tree. The rope is fully available again.')"
 
 if [[ "$ANCHOR_COUNT" -ne 2 ]]; then
   echo "expected both TIE ROPE TO TREE and USE ROPE ON TREE to reach the existing anchor authority; got $ANCHOR_COUNT successful anchors" >&2
+  cat "$ROPE_OUT" >&2
   exit 1
 fi
 if [[ "$LIMIT_COUNT" -ne 2 ]]; then
   echo "expected the existing movement limit exactly twice while the rope was anchored; got $LIMIT_COUNT" >&2
+  cat "$ROPE_OUT" >&2
   exit 1
 fi
 if [[ "$UNTIE_COUNT" -ne 2 ]]; then
   echo "expected UNTIE to release both tree anchors; got $UNTIE_COUNT successful untiers" >&2
+  cat "$ROPE_OUT" >&2
   exit 1
 fi
 
