@@ -19,7 +19,7 @@
       "new": "You are in the kitchen of the white house. The room still carries small signs of interrupted domestic life: crumbs, preparation marks on the heavy table, and the faint stale trace of food. A passage leads west, a dark staircase climbs upward, and a soot-dark chimney descends. To the east, the small window is "
     },
     {
-      "expected_count": 2,
+      "expected_count": 1,
       "old": "<COND (<FSET? ,KITCHEN-WINDOW ,OPENBIT>\n\t\t       <TELL \"open.\">)\n\t\t      (T <TELL \"slightly ajar.\">)>",
       "new": "<COND (<MATERIAL-DESTRUCTION-GET ,MD-WINDOW-BROKEN>\n\t\t       <TELL \"shattered out; jagged remnants frame an opening large enough to use.\">)\n\t\t      (<FSET? ,KITCHEN-WINDOW ,OPENBIT>\n\t\t       <TELL \"open.\">)\n\t\t      (T <TELL \"slightly ajar.\">)>"
     },
