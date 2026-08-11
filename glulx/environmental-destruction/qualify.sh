@@ -68,10 +68,13 @@ assert '<GLOBAL MATERIAL-WINDOW-BROKEN <>>' in material
 assert '<GLOBAL MATERIAL-DESTRUCTION-DEV-MODE <>>' in material
 assert '<GLOBAL MATERIAL-DESTRUCTION-DEV-MODE T>' in dev_material
 assert '<ROUTINE V-RESET-DAMAGE ()' in material
+assert '<ROUTINE MATERIAL-RESETTABLE-STATE? ()' in material
+assert '<NOT <MATERIAL-RESETTABLE-STATE?>>' in material
 assert '<ROUTINE MATERIAL-DESTRUCTION-COMPLETION-PROMPT ()' in material
+assert '<AND ,MATERIAL-DESTRUCTION-DEV-MODE <MATERIAL-DAMAGE-PRESENT?>>' in material
 assert '<ROUTINE MATERIAL-DESTRUCTION-HOOK ()' in material
 assert '<MATERIAL-DESTRUCTION-HOOK> <RTRUE>' in shadow
-assert '<SYNTAX RESET DESTROY = V-RESET-DAMAGE>' in syntax
+assert '<SYNTAX RESET DAMAGE = V-RESET-DAMAGE>' in syntax
 assert '<SYNTAX RESET ENVIRONMENT = V-RESET-DAMAGE>' in syntax
 assert '<SYNTAX RESET BREAKAGE = V-RESET-DAMAGE>' in syntax
 assert '<SYNTAX KILL OBJECT (ON-GROUND IN-ROOM HELD CARRIED)\n\tWITH OBJECT (FIND WEAPONBIT)' in syntax
@@ -124,6 +127,7 @@ cat > "$BUILD/production-destruction.txt" <<'EOF'
 take rock
 throw rock at mailbox
 examine mailbox
+kill mailbox
 take rock
 south
 east
@@ -136,16 +140,17 @@ quit
 yes
 EOF
 timeout 25s "$GLULXE_BIN" --rngseed 1246001 "$STORY" \
-  < "$BUILD/production-destruction.txt" > "$BUILD/production-destruction-transcript.txt" 2>&1 || true
+  < "$BUILD/production-destruction.txt" > "$BUILD/production-destruction-transcript.txt" 2>&1
 PROD="$BUILD/production-destruction-transcript.txt"
 grep -F 'The impact caves a broad dent into the side of the mailbox.' "$PROD"
+grep -F "I've known strange people, but fighting a small mailbox?" "$PROD"
 grep -F 'punches through the Kitchen window.' "$PROD"
 grep -F 'continues through the opening and lands in the Kitchen.' "$PROD"
 grep -F 'The Kitchen window has been shattered out.' "$PROD"
 grep -F 'Environmental damage reset is available only in the Release 1246 dev/test build.' "$PROD"
-grep -qF 'I don'"'"'t know the word "rock"' "$PROD" && exit 1
-grep -qF 'I don'"'"'t know the word "through"' "$PROD" && exit 1
-grep -qF 'I don'"'"'t know the word "reset"' "$PROD" && exit 1
+if grep -qF 'I don'"'"'t know the word "rock"' "$PROD"; then exit 1; fi
+if grep -qF 'I don'"'"'t know the word "through"' "$PROD"; then exit 1; fi
+if grep -qF 'I don'"'"'t know the word "reset"' "$PROD"; then exit 1; fi
 
 cat > "$BUILD/dev-reset.txt" <<'EOF'
 take rock
@@ -163,12 +168,25 @@ quit
 yes
 EOF
 timeout 25s "$GLULXE_BIN" --rngseed 1246002 "$DEV_STORY" \
-  < "$BUILD/dev-reset.txt" > "$BUILD/dev-reset-transcript.txt" 2>&1 || true
+  < "$BUILD/dev-reset.txt" > "$BUILD/dev-reset-transcript.txt" 2>&1
 DEV="$BUILD/dev-reset-transcript.txt"
 grep -F 'Developer reset restored the authored environmental breakages without changing score, treasures, relationship history, or canonical puzzle progress.' "$DEV"
 grep -F 'It is securely anchored.' "$DEV"
 grep -F 'The window is slightly ajar, but not enough to allow entry.' "$DEV"
-grep -qF 'Environmental damage reset is available only in the Release 1246 dev/test build.' "$DEV" && exit 1
+if grep -qF 'Environmental damage reset is available only in the Release 1246 dev/test build.' "$DEV"; then exit 1; fi
+
+cat > "$BUILD/dev-stone-only-reset.txt" <<'EOF'
+take rock
+reset damage
+look
+quit
+yes
+EOF
+timeout 20s "$GLULXE_BIN" --rngseed 1246004 "$DEV_STORY" \
+  < "$BUILD/dev-stone-only-reset.txt" > "$BUILD/dev-stone-only-reset-transcript.txt" 2>&1
+DEV_STONE="$BUILD/dev-stone-only-reset-transcript.txt"
+grep -F 'Developer reset restored the authored environmental breakages without changing score, treasures, relationship history, or canonical puzzle progress.' "$DEV_STONE"
+grep -F 'A fist-sized loose stone rests in the grass.' "$DEV_STONE"
 
 cat > "$BUILD/axe-mailbox.txt" <<'EOF'
 south
@@ -204,12 +222,12 @@ quit
 yes
 EOF
 timeout 35s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
-  < "$BUILD/axe-mailbox.txt" > "$BUILD/axe-mailbox-transcript.txt" 2>&1 || true
+  < "$BUILD/axe-mailbox.txt" > "$BUILD/axe-mailbox-transcript.txt" 2>&1
 AXE_OUT="$BUILD/axe-mailbox-transcript.txt"
 grep -F 'The bloody axe bites through the wooden post with a brutal crack.' "$AXE_OUT"
 grep -F 'You pick up the mailbox. Severing the post has converted landscaping into luggage.' "$AXE_OUT"
 grep -F 'The small mailbox has been cut free from its severed post.' "$AXE_OUT"
-grep -qF 'Trying to destroy the small mailbox with a bloody axe is futile.' "$AXE_OUT" && exit 1
+if grep -qF 'Trying to destroy the small mailbox with a bloody axe is futile.' "$AXE_OUT"; then exit 1; fi
 
 cat > "$BUILD/troll-rock.txt" <<'EOF'
 take rock
@@ -230,10 +248,10 @@ quit
 yes
 EOF
 timeout 30s "$GLULXE_BIN" --rngseed 1246003 "$STORY" \
-  < "$BUILD/troll-rock.txt" > "$BUILD/troll-rock-transcript.txt" 2>&1 || true
+  < "$BUILD/troll-rock.txt" > "$BUILD/troll-rock-transcript.txt" 2>&1
 TROLL_OUT="$BUILD/troll-rock-transcript.txt"
-grep -qF 'I don'"'"'t understand that sentence.' "$TROLL_OUT" && exit 1
-grep -qF 'I don'"'"'t know the word "rock"' "$TROLL_OUT" && exit 1
+if grep -qF 'I don'"'"'t understand that sentence.' "$TROLL_OUT"; then exit 1; fi
+if grep -qF 'I don'"'"'t know the word "rock"' "$TROLL_OUT"; then exit 1; fi
 
 test -f "$BUILD/story-report.json"
 python - "$MANIFEST" <<'PY'
@@ -260,12 +278,14 @@ receipt={
   'dev_artifact':dev,
   'gameplay':{
     'mailbox_blunt_damage':'passed',
+    'bare_kill_mailbox_delegation':'passed',
     'mailbox_axe_sever':'passed',
     'mailbox_carry_after_sever':'passed',
     'throw_rock_through_window':'passed',
     'broken_window_traversal':'passed',
     'production_reset_refusal':'passed',
     'dev_reset':'passed',
+    'dev_stone_only_reset':'passed',
     'troll_throw_delegation':'passed',
     'completion_dev_prompt_static_scope':'passed'
   }
