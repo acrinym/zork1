@@ -1,0 +1,42 @@
+{
+  "id": "002_UNDERGROUND_NARRATION",
+  "path": "1dungeon.zil",
+  "description": "Deepen early-GUE room density and replace a player-psychoanalyzing chasm refusal with a physical explanation while preserving exits and room authorities",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "This is a small room with passages to the east and south and a\nforbidding hole leading west. Bloodstains and deep scratches\n(perhaps made by an axe) mar the walls.",
+      "new": "The Troll Room is small enough that the stone feels close around you. Passages run east and south, while a forbidding hole opens west. Old bloodstains have dried almost black against the walls, and deep scratches -- plausibly made by an axe -- score the stone where violence once had room to swing."
+    },
+    {
+      "expected_count": 1,
+      "old": "This is a narrow east-west passageway. There is a narrow stairway\nleading down at the north end of the room.",
+      "new": "A narrow passage runs east and west between close rough walls. Grit collects along the edges of the floor, and at the north end a worn stone stairway drops toward a colder darkness below."
+    },
+    {
+      "expected_count": 1,
+      "old": "This is a circular stone room with passages in all directions. Several\nof them have unfortunately been blocked by cave-ins.",
+      "new": "This circular chamber is shaped from stone and intersected by passages in nearly every direction. Several routes end immediately in old cave-ins, where broken rock softens the room's otherwise clean echoes and leaves pale dust among the rubble."
+    },
+    {
+      "expected_count": 1,
+      "old": "This cave has exits to the west and east, and narrows to a crack toward\nthe south. The earth is particularly damp here.",
+      "new": "This low cave opens east and west and pinches southward into a narrow crack. The earth is dark with moisture, the stone sweats in irregular patches, and the whole place carries the close smell of wet mineral ground."
+    },
+    {
+      "expected_count": 1,
+      "old": "This is a high north-south passage, which forks to the northeast.",
+      "new": "A high north-south passage cuts through rough stone and forks toward the northeast. The ceiling rises beyond the strongest pool of ordinary lantern light, giving footsteps more echo than the passage's width seems to deserve."
+    },
+    {
+      "expected_count": 1,
+      "old": "A chasm runs southwest to northeast and the path follows it. You are\non the south side of the chasm, where a crack opens into a passage.",
+      "new": "A dark chasm cuts southwest to northeast, with the path following its south edge. The opposite side is far enough away to make the gap a fact rather than a suggestion. Near you, a crack in the stone opens into the adjoining passage, while cooler air moves along the drop."
+    },
+    {
+      "expected_count": 1,
+      "old": "      (DOWN \"Are you out of your mind?\")",
+      "new": "      (DOWN \"There is no downward route here; the chasm edge simply falls away into darkness.\")"
+    }
+  ]
+}
