@@ -44,6 +44,7 @@ from pathlib import Path
 build=Path('glulx/build/environmental-destruction-1246')
 s=build/'src'
 d=build/'dev-src'
+b=build/'base-1245-src'
 stage=json.loads((s/'STAGING-RECEIPT.json').read_text())
 dev_stage=json.loads((d/'STAGING-RECEIPT.json').read_text())
 smell=json.loads((build/'smell-report.json').read_text())
@@ -57,21 +58,28 @@ assert dev_stage['changed_paths']==stage['changed_paths']
 assert not smell['errors'] and not dev_smell['errors']
 material=(s/'material_consequences.zil').read_text()
 dev_material=(d/'material_consequences.zil').read_text()
+base_material=(b/'material_consequences.zil').read_text()
 syntax=(s/'gsyntax.zil').read_text()
 shadow=(s/'shadow_logic.zil').read_text()
 actions=(s/'1actions.zil').read_text()
 zork=(s/'zork1.zil').read_text()
 assert '<OBJECT FIELD-STONE' in material
 assert '(SYNONYM ROCK STONE)' in material
-assert '<GLOBAL MATERIAL-MAILBOX-DAMAGE 0>' in material
-assert '<GLOBAL MATERIAL-WINDOW-BROKEN <>>' in material
-assert '<GLOBAL MATERIAL-DESTRUCTION-DEV-MODE <>>' in material
-assert '<GLOBAL MATERIAL-DESTRUCTION-DEV-MODE T>' in dev_material
+assert '<CONSTANT MD-MAILBOX-DAMAGE 0>' in material
+assert '<CONSTANT MD-DEV-MODE 5>' in material
+assert '<CONSTANT MATERIAL-DESTRUCTION-STATE <TABLE 0 <> <> <> <> <>>>' in material
+assert '<CONSTANT MATERIAL-DESTRUCTION-STATE <TABLE 0 <> <> <> <> T>>' in dev_material
+assert '<ROUTINE MATERIAL-DESTRUCTION-GET (SLOT)' in material
+assert '<ROUTINE MATERIAL-DESTRUCTION-PUT (SLOT VALUE)' in material
+assert material.count('<GLOBAL ') == base_material.count('<GLOBAL ')
+assert 'MATERIAL-DESTRUCTION-DEV-MODE' not in material
 assert '<ROUTINE V-RESET-DAMAGE ()' in material
 assert '<ROUTINE MATERIAL-RESETTABLE-STATE? ()' in material
 assert '<NOT <MATERIAL-RESETTABLE-STATE?>>' in material
+assert '<COND (<G? <MATERIAL-DESTRUCTION-GET ,MD-MAILBOX-DAMAGE> 0>' in material
+assert '<COND (<MATERIAL-DESTRUCTION-GET ,MD-WINDOW-BROKEN>' in material
 assert '<ROUTINE MATERIAL-DESTRUCTION-COMPLETION-PROMPT ()' in material
-assert '<AND ,MATERIAL-DESTRUCTION-DEV-MODE <MATERIAL-DAMAGE-PRESENT?>>' in material
+assert '<AND <MATERIAL-DESTRUCTION-GET ,MD-DEV-MODE> <MATERIAL-DAMAGE-PRESENT?>>' in material
 assert '<ROUTINE MATERIAL-DESTRUCTION-HOOK ()' in material
 assert '<MATERIAL-DESTRUCTION-HOOK> <RTRUE>' in shadow
 assert '<SYNTAX RESET DAMAGE = V-RESET-DAMAGE>' in syntax
@@ -176,9 +184,11 @@ grep -F 'The window is slightly ajar, but not enough to allow entry.' "$DEV"
 if grep -qF 'Environmental damage reset is available only in the Release 1246 dev/test build.' "$DEV"; then exit 1; fi
 
 cat > "$BUILD/dev-stone-only-reset.txt" <<'EOF'
+open mailbox
 take rock
 reset damage
 look
+close mailbox
 quit
 yes
 EOF
@@ -187,6 +197,7 @@ timeout 20s "$GLULXE_BIN" --rngseed 1246004 "$DEV_STORY" \
 DEV_STONE="$BUILD/dev-stone-only-reset-transcript.txt"
 grep -F 'Developer reset restored the authored environmental breakages without changing score, treasures, relationship history, or canonical puzzle progress.' "$DEV_STONE"
 grep -F 'A fist-sized loose stone rests in the grass.' "$DEV_STONE"
+if grep -qF 'The warped mailbox door no longer stays closed.' "$DEV_STONE"; then exit 1; fi
 
 cat > "$BUILD/axe-mailbox.txt" <<'EOF'
 south
@@ -287,7 +298,8 @@ receipt={
     'dev_reset':'passed',
     'dev_stone_only_reset':'passed',
     'troll_throw_delegation':'passed',
-    'completion_dev_prompt_static_scope':'passed'
+    'completion_dev_prompt_static_scope':'passed',
+    'compact_state_without_new_globals':'passed'
   }
 }
 (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
