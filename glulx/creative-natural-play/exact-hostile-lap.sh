@@ -72,3 +72,4 @@ grep -qF 'I don'"'"'t know the word "after"' "$TRANSCRIPT" && exit 1
 grep -qF 'I don'"'"'t know the word "with"' "$TRANSCRIPT" && exit 1
 grep -qF 'I don'"'"'t see any troll here' "$TRANSCRIPT" && exit 1
 grep -qF 'Mara stops short of the Troll Room' "$TRANSCRIPT" && exit 1
+true
