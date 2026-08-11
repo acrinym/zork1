@@ -1,0 +1,47 @@
+{
+  "edition": "Unofficial Zork Narrative Physicality Glulx",
+  "release": 1247,
+  "serial": "260811",
+  "base_manifest": "../environmental-destruction/patch-series.json",
+  "base_release": 1246,
+  "base_artifact_sha256": "28ee345b8a393aedce28c0d9514785d8034aa78026783cdcf8c518bfc584bcf1",
+  "expected_artifact": {
+    "file": "zork1-glulx-narrative-physicality.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "locked": false
+  },
+  "patches": [
+    "patches/001-house-physicality.json",
+    "patches/002-house-narration.json",
+    "patches/003-bottle-narration.json",
+    "patches/004-release-1247.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "material_consequences.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "ordinary House play receives richer Infocom-style room and object narration",
+    "the parser seriously understands sensory and absurd interactions with the white house, boards, table, sack, bottle, rug, and Kitchen window",
+    "board abuse can leave persistent visible damage without bypassing the canonical House-entry puzzle",
+    "the kitchen table can be battered and remain a usable canonical surface",
+    "the brown sack can be torn with a suitable edge, spill its current contents, and remain observably torn",
+    "the oriental rug can be frayed without breaking the canonical trap-door puzzle",
+    "existing bottle destruction receives richer physical narration while retaining canonical removal semantics",
+    "developer environmental reset clears Release 1247 cosmetic physical scars without rewinding puzzle progress or relocating ordinary objects",
+    "broken Kitchen-window state is reflected directly in room narration rather than merely looking open",
+    "absurd impossibilities such as TAKE HOUSE are understood and answered specifically rather than treated as parser ignorance"
+  ],
+  "boundaries": [
+    "no universal physics engine or arbitrary object-pair simulator",
+    "no alternate replacement for canonical object routines or puzzle state machines",
+    "no board destruction that bypasses the canonical early House-entry route",
+    "no score awarded for environmental abuse",
+    "no new global variables",
+    "no recursive audit or meta-test machinery",
+    "no TODO, stub, placeholder behavior, or production cheat verb"
+  ]
+}
