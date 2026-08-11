@@ -21,6 +21,7 @@
     "patches/006-expand-flexible-sack-capacity.json",
     "patches/002-forest-narration.json",
     "patches/003-authored-fatal-consequences.json",
+    "patches/007-repair-tree-leap-authority.json",
     "patches/003b-canyon-fatal-precedent.json",
     "patches/004-release-1248.json"
   ],
@@ -42,6 +43,7 @@
     "THROW BOTTLE AT TREE, THROW EGG AT TREE, and ordinary thrown objects receive object-specific forest consequences",
     "throwing or dropping fragile objects from Up a Tree respects the ten-foot height and places surviving objects on the Forest Path below",
     "the large Forest Path tree can retain a scoreless cosmetic scar without becoming a shortcut around the canonical egg or forest journey",
+    "the dormant authored Up a Tree LEAP death is repaired as a reachable TREE-ROOM action and retains JIGS-UP as its sole death authority",
     "the existing Up a Tree and Canyon View fatal leap choices retain canonical JIGS-UP authority while receiving fuller physical narration",
     "developer environmental reset also clears the Release 1248 cosmetic tree scar without rewinding canonical puzzle progress"
   ],
