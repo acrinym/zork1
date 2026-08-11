@@ -3,6 +3,7 @@ name: Zork I Narrative Physicality
 on:
   push:
     branches:
+      - master
       - agent/narrative-house-physicality-20260811
     paths:
       - "glulx/narrative-physicality/**"
@@ -51,15 +52,22 @@ jobs:
         with: {python-version: "3.12.13"}
       - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1
         with: {dotnet-version: "10.0.302"}
-      - name: Install pinned native dependencies
+      - name: Install native dependencies
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y \
-            build-essential=12.10ubuntu1 \
-            libncurses-dev=6.4+20240113-1ubuntu2.1 \
-            curl=8.5.0-2ubuntu10.11
+            build-essential \
+            libncurses-dev \
+            curl
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: {repository: taradinoc/zork1, ref: "${{ env.ZORK_GLULX_COMMIT }}", path: .upstream/zork1-glulx, persist-credentials: false}
+      - name: Verify pinned Zork Glulx upstream
+        run: |
+          actual_upstream="$(git -C .upstream/zork1-glulx rev-parse HEAD)"
+          if [[ "$actual_upstream" != "$ZORK_GLULX_COMMIT" ]]; then
+            echo "upstream commit drift: expected $ZORK_GLULX_COMMIT, got $actual_upstream" >&2
+            exit 1
+          fi
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: {repository: taradinoc/zilf, ref: "${{ env.GLULX_ZILF_COMMIT }}", path: .tooling/zilf-glulx, persist-credentials: false}
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -77,6 +85,11 @@ jobs:
         run: |
           set -o pipefail
           bash glulx/narrative-physicality/qualify.sh 2>&1 | tee narrative-physicality.log
+      - name: Run focused review qualification
+        if: always()
+        run: |
+          set -o pipefail
+          bash glulx/narrative-physicality/review-qualify.sh 2>&1 | tee review-qualification.log
       - name: Upload Release 1247 evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -86,4 +99,5 @@ jobs:
           retention-days: 14
           path: |
             narrative-physicality.log
+            review-qualification.log
             glulx/build/narrative-physicality-1247/*
