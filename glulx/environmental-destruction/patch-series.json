@@ -17,7 +17,8 @@
     "patches/003-destruction-grammar.json",
     "patches/004-completion-dev-reset-prompt.json",
     "patches/005-release-1246.json",
-    "patches/006-review-corrections.json"
+    "patches/006-review-corrections.json",
+    "patches/007-close-window-damage-tell.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
