@@ -207,6 +207,7 @@ enter
 west
 take lantern
 take sword
+turn on lantern
 east
 up
 take rope
