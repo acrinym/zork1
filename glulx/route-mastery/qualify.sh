@@ -145,6 +145,160 @@ grep -F 'The cargo is free, but the rope remains physically secured at the canyo
 grep -F 'The rescue was earned by physical preparation' "$CANYON"
 grep -F 'You free the rope from the canyon rim and recover the coil.' "$CANYON"
 
+# Natural parser alias coverage: FASTEN must reach the same physical canyon authority,
+# not a parallel shortcut path.
+cat > "$BUILD/canyon-fasten-route-mastery.txt" <<'EOF_FASTEN'
+south
+east
+open window
+enter
+take sack
+west
+take lamp
+turn on lamp
+east
+up
+take rope
+down
+tie rope to sack
+east
+east
+east
+fasten rope to rim
+examine rope
+lower sack
+pull rope
+lower sack
+down
+untie sack from rope
+take sack
+up
+jump
+untie rope from canyon rim
+quit
+yes
+EOF_FASTEN
+timeout 80s "$GLULXE_BIN" --rngseed 1252002 "$STORY" \
+  < "$BUILD/canyon-fasten-route-mastery.txt" > "$BUILD/canyon-fasten-route-mastery-transcript.txt" 2>&1
+FASTEN="$BUILD/canyon-fasten-route-mastery-transcript.txt"
+grep -F 'The rope now lies physically on the canyon rim' "$FASTEN"
+grep -F 'one end is cinched to the brown sack and the other is physically secured at the Great Canyon rim' "$FASTEN"
+grep -F 'turning the authored climb into a prepared freight route' "$FASTEN"
+grep -F 'you haul until the brown sack scrapes up from the Rocky Ledge' "$FASTEN"
+grep -F 'The rescue was earned by physical preparation' "$FASTEN"
+grep -F 'You free the rope from the canyon rim and recover the coil.' "$FASTEN"
+
+# Natural White Cliffs expedition. This deliberately earns the setup from the House:
+# acquire a real portable container, operate the Dam, retrieve the real hand pump,
+# exercise FOLD/COLLAPSE against canonical deflation state, then carry an inflated
+# boat nested in the coffin to the authored narrow White Cliffs passage.
+cat > "$BUILD/white-cliffs-route-mastery.txt" <<'EOF_WHITE'
+south
+east
+open window
+enter
+west
+take lantern
+turn on lantern
+take sword
+east
+up
+take rope
+down
+west
+move rug
+open trap door
+down
+north
+attack troll with sword
+attack troll with sword
+attack troll with sword
+east
+east
+southeast
+east
+tie rope to railing
+down
+south
+down
+take coffin
+west
+south
+pray
+east
+south
+southeast
+enter
+west
+open trap door
+down
+north
+east
+east
+north
+northeast
+east
+north
+north
+take wrench
+push yellow button
+south
+south
+turn bolt with wrench
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+west
+north
+north
+take pump
+south
+south
+east
+down
+inflate boat with pump
+fold boat
+inflate boat with pump
+take boat
+collapse boat
+drop boat
+collapse boat
+inflate boat with pump
+open coffin
+take boat
+put boat in coffin
+up
+west
+southeast
+down
+echo
+east
+east
+south
+look
+quit
+yes
+EOF_WHITE
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
+  < "$BUILD/white-cliffs-route-mastery.txt" > "$BUILD/white-cliffs-route-mastery-transcript.txt" 2>&1
+WHITE="$BUILD/white-cliffs-route-mastery-transcript.txt"
+grep -F 'The boat inflates and appears seaworthy.' "$WHITE"
+grep -F 'The boat deflates.' "$WHITE"
+grep -F 'The boat must be on the ground to be deflated.' "$WHITE"
+[[ "$(grep -Fc 'The boat deflates.' "$WHITE")" -ge 2 ]]
+[[ "$(grep -Fc 'The boat inflates and appears seaworthy.' "$WHITE")" -ge 3 ]]
+grep -F 'White Cliffs Beach' "$WHITE"
+grep -F 'The path is too narrow.' "$WHITE"
+
 python - "$STORY" "$DEV_STORY" "$MANIFEST" <<'PY'
 import hashlib,json,sys
 from pathlib import Path
@@ -180,7 +334,8 @@ receipt={
   'base_release':1251,
   'base_artifact_sha256':manifest['base_artifact_sha256'],
   'canyon_route_mastery':'canyon-route-mastery-transcript.txt',
-  'white_cliffs_geometry':'compiled and source-asserted against carried containment ancestry',
+  'canyon_fasten_route_mastery':'canyon-fasten-route-mastery-transcript.txt',
+  'white_cliffs_route_mastery':'white-cliffs-route-mastery-transcript.txt',
 }
 (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
 print(json.dumps(receipt,indent=2,sort_keys=True))
