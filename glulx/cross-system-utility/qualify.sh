@@ -113,6 +113,7 @@ enter
 take sack
 west
 take lantern
+turn on lantern
 east
 up
 take rope
@@ -138,7 +139,6 @@ west
 west
 move rug
 open trap door
-turn on lantern
 down
 south
 east
@@ -171,6 +171,7 @@ enter
 take sack
 west
 take lantern
+turn on lantern
 take sword
 east
 up
@@ -182,7 +183,6 @@ put earmuffs in sack
 west
 move rug
 open trap door
-turn on lantern
 down
 north
 attack troll with sword
@@ -219,6 +219,7 @@ enter
 take sack
 west
 take lantern
+turn on lantern
 take sword
 east
 up
@@ -227,7 +228,6 @@ down
 west
 move rug
 open trap door
-turn on lantern
 down
 north
 attack troll with sword
