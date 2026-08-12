@@ -1,13 +1,13 @@
 {
   "schema_version": "2.0",
   "board_id": "highly-extended-zork-product-kanban",
-  "updated_on": "2026-08-11",
+  "updated_on": "2026-08-12",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "bacb1a358f0ee126ee6ae629b589c3d3a0269ee9",
-    "latest_release": 1249,
-    "latest_release_title": "Underground Sensory Physicality",
-    "latest_merged_pr": 53
+    "master_head_when_updated": "147236fcc61ac98b993ff1905c6e07c6bfbb6079",
+    "latest_release": 1251,
+    "latest_release_title": "Cross-System Utility Mesh",
+    "latest_merged_pr": 56
   },
   "operating_rules": [
     "CURRENT contains at most one actively implemented product train and may be empty between merged trains.",
@@ -20,77 +20,37 @@
     "DONE requires merged or otherwise immutable proof."
   ],
   "lanes": {
-    "current": [],
-    "next": [
-      {
-        "train_id": "zork-player-ingenuity-systemic-workarounds-1250",
-        "release": 1250,
-        "title": "Player Ingenuity / Systemic Workarounds",
-        "status": "next-1",
-        "outcome": "Let a player intentionally exploit established world mechanics to bypass friction or solve selected obstacles in physically credible ways while every canonical solution remains valid.",
-        "showcase": "Loud Room ear protection: reusable earmuffs or plausible improvised ear protection can suppress the nuisance without deleting the canonical ECHO solution.",
-        "acceptance": [
-          "canonical ECHO remains intact and score-compatible",
-          "ear protection is obtainable without a long mandatory fetch chain or pure-RNG lockout",
-          "ear protection remains useful on later Loud Room crossings and has sensible hearing tradeoffs elsewhere",
-          "at least two additional selected workarounds reuse existing world authorities rather than one-off colored-key logic",
-          "workarounds do not create unwinnable states or duplicate canonical objects"
-        ],
-        "boundaries": [
-          "no crafting UI or recipe economy",
-          "no penalty for choosing an alternate physically valid solution",
-          "no universal solver or object-pair matrix"
-        ]
-      },
-      {
-        "train_id": "zork-cross-system-utility-mesh-1251",
-        "release": 1251,
-        "title": "Cross-System Utility Mesh",
-        "status": "next-2",
-        "outcome": "Make established physical objects behave like reusable tools across multiple authored contexts instead of puzzle-specific keys.",
-        "scope": [
-          "rope",
-          "containers",
-          "light",
-          "sound protection",
-          "weight",
-          "breakable surfaces",
-          "water interaction"
-        ],
-        "acceptance": [
-          "selected objects have more than one meaningful authored use",
-          "existing object identity and custody remain authoritative",
-          "new uses compose with Release 1246-1249 physicality without parallel subsystems"
-        ],
-        "boundaries": [
-          "no universal crafting system",
-          "no arbitrary all-object combinations",
-          "no duplicated tool identities"
-        ]
-      },
+    "current": [
       {
         "train_id": "zork-earned-sequence-breaks-route-mastery-1252",
         "release": 1252,
         "title": "Earned Sequence Breaks & Route Mastery",
-        "status": "next-3",
-        "outcome": "Allow physically earned shortcuts and selected soft sequence breaks, then remember that mastery so repeated travel becomes faster rather than repetitive.",
+        "status": "current",
+        "branch": "agent/earned-sequence-breaks-route-mastery-20260812",
+        "outcome": "Let knowledgeable players prepare and reuse real geography so selected routes become more useful without replacing canonical traversal or inventing magical shortcuts.",
+        "showcase": "Unify Release 1236 Great Canyon rope rescue with Release 1251 cargo-line semantics, then preserve White Cliffs boat dimensions through carried containers.",
         "acceptance": [
-          "canonical routes remain valid",
-          "every shortcut follows visible world state or prior preparation",
-          "route bypasses are checked for completion safety and object custody",
-          "once a nuisance is mastered, repeated crossings do not demand the same puzzle labor"
+          "SECURE ROPE and natural TIE or FASTEN ROPE TO CANYON RIM share the same existing canyon-rim rope authority",
+          "a cinched brown sack can be lowered from Canyon View to Rocky Ledge and hauled back without teleportation",
+          "the player can follow the authored climb, free cargo on Rocky Ledge, and later recover the still-secured rope",
+          "an inflated magic boat remains too wide for White Cliffs even when nested in a carried container",
+          "FOLD BOAT and COLLAPSE BOAT reach the canonical deflation action without bypassing its physical requirements",
+          "canonical canyon, rainbow, White Cliffs, boat, and river routes remain valid"
         ],
         "boundaries": [
-          "no teleport menu",
+          "no teleport menu or speedrun debug verbs",
           "no automatic puzzle completion",
-          "no speedrun-only debug verbs"
+          "no rainbow rope anchor",
+          "no universal route solver, crafting grid, or physics engine"
         ]
-      },
+      }
+    ],
+    "next": [
       {
         "train_id": "zork-dam-survival-prepared-rescue-1253",
         "release": 1253,
         "title": "Dam Survival & Prepared Rescue",
-        "status": "next-4",
+        "status": "next-1",
         "outcome": "Deepen Flood Control Dam #3 as a physical hazard where water state, encumbrance, rope, ladders, debris, and prior preparation can change survival outcomes.",
         "boundaries": [
           "reuse canonical dam state",
@@ -102,7 +62,7 @@
         "train_id": "zork-troll-disarm-stolen-weapons-1254",
         "release": 1254,
         "title": "Troll Disarm & Stolen Weapons",
-        "status": "next-5",
+        "status": "next-2",
         "outcome": "Let the canonical troll seize or retain real weapons under authored combat conditions, creating recoverable consequences, bargaining, taunts, and the possibility of facing your own lost weapon.",
         "boundaries": [
           "canonical combat remains authority",
@@ -114,7 +74,7 @@
         "train_id": "zork-thief-retaliation-sabotage-1255",
         "release": 1255,
         "title": "Thief Retaliation & Sabotage",
-        "status": "next-6",
+        "status": "next-3",
         "outcome": "Give the thief authored retaliation, selective theft, sabotage, warnings, and earned hostility based on visible treatment and real object history.",
         "boundaries": [
           "preserve canonical roaming and treasure behavior",
@@ -126,7 +86,7 @@
         "train_id": "zork-grue-ecology-colony-reveal-1256",
         "release": 1256,
         "title": "Grue Ecology & Colony Reveal",
-        "status": "next-7",
+        "status": "next-4",
         "outcome": "Turn selected darkness experiments into discoverable grue ecology, including lure behavior, stronger-light experiments, a colony reveal, and authored survival or catastrophic outcomes.",
         "boundaries": [
           "not every dark room becomes a hive",
@@ -138,7 +98,7 @@
         "train_id": "zork-fire-smoke-structural-consequences-1257",
         "release": 1257,
         "title": "Fire, Smoke & Structural Consequences",
-        "status": "next-8",
+        "status": "next-5",
         "outcome": "Extend material physicality into a small set of authored fire, smoke, collapse, and machinery consequences with fair warnings, escape routes, and persistent world state.",
         "boundaries": [
           "no generalized chemistry or gas simulator",
@@ -150,7 +110,7 @@
         "train_id": "zork-mara-reciprocal-rescue-shared-danger-1258",
         "release": 1258,
         "title": "Mara Reciprocal Rescue & Shared Danger",
-        "status": "next-9",
+        "status": "next-6",
         "outcome": "Advance Mara through shared physical danger, reciprocal rescue, injuries/recovery, promises, temporary custody, separation/reunion, and remembered choices rather than an approval economy.",
         "boundaries": [
           "no dating-sim meter",
@@ -199,107 +159,44 @@
         "title": "House of Records",
         "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"
       },
-      {
-        "release": 1231,
-        "title": "Corpus-Coupled Causal Warning",
-        "pr": 34
-      },
-      {
-        "release": 1232,
-        "title": "Parser Comprehension and Deep Affordances",
-        "pr": 35
-      },
-      {
-        "release": 1233,
-        "title": "Museum Intake and First Gallery",
-        "pr": 36
-      },
-      {
-        "release": 1234,
-        "title": "Mara Arrival and Evidence Memory",
-        "pr": 37
-      },
-      {
-        "release": 1235,
-        "title": "Cuisine, Hunger, and Stamina",
-        "pr": 38
-      },
-      {
-        "release": 1236,
-        "title": "Great Canyon Living Consequences",
-        "pr": 39
-      },
-      {
-        "release": 1237,
-        "title": "Zork Plus Veteran Survey Expedition",
-        "pr": 40
-      },
-      {
-        "release": 1238,
-        "title": "Cellar Expedition Recovery Locker",
-        "pr": 41
-      },
-      {
-        "release": 1239,
-        "title": "Museum Ecology and Dam Fishing",
-        "pr": 42
-      },
-      {
-        "release": 1240,
-        "title": "Museum Songbird Correspondence",
-        "pr": 43
-      },
-      {
-        "release": 1241,
-        "title": "Museum Troll Provenance",
-        "pr": 44
-      },
-      {
-        "release": 1242,
-        "title": "Natural-Play Regression Repair",
-        "pr": 45
-      },
-      {
-        "release": 1243,
-        "title": "Mara Companion Expedition Foundation",
-        "pr": 46
-      },
-      {
-        "title": "Narrative Perspective Experiments",
-        "pr": 47,
-        "type": "documentation lane"
-      },
-      {
-        "release": 1244,
-        "title": "Mara House Company",
-        "pr": 48
-      },
-      {
-        "release": 1245,
-        "title": "Creative Natural Play",
-        "pr": 49
-      },
-      {
-        "release": 1246,
-        "title": "Environmental Destruction",
-        "pr": 50
-      },
-      {
-        "release": 1247,
-        "title": "Narrative Physicality",
-        "pr": 51
-      },
-      {
-        "release": 1248,
-        "title": "Forest Consequence Physicality",
-        "pr": 52
-      },
+      {"release": 1231, "title": "Corpus-Coupled Causal Warning", "pr": 34},
+      {"release": 1232, "title": "Parser Comprehension and Deep Affordances", "pr": 35},
+      {"release": 1233, "title": "Museum Intake and First Gallery", "pr": 36},
+      {"release": 1234, "title": "Mara Arrival and Evidence Memory", "pr": 37},
+      {"release": 1235, "title": "Cuisine, Hunger, and Stamina", "pr": 38},
+      {"release": 1236, "title": "Great Canyon Living Consequences", "pr": 39},
+      {"release": 1237, "title": "Zork Plus Veteran Survey Expedition", "pr": 40},
+      {"release": 1238, "title": "Cellar Expedition Recovery Locker", "pr": 41},
+      {"release": 1239, "title": "Museum Ecology and Dam Fishing", "pr": 42},
+      {"release": 1240, "title": "Museum Songbird Correspondence", "pr": 43},
+      {"release": 1241, "title": "Museum Troll Provenance", "pr": 44},
+      {"release": 1242, "title": "Natural-Play Regression Repair", "pr": 45},
+      {"release": 1243, "title": "Mara Companion Expedition Foundation", "pr": 46},
+      {"title": "Narrative Perspective Experiments", "pr": 47, "type": "documentation lane"},
+      {"release": 1244, "title": "Mara House Company", "pr": 48},
+      {"release": 1245, "title": "Creative Natural Play", "pr": 49},
+      {"release": 1246, "title": "Environmental Destruction", "pr": 50},
+      {"release": 1247, "title": "Narrative Physicality", "pr": 51},
+      {"release": 1248, "title": "Forest Consequence Physicality", "pr": 52},
       {
         "release": 1249,
         "title": "Underground Sensory Physicality",
         "pr": 53,
         "merge_commit": "bacb1a358f0ee126ee6ae629b589c3d3a0269ee9",
         "artifact_sha256": "b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6"
+      },
+      {
+        "release": 1250,
+        "title": "Player Ingenuity / Systemic Workarounds",
+        "pr": 55,
+        "merge_commit": "cd6a918795196b6918a2a5c5600b56c1c0d6e20b"
+      },
+      {
+        "release": 1251,
+        "title": "Cross-System Utility Mesh",
+        "pr": 56,
+        "merge_commit": "79b87248d567962fff2181e4996d1cf424cdcac0",
+        "artifact_sha256": "f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7"
       }
     ]
   }

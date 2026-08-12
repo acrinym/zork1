@@ -1,0 +1,52 @@
+{
+  "id": "route-mastery-001",
+  "description": "Integrate the existing Great Canyon rim with the Release 1251 rope/cargo mesh and add reversible Rocky Ledge freight.",
+  "path": "material_consequences.zil",
+  "replacements": [
+    {
+      "old": "                <EQUAL? ,HERE ,DOME-ROOM>\n                <EQUAL? <LOC ,ROPE> ,DOME-ROOM>>\n           <RTRUE>)>\n    <RFALSE>>\n",
+      "new": "                <EQUAL? ,HERE ,DOME-ROOM>\n                <EQUAL? <LOC ,ROPE> ,DOME-ROOM>>\n           <RTRUE>)\n          (<AND <EQUAL? ,HERE ,CANYON-VIEW>\n                <IN? ,ROPE ,LIVING-CANYON-EDGE>>\n           <RTRUE>)>\n    <RFALSE>>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "          (<EQUAL? ,HERE ,DOME-ROOM>\n           <COND (,DOME-FLAG ,TORCH-ROOM)\n                 (T <RFALSE>)>)\n          (T <RFALSE>)>>\n",
+      "new": "          (<EQUAL? ,HERE ,DOME-ROOM>\n           <COND (,DOME-FLAG ,TORCH-ROOM)\n                 (T <RFALSE>)>)\n          (<EQUAL? ,HERE ,CANYON-VIEW>\n           <COND (<IN? ,ROPE ,LIVING-CANYON-EDGE> ,CLIFF-MIDDLE)\n                 (T <RFALSE>)>)\n          (T <RFALSE>)>>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "                  <TELL \"You feed the brown sack through the open grating and lower it into the chamber below instead of simply dropping it into darkness.\" CR>)\n                 (<EQUAL? ,HERE ,DOME-ROOM>\n                  <TELL \"With the other end secured at the railing, you lower the brown sack over the dome's edge until it reaches the Torch Room below.\" CR>)>\n           <RTRUE>)>\n    <RTRUE>>\n",
+      "new": "                  <TELL \"You feed the brown sack through the open grating and lower it into the chamber below instead of simply dropping it into darkness.\" CR>)\n                 (<EQUAL? ,HERE ,DOME-ROOM>\n                  <TELL \"With the other end secured at the railing, you lower the brown sack over the dome's edge until it reaches the Torch Room below.\" CR>)\n                 (<EQUAL? ,HERE ,CANYON-VIEW>\n                  <TELL \"With the rope worked around the canyon rim, you ease the brown sack over the west wall. It bumps down the sheer face and settles on the Rocky Ledge halfway below, turning the authored climb into a prepared freight route.\" CR>)>\n           <RTRUE>)>\n    <RTRUE>>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "                  <TELL \"Without the railing knot there is no secure upper end from which to haul.\" CR>\n                  <RTRUE>)>)\n          (T\n           <TELL \"The rope leads away, but not along a vertical freight route you can work from here.\" CR>\n",
+      "new": "                  <TELL \"Without the railing knot there is no secure upper end from which to haul.\" CR>\n                  <RTRUE>)>)\n          (<EQUAL? ,HERE ,CANYON-VIEW>\n           <COND (<IN? ,ROPE ,LIVING-CANYON-EDGE> <SET SOURCE ,CLIFF-MIDDLE>)\n                 (T\n                  <TELL \"Without the prepared canyon-rim knot there is no secure upper end from which to haul.\" CR>\n                  <RTRUE>)>)\n          (T\n           <TELL \"The rope leads away, but not along a vertical freight route you can work from here.\" CR>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "           <TELL \"The rope tightens, the brown sack rises through the open grating, and the forest floor becomes a freight destination instead of a one-way exit.\" CR>)\n          (<EQUAL? ,HERE ,DOME-ROOM>\n           <TELL \"Braced by the railing knot, you haul the brown sack back up from the Torch Room and over the dome's edge.\" CR>)>\n    <RTRUE>>\n\n",
+      "new": "           <TELL \"The rope tightens, the brown sack rises through the open grating, and the forest floor becomes a freight destination instead of a one-way exit.\" CR>)\n          (<EQUAL? ,HERE ,DOME-ROOM>\n           <TELL \"Braced by the railing knot, you haul the brown sack back up from the Torch Room and over the dome's edge.\" CR>)\n          (<EQUAL? ,HERE ,CANYON-VIEW>\n           <TELL \"Braced against the prepared canyon rim, you haul until the brown sack scrapes up from the Rocky Ledge and comes back over the west wall within reach.\" CR>)>\n    <RTRUE>>\n\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t<COND (<NOT <EQUAL? ,PRSO ,ROPE>> <RFALSE>)\n\t      (<EQUAL? ,PRSI ,RAILING> <RFALSE>)\n\t      (<NOT <EQUAL? ,PRSI ,LADDER ,WOODEN-DOOR ,SANDWICH-BAG ,TREE>>\n\t       <RFALSE>)\n\t      (<NOT <SHADOW-HELD? ,ROPE>>\n\t       <TELL \"You would first need to be holding the rope.\" CR>)\n\t      (,MATERIAL-ROPE-ANCHOR\n\t       <TELL \"One end of the rope is already committed to the \" D ,MATERIAL-ROPE-ANCHOR \". Untie it before inventing a second geometry.\" CR>)\n",
+      "new": "\t<COND (<NOT <EQUAL? ,PRSO ,ROPE>> <RFALSE>)\n\t      (<EQUAL? ,PRSI ,RAILING> <RFALSE>)\n\t      (<NOT <EQUAL? ,PRSI ,LADDER ,WOODEN-DOOR ,SANDWICH-BAG ,TREE ,LIVING-CANYON-EDGE>>\n\t       <RFALSE>)\n\t      (<NOT <SHADOW-HELD? ,ROPE>>\n\t       <TELL \"You would first need to be holding the rope.\" CR>)\n\t      (<AND <EQUAL? ,PRSI ,LIVING-CANYON-EDGE>\n\t            ,MATERIAL-ROPE-ANCHOR\n\t            <NOT <EQUAL? ,MATERIAL-ROPE-ANCHOR ,SANDWICH-BAG>>>\n\t       <TELL \"One end of the rope is already committed to the \" D ,MATERIAL-ROPE-ANCHOR \". Untie it before trying to prepare the canyon rim.\" CR>)\n\t      (<EQUAL? ,PRSI ,LIVING-CANYON-EDGE>\n\t       <V-LIVING-SECURE>)\n\t      (,MATERIAL-ROPE-ANCHOR\n\t       <TELL \"One end of the rope is already committed to the \" D ,MATERIAL-ROPE-ANCHOR \". Untie it before inventing a second geometry.\" CR>)\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\n<ROUTINE MATERIAL-UNTIE-ROPE ()\n\t<COND (<NOT ,MATERIAL-ROPE-ANCHOR> <RFALSE>)\n\t      (<NOT <OR <EQUAL? ,PRSO ,ROPE>\n\t                <EQUAL? ,PRSO ,MATERIAL-ROPE-ANCHOR>>>\n",
+      "new": "\n<ROUTINE MATERIAL-UNTIE-ROPE ()\n\t<COND (<AND <EQUAL? ,HERE ,CANYON-VIEW>\n\t            <IN? ,ROPE ,LIVING-CANYON-EDGE>\n\t            <EQUAL? ,PRSO ,ROPE>\n\t            <OR <EQUAL? ,PRSI ,LIVING-CANYON-EDGE>\n\t                <AND <NOT ,PRSI> <NOT <UTILITY-MESH-CARGO-TIED?>>>>>\n\t       <MOVE ,ROPE ,WINNER>\n\t       <COND (<UTILITY-MESH-CARGO-TIED?>\n\t              <TELL \"You free the upper knot from the canyon rim and recover the rope coil. The far end remains cinched to the brown sack.\" CR>)\n\t             (T\n\t              <TELL \"You free the rope from the canyon rim and recover the coil.\" CR>)>\n\t       <RTRUE>)\n\t      (<AND <EQUAL? ,HERE ,CANYON-VIEW>\n\t            <IN? ,ROPE ,LIVING-CANYON-EDGE>\n\t            <UTILITY-MESH-CARGO-TIED?>\n\t            <EQUAL? ,PRSO ,ROPE>\n\t            <NOT ,PRSI>>\n\t       <TELL \"Both ends are committed: the rope is cinched to the brown sack and secured at the canyon rim. Specify which knot you mean to undo.\" CR>\n\t       <RTRUE>)\n\t      (<NOT ,MATERIAL-ROPE-ANCHOR> <RFALSE>)\n\t      (<NOT <OR <EQUAL? ,PRSO ,ROPE>\n\t                <EQUAL? ,PRSO ,MATERIAL-ROPE-ANCHOR>>>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t       <TELL \"The knot is around the brown sack at the far end of the line. You cannot untie that knot from here.\" CR>\n\t       <RTRUE>)>\n\t<TELL \"You undo the knot around the \" D ,MATERIAL-ROPE-ANCHOR \". The rope is fully available again.\" CR>\n\t<SETG MATERIAL-ROPE-ANCHOR <>>\n",
+      "new": "\t       <TELL \"The knot is around the brown sack at the far end of the line. You cannot untie that knot from here.\" CR>\n\t       <RTRUE>)>\n\t<COND (<AND <EQUAL? ,MATERIAL-ROPE-ANCHOR ,SANDWICH-BAG>\n\t            <IN? ,ROPE ,LIVING-CANYON-EDGE>>\n\t       <TELL \"You undo the knot around the brown sack. The cargo is free, but the rope remains physically secured at the canyon rim above.\" CR>\n\t       <SETG MATERIAL-ROPE-ANCHOR <>>\n\t       <SETG MATERIAL-SACK-CINCHED <>>\n\t       <RTRUE>)>\n\t<TELL \"You undo the knot around the \" D ,MATERIAL-ROPE-ANCHOR \". The rope is fully available again.\" CR>\n\t<SETG MATERIAL-ROPE-ANCHOR <>>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t       <COND (<AND <UTILITY-MESH-CARGO-TIED?> ,DOME-FLAG>\n\t              <TELL \"The rope is doing two honest jobs at once: one end is cinched to the brown sack and the other is secured to the Dome Room railing.\" CR>)\n\t             (T\n\t              <TELL \"The rope is sound. One end is tied to the \" D ,MATERIAL-ROPE-ANCHOR \", while the remaining coil is still under your control.\" CR>)>\n",
+      "new": "\t       <COND (<AND <UTILITY-MESH-CARGO-TIED?> ,DOME-FLAG>\n\t              <TELL \"The rope is doing two honest jobs at once: one end is cinched to the brown sack and the other is secured to the Dome Room railing.\" CR>)\n\t             (<AND <UTILITY-MESH-CARGO-TIED?> <IN? ,ROPE ,LIVING-CANYON-EDGE>>\n\t              <TELL \"The rope is doing two honest jobs at once: one end is cinched to the brown sack and the other is physically secured at the Great Canyon rim.\" CR>)\n\t             (T\n\t              <TELL \"The rope is sound. One end is tied to the \" D ,MATERIAL-ROPE-ANCHOR \", while the remaining coil is still under your control.\" CR>)>\n",
+      "expected_count": 1
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "route-mastery-003",
+  "description": "Recognize FOLD and COLLAPSE as natural player language for the canonical DEFLATE action.",
+  "path": "gsyntax.zil",
+  "replacements": [
+    {
+      "old": "\n<SYNTAX DEFLATE OBJECT = V-DEFLATE>\n\n<SYNTAX DESTROY OBJECT (ON-GROUND IN-ROOM HELD CARRIED)\n",
+      "new": "\n<SYNTAX DEFLATE OBJECT = V-DEFLATE>\n<SYNONYM DEFLATE FOLD COLLAPSE>\n\n<SYNTAX DESTROY OBJECT (ON-GROUND IN-ROOM HELD CARRIED)\n",
+      "expected_count": 1
+    }
+  ]
+}

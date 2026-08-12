@@ -1,9 +1,9 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** August 11, 2026  
+**Updated:** August 12, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current production frontier:** Release `1249` — Underground Sensory Physicality  
-**`master` head when updated:** `bacb1a358f0ee126ee6ae629b589c3d3a0269ee9`
+**Current merged production frontier:** Release `1251` — Cross-System Utility Mesh  
+**`master` head when Release 1252 began:** `147236fcc61ac98b993ff1905c6e07c6bfbb6079`
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -21,54 +21,47 @@ This board is the human operating surface for the active Zork product queue. The
 
 ## CURRENT
 
-None.
+### Release 1252 — Earned Sequence Breaks & Route Mastery
 
-Release `1249` is merged. The repository is between product trains.
+**Active branch:** `agent/earned-sequence-breaks-route-mastery-20260812`
+
+**Player outcome:** a knowledgeable player can prepare real geography and reuse real equipment so selected routes become meaningfully easier without replacing canonical traversal or creating magic shortcuts.
+
+Current showcase:
+
+- the Release 1236 Great Canyon rim anchor and Release 1251 rope/cargo mesh become one physical truth;
+- `SECURE ROPE` and natural `TIE/FASTEN ROPE TO CANYON RIM` operate the same real rope authority;
+- a cinched brown sack can be lowered from Canyon View to Rocky Ledge, hauled back, or recovered after following the authored climb;
+- the rope remains physically committed to the canyon rim until that knot is actually freed;
+- White Cliffs width checks see an inflated magic boat even when it is nested in a carried container;
+- `FOLD BOAT` and `COLLAPSE BOAT` use the canonical deflation action and preserve its on-ground requirement;
+- the rainbow remains stateful traversal geometry, not a rope anchor, and its lethal unsupported state is unchanged.
+
+No teleport verbs, shortcut menu, generic route solver, object-pair recipe matrix, or universal physics engine.
 
 ## NEXT — ordered
 
-### 1. Release 1250 — Player Ingenuity / Systemic Workarounds
-
-**Player outcome:** intentionally exploit established mechanics in physically credible ways without the game treating ingenuity as cheating.
-
-**First showcase:** Loud Room hearing protection.
-
-- canonical `ECHO` remains valid;
-- reusable earmuffs or a small plausible improvised-earplug route can suppress the worst acoustic interference;
-- no pure-RNG lockout;
-- no huge material-fetch chain;
-- hearing protection remains useful on future crossings and impairs listening where appropriate;
-- at least two additional authored workarounds reuse existing world authorities.
-
-### 2. Release 1251 — Cross-System Utility Mesh
-
-Make selected existing objects operate as real reusable tools across multiple contexts: rope, containers, light, hearing protection/sound, weight, breakable surfaces, and selected water interactions.
-
-### 3. Release 1252 — Earned Sequence Breaks & Route Mastery
-
-Allow selected physically earned shortcuts and soft sequence breaks. Preserve canonical routes and completion safety. Once a recurring nuisance is genuinely mastered, repeated travel should stay easier.
-
-### 4. Release 1253 — Dam Survival & Prepared Rescue
+### 1. Release 1253 — Dam Survival & Prepared Rescue
 
 Deepen Flood Control Dam #3 with authored water-state survival, encumbrance, rope/ladder preparation, buoyancy opportunities, object loss, and recovery.
 
-### 5. Release 1254 — Troll Disarm & Stolen Weapons
+### 2. Release 1254 — Troll Disarm & Stolen Weapons
 
 Let the canonical troll seize or retain real weapons under authored conditions, creating persistent custody, taunts, bargaining, recovery, and consequences for losing your own weapon.
 
-### 6. Release 1255 — Thief Retaliation & Sabotage
+### 3. Release 1255 — Thief Retaliation & Sabotage
 
 Add visible, causal retaliation through selective theft, sabotage, warnings, earned ambushes, avoidance, repair, and appeasement.
 
-### 7. Release 1256 — Grue Ecology & Colony Reveal
+### 4. Release 1256 — Grue Ecology & Colony Reveal
 
 Support selected darkness experiments and authored grue ecology, including stronger-light consequences and a signature colony reveal without turning grues into ordinary combat mobs.
 
-### 8. Release 1257 — Fire, Smoke & Structural Consequences
+### 5. Release 1257 — Fire, Smoke & Structural Consequences
 
 Extend physicality into a deliberately small set of authored fire, smoke, collapse, and machinery consequences.
 
-### 9. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+### 6. Release 1258 — Mara Reciprocal Rescue & Shared Danger
 
 Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions without an approval meter.
 
@@ -110,15 +103,19 @@ Advance Mara through reciprocal rescue, injuries/recovery, promises, exact tempo
 | 1247 | Narrative Physicality | #51 |
 | 1248 | Forest Consequence Physicality | #52 |
 | 1249 | Underground Sensory Physicality | #53 |
+| 1250 | Player Ingenuity / Systemic Workarounds | #55 |
+| 1251 | Cross-System Utility Mesh | #56 |
 
-Release `1249` merged as `bacb1a358f0ee126ee6ae629b589c3d3a0269ee9`.
+Release `1250` merged as `cd6a918795196b6918a2a5c5600b56c1c0d6e20b`.
 
-Final Release 1249 production artifact SHA-256:
+Release `1251` merged as `79b87248d567962fff2181e4996d1cf424cdcac0`.
 
-`b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6`
+Final Release 1251 production artifact SHA-256:
+
+`f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7`
+
+The subsequent planning refresh merged through PR #54 and left `master` at `147236fcc61ac98b993ff1905c6e07c6bfbb6079` before Release 1252 began.
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine, Loud Room example, and expanded acceptance direction.
-
-The next implementation train should start at **Release 1250 — Player Ingenuity / Systemic Workarounds** unless the live repository reveals a concrete dependency that must precede it.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and the post-1249 product arc. Release 1252 applies that doctrine to the Great Canyon / White Cliffs route-mastery seam while preserving the future train order above.

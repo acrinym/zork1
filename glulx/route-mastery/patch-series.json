@@ -1,0 +1,32 @@
+{
+  "edition": "Unofficial Zork Earned Sequence Breaks and Route Mastery Glulx",
+  "release": 1252,
+  "serial": "260812",
+  "base_manifest": "../cross-system-utility/patch-series.json",
+  "base_release": 1251,
+  "base_artifact_sha256": "f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7",
+  "base_source_sha256": {
+    "production": "48a0e7990555074b5f9ef8c53e050ab11bab1de1f539c1b2a524027c876d331b",
+    "dev": "9e7f3a8a5e0e5d2b074274b5a02fb06389b63135d34f897c5a0a0dfd6b69c7ca"
+  },
+  "patches": [
+    "patches/001-canyon-rope-freight.json",
+    "patches/002-white-cliffs-container-geometry.json",
+    "patches/003-fold-boat-language.json",
+    "patches/004-release-1252.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "gsyntax.zil",
+    "material_consequences.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-earned-route-mastery.ulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 423168,
+    "checksum_hex": "0x46891bca",
+    "sha256": "b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6"
+  }
+}

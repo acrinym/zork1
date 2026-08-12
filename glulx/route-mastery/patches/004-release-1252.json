@@ -1,0 +1,22 @@
+{
+  "id": "route-mastery-004",
+  "description": "Advance the staged product identity to Release 1252 Earned Sequence Breaks & Route Mastery.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "\"ZORK1 CROSS-SYSTEM UTILITY MESH GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local cross-system utility mesh. Release 1251 retains every qualified\n  Release 1250 behavior while letting existing object state and authored geography\n  compose into useful cargo-line affordances: rope, cinched sack, chimney, tree,\n  open forest grating, and canonical Dome railing without a recipe matrix or simulator.\"\n\n<VERSION ZIP>\n",
+      "new": "\"ZORK1 EARNED SEQUENCE BREAKS AND ROUTE MASTERY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local route mastery. Release 1252 retains the qualified Release 1251\n  utility mesh while letting established canyon anchoring, cargo state, narrow\n  geography, and boat dimensions compose into earned traversal advantages without\n  teleport verbs, recipe matrices, or a universal physics engine.\"\n\n<VERSION ZIP>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "<SETG ZORK-NUMBER 1>\n\n<CONSTANT RELEASEID 1251>\n\n<SET REDEFINE T>\n",
+      "new": "<SETG ZORK-NUMBER 1>\n\n<CONSTANT RELEASEID 1252>\n\n<SET REDEFINE T>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "    (T     <CONSTANT WORD-SIZE 2>)>\n\n<PRINC \"Cross-System Utility Mesh Glulx ZORK I: The Great Underground Empire\n \">\n\n",
+      "new": "    (T     <CONSTANT WORD-SIZE 2>)>\n\n<PRINC \"Earned Sequence Breaks and Route Mastery Glulx ZORK I: The Great Underground Empire\n \">\n\n",
+      "expected_count": 1
+    }
+  ]
+}
