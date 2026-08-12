@@ -31,7 +31,7 @@
     {
       "expected_count": 1,
       "old": "\t  (<AND <VERB? OPEN CLOSE>\n\t\t<EQUAL? ,HERE ,LIVING-ROOM>>\n\t   <OPEN-CLOSE ,PRSO",
-      "new": "\t  (<AND <VERB? CLOSE>\n\t\t<EQUAL? ,HERE ,LIVING-ROOM>\n\t\t<PLAYER-INGENUITY-TRAP-WEDGED?>>\n\t   <TELL \"The trap door starts down, meets the field stone, and stops with a hard wooden knock. The wedge is doing exactly the simple job you gave it.\" CR>)\n\t  (<AND <VERB? OPEN CLOSE>\n\t\t<EQUAL? ,HERE ,LIVING-ROOM>>\n\t   <OPEN-CLOSE ,PRSO"
+      "new": "\t  (<AND <VERB? CLOSE>\n\t\t<EQUAL? ,HERE ,LIVING-ROOM>\n\t\t<EQUAL? ,PRSO ,TRAP-DOOR>\n\t\t<PLAYER-INGENUITY-TRAP-WEDGED?>>\n\t   <TELL \"The trap door starts down, meets the field stone, and stops with a hard wooden knock. The wedge is doing exactly the simple job you gave it.\" CR>)\n\t  (<AND <VERB? OPEN CLOSE>\n\t\t<EQUAL? ,HERE ,LIVING-ROOM>>\n\t   <OPEN-CLOSE ,PRSO"
     },
     {
       "expected_count": 1,
