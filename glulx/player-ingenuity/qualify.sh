@@ -69,7 +69,7 @@ assert '(ACTION PLAYER-INGENUITY-FIELD-STONE-F)' in material
 assert '<PLAYER-INGENUITY-WEDGE-TRAP-DOOR>' in verbs
 assert 'You lift the hearing protectors away from your ears.' in verbs
 assert '<ROUTINE PLAYER-INGENUITY-LOUD-ECHO-SOLVE ()' in actions
-assert '<NOT <PLAYER-INGENUITY-EARMUFFS-WORN?>>' in actions
+assert 'The battered hearing protectors take the murderous edge off it' in actions
 assert 'strikes the field-stone wedge' in actions
 assert 'Bundling the smaller gear inside the brown sack' in actions
 assert '<CONSTANT RELEASEID 1250>' in zork
@@ -115,23 +115,22 @@ south
 east
 open window
 enter
+take sack
+west
+take lantern
+turn on lantern
+east
 up
 take earmuffs
 wear earmuffs
 down
-take sack
-take lunch from sack
-drop lunch
-take garlic from sack
-drop garlic
-west
-take lantern
 remove earmuffs
+open sack
 put earmuffs in sack
+west
 move rug
 open trap door
 put rock under trap door
-turn on lantern
 down
 up
 down
