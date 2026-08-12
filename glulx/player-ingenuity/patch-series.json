@@ -14,8 +14,8 @@
     "format": "Glulx",
     "version_hex": "0x00030103",
     "size_bytes": 418304,
-    "checksum_hex": "0x7d7efa85",
-    "sha256": "c71212ef3334808262406b0f01ecb898a1ae019df0fb0669a5dddafa6cdc57fb",
+    "checksum_hex": "0xf323826c",
+    "sha256": "d6c2a7b4512d90d388c763943d09e89f5df4b4dc033e96c5e6a30e1de9d2f6d3",
     "locked": true
   },
   "patches": [
