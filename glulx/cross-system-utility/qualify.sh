@@ -64,8 +64,7 @@ assert '<ROUTINE UTILITY-MESH-HAUL-SACK' in material
 assert '<ROUTINE UTILITY-MESH-CARGO-SPAN-BLOCK? ()' in material
 assert '<EQUAL? ,PRSI ,RAILING> <RFALSE>' in material
 assert '<AND <UTILITY-MESH-CARGO-TIED?> ,DOME-FLAG>' in material
-assert '<EQUAL? ,HERE ,KITCHEN>' in material
-assert '<EQUAL? <LOC ,SANDWICH-BAG> ,STUDIO>' in material
+assert 'The rope is tied to the sack below, not anchored above.' in material
 assert 'The closed grating leaves no opening for the sack.' in material
 assert 'Hand over hand, you haul the brown sack up the chimney.' in material
 assert 'ten feet below' in material
@@ -151,6 +150,7 @@ up
 pull rope
 lower sack
 down
+pull rope
 untie sack from rope
 quit
 yes
@@ -163,6 +163,7 @@ grep -F 'You haul steadily on the rope until the brown sack rises from the path'
 grep -F 'lower it to the forest path ten feet below' "$TREE"
 grep -F 'Hand over hand, you haul the brown sack up the chimney.' "$TREE"
 grep -F 'You pay out rope through the chimney.' "$TREE"
+grep -F 'The rope is tied to the sack below, not anchored above. It gives you a cargo line, not a safe way down this one-way chimney.' "$TREE"
 grep -F 'without ever becoming another package on your body.' "$TREE"
 sed -n '/You pay out rope through the chimney/,$p' "$TREE" | grep -F 'You undo the knot around the brown sack. The rope is fully available again.'
 
