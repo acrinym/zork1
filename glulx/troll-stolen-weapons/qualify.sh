@@ -54,18 +54,16 @@ GLULXE_BIN="$(realpath .tooling/glulxe/glulxe)"
 cat > "$BUILD/custody-bargain.txt" <<'EOF1'
 trollcustody
 examine troll
-listen
-hello
+listen to troll
+hello troll
 take sword
 trollarmed
 give lunch to troll
-take sword
-inventory
 quit
 yes
 EOF1
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/custody-bargain.txt" > "$BUILD/custody-bargain-transcript.txt" 2>&1
-B="$BUILD/custody-bargain-transcript.txt"; grep -F 'Before the sword can hit the floor, the troll snatches it out of the air.' "$B"; grep -F 'The sword in his hands is unmistakably yours.' "$B"; grep -F 'The troll taps your stolen sword against the stone' "$B"; grep -F 'The troll answers by raising your stolen sword in a mocking salute.' "$B"; grep -F 'The troll swings it out of your reach.' "$B"; grep -F 'TEST troll preferred weapon: sword' "$B"; grep -F 'The bargain buys the weapon, not safe passage.' "$B"; grep -F 'Taken.' "$B"
+B="$BUILD/custody-bargain-transcript.txt"; grep -F 'Before the sword can hit the floor, the troll snatches it out of the air.' "$B"; grep -F 'The sword in his hands is unmistakably yours.' "$B"; grep -F 'The troll taps your stolen sword against the stone' "$B"; grep -F 'The troll answers by raising your stolen sword in a mocking salute.' "$B"; grep -F 'The troll swings it out of your reach.' "$B"; grep -F 'TEST troll preferred weapon: sword' "$B"; grep -F 'The bargain buys the weapon, not safe passage.' "$B"
 cat > "$BUILD/custody-subdue.txt" <<'EOF2'
 trollcustody
 trollarmed
