@@ -106,6 +106,10 @@ east
 open window
 enter
 take sack
+west
+take lamp
+turn on lamp
+east
 up
 take rope
 down
