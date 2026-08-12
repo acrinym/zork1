@@ -1,0 +1,17 @@
+{
+  "id": "002-fire-hook",
+  "description": "Advance authored fire once per turn and intercept timber fire actions before generic destruction.",
+  "path": "shadow_logic.zil",
+  "replacements": [
+    {
+      "old": "\t<MATERIAL-ADVANCE>\n",
+      "new": "\t<MATERIAL-ADVANCE>\n\t<FIRE-STRUCTURAL-ADVANCE>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)\n\t      (<MATERIAL-NEST-HOOK> <RTRUE>)\n\t      (<MATERIAL-DESTRUCTION-HOOK> <RTRUE>)\n",
+      "new": "\t      (<MATERIAL-ROPE-HOOK> <RTRUE>)\n\t      (<FIRE-STRUCTURAL-HOOK> <RTRUE>)\n\t      (<MATERIAL-NEST-HOOK> <RTRUE>)\n\t      (<MATERIAL-DESTRUCTION-HOOK> <RTRUE>)\n",
+      "expected_count": 1
+    }
+  ]
+}

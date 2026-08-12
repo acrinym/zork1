@@ -1,0 +1,27 @@
+{
+  "id": "004-release-1257",
+  "description": "Advance to Release 1257 and insert the authored fire authority after material consequences.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "\"ZORK1 GRUE ECOLOGY AND COLONY REVEAL GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Grue Ecology & Colony Reveal. Release 1256 keeps canonical\n  darkness and grue lethality authoritative while turning one optional mine dead\n  end into an authored ecology experiment: weak light gives plural evidence, the\n  permanent ivory torch forces a signature colony retreat, and no grue becomes an\n  ordinary visible combat monster.\"\n",
+      "new": "\"ZORK1 FIRE SMOKE AND STRUCTURAL CONSEQUENCES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Fire, Smoke & Structural Consequences. Release 1257 composes\n  canonical BURN, real flame sources, real bottled water, mine airflow, and compact\n  physical state into one authored Timber Room fire. Smoldering can be stopped,\n  open flame produces route-relevant smoke, ignored fire drops an old brace, and\n  the permanent aftermath never widens or bricks the canonical coal-mine puzzle.\"\n",
+      "expected_count": 1
+    },
+    {
+      "old": "<CONSTANT RELEASEID 1256>",
+      "new": "<CONSTANT RELEASEID 1257>",
+      "expected_count": 1
+    },
+    {
+      "old": "<PRINC \"Grue Ecology and Colony Reveal Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Fire Smoke and Structural Consequences Glulx ZORK I: The Great Underground Empire\n \">",
+      "expected_count": 1
+    },
+    {
+      "old": "<INSERT-FILE \"material_consequences\" T>\n",
+      "new": "<INSERT-FILE \"material_consequences\" T>\n<INSERT-FILE \"fire_structural\" T>\n",
+      "expected_count": 1
+    }
+  ]
+}
