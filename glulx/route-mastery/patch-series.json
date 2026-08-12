@@ -22,7 +22,11 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
-    "file": "zork1-glulx-earned-route-mastery.ulx"
+    "locked": true,
+    "file": "zork1-glulx-earned-route-mastery.ulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 423168,
+    "checksum_hex": "0x46891bca",
+    "sha256": "b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6"
   }
 }
