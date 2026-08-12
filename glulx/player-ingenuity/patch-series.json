@@ -6,8 +6,8 @@
   "base_release": 1249,
   "base_artifact_sha256": "b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6",
   "base_source_sha256": {
-    "production": "DISCOVER_RELEASE_1249_PRODUCTION_SOURCE",
-    "dev": "DISCOVER_RELEASE_1249_DEV_SOURCE"
+    "production": "bd70e302739fd9a599211d9f490a8a8a1035ab1e5988ea5aff2f5edadc3d10bf",
+    "dev": "5f8d86de58bef9ef5bbba17c115c804b8b990b01d27831f63618770ca0f96f79"
   },
   "expected_artifact": {
     "file": "zork1-glulx-player-ingenuity-systemic-workarounds.ulx",
@@ -37,7 +37,7 @@
     "canonical ECHO remains authoritative and can still permanently change the Loud Room while hearing protection is worn",
     "the existing loose field stone can be put, pushed, or slid under the open Living Room trap door so the automatic Cellar closure strikes a real wedge and leaves the return stair usable",
     "removing the field stone releases the trap door and restores ordinary closure behavior without score, duplicate objects, or hidden route flags",
-    "the real brown sack intentionally bundles its real contents into one manageable package for the narrow Kitchen chimney, reducing repeated inventory ferrying while respecting the existing direct-carry limit and container capacity"
+    "the real brown sack intentionally bundles its real contents into one manageable package for the narrow Studio chimney, reducing repeated inventory ferrying while respecting the existing direct-carry limit and container capacity"
   ],
   "boundaries": [
     "canonical ECHO, Loud Room state, score, bar custody, Dam state, trap-door route, chimney route, and container authority remain authoritative",
