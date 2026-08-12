@@ -28,7 +28,7 @@ stage=json.loads((s/'STAGING-RECEIPT.json').read_text()); dev=json.loads((d/'STA
 assert stage['release']==1255 and stage['base']['release']==1254 and stage['base']['artifact_sha256']=='5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4'
 assert stage['changed_paths']==sorted(['1actions.zil','assistance.zil','zork1.zil']); assert stage['dev_mode'] is False and dev['dev_mode'] is True; assert not smell['errors'] and not dev_smell['errors']
 actions=(s/'1actions.zil').read_text(); assist=(s/'assistance.zil').read_text(); zork=(s/'zork1.zil').read_text()
-for token in ('<GLOBAL THIEF-RETALIATING <>','<ROUTINE THIEF-PROVOKE','<ROUTINE THIEF-ARMED-DETERRENT?','<ROUTINE THIEF-RETALIATION-TARGET','<ROUTINE THIEF-RETALIATION-STRIKE','<THIEF-RETALIATION-STRIKE> <RTRUE>','This has become personal.','This time the theft is plainly about inconvenience, not resale value.','The personal account appears settled.'):
+for token in ('<GLOBAL THIEF-RETALIATING <>','<ROUTINE THIEF-PROVOKE','<ROUTINE THIEF-ARMED-DETERRENT?','<ROUTINE THIEF-RETALIATION-TARGET','<ROUTINE THIEF-RETALIATION-STRIKE','<THIEF-RETALIATION-STRIKE> <RTRUE>','private list. This has become','This time the theft is plainly about inconvenience, not resale value.','The personal account appears settled.'):
     assert token in actions,token
 for trigger in ('<THIEF-PROVOKE>\n\t\t\t      <FSET ,THIEF ,FIGHTBIT>','<THIEF-PROVOKE>\n\t\t       <TELL\n"The bag will be taken over his dead body."','<THIEF-PROVOKE>\n\t\t<FSET ,THIEF ,FIGHTBIT>'):
     assert trigger in actions,trigger
