@@ -1,0 +1,27 @@
+{
+  "id": "004_RELEASE_1250",
+  "path": "zork1.zil",
+  "description": "Assign Release 1250 to Player Ingenuity / Systemic Workarounds",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 UNDERGROUND SENSORY PHYSICALITY GLULX for",
+      "new": "\"ZORK1 PLAYER INGENUITY SYSTEMIC WORKAROUNDS GLULX for"
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local underground sensory physicality. Release 1249 retains every\n  qualified Release 1248 behavior while making an early cross-section of the Great\n  Underground Empire materially denser through authored stone, air, acoustics,\n  passage, chasm, and projectile consequences without a universal simulator.\"",
+      "new": ";\"Repository-local player ingenuity. Release 1250 retains every qualified\n  Release 1249 behavior while allowing selected established physical properties to\n  reduce real traversal and puzzle friction: reusable hearing protection, a real\n  trap-door wedge, and container bundling without a universal solver or crafting layer.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1249>",
+      "new": "<CONSTANT RELEASEID 1250>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Underground Sensory Physicality Glulx ZORK I: The Great Underground Empire",
+      "new": "<PRINC \"Player Ingenuity Systemic Workarounds Glulx ZORK I: The Great Underground Empire"
+    }
+  ]
+}
