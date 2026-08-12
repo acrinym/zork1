@@ -1,51 +1,124 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** August 1, 2026  
-**Board data:** `docs/planning/product-kanban.json`
+**Updated:** August 11, 2026  
+**Board data:** `docs/planning/product-kanban.json`  
+**Current production frontier:** Release `1249` — Underground Sensory Physicality  
+**`master` head when updated:** `bacb1a358f0ee126ee6ae629b589c3d3a0269ee9`
 
-This board answers five different questions: what is being built now, what is already sequenced next, what remains real but later, what is intentionally parked, and what is actually finished. A card is not “done” because a document mentions it. Done requires merged or immutable proof.
+This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
 ## Operating rules
 
-- **CURRENT** contains one product train. Finishing or deliberately stopping it is required before another card moves in.
-- **NEXT** is ordered. Every card has a player outcome, scope, dependency, acceptance contract, and boundary.
-- **FUTURE** preserves product sequence without pretending work has started.
-- **PARKED** names the dependency or separation rule that prevents accidental scope mixing.
-- **DONE** carries proof.
-- This board does not create sub-beads, reopen the completed House hierarchy, or become an audit of other planning files.
+- **CURRENT** contains at most one actively implemented train and may be empty between merged trains.
+- **NEXT** is ordered.
+- New work must be a substantial player-facing train, not placeholder cleanup.
+- Canonical solutions remain valid when new physically credible alternatives are added.
+- Reusable tools remain reusable where the same physical logic reasonably applies.
+- Player ingenuity should reduce repeated friction, not create a fetch-grind tax.
+- Soft sequence breaks are allowed when physically earned, state-safe, and non-bricking.
+- No universal crafting grid, arbitrary object-pair matrix, generic physics simulator, recursive audit machinery, TODO-only slice, or no-op scaffolding.
+- **DONE** requires merged or otherwise immutable proof.
 
 ## CURRENT
 
-### Release 1237 — Zork Plus: Veteran Survey Expedition
+None.
 
-**Player outcome:** a genuinely sealed canonical victory unlocks one explicitly chosen, physically prepared postgame survey with its own route, field objective, item-custody outcome, and separate Expedition Box B history.
+Release `1249` is merged. The repository is between product trains.
 
-**In production:** Expedition Box A materializes a physical veteran dispatch after genuine sealing; the player chooses exactly the canonical brass lantern or canonical rope; every other directly carried object enters a real Attic hold trunk; the lantern and rope provide two authored round-trip crossings of an abandoned survey cut; the player records an old boundary marker on a physical field card; completion returns to the Attic and seals Expedition B separately, including whether the selected item was retained or left in the field.
+## NEXT — ordered
 
-**Qualification:** branch `agent/zork-plus-veteran-expedition-20260801`. Public CI stages exactly over locked Release 1236, compiles a production artifact with no test verbs, and uses a separate test-only precondition build to seed a legitimately sealed Expedition A before exercising both complete player-command routes in Glulxe.
+### 1. Release 1250 — Player Ingenuity / Systemic Workarounds
 
-## NEXT
+**Player outcome:** intentionally exploit established mechanics in physically credible ways without the game treating ingenuity as cheating.
 
-1. **Physical Expedition Stash** — bounded real-object staging, capacity, provenance, and later retrieval for veteran expeditions.
+**First showcase:** Loud Room hearing protection.
+
+- canonical `ECHO` remains valid;
+- reusable earmuffs or a small plausible improvised-earplug route can suppress the worst acoustic interference;
+- no pure-RNG lockout;
+- no huge material-fetch chain;
+- hearing protection remains useful on future crossings and impairs listening where appropriate;
+- at least two additional authored workarounds reuse existing world authorities.
+
+### 2. Release 1251 — Cross-System Utility Mesh
+
+Make selected existing objects operate as real reusable tools across multiple contexts: rope, containers, light, hearing protection/sound, weight, breakable surfaces, and selected water interactions.
+
+### 3. Release 1252 — Earned Sequence Breaks & Route Mastery
+
+Allow selected physically earned shortcuts and soft sequence breaks. Preserve canonical routes and completion safety. Once a recurring nuisance is genuinely mastered, repeated travel should stay easier.
+
+### 4. Release 1253 — Dam Survival & Prepared Rescue
+
+Deepen Flood Control Dam #3 with authored water-state survival, encumbrance, rope/ladder preparation, buoyancy opportunities, object loss, and recovery.
+
+### 5. Release 1254 — Troll Disarm & Stolen Weapons
+
+Let the canonical troll seize or retain real weapons under authored conditions, creating persistent custody, taunts, bargaining, recovery, and consequences for losing your own weapon.
+
+### 6. Release 1255 — Thief Retaliation & Sabotage
+
+Add visible, causal retaliation through selective theft, sabotage, warnings, earned ambushes, avoidance, repair, and appeasement.
+
+### 7. Release 1256 — Grue Ecology & Colony Reveal
+
+Support selected darkness experiments and authored grue ecology, including stronger-light consequences and a signature colony reveal without turning grues into ordinary combat mobs.
+
+### 8. Release 1257 — Fire, Smoke & Structural Consequences
+
+Extend physicality into a deliberately small set of authored fire, smoke, collapse, and machinery consequences.
+
+### 9. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+
+Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions without an approval meter.
 
 ## FUTURE
 
-- **Living Zork Consequences — additional families** — machinery, water, fire, and creature-danger continuations; each remains a direct authored product, never a generic hazard engine.
+- **Causal Death & Warning Depth** — authored fair warning, near-death, delayed-consequence, and exact-object provenance expansions.
+- **Museum & Ecology second expansion** — only where collection creates new field play rather than checklist accumulation.
+- **Narrative Perspective Experiments** — isolated first-person, third-person, and interactive-storybook editions against real canonical state.
+- Additional selected authored consequences from `LIVING_ZORK_FUTURE_IDEAS_KANBAN.md`.
 
-## PARKED
+## PARKED / SEPARATE
 
-- **S.T.A.L.K.E.R. Glulx** remains a separate game lane. It never rides inside a Highly Extended Zork gameplay PR.
-- **Protected corpus acquisition** waits for lawful local copies or verified rights. Metadata, hashes, references, and derived analysis remain the public boundary.
+- **S.T.A.L.K.E.R. Glulx** remains a separate product lane and never rides inside a Zork gameplay PR.
+- **Protected Corpus Acquisition** remains rights-dependent.
+- Universal crafting, randomized loot progression, generic physics, and procedural world generation remain out of scope.
 
-## DONE
+## DONE — current merged frontier
 
-- **House of Records / Release 1230:** 12 trains, 96/96 beads, completed expedition archive, merged through PR #32. Locked artifact SHA-256: `b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71`.
-- **Infocom Corpus Foundation:** extraction, rights gates, authority profiles, originality validation, receipts, all review findings and nits resolved, 25 tests green, merged through PR #33 at `d7cc4750507fed9b505af66e0fd6afee2da70ffb`.
-- **Release 1231 — Corpus-Coupled Causal Warning:** canonical flood warnings and repair affordance, merged through PR #34. Locked artifact: `337920` bytes, checksum `0x1b994d18`, SHA-256 `5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609`.
-- **Release 1232 — Parser Comprehension and Deep Affordances:** selected ordinary IF phrases route to canonical behavior, merged through PR #35 at `ce5be325a0d0f762edaa23362e5227d4788953d6`. Locked artifact: `337920` bytes, checksum `0x2c2192e1`, SHA-256 `2cffc734dbfbe346d0ec185c6962d927bc046343dccdb53b6a9e4439521b6f2e`.
-- **Release 1233 — Museum Intake and First Gallery:** physical exhibit custody, catalog, review, and earned classification, merged through PR #36 at `f0bdd696d447cdb727b82229b218abf7a6905f91`. Locked artifact: `338432` bytes, checksum `0x7065f1fc`, SHA-256 `4ac789f379231cbc7a871f6d092f824f8098607ee60239936f57aa39585c5244`.
-- **Release 1234 — Mara Arrival and Evidence Memory:** Mara’s physical presence and exact witnessed-object memory, merged through PR #37 at `76f1e451a4fb70dcf6ea1d41cb8705f2ad5236d4`. Locked artifact: `339712` bytes, checksum `0x69fd7910`, SHA-256 `38b966f47d771e0f5ae6229ff6a7542830ce6e365a3d2291f764581ae0b64a17`.
-- **Release 1235 — Cuisine, Hunger, and Stamina:** authored canonical lunch-and-garlic meal, bounded exertion, situational hunger, `RECOVER`, and physical ingredient custody, squash-merged through PR #38 at `e2e5c9c3e269d8e18bb3ed1c75dd72baacbd495a`. Locked artifact: `342784` bytes, checksum `0x282c807e`, SHA-256 `14b8341c298028e7d762c59d5a5757e6a52dcafa074aa5cd63d7930079ff13cf`.
-- **Release 1236 — Living Zork Consequences: Great Canyon Fall:** physical cause warning, canonical rope preparation, earned near-fall rescue, bounded strain, ordinary rope retrieval, recovery, and preserved canonical death, squash-merged through PR #39 at `eaf92ed19156088954ce5e0ab828a8d021f0920d`. Locked artifact: `344320` bytes, checksum `0x8cb988cc`, SHA-256 `26b32e777be0fe6c44736ae483a594519bf98264ec95603dd4ff7238124c94d7`; public hosted reproduction run `30683473531`.
+| Release | Train | PR |
+|---:|---|---:|
+| 1219–1230 | House of Records program | #32 |
+| 1231 | Corpus-Coupled Causal Warning | #34 |
+| 1232 | Parser Comprehension and Deep Affordances | #35 |
+| 1233 | Museum Intake and First Gallery | #36 |
+| 1234 | Mara Arrival and Evidence Memory | #37 |
+| 1235 | Cuisine, Hunger, and Stamina | #38 |
+| 1236 | Great Canyon Living Consequences | #39 |
+| 1237 | Zork Plus Veteran Survey Expedition | #40 |
+| 1238 | Cellar Expedition Recovery Locker | #41 |
+| 1239 | Museum Ecology and Dam Fishing | #42 |
+| 1240 | Museum Songbird Correspondence | #43 |
+| 1241 | Museum Troll Provenance | #44 |
+| 1242 | Natural-Play Regression Repair | #45 |
+| 1243 | Mara Companion Expedition Foundation | #46 |
+| — | Narrative Perspective Experiments documentation | #47 |
+| 1244 | Mara House Company | #48 |
+| 1245 | Creative Natural Play | #49 |
+| 1246 | Environmental Destruction | #50 |
+| 1247 | Narrative Physicality | #51 |
+| 1248 | Forest Consequence Physicality | #52 |
+| 1249 | Underground Sensory Physicality | #53 |
 
-The JSON board is authoritative for tooling and card metadata. This Markdown view is the human operating surface.
+Release `1249` merged as `bacb1a358f0ee126ee6ae629b589c3d3a0269ee9`.
+
+Final Release 1249 production artifact SHA-256:
+
+`b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6`
+
+## Canonical roadmap
+
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine, Loud Room example, and expanded acceptance direction.
+
+The next implementation train should start at **Release 1250 — Player Ingenuity / Systemic Workarounds** unless the live repository reveals a concrete dependency that must precede it.

@@ -1,55 +1,108 @@
-# Expansion frontier
+# Expansion frontier and next trains
 
-The Glulx production lineage is qualified through Completed Expedition Archive Release `1230`.
+**Updated:** August 11, 2026  
+**Current production frontier:** Release `1249` — Underground Sensory Physicality  
+**Current `master` head:** `bacb1a358f0ee126ee6ae629b589c3d3a0269ee9`
 
-## House of Records result
+The old House of Records frontier at Release `1230` is historical. The active product lineage has continued through Release `1249`.
 
-- Trains 1–12 complete — Releases `1219`–`1230`.
-- Roadmap: 12 trains / 96 beads / 96 closed / 0 open.
-- No sub-beads or parallel planning layers.
-- The House of Records program is closed.
+For the full post-1249 rationale, design laws, and acceptance direction, see:
 
-## Qualified production frontier
+- [`../../docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md`](../../docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md)
 
-| Release | Purpose | Size | Checksum | SHA-256 |
-|---:|---|---:|---|---|
-| 1219 | House state foundation | 230,144 | `0xbe6bc80a` | `e0de2b66453e6539370377691486a133ad32b3d53d2ff3e676d0d90f23be0e0f` |
-| 1220 | Living Room museum | 237,312 | `0x630d724a` | `f5bd739e38ea4b355ddfc089b887e32742740444f69179facc51af7de1fb91c4` |
-| 1221 | Kitchen laboratory | 249,600 | `0x85d64142` | `93cb08f3571df3a63476609b6f1dc4eaeac7dd0255eb1ef1b7d878c8168dc62f` |
-| 1222 | Cellar threshold | 262,400 | `0x54b04c7a` | `1635579aed9c3b5ea66548a8120560d4199559c232aa6f35aa40c48352652912` |
-| 1223 | Correspondence and visitors | 271,872 | `0x4cbcc561` | `362b5567e2ee705dc382256fe3420b9e729486acbcdf68b91a8ccdda0c893816` |
-| 1224 | Attic archive core | 280,832 | `0x4fe371b8` | `c8490c39b3ee8a17e257419aa13998529086573ddb6172132998f8353e92a356` |
-| 1225 | Attic NPC dossiers | 287,744 | `0x4b4d66a0` | `e775d0a5ab74f5115d09b380ac4397e845ef539a1260df166120e1c25594db10` |
-| 1226 | Attic area case files | 298,496 | `0xc6b449e8` | `9a257606633e5595ab5c8c2f6d2c5813028c45e08389c805ca81ca113445f9f6` |
-| 1227 | Attic playback | 307,712 | `0xfb794f11` | `6146311cd1fab20c5fde50f12a569c3ea9b34fd0f42038448f44f3740b9936f0` |
-| 1228 | House rest and dreams | 316,160 | `0x3505b8ad` | `8993684cb8cb6e613dffc6e294c4d5edd15da22ab3a340ba4dc2d572f2f084e5` |
-| 1229 | House vulnerability | 328,704 | `0xc774e968` | `94a665cb16069b31473dcf9fdf194d49c13e70aa23c32bd75888c78a074c3b4f` |
-| 1230 | Completed expedition archive | 337,408 | `0x7febe444` | `b446e12ebffc570c0058347583bacc768f6a51f5f5166634da91898004d68c71` |
+## Completed frontier since House of Records
 
-## Train 12 closure — Completed Expedition Archive
+| Release | Product train | PR |
+|---:|---|---:|
+| 1231 | Corpus-Coupled Causal Warning | #34 |
+| 1232 | Parser Comprehension and Deep Affordances | #35 |
+| 1233 | Museum Intake and First Gallery | #36 |
+| 1234 | Mara Arrival and Evidence Memory | #37 |
+| 1235 | Cuisine, Hunger, and Stamina | #38 |
+| 1236 | Great Canyon Living Consequences | #39 |
+| 1237 | Zork Plus: Veteran Survey Expedition | #40 |
+| 1238 | Cellar Expedition Recovery Locker | #41 |
+| 1239 | Museum Ecology and Dam Fishing | #42 |
+| 1240 | Museum Songbird Correspondence | #43 |
+| 1241 | Museum Troll Provenance | #44 |
+| 1242 | Natural-Play Regression Repair | #45 |
+| 1243 | Mara Companion Expedition Foundation | #46 |
+| — | Narrative Perspective Experiments documentation | #47 |
+| 1244 | Mara House Company | #48 |
+| 1245 | Creative Natural Play | #49 |
+| 1246 | Environmental Destruction | #50 |
+| 1247 | Narrative Physicality | #51 |
+| 1248 | Forest Consequence Physicality | #52 |
+| 1249 | Underground Sensory Physicality | #53 |
 
-Release `1230` completes the House of Records with:
+Release `1249` is merged at `bacb1a358f0ee126ee6ae629b589c3d3a0269ee9`.
 
-- genuine canonical victory gating;
-- continued access to partial pre-victory records;
-- separate physical completed-history boxes;
-- bounded chronology and canonical death retention;
-- final world and house summaries;
-- cross-run comparison without merged histories;
-- explicit no-solution-leak boundaries;
-- deterministic schema-versioned export;
-- native save/corrupt/restore.
+## Ordered next train queue
 
-Locked GitHub Actions run `30577224174` passed exact identity and the complete production, two-history, comparison, export, and persistence route.
+### 1. Release 1250 — Player Ingenuity / Systemic Workarounds
 
-## Next product lanes
+Let the player intentionally exploit established mechanics in physically credible ways.
 
-Future work must start as a new product lane rather than reopening House of Records. Existing idea space includes:
+First showcase: **Loud Room hearing protection**.
 
-- museum expansion, collections, fish, and discovered-specimen displays;
-- food, cooking, hunger, satiation, and stamina systems;
-- expanded-Zork world and progression work;
-- the separate Stalker-style interactive-fiction lane;
-- other deliberately selected Zork extensions.
+- canonical `ECHO` remains valid;
+- reusable earmuffs or plausible improvised ear protection can suppress the worst acoustic interference;
+- protection remains useful on later crossings;
+- hearing protection has sensible `LISTEN` tradeoffs elsewhere;
+- no giant crafting system, recipe grind, or pure-RNG availability;
+- at least two additional selected workarounds should reuse existing world authorities.
 
-Choose one lane from current product intent, define a full train, and build it. Do not create recursive audits, sub-beads, or fake cleanup work merely to keep the completed program active.
+Design rule:
+
+> Canonical puzzles describe a reliable intended solution. They do not define the only physically valid solution.
+
+### 2. Release 1251 — Cross-System Utility Mesh
+
+Make selected existing objects behave like reusable tools across several authored contexts: rope, containers, light, sound protection, weight, breakable surfaces, and selected water interactions.
+
+### 3. Release 1252 — Earned Sequence Breaks & Route Mastery
+
+Allow physically earned shortcuts and selected soft sequence breaks while keeping canonical completion safe. Once a recurring nuisance is genuinely mastered, repeated travel should not require the same puzzle labor.
+
+### 4. Release 1253 — Dam Survival & Prepared Rescue
+
+Deepen Flood Control Dam #3 with authored water-state survival, encumbrance, rope/ladder preparation, buoyancy opportunities, object loss, and recoverable consequences.
+
+### 5. Release 1254 — Troll Disarm & Stolen Weapons
+
+Let the canonical troll seize or retain real weapons under authored combat conditions, creating persistent custody, taunts, bargaining, recovery, and possibly facing the consequences of losing your own weapon.
+
+### 6. Release 1255 — Thief Retaliation & Sabotage
+
+Add visible, causal retaliation: selective theft, sabotage, warnings, earned ambushes, repair, avoidance, and appeasement without a hidden grindable hostility meter.
+
+### 7. Release 1256 — Grue Ecology & Colony Reveal
+
+Support selected darkness experiments, lures, stronger-light consequences, a signature colony reveal, and authored survival/retreat outcomes while keeping grues mysterious.
+
+### 8. Release 1257 — Fire, Smoke & Structural Consequences
+
+Extend physicality into a small authored set of fire, smoke, collapse, and machinery consequences. No generalized chemistry or gas simulator.
+
+### 9. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+
+Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions. No approval meter or party framework.
+
+## Future lanes
+
+- Causal Death & Warning Depth.
+- Museum & Ecology second expansion.
+- Isolated narrative-perspective editions.
+- Additional authored world consequences selected from the living-future inventory.
+
+## Parked / separate
+
+- S.T.A.L.K.E.R. Glulx remains a separate game lane.
+- Protected corpus expansion remains rights-dependent.
+- Universal crafting, procedural loot, generic physics, arbitrary object-pair simulation, and recursive audit machinery remain out of scope.
+
+## Train selection rule
+
+Start the next train from the top of the ordered queue unless a concrete dependency discovered in the live repository makes a later train the necessary prerequisite.
+
+No placeholder trains merely to keep development moving.
