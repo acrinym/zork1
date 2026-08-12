@@ -20,9 +20,6 @@ bash glulx/underground-physicality/qualify.sh
 
 python -m py_compile glulx/player-ingenuity/stage.py
 
-# Bootstrap source-identity discovery is fail-closed: the first branch run may
-# print both exact Release 1249 identities, but no Release 1250 tree is staged
-# until those values are committed into the manifest.
 python - "$MANIFEST" "$BASE_SRC" "$BASE_DEV_SRC" <<'PY'
 import importlib.util,json,sys
 from pathlib import Path
@@ -32,9 +29,6 @@ mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
 m=json.loads(manifest.read_text())
 actual={'production':mod.source_identity(prod),'dev':mod.source_identity(dev)}
 expected=m.get('base_source_sha256',{})
-if any(str(expected.get(k,'')).startswith('DISCOVER') for k in actual):
-    print('RELEASE_1249_SOURCE_IDENTITIES='+json.dumps(actual,sort_keys=True))
-    raise SystemExit(3)
 for k,v in actual.items():
     assert expected[k] == v, (k,expected[k],v)
 PY
@@ -128,6 +122,10 @@ down
 west
 take lantern
 take sack
+take lunch from sack
+drop lunch
+take garlic from sack
+drop garlic
 remove earmuffs
 put earmuffs in sack
 move rug
