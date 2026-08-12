@@ -215,7 +215,7 @@ attack troll with sword
 attack troll with sword
 east
 east
-southeast
+se
 east
 tie rope to railing
 down
@@ -227,7 +227,7 @@ south
 pray
 east
 south
-southeast
+se
 enter
 west
 open trap door
@@ -236,7 +236,7 @@ north
 east
 east
 north
-northeast
+ne
 east
 north
 north
@@ -265,20 +265,20 @@ south
 south
 east
 down
-inflate boat with pump
+blow up boat with pump
 fold boat
-inflate boat with pump
+blow up boat with pump
 take boat
 collapse boat
 drop boat
 collapse boat
-inflate boat with pump
+blow up boat with pump
 open coffin
 take boat
 put boat in coffin
 up
 west
-southeast
+se
 down
 echo
 east
