@@ -1,0 +1,52 @@
+{
+  "edition": "Unofficial Zork Player Ingenuity Systemic Workarounds Glulx",
+  "release": 1250,
+  "serial": "260811",
+  "base_manifest": "../underground-physicality/patch-series.json",
+  "base_release": 1249,
+  "base_artifact_sha256": "b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6",
+  "base_source_sha256": {
+    "production": "bd70e302739fd9a599211d9f490a8a8a1035ab1e5988ea5aff2f5edadc3d10bf",
+    "dev": "5f8d86de58bef9ef5bbba17c115c804b8b990b01d27831f63618770ca0f96f79"
+  },
+  "expected_artifact": {
+    "file": "zork1-glulx-player-ingenuity-systemic-workarounds.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 418304,
+    "checksum_hex": "0xf323826c",
+    "sha256": "d6c2a7b4512d90d388c763943d09e89f5df4b4dc033e96c5e6a30e1de9d2f6d3",
+    "locked": true
+  },
+  "patches": [
+    "patches/001-player-ingenuity-core.json",
+    "patches/002-ingenuity-grammar.json",
+    "patches/003-ingenuity-world-actions.json",
+    "patches/004-release-1250.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "gverbs.zil",
+    "material_consequences.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "battered industrial earmuffs can be found in the Attic before the underground trip, worn as persistent reusable hearing protection, removed again, and carried like a real object",
+    "wearing the earmuffs changes LISTEN behavior outside the Loud Room as a real hearing tradeoff rather than a one-puzzle token",
+    "the Loud Room remains physically loud but hearing protection lets the adventurer remain, think, and traverse instead of being forced into the special noise loop or expelled by peak dam noise",
+    "canonical ECHO remains authoritative and can still permanently change the Loud Room while hearing protection is worn",
+    "the existing loose field stone can be put, pushed, or slid under the open Living Room trap door so the automatic Cellar closure strikes a real wedge and leaves the return stair usable",
+    "removing the field stone releases the trap door and restores ordinary closure behavior without score, duplicate objects, or hidden route flags",
+    "the real brown sack intentionally bundles its real contents into one manageable package for the narrow Studio chimney, reducing repeated inventory ferrying while respecting the existing direct-carry limit and container capacity"
+  ],
+  "boundaries": [
+    "canonical ECHO, Loud Room state, score, bar custody, Dam state, trap-door route, chimney route, and container authority remain authoritative",
+    "no generic clothing or equipment framework; the earmuffs are one authored physical object with reversible state",
+    "no universal door-propping system; the field-stone wedge is a bounded authored interaction with the existing House trap door",
+    "no generic packing abstraction; chimney bundling recognizes the existing real sack and its existing contents",
+    "no universal crafting grid, recipe economy, object-pair matrix, physics simulator, automatic puzzle completion, or debug shortcut",
+    "no RNG gate or long mandatory fetch chain for hearing protection",
+    "no score penalty or bonus merely for choosing an alternate physically valid route",
+    "no recursive audit machinery and no production TODO, stub, placeholder, or no-op behavior"
+  ]
+}

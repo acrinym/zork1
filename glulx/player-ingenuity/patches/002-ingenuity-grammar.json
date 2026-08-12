@@ -1,0 +1,17 @@
+{
+  "id": "002_INGENUITY_GRAMMAR",
+  "path": "gverbs.zil",
+  "description": "Let ordinary REMOVE/TAKE-OFF and PUT/PUSH/SLIDE UNDER grammar operate the authored reusable equipment and trap-door wedge",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE PRE-TAKE ()\n\t <COND (<IN? ,PRSO ,WINNER>",
+      "new": "<ROUTINE PRE-TAKE ()\n\t <COND (<AND <EQUAL? ,PRSO ,EARMUFFS>\n\t             <IN? ,EARMUFFS ,WINNER>\n\t             <FSET? ,EARMUFFS ,ONBIT>>\n\t        <FCLEAR ,EARMUFFS ,ONBIT>\n\t        <TELL \"You lift the hearing protectors away from your ears. Ordinary sound returns at full strength.\" CR>\n\t        <RTRUE>)\n\t       (<IN? ,PRSO ,WINNER>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-PUT-UNDER ()\n\t <TELL \"You can't do that.\" CR>>",
+      "new": "<ROUTINE V-PUT-UNDER ()\n\t <COND (<AND <EQUAL? ,PRSO ,FIELD-STONE> <EQUAL? ,PRSI ,TRAP-DOOR>>\n\t        <PLAYER-INGENUITY-WEDGE-TRAP-DOOR>)\n\t       (T <TELL \"You can't do that.\" CR>)>>"
+    }
+  ]
+}

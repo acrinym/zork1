@@ -1,0 +1,52 @@
+{
+  "id": "003_INGENUITY_WORLD_ACTIONS",
+  "path": "1actions.zil",
+  "description": "Compose hearing protection with the canonical Loud Room and Dam refill event, make a real field stone keep the evolved House trap door physically open, and recognize loaded-sack chimney bundling",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<GLOBAL LOUD-FLAG <>>\n\n<ROUTINE LOUD-ROOM-FCN",
+      "new": "<GLOBAL LOUD-FLAG <>>\n\n<ROUTINE PLAYER-INGENUITY-LOUD-ECHO-SOLVE ()\n\t <SETG LOUD-FLAG T>\n\t <FCLEAR ,BAR ,SACREDBIT>\n\t <TELL \"The acoustics of the room change subtly.\" CR>\n\t <COND (<NOT ,SUPER-BRIEF> <CRLF>)>\n\t <RTRUE>>\n\n<ROUTINE LOUD-ROOM-FCN"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t      (T\n\t\t       <TELL \" The room is deafeningly loud with an\nundetermined rushing sound. The sound seems to reverberate from all\nof the walls, making it difficult even to think.\">)>",
+      "new": "\t\t      (T\n\t\t       <COND (<PLAYER-INGENUITY-EARMUFFS-WORN?>\n\t\t              <TELL \" The room is violently loud, but the padded cups turn the worst of the roar into heavy pressure and distant thunder. You can still think.\">)\n\t\t             (T\n\t\t              <TELL \" The room is deafeningly loud with an\nundetermined rushing sound. The sound seems to reverberate from all\nof the walls, making it difficult even to think.\">)>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t<CRLF>)\n\t       (<AND <EQUAL? .RARG ,M-END> ,GATES-OPEN <NOT ,LOW-TIDE>>",
+      "new": "\t\t<CRLF>)\n\t       (<AND <EQUAL? .RARG ,M-BEG> <VERB? ECHO>\n\t             <NOT ,LOUD-FLAG>\n\t             <PLAYER-INGENUITY-EARMUFFS-WORN?>>\n\t        <PLAYER-INGENUITY-LOUD-ECHO-SOLVE>\n\t        <RTRUE>)\n\t       (<AND <EQUAL? .RARG ,M-END> ,GATES-OPEN <NOT ,LOW-TIDE>\n\t             <NOT <PLAYER-INGENUITY-EARMUFFS-WORN?>>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t      (<AND ,GATES-OPEN <NOT ,LOW-TIDE>>\n\t\t       <RFALSE>)\n\t\t      (T\n\t\t       <V-FIRST-LOOK>",
+      "new": "\t\t      (<PLAYER-INGENUITY-EARMUFFS-WORN?>\n\t\t       <TELL \"The rushing sound presses hard against the hearing protectors, but the padded cups keep it from taking over your head.\" CR>\n\t\t       <RFALSE>)\n\t\t      (<AND ,GATES-OPEN <NOT ,LOW-TIDE>>\n\t\t       <RFALSE>)\n\t\t      (T\n\t\t       <V-FIRST-LOOK>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t\t\t     (<EQUAL? .WRD ,W?ECHO>\n\t\t\t\t      <SETG LOUD-FLAG T>\n\t\t\t\t      <FCLEAR ,BAR ,SACREDBIT>\n\t\t\t\t      <TELL\n\"The acoustics of the room change subtly.\" CR>\n\t\t\t\t      <COND (<NOT ,SUPER-BRIEF> <CRLF>)>\n\t\t\t\t      <RETURN>)",
+      "new": "\t\t\t\t     (<EQUAL? .WRD ,W?ECHO>\n\t\t\t\t      <PLAYER-INGENUITY-LOUD-ECHO-SOLVE>\n\t\t\t\t      <RETURN>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t  (<AND <VERB? OPEN CLOSE>\n\t\t<EQUAL? ,HERE ,LIVING-ROOM>>\n\t   <OPEN-CLOSE ,PRSO",
+      "new": "\t  (<AND <VERB? CLOSE>\n\t\t<EQUAL? ,HERE ,LIVING-ROOM>\n\t\t<EQUAL? ,PRSO ,TRAP-DOOR>\n\t\t<PLAYER-INGENUITY-TRAP-WEDGED?>>\n\t   <TELL \"The trap door starts down, meets the field stone, and stops with a hard wooden knock. The wedge is doing exactly the simple job you gave it.\" CR>)\n\t  (<AND <VERB? OPEN CLOSE>\n\t\t<EQUAL? ,HERE ,LIVING-ROOM>>\n\t   <OPEN-CLOSE ,PRSO"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t(<EQUAL? .RARG ,M-ENTER>\n\t <HOUSE-STATE-ENTER ,CELLAR>\n\t <COND (<AND <FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t     <NOT <FSET? ,TRAP-DOOR ,TOUCHBIT>>>\n\t\t<FCLEAR ,TRAP-DOOR ,OPENBIT>\n\t\t<FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t<TELL\n\"The trap door crashes shut, and you hear someone barring it.\" CR CR>)>\n\t <CELLAR-ENTER>)",
+      "new": "\t(<EQUAL? .RARG ,M-ENTER>\n\t <HOUSE-STATE-ENTER ,CELLAR>\n\t <COND (<AND <FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t     <NOT <FSET? ,TRAP-DOOR ,TOUCHBIT>>>\n\t\t<COND (<PLAYER-INGENUITY-TRAP-WEDGED?>\n\t\t       <FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t       <TELL \"The trap door drops behind you, strikes the field-stone wedge with a solid knock, and remains open by several stubborn inches. The stair back to the Living Room is still usable.\" CR CR>)\n\t\t      (T\n\t\t       <FCLEAR ,TRAP-DOOR ,OPENBIT>\n\t\t       <FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t       <TELL\n\"The trap door crashes shut, and you hear someone barring it.\" CR CR>)>)>\n\t <CELLAR-ENTER>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t       (<EQUAL? ,HERE ,LOUD-ROOM>\n\t\t<TELL\n\"All of a sudden, an alarmingly loud roaring sound fills the room.\nFilled with fear, you scramble away.\" CR>\n\t\t<GOTO <PICK-ONE ,LOUD-RUNS>>)",
+      "new": "\t       (<EQUAL? ,HERE ,LOUD-ROOM>\n\t\t<COND (<PLAYER-INGENUITY-EARMUFFS-WORN?>\n\t\t       <TELL \"All of a sudden, the water roar swells enormously. The battered hearing protectors take the murderous edge off it; you brace yourself and remain in the chamber.\" CR>)\n\t\t      (T\n\t\t       <TELL\n\"All of a sudden, an alarmingly loud roaring sound fills the room.\nFilled with fear, you scramble away.\" CR>\n\t\t       <GOTO <PICK-ONE ,LOUD-RUNS>>)>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE UP-CHIMNEY-FUNCTION (\"AUX\" F)\n  <COND (<NOT <SET F <FIRST? ,WINNER>>>\n\t <TELL \"Going up empty-handed is a bad idea.\" CR>\n\t <RFALSE>)\n\t(<AND <OR <NOT <SET F <NEXT? .F>>>\n\t\t  <NOT <NEXT? .F>>>\n\t      <IN? ,LAMP ,WINNER>>\n\t <COND (<NOT <FSET? ,TRAP-DOOR ,OPENBIT>>\n\t\t<FCLEAR ,TRAP-DOOR ,TOUCHBIT>)>\n\t <RETURN ,KITCHEN>)\n\t(T\n\t <TELL \"You can't get up there with what you're carrying.\" CR>\n\t <RFALSE>)>>",
+      "new": "<ROUTINE UP-CHIMNEY-FUNCTION (\"AUX\" F)\n  <COND (<NOT <SET F <FIRST? ,WINNER>>>\n\t <TELL \"Going up empty-handed is a bad idea.\" CR>\n\t <RFALSE>)\n\t(<AND <OR <NOT <SET F <NEXT? .F>>>\n\t\t  <NOT <NEXT? .F>>>\n\t      <IN? ,LAMP ,WINNER>>\n\t <COND (<NOT <FSET? ,TRAP-DOOR ,OPENBIT>>\n\t\t<FCLEAR ,TRAP-DOOR ,TOUCHBIT>)>\n\t <COND (<PLAYER-INGENUITY-SACK-BUNDLED?>\n\t        <TELL \"Bundling the smaller gear inside the brown sack keeps the chimney problem to two manageable packages. The container earns its keep all the way up.\" CR>)>\n\t <RETURN ,KITCHEN>)\n\t(T\n\t <TELL \"You can't get up there with what you're carrying.\" CR>\n\t <RFALSE>)>>"
+    }
+  ]
+}
