@@ -22,38 +22,56 @@
   "lanes": {
     "current": [
       {
-        "train_id": "zork-grue-ecology-colony-reveal-1256",
-        "release": 1256,
-        "title": "Grue Ecology & Colony Reveal",
+        "train_id": "zork-fire-smoke-structural-consequences-1257",
+        "release": 1257,
+        "title": "Fire, Smoke & Structural Consequences",
         "status": "current-qualified-stacked-awaiting-pr-merge",
-        "branch": "agent/grue-ecology-colony-reveal-20260812",
-        "base_branch": "agent/thief-retaliation-sabotage-20260812",
-        "prerequisite_release": 1255,
-        "prerequisite_pr": 60,
-        "outcome": "Turn one optional mine dead end into authored grue ecology: ordinary light reveals plural indirect evidence, while the permanent flaming ivory torch forces a signature multi-fissure retreat and proves a colony without making grues visible combat mobs.",
-        "showcase": "Targetable mine fissures own the zero-global reveal state; lamp light exposes multiple scrapes; the ivory torch drives many separate retreats through different cracks; post-reveal GRUE and fissure examination/listening report ecology evidence while canonical darkness lethality remains unchanged.",
+        "branch": "agent/fire-smoke-structural-consequences-20260812",
+        "base_branch": "agent/grue-ecology-colony-reveal-20260812",
+        "pr": 62,
+        "prerequisite_release": 1256,
+        "prerequisite_pr": 61,
+        "outcome": "Give the canonical Timber Room one persistent authored fire lifecycle using real flame, real bottled water, existing mine airflow, route state, and physical aftermath instead of a generalized fire or chemistry simulator.",
+        "showcase": "Real flame first creates recoverable smolder; ignored smolder becomes draft-driven open flame and smoke; real bottled water douses it; ignored fire drops an old brace and eventually leaves a persistent charred heap while the canonical EMPTY-HANDED narrow route remains intact.",
         "acceptance": [
-          "DEAD-END-5 is the only authored colony site in this train",
-          "the fissures are targetable and own their reveal state through an explicit VALUE property",
-          "ordinary lamp light produces plural indirect evidence without revealing the colony",
-          "the permanent flaming ivory torch triggers the signature colony reveal",
-          "post-reveal GRUE EXAMINE FIND and LISTEN report plural ecology without exposing a visible grue body",
-          "canonical gverbs.zil darkness and grue lethal/noise machinery is byte-for-byte unchanged from Release 1255",
+          "dry canonical Timber Room timbers are a real authored burn target",
+          "first ignition creates a recoverable smolder window rather than immediate destruction",
+          "fresh smolder can be stamped out",
+          "ignored smolder becomes open flame and uses the existing westward draft to concentrate smoke in the narrow crawl",
+          "the wide east escape remains available while smoke blocks the narrow west crawl",
+          "the real open bottle containing the real water can douse active fire and consumes that water",
+          "ignored fire gives warning before dropping one old brace and later cooling to persistent charred aftermath",
+          "the structural aftermath does not widen delete or brick the canonical EMPTY-HANDED route",
+          "canonical gverbs.zil V-BURN and canonical Gas Room actions in 1actions.zil are byte-for-byte unchanged from Release 1256",
+          "the canonical coal object remains real movable and burnable",
           "no new VM global is consumed",
-          "no grue hit points, combat stats, monster-attractor engine, colony counter, or generic hive system is added",
           "production artifact is locked and reproducible"
         ],
-        "artifact_sha256": "dbad355f6d18245d48671102bf4d449f227c03bd8e39ec569c9a41d8508c7c4a",
-        "qualification_run": 31638229971,
+        "artifact_sha256": "0664b758da1809195489f577f655497e5ccb981f7b6c5fb1b69b8b48b77a5b23",
+        "source_sha256": {
+          "production": "addcfb42663813c49ff822b009ce46302f750739cda345854bf143f77836aa31",
+          "dev": "5d383e7e920369fd0b6a78f424b013a17d702a7bdd884ba1dd8b2c7478844ed8"
+        },
+        "qualification_run": 31650907894,
         "boundaries": [
-          "grues remain mysterious and dangerous",
-          "not every dark room becomes a hive",
-          "canonical darkness death remains authority",
-          "no ordinary visible grue combat mobs"
+          "no generalized chemistry gas smoke or structural physics simulator",
+          "no fire hit points or generic spread grid",
+          "canonical puzzle and route authority remains intact",
+          "authored world fire composes with existing object and material state"
         ]
       }
     ],
     "qualified_prerequisites": [
+      {
+        "train_id": "zork-grue-ecology-colony-reveal-1256",
+        "release": 1256,
+        "title": "Grue Ecology & Colony Reveal",
+        "status": "qualified-awaiting-pr-merge",
+        "branch": "agent/grue-ecology-colony-reveal-20260812",
+        "pr": 61,
+        "artifact_sha256": "dbad355f6d18245d48671102bf4d449f227c03bd8e39ec569c9a41d8508c7c4a",
+        "qualification_run": 31638229971
+      },
       {
         "train_id": "zork-thief-retaliation-sabotage-1255",
         "release": 1255,
@@ -86,23 +104,10 @@
     ],
     "next": [
       {
-        "train_id": "zork-fire-smoke-structural-consequences-1257",
-        "release": 1257,
-        "title": "Fire, Smoke & Structural Consequences",
-        "status": "next-1",
-        "outcome": "Extend material physicality into a deliberately small set of authored fire, smoke, collapse, and machinery consequences with fair warnings, escape routes, mitigation, persistent damage, and recovery.",
-        "boundaries": [
-          "reuse existing flame light and material state",
-          "no generalized chemistry or gas simulator",
-          "no gore escalation",
-          "canonical puzzle state remains authoritative"
-        ]
-      },
-      {
         "train_id": "zork-mara-reciprocal-rescue-shared-danger-1258",
         "release": 1258,
         "title": "Mara Reciprocal Rescue & Shared Danger",
-        "status": "next-2",
+        "status": "next-1",
         "outcome": "Advance Mara through shared physical danger, reciprocal rescue, injuries/recovery, promises, temporary custody, separation/reunion, and remembered choices rather than an approval economy.",
         "boundaries": [
           "no dating-sim meter",
@@ -117,12 +122,14 @@
         "title": "Treasure Guardian Dragon & Hoard",
         "status": "future-authored-encounter",
         "outcome": "Create an original Zork-native dragon guarding a real treasure hoard, with territorial warning signs, dangerous fire breath, persistent environmental consequences, and multiple credible Zork-style approaches to survival, theft, containment, escape, trickery, or confrontation.",
-        "inspiration": ["Shadowgate treasure-guardian dragon encounter archetype"],
+        "inspiration": [
+          "Shadowgate treasure-guardian dragon encounter archetype"
+        ],
         "boundaries": [
-          "original Zork-native dragon, prose, map layout, objects, puzzle expression, and solution structure",
-          "fire breath composes with authored fire, smoke, material, shelter, and escape systems",
+          "original Zork-native dragon prose map layout objects puzzle expression and solution structure",
+          "fire breath composes with Release 1257 authored fire smoke material shelter and escape systems",
           "not a generic hit-point boss fight",
-          "do not copy Shadowgate source code, text, art, maps, exact puzzles, or expressive sequencing"
+          "do not copy Shadowgate source code text art maps exact puzzles or expressive sequencing"
         ]
       },
       {
@@ -137,9 +144,9 @@
           "selected S.T.A.L.K.E.R.-inspired mechanics eventually"
         ],
         "boundaries": [
-          "borrow concepts and design lessons, not source code, text, art, maps, exact puzzles, or expressive sequencing",
+          "borrow concepts and design lessons not source code text art maps exact puzzles or expressive sequencing",
           "adapt only mechanics that create meaningful Zork player choices rather than feature accumulation",
-          "rebuild selected ideas from scratch using Zork-native objects, state, prose, geography, parser verbs, and consequence systems",
+          "rebuild selected ideas from scratch using Zork-native objects state prose geography parser verbs and consequence systems",
           "keep the separate S.T.A.L.K.E.R. Glulx product lane distinct"
         ]
       },
@@ -147,33 +154,41 @@
         "train_id": "zork-forest-that-answers-back",
         "title": "Forest That Answers Back / Described World = Interactive World",
         "status": "future-promotion-candidate",
-        "outcome": "Turn selected concrete nouns already present in authored forest descriptions into targetable, stateful world objects whose interactions compose with existing physicality instead of remaining decorative prose.",
-        "boundaries": ["no procedural object generator", "no universal interaction matrix", "promote authored nouns selectively where interaction creates real play"]
+        "outcome": "Turn selected concrete nouns already present in authored forest descriptions into targetable stateful world objects whose interactions compose with existing physicality instead of remaining decorative prose.",
+        "boundaries": [
+          "no procedural object generator",
+          "no universal interaction matrix",
+          "promote authored nouns selectively where interaction creates real play"
+        ]
       },
       {
         "train_id": "zork-time-weather-disaster-arc",
         "title": "Time, Weather & Disaster Arc",
         "status": "future-arc",
-        "outcome": "Layer authored time and weather conditions plus selected disasters onto real geography and material state to create preparation, shelter, traversal, rescue, and aftermath play.",
-        "boundaries": ["no generic climate simulator", "reuse existing geography and object state", "conditions must create visible player choices and consequences"]
+        "outcome": "Layer authored time and weather conditions plus selected disasters onto real geography and material state to create preparation shelter traversal rescue and aftermath play.",
+        "boundaries": [
+          "no generic climate simulator",
+          "reuse existing geography and object state",
+          "conditions must create visible player choices and consequences"
+        ]
       },
       {
         "train_id": "zork-causal-death-warning-depth",
         "title": "Causal Death & Warning Depth",
         "status": "future",
-        "outcome": "Broaden fair cause-warning-consequence chains, near-death records, delayed consequences, and exact-object provenance without turning death into a generic simulation framework."
+        "outcome": "Broaden fair cause-warning-consequence chains near-death records delayed consequences and exact-object provenance without turning death into a generic simulation framework."
       },
       {
         "train_id": "zork-museum-ecology-second-expansion",
         "title": "Museum & Ecology Second Expansion",
         "status": "future",
-        "outcome": "Continue physical specimen, provenance, collection, and ecology stories only where they create new field play rather than checklist accumulation."
+        "outcome": "Continue physical specimen provenance collection and ecology stories only where they create new field play rather than checklist accumulation."
       },
       {
         "train_id": "zork-narrative-perspective-experiments",
         "title": "Narrative Perspective Experiments",
         "status": "future-isolated-editions",
-        "outcome": "Build isolated first-person, third-person, and interactive-storybook editions against real canonical state without changing normal Zork."
+        "outcome": "Build isolated first-person third-person and interactive-storybook editions against real canonical state without changing normal Zork."
       },
       {
         "train_id": "zork-draw-multi-agent-experiments",
@@ -197,30 +212,133 @@
       }
     ],
     "done": [
-      {"release_range": "1219-1230", "title": "House of Records", "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"},
-      {"release": 1231, "title": "Corpus-Coupled Causal Warning", "pr": 34},
-      {"release": 1232, "title": "Parser Comprehension and Deep Affordances", "pr": 35},
-      {"release": 1233, "title": "Museum Intake and First Gallery", "pr": 36},
-      {"release": 1234, "title": "Mara Arrival and Evidence Memory", "pr": 37},
-      {"release": 1235, "title": "Cuisine, Hunger, and Stamina", "pr": 38},
-      {"release": 1236, "title": "Great Canyon Living Consequences", "pr": 39},
-      {"release": 1237, "title": "Zork Plus Veteran Survey Expedition", "pr": 40},
-      {"release": 1238, "title": "Cellar Expedition Recovery Locker", "pr": 41},
-      {"release": 1239, "title": "Museum Ecology and Dam Fishing", "pr": 42},
-      {"release": 1240, "title": "Museum Songbird Correspondence", "pr": 43},
-      {"release": 1241, "title": "Museum Troll Provenance", "pr": 44},
-      {"release": 1242, "title": "Natural-Play Regression Repair", "pr": 45},
-      {"release": 1243, "title": "Mara Companion Expedition Foundation", "pr": 46},
-      {"title": "Narrative Perspective Experiments", "pr": 47, "type": "documentation lane"},
-      {"release": 1244, "title": "Mara House Company", "pr": 48},
-      {"release": 1245, "title": "Creative Natural Play", "pr": 49},
-      {"release": 1246, "title": "Environmental Destruction", "pr": 50},
-      {"release": 1247, "title": "Narrative Physicality", "pr": 51},
-      {"release": 1248, "title": "Forest Consequence Physicality", "pr": 52},
-      {"release": 1249, "title": "Underground Sensory Physicality", "pr": 53, "merge_commit": "bacb1a358f0ee126ee6ae629b589c3d3a0269ee9", "artifact_sha256": "b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6"},
-      {"release": 1250, "title": "Player Ingenuity / Systemic Workarounds", "pr": 55, "merge_commit": "cd6a918795196b6918a2a5c5600b56c1c0d6e20b"},
-      {"release": 1251, "title": "Cross-System Utility Mesh", "pr": 56, "merge_commit": "79b87248d567962fff2181e4996d1cf424cdcac0", "artifact_sha256": "f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7"},
-      {"release": 1252, "title": "Earned Sequence Breaks & Route Mastery", "pr": 57, "merge_commit": "43a253a83a7349c9d3838e07488a90233f92410b", "artifact_sha256": "b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6"}
+      {
+        "release_range": "1219-1230",
+        "title": "House of Records",
+        "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"
+      },
+      {
+        "release": 1231,
+        "title": "Corpus-Coupled Causal Warning",
+        "pr": 34
+      },
+      {
+        "release": 1232,
+        "title": "Parser Comprehension and Deep Affordances",
+        "pr": 35
+      },
+      {
+        "release": 1233,
+        "title": "Museum Intake and First Gallery",
+        "pr": 36
+      },
+      {
+        "release": 1234,
+        "title": "Mara Arrival and Evidence Memory",
+        "pr": 37
+      },
+      {
+        "release": 1235,
+        "title": "Cuisine, Hunger, and Stamina",
+        "pr": 38
+      },
+      {
+        "release": 1236,
+        "title": "Great Canyon Living Consequences",
+        "pr": 39
+      },
+      {
+        "release": 1237,
+        "title": "Zork Plus Veteran Survey Expedition",
+        "pr": 40
+      },
+      {
+        "release": 1238,
+        "title": "Cellar Expedition Recovery Locker",
+        "pr": 41
+      },
+      {
+        "release": 1239,
+        "title": "Museum Ecology and Dam Fishing",
+        "pr": 42
+      },
+      {
+        "release": 1240,
+        "title": "Museum Songbird Correspondence",
+        "pr": 43
+      },
+      {
+        "release": 1241,
+        "title": "Museum Troll Provenance",
+        "pr": 44
+      },
+      {
+        "release": 1242,
+        "title": "Natural-Play Regression Repair",
+        "pr": 45
+      },
+      {
+        "release": 1243,
+        "title": "Mara Companion Expedition Foundation",
+        "pr": 46
+      },
+      {
+        "title": "Narrative Perspective Experiments",
+        "pr": 47,
+        "type": "documentation lane"
+      },
+      {
+        "release": 1244,
+        "title": "Mara House Company",
+        "pr": 48
+      },
+      {
+        "release": 1245,
+        "title": "Creative Natural Play",
+        "pr": 49
+      },
+      {
+        "release": 1246,
+        "title": "Environmental Destruction",
+        "pr": 50
+      },
+      {
+        "release": 1247,
+        "title": "Narrative Physicality",
+        "pr": 51
+      },
+      {
+        "release": 1248,
+        "title": "Forest Consequence Physicality",
+        "pr": 52
+      },
+      {
+        "release": 1249,
+        "title": "Underground Sensory Physicality",
+        "pr": 53,
+        "merge_commit": "bacb1a358f0ee126ee6ae629b589c3d3a0269ee9",
+        "artifact_sha256": "b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6"
+      },
+      {
+        "release": 1250,
+        "title": "Player Ingenuity / Systemic Workarounds",
+        "pr": 55,
+        "merge_commit": "cd6a918795196b6918a2a5c5600b56c1c0d6e20b"
+      },
+      {
+        "release": 1251,
+        "title": "Cross-System Utility Mesh",
+        "pr": 56,
+        "merge_commit": "79b87248d567962fff2181e4996d1cf424cdcac0",
+        "artifact_sha256": "f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7"
+      },
+      {
+        "release": 1252,
+        "title": "Earned Sequence Breaks & Route Mastery",
+        "pr": 57,
+        "merge_commit": "43a253a83a7349c9d3838e07488a90233f92410b",
+        "artifact_sha256": "b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6"
+      }
     ]
   }
 }

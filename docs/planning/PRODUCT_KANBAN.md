@@ -21,31 +21,41 @@ This board is the human operating surface for the active Zork product queue. The
 
 ## CURRENT
 
-### Release 1256 — Grue Ecology & Colony Reveal
+### Release 1257 — Fire, Smoke & Structural Consequences
 
-**Active branch:** `agent/grue-ecology-colony-reveal-20260812`  
-**Stacked on:** qualified Release 1255 / PR #60 (`agent/thief-retaliation-sabotage-20260812`)
+**Active branch:** `agent/fire-smoke-structural-consequences-20260812`  
+**PR:** #62  
+**Stacked on:** qualified Release 1256 / PR #61 (`agent/grue-ecology-colony-reveal-20260812`)
 
-**Player outcome:** one optional mine dead end now reveals authored grue ecology without converting grues into ordinary visible monsters. Ordinary light gives plural indirect evidence; the permanent flaming ivory torch forces a signature retreat through multiple fissures and proves that the darkness borders a colony.
+**Player outcome:** the canonical Timber Room now supports one persistent authored fire lifecycle using real flame, real bottled water, existing mine airflow, and persistent physical aftermath instead of a generic fire or chemistry simulator.
 
 Current showcase:
 
-- `DEAD-END-5` contains targetable narrow mine fissures whose reveal state lives on the fissures themselves, consuming zero new VM globals;
-- ordinary lamp light keeps the room usable but exposes only scrapes and movement from more than one crack;
-- carrying the permanent flaming ivory torch into the room drives strong light farther into the fissures and reveals many separate retreats at once;
-- after the reveal, `EXAMINE`, `FIND`, and `LISTEN` on the grue report ecology evidence while still refusing to make a grue conveniently visible;
-- the fissures remain inspectable evidence rather than a new route or generic hive entrance;
-- canonical darkness/grue lethality and noise machinery in `gverbs.zil` is preserved byte-for-byte;
-- there are no grue hit points, combat stats, colony counters, monster-attractor systems, or generic dark-room hives.
+- the dry broken timbers are a real burn target, but first ignition produces a recoverable smolder rather than instant deletion or explosion;
+- a new smolder can be stamped out before it earns open flame;
+- ignored smolder becomes open flame, and the room's existing westward draft drives smoke into the narrow west crawl while preserving the wide east escape;
+- the real open bottle containing the real water can douse active timber fire, consuming that water and leaving scorched aftermath;
+- ignored open flame gives audible structural warning before one old brace drops into the burning clutter;
+- the fire eventually burns itself down to a persistent charred heap and fallen brace;
+- the collapse does not widen, delete, or brick the canonical `EMPTY-HANDED` narrow passage;
+- fire state is table-backed and consumes zero new VM globals;
+- canonical `gverbs.zil` / `V-BURN` and canonical Gas Room behavior in `1actions.zil` remain byte-for-byte unchanged;
+- the canonical coal object remains real, movable, and burnable.
 
-Release 1256 is fully qualified on the stacked branch. Locked production artifact SHA-256:
+Release 1257 is fully qualified on the stacked branch. Locked production artifact SHA-256:
 
-`dbad355f6d18245d48671102bf4d449f227c03bd8e39ec569c9a41d8508c7c4a`
+`0664b758da1809195489f577f655497e5ccb981f7b6c5fb1b69b8b48b77a5b23`
 
-Final locked qualification run: `31638229971`.
+Exact qualified staged-source identities:
+
+- production: `addcfb42663813c49ff822b009ce46302f750739cda345854bf143f77836aa31`
+- dev: `5d383e7e920369fd0b6a78f424b013a17d702a7bdd884ba1dd8b2c7478844ed8`
+
+Final locked qualification run: `31650907894`.
 
 ### Qualified prerequisites awaiting merge
 
+- **Release 1256 — Grue Ecology & Colony Reveal / PR #61** — `dbad355f6d18245d48671102bf4d449f227c03bd8e39ec569c9a41d8508c7c4a`
 - **Release 1255 — Thief Retaliation & Sabotage / PR #60** — `89664ebb9b728257f14b2831f6a9fda45d9de0e6bacb807fba8a1eec7b9b667e`
 - **Release 1254 — Troll Disarm & Stolen Weapons / PR #59** — `5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4`
 - **Release 1253 — Dam Survival & Prepared Rescue / PR #58** — `41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11`
@@ -54,17 +64,13 @@ All remain **unmerged** above the Release-1252 production frontier.
 
 ## NEXT — ordered
 
-### 1. Release 1257 — Fire, Smoke & Structural Consequences
-
-Extend physicality into a deliberately small set of authored fire, smoke, collapse, and machinery consequences with warning, escape, mitigation, persistent damage, and recovery. Reuse existing flame/light/material state rather than creating a generalized chemistry simulator.
-
-### 2. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+### 1. Release 1258 — Mara Reciprocal Rescue & Shared Danger
 
 Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions without an approval meter.
 
 ## FUTURE
 
-- **Treasure Guardian Dragon & Hoard** — create an original Zork-native dragon encounter around a real treasure hoard, authored territorial behavior, visible warning signs, and dangerous fire breath. Fire should compose with the fire/smoke/material-consequence systems, while the encounter supports multiple credible Zork solutions such as preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation rather than becoming a generic hit-point boss fight. Shadowgate is inspiration for the encounter archetype only; all prose, code, map layout, puzzle expression, objects, and exact solution structure are rebuilt from scratch.
+- **Treasure Guardian Dragon & Hoard** — create an original Zork-native dragon encounter around a real treasure hoard, authored territorial behavior, visible warning signs, and dangerous fire breath. Fire should compose with the Release-1257 fire/smoke/material-consequence authority, while the encounter supports multiple credible Zork solutions such as preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation rather than becoming a generic hit-point boss fight. Shadowgate is inspiration for the encounter archetype only; all prose, code, map layout, puzzle expression, objects, and exact solution structure are rebuilt from scratch.
 - **Cross-IF / RPG Mechanics Adaptation — Shadowgate First** — deliberately study high-value mechanics and interaction patterns from other interactive-fiction games and RPGs, beginning with Shadowgate, then rebuild selected ideas as original Zork-native systems that compose with canonical state and the existing physicality mesh. Borrow concepts and design lessons, not source code, text, art, maps, exact puzzles, or expressive sequencing. Later widen the inspiration pool to other IF/RPGs and eventually selected S.T.A.L.K.E.R.-inspired mechanics, while keeping the separate S.T.A.L.K.E.R. Glulx product lane distinct.
 - **Forest That Answers Back / Described World = Interactive World** — promote selected concrete nouns already present in authored forest descriptions into targetable, stateful world objects whose interactions compose with existing physicality rather than becoming decorative prose or a generic object generator.
 - **Time, Weather & Disaster Arc** — layer authored time/weather conditions and selected disasters onto real geography and existing material state only where they create meaningful preparation, shelter, traversal, rescue, and aftermath play; no generic climate simulator.
@@ -115,8 +121,8 @@ Final Release 1252 production artifact SHA-256:
 
 `b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6`
 
-The post-Release-1252 handoff commit left `master` at `7768710a8b4fd4d4d798011eec70fe6f88112e81` before Release 1253 began. Releases 1253–1256 are qualified stacked trains, not merged frontier releases.
+The post-Release-1252 handoff commit left `master` at `7768710a8b4fd4d4d798011eec70fe6f88112e81` before Release 1253 began. Releases 1253–1257 are qualified stacked trains, not merged frontier releases.
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and post-1249 product arc. Release 1256 applies that doctrine to authored grue ecology while preserving Release 1257 as the next committed train and retaining the dragon, Shadowgate-first cross-IF/RPG adaptation, forest-density, time/weather/disaster, and far-horizon experiment opportunities above.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and post-1249 product arc. Release 1257 establishes the first shared authored world-fire authority while preserving Release 1258 as the next committed train and retaining the dragon, Shadowgate-first cross-IF/RPG adaptation, forest-density, time/weather/disaster, and far-horizon experiment opportunities above.
