@@ -21,45 +21,52 @@ This board is the human operating surface for the active Zork product queue. The
 
 ## CURRENT
 
-### Release 1253 — Dam Survival & Prepared Rescue
+### Release 1254 — Troll Disarm & Stolen Weapons
 
-**Active branch:** `agent/dam-survival-prepared-rescue-20260812`
+**Active branch:** `agent/troll-disarm-stolen-weapons-20260812`  
+**Stacked on:** qualified Release 1253 / PR #58 (`agent/dam-survival-prepared-rescue-20260812`)
 
-**Player outcome:** Flood Control Dam #3 now answers to its real gate/water state, the adventurer's real carried weight, a physical maintenance ladder, and the existing rope authority so deliberate risky actions can cause recoverable loss, death, or earned rescue depending on preparation.
+**Player outcome:** losing a real weapon to the canonical troll can now become persistent physical custody rather than a momentary combat message: the troll can seize the exact object, wield it against its owner, taunt with it, bargain over it, lose it through combat, and surrender it when subdued or killed.
 
 Current showcase:
 
-- an iron maintenance ladder physically connects the dam top and Dam Base while ordinary authored exits remain safe;
-- closed/high overflow can make an overloaded ladder descent knock the heaviest eligible loose item to Dam Base, where it can be recovered;
-- open sluices plus an overloaded, unprepared ladder descent can kill the adventurer;
-- tying the existing rope to the maintenance ladder creates a real fixed handline that catches the same dangerous slip;
-- with sluices open, deliberately entering the Frigid River without a fixed line is lethal, while the prepared handline lets the adventurer survive the experiment and claw back to the landing;
-- the canonical inflatable/magic boat and `RBOAT-FUNCTION` remain the authored river-travel solution;
-- canonical `GATES-OPEN` / `LOW-TIDE`, carried-object identity, rope anchoring, and normal dam movement remain authoritative—no parallel dam simulation was added.
+- canonical troll combat remains the authority for `LOSE-WEAPON`; when that authored result occurs, the troll can snatch the adventurer's exact sword or knife before it reaches the floor;
+- the captured object is the one real canonical object—there is no duplicate weapon, ownership token, or shadow inventory;
+- while holding a captured player weapon, the troll prefers it as his combat weapon, so the player can literally face the sword or knife they lost;
+- direct attempts to take a weapon from the armed troll remain physically blocked rather than silently moving the object;
+- disarming the troll can knock a captured weapon loose through the existing combat result path;
+- unconsciousness or death releases real held player weapons for recovery;
+- food can buy the exact captured weapon back, but the bargain does not pacify the troll or open the exits;
+- examine/listen/greeting flavor makes stolen custody visible without adding a dialogue tree or relationship meter;
+- canonical troll strength, axe recovery, combat, unconsciousness/death, and exit gating remain authoritative.
 
-Release 1253 is fully qualified on the branch and waiting for PR review/merge whistle. Locked production artifact SHA-256:
+Release 1254 is fully qualified on the stacked branch. Locked production artifact SHA-256:
+
+`5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4`
+
+Final locked qualification run: `31629388400`.
+
+### Qualified prerequisite awaiting merge
+
+Release 1253 — Dam Survival & Prepared Rescue remains fully qualified in PR #58 and is **not merged**. Its locked production artifact remains:
 
 `41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11`
 
 ## NEXT — ordered
 
-### 1. Release 1254 — Troll Disarm & Stolen Weapons
+### 1. Release 1255 — Thief Retaliation & Sabotage
 
-Let the canonical troll seize or retain real weapons under authored conditions, creating persistent custody, taunts, bargaining, recovery, and consequences for losing your own weapon.
+Add visible, causal retaliation through selective theft, sabotage, warnings, earned ambushes, avoidance, repair, and appeasement while preserving the canonical thief's roaming and treasure behavior.
 
-### 2. Release 1255 — Thief Retaliation & Sabotage
-
-Add visible, causal retaliation through selective theft, sabotage, warnings, earned ambushes, avoidance, repair, and appeasement.
-
-### 3. Release 1256 — Grue Ecology & Colony Reveal
+### 2. Release 1256 — Grue Ecology & Colony Reveal
 
 Support selected darkness experiments and authored grue ecology, including stronger-light consequences and a signature colony reveal without turning grues into ordinary combat mobs.
 
-### 4. Release 1257 — Fire, Smoke & Structural Consequences
+### 3. Release 1257 — Fire, Smoke & Structural Consequences
 
 Extend physicality into a deliberately small set of authored fire, smoke, collapse, and machinery consequences.
 
-### 5. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+### 4. Release 1258 — Mara Reciprocal Rescue & Shared Danger
 
 Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions without an approval meter.
 
@@ -114,8 +121,8 @@ Final Release 1252 production artifact SHA-256:
 
 `b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6`
 
-The post-Release-1252 handoff commit left `master` at `7768710a8b4fd4d4d798011eec70fe6f88112e81` before Release 1253 began.
+The post-Release-1252 handoff commit left `master` at `7768710a8b4fd4d4d798011eec70fe6f88112e81` before Release 1253 began. Release 1253 and Release 1254 are qualified stacked trains, not merged frontier releases.
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and the post-1249 product arc. Release 1253 applies that doctrine to Flood Control Dam #3 while preserving Release 1254 as the next committed train and retaining the newer forest-density, time/weather/disaster, and far-horizon experiment opportunities above.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and the post-1249 product arc. Release 1254 applies that doctrine to persistent troll weapon custody while preserving Release 1255 as the next committed train and retaining the newer forest-density, time/weather/disaster, and far-horizon experiment opportunities above.
