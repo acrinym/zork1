@@ -226,7 +226,7 @@ timeout 55s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
   < "$BUILD/canonical-echo.txt" > "$BUILD/canonical-echo-transcript.txt" 2>&1 || true
 ECHO="$BUILD/canonical-echo-transcript.txt"
 grep -F 'The acoustics of the room change subtly.' "$ECHO"
-grep -F 'The famous acoustics are still here, but the room is eerily subdued' "$ECHO"
+grep -F 'The room is eerie in its quietness.' "$ECHO"
 
 python - "$STORY" "$DEV_STORY" "$MANIFEST" <<'PY'
 import hashlib,json,sys
