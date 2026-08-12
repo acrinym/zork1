@@ -64,6 +64,8 @@ assert '<ROUTINE UTILITY-MESH-HAUL-SACK' in material
 assert '<ROUTINE UTILITY-MESH-CARGO-SPAN-BLOCK? ()' in material
 assert '<EQUAL? ,PRSI ,RAILING> <RFALSE>' in material
 assert '<AND <UTILITY-MESH-CARGO-TIED?> ,DOME-FLAG>' in material
+assert '<EQUAL? ,HERE ,KITCHEN>' in material
+assert '<EQUAL? <LOC ,SANDWICH-BAG> ,STUDIO>' in material
 assert 'The closed grating leaves no opening for the sack.' in material
 assert 'Hand over hand, you haul the brown sack up the chimney.' in material
 assert 'ten feet below' in material
@@ -148,13 +150,13 @@ drop sack
 up
 pull rope
 lower sack
-pull rope
+down
 untie sack from rope
 quit
 yes
 EOF_PLAY
 timeout 70s "$GLULXE_BIN" --rngseed 1251001 "$STORY" \
-  < "$BUILD/tree-chimney.txt" > "$BUILD/tree-chimney-transcript.txt" 2>&1 || true
+  < "$BUILD/tree-chimney.txt" > "$BUILD/tree-chimney-transcript.txt" 2>&1
 TREE="$BUILD/tree-chimney-transcript.txt"
 grep -F 'The rope draws taut toward the brown sack at the other end of the vertical run.' "$TREE"
 grep -F 'You haul steadily on the rope until the brown sack rises from the path' "$TREE"
@@ -162,6 +164,7 @@ grep -F 'lower it to the forest path ten feet below' "$TREE"
 grep -F 'Hand over hand, you haul the brown sack up the chimney.' "$TREE"
 grep -F 'You pay out rope through the chimney.' "$TREE"
 grep -F 'without ever becoming another package on your body.' "$TREE"
+sed -n '/You pay out rope through the chimney/,$p' "$TREE" | grep -F 'You undo the knot around the brown sack. The rope is fully available again.'
 
 cat > "$BUILD/dome-mesh.txt" <<'EOF_DOME'
 south
@@ -203,7 +206,7 @@ quit
 yes
 EOF_DOME
 timeout 70s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
-  < "$BUILD/dome-mesh.txt" > "$BUILD/dome-mesh-transcript.txt" 2>&1 || true
+  < "$BUILD/dome-mesh.txt" > "$BUILD/dome-mesh-transcript.txt" 2>&1
 DOME="$BUILD/dome-mesh-transcript.txt"
 grep -F 'The rope drops over the side and comes within ten feet of the floor.' "$DOME"
 grep -F 'one end is cinched to the brown sack and the other is secured to the Dome Room railing' "$DOME"
@@ -259,7 +262,7 @@ quit
 yes
 EOF_GRATE
 timeout 80s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
-  < "$BUILD/grate-mesh.txt" > "$BUILD/grate-mesh-transcript.txt" 2>&1 || true
+  < "$BUILD/grate-mesh.txt" > "$BUILD/grate-mesh-transcript.txt" 2>&1
 GRATE="$BUILD/grate-mesh-transcript.txt"
 grep -F 'The grate is unlocked.' "$GRATE"
 grep -F 'The rope tightens, the brown sack rises through the open grating' "$GRATE"
