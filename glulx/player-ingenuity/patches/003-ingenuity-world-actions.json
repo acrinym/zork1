@@ -1,7 +1,7 @@
 {
   "id": "003_INGENUITY_WORLD_ACTIONS",
   "path": "1actions.zil",
-  "description": "Compose hearing protection with the canonical Loud Room, make a real field stone keep the trap door physically open, and recognize loaded-sack chimney bundling",
+  "description": "Compose hearing protection with the canonical Loud Room and Dam refill event, make a real field stone keep the evolved House trap door physically open, and recognize loaded-sack chimney bundling",
   "replacements": [
     {
       "expected_count": 1,
@@ -35,8 +35,13 @@
     },
     {
       "expected_count": 1,
-      "old": "\t(<EQUAL? .RARG ,M-ENTER>\n\t <COND (<AND <FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t     <NOT <FSET? ,TRAP-DOOR ,TOUCHBIT>>>\n\t\t<FCLEAR ,TRAP-DOOR ,OPENBIT>\n\t\t<FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t<TELL\n\"The trap door crashes shut, and you hear someone barring it.\" CR CR>)>)>>",
-      "new": "\t(<EQUAL? .RARG ,M-ENTER>\n\t <COND (<AND <FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t     <NOT <FSET? ,TRAP-DOOR ,TOUCHBIT>>>\n\t\t<COND (<PLAYER-INGENUITY-TRAP-WEDGED?>\n\t\t       <FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t       <TELL \"The trap door drops behind you, strikes the field-stone wedge with a solid knock, and remains open by several stubborn inches. The stair back to the Living Room is still usable.\" CR CR>)\n\t\t      (T\n\t\t       <FCLEAR ,TRAP-DOOR ,OPENBIT>\n\t\t       <FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t       <TELL\n\"The trap door crashes shut, and you hear someone barring it.\" CR CR>)>)>)>>"
+      "old": "\t(<EQUAL? .RARG ,M-ENTER>\n\t <HOUSE-STATE-ENTER ,CELLAR>\n\t <COND (<AND <FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t     <NOT <FSET? ,TRAP-DOOR ,TOUCHBIT>>>\n\t\t<FCLEAR ,TRAP-DOOR ,OPENBIT>\n\t\t<FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t<TELL\n\"The trap door crashes shut, and you hear someone barring it.\" CR CR>)>\n\t <CELLAR-ENTER>)",
+      "new": "\t(<EQUAL? .RARG ,M-ENTER>\n\t <HOUSE-STATE-ENTER ,CELLAR>\n\t <COND (<AND <FSET? ,TRAP-DOOR ,OPENBIT>\n\t\t     <NOT <FSET? ,TRAP-DOOR ,TOUCHBIT>>>\n\t\t<COND (<PLAYER-INGENUITY-TRAP-WEDGED?>\n\t\t       <FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t       <TELL \"The trap door drops behind you, strikes the field-stone wedge with a solid knock, and remains open by several stubborn inches. The stair back to the Living Room is still usable.\" CR CR>)\n\t\t      (T\n\t\t       <FCLEAR ,TRAP-DOOR ,OPENBIT>\n\t\t       <FSET ,TRAP-DOOR ,TOUCHBIT>\n\t\t       <TELL\n\"The trap door crashes shut, and you hear someone barring it.\" CR CR>)>)>\n\t <CELLAR-ENTER>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t       (<EQUAL? ,HERE ,LOUD-ROOM>\n\t\t<TELL\n\"All of a sudden, an alarmingly loud roaring sound fills the room.\nFilled with fear, you scramble away.\" CR>\n\t\t<GOTO <PICK-ONE ,LOUD-RUNS>>)",
+      "new": "\t       (<EQUAL? ,HERE ,LOUD-ROOM>\n\t\t<COND (<PLAYER-INGENUITY-EARMUFFS-WORN?>\n\t\t       <TELL \"All of a sudden, the water roar swells enormously. The battered hearing protectors take the murderous edge off it; you brace yourself and remain in the chamber.\" CR>)\n\t\t      (T\n\t\t       <TELL\n\"All of a sudden, an alarmingly loud roaring sound fills the room.\nFilled with fear, you scramble away.\" CR>\n\t\t       <GOTO <PICK-ONE ,LOUD-RUNS>>)>)"
     },
     {
       "expected_count": 1,
