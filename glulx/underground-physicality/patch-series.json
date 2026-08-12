@@ -13,10 +13,10 @@
     "file": "zork1-glulx-underground-sensory-physicality.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": 414976,
-    "checksum_hex": "0xf91871a0",
-    "sha256": "707e8d817de66e5d45c2839128460b070104399f8eb1a819d1db7d7b30121dbf",
-    "locked": false
+    "size_bytes": 414720,
+    "checksum_hex": "0xdd1d7ac5",
+    "sha256": "b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6",
+    "locked": true
   },
   "patches": [
     "patches/001-underground-physicality-core.json",

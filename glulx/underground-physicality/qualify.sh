@@ -24,6 +24,10 @@ m=json.loads(Path(sys.argv[1]).read_text())
 print('\t'.join((m['serial'],m['expected_artifact']['file'],str(m['expected_artifact'].get('locked',False)).lower())))
 PY
 )
+if [[ "$LOCKED" != "true" ]]; then
+  echo "Release 1249 requires a locked expected artifact identity" >&2
+  exit 1
+fi
 
 python -m py_compile glulx/underground-physicality/stage.py
 python glulx/creative-natural-play/stage.py \
@@ -86,12 +90,17 @@ assert '<CONSTANT MD-UNDERGROUND-EW-PASSAGE-SCAR 2>' in material
 assert '<CONSTANT MATERIAL-UNDERGROUND-SCAR-STATE <TABLE <> <> <> <> <> <> <> <> <>>>' in material
 assert '<PUT ,MATERIAL-UNDERGROUND-SCAR-STATE ,MD-UNDERGROUND-CHASM-SCAR <>>' in material
 assert '<NOT <EQUAL? ,PRSO ,BOTTLE ,EGG ,LAMP>>>' in material
+assert '<OR <EQUAL? ,PRSO ,WALL> <EQUAL? ,PRSO ,GRANITE-WALL>>' not in material
+assert '<OR <EQUAL? ,PRSI ,WALL> <EQUAL? ,PRSI ,GRANITE-WALL>>' not in material
 assert 'The cellar masonry is cool, damp, and load-bearing' in material
 assert 'The rushing roar occupies the room completely.' in material
 assert 'The Troll Room is small enough that the stone feels close around you.' in dungeon
 assert '(GLOBAL TRAP-DOOR SLIDE STAIRS WHITE-HOUSE WALL)' in dungeon
 assert '(GLOBAL CRACK STAIRS WALL)' in dungeon
 assert 'There is no downward route here; the chasm edge simply falls away into darkness.' in dungeon
+assert '<OBJECT GRANITE-WALL' in dungeon
+assert '(ACTION GRANITE-WALL-F)' in dungeon
+assert '<ROUTINE GRANITE-WALL-F ()' in actions
 assert 'Hard walls rise on every side, giving the room exactly the architecture an echo would have ordered.' in actions
 assert 'The near edge gives you no usable landing line' in actions
 assert '<CONSTANT RELEASEID 1249>' in zork
@@ -303,18 +312,16 @@ expected=manifest['expected_artifact']
 story_sha=hashlib.sha256(story.read_bytes()).hexdigest(); dev_sha=hashlib.sha256(dev.read_bytes()).hexdigest()
 assert report['checksum_valid'] is True and dev_report['checksum_valid'] is True
 identity={'file':story.name,'format':'Glulx','version_hex':report['version_hex'],'size_bytes':story.stat().st_size,'checksum_hex':report['checksum_hex'],'sha256':story_sha}
-if expected.get('locked') is True:
-    for key in ('file','version_hex','size_bytes','checksum_hex','sha256'):
-        assert expected[key]==identity[key], (key,expected[key],identity[key])
-else:
-    print('BOOTSTRAP_ARTIFACT_IDENTITY=' + json.dumps(identity,sort_keys=True))
+assert expected.get('locked') is True
+for key in ('file','version_hex','size_bytes','checksum_hex','sha256'):
+    assert expected[key] == identity[key], (key, expected[key], identity[key])
 receipt={
   'release':1249,
   'serial':manifest['serial'],
-  'artifact_identity_locked':expected.get('locked') is True,
+  'artifact_identity_locked':True,
   'production':{**identity,'report':report},
   'dev':{'file':dev.name,'size_bytes':dev.stat().st_size,'sha256':dev_sha,'report':dev_report},
-  'qualification':['exact Release 1248 source provenance','no-new-globals','smell-check','compile','Glulx-checksum','natural early-GUE sensory and wall physicality','plain WALL parser resolution in authored underground rooms','underground cosmetic scar state isolated from canonical room movement flags','canonical troll gate and Loud Room ECHO','canonical chasm object-loss authority','canonical bottle delegation','bounded dev underground-scar reset'],
+  'qualification':['exact Release 1248 source provenance','no-new-globals','smell-check','compile','Glulx-checksum','locked Release 1249 artifact identity','natural early-GUE sensory and wall physicality','plain WALL parser resolution in authored underground rooms','explicit GRANITE WALL canonical authority preserved','underground cosmetic scar state isolated from canonical room movement flags','canonical troll gate and Loud Room ECHO','canonical chasm object-loss authority','canonical bottle delegation','bounded dev underground-scar reset'],
 }
 (build/'QUALIFICATION.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
 print(json.dumps(receipt,indent=2,sort_keys=True))
