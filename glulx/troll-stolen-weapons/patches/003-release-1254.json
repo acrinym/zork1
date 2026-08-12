@@ -1,0 +1,17 @@
+{
+  "id": "troll-stolen-weapons-003",
+  "description": "Stamp the staged story as Release 1254 Troll Disarm & Stolen Weapons.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "\"ZORK1 DAM SURVIVAL AND PREPARED RESCUE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Dam Survival & Prepared Rescue. Release 1253 retains the\n  qualified Release 1252 route-mastery world while making Flood Control Dam #3\n  answer to its canonical gate/water state, real encumbrance, the existing rope,\n  and a physical maintenance ladder. Normal authored travel remains deterministic;\n  danger is caused by deliberate hazardous actions and can be changed by preparation.\"\n\n<VERSION ZIP>\n\n<SETG ZORK-NUMBER 1>\n\n<CONSTANT RELEASEID 1253>",
+      "new": "\"ZORK1 TROLL DISARM AND STOLEN WEAPONS GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Troll Disarm & Stolen Weapons. Release 1254 retains the\n  qualified Release 1253 dam-survival world while letting the canonical troll\n  seize real weapons lost in combat, keep and use that exact custody, taunt the\n  player with it, trade it back for food, and surrender it through real combat\n  outcomes. Canonical combat, troll strength, axe behavior, and exits remain authority.\"\n\n<VERSION ZIP>\n\n<SETG ZORK-NUMBER 1>\n\n<CONSTANT RELEASEID 1254>",
+      "expected_count": 1
+    },
+    {
+      "old": "<PRINC \"Earned Sequence Breaks and Route Mastery Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Troll Disarm and Stolen Weapons Glulx ZORK I: The Great Underground Empire\n \">",
+      "expected_count": 1
+    }
+  ]
+}

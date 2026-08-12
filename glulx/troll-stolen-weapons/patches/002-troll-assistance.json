@@ -1,0 +1,12 @@
+{
+  "id": "troll-stolen-weapons-002",
+  "description": "Teach assistance about stolen-weapon custody, combat recovery, and the authored food bargain.",
+  "path": "assistance.zil",
+  "replacements": [
+    {
+      "old": "\t      (<EQUAL? ,HERE ,TROLL-ROOM>\n\t       <ASSIST-HINT-TIER\n\"The troll controls the exits because he is armed and attentive.\"\n\"A weapon and persistence may be required before the passages become usable.\"\n\"Prepare for combat, attack the troll, and watch for chances to recover or disarm his axe.\">)",
+      "new": "\t      (<EQUAL? ,HERE ,TROLL-ROOM>\n\t       <ASSIST-HINT-TIER\n\"The troll controls the exits because he is armed and attentive, and a weapon knocked from your hands may become his.\"\n\"A disarm can recover a weapon he seized; knocking him unconscious or killing him also ends his custody.\"\n\"If the troll has taken one of your weapons, food can buy that exact weapon back -- but it does not buy safe passage.\">)",
+      "expected_count": 1
+    }
+  ]
+}
