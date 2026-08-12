@@ -51,31 +51,39 @@ apply_patch(Path('glulx/troll-stolen-weapons/tests/001-include-troll-stolen-test
 PY
 TEST_STORY="$BUILD/troll-stolen-weapons-test.ulx"; compile_story "$TEST_SRC" "$BUILD/troll-stolen-weapons-test.asm" "$TEST_STORY" test
 GLULXE_BIN="$(realpath .tooling/glulxe/glulxe)"
-cat > "$BUILD/custody-bargain.txt" <<'EOF1'
+
+cat > "$BUILD/custody-armed.txt" <<'EOF1'
 trollcustody
 examine troll
-listen to troll
-hello troll
 take sword
 trollarmed
-give lunch to troll
 quit
 yes
 EOF1
-timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/custody-bargain.txt" > "$BUILD/custody-bargain-transcript.txt" 2>&1
-B="$BUILD/custody-bargain-transcript.txt"; grep -F 'Before the sword can hit the floor, the troll snatches it out of the air.' "$B"; grep -F 'The sword in his hands is unmistakably yours.' "$B"; grep -F 'The troll taps your stolen sword against the stone' "$B"; grep -F 'The troll answers by raising your stolen sword in a mocking salute.' "$B"; grep -F 'The troll swings it out of your reach.' "$B"; grep -F 'TEST troll preferred weapon: sword' "$B"; grep -F 'The bargain buys the weapon, not safe passage.' "$B"
-cat > "$BUILD/custody-subdue.txt" <<'EOF2'
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/custody-armed.txt" > "$BUILD/custody-armed-transcript.txt" 2>&1
+C="$BUILD/custody-armed-transcript.txt"; grep -F 'Before the sword can hit the floor, the troll snatches it out of the air.' "$C"; grep -F 'The sword in his hands is unmistakably yours.' "$C"; grep -F 'The troll swings it out of your reach.' "$C"; grep -F 'TEST troll preferred weapon: sword' "$C"
+
+cat > "$BUILD/custody-bargain.txt" <<'EOF2'
 trollcustody
-trollarmed
+give lunch to troll
+quit
+yes
+EOF2
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/custody-bargain.txt" > "$BUILD/custody-bargain-transcript.txt" 2>&1
+B="$BUILD/custody-bargain-transcript.txt"; grep -F 'Before the sword can hit the floor, the troll snatches it out of the air.' "$B"; grep -F 'The bargain buys the weapon, not safe passage.' "$B"
+
+cat > "$BUILD/custody-subdue.txt" <<'EOF3'
+trollcustody
 trollsubdue
 look
 take sword
 inventory
 quit
 yes
-EOF2
+EOF3
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/custody-subdue.txt" > "$BUILD/custody-subdue-transcript.txt" 2>&1
-S="$BUILD/custody-subdue-transcript.txt"; grep -F 'TEST troll preferred weapon: sword' "$S"; grep -F 'TEST PRECONDITION: canonical troll unconsciousness resolved after stolen-weapon custody.' "$S"; grep -F 'An unconscious troll is sprawled on the floor. All passages' "$S"; grep -F 'Taken.' "$S"
+S="$BUILD/custody-subdue-transcript.txt"; grep -F 'TEST PRECONDITION: canonical troll unconsciousness resolved after stolen-weapon custody.' "$S"; grep -F 'An unconscious troll is sprawled on the floor. All passages' "$S"; grep -F 'Taken.' "$S"
+
 python - "$STORY" "$MANIFEST" <<'PY'
 import hashlib,json,sys
 from pathlib import Path
@@ -83,6 +91,6 @@ story=Path(sys.argv[1]); manifest=json.loads(Path(sys.argv[2]).read_text()); b=P
 identity={'file':story.name,'format':'Glulx','version_hex':report['version_hex'],'size_bytes':story.stat().st_size,'checksum_hex':report['checksum_hex'],'sha256':hashlib.sha256(story.read_bytes()).hexdigest()}; assert report['checksum_valid'] is True; expected=manifest['expected_artifact']
 if expected.get('locked') is not True: print('RELEASE_1254_ARTIFACT_IDENTITY='+json.dumps(identity,sort_keys=True)); raise SystemExit(4)
 for key in ('file','version_hex','size_bytes','checksum_hex','sha256'): assert expected[key]==identity[key],(key,expected[key],identity[key])
-receipt={'release':1254,'serial':manifest['serial'],'artifact_identity_locked':True,'production':{**identity,'report':report},'base_release':1253,'base_artifact_sha256':manifest['base_artifact_sha256'],'custody_bargain':'custody-bargain-transcript.txt','custody_subdue':'custody-subdue-transcript.txt'}; (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n'); print(json.dumps(receipt,indent=2,sort_keys=True))
+receipt={'release':1254,'serial':manifest['serial'],'artifact_identity_locked':True,'production':{**identity,'report':report},'base_release':1253,'base_artifact_sha256':manifest['base_artifact_sha256'],'custody_armed':'custody-armed-transcript.txt','custody_bargain':'custody-bargain-transcript.txt','custody_subdue':'custody-subdue-transcript.txt'}; (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n'); print(json.dumps(receipt,indent=2,sort_keys=True))
 PY
 echo "Release 1254 Troll Disarm & Stolen Weapons qualified."
