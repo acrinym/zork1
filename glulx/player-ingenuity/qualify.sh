@@ -119,13 +119,13 @@ up
 take earmuffs
 wear earmuffs
 down
-west
-take lantern
 take sack
 take lunch from sack
 drop lunch
 take garlic from sack
 drop garlic
+west
+take lantern
 remove earmuffs
 put earmuffs in sack
 move rug
