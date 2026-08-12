@@ -13,10 +13,10 @@
     "file": "zork1-glulx-player-ingenuity-systemic-workarounds.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "DISCOVER",
-    "sha256": "DISCOVER",
-    "locked": false
+    "size_bytes": 418304,
+    "checksum_hex": "0x7d7efa85",
+    "sha256": "c71212ef3334808262406b0f01ecb898a1ae019df0fb0669a5dddafa6cdc57fb",
+    "locked": true
   },
   "patches": [
     "patches/001-player-ingenuity-core.json",
