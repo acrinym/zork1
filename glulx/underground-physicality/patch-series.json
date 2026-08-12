@@ -16,14 +16,15 @@
     "size_bytes": 414976,
     "checksum_hex": "0xf91871a0",
     "sha256": "707e8d817de66e5d45c2839128460b070104399f8eb1a819d1db7d7b30121dbf",
-    "locked": true
+    "locked": false
   },
   "patches": [
     "patches/001-underground-physicality-core.json",
     "patches/002-underground-narration.json",
     "patches/003-underground-room-actions.json",
     "patches/004-release-1249.json",
-    "patches/005-underground-scar-state.json"
+    "patches/005-underground-scar-state.json",
+    "patches/006-preserve-canonical-granite-wall.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
