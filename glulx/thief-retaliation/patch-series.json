@@ -11,11 +11,13 @@
   },
   "patches": [
     "patches/001-thief-retaliation.json",
+    "patches/002-thief-state-slot.json",
     "patches/002-thief-assistance.json",
     "patches/003-release-1255.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
+    "1dungeon.zil",
     "assistance.zil",
     "zork1.zil"
   ],
