@@ -4,10 +4,10 @@
   "updated_on": "2026-08-12",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "147236fcc61ac98b993ff1905c6e07c6bfbb6079",
-    "latest_release": 1251,
-    "latest_release_title": "Cross-System Utility Mesh",
-    "latest_merged_pr": 56
+    "master_head_when_updated": "7768710a8b4fd4d4d798011eec70fe6f88112e81",
+    "latest_release": 1252,
+    "latest_release_title": "Earned Sequence Breaks & Route Mastery",
+    "latest_merged_pr": 57
   },
   "operating_rules": [
     "CURRENT contains at most one actively implemented product train and may be empty between merged trains.",
@@ -22,47 +22,40 @@
   "lanes": {
     "current": [
       {
-        "train_id": "zork-earned-sequence-breaks-route-mastery-1252",
-        "release": 1252,
-        "title": "Earned Sequence Breaks & Route Mastery",
-        "status": "current",
-        "branch": "agent/earned-sequence-breaks-route-mastery-20260812",
-        "outcome": "Let knowledgeable players prepare and reuse real geography so selected routes become more useful without replacing canonical traversal or inventing magical shortcuts.",
-        "showcase": "Unify Release 1236 Great Canyon rope rescue with Release 1251 cargo-line semantics, then preserve White Cliffs boat dimensions through carried containers.",
+        "train_id": "zork-dam-survival-prepared-rescue-1253",
+        "release": 1253,
+        "title": "Dam Survival & Prepared Rescue",
+        "status": "current-qualified-awaiting-pr-merge",
+        "branch": "agent/dam-survival-prepared-rescue-20260812",
+        "outcome": "Make Flood Control Dam #3 a deterministic physical hazard whose real gate/water state, carried weight, maintenance ladder, and existing rope authority change the consequences of deliberate risky actions.",
+        "showcase": "An overloaded overflow descent can lose recoverable gear; open sluices can make the same unprepared descent lethal; tying the real rope to the physical maintenance ladder creates a fixed handline that catches the slip and can also rescue a deliberate river-entry experiment.",
         "acceptance": [
-          "SECURE ROPE and natural TIE or FASTEN ROPE TO CANYON RIM share the same existing canyon-rim rope authority",
-          "a cinched brown sack can be lowered from Canyon View to Rocky Ledge and hauled back without teleportation",
-          "the player can follow the authored climb, free cargo on Rocky Ledge, and later recover the still-secured rope",
-          "an inflated magic boat remains too wide for White Cliffs even when nested in a carried container",
-          "FOLD BOAT and COLLAPSE BOAT reach the canonical deflation action without bypassing its physical requirements",
-          "canonical canyon, rainbow, White Cliffs, boat, and river routes remain valid"
+          "canonical GATES-OPEN and LOW-TIDE remain the only dam water-state authority",
+          "a physical maintenance ladder is targetable at the dam top and Dam Base while normal authored exits remain safe",
+          "closed high-water overflow plus an overloaded unprepared descent can drop the heaviest eligible loose item to Dam Base for recovery",
+          "open sluices plus an overloaded unprepared descent can kill the adventurer",
+          "the existing rope can be tied to the maintenance ladder through the existing material-rope anchor authority",
+          "the prepared fixed handline changes the dangerous ladder slip into a survivable descent",
+          "open-sluice river entry without preparation is lethal while the fixed handline enables recovery to shore",
+          "the canonical inflatable/magic boat and RBOAT-FUNCTION remain the normal river-travel solution",
+          "production artifact is locked and reproducible"
         ],
+        "artifact_sha256": "41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11",
         "boundaries": [
-          "no teleport menu or speedrun debug verbs",
-          "no automatic puzzle completion",
-          "no rainbow rope anchor",
-          "no universal route solver, crafting grid, or physics engine"
+          "reuse canonical dam state",
+          "no fluid simulator",
+          "no random unavoidable falls",
+          "no duplicate rope or inventory authority",
+          "normal authored dam movement remains valid"
         ]
       }
     ],
     "next": [
       {
-        "train_id": "zork-dam-survival-prepared-rescue-1253",
-        "release": 1253,
-        "title": "Dam Survival & Prepared Rescue",
-        "status": "next-1",
-        "outcome": "Deepen Flood Control Dam #3 as a physical hazard where water state, encumbrance, rope, ladders, debris, and prior preparation can change survival outcomes.",
-        "boundaries": [
-          "reuse canonical dam state",
-          "no fluid simulator",
-          "no random unavoidable falls"
-        ]
-      },
-      {
         "train_id": "zork-troll-disarm-stolen-weapons-1254",
         "release": 1254,
         "title": "Troll Disarm & Stolen Weapons",
-        "status": "next-2",
+        "status": "next-1",
         "outcome": "Let the canonical troll seize or retain real weapons under authored combat conditions, creating recoverable consequences, bargaining, taunts, and the possibility of facing your own lost weapon.",
         "boundaries": [
           "canonical combat remains authority",
@@ -74,7 +67,7 @@
         "train_id": "zork-thief-retaliation-sabotage-1255",
         "release": 1255,
         "title": "Thief Retaliation & Sabotage",
-        "status": "next-3",
+        "status": "next-2",
         "outcome": "Give the thief authored retaliation, selective theft, sabotage, warnings, and earned hostility based on visible treatment and real object history.",
         "boundaries": [
           "preserve canonical roaming and treasure behavior",
@@ -86,7 +79,7 @@
         "train_id": "zork-grue-ecology-colony-reveal-1256",
         "release": 1256,
         "title": "Grue Ecology & Colony Reveal",
-        "status": "next-4",
+        "status": "next-3",
         "outcome": "Turn selected darkness experiments into discoverable grue ecology, including lure behavior, stronger-light experiments, a colony reveal, and authored survival or catastrophic outcomes.",
         "boundaries": [
           "not every dark room becomes a hive",
@@ -98,7 +91,7 @@
         "train_id": "zork-fire-smoke-structural-consequences-1257",
         "release": 1257,
         "title": "Fire, Smoke & Structural Consequences",
-        "status": "next-5",
+        "status": "next-4",
         "outcome": "Extend material physicality into a small set of authored fire, smoke, collapse, and machinery consequences with fair warnings, escape routes, and persistent world state.",
         "boundaries": [
           "no generalized chemistry or gas simulator",
@@ -110,7 +103,7 @@
         "train_id": "zork-mara-reciprocal-rescue-shared-danger-1258",
         "release": 1258,
         "title": "Mara Reciprocal Rescue & Shared Danger",
-        "status": "next-6",
+        "status": "next-5",
         "outcome": "Advance Mara through shared physical danger, reciprocal rescue, injuries/recovery, promises, temporary custody, separation/reunion, and remembered choices rather than an approval economy.",
         "boundaries": [
           "no dating-sim meter",
@@ -120,6 +113,28 @@
       }
     ],
     "future": [
+      {
+        "train_id": "zork-forest-that-answers-back",
+        "title": "Forest That Answers Back / Described World = Interactive World",
+        "status": "future-promotion-candidate",
+        "outcome": "Turn selected concrete nouns already present in authored forest descriptions into targetable, stateful world objects whose interactions compose with existing physicality instead of remaining decorative prose.",
+        "boundaries": [
+          "no procedural object generator",
+          "no universal interaction matrix",
+          "promote authored nouns selectively where interaction creates real play"
+        ]
+      },
+      {
+        "train_id": "zork-time-weather-disaster-arc",
+        "title": "Time, Weather & Disaster Arc",
+        "status": "future-arc",
+        "outcome": "Layer authored time and weather conditions plus selected disasters onto real geography and material state to create preparation, shelter, traversal, rescue, and aftermath play.",
+        "boundaries": [
+          "no generic climate simulator",
+          "reuse existing geography and object state",
+          "conditions must create visible player choices and consequences"
+        ]
+      },
       {
         "train_id": "zork-causal-death-warning-depth",
         "title": "Causal Death & Warning Depth",
@@ -137,6 +152,12 @@
         "title": "Narrative Perspective Experiments",
         "status": "future-isolated-editions",
         "outcome": "Build isolated first-person, third-person, and interactive-storybook editions against real canonical state without changing normal Zork."
+      },
+      {
+        "train_id": "zork-draw-multi-agent-experiments",
+        "title": "DRAW + Multi-Agent Experiments",
+        "status": "far-horizon-isolated-experiments",
+        "outcome": "Explore DRAW and multi-agent interactive-fiction experiments only after the playable product supports them, keeping experiments isolated from the canonical release train until deliberately promoted."
       }
     ],
     "parked": [
@@ -197,6 +218,13 @@
         "pr": 56,
         "merge_commit": "79b87248d567962fff2181e4996d1cf424cdcac0",
         "artifact_sha256": "f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7"
+      },
+      {
+        "release": 1252,
+        "title": "Earned Sequence Breaks & Route Mastery",
+        "pr": 57,
+        "merge_commit": "43a253a83a7349c9d3838e07488a90233f92410b",
+        "artifact_sha256": "b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6"
       }
     ]
   }
