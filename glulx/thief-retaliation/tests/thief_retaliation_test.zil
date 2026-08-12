@@ -15,7 +15,7 @@
     <FCLEAR ,THIEF ,FIGHTBIT>
     <FSET ,THIEF ,INVISIBLE>
     <SETG THIEF-HERE <>>
-    <SETG THIEF-RETALIATING T>
+    <PUTP ,THIEF ,P?VALUE 1>
     <PUTP ,THIEF ,P?STRENGTH 5>
     <MOVE ,LAMP ,WINNER>
     <FSET ,LAMP ,ONBIT>
@@ -65,7 +65,7 @@
     <RTRUE>>
 
 <ROUTINE V-THIEF-STATUS-TEST ()
-    <COND (,THIEF-RETALIATING
+    <COND (<G? <GETP ,THIEF ,P?VALUE> 0>
            <TELL "TEST thief retaliation: active" CR>)
           (T <TELL "TEST thief retaliation: settled" CR>)>
     <COND (<IN? ,WRENCH ,THIEF>
