@@ -1,0 +1,12 @@
+{
+  "id": "dam-survival-004",
+  "description": "Give dam survival interactions first refusal before generic fixed-rope travel limits.",
+  "path": "shadow_logic.zil",
+  "replacements": [
+    {
+      "old": "\t<COND (<MARA-ACTION-HOOK> <RTRUE>)\n\t      (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "new": "\t<COND (<MARA-ACTION-HOOK> <RTRUE>)\n\t      (<DAM-SURVIVAL-HOOK> <RTRUE>)\n\t      (<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)",
+      "expected_count": 1
+    }
+  ]
+}
