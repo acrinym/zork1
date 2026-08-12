@@ -65,7 +65,7 @@ assert '<* <WEIGHT ,WINNER> 2>' in actions
 assert '<EQUAL? ,MATERIAL-ROPE-ANCHOR ,DAM-MAINTENANCE-LADDER>' in actions
 assert 'The river below completes the lesson in prepared rescue.' in actions
 assert ',LIVING-CANYON-EDGE ,DAM-MAINTENANCE-LADDER>>' in material
-assert '(<DAM-SURVIVAL-HOOK> <RTRUE>)' in shadow
+assert '(<SHADOW-BLOCKED-BY-ROPE?> <RTRUE>)\n\t      (<DAM-SURVIVAL-HOOK> <RTRUE>)' in shadow
 assert '<CONSTANT RELEASEID 1253>' in zork
 assert 'DAM SURVIVAL AND PREPARED RESCUE GLULX' in zork
 assert 'DAM-SURVIVAL-GATES' not in actions
@@ -104,6 +104,9 @@ python glulx/tools/verify_ulx.py "$STORY" --json "$BUILD/story-report.json"
 python glulx/tools/verify_ulx.py "$DEV_STORY" --json "$BUILD/dev-story-report.json"
 
 GLULXE_BIN="$(realpath .tooling/glulxe/glulxe)"
+# Reuse the already-qualified Release 1252 natural-play troll seed, but take the
+# direct Round Room -> North-South Passage -> Deep Canyon route so the real rope
+# remains in hand for the dam instead of being consumed by the Dome descent.
 DAM_APPROACH=$(cat <<'EOF_ROUTE'
 south
 east
@@ -127,39 +130,15 @@ attack troll with sword
 attack troll with sword
 east
 east
-se
-east
-tie rope to railing
-down
-south
-down
-take coffin
-west
-south
-pray
-east
-south
-se
-enter
-west
-open trap door
-down
-north
-east
-east
 north
 ne
 east
-north
-north
 EOF_ROUTE
 )
 
 {
   printf '%s\n' "$DAM_APPROACH"
   cat <<'EOF_LOSS'
-south
-south
 look
 examine ladder
 climb down ladder
@@ -169,7 +148,7 @@ quit
 yes
 EOF_LOSS
 } > "$BUILD/dam-overflow-gear-loss.txt"
-timeout 120s "$GLULXE_BIN" --rngseed 1253001 "$STORY" \
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
   < "$BUILD/dam-overflow-gear-loss.txt" > "$BUILD/dam-overflow-gear-loss-transcript.txt" 2>&1
 LOSS="$BUILD/dam-overflow-gear-loss-transcript.txt"
 grep -F 'Overflow keeps the lower rungs wet. A heavy load could turn one slip into lost gear.' "$LOSS"
@@ -180,6 +159,8 @@ grep -F 'You climb the iron maintenance ladder' "$LOSS"
 {
   printf '%s\n' "$DAM_APPROACH"
   cat <<'EOF_FATAL'
+north
+north
 take wrench
 push yellow button
 south
@@ -191,7 +172,7 @@ quit
 yes
 EOF_FATAL
 } > "$BUILD/dam-open-sluice-unprepared.txt"
-timeout 120s "$GLULXE_BIN" --rngseed 1253002 "$STORY" \
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
   < "$BUILD/dam-open-sluice-unprepared.txt" > "$BUILD/dam-open-sluice-unprepared-transcript.txt" 2>&1
 FATAL="$BUILD/dam-open-sluice-unprepared-transcript.txt"
 grep -F 'Sluice discharge throws spray across the lower rungs. A heavy descent without a fixed handline would be reckless.' "$FATAL"
@@ -201,6 +182,8 @@ grep -F 'The river below completes the lesson in prepared rescue.' "$FATAL"
 {
   printf '%s\n' "$DAM_APPROACH"
   cat <<'EOF_RESCUE'
+north
+north
 take wrench
 push yellow button
 south
@@ -217,7 +200,7 @@ quit
 yes
 EOF_RESCUE
 } > "$BUILD/dam-prepared-rescue.txt"
-timeout 120s "$GLULXE_BIN" --rngseed 1253003 "$STORY" \
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
   < "$BUILD/dam-prepared-rescue.txt" > "$BUILD/dam-prepared-rescue-transcript.txt" 2>&1
 RESCUE="$BUILD/dam-prepared-rescue-transcript.txt"
 grep -F 'You tie one end of the rope securely to the maintenance ladder.' "$RESCUE"
