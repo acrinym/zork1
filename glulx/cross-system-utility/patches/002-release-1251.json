@@ -1,0 +1,27 @@
+{
+  "id": "002_RELEASE_1251",
+  "path": "zork1.zil",
+  "description": "Assign Release 1251 to Cross-System Utility Mesh",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 PLAYER INGENUITY SYSTEMIC WORKAROUNDS GLULX for",
+      "new": "\"ZORK1 CROSS-SYSTEM UTILITY MESH GLULX for"
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local player ingenuity. Release 1250 retains every qualified\n  Release 1249 behavior while allowing selected established physical properties to\n  reduce real traversal and puzzle friction: reusable hearing protection, a real\n  trap-door wedge, and container bundling without a universal solver or crafting layer.\"",
+      "new": ";\"Repository-local cross-system utility mesh. Release 1251 retains every qualified\n  Release 1250 behavior while letting existing object state and authored geography\n  compose into useful cargo-line affordances: rope, cinched sack, chimney, tree,\n  open forest grating, and canonical Dome railing without a recipe matrix or simulator.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1250>",
+      "new": "<CONSTANT RELEASEID 1251>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Player Ingenuity Systemic Workarounds Glulx ZORK I: The Great Underground Empire",
+      "new": "<PRINC \"Cross-System Utility Mesh Glulx ZORK I: The Great Underground Empire"
+    }
+  ]
+}

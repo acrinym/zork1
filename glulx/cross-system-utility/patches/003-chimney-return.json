@@ -1,0 +1,12 @@
+{
+  "id": "003_CHIMNEY_CARGO_RECOVERY",
+  "path": "material_consequences.zil",
+  "description": "Clarify that a rope tied to cargo below is not an upper descent anchor, while preserving haul-back recovery from the canonical one-way chimney",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE UTILITY-MESH-CARGO-SPAN-BLOCK? ()\n    <COND (<AND <UTILITY-MESH-CARGO-TIED?>\n                <IN? ,ROPE ,WINNER>\n                <NOT <ACCESSIBLE? ,SANDWICH-BAG>>\n                <VERB? WALK WALK-TO WALK-AROUND THROUGH ENTER EXIT\n                       CLIMB-UP CLIMB-DOWN CLIMB-FOO LEAP>>\n           <COND (<UTILITY-MESH-CARGO-RETURN-ACTION?> <RFALSE>)\n                 (T\n                  <TELL \"The rope draws taut toward the brown sack at the other end of the vertical run. You can haul the sack, or return along the line; wandering away would require more rope than you have.\" CR>\n                  <RTRUE>)>)>\n    <RFALSE>>",
+      "new": "<ROUTINE UTILITY-MESH-CARGO-SPAN-BLOCK? ()\n    <COND (<AND <UTILITY-MESH-CARGO-TIED?>\n                <IN? ,ROPE ,WINNER>\n                <NOT <ACCESSIBLE? ,SANDWICH-BAG>>\n                <VERB? WALK WALK-TO WALK-AROUND THROUGH ENTER EXIT\n                       CLIMB-UP CLIMB-DOWN CLIMB-FOO LEAP>>\n           <COND (<AND <EQUAL? ,HERE ,KITCHEN>\n                       <EQUAL? <LOC ,SANDWICH-BAG> ,STUDIO>\n                       <VERB? WALK>\n                       <EQUAL? ,PRSO ,P?DOWN>>\n                  <TELL \"The rope is tied to the sack below, not anchored above. It gives you a cargo line, not a safe way down this one-way chimney. Haul the sack back up if you need the line with you.\" CR>\n                  <RTRUE>)\n                 (<UTILITY-MESH-CARGO-RETURN-ACTION?> <RFALSE>)\n                 (T\n                  <TELL \"The rope draws taut toward the brown sack at the other end of the vertical run. You can haul the sack, or return where the world already provides a route; wandering away would require more rope than you have.\" CR>\n                  <RTRUE>)>)>\n    <RFALSE>>"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "edition": "Unofficial Zork Cross-System Utility Mesh Glulx",
+  "release": 1251,
+  "serial": "260812",
+  "base_manifest": "../player-ingenuity/patch-series.json",
+  "base_release": 1250,
+  "base_artifact_sha256": "d6c2a7b4512d90d388c763943d09e89f5df4b4dc033e96c5e6a30e1de9d2f6d3",
+  "base_source_sha256": {
+    "production": "ee4dd717525692a228ecfa1915287eb7236ed34a06adf8342af601775df4825b",
+    "dev": "97ccb77bfc8d1c6285d277ea68bbde87fa542e7ecd3a6601fd582e58e42f0440"
+  },
+  "expected_artifact": {
+    "file": "zork1-glulx-cross-system-utility-mesh.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 421888,
+    "checksum_hex": "0x16814256",
+    "sha256": "f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7",
+    "locked": true
+  },
+  "patches": [
+    "patches/001-cross-system-utility-mesh.json",
+    "patches/002-release-1251.json",
+    "patches/003-chimney-return.json"
+  ],
+  "expected_changed_paths": [
+    "material_consequences.zil",
+    "zork1.zil"
+  ],
+  "player_outcomes": [
+    "the existing rope can cinch the existing brown sack and turn short authored vertical geography into a reusable cargo line rather than another bespoke puzzle token",
+    "a loaded sack can be hauled from Studio to Kitchen through the chimney while the adventurer carries only the lamp and free rope end, lowered back to Studio, and recovered again by hauling because the canonically one-way chimney supplies no upper rope anchor for a safe descent",
+    "the tree becomes a reversible ten-foot cargo route: leave the sack on the path, climb with the free line, haul it into the branches, or lower it again",
+    "an unlocked and open forest grating becomes reversible freight infrastructure; closing the grate physically blocks lowering or hauling through it",
+    "the material sack cinch and canonical Dome Room railing now compose instead of competing, allowing a secured sack to be lowered to the Torch Room while preserving canonical rope descent",
+    "a taut line to remote cargo constrains wandering while allowing return where the authored world already provides a physically valid route"
+  ],
+  "boundaries": [
+    "no object-pair or noun-triple recipe matrix; one cargo capability composes with a small resolver of already-authored vertical geography",
+    "no new rope-state global: the cargo end reuses MATERIAL-ROPE-ANCHOR and MATERIAL-SACK-CINCHED while the Dome fixed end remains canonical DOME-FLAG authority",
+    "canonical Dome rope handling remains authoritative; material rope handling explicitly yields the railing interaction back to ROPE-FUNCTION",
+    "a rope tied to a sack below the Kitchen is cargo control, not an upper descent anchor; Release 1251 preserves the canonical one-way chimney instead of inventing an unsafe rappel",
+    "the mine shaft keeps its purpose-built basket and chain; Release 1251 does not duplicate machinery that already exists",
+    "Dam top-to-base is not treated as a rope span because current world text does not establish this rope as long enough for the looming dam",
+    "the rainbow is not an anchor and the White Cliffs gain no magical rope route without authored physical support",
+    "no automatic puzzle completion, score route, universal physics simulator, crafting system, debug shortcut, or recursive audit machinery"
+  ]
+}
