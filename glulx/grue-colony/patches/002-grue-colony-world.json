@@ -5,7 +5,7 @@
   "replacements": [
     {
       "old": "<ROOM DEAD-END-5\t;\"was DEAD7\"\n      (IN ROOMS)\n      (DESC \"Dead End\")\n      (LDESC \"You have come to a dead end in the mine.\")\n      (NORTH TO LADDER-BOTTOM)\n      (FLAGS RLANDBIT)>\n",
-      "new": "<ROOM DEAD-END-5\t;\"was DEAD7\"\n      (IN ROOMS)\n      (DESC \"Dead End\")\n      (ACTION GRUE-COLONY-ROOM-FCN)\n      (NORTH TO LADDER-BOTTOM)\n      (FLAGS RLANDBIT)>\n\n<OBJECT GRUE-FISSSURES\n        (IN DEAD-END-5)\n        (SYNONYM FISSURE FISSURES CRACK CRACKS SEAM SEAMS)\n        (ADJECTIVE NARROW BLACK MINE COAL)\n        (DESC \"narrow fissures\")\n        (VALUE 0)\n        (FLAGS NDESCBIT)\n        (ACTION GRUE-FISSURES-FCN)>\n",
+      "new": "<ROOM DEAD-END-5\t;\"was DEAD7\"\n      (IN ROOMS)\n      (DESC \"Dead End\")\n      (ACTION GRUE-COLONY-ROOM-FCN)\n      (NORTH TO LADDER-BOTTOM)\n      (FLAGS RLANDBIT)>\n\n<OBJECT GRUE-FISSURES\n        (IN DEAD-END-5)\n        (SYNONYM FISSURE FISSURES CRACK CRACKS SEAM SEAMS)\n        (ADJECTIVE NARROW BLACK MINE COAL)\n        (DESC \"narrow fissures\")\n        (VALUE 0)\n        (FLAGS NDESCBIT)\n        (ACTION GRUE-FISSURES-FCN)>\n",
       "expected_count": 1
     }
   ]
