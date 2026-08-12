@@ -1,0 +1,12 @@
+{
+  "id": "route-mastery-002",
+  "description": "Make White Cliffs width checks follow an inflated boat through carried containers instead of allowing container shrinkage.",
+  "path": "1actions.zil",
+  "replacements": [
+    {
+      "old": "\"SUBTITLE OLD MAN RIVER, THAT OLD MAN RIVER...\"\n\n<ROUTINE WHITE-CLIFFS-FUNCTION (RARG)\n\t <COND (<EQUAL? .RARG ,M-END>\n\t\t<COND (<IN? ,INFLATED-BOAT ,WINNER>\n\t\t       <SETG DEFLATE <>>)\n\t       \t      (T\n",
+      "new": "\"SUBTITLE OLD MAN RIVER, THAT OLD MAN RIVER...\"\n\n<ROUTINE ROUTE-MASTERY-CARRIED? (OBJ \"AUX\" HOLDER)\n    <SET HOLDER <LOC .OBJ>>\n    <REPEAT ()\n        <COND (<NOT .HOLDER> <RFALSE>)\n              (<EQUAL? .HOLDER ,WINNER> <RTRUE>)\n              (<EQUAL? .HOLDER ,HERE ,ROOMS> <RFALSE>)>\n        <SET HOLDER <LOC .HOLDER>>>>\n\n<ROUTINE WHITE-CLIFFS-FUNCTION (RARG)\n\t <COND (<EQUAL? .RARG ,M-END>\n\t\t<COND (<ROUTE-MASTERY-CARRIED? ,INFLATED-BOAT>\n\t\t       <SETG DEFLATE <>>)\n\t       \t      (T\n",
+      "expected_count": 1
+    }
+  ]
+}
