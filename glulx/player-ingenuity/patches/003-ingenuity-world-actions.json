@@ -10,8 +10,8 @@
     },
     {
       "expected_count": 1,
-      "old": "\t\t     (T\n\t\t      <TELL \" The room is deafeningly loud with an\nundetermined rushing sound. The sound seems to reverberate from all\nof the walls, making it difficult even to think.\">)>",
-      "new": "\t\t     (T\n\t\t      <COND (<PLAYER-INGENUITY-EARMUFFS-WORN?>\n\t\t             <TELL \" The room is violently loud, but the padded cups turn the worst of the roar into heavy pressure and distant thunder. You can still think.\">)\n\t\t            (T\n\t\t             <TELL \" The room is deafeningly loud with an\nundetermined rushing sound. The sound seems to reverberate from all\nof the walls, making it difficult even to think.\">)>)>"
+      "old": "\t\t      (T\n\t\t       <TELL \" The room is deafeningly loud with an\nundetermined rushing sound. The sound seems to reverberate from all\nof the walls, making it difficult even to think.\">)>",
+      "new": "\t\t      (T\n\t\t       <COND (<PLAYER-INGENUITY-EARMUFFS-WORN?>\n\t\t              <TELL \" The room is violently loud, but the padded cups turn the worst of the roar into heavy pressure and distant thunder. You can still think.\">)\n\t\t             (T\n\t\t              <TELL \" The room is deafeningly loud with an\nundetermined rushing sound. The sound seems to reverberate from all\nof the walls, making it difficult even to think.\">)>)>"
     },
     {
       "expected_count": 1,
