@@ -1,0 +1,12 @@
+{
+  "id": "003_CHIMNEY_CARGO_RETURN",
+  "path": "material_consequences.zil",
+  "description": "Let the adventurer return from Kitchen to Studio along the active chimney cargo line after lowering the cinched sack",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE UTILITY-MESH-CARGO-RETURN-ACTION? ()\n    <COND (<AND <EQUAL? ,HERE ,UP-A-TREE>\n                <EQUAL? <LOC ,SANDWICH-BAG> ,PATH>\n                <OR <AND <VERB? WALK> <EQUAL? ,PRSO ,P?DOWN>>\n                    <VERB? CLIMB-DOWN>>>\n           <RTRUE>)\n          (<AND <EQUAL? ,HERE ,GRATING-CLEARING>\n                <EQUAL? <LOC ,SANDWICH-BAG> ,GRATING-ROOM>\n                <AND <VERB? WALK> <EQUAL? ,PRSO ,P?DOWN>>>\n           <RTRUE>)\n          (<AND <EQUAL? ,HERE ,DOME-ROOM>\n                <EQUAL? <LOC ,SANDWICH-BAG> ,TORCH-ROOM>\n                ,DOME-FLAG\n                <AND <VERB? WALK> <EQUAL? ,PRSO ,P?DOWN>>>\n           <RTRUE>)>\n    <RFALSE>>",
+      "new": "<ROUTINE UTILITY-MESH-CARGO-RETURN-ACTION? ()\n    <COND (<AND <EQUAL? ,HERE ,KITCHEN>\n                <EQUAL? <LOC ,SANDWICH-BAG> ,STUDIO>\n                <AND <VERB? WALK> <EQUAL? ,PRSO ,P?DOWN>>>\n           <RTRUE>)\n          (<AND <EQUAL? ,HERE ,UP-A-TREE>\n                <EQUAL? <LOC ,SANDWICH-BAG> ,PATH>\n                <OR <AND <VERB? WALK> <EQUAL? ,PRSO ,P?DOWN>>\n                    <VERB? CLIMB-DOWN>>>\n           <RTRUE>)\n          (<AND <EQUAL? ,HERE ,GRATING-CLEARING>\n                <EQUAL? <LOC ,SANDWICH-BAG> ,GRATING-ROOM>\n                <AND <VERB? WALK> <EQUAL? ,PRSO ,P?DOWN>>>\n           <RTRUE>)\n          (<AND <EQUAL? ,HERE ,DOME-ROOM>\n                <EQUAL? <LOC ,SANDWICH-BAG> ,TORCH-ROOM>\n                ,DOME-FLAG\n                <AND <VERB? WALK> <EQUAL? ,PRSO ,P?DOWN>>>\n           <RTRUE>)>\n    <RFALSE>>"
+    }
+  ]
+}
