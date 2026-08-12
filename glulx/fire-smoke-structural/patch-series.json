@@ -23,9 +23,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-fire-smoke-structural-consequences.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 438528,
+    "checksum_hex": "0xce70e9e4",
+    "sha256": "0664b758da1809195489f577f655497e5ccb981f7b6c5fb1b69b8b48b77a5b23"
   },
   "added_files": [
     "fire_structural.zil"
