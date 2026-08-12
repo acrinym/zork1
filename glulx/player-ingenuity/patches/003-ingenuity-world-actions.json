@@ -16,7 +16,7 @@
     {
       "expected_count": 1,
       "old": "\t\t<CRLF>)\n\t       (<AND <EQUAL? .RARG ,M-END> ,GATES-OPEN <NOT ,LOW-TIDE>>",
-      "new": "\t\t<CRLF>)\n\t       (<AND <EQUAL? .RARG ,M-BEG> <VERB? ECHO>\n\t             <NOT ,LOUD-FLAG>\n\t             <PLAYER-INGENUITY-EARMUFFS-WORN?>>\n\t        <PLAYER-INGENUITY-LOUD-ECHO-SOLVE>\n\t        <RTRUE>)\n\t       (<AND <EQUAL? .RARG ,M-END> ,GATES-OPEN <NOT ,LOW-TIDE>\n\t             <NOT <PLAYER-INGENUITY-EARMUFFS-WORN?>>)"
+      "new": "\t\t<CRLF>)\n\t       (<AND <EQUAL? .RARG ,M-BEG> <VERB? ECHO>\n\t             <NOT ,LOUD-FLAG>\n\t             <PLAYER-INGENUITY-EARMUFFS-WORN?>>\n\t        <PLAYER-INGENUITY-LOUD-ECHO-SOLVE>\n\t        <RTRUE>)\n\t       (<AND <EQUAL? .RARG ,M-END> ,GATES-OPEN <NOT ,LOW-TIDE>\n\t             <NOT <PLAYER-INGENUITY-EARMUFFS-WORN?>>"
     },
     {
       "expected_count": 1,
