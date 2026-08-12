@@ -20,8 +20,12 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-troll-disarm-stolen-weapons.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 429056,
+    "checksum_hex": "0x6b984524",
+    "sha256": "5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4"
   }
 }
