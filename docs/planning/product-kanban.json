@@ -119,6 +119,39 @@
     ],
     "future": [
       {
+        "train_id": "zork-treasure-guardian-dragon-hoard",
+        "title": "Treasure Guardian Dragon & Hoard",
+        "status": "future-authored-encounter",
+        "outcome": "Create an original Zork-native dragon guarding a real treasure hoard, with territorial warning signs, dangerous fire breath, persistent environmental consequences, and multiple credible Zork-style approaches to survival, theft, negotiation, containment, escape, or confrontation.",
+        "inspiration": [
+          "Shadowgate treasure-guardian dragon encounter archetype"
+        ],
+        "boundaries": [
+          "original Zork-native dragon, prose, map layout, objects, puzzle expression, and solution structure",
+          "fire breath should compose with authored fire, smoke, material, shelter, and escape systems rather than introduce a separate generic combat simulator",
+          "support preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation instead of a generic hit-point boss fight",
+          "do not copy Shadowgate source code, text, art, maps, exact puzzles, or expressive sequencing"
+        ]
+      },
+      {
+        "train_id": "zork-cross-if-rpg-mechanics-adaptation",
+        "title": "Cross-IF / RPG Mechanics Adaptation — Shadowgate First",
+        "status": "future-mechanics-inspiration-program",
+        "outcome": "Study high-value mechanics and interaction patterns from other interactive-fiction games and RPGs, beginning with Shadowgate, and rebuild selected concepts from scratch as original Zork-native systems that compose with canonical state and the existing physicality mesh.",
+        "sources": [
+          "Shadowgate first",
+          "other interactive-fiction games later",
+          "RPGs later",
+          "selected S.T.A.L.K.E.R.-inspired mechanics eventually"
+        ],
+        "boundaries": [
+          "borrow concepts and design lessons, not source code, text, art, maps, exact puzzles, or expressive sequencing",
+          "adapt only mechanics that create meaningful Zork player choices rather than feature accumulation",
+          "rebuild selected ideas from scratch using Zork-native objects, state, prose, geography, parser verbs, and consequence systems",
+          "keep the separate S.T.A.L.K.E.R. Glulx product lane distinct even when selected mechanics inspire Zork"
+        ]
+      },
+      {
         "train_id": "zork-forest-that-answers-back",
         "title": "Forest That Answers Back / Described World = Interactive World",
         "status": "future-promotion-candidate",
