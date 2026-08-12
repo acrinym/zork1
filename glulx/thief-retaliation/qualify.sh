@@ -48,7 +48,7 @@ STORY="$BUILD/$STORY_FILE"; compile_story "$SRC" "$BUILD/thief-retaliation.asm" 
 rm -rf "$TEST_SRC"; cp -a "$DEV_SRC" "$TEST_SRC"; cp glulx/thief-retaliation/tests/thief_retaliation_test.zil "$TEST_SRC/thief_retaliation_test.zil"
 python - <<'PY'
 from pathlib import Path
-import sy
+import sys
 
 sys.path.insert(0,str(Path('glulx/tools').resolve())); from stage_release120 import apply_patch
 apply_patch(Path('glulx/thief-retaliation/tests/001-include-thief-retaliation-test.json').resolve(),Path('glulx/build/thief-retaliation-sabotage-1255/test-src').resolve())
