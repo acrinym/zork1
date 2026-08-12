@@ -24,8 +24,12 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-grue-ecology-colony-reveal.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 432896,
+    "checksum_hex": "0xf212ede1",
+    "sha256": "dbad355f6d18245d48671102bf4d449f227c03bd8e39ec569c9a41d8508c7c4a"
   }
 }
