@@ -19,6 +19,8 @@ This is deliberately not a recipe table. The rope already knows how to be commit
 
 In the Studio, cinch the sack to the rope, leave the sack behind, and climb with the lantern and free rope end. From the Kitchen, `PULL ROPE` or `RAISE ROPE` hauls the sack up separately. `LOWER SACK` sends it back down. This goes beyond Release 1250 bundling: the sack is no longer another package on the adventurer's body at all.
 
+The cargo line does **not** turn the canonical one-way chimney into a player descent route. After lowering the sack, the free end is in the adventurer's hands and the other end is tied to cargo below; nothing is anchored above to bear the adventurer's weight. `DOWN` therefore explains that physical boundary. If the line is needed again, haul the sack back up and untie it.
+
 ### Tree: ten feet becomes useful geometry
 
 The existing tree room explicitly places the adventurer about ten feet above the path. A cinched sack left on the path can therefore be hauled into the branches after climbing with the free line, or lowered back to the path. While the sack is hanging at the other end, the line goes taut if the adventurer tries to wander away instead of hauling it or returning down.
@@ -49,4 +51,4 @@ Existing parser language is sufficient; no new grammar dialect is introduced. Us
 
 ## Boundaries
 
-Release 1251 adds no new rope-state global and no universal physics engine. It reuses `MATERIAL-ROPE-ANCHOR`, `MATERIAL-SACK-CINCHED`, canonical `DOME-FLAG`, the existing brown sack containment/capacity, and authored room relations. The small route resolver contains geography only; it does not enumerate object combinations or puzzle solutions.
+Release 1251 adds no new rope-state global and no universal physics engine. It reuses `MATERIAL-ROPE-ANCHOR`, `MATERIAL-SACK-CINCHED`, canonical `DOME-FLAG`, the existing brown sack containment/capacity, and authored room relations. The small route resolver contains geography only; it does not enumerate object combinations or puzzle solutions. A rope tied to cargo is treated as cargo control; player traversal requires a physically valid route or a real load-bearing anchor.
