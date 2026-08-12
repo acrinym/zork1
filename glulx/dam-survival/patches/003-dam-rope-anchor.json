@@ -1,0 +1,12 @@
+{
+  "id": "dam-survival-003",
+  "description": "Let the existing rope authority recognize the physical dam maintenance ladder as a fixed anchor.",
+  "path": "material_consequences.zil",
+  "replacements": [
+    {
+      "old": ",LADDER ,WOODEN-DOOR ,SANDWICH-BAG ,TREE ,LIVING-CANYON-EDGE>>",
+      "new": ",LADDER ,WOODEN-DOOR ,SANDWICH-BAG ,TREE ,LIVING-CANYON-EDGE ,DAM-MAINTENANCE-LADDER>>",
+      "expected_count": 1
+    }
+  ]
+}
