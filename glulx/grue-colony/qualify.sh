@@ -74,7 +74,7 @@ quit
 yes
 EOF2
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/strong-light.txt" > "$BUILD/strong-light-transcript.txt" 2>&1
-S="$BUILD/strong-light-transcript.txt"; grep -F 'Not one shadow but many pull away at once.' "$S"; grep -F 'this dead end borders a grue colony.' "$S"; grep -F 'many separate shapes retreat through the mine fissures' "$S"; grep -F 'The sounds do not come from one place.' "$S"; grep -F 'TEST repeal grue colony reveal: active' "$S"
+S="$BUILD/strong-light-transcript.txt"; grep -F 'Not one shadow but many pull away at once.' "$S"; grep -F 'this dead end borders a grue colony.' "$S"; grep -F 'many separate shapes retreat through the mine fissures' "$S"; grep -F 'The sounds do not come from one place.' "$S"; grep -F 'TEST grue colony reveal: active' "$S"
 
 python - "$STORY" "$MANIFEST" <<'PY'
 import hashlib,json,sys
