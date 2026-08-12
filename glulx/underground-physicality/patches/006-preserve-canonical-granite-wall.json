@@ -1,0 +1,17 @@
+{
+  "id": "006_PRESERVE_CANONICAL_GRANITE_WALL",
+  "path": "material_consequences.zil",
+  "description": "Keep Release 1249 local WALL affordances on the local pseudo-object while explicit GRANITE WALL falls through to the canonical granite-wall object authority",
+  "replacements": [
+    {
+      "expected_count": 7,
+      "old": "<OR <EQUAL? ,PRSO ,WALL> <EQUAL? ,PRSO ,GRANITE-WALL>>",
+      "new": "<EQUAL? ,PRSO ,WALL>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<OR <EQUAL? ,PRSI ,WALL> <EQUAL? ,PRSI ,GRANITE-WALL>>",
+      "new": "<EQUAL? ,PRSI ,WALL>"
+    }
+  ]
+}
