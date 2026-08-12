@@ -1,0 +1,22 @@
+{
+  "id": "dam-survival-001",
+  "description": "Add a physical dam maintenance ladder and expose it from the dam top and landing.",
+  "path": "1dungeon.zil",
+  "replacements": [
+    {
+      "old": "<OBJECT RIVER\n\t(IN LOCAL-GLOBALS)\n\t(DESC \"river\")\n\t(SYNONYM RIVER)\n\t(ADJECTIVE FRIGID)\n\t(ACTION RIVER-FUNCTION)\n\t(FLAGS NDESCBIT)>\n",
+      "new": "<OBJECT RIVER\n\t(IN LOCAL-GLOBALS)\n\t(DESC \"river\")\n\t(SYNONYM RIVER)\n\t(ADJECTIVE FRIGID)\n\t(ACTION RIVER-FUNCTION)\n\t(FLAGS NDESCBIT)>\n\n<OBJECT DAM-MAINTENANCE-LADDER\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM LADDER RUNGS)\n\t(ADJECTIVE MAINTENANCE SERVICE IRON)\n\t(DESC \"maintenance ladder\")\n\t(FLAGS NDESCBIT CLIMBBIT TRYTAKEBIT)\n\t(ACTION DAM-MAINTENANCE-LADDER-F)>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "      (GLOBAL GLOBAL-WATER)>\n\n<ROOM DAM-LOBBY",
+      "new": "      (GLOBAL GLOBAL-WATER DAM-MAINTENANCE-LADDER)>\n\n<ROOM DAM-LOBBY",
+      "expected_count": 1
+    },
+    {
+      "old": "<ROOM DAM-BASE\t;\"was DOCK\"\n      (IN ROOMS)\n      (LDESC\n\"You are at the base of Flood Control Dam #3, which looms above you\nand to the north. The river Frigid is flowing by here. Along the\nriver are the White Cliffs which seem to form giant walls stretching\nfrom north to south along the shores of the river as it winds its\nway downstream.\")\n      (DESC \"Dam Base\")\n      (NORTH TO DAM-ROOM)\n      (UP TO DAM-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL GLOBAL-WATER RIVER)>",
+      "new": "<ROOM DAM-BASE\t;\"was DOCK\"\n      (IN ROOMS)\n      (DESC \"Dam Base\")\n      (NORTH TO DAM-ROOM)\n      (UP TO DAM-ROOM)\n      (ACTION DAM-BASE-FCN)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL GLOBAL-WATER RIVER DAM-MAINTENANCE-LADDER)>",
+      "expected_count": 1
+    }
+  ]
+}
