@@ -6,8 +6,8 @@
   "base_release": 1250,
   "base_artifact_sha256": "d6c2a7b4512d90d388c763943d09e89f5df4b4dc033e96c5e6a30e1de9d2f6d3",
   "base_source_sha256": {
-    "production": "fb31739280971845dc301eb2e6f23dbed3c133690396b60cb3be65f52a12a293",
-    "dev": "7d029a81fbd8d206ef7deb5d0d88e8defe80f1c1229700ac8163eccab0d297fb"
+    "production": "ee4dd717525692a228ecfa1915287eb7236ed34a06adf8342af601775df4825b",
+    "dev": "97ccb77bfc8d1c6285d277ea68bbde87fa542e7ecd3a6601fd582e58e42f0440"
   },
   "expected_artifact": {
     "file": "zork1-glulx-cross-system-utility-mesh.ulx",
