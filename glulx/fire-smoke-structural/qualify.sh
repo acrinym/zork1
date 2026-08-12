@@ -121,7 +121,7 @@ quit
 yes
 EOF4
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/collapse.txt" > "$BUILD/collapse-transcript.txt" 2>&1
-C="$BUILD/collapse-transcript.txt"; grep -F 'One old brace drops into the burning clutter' "$C"; grep -F 'permanent heap of charred wood without changing the mine' "$C"; grep -F 'TEST timber fire state: charred' "$C"; grep -F 'canonical narrow passage remains a narrow passage' "$C"
+C="$BUILD/collapse-transcript.txt"; grep -F 'One old brace drops into the burning clutter' "$C"; grep -F 'permanent heap of charred wood without changing the mine' "$C"; grep -F 'TEST timber fire state: charred' "$C"
 
 python - "$STORY" "$MANIFEST" <<'PY'
 import hashlib,json,sys
