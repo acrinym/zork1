@@ -24,8 +24,12 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-dam-survival-prepared-rescue.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 426496,
+    "checksum_hex": "0x719cd97b",
+    "sha256": "41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11"
   }
 }
