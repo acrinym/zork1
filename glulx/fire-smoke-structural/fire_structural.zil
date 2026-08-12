@@ -92,8 +92,7 @@
                   <FIRE-STRUCTURAL-SET-STAGE ,FIRE-TIMBER-CHARRED>
                   <FIRE-STRUCTURAL-PUT ,FS-TIMBER-TIMER 0>
                   <COND (<EQUAL? ,HERE ,TIMBER-ROOM>
-                         <TELL "The last open glow dies in the collapsed timbers. Smoke pulls away with the draft, leaving a blackened brace and a permanent heap of charred wood without changing the mine's narrow route." CR>)
-                  <RFALSE>)
+                         <TELL "The last open glow dies in the collapsed timbers. Smoke pulls away with the draft, leaving a blackened brace and a permanent heap of charred wood without changing the mine's narrow route." CR>)>
                   <RFALSE>)>)>
     <RFALSE>>
 
@@ -232,4 +231,3 @@
            <TELL "The hot timber pile is not something to rearrange while it is producing smoke and structural noises. Extinguish it or get clear." CR>
            <RTRUE>)>
     <RFALSE>>
-
