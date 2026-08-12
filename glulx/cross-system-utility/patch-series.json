@@ -12,11 +12,11 @@
   "expected_artifact": {
     "file": "zork1-glulx-cross-system-utility-mesh.ulx",
     "format": "Glulx",
-    "version_hex": "",
-    "size_bytes": 0,
-    "checksum_hex": "",
-    "sha256": "",
-    "locked": false
+    "version_hex": "0x00030103",
+    "size_bytes": 421888,
+    "checksum_hex": "0x16814256",
+    "sha256": "f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7",
+    "locked": true
   },
   "patches": [
     "patches/001-cross-system-utility-mesh.json",
