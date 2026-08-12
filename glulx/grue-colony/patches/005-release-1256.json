@@ -1,0 +1,22 @@
+{
+  "id": "grue-colony-005",
+  "description": "Advance release identity to Release 1256 Grue Ecology & Colony Reveal.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "\"ZORK1 THIEF RETALIATION AND SABOTAGE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Troll Disarm & Stolen Weapons. Release 1254 retains the\n  qualified Release 1253 dam-survival world while letting the canonical troll\n  seize real weapons lost in combat, keep and use that exact custody, taunt the\n  player with it, trade it back for food, and surrender it through real combat\n  outcomes. Canonical combat, troll strength, axe behavior, and exits remain authority.\"\n",
+      "new": "\"ZORK1 GRUE ECOLOGY AND COLONY REVEAL GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Grue Ecology & Colony Reveal. Release 1256 keeps canonical\n  darkness and grue lethality authoritative while turning one optional mine dead\n  end into an authored ecology experiment: weak light gives plural evidence, the\n  permanent ivory torch forces a signature colony retreat, and no grue becomes an\n  ordinary visible combat monster.\"\n",
+      "expected_count": 1
+    },
+    {
+      "old": "<CONSTANT RELEASEID 1255>",
+      "new": "<CONSTANT RELEASEID 1256>",
+      "expected_count": 1
+    },
+    {
+      "old": "<PRINC \"Thief Retaliation and Sabotage Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Grue Ecology and Colony Reveal Glulx ZORK I: The Great Underground Empire\n \">",
+      "expected_count": 1
+    }
+  ]
+}

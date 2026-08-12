@@ -1,0 +1,12 @@
+{
+  "id": "grue-colony-004",
+  "description": "Hint at the authored mine colony and the stronger-light experiment without replacing canonical grue danger.",
+  "path": "assistance.zil",
+  "replacements": [
+    {
+      "old": "\t      (<EQUAL? ,HERE ,CYCLOPS-ROOM>\n\t       <ASSIST-HINT-TIER\n",
+      "new": "\t      (<EQUAL? ,HERE ,DEAD-END-5>\n\t       <ASSIST-HINT-TIER\n\"The mine dead end is not silent in quite the way an empty dead end should be.\"\n\"Ordinary light keeps you alive but does not reach very far into the narrow fissures. A stronger permanent flame can test what is retreating beyond it.\"\n\"Bring the flaming ivory torch here. It reveals the shape of the problem without turning grues into ordinary monsters; darkness remains governed by Zork's canonical grue danger.\">)\n\t      (<EQUAL? ,HERE ,CYCLOPS-ROOM>\n\t       <ASSIST-HINT-TIER\n",
+      "expected_count": 1
+    }
+  ]
+}
