@@ -28,8 +28,8 @@
     "format": "Glulx",
     "version_hex": "0x00030103",
     "size_bytes": 438528,
-    "checksum_hex": "0xce70e9e4",
-    "sha256": "0664b758da1809195489f577f655497e5ccb981f7b6c5fb1b69b8b48b77a5b23"
+    "checksum_hex": "0x047fd9d3",
+    "sha256": "75bdbcd38a675e491b10af3b5900149e0a84218697d24adb27f7e90d5b4b0196"
   },
   "added_files": [
     "fire_structural.zil"
