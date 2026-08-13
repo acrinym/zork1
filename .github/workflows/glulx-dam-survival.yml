@@ -83,6 +83,8 @@ jobs:
         run: |
           set -o pipefail
           bash glulx/dam-survival/qualify.sh 2>&1 | tee dam-survival.log
+      - name: Verify review regressions
+        run: bash glulx/dam-survival/review-regressions.sh
       - name: Upload Release 1253 evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
