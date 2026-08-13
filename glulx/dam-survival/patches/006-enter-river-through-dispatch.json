@@ -1,0 +1,12 @@
+{
+  "id": "dam-survival-006",
+  "description": "Route typed ENTER RIVER through the parser's actual THROUGH action so the dam survival authority handles prepared and unprepared river entry.",
+  "path": "1actions.zil",
+  "replacements": [
+    {
+      "old": "<AND <VERB? LEAP ENTER>\n\t                     <EQUAL? ,PRSO ,RIVER ,GLOBAL-WATER ,WATER>>",
+      "new": "<AND <VERB? LEAP THROUGH>\n\t                     <EQUAL? ,PRSO ,RIVER ,GLOBAL-WATER ,WATER>>",
+      "expected_count": 1
+    }
+  ]
+}
