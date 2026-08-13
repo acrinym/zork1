@@ -81,6 +81,7 @@ turn bolt with wrench
 tie rope to ladder
 climb down ladder
 enter river
+look
 quit
 yes
 EOF_ENTRY
@@ -89,5 +90,13 @@ timeout 120s "$GLULXE_BIN" --rngseed 123456 "$STORY" \
   < "$BUILD/dam-enter-river-prepared.txt" > "$BUILD/dam-enter-river-prepared-transcript.txt" 2>&1
 PREPARED="$BUILD/dam-enter-river-prepared-transcript.txt"
 grep -F 'the maintenance-ladder knot holds.' "$PREPARED"
+python - "$PREPARED" <<'PY'
+from pathlib import Path
+import sys
+text = Path(sys.argv[1]).read_text()
+rescue = 'the maintenance-ladder knot holds.'
+post_rescue = text[text.index(rescue) + len(rescue):]
+assert 'Dam Base' in post_rescue, 'prepared ENTER RIVER did not resume play at Dam Base'
+PY
 
 echo 'Release 1253 review regressions passed.'
