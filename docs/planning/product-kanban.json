@@ -31,15 +31,19 @@
         "pr": 62,
         "prerequisite_release": 1256,
         "prerequisite_pr": 61,
-        "outcome": "Give the canonical Timber Room one persistent authored fire lifecycle using real flame, real bottled water, existing mine airflow, route state, and physical aftermath instead of a generalized fire or chemistry simulator.",
-        "showcase": "Real flame first creates recoverable smolder; ignored smolder becomes draft-driven open flame and smoke; real bottled water douses it; ignored fire drops an old brace and eventually leaves a persistent charred heap while the canonical EMPTY-HANDED narrow route remains intact.",
-        "artifact_sha256": "75bdbcd38a675e491b10af3b5900149e0a84218697d24adb27f7e90d5b4b0196",
+        "outcome": "Give the canonical Timber Room one persistent authored fire lifecycle using real flame, scale-limited bottled water, existing mine airflow, route state, and physical aftermath instead of a generalized fire or chemistry simulator.",
+        "showcase": "Real flame first creates recoverable smolder; a bottle can stop that fresh smolder, but once open flame establishes through the dry timber pile the same bottle only hisses into steam while the structural fire continues toward smoke, brace collapse, and persistent charred aftermath; the canonical EMPTY-HANDED narrow route remains intact.",
+        "artifact_sha256": "d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444",
+        "artifact_size_bytes": 438784,
+        "artifact_checksum_hex": "0x73c14bad",
         "source_sha256": {
-          "production": "f0ca60a87e519f84cc97721b1248aa86a688a6602a5e5b8f3395012ec2bc9514",
-          "dev": "f3e44036429d93e46a1f8b12c71da4d3394f59dc5f3b07d02ce070069908328c"
+          "production": "f73099921f56be8e496aab560e81c5fcf4722b6b9c45c97750597140d8d25ff6",
+          "dev": "e99fd0e5331edbb4bc0a8faea0961f200e8fa356c84e8ac608c4df738814071c"
         },
-        "qualification_run": 31731130803,
+        "qualification_run": 31741847431,
         "boundaries": [
+          "bottled water fully suppresses only the fresh smolder stage; it is not a fire hose for established structural fire",
+          "late bottled-water or extinguish attempts cannot freeze the fire clock",
           "no generalized chemistry gas smoke or structural physics simulator",
           "no fire hit points or generic spread grid",
           "canonical puzzle and route authority remains intact",
