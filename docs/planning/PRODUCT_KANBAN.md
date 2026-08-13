@@ -2,8 +2,8 @@
 
 **Updated:** August 12, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1251` — Cross-System Utility Mesh  
-**`master` head when Release 1252 began:** `147236fcc61ac98b993ff1905c6e07c6bfbb6079`
+**Current merged production frontier:** Release `1252` — Earned Sequence Breaks & Route Mastery  
+**`master` head when Release 1253 began:** `7768710a8b4fd4d4d798011eec70fe6f88112e81`
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -21,55 +21,56 @@ This board is the human operating surface for the active Zork product queue. The
 
 ## CURRENT
 
-### Release 1252 — Earned Sequence Breaks & Route Mastery
+### Release 1253 — Dam Survival & Prepared Rescue
 
-**Active branch:** `agent/earned-sequence-breaks-route-mastery-20260812`
+**Active branch:** `agent/dam-survival-prepared-rescue-20260812`
 
-**Player outcome:** a knowledgeable player can prepare real geography and reuse real equipment so selected routes become meaningfully easier without replacing canonical traversal or creating magic shortcuts.
+**Player outcome:** Flood Control Dam #3 now answers to its real gate/water state, the adventurer's real carried weight, a physical maintenance ladder, and the existing rope authority so deliberate risky actions can cause recoverable loss, death, or earned rescue depending on preparation.
 
 Current showcase:
 
-- the Release 1236 Great Canyon rim anchor and Release 1251 rope/cargo mesh become one physical truth;
-- `SECURE ROPE` and natural `TIE/FASTEN ROPE TO CANYON RIM` operate the same real rope authority;
-- a cinched brown sack can be lowered from Canyon View to Rocky Ledge, hauled back, or recovered after following the authored climb;
-- the rope remains physically committed to the canyon rim until that knot is actually freed;
-- White Cliffs width checks see an inflated magic boat even when it is nested in a carried container;
-- `FOLD BOAT` and `COLLAPSE BOAT` use the canonical deflation action and preserve its on-ground requirement;
-- the rainbow remains stateful traversal geometry, not a rope anchor, and its lethal unsupported state is unchanged.
+- an iron maintenance ladder physically connects the dam top and Dam Base while ordinary authored exits remain safe;
+- closed/high overflow can make an overloaded ladder descent knock the heaviest eligible loose item to Dam Base, where it can be recovered;
+- open sluices plus an overloaded, unprepared ladder descent can kill the adventurer;
+- tying the existing rope to the maintenance ladder creates a real fixed handline that catches the same dangerous slip;
+- with sluices open, deliberately entering the Frigid River without a fixed line is lethal, while the prepared handline lets the adventurer survive the experiment and claw back to the landing;
+- the canonical inflatable/magic boat and `RBOAT-FUNCTION` remain the authored river-travel solution;
+- canonical `GATES-OPEN` / `LOW-TIDE`, carried-object identity, rope anchoring, and normal dam movement remain authoritative—no parallel dam simulation was added.
 
-No teleport verbs, shortcut menu, generic route solver, object-pair recipe matrix, or universal physics engine.
+Release 1253 is fully qualified on the branch and waiting for PR review/merge whistle. Locked production artifact SHA-256:
+
+`41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11`
 
 ## NEXT — ordered
 
-### 1. Release 1253 — Dam Survival & Prepared Rescue
-
-Deepen Flood Control Dam #3 with authored water-state survival, encumbrance, rope/ladder preparation, buoyancy opportunities, object loss, and recovery.
-
-### 2. Release 1254 — Troll Disarm & Stolen Weapons
+### 1. Release 1254 — Troll Disarm & Stolen Weapons
 
 Let the canonical troll seize or retain real weapons under authored conditions, creating persistent custody, taunts, bargaining, recovery, and consequences for losing your own weapon.
 
-### 3. Release 1255 — Thief Retaliation & Sabotage
+### 2. Release 1255 — Thief Retaliation & Sabotage
 
 Add visible, causal retaliation through selective theft, sabotage, warnings, earned ambushes, avoidance, repair, and appeasement.
 
-### 4. Release 1256 — Grue Ecology & Colony Reveal
+### 3. Release 1256 — Grue Ecology & Colony Reveal
 
 Support selected darkness experiments and authored grue ecology, including stronger-light consequences and a signature colony reveal without turning grues into ordinary combat mobs.
 
-### 5. Release 1257 — Fire, Smoke & Structural Consequences
+### 4. Release 1257 — Fire, Smoke & Structural Consequences
 
 Extend physicality into a deliberately small set of authored fire, smoke, collapse, and machinery consequences.
 
-### 6. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+### 5. Release 1258 — Mara Reciprocal Rescue & Shared Danger
 
 Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions without an approval meter.
 
 ## FUTURE
 
+- **Forest That Answers Back / Described World = Interactive World** — promote selected concrete nouns already present in authored forest descriptions into targetable, stateful world objects whose interactions compose with existing physicality rather than becoming decorative prose or a generic object generator.
+- **Time, Weather & Disaster Arc** — layer authored time/weather conditions and selected disasters onto real geography and existing material state only where they create meaningful preparation, shelter, traversal, rescue, and aftermath play; no generic climate simulator.
 - **Causal Death & Warning Depth** — authored fair warning, near-death, delayed-consequence, and exact-object provenance expansions.
 - **Museum & Ecology second expansion** — only where collection creates new field play rather than checklist accumulation.
 - **Narrative Perspective Experiments** — isolated first-person, third-person, and interactive-storybook editions against real canonical state.
+- **Far-horizon DRAW + multi-agent experiments** — isolated experimental editions/tools only after the playable product supports them; keep them out of the canonical release train until deliberately promoted.
 - Additional selected authored consequences from `LIVING_ZORK_FUTURE_IDEAS_KANBAN.md`.
 
 ## PARKED / SEPARATE
@@ -105,17 +106,16 @@ Advance Mara through reciprocal rescue, injuries/recovery, promises, exact tempo
 | 1249 | Underground Sensory Physicality | #53 |
 | 1250 | Player Ingenuity / Systemic Workarounds | #55 |
 | 1251 | Cross-System Utility Mesh | #56 |
+| 1252 | Earned Sequence Breaks & Route Mastery | #57 |
 
-Release `1250` merged as `cd6a918795196b6918a2a5c5600b56c1c0d6e20b`.
+Release `1252` merged as `43a253a83a7349c9d3838e07488a90233f92410b`.
 
-Release `1251` merged as `79b87248d567962fff2181e4996d1cf424cdcac0`.
+Final Release 1252 production artifact SHA-256:
 
-Final Release 1251 production artifact SHA-256:
+`b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6`
 
-`f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7`
-
-The subsequent planning refresh merged through PR #54 and left `master` at `147236fcc61ac98b993ff1905c6e07c6bfbb6079` before Release 1252 began.
+The post-Release-1252 handoff commit left `master` at `7768710a8b4fd4d4d798011eec70fe6f88112e81` before Release 1253 began.
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and the post-1249 product arc. Release 1252 applies that doctrine to the Great Canyon / White Cliffs route-mastery seam while preserving the future train order above.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and the post-1249 product arc. Release 1253 applies that doctrine to Flood Control Dam #3 while preserving Release 1254 as the next committed train and retaining the newer forest-density, time/weather/disaster, and far-horizon experiment opportunities above.

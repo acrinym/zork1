@@ -1,0 +1,36 @@
+{
+  "edition": "Dam Survival & Prepared Rescue",
+  "release": 1253,
+  "serial": "260812",
+  "base_release": 1252,
+  "base_manifest": "../route-mastery/patch-series.json",
+  "base_artifact_sha256": "b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6",
+  "base_source_sha256": {
+    "production": "eb1ef72bf3af2f6b0ae328ca8680ff33f3bfddb08416fd1790044a77f8695fc3",
+    "dev": "f60a5fd96f6c7a92f26bc264394875c28e75d1499e117e4a1380e86f00e31075"
+  },
+  "patches": [
+    "patches/001-dam-world.json",
+    "patches/002-dam-survival-actions.json",
+    "patches/003-dam-rope-anchor.json",
+    "patches/004-dam-action-hook.json",
+    "patches/005-release-1253.json",
+    "patches/006-enter-river-through-dispatch.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "material_consequences.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-dam-survival-prepared-rescue.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 426496,
+    "checksum_hex": "0xb69cdc70",
+    "sha256": "232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff"
+  }
+}
