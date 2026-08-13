@@ -27,14 +27,15 @@ This board is the human operating surface for the active Zork product queue. The
 **PR:** #62  
 **Base:** merged Release 1256 on `master`
 
-**Player outcome:** the canonical Timber Room now supports one persistent authored fire lifecycle using real flame, real bottled water, existing mine airflow, and persistent physical aftermath instead of a generic fire or chemistry simulator.
+**Player outcome:** the canonical Timber Room now supports one persistent authored fire lifecycle using real flame, limited bottled water, existing mine airflow, and persistent physical aftermath instead of a generic fire or chemistry simulator.
 
 Current showcase:
 
 - the dry broken timbers are a real burn target, but first ignition produces a recoverable smolder rather than instant deletion or explosion;
-- a new smolder can be stamped out before it earns open flame;
+- a new smolder can be stamped out or doused with the real bottled water before it earns open flame;
 - ignored smolder becomes open flame, and the room's existing westward draft drives smoke into the narrow west crawl while preserving the wide east escape;
-- the real open bottle containing the real water can douse active timber fire, consuming that water and leaving scorched aftermath;
+- once open flame has established through the timber pile, one bottle of water is no fire hose: it hisses into steam and darkens a patch, but the structural fire continues advancing;
+- repeatedly trying the bottle or `EXTINGUISH TIMBERS` after open flame cannot freeze the fire clock;
 - ignored open flame gives audible structural warning before one old brace drops into the burning clutter;
 - the fire eventually burns itself down to a persistent charred heap and fallen brace;
 - the collapse does not widen, delete, or brick the canonical `EMPTY-HANDED` narrow passage;
@@ -44,14 +45,21 @@ Current showcase:
 
 Release 1257 is fully qualified against the repaired merged Release-1256 lineage. Locked production artifact SHA-256:
 
-`75bdbcd38a675e491b10af3b5900149e0a84218697d24adb27f7e90d5b4b0196`
+`d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444`
+
+Artifact size/checksum:
+
+- size: `438784` bytes
+- checksum: `0x73c14bad`
 
 Exact qualified staged-source identities:
 
-- production: `f0ca60a87e519f84cc97721b1248aa86a688a6602a5e5b8f3395012ec2bc9514`
-- dev: `f3e44036429d93e46a1f8b12c71da4d3394f59dc5f3b07d02ce070069908328c`
+- production: `f73099921f56be8e496aab560e81c5fcf4722b6b9c45c97750597140d8d25ff6`
+- dev: `e99fd0e5331edbb4bc0a8faea0961f200e8fa356c84e8ac608c4df738814071c`
 
-Final locked qualification run: `31731130803`.
+Final locked qualification run: `31741847431`.
+
+The qualification explicitly proves both sides of the water-scale rule: bottled water can stop the fresh smolder, while bottled water used after open flame produces steam but leaves the fire burning, after which the brace still falls and the aftermath still reaches the charred state.
 
 ## NEXT — ordered
 
@@ -121,4 +129,4 @@ Recent merged production receipts:
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and post-1249 product arc. Release 1257 establishes the first shared authored world-fire authority. Release 1258 remains the next committed train, but implementation is intentionally paused for discussion before any Mara work begins.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and post-1249 product arc. Release 1257 establishes the first shared authored world-fire authority with scale-aware suppression: a bottle can stop a fresh smolder but not an established structural fire. Release 1258 remains the next committed train, but implementation is intentionally paused for discussion before any Mara work begins.
