@@ -1,0 +1,31 @@
+{
+  "edition": "Troll Disarm & Stolen Weapons",
+  "release": 1254,
+  "serial": "260812",
+  "base_release": 1253,
+  "base_manifest": "../dam-survival/patch-series.json",
+  "base_artifact_sha256": "232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff",
+  "base_source_sha256": {
+    "production": "f595354840686c252ff7092544bbd3adc69d4652551d4fbe941011815d6bbd93",
+    "dev": "bddb0baea85707edf636cee7254b7ed1981aede7f2509567312553f9c38d4aff"
+  },
+  "patches": [
+    "patches/001-troll-custody.json",
+    "patches/002-troll-assistance.json",
+    "patches/003-release-1254.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "assistance.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-troll-disarm-stolen-weapons.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 429056,
+    "checksum_hex": "0xdcf9d7a1",
+    "sha256": "86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0"
+  }
+}

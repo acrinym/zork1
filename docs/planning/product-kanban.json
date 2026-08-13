@@ -22,52 +22,57 @@
   "lanes": {
     "current": [
       {
+        "train_id": "zork-troll-disarm-stolen-weapons-1254",
+        "release": 1254,
+        "title": "Troll Disarm & Stolen Weapons",
+        "status": "current-qualified-stacked-awaiting-pr-merge",
+        "branch": "agent/troll-disarm-stolen-weapons-20260812",
+        "base_branch": "agent/dam-survival-prepared-rescue-20260812",
+        "prerequisite_release": 1253,
+        "prerequisite_pr": 58,
+        "outcome": "Let authored troll combat loss become persistent physical custody of the player's exact real weapon, allowing the troll to wield it, taunt with it, bargain over it, lose it through combat, and relinquish it when subdued or killed.",
+        "showcase": "A canonical LOSE-WEAPON result can put the real sword or knife in the troll's hands; FIND-WEAPON then prefers that captured weapon, direct recovery is physically blocked, food can buy the exact object back without pacifying the troll, and unconsciousness or death releases held player weapons.",
+        "acceptance": [
+          "canonical troll combat remains the authority for weapon-loss outcomes",
+          "the troll can capture the exact canonical sword or knife instead of creating a duplicate or ownership token",
+          "a captured player weapon can become the troll's preferred real combat weapon",
+          "direct TAKE of a weapon still held by the armed troll is blocked by physical custody",
+          "existing combat disarm can knock captured custody loose",
+          "unconsciousness or death drops real captured player weapons for recovery",
+          "food can return the exact captured weapon without pacifying the troll or opening exits",
+          "stolen custody is visible through authored examination, listening, greeting, and combat text",
+          "canonical troll strength, axe recovery, combat, unconsciousness, death, and exit gating remain authoritative",
+          "production artifact is locked and reproducible"
+        ],
+        "artifact_sha256": "5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4",
+        "qualification_run": 31629388400,
+        "boundaries": [
+          "no duplicate sword, knife, or axe",
+          "no generic NPC inventory framework",
+          "no hidden ownership or hostility meter",
+          "no random weapon theft outside authored combat loss",
+          "canonical combat and troll state remain authority"
+        ]
+      }
+    ],
+    "qualified_prerequisites": [
+      {
         "train_id": "zork-dam-survival-prepared-rescue-1253",
         "release": 1253,
         "title": "Dam Survival & Prepared Rescue",
-        "status": "current-qualified-awaiting-pr-merge",
+        "status": "qualified-awaiting-pr-merge",
         "branch": "agent/dam-survival-prepared-rescue-20260812",
-        "outcome": "Make Flood Control Dam #3 a deterministic physical hazard whose real gate/water state, carried weight, maintenance ladder, and existing rope authority change the consequences of deliberate risky actions.",
-        "showcase": "An overloaded overflow descent can lose recoverable gear; open sluices can make the same unprepared descent lethal; tying the real rope to the physical maintenance ladder creates a fixed handline that catches the slip and can also rescue a deliberate river-entry experiment.",
-        "acceptance": [
-          "canonical GATES-OPEN and LOW-TIDE remain the only dam water-state authority",
-          "a physical maintenance ladder is targetable at the dam top and Dam Base while normal authored exits remain safe",
-          "closed high-water overflow plus an overloaded unprepared descent can drop the heaviest eligible loose item to Dam Base for recovery",
-          "open sluices plus an overloaded unprepared descent can kill the adventurer",
-          "the existing rope can be tied to the maintenance ladder through the existing material-rope anchor authority",
-          "the prepared fixed handline changes the dangerous ladder slip into a survivable descent",
-          "open-sluice river entry without preparation is lethal while the fixed handline enables recovery to shore",
-          "the canonical inflatable/magic boat and RBOAT-FUNCTION remain the normal river-travel solution",
-          "production artifact is locked and reproducible"
-        ],
+        "pr": 58,
         "artifact_sha256": "41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11",
-        "boundaries": [
-          "reuse canonical dam state",
-          "no fluid simulator",
-          "no random unavoidable falls",
-          "no duplicate rope or inventory authority",
-          "normal authored dam movement remains valid"
-        ]
+        "outcome": "Make Flood Control Dam #3 a deterministic physical hazard whose real gate/water state, carried weight, maintenance ladder, and existing rope authority change the consequences of deliberate risky actions."
       }
     ],
     "next": [
       {
-        "train_id": "zork-troll-disarm-stolen-weapons-1254",
-        "release": 1254,
-        "title": "Troll Disarm & Stolen Weapons",
-        "status": "next-1",
-        "outcome": "Let the canonical troll seize or retain real weapons under authored combat conditions, creating recoverable consequences, bargaining, taunts, and the possibility of facing your own lost weapon.",
-        "boundaries": [
-          "canonical combat remains authority",
-          "no duplicate sword or axe",
-          "no generic NPC inventory framework"
-        ]
-      },
-      {
         "train_id": "zork-thief-retaliation-sabotage-1255",
         "release": 1255,
         "title": "Thief Retaliation & Sabotage",
-        "status": "next-2",
+        "status": "next-1",
         "outcome": "Give the thief authored retaliation, selective theft, sabotage, warnings, and earned hostility based on visible treatment and real object history.",
         "boundaries": [
           "preserve canonical roaming and treasure behavior",
@@ -79,7 +84,7 @@
         "train_id": "zork-grue-ecology-colony-reveal-1256",
         "release": 1256,
         "title": "Grue Ecology & Colony Reveal",
-        "status": "next-3",
+        "status": "next-2",
         "outcome": "Turn selected darkness experiments into discoverable grue ecology, including lure behavior, stronger-light experiments, a colony reveal, and authored survival or catastrophic outcomes.",
         "boundaries": [
           "not every dark room becomes a hive",
@@ -91,7 +96,7 @@
         "train_id": "zork-fire-smoke-structural-consequences-1257",
         "release": 1257,
         "title": "Fire, Smoke & Structural Consequences",
-        "status": "next-4",
+        "status": "next-3",
         "outcome": "Extend material physicality into a small set of authored fire, smoke, collapse, and machinery consequences with fair warnings, escape routes, and persistent world state.",
         "boundaries": [
           "no generalized chemistry or gas simulator",
@@ -103,7 +108,7 @@
         "train_id": "zork-mara-reciprocal-rescue-shared-danger-1258",
         "release": 1258,
         "title": "Mara Reciprocal Rescue & Shared Danger",
-        "status": "next-5",
+        "status": "next-4",
         "outcome": "Advance Mara through shared physical danger, reciprocal rescue, injuries/recovery, promises, temporary custody, separation/reunion, and remembered choices rather than an approval economy.",
         "boundaries": [
           "no dating-sim meter",
@@ -113,6 +118,39 @@
       }
     ],
     "future": [
+      {
+        "train_id": "zork-treasure-guardian-dragon-hoard",
+        "title": "Treasure Guardian Dragon & Hoard",
+        "status": "future-authored-encounter",
+        "outcome": "Create an original Zork-native dragon guarding a real treasure hoard, with territorial warning signs, dangerous fire breath, persistent environmental consequences, and multiple credible Zork-style approaches to survival, theft, negotiation, containment, escape, or confrontation.",
+        "inspiration": [
+          "Shadowgate treasure-guardian dragon encounter archetype"
+        ],
+        "boundaries": [
+          "original Zork-native dragon, prose, map layout, objects, puzzle expression, and solution structure",
+          "fire breath should compose with authored fire, smoke, material, shelter, and escape systems rather than introduce a separate generic combat simulator",
+          "support preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation instead of a generic hit-point boss fight",
+          "do not copy Shadowgate source code, text, art, maps, exact puzzles, or expressive sequencing"
+        ]
+      },
+      {
+        "train_id": "zork-cross-if-rpg-mechanics-adaptation",
+        "title": "Cross-IF / RPG Mechanics Adaptation — Shadowgate First",
+        "status": "future-mechanics-inspiration-program",
+        "outcome": "Study high-value mechanics and interaction patterns from other interactive-fiction games and RPGs, beginning with Shadowgate, and rebuild selected concepts from scratch as original Zork-native systems that compose with canonical state and the existing physicality mesh.",
+        "sources": [
+          "Shadowgate first",
+          "other interactive-fiction games later",
+          "RPGs later",
+          "selected S.T.A.L.K.E.R.-inspired mechanics eventually"
+        ],
+        "boundaries": [
+          "borrow concepts and design lessons, not source code, text, art, maps, exact puzzles, or expressive sequencing",
+          "adapt only mechanics that create meaningful Zork player choices rather than feature accumulation",
+          "rebuild selected ideas from scratch using Zork-native objects, state, prose, geography, parser verbs, and consequence systems",
+          "keep the separate S.T.A.L.K.E.R. Glulx product lane distinct even when selected mechanics inspire Zork"
+        ]
+      },
       {
         "train_id": "zork-forest-that-answers-back",
         "title": "Forest That Answers Back / Described World = Interactive World",
