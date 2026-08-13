@@ -1,0 +1,22 @@
+{
+  "id": "thief-retaliation-003",
+  "description": "Advance the Glulx release identity to Release 1255 Thief Retaliation & Sabotage.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "\"ZORK1 TROLL DISARM AND STOLEN WEAPONS GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n",
+      "new": "\"ZORK1 THIEF RETALIATION AND SABOTAGE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n",
+      "expected_count": 1
+    },
+    {
+      "old": "<SETG ZORK-NUMBER 1>\n\n<CONSTANT RELEASEID 1254>\n\n<SET REDEFINE T>\n",
+      "new": "<SETG ZORK-NUMBER 1>\n\n<CONSTANT RELEASEID 1255>\n\n<SET REDEFINE T>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "    (T     <CONSTANT WORD-SIZE 2>)>\n\n<PRINC \"Troll Disarm and Stolen Weapons Glulx ZORK I: The Great Underground Empire\n \">\n\n",
+      "new": "    (T     <CONSTANT WORD-SIZE 2>)>\n\n<PRINC \"Thief Retaliation and Sabotage Glulx ZORK I: The Great Underground Empire\n \">\n\n",
+      "expected_count": 1
+    }
+  ]
+}

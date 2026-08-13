@@ -1,0 +1,33 @@
+{
+  "edition": "Thief Retaliation & Sabotage",
+  "release": 1255,
+  "serial": "260812",
+  "base_release": 1254,
+  "base_manifest": "../troll-stolen-weapons/patch-series.json",
+  "base_artifact_sha256": "86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0",
+  "base_source_sha256": {
+    "production": "a06008cb705001a0ea9b4e6ef11d6188259721fa23e79ccff127d447b26d6da3",
+    "dev": "527a1481eaed8486bad4899d78c4bbf38ed9040569d67d1a85c4914d35b94533"
+  },
+  "patches": [
+    "patches/001-thief-retaliation.json",
+    "patches/002-thief-state-slot.json",
+    "patches/002-thief-assistance.json",
+    "patches/003-release-1255.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "assistance.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-thief-retaliation-sabotage.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 430848,
+    "checksum_hex": "0x42161082",
+    "sha256": "03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be"
+  }
+}

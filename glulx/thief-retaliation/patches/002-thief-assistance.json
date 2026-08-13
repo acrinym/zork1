@@ -1,0 +1,12 @@
+{
+  "id": "thief-retaliation-002",
+  "description": "Teach the Treasure Room hint path how retaliation, visible deterrence, appeasement, and recoverable sabotage work.",
+  "path": "assistance.zil",
+  "replacements": [
+    {
+      "old": "\"A disarm can recover a weapon he seized; knocking him unconscious or killing him also ends his custody.\"\n\"If the troll has taken one of your weapons, food can buy that exact weapon back -- but it does not buy safe passage.\">)\n\t      (<EQUAL? ,HERE ,CYCLOPS-ROOM>\n\t       <ASSIST-HINT-TIER\n",
+      "new": "\"A disarm can recover a weapon he seized; knocking him unconscious or killing him also ends his custody.\"\n\"If the troll has taken one of your weapons, food can buy that exact weapon back -- but it does not buy safe passage.\">)\n\t      (<EQUAL? ,HERE ,TREASURE-ROOM>\n\t       <ASSIST-HINT-TIER\n\"The thief can remember deliberate provocation without needing an invisible attitude score.\"\n\"If his retaliation is active, visible steel can make him abandon an ambush; a valuable gift can settle the personal account.\"\n\"His sabotage is recoverable: repack anything he scatters, and recover selectively stolen tools through the thief's ordinary custody and Treasure Room behavior.\">)\n\t      (<EQUAL? ,HERE ,CYCLOPS-ROOM>\n\t       <ASSIST-HINT-TIER\n",
+      "expected_count": 1
+    }
+  ]
+}
