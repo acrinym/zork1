@@ -25,7 +25,7 @@ import json
 from pathlib import Path
 b=Path('glulx/build/troll-disarm-stolen-weapons-1254'); s=b/'src'; d=b/'dev-src'
 stage=json.loads((s/'STAGING-RECEIPT.json').read_text()); dev=json.loads((d/'STAGING-RECEIPT.json').read_text()); smell=json.loads((b/'smell-report.json').read_text()); dev_smell=json.loads((b/'dev-smell-report.json').read_text())
-assert stage['release']==1254 and stage['base']['release']==1253 and stage['base']['artifact_sha256']=='41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11'
+assert stage['release']==1254 and stage['base']['release']==1253 and stage['base']['artifact_sha256']=='232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff'
 assert stage['changed_paths']==sorted(['1actions.zil','assistance.zil','zork1.zil']); assert stage['dev_mode'] is False and dev['dev_mode'] is True; assert not smell['errors'] and not dev_smell['errors']
 actions=(s/'1actions.zil').read_text(); assist=(s/'assistance.zil').read_text(); zork=(s/'zork1.zil').read_text()
 for token in ('<ROUTINE TROLL-STOLEN-WEAPON','<ROUTINE TROLL-CAPTURE-WEAPON','<ROUTINE TROLL-STOLEN-BLOW-REMARK','<TROLL-CAPTURE-WEAPON .DWEAPON>','<TROLL-DROP-STOLEN-WEAPONS>','The bargain buys the weapon, not safe passage.','The troll answers by raising your stolen '): assert token in actions,token
