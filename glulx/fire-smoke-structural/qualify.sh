@@ -26,7 +26,7 @@ from pathlib import Path
 b=Path('glulx/build/fire-smoke-structural-consequences-1257'); s=b/'src'; d=b/'dev-src'; base=Path('glulx/build/grue-ecology-colony-reveal-1256/src')
 stage=json.loads((s/'STAGING-RECEIPT.json').read_text()); dev=json.loads((d/'STAGING-RECEIPT.json').read_text()); smell=json.loads((b/'smell-report.json').read_text()); dev_smell=json.loads((b/'dev-smell-report.json').read_text())
 expected=sorted(['1dungeon.zil','assistance.zil','fire_structural.zil','shadow_logic.zil','zork1.zil'])
-assert stage['release']==1257 and stage['base']['release']==1256 and stage['base']['artifact_sha256']=='dbad355f6d18245d48671102bf4d449f227c03bd8e39ec569c9a41d8508c7c4a'
+assert stage['release']==1257 and stage['base']['release']==1256 and stage['base']['artifact_sha256']=='59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975'
 assert stage['changed_paths']==expected and stage['dev_mode'] is False and dev['dev_mode'] is True
 assert not smell['errors'] and not dev_smell['errors']
 # Canonical fire and Gas Room explosion authority remain untouched.
