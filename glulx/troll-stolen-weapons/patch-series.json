@@ -4,10 +4,10 @@
   "serial": "260812",
   "base_release": 1253,
   "base_manifest": "../dam-survival/patch-series.json",
-  "base_artifact_sha256": "41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11",
+  "base_artifact_sha256": "232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff",
   "base_source_sha256": {
-    "production": "04c1303100161daffbac9ec87bf9e01ac0043042bf557ca81bd55ce88b814ea9",
-    "dev": "d8ac39ebdf025ad4c6109d2977d2a8362803d932bf215dbc3a09a28fc8ca3bc3"
+    "production": "f595354840686c252ff7092544bbd3adc69d4652551d4fbe941011815d6bbd93",
+    "dev": "bddb0baea85707edf636cee7254b7ed1981aede7f2509567312553f9c38d4aff"
   },
   "patches": [
     "patches/001-troll-custody.json",
