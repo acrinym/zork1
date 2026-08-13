@@ -14,7 +14,9 @@ import importlib.util,json,sys
 from pathlib import Path
 spec=importlib.util.spec_from_file_location('stage1257','glulx/fire-smoke-structural/stage.py'); mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
 m=json.loads(Path(sys.argv[1]).read_text()); actual={'production':mod.source_identity(Path(sys.argv[2])),'dev':mod.source_identity(Path(sys.argv[3]))}
-for k,v in actual.items(): assert m['base_source_sha256'][k]==v,(k,m['base_source_sha256'][k],v)
+for k,v in actual.items():
+    if m['base_source_sha256'][k] != v:
+        raise SystemExit(f"Release 1256 {k} source identity drift: expected {m['base_source_sha256'][k]}, got {v}")
 PY
 python glulx/fire-smoke-structural/stage.py --base-source "$BASE_SRC" --destination "$SRC" --manifest "$MANIFEST"
 python glulx/fire-smoke-structural/stage.py --base-source "$BASE_DEV_SRC" --destination "$DEV_SRC" --manifest "$MANIFEST"
@@ -23,32 +25,38 @@ python optimized/tools/zil_smell_check.py --source "$DEV_SRC" --json "$BUILD/dev
 python - <<'PY'
 import json
 from pathlib import Path
+
+def require(condition, message):
+    if not condition:
+        raise SystemExit(message)
+
 b=Path('glulx/build/fire-smoke-structural-consequences-1257'); s=b/'src'; d=b/'dev-src'; base=Path('glulx/build/grue-ecology-colony-reveal-1256/src')
 stage=json.loads((s/'STAGING-RECEIPT.json').read_text()); dev=json.loads((d/'STAGING-RECEIPT.json').read_text()); smell=json.loads((b/'smell-report.json').read_text()); dev_smell=json.loads((b/'dev-smell-report.json').read_text())
 expected=sorted(['1dungeon.zil','assistance.zil','fire_structural.zil','shadow_logic.zil','zork1.zil'])
-assert stage['release']==1257 and stage['base']['release']==1256 and stage['base']['artifact_sha256']=='59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975'
-assert stage['changed_paths']==expected and stage['dev_mode'] is False and dev['dev_mode'] is True
-assert not smell['errors'] and not dev_smell['errors']
+require(stage['release']==1257 and stage['base']['release']==1256 and stage['base']['artifact_sha256']=='59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975', 'Release 1257 staging receipt/base artifact mismatch')
+require(stage['changed_paths']==expected and stage['dev_mode'] is False and dev['dev_mode'] is True, 'Release 1257 staged changed paths or profile mismatch')
+require(not smell['errors'] and not dev_smell['errors'], 'Release 1257 smell check reported errors')
 # Canonical fire and Gas Room explosion authority remain untouched.
-assert (s/'gverbs.zil').read_bytes()==(base/'gverbs.zil').read_bytes()
-assert (s/'1actions.zil').read_bytes()==(base/'1actions.zil').read_bytes()
+require((s/'gverbs.zil').read_bytes()==(base/'gverbs.zil').read_bytes(), 'canonical gverbs.zil changed')
+require((s/'1actions.zil').read_bytes()==(base/'1actions.zil').read_bytes(), 'canonical 1actions.zil changed')
 fire=(s/'fire_structural.zil').read_text(); dungeon=(s/'1dungeon.zil').read_text(); shadow=(s/'shadow_logic.zil').read_text(); assist=(s/'assistance.zil').read_text(); zork=(s/'zork1.zil').read_text()
-for token in ('<CONSTANT FIRE-STRUCTURAL-STATE <TABLE 0 0>>','<ROUTINE FIRE-STRUCTURAL-ADVANCE','<ROUTINE FIRE-STRUCTURAL-IGNITE','<ROUTINE FIRE-STRUCTURAL-DOUSE','<ROUTINE FIRE-STRUCTURAL-HOOK','old brace drops into the burning clutter','narrow westward crawl is exactly where the draft is concentrating smoke'):
-    assert token in fire,token
-assert '<GLOBAL FIRE-' not in fire
+for token in ('<CONSTANT FIRE-STRUCTURAL-STATE <TABLE 0 0>>','<ROUTINE FIRE-STRUCTURAL-ADVANCE','<ROUTINE FIRE-STRUCTURAL-IGNITE','<ROUTINE FIRE-STRUCTURAL-DOUSE','<ROUTINE FIRE-STRUCTURAL-HOOK','old brace drops into the burning clutter','narrow westward crawl is exactly where the draft is concentrating smoke','this is now a structural fire, not a campfire'):
+    require(token in fire, f'missing fire authority token: {token}')
+require('<GLOBAL FIRE-' not in fire, 'Release 1257 unexpectedly consumes a FIRE global')
 for token in ('<OBJECT TIMBERS','(FLAGS TAKEBIT BURNBIT)','(ACTION FIRE-TIMBERS-FCN)','(ACTION FIRE-TIMBER-ROOM-FCN)','IF EMPTY-HANDED'):
-    assert token in dungeon,token
+    require(token in dungeon, f'missing canonical dungeon token: {token}')
 # The real coal object remains burnable and movable exactly as the canonical puzzle expects; 1257 does not consume or substitute it.
-assert '''<OBJECT COAL
+require('''<OBJECT COAL
 \t(IN DEAD-END-5)
 \t(SYNONYM COAL PILE HEAP)
 \t(ADJECTIVE SMALL)
 \t(DESC "small pile of coal")
 \t(FLAGS TAKEBIT BURNBIT)
-\t(SIZE 20)>''' in dungeon
-assert '<FIRE-STRUCTURAL-HOOK>' in shadow
-assert 'The collapse persists, but it will not widen, delete, or brick the canonical narrow route.' in assist
-assert '<CONSTANT RELEASEID 1257>' in zork and 'FIRE SMOKE AND STRUCTURAL CONSEQUENCES GLULX' in zork
+\t(SIZE 20)>''' in dungeon, 'canonical movable/burnable coal object changed')
+require('<FIRE-STRUCTURAL-HOOK>' in shadow, 'fire structural hook missing from shared shadow logic')
+require('The collapse persists, but it will not widen, delete, or brick the canonical narrow route.' in assist, 'fire assistance route-preservation hint missing')
+require('A new smolder can be stamped out or doused with the real bottled water. Once open flame takes hold, a bottle is no fire hose' in assist, 'fire assistance water-scale hint missing')
+require('<CONSTANT RELEASEID 1257>' in zork and 'FIRE SMOKE AND STRUCTURAL CONSEQUENCES GLULX' in zork, 'Release 1257 identity missing')
 PY
 IFS=$'\t' read -r SERIAL STORY_FILE < <(python - "$MANIFEST" <<'PY'
 import json,sys
@@ -84,7 +92,6 @@ E="$BUILD/early-stop-transcript.txt"; grep -F 'first it smolders' "$E"; grep -F 
 cat > "$BUILD/water-stop.txt" <<'EOF2'
 fireprep
 burn timbers with torch
-look
 use bottle on timbers
 firestatus
 examine timbers
@@ -92,9 +99,26 @@ quit
 yes
 EOF2
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/water-stop.txt" > "$BUILD/water-stop-transcript.txt" 2>&1
-W="$BUILD/water-stop-transcript.txt"; grep -F 'Flame runs along the dry grain' "$W"; grep -F 'Steam and dirty runoff replace the smoke; the flame dies.' "$W"; grep -F 'TEST timber fire state: doused' "$W"
+W="$BUILD/water-stop-transcript.txt"; grep -F 'first it smolders' "$W"; grep -F 'before open flame can take hold' "$W"; grep -F 'TEST timber fire state: doused' "$W"
 
-cat > "$BUILD/smoke-route.txt" <<'EOF3'
+cat > "$BUILD/late-water.txt" <<'EOF3'
+fireprep
+burn timbers with torch
+look
+use bottle on timbers
+firestatus
+look
+look
+look
+look
+firestatus
+quit
+yes
+EOF3
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/late-water.txt" > "$BUILD/late-water-transcript.txt" 2>&1
+L="$BUILD/late-water-transcript.txt"; grep -F 'Flame runs along the dry grain' "$L"; grep -F 'this is now a structural fire, not a campfire' "$L"; grep -F 'TEST timber fire state: burning' "$L"; grep -F 'One old brace drops into the burning clutter' "$L"; grep -F 'TEST timber fire state: charred' "$L"
+
+cat > "$BUILD/smoke-route.txt" <<'EOF4'
 fireprep
 burn timbers with torch
 look
@@ -102,11 +126,11 @@ west
 east
 quit
 yes
-EOF3
+EOF4
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/smoke-route.txt" > "$BUILD/smoke-route-transcript.txt" 2>&1
 R="$BUILD/smoke-route-transcript.txt"; grep -F 'narrow westward crawl is exactly where the draft is concentrating smoke' "$R"; grep -F 'Ladder Bottom' "$R"
 
-cat > "$BUILD/collapse.txt" <<'EOF4'
+cat > "$BUILD/collapse.txt" <<'EOF5'
 fireprep
 burn timbers with torch
 look
@@ -119,7 +143,7 @@ firestatus
 examine timbers
 quit
 yes
-EOF4
+EOF5
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/collapse.txt" > "$BUILD/collapse-transcript.txt" 2>&1
 C="$BUILD/collapse-transcript.txt"; grep -F 'One old brace drops into the burning clutter' "$C"; grep -F 'permanent heap of charred wood without changing the mine' "$C"; grep -F 'TEST timber fire state: charred' "$C"
 
@@ -127,9 +151,15 @@ python - "$STORY" "$MANIFEST" <<'PY'
 import hashlib,json,sys
 from pathlib import Path
 story=Path(sys.argv[1]); manifest=json.loads(Path(sys.argv[2]).read_text()); b=Path('glulx/build/fire-smoke-structural-consequences-1257'); report=json.loads((b/'story-report.json').read_text())
-identity={'file':story.name,'format':'Glulx','version_hex':report['version_hex'],'size_bytes':story.stat().st_size,'checksum_hex':report['checksum_hex'],'sha256':hashlib.sha256(story.read_bytes()).hexdigest()}; assert report['checksum_valid'] is True; expected=manifest['expected_artifact']
-if expected.get('locked') is not True: print('RELEASE_1257_ARTIFACT_IDENTITY='+json.dumps(identity,sort_keys=True)); raise SystemExit(4)
-for key in ('file','version_hex','size_bytes','checksum_hex','sha256'): assert expected[key]==identity[key],(key,expected[key],identity[key])
-receipt={'release':1257,'serial':manifest['serial'],'artifact_identity_locked':True,'production':{**identity,'report':report},'base_release':1256,'base_artifact_sha256':manifest['base_artifact_sha256'],'early_stop':'early-stop-transcript.txt','water_stop':'water-stop-transcript.txt','smoke_route':'smoke-route-transcript.txt','collapse':'collapse-transcript.txt','canonical_gverbs_unchanged':True,'canonical_gas_room_actions_unchanged':True}; (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n'); print(json.dumps(receipt,indent=2,sort_keys=True))
+identity={'file':story.name,'format':'Glulx','version_hex':report['version_hex'],'size_bytes':story.stat().st_size,'checksum_hex':report['checksum_hex'],'sha256':hashlib.sha256(story.read_bytes()).hexdigest()}
+if report['checksum_valid'] is not True:
+    raise SystemExit('Release 1257 artifact checksum is invalid')
+expected=manifest['expected_artifact']
+if expected.get('locked') is not True:
+    print('RELEASE_1257_ARTIFACT_IDENTITY='+json.dumps(identity,sort_keys=True)); raise SystemExit(4)
+for key in ('file','version_hex','size_bytes','checksum_hex','sha256'):
+    if expected[key] != identity[key]:
+        raise SystemExit(f"Release 1257 artifact {key} mismatch: expected {expected[key]}, got {identity[key]}")
+receipt={'release':1257,'serial':manifest['serial'],'artifact_identity_locked':True,'production':{**identity,'report':report},'base_release':1256,'base_artifact_sha256':manifest['base_artifact_sha256'],'early_stop':'early-stop-transcript.txt','water_stop':'water-stop-transcript.txt','late_water':'late-water-transcript.txt','smoke_route':'smoke-route-transcript.txt','collapse':'collapse-transcript.txt','canonical_gverbs_unchanged':True,'canonical_gas_room_actions_unchanged':True}; (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n'); print(json.dumps(receipt,indent=2,sort_keys=True))
 PY
 echo "Release 1257 Fire, Smoke & Structural Consequences qualified."
