@@ -4,10 +4,10 @@
   "serial": "260812",
   "base_release": 1254,
   "base_manifest": "../troll-stolen-weapons/patch-series.json",
-  "base_artifact_sha256": "5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4",
+  "base_artifact_sha256": "86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0",
   "base_source_sha256": {
-    "production": "0a12fc193c29e0cb5318959faa7cb89dc0b22ea636ec59994872c624124f7741",
-    "dev": "efabdd362f165bf8640e38f671879a493a1a5928a3cdb7d4650eb2cdaa94da63"
+    "production": "a06008cb705001a0ea9b4e6ef11d6188259721fa23e79ccff127d447b26d6da3",
+    "dev": "527a1481eaed8486bad4899d78c4bbf38ed9040569d67d1a85c4914d35b94533"
   },
   "patches": [
     "patches/001-thief-retaliation.json",
@@ -27,7 +27,7 @@
     "format": "Glulx",
     "version_hex": "0x00030103",
     "size_bytes": 430848,
-    "checksum_hex": "0x01a8fcd5",
-    "sha256": "89664ebb9b728257f14b2831f6a9fda45d9de0e6bacb807fba8a1eec7b9b667e"
+    "checksum_hex": "0x42161082",
+    "sha256": "03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be"
   }
 }

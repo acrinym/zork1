@@ -25,7 +25,7 @@ import json,hashlib
 from pathlib import Path
 b=Path('glulx/build/grue-ecology-colony-reveal-1256'); s=b/'src'; d=b/'dev-src'; base=Path('glulx/build/thief-retaliation-sabotage-1255/src')
 stage=json.loads((s/'STAGING-RECEIPT.json').read_text()); dev=json.loads((d/'STAGING-RECEIPT.json').read_text()); smell=json.loads((b/'smell-report.json').read_text()); dev_smell=json.loads((b/'dev-smell-report.json').read_text())
-assert stage['release']==1256 and stage['base']['release']==1255 and stage['base']['artifact_sha256']=='89664ebb9b728257f14b2831f6a9fda45d9de0e6bacb807fba8a1eec7b9b667e'
+assert stage['release']==1256 and stage['base']['release']==1255 and stage['base']['artifact_sha256']=='03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be'
 assert stage['changed_paths']==sorted(['1actions.zil','1dungeon.zil','assistance.zil','gglobals.zil','zork1.zil']); assert stage['dev_mode'] is False and dev['dev_mode'] is True; assert not smell['errors'] and not dev_smell['errors']
 # Canonical darkness/grue lethal/noise machinery is byte-for-byte untouched.
 assert (s/'gverbs.zil').read_bytes()==(base/'gverbs.zil').read_bytes()

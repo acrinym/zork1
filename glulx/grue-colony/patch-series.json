@@ -4,10 +4,10 @@
   "serial": "260812",
   "base_release": 1255,
   "base_manifest": "../thief-retaliation/patch-series.json",
-  "base_artifact_sha256": "89664ebb9b728257f14b2831f6a9fda45d9de0e6bacb807fba8a1eec7b9b667e",
+  "base_artifact_sha256": "03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be",
   "base_source_sha256": {
-    "production": "cc86287b4729f2dc340674b6a13312233dc553621055f4fbdad035c7d0f0332a",
-    "dev": "9d5ed416e3a7946f698c28b9f57bf474135002756e18754b38d1671cc4d0de46"
+    "production": "4da18df9f39b02e5c7dfa21d3b42fd771f224ea3963e50fcfda841637fea7f47",
+    "dev": "f1d5cfc5ba40d2e00e2f111e98f00e204eb421071b74259596bae1d4c5ba96e6"
   },
   "patches": [
     "patches/001-grue-global.json",

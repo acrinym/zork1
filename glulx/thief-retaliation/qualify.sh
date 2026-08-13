@@ -25,7 +25,7 @@ import json
 from pathlib import Path
 b=Path('glulx/build/thief-retaliation-sabotage-1255'); s=b/'src'; d=b/'dev-src'
 stage=json.loads((s/'STAGING-RECEIPT.json').read_text()); dev=json.loads((d/'STAGING-RECEIPT.json').read_text()); smell=json.loads((b/'smell-report.json').read_text()); dev_smell=json.loads((b/'dev-smell-report.json').read_text())
-assert stage['release']==1255 and stage['base']['release']==1254 and stage['base']['artifact_sha256']=='5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4'
+assert stage['release']==1255 and stage['base']['release']==1254 and stage['base']['artifact_sha256']=='86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0'
 assert stage['changed_paths']==sorted(['1actions.zil','1dungeon.zil','assistance.zil','zork1.zil']); assert stage['dev_mode'] is False and dev['dev_mode'] is True; assert not smell['errors'] and not dev_smell['errors']
 actions=(s/'1actions.zil').read_text(); dungeon=(s/'1dungeon.zil').read_text(); assist=(s/'assistance.zil').read_text(); zork=(s/'zork1.zil').read_text()
 for token in ('<GETP ,THIEF ,P?VALUE>','<ROUTINE THIEF-PROVOKE','<ROUTINE THIEF-ARMED-DETERRENT?','<ROUTINE THIEF-RETALIATION-TARGET','<ROUTINE THIEF-RETALIATION-STRIKE','<THIEF-RETALIATION-STRIKE> <RTRUE>','private list. This has become','This time the theft is plainly about inconvenience, not resale value.','The personal account appears settled.'):
@@ -49,13 +49,11 @@ rm -rf "$TEST_SRC"; cp -a "$DEV_SRC" "$TEST_SRC"; cp glulx/thief-retaliation/tes
 python - <<'PY'
 from pathlib import Path
 import sys
-
 sys.path.insert(0,str(Path('glulx/tools').resolve())); from stage_release120 import apply_patch
 apply_patch(Path('glulx/thief-retaliation/tests/001-include-thief-retaliation-test.json').resolve(),Path('glulx/build/thief-retaliation-sabotage-1255/test-src').resolve())
 PY
 TEST_STORY="$BUILD/thief-retaliation-test.ulx"; compile_story "$TEST_SRC" "$BUILD/thief-retaliation-test.asm" "$TEST_STORY" test
 GLULXE_BIN="$(realpath .tooling/glulxe/glulxe)"
-
 cat > "$BUILD/sabotage.txt" <<'EOF1'
 thiefsabotage
 look
@@ -67,7 +65,6 @@ yes
 EOF1
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/sabotage.txt" > "$BUILD/sabotage-transcript.txt" 2>&1
 S="$BUILD/sabotage-transcript.txt"; grep -F 'Its contents scatter across the floor.' "$S"; grep -F 'Nothing is destroyed;' "$S"; grep -F 'TEST PRECONDITION: retaliatory sack sabotage executed without destroying any object.' "$S"; grep -F 'Taken.' "$S"
-
 cat > "$BUILD/selective-theft.txt" <<'EOF2'
 thiefsteal
 thiefstatus
@@ -76,7 +73,6 @@ yes
 EOF2
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/selective-theft.txt" > "$BUILD/selective-theft-transcript.txt" 2>&1
 T="$BUILD/selective-theft-transcript.txt"; grep -F 'takes the wrench with insulting precision' "$T"; grep -F 'This time the theft is plainly about inconvenience, not resale value.' "$T"; grep -F 'TEST wrench custody: thief' "$T"
-
 cat > "$BUILD/avoidance.txt" <<'EOF3'
 thiefavoid
 thiefstatus
@@ -85,7 +81,6 @@ yes
 EOF3
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/avoidance.txt" > "$BUILD/avoidance-transcript.txt" 2>&1
 A="$BUILD/avoidance-transcript.txt"; grep -F 'notices the weapon in your hand, and thinks better of the arrangement.' "$A"; grep -F 'TEST thief retaliation: active' "$A"; grep -F 'TEST thief visibility: hidden' "$A"
-
 cat > "$BUILD/appeasement.txt" <<'EOF4'
 thiefappease
 thiefstatus
@@ -94,7 +89,6 @@ yes
 EOF4
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/appeasement.txt" > "$BUILD/appeasement-transcript.txt" 2>&1
 P="$BUILD/appeasement-transcript.txt"; grep -F 'The personal account appears settled.' "$P"; grep -F 'His profession, of course, remains' "$P"; grep -F 'TEST thief retaliation: settled' "$P"
-
 python - "$STORY" "$MANIFEST" <<'PY'
 import hashlib,json,sys
 from pathlib import Path
