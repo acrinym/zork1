@@ -1,0 +1,12 @@
+{
+  "id": "fire-structural-test-include",
+  "description": "Include Release 1257 test-only precondition/status verbs in the qualification story.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "<INSERT-FILE \"cellar_recovery_locker\" T>\n",
+      "new": "<INSERT-FILE \"cellar_recovery_locker\" T>\n<INSERT-FILE \"fire_structural_test\" T>\n",
+      "expected_count": 1
+    }
+  ]
+}
