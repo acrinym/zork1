@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT="$${GITHUB_WORKSPACE:-$(git rev-parse --show-toplevel)}"
+ROOT="${GITHUB_WORKSPACE:-$(git rev-parse --show-toplevel)}"
 BASE_BUILD="$ROOT/glulx/build/troll-disarm-stolen-weapons-1254"
 BUILD="$ROOT/glulx/build/thief-retaliation-sabotage-1255"
 BASE_SRC="$BASE_BUILD/src"; BASE_DEV_SRC="$BASE_BUILD/dev-src"; SRC="$BUILD/src"; DEV_SRC="$BUILD/dev-src"; TEST_SRC="$BUILD/test-src"
@@ -10,83 +10,92 @@ rm -rf "$BUILD"; mkdir -p "$BUILD"; cd "$ROOT"
 bash glulx/troll-stolen-weapons/qualify.sh
 python -m py_compile glulx/thief-retaliation/stage.py
 python - "$MANIFEST" "$BASE_SRC" "$BASE_DEV_SRC" <<'PY'
-import importlib.util,¢son,sys™œ›ÛH]Xˆ[\Ü]œÜXÏZ[\ÜX‹][œÜX×Ùœ›ÛWÙš[WÛØØ][ÛŠœÝYÙLLMH‹™Û[ÝYY‹\™][X][Û‹ÜÝYÙKœHŠNÈ[ÙZ[\ÜX‹][›[Ù[WÙœ›ÛWÜÜXÊÜXÊNÈÜXË›ØY\‹™^X×Û[Ù[J[Ù
-B›OZœÛÛ‹›ØYÊ]
-Þ\Ë˜\™Ý–ÌWJKœ™XYÝ^
-
-JNÈXÝX[^Èœ›ÙXÝ[ÛˆŽ›[ÙœÛÝ\˜ÙWÚY[]J]
-Þ\Ë˜\™Ý–Ì—JJK™]ˆŽ›[ÙœÛÝ\˜ÙWÚY[]J]
-Þ\Ë˜\™Ý–Ì×JJ_B™›ÜˆËˆ[ˆXÝX[š][\Ê
-Nˆ\ÜÙ\VÈ˜˜\ÙWÜÛÝ\˜ÙWÜÚLMˆ—VÚ×OO]‹ËVÈ˜˜\ÙWÜÛÝ\˜ÙWÜÚLMˆ—VÚ×K‚”Bœ]ÛˆÛ[ÝYY‹\™][X][Û‹ÜÝYÙKœHKX˜\ÙK\ÛÝ\˜ÙH‰TÑWÔÔÈˆKY\Ý[˜][Ûˆ‰ÔÈˆK[X[šY™\Ý‰PS’Q‘TÕ‚œ]ÛˆÛ[ÝYY‹\™][X][Û‹ÜÝYÙKœHKX˜\ÙK\ÛÝ\˜ÙH‰TÑWÑU—ÔÔÈˆKY\Ý[˜][Ûˆ‰U—ÔÔÈˆK[X[šY™\Ý‰PS’Q‘TÕ‚œ]ÛˆÜ[Z^™YÝÛÛËÞš[ÜÛY[ØÚXÚËœHK\ÛÝ\˜ÙH‰ÔÈˆKZœÛÛˆ‰•RSÜÛY[\™\ÜšœÛÛˆ‚œ]ÛˆÜ[Z^™YÝÛÛËÞš[ÜÛY[ØÚXÚËœHK\ÛÝ\˜ÙH‰U—ÔÔÈˆKZœÛÛˆ‰•RSÙ]‹\ÛY[\™\ÜšœÛÛˆ‚œ]ÛˆH	ÔIÂš[\ÜœÛÛ‚™œ›ÛH]Xˆ[\Ü]˜T]
-™Û[ØZ[ÝYY‹\™][X][Û‹\ØX›ÝYÙKLLMHŠNÈÏX‹ÈœÜ˜ÈŽÈX‹È™]‹\Ü˜È‚œÝYÙOZœÛÛ‹›ØYÊ
-ËÈ”ÕQÒS‘ËT‘PÑRTšœÛÛˆŠKœ™XYÝ^
-
-JNÈ]ZœÛÛ‹›ØYÊ
-È”ÕQÒS‘ËT‘PÑRTUšœÛÛˆŠKœ™XYÝ^
-
-JNÈÛY[ZœÛÛ‹›ØYÊ
-‹ÈœÛY[\™\ÜšœÛÛˆŠKœ™XYÝ^
-
-JNÈ]—ÜÛY[ZœÛÛ‹›ØYÊ
-‹È™]‹\ÛY[\™\ÜšœÛÛˆŠKœ™XYÝ^
-
-JB˜\ÜÙ\ÝYÙVÈœ™[X\ÙH—OOLLMH[™ÝYÙVÈ˜˜\ÙH—VÈœ™[X\ÙH—OOLLM[™ÝYÙVÈ˜˜\ÙH—VÈ˜\Y˜XÝÜÚLMˆ—OOHŽ™™NÍ˜™MÍÍÌŽNYXÍ˜YLMLLÌÌŒÌ™ØMÙYY™ÍÍÌÍMØMLYM™L‚˜\ÜÙ\ÝYÙVÈ˜Ú[™ÙYÜ]È—OO\ÛÜY
-ÈŒXXÝ[ÛœËžš[‹ŒY[™Ù[Û‹žš[‹˜\ÜÚ\Ý[˜ÙKžš[‹žœšÌKžš[—JNÈ\ÜÙ\ÝYÙVÈ™]—Û[ÙH—H\È˜[ÙH[™]–È™]—Û[ÙH—H\ÈYNÈ\ÜÙ\›ÝÛY[È™\œ›ÜœÈ—H[™›Ý]—ÜÛY[È™\œ›ÜœÈ—B˜XÝ[ÛœÏJËÈŒXXÝ[ÛœËžš[ŠKœ™XYÝ^
-
-NÈ[™Ù[ÛJËÈŒY[™Ù[Û‹žš[ŠKœ™XYÝ^
-
-NÈ\ÜÚ\ÝJËÈ˜\ÜÚ\Ý[˜ÙKžš[ŠKœ™XYÝ^
-
-NÈ›ÜšÏJËÈž›ÜšÌKžš[ŠKœ™XYÝ^
-
-B™›ÜˆÚÙ[ˆ[ˆ
-ÑUQQˆÕSQOˆ‹“ÕUS‘HQQ‹T“Õ“ÒÑH‹“ÕUS‘HQQ‹PT“QQQUT”‘S•È‹“ÕUS‘HQQ‹T‘USPUSÓ‹UT‘ÑU‹“ÕUS‘HQQ‹T‘USPUSÓ‹TÕ’RÑH‹QQ‹T‘USPUSÓ‹TÕ’RÑOˆ••QOˆ‹œš]˜]H\Ýˆ\È\È™XÛÛYH‹•\È[YHHY\ÈZ[›HX›Ý][˜ÛÛ™[šY[˜ÙK›Ý™\Ø[H˜[YKˆ‹•H\œÛÛ˜[XØÛÝ[\X\œÈÙ]YˆŠN‚ˆ\ÜÙ\ÚÙ[ˆ[ˆXÝ[ÛœËÚÙ[‚™›ÜˆšYÙÙ\ˆ[ˆ
-QQ‹T“Õ“ÒÑO——”ÑUQQˆ’QÒ’Uˆ‹QQ‹T“Õ“ÒÑO——S—•H˜YÈÚ[™HZÙ[ˆÝ™\ˆ\ÈXY›ÙK—ˆ‹QQ‹T“Õ“ÒÑO——”ÑUQQˆ’QÒ’OˆŠN‚ˆ\ÜÙ\šYÙÙ\ˆ[ˆXÝ[ÛœËšYÙÙ\‚˜\ÜÙ\ŠSQH
-Oˆˆ[ˆ[™Ù[Û–Ù[™Ù[Û‹š[™^
-Ð’‘PÕQQˆŠN™[™Ù[Û‹š[™^
-Ð’‘PÕQTÕSŠWH[™š\ÚX›HÝY[Ø[ˆXZÙH[HX˜[™Ûˆ[ˆ[X\Úˆ[ˆ\ÜÚ\Ý[™ÓÓ”ÕS•‘SPTÑRQLMOˆˆ[ˆ›ÜšÈ[™•QQˆ‘USPUSÓˆS‘ÐP“ÕQÑHÓSˆ[ˆ›ÜšÂ™›Üˆ›Ü˜šY[ˆ[ˆ
-‘ÓÐSQQ‹T‘USPUS‘È‹•QQ‹RÔÕSUH‹•QQ‹PS‘ÑT‹TÐÓÔ‘H‹•QQ‹PUUQH‹•QQ‹RS•‘S•Ô–KSSÑSŠN‚ˆ\ÜÙ\›Ü˜šY[ˆ›Ý[ˆXÝ[ÛœÂ”B’Q”ÏI	×	È™XY\ˆÑT’PSÕÔ–WÑ’SH
-]ÛˆH‰PS’Q‘TÕˆ	ÔIÂš[\ÜœÛÛ‹Þ\Â™œ›ÛH]Xˆ[\Ü]›OZœÛÛ‹›ØYÊ]
-Þ\Ë˜\™Ý–ÌWJKœ™XYÝ^
-
-JNÈš[
-—‹š›Ú[Š
-VÈœÙ\šX[—KVÈ™^XÝYØ\Y˜XÝ—VÈ™š[H—JJJB”BŠB‘ÓSÖ’S—ÑH‰
-™X[]‰
-š[™ÛÛ[™ËÞš[‹YÛ[\]	Ê‹Øš[‹Ô™[X\ÙKÊ‹Þš[‹™	È\š[\]Z]
-HŠHŽÈÓV‘T—Ð’SH‰
-™X[]‰
-š[™ÛÛ[™ËÙÛ^™\‹\ÛÝ\˜ÙH]\Hˆ[˜[YHÛ^™\ˆ\\›HLLLH\š[\]Z]
-HŠH‚˜ÛÛ\[WÜÝÜžJ
-^ÈØØ[ÛÝ\˜ÙOH‰Hˆ\ÜÙ[X›OH‰ˆˆÝ]]H‰Èˆ™Yš^H‰ŽÈ\Ú‰ÛÝ\˜ÙHŽÈÝ™]‰ÓSÖ’S—ÑˆZ[KYÛ[K\ÝÜXY\‹XÛÛ\[H›ÜšÌKžš[‰\ÜÙ[X›Hˆ‰ŒHYH‰•RSÉ™Yš^^š[‹XÛÛ\[K›ÙÈŽÈÜÈ]ÛˆÛ[ÝÛÛËÛ›Ü›X[^™WÜÙ\šX[œH‰\ÜÙ[X›HˆK\Ù\šX[‰ÑT’PSˆK\™XÙZ\‰•RSÉ™Yš^TÑT’PSS“Ô“PSVUSÓ‹šœÛÛˆŽÈ‰ÓV‘T—Ð’Sˆˆ‰\ÜÙ[X›Hˆ[È‰Ý]]ˆ‰ŒHYH‰•RSÉ™Yš^YÛ^™\‹X\ÜÙ[X›K›ÙÈŽÈB”ÕÔ–OH‰•RSÉÕÔ–WÑ’SHŽÈÛÛ\[WÜÝÜžH‰ÔÈˆ‰•RSÝYY‹\™][X][Û‹˜\ÛHˆ‰ÕÔ–Hˆ›ÙXÝ[ÛŽÈ]ÛˆÛ[ÝÛÛËÝ™\šYžWÝ[œH‰ÕÔ–HˆKZœÛÛˆ‰•RSÜÝÜžK\™\ÜšœÛÛˆ‚œ›H\™ˆ‰TÕÔÔÈŽÈÜXH‰U—ÔÔÈˆ‰TÕÔÔÈŽÈÜÛ[ÝYY‹\™][X][Û‹Ý\ÝËÝYY—Ü™][X][Û—Ý\Ýžš[‰TÕÔÔËÝYY—Ü™][X][Û—Ý\Ýžš[‚œ]ÛˆH	ÔIÂ™œ›ÛH]Xˆ[\Ü]š[\ÜÞ\Â‚œÞ\Ëœ]š[œÙ\
-ÝŠ]
-™Û[ÝÛÛÈŠKœ™\ÛÛ™J
-JJNÈœ›ÛHÝYÙWÜ™[X\ÙLLŒ[\Ü\WÜ]Ú˜\WÜ]Ú
-]
-™Û[ÝYY‹\™][X][Û‹Ý\ÝËÌKZ[˜ÛYK]YY‹\™][X][Û‹]\ÝšœÛÛˆŠKœ™\ÛÛ™J
-K]
-™Û[ØZ[ÝYY‹\™][X][Û‹\ØX›ÝYÙKLLMKÝ\Ý\Ü˜ÈŠKœ™\ÛÛ™J
-JB”B•TÕÔÕÔ–OH‰•RSÝYY‹\™][X][Û‹]\Ý[ŽÈÛÛ\[WÜÝÜžH‰TÕÔÔÈˆ‰•RSÝYY‹\™][X][Û‹]\Ý˜\ÛHˆ‰TÕÔÕÔ–Hˆ\Ý‘ÓSWÐ’SH‰
-™X[]ÛÛ[™ËÙÛ[KÙÛ[JH‚‚˜Ø]ˆ‰•RSÜØX›ÝYÙKˆ	ÑSÑŒIÂYYœØX›ÝYÙB›ÛÚÂZÙH[˜Úœ][˜Ú[ˆØXÚÂš[™[ÜžBœ]Z]žY\Â‘SÑŒB[Y[Ý]LŒÈ‰ÓSWÐ’SˆˆK\›™ÜÙYYLŒÍMˆ‰TÕÔÕÔ–Hˆ‰•RSÜØX›ÝYÙKˆˆ‰•RSÜØX›ÝYÙK]˜[œØÜš\ˆ‰ŒB”ÏH‰•RSÜØX›ÝYÙK]˜[œØÜš\ŽÈÜ™\Qˆ	Ò]ÈÛÛ[ÈØØ]\ˆXÜ›ÜÜÈH›ÛÜ‹‰È‰ÈŽÈÜ™\Qˆ	Ó›Ý[™È\È\Ý›ÞYYÉÈ‰ÈŽÈÜ™\Qˆ	ÕTÕ‘PÓÓ‘USÓŽˆ™][X]ÜžHØXÚÈØX›ÝYÙH^XÝ]YÚ]Ý]\Ý›ÞZ[™È[žHØš™XÝ‰È‰ÈŽÈÜ™\Qˆ	ÕZÙ[‹‰È‰È‚‚˜Ø]ˆ‰•RSÜÙ[XÝ]™K]Yˆ	ÑSÑŒ‰ÂYYœÝX[YYœÝ]\Âœ]Z]žY\Â‘SÑŒ‚[Y[Ý]LŒÈ‰ÓSWÐ’SˆˆK\›™ÜÙYYLŒÍMˆ‰TÕÔÕÔ–Hˆ‰•RSÜÙ[XÝ]™K]Yˆˆ‰•RSÜÙ[XÝ]™K]Y]˜[œØÜš\ˆ‰ŒB•H‰•RSÜÙ[XÝ]™K]Y]˜[œØÜš\ŽÈÜ™\Qˆ	ÝZÙ\ÈHÜ™[˜ÚÚ][œÝ[[™È™XÚ\Ú[Û‰È‰ŽÈÜ™\Qˆ	Õ\È[YHHY\ÈZ[›HX›Ý][˜ÛÛ™[šY[˜ÙK›Ý™\Ø[H˜[YK‰È‰ŽÈÜ™\Qˆ	ÕTÕÜ™[˜ÚÝ\ÝÙNˆYY‰È‰‚‚˜Ø]ˆ‰•RSØ]›ÚY[˜ÙKˆ	ÑSÑŒÉÂYY˜]›ÚYYYœÝ]\Âœ]Z]žY\Â‘SÑŒÂ[Y[Ý]LŒÈ‰ÓSWÐ’SˆˆK\›™ÜÙYYLŒÍMˆ‰TÕÔÕÔ–Hˆ‰•RSØ]›ÚY[˜ÙKˆˆ‰•RSØ]›ÚY[˜ÙK]˜[œØÜš\ˆ‰ŒBOH‰•RSØ]›ÚY[˜ÙK]˜[œØÜš\ŽÈÜ™\Qˆ	Û›ÝXÙ\ÈHÙX\Ûˆ[ˆ[Ý\ˆ[™[™[šÜÈ™]\ˆÙˆH\œ˜[™Ù[Y[‰È‰HŽÈÜ™\Qˆ	ÕTÕYYˆ™][X][ÛŽˆXÝ]™IÈ‰HŽÈÜ™\Qˆ	ÕTÕYYˆš\ÚXš[]NˆY[‰È‰H‚‚˜Ø]ˆ‰•RSØ\X\Ù[Y[ˆ	ÑSÑ	ÂYY˜\X\ÙBYYœÝ]\Âœ]Z]žY\Â‘SÑ[Y[Ý]LŒÈ‰ÓSWÐ’SˆˆK\›™ÜÙYYLŒÍMˆ‰TÕÔÕÔ–Hˆ‰•RSØ\X\Ù[Y[ˆˆ‰•RSØ\X\Ù[Y[]˜[œØÜš\ˆ‰ŒB”H‰•RSØ\X\Ù[Y[]˜[œØÜš\ŽÈÜ™\Qˆ	ÕH\œÛÛ˜[XØÛÝ[\X\œÈÙ]Y‰È‰ŽÈÜ™\Qˆ	Ò\È›Ù™\ÜÚ[Û‹ÙˆÛÝ\œÙK™[XZ[œÉÈ‰ŽÈÜ™\Qˆ	ÕTÕYYˆ™][X][ÛŽˆÙ]Y	È‰‚‚œ]ÛˆH‰ÕÔ–Hˆ‰PS’Q‘TÕˆ	ÔIÂš[\Ü\ÚX‹œÛÛ‹Þ\Â™œ›ÛH]Xˆ[\Ü]œÝÜžOT]
-Þ\Ë˜\™Ý–ÌWJNÈX[šY™\ÝZœÛÛ‹›ØYÊ]
-Þ\Ë˜\™Ý–Ì—JKœ™XYÝ^
-
-JNÈT]
-™Û[ØZ[ÝYY‹\™][X][Û‹\ØX›ÝYÙKLLMHŠNÈ™\ÜZœÛÛ‹›ØYÊ
-‹ÈœÝÜžK\™\ÜšœÛÛˆŠKœ™XYÝ^
-
-JBšY[]O^È™š[HŽœÝÜžK›˜[YK™›Ü›X]Žˆ‘Û[‹™\œÚ[Û—Ú^Žœ™\ÜÈ™\œÚ[Û—Ú^—KœÚ^™WØž]\ÈŽœÝÜžKœÝ]
-
-KœÝÜÚ^™K˜ÚXÚÜÝ[WÚ^Žœ™\ÜÈ˜ÚXÚÜÝ[WÚ^—KœÚLMˆŽš\ÚX‹œÚLMŠÝÜžKœ™XYØž]\Ê
-JKš^YÙ\Ý
-
-_NÈ\ÜÙ\™\ÜÈ˜ÚXÚÜÝ[WÝ˜[Y—H\ÈYNÈ^XÝY[X[šY™\ÝÈ™^XÝYØ\Y˜XÝ—BšYˆ^XÝY™Ù]
-›ØÚÙYŠH\È›ÝYNˆš[
-”‘SPTÑWÌLMWÐT•QPÕÒQS•UOHŠÚœÛÛ‹™[\ÊY[]KÛÜÚÙ^\ÏUYJJNÈ˜Z\ÙHÞ\Ý[Q^]
-
-B™›ÜˆÙ^H[ˆ
-™š[H‹™\œÚ[Û—Ú^‹œÚ^™WØž]\È‹˜ÚXÚÜÝ[WÚ^‹œÚLMˆŠNˆ\ÜÙ\^XÝYÚÙ^WOOZY[]VÚÙ^WK
-Ù^K^XÝYÚÙ^WKY[]VÚÙ^WJBœ™XÙZ\^Èœ™[X\ÙHŽŒLMKœÙ\šX[Ž›X[šY™\ÝÈœÙ\šX[—K˜\Y˜XÝÚY[]WÛØÚÙYŽ•YKœ›ÙXÝ[ÛˆŽžÊŠšY[]Kœ™\ÜŽœ™\ÜK˜˜\ÙWÜ™[X\ÙHŽŒLM˜˜\ÙWØ\Y˜XÝÜÚLMˆŽ›X[šY™\ÝÈ˜˜\ÙWØ\Y˜XÝÜÚLMˆ—KœØX›ÝYÙHŽˆœØX›ÝYÙK]˜[œØÜš\‹œÙ[XÝ]™WÝYŽˆœÙ[XÝ]™K]Y]˜[œØÜš\‹˜]›ÚY[˜ÙHŽˆ˜]›ÚY[˜ÙK]˜[œØÜš\‹˜\X\Ù[Y[Žˆ˜\X\Ù[Y[]˜[œØÜš\ŸNÈ
-‹È”UPSQ’PÐUSÓ‹T‘PÑRTšœÛÛˆŠKÜš]WÝ^
-œÛÛ‹™[\Ê™XÙZ\[™[L‹ÛÜÚÙ^\ÏUYJJÈ—ˆŠNÈš[
-œÛÛ‹™[\Ê™XÙZ\[™[L‹ÛÜÚÙ^\ÏUYJJB”B™XÚÈ”™[X\ÙHLMHYYˆ™][X][Ûˆ	ˆØX›ÝYÙH]X[YšYYˆ‚
+import importlib.util,json,sys
+from pathlib import Path
+spec=importlib.util.spec_from_file_location('stage1255','glulx/thief-retaliation/stage.py'); mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+m=json.loads(Path(sys.argv[1]).read_text()); actual={'production':mod.source_identity(Path(sys.argv[2])),'dev':mod.source_identity(Path(sys.argv[3]))}
+for k,v in actual.items(): assert m['base_source_sha256'][k]==v,(k,m['base_source_sha256'][k],v)
+PY
+python glulx/thief-retaliation/stage.py --base-source "$BASE_SRC" --destination "$SRC" --manifest "$MANIFEST"
+python glulx/thief-retaliation/stage.py --base-source "$BASE_DEV_SRC" --destination "$DEV_SRC" --manifest "$MANIFEST"
+python optimized/tools/zil_smell_check.py --source "$SRC" --json "$BUILD/smell-report.json"
+python optimized/tools/zil_smell_check.py --source "$DEV_SRC" --json "$BUILD/dev-smell-report.json"
+python - <<'PY'
+import json
+from pathlib import Path
+b=Path('glulx/build/thief-retaliation-sabotage-1255'); s=b/'src'; d=b/'dev-src'
+stage=json.loads((s/'STAGING-RECEIPT.json').read_text()); dev=json.loads((d/'STAGING-RECEIPT.json').read_text()); smell=json.loads((b/'smell-report.json').read_text()); dev_smell=json.loads((b/'dev-smell-report.json').read_text())
+assert stage['release']==1255 and stage['base']['release']==1254 and stage['base']['artifact_sha256']=='86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0'
+assert stage['changed_paths']==sorted(['1actions.zil','1dungeon.zil','assistance.zil','zork1.zil']); assert stage['dev_mode'] is False and dev['dev_mode'] is True; assert not smell['errors'] and not dev_smell['errors']
+actions=(s/'1actions.zil').read_text(); dungeon=(s/'1dungeon.zil').read_text(); assist=(s/'assistance.zil').read_text(); zork=(s/'zork1.zil').read_text()
+for token in ('<GETP ,THIEF ,P?VALUE>','<ROUTINE THIEF-PROVOKE','<ROUTINE THIEF-ARMED-DETERRENT?','<ROUTINE THIEF-RETALIATION-TARGET','<ROUTINE THIEF-RETALIATION-STRIKE','<THIEF-RETALIATION-STRIKE> <RTRUE>','private list. This has become','This time the theft is plainly about inconvenience, not resale value.','The personal account appears settled.'):
+    assert token in actions,token
+for trigger in ('<THIEF-PROVOKE>\n\t\t\t      <FSET ,THIEF ,FIGHTBIT>','<THIEF-PROVOKE>\n\t\t       <TELL\n"The bag will be taken over his dead body."','<THIEF-PROVOKE>\n\t\t<FSET ,THIEF ,FIGHTBIT>'):
+    assert trigger in actions,trigger
+assert '(VALUE 0)>' in dungeon[dungeon.index('<OBJECT THIEF'):dungeon.index('<OBJECT PEDESTAL')] and 'visible steel can make him abandon an ambush' in assist and '<CONSTANT RELEASEID 1255>' in zork and 'THIEF RETALIATION AND SABOTAGE GLULX' in zork
+for forbidden in ('GLOBAL THIEF-RETALIATING','THIEF-HOSTILITY','THIEF-ANGER-SCORE','THIEF-ATTITUDE','THIEF-INVENTORY-MODEL'):
+    assert forbidden not in actions
+PY
+IFS=$'\t' read -r SERIAL STORY_FILE < <(python - "$MANIFEST" <<'PY'
+import json,sys
+from pathlib import Path
+m=json.loads(Path(sys.argv[1]).read_text()); print('\t'.join((m['serial'],m['expected_artifact']['file'])))
+PY
+)
+GLULX_ZILF_DLL="$(realpath "$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)")"; GLAZER_BIN="$(realpath "$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)")"
+compile_story(){ local source="$1" assembly="$2" output="$3" prefix="$4"; pushd "$source"; dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" 2>&1 | tee "$BUILD/$prefix-zilf-compile.log"; popd; python glulx/tools/normalize_serial.py "$assembly" --serial "$SERIAL" --receipt "$BUILD/$prefix-SERIAL-NORMALIZATION.json"; "$GLAZER_BIN" "$assembly" -o "$output" 2>&1 | tee "$BUILD/$prefix-glazer-assemble.log"; }
+STORY="$BUILD/$STORY_FILE"; compile_story "$SRC" "$BUILD/thief-retaliation.asm" "$STORY" production; python glulx/tools/verify_ulx.py "$STORY" --json "$BUILD/story-report.json"
+rm -rf "$TEST_SRC"; cp -a "$DEV_SRC" "$TEST_SRC"; cp glulx/thief-retaliation/tests/thief_retaliation_test.zil "$TEST_SRC/thief_retaliation_test.zil"
+python - <<'PY'
+from pathlib import Path
+import sys
+sys.path.insert(0,str(Path('glulx/tools').resolve())); from stage_release120 import apply_patch
+apply_patch(Path('glulx/thief-retaliation/tests/001-include-thief-retaliation-test.json').resolve(),Path('glulx/build/thief-retaliation-sabotage-1255/test-src').resolve())
+PY
+TEST_STORY="$BUILD/thief-retaliation-test.ulx"; compile_story "$TEST_SRC" "$BUILD/thief-retaliation-test.asm" "$TEST_STORY" test
+GLULXE_BIN="$(realpath .tooling/glulxe/glulxe)"
+cat > "$BUILD/sabotage.txt" <<'EOF1'
+thiefsabotage
+look
+take lunch
+put lunch in sack
+inventory
+quit
+yes
+EOF1
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/sabotage.txt" > "$BUILD/sabotage-transcript.txt" 2>&1
+S="$BUILD/sabotage-transcript.txt"; grep -F 'Its contents scatter across the floor.' "$S"; grep -F 'Nothing is destroyed;' "$S"; grep -F 'TEST PRECONDITION: retaliatory sack sabotage executed without destroying any object.' "$S"; grep -F 'Taken.' "$S"
+cat > "$BUILD/selective-theft.txt" <<'EOF2'
+thiefsteal
+thiefstatus
+quit
+yes
+EOF2
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/selective-theft.txt" > "$BUILD/selective-theft-transcript.txt" 2>&1
+T="$BUILD/selective-theft-transcript.txt"; grep -F 'takes the wrench with insulting precision' "$T"; grep -F 'This time the theft is plainly about inconvenience, not resale value.' "$T"; grep -F 'TEST wrench custody: thief' "$T"
+cat > "$BUILD/avoidance.txt" <<'EOF3'
+thiefavoid
+thiefstatus
+quit
+yes
+EOF3
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/avoidance.txt" > "$BUILD/avoidance-transcript.txt" 2>&1
+A="$BUILD/avoidance-transcript.txt"; grep -F 'notices the weapon in your hand, and thinks better of the arrangement.' "$A"; grep -F 'TEST thief retaliation: active' "$A"; grep -F 'TEST thief visibility: hidden' "$A"
+cat > "$BUILD/appeasement.txt" <<'EOF4'
+thiefappease
+thiefstatus
+quit
+yes
+EOF4
+timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/appeasement.txt" > "$BUILD/appeasement-transcript.txt" 2>&1
+P="$BUILD/appeasement-transcript.txt"; grep -F 'The personal account appears settled.' "$P"; grep -F 'His profession, of course, remains' "$P"; grep -F 'TEST thief retaliation: settled' "$P"
+python - "$STORY" "$MANIFEST" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+story=Path(sys.argv[1]); manifest=json.loads(Path(sys.argv[2]).read_text()); b=Path('glulx/build/thief-retaliation-sabotage-1255'); report=json.loads((b/'story-report.json').read_text())
+identity={'file':story.name,'format':'Glulx','version_hex':report['version_hex'],'size_bytes':story.stat().st_size,'checksum_hex':report['checksum_hex'],'sha256':hashlib.sha256(story.read_bytes()).hexdigest()}; assert report['checksum_valid'] is True; expected=manifest['expected_artifact']
+if expected.get('locked') is not True: print('RELEASE_1255_ARTIFACT_IDENTITY='+json.dumps(identity,sort_keys=True)); raise SystemExit(4)
+for key in ('file','version_hex','size_bytes','checksum_hex','sha256'): assert expected[key]==identity[key],(key,expected[key],identity[key])
+receipt={'release':1255,'serial':manifest['serial'],'artifact_identity_locked':True,'production':{**identity,'report':report},'base_release':1254,'base_artifact_sha256':manifest['base_artifact_sha256'],'sabotage':'sabotage-transcript.txt','selective_theft':'selective-theft-transcript.txt','avoidance':'avoidance-transcript.txt','appeasement':'appeasement-transcript.txt'}; (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n'); print(json.dumps(receipt,indent=2,sort_keys=True))
+PY
+echo "Release 1255 Thief Retaliation & Sabotage qualified."
