@@ -25,7 +25,7 @@
     "format": "Glulx",
     "version_hex": "0x00030103",
     "size_bytes": 429056,
-    "checksum_hex": "0x6b984524",
-    "sha256": "5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4"
+    "checksum_hex": "0xdcf9d7a1",
+    "sha256": "86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0"
   }
 }
