@@ -32,6 +32,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y build-essential libncurses-dev curl
+          {
+            echo "runner_image=ubuntu-24.04"
+            gcc --version | head -n 1
+            dpkg-query -W -f='${Package}\t${Version}\n' build-essential libncurses-dev curl
+          } | tee native-toolchain.txt
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: {repository: taradinoc/zork1, ref: "${{ env.ZORK_GLULX_COMMIT }}", path: .upstream/zork1-glulx, persist-credentials: false}
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -61,5 +66,6 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
           path: |
+            native-toolchain.txt
             fire-smoke-structural.log
             glulx/build/fire-smoke-structural-consequences-1257/*
