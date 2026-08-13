@@ -27,9 +27,9 @@
     "file": "zork1-glulx-fire-smoke-structural-consequences.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": 438528,
-    "checksum_hex": "0x047fd9d3",
-    "sha256": "75bdbcd38a675e491b10af3b5900149e0a84218697d24adb27f7e90d5b4b0196"
+    "size_bytes": 438784,
+    "checksum_hex": "0x73c14bad",
+    "sha256": "d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444"
   },
   "added_files": [
     "fire_structural.zil"
