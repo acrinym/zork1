@@ -1,0 +1,17 @@
+{
+  "id": "001-fire-world",
+  "description": "Make the canonical Timber Room and real timber pile stateful/burnable without altering the EMPTY-HANDED crawl rule.",
+  "path": "1dungeon.zil",
+  "replacements": [
+    {
+      "old": "<OBJECT TIMBERS\n\t(IN TIMBER-ROOM)\n\t(SYNONYM TIMBERS PILE)\n\t(ADJECTIVE WOODEN BROKEN)\n\t(DESC \"broken timber\")\n\t(FLAGS TAKEBIT)\n\t(SIZE 50)>\n",
+      "new": "<OBJECT TIMBERS\n\t(IN TIMBER-ROOM)\n\t(SYNONYM TIMBERS TIMBER PILE WOOD)\n\t(ADJECTIVE WOODEN BROKEN DRY OLD)\n\t(DESC \"broken timber\")\n\t(FLAGS TAKEBIT BURNBIT)\n\t(ACTION FIRE-TIMBERS-FCN)\n\t(SIZE 50)>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "<ROOM TIMBER-ROOM\t;\"was TIMBE\"\n      (IN ROOMS)\n      (LDESC\n\"This is a long and narrow passage, which is cluttered with broken\ntimbers. A wide passage comes from the east and turns at the\nwest end of the room into a very narrow passageway. From the west\ncomes a strong draft.\")\n      (DESC \"Timber Room\")\n      (EAST TO LADDER-BOTTOM)\n      (WEST TO LOWER-SHAFT\n       IF EMPTY-HANDED\n       ELSE \"You cannot fit through this passage with that load.\")\n      (ACTION NO-OBJS)\n      (FLAGS RLANDBIT SACREDBIT)>\n",
+      "new": "<ROOM TIMBER-ROOM\t;\"was TIMBE\"\n      (IN ROOMS)\n      (DESC \"Timber Room\")\n      (EAST TO LADDER-BOTTOM)\n      (WEST TO LOWER-SHAFT\n       IF EMPTY-HANDED\n       ELSE \"You cannot fit through this passage with that load.\")\n      (ACTION FIRE-TIMBER-ROOM-FCN)\n      (FLAGS RLANDBIT SACREDBIT)>\n",
+      "expected_count": 1
+    }
+  ]
+}

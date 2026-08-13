@@ -1,13 +1,13 @@
 {
   "schema_version": "2.0",
   "board_id": "highly-extended-zork-product-kanban",
-  "updated_on": "2026-08-12",
+  "updated_on": "2026-08-13",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "7768710a8b4fd4d4d798011eec70fe6f88112e81",
-    "latest_release": 1252,
-    "latest_release_title": "Earned Sequence Breaks & Route Mastery",
-    "latest_merged_pr": 57
+    "master_head_when_updated": "14d1be667db3110d532b0e2c28f00b92371693fc",
+    "latest_release": 1256,
+    "latest_release_title": "Grue Ecology & Colony Reveal",
+    "latest_merged_pr": 61
   },
   "operating_rules": [
     "CURRENT contains at most one actively implemented product train and may be empty between merged trains.",
@@ -22,95 +22,45 @@
   "lanes": {
     "current": [
       {
-        "train_id": "zork-troll-disarm-stolen-weapons-1254",
-        "release": 1254,
-        "title": "Troll Disarm & Stolen Weapons",
-        "status": "current-qualified-stacked-awaiting-pr-merge",
-        "branch": "agent/troll-disarm-stolen-weapons-20260812",
-        "base_branch": "agent/dam-survival-prepared-rescue-20260812",
-        "prerequisite_release": 1253,
-        "prerequisite_pr": 58,
-        "outcome": "Let authored troll combat loss become persistent physical custody of the player's exact real weapon, allowing the troll to wield it, taunt with it, bargain over it, lose it through combat, and relinquish it when subdued or killed.",
-        "showcase": "A canonical LOSE-WEAPON result can put the real sword or knife in the troll's hands; FIND-WEAPON then prefers that captured weapon, direct recovery is physically blocked, food can buy the exact object back without pacifying the troll, and unconsciousness or death releases held player weapons.",
-        "acceptance": [
-          "canonical troll combat remains the authority for weapon-loss outcomes",
-          "the troll can capture the exact canonical sword or knife instead of creating a duplicate or ownership token",
-          "a captured player weapon can become the troll's preferred real combat weapon",
-          "direct TAKE of a weapon still held by the armed troll is blocked by physical custody",
-          "existing combat disarm can knock captured custody loose",
-          "unconsciousness or death drops real captured player weapons for recovery",
-          "food can return the exact captured weapon without pacifying the troll or opening exits",
-          "stolen custody is visible through authored examination, listening, greeting, and combat text",
-          "canonical troll strength, axe recovery, combat, unconsciousness, death, and exit gating remain authoritative",
-          "production artifact is locked and reproducible"
-        ],
-        "artifact_sha256": "5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4",
-        "qualification_run": 31629388400,
-        "boundaries": [
-          "no duplicate sword, knife, or axe",
-          "no generic NPC inventory framework",
-          "no hidden ownership or hostility meter",
-          "no random weapon theft outside authored combat loss",
-          "canonical combat and troll state remain authority"
-        ]
-      }
-    ],
-    "qualified_prerequisites": [
-      {
-        "train_id": "zork-dam-survival-prepared-rescue-1253",
-        "release": 1253,
-        "title": "Dam Survival & Prepared Rescue",
-        "status": "qualified-awaiting-pr-merge",
-        "branch": "agent/dam-survival-prepared-rescue-20260812",
-        "pr": 58,
-        "artifact_sha256": "41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11",
-        "outcome": "Make Flood Control Dam #3 a deterministic physical hazard whose real gate/water state, carried weight, maintenance ladder, and existing rope authority change the consequences of deliberate risky actions."
-      }
-    ],
-    "next": [
-      {
-        "train_id": "zork-thief-retaliation-sabotage-1255",
-        "release": 1255,
-        "title": "Thief Retaliation & Sabotage",
-        "status": "next-1",
-        "outcome": "Give the thief authored retaliation, selective theft, sabotage, warnings, and earned hostility based on visible treatment and real object history.",
-        "boundaries": [
-          "preserve canonical roaming and treasure behavior",
-          "no omniscient hunting AI",
-          "no hidden grindable hostility meter"
-        ]
-      },
-      {
-        "train_id": "zork-grue-ecology-colony-reveal-1256",
-        "release": 1256,
-        "title": "Grue Ecology & Colony Reveal",
-        "status": "next-2",
-        "outcome": "Turn selected darkness experiments into discoverable grue ecology, including lure behavior, stronger-light experiments, a colony reveal, and authored survival or catastrophic outcomes.",
-        "boundaries": [
-          "not every dark room becomes a hive",
-          "no generic monster-attractor engine",
-          "grues remain mysterious and dangerous"
-        ]
-      },
-      {
         "train_id": "zork-fire-smoke-structural-consequences-1257",
         "release": 1257,
         "title": "Fire, Smoke & Structural Consequences",
-        "status": "next-3",
-        "outcome": "Extend material physicality into a small set of authored fire, smoke, collapse, and machinery consequences with fair warnings, escape routes, and persistent world state.",
+        "status": "current-qualified-awaiting-pr-merge",
+        "branch": "agent/fire-smoke-structural-consequences-20260812",
+        "base_branch": "master",
+        "pr": 62,
+        "prerequisite_release": 1256,
+        "prerequisite_pr": 61,
+        "outcome": "Give the canonical Timber Room one persistent authored fire lifecycle using real flame, scale-limited bottled water, existing mine airflow, route state, and physical aftermath instead of a generalized fire or chemistry simulator.",
+        "showcase": "Real flame first creates recoverable smolder; a bottle can stop that fresh smolder, but once open flame establishes through the dry timber pile the same bottle only hisses into steam while the structural fire continues toward smoke, brace collapse, and persistent charred aftermath; the canonical EMPTY-HANDED narrow route remains intact.",
+        "artifact_sha256": "d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444",
+        "artifact_size_bytes": 438784,
+        "artifact_checksum_hex": "0x73c14bad",
+        "source_sha256": {
+          "production": "f73099921f56be8e496aab560e81c5fcf4722b6b9c45c97750597140d8d25ff6",
+          "dev": "e99fd0e5331edbb4bc0a8faea0961f200e8fa356c84e8ac608c4df738814071c"
+        },
+        "qualification_run": 31741847431,
         "boundaries": [
-          "no generalized chemistry or gas simulator",
-          "no gore escalation",
-          "canonical puzzle state remains authoritative"
+          "bottled water fully suppresses only the fresh smolder stage; it is not a fire hose for established structural fire",
+          "late bottled-water or extinguish attempts cannot freeze the fire clock",
+          "no generalized chemistry gas smoke or structural physics simulator",
+          "no fire hit points or generic spread grid",
+          "canonical puzzle and route authority remains intact",
+          "authored world fire composes with existing object and material state"
         ]
-      },
+      }
+    ],
+    "qualified_prerequisites": [],
+    "next": [
       {
         "train_id": "zork-mara-reciprocal-rescue-shared-danger-1258",
         "release": 1258,
         "title": "Mara Reciprocal Rescue & Shared Danger",
-        "status": "next-4",
+        "status": "next-1-discussion-required-before-implementation",
         "outcome": "Advance Mara through shared physical danger, reciprocal rescue, injuries/recovery, promises, temporary custody, separation/reunion, and remembered choices rather than an approval economy.",
         "boundaries": [
+          "discuss the train with Justin before implementation begins",
           "no dating-sim meter",
           "no omniscient companion AI",
           "no generic party framework"
@@ -118,106 +68,21 @@
       }
     ],
     "future": [
-      {
-        "train_id": "zork-treasure-guardian-dragon-hoard",
-        "title": "Treasure Guardian Dragon & Hoard",
-        "status": "future-authored-encounter",
-        "outcome": "Create an original Zork-native dragon guarding a real treasure hoard, with territorial warning signs, dangerous fire breath, persistent environmental consequences, and multiple credible Zork-style approaches to survival, theft, negotiation, containment, escape, or confrontation.",
-        "inspiration": [
-          "Shadowgate treasure-guardian dragon encounter archetype"
-        ],
-        "boundaries": [
-          "original Zork-native dragon, prose, map layout, objects, puzzle expression, and solution structure",
-          "fire breath should compose with authored fire, smoke, material, shelter, and escape systems rather than introduce a separate generic combat simulator",
-          "support preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation instead of a generic hit-point boss fight",
-          "do not copy Shadowgate source code, text, art, maps, exact puzzles, or expressive sequencing"
-        ]
-      },
-      {
-        "train_id": "zork-cross-if-rpg-mechanics-adaptation",
-        "title": "Cross-IF / RPG Mechanics Adaptation — Shadowgate First",
-        "status": "future-mechanics-inspiration-program",
-        "outcome": "Study high-value mechanics and interaction patterns from other interactive-fiction games and RPGs, beginning with Shadowgate, and rebuild selected concepts from scratch as original Zork-native systems that compose with canonical state and the existing physicality mesh.",
-        "sources": [
-          "Shadowgate first",
-          "other interactive-fiction games later",
-          "RPGs later",
-          "selected S.T.A.L.K.E.R.-inspired mechanics eventually"
-        ],
-        "boundaries": [
-          "borrow concepts and design lessons, not source code, text, art, maps, exact puzzles, or expressive sequencing",
-          "adapt only mechanics that create meaningful Zork player choices rather than feature accumulation",
-          "rebuild selected ideas from scratch using Zork-native objects, state, prose, geography, parser verbs, and consequence systems",
-          "keep the separate S.T.A.L.K.E.R. Glulx product lane distinct even when selected mechanics inspire Zork"
-        ]
-      },
-      {
-        "train_id": "zork-forest-that-answers-back",
-        "title": "Forest That Answers Back / Described World = Interactive World",
-        "status": "future-promotion-candidate",
-        "outcome": "Turn selected concrete nouns already present in authored forest descriptions into targetable, stateful world objects whose interactions compose with existing physicality instead of remaining decorative prose.",
-        "boundaries": [
-          "no procedural object generator",
-          "no universal interaction matrix",
-          "promote authored nouns selectively where interaction creates real play"
-        ]
-      },
-      {
-        "train_id": "zork-time-weather-disaster-arc",
-        "title": "Time, Weather & Disaster Arc",
-        "status": "future-arc",
-        "outcome": "Layer authored time and weather conditions plus selected disasters onto real geography and material state to create preparation, shelter, traversal, rescue, and aftermath play.",
-        "boundaries": [
-          "no generic climate simulator",
-          "reuse existing geography and object state",
-          "conditions must create visible player choices and consequences"
-        ]
-      },
-      {
-        "train_id": "zork-causal-death-warning-depth",
-        "title": "Causal Death & Warning Depth",
-        "status": "future",
-        "outcome": "Broaden fair cause-warning-consequence chains, near-death records, delayed consequences, and exact-object provenance without turning death into a generic simulation framework."
-      },
-      {
-        "train_id": "zork-museum-ecology-second-expansion",
-        "title": "Museum & Ecology Second Expansion",
-        "status": "future",
-        "outcome": "Continue physical specimen, provenance, collection, and ecology stories only where they create new field play rather than checklist accumulation."
-      },
-      {
-        "train_id": "zork-narrative-perspective-experiments",
-        "title": "Narrative Perspective Experiments",
-        "status": "future-isolated-editions",
-        "outcome": "Build isolated first-person, third-person, and interactive-storybook editions against real canonical state without changing normal Zork."
-      },
-      {
-        "train_id": "zork-draw-multi-agent-experiments",
-        "title": "DRAW + Multi-Agent Experiments",
-        "status": "far-horizon-isolated-experiments",
-        "outcome": "Explore DRAW and multi-agent interactive-fiction experiments only after the playable product supports them, keeping experiments isolated from the canonical release train until deliberately promoted."
-      }
+      {"train_id": "zork-treasure-guardian-dragon-hoard", "title": "Treasure Guardian Dragon & Hoard", "status": "future-authored-encounter", "outcome": "Create an original Zork-native dragon guarding a real treasure hoard, with territorial warning signs, dangerous fire breath, persistent environmental consequences, and multiple credible Zork-style approaches.", "boundaries": ["fire breath composes with Release 1257 authored fire smoke material shelter and escape systems", "not a generic hit-point boss fight", "do not copy Shadowgate source code text art maps exact puzzles or expressive sequencing"]},
+      {"train_id": "zork-cross-if-rpg-mechanics-adaptation", "title": "Cross-IF / RPG Mechanics Adaptation — Shadowgate First", "status": "future-mechanics-inspiration-program", "outcome": "Study high-value mechanics and interaction patterns from other interactive-fiction games and RPGs, beginning with Shadowgate, then rebuild selected concepts from scratch as original Zork-native systems.", "boundaries": ["borrow concepts and design lessons not source code text art maps exact puzzles or expressive sequencing", "keep the separate S.T.A.L.K.E.R. Glulx product lane distinct"]},
+      {"train_id": "zork-forest-that-answers-back", "title": "Forest That Answers Back / Described World = Interactive World", "status": "future-promotion-candidate", "outcome": "Turn selected concrete nouns already present in authored forest descriptions into targetable stateful world objects whose interactions compose with existing physicality."},
+      {"train_id": "zork-time-weather-disaster-arc", "title": "Time, Weather & Disaster Arc", "status": "future-arc", "outcome": "Layer authored time and weather conditions plus selected disasters onto real geography and material state to create preparation shelter traversal rescue and aftermath play."},
+      {"train_id": "zork-causal-death-warning-depth", "title": "Causal Death & Warning Depth", "status": "future", "outcome": "Broaden fair cause-warning-consequence chains near-death records delayed consequences and exact-object provenance without turning death into a generic simulation framework."},
+      {"train_id": "zork-museum-ecology-second-expansion", "title": "Museum & Ecology Second Expansion", "status": "future", "outcome": "Continue physical specimen provenance collection and ecology stories only where they create new field play rather than checklist accumulation."},
+      {"train_id": "zork-narrative-perspective-experiments", "title": "Narrative Perspective Experiments", "status": "future-isolated-editions", "outcome": "Build isolated first-person third-person and interactive-storybook editions against real canonical state without changing normal Zork."},
+      {"train_id": "zork-draw-multi-agent-experiments", "title": "DRAW + Multi-Agent Experiments", "status": "far-horizon-isolated-experiments", "outcome": "Explore DRAW and multi-agent interactive-fiction experiments only after the playable product supports them."}
     ],
     "parked": [
-      {
-        "train_id": "stalker-glulx-separate-lane",
-        "title": "S.T.A.L.K.E.R. Glulx Game",
-        "status": "parked-separate-product",
-        "outcome": "Remain a separate interactive-fiction product lane, never mixed into a Zork gameplay PR."
-      },
-      {
-        "train_id": "infocom-protected-artifact-expansion",
-        "title": "Protected Corpus Acquisition",
-        "status": "parked-rights-dependent",
-        "outcome": "Expand source evidence only through lawfully held local copies or verified rights."
-      }
+      {"train_id": "stalker-glulx-separate-lane", "title": "S.T.A.L.K.E.R. Glulx Game", "status": "parked-separate-product", "outcome": "Remain a separate interactive-fiction product lane, never mixed into a Zork gameplay PR."},
+      {"train_id": "infocom-protected-artifact-expansion", "title": "Protected Corpus Acquisition", "status": "parked-rights-dependent", "outcome": "Expand source evidence only through lawfully held local copies or verified rights."}
     ],
     "done": [
-      {
-        "release_range": "1219-1230",
-        "title": "House of Records",
-        "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"
-      },
+      {"release_range": "1219-1230", "title": "House of Records", "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"},
       {"release": 1231, "title": "Corpus-Coupled Causal Warning", "pr": 34},
       {"release": 1232, "title": "Parser Comprehension and Deep Affordances", "pr": 35},
       {"release": 1233, "title": "Museum Intake and First Gallery", "pr": 36},
@@ -237,33 +102,14 @@
       {"release": 1246, "title": "Environmental Destruction", "pr": 50},
       {"release": 1247, "title": "Narrative Physicality", "pr": 51},
       {"release": 1248, "title": "Forest Consequence Physicality", "pr": 52},
-      {
-        "release": 1249,
-        "title": "Underground Sensory Physicality",
-        "pr": 53,
-        "merge_commit": "bacb1a358f0ee126ee6ae629b589c3d3a0269ee9",
-        "artifact_sha256": "b36d4a17ab9682af64c94263fee317065aeacf9072d24cdc9392016ecd32a7a6"
-      },
-      {
-        "release": 1250,
-        "title": "Player Ingenuity / Systemic Workarounds",
-        "pr": 55,
-        "merge_commit": "cd6a918795196b6918a2a5c5600b56c1c0d6e20b"
-      },
-      {
-        "release": 1251,
-        "title": "Cross-System Utility Mesh",
-        "pr": 56,
-        "merge_commit": "79b87248d567962fff2181e4996d1cf424cdcac0",
-        "artifact_sha256": "f109db13195574227d0487f732f63f16c4a2d8d48ea9823a15e63becd53791d7"
-      },
-      {
-        "release": 1252,
-        "title": "Earned Sequence Breaks & Route Mastery",
-        "pr": 57,
-        "merge_commit": "43a253a83a7349c9d3838e07488a90233f92410b",
-        "artifact_sha256": "b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6"
-      }
+      {"release": 1249, "title": "Underground Sensory Physicality", "pr": 53},
+      {"release": 1250, "title": "Player Ingenuity / Systemic Workarounds", "pr": 55},
+      {"release": 1251, "title": "Cross-System Utility Mesh", "pr": 56},
+      {"release": 1252, "title": "Earned Sequence Breaks & Route Mastery", "pr": 57, "merge_commit": "43a253a83a7349c9d3838e07488a90233f92410b", "artifact_sha256": "b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6"},
+      {"release": 1253, "title": "Dam Survival & Prepared Rescue", "pr": 58, "merge_commit": "f5b1f1a3e7f65ff11db06f344580f83c3ed191b1", "artifact_sha256": "232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff"},
+      {"release": 1254, "title": "Troll Disarm & Stolen Weapons", "pr": 59, "merge_commit": "7b99869d8cb2e6db93243432fd8140a937205f44", "artifact_sha256": "86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0"},
+      {"release": 1255, "title": "Thief Retaliation & Sabotage", "pr": 60, "merge_commit": "8ad53ebc2ec2ce2a454ce6951d919bb1a2025937", "artifact_sha256": "03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be"},
+      {"release": 1256, "title": "Grue Ecology & Colony Reveal", "pr": 61, "merge_commit": "14d1be667db3110d532b0e2c28f00b92371693fc", "artifact_sha256": "59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975"}
     ]
   }
 }
