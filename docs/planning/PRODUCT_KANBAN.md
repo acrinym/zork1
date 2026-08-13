@@ -1,9 +1,9 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** August 12, 2026  
+**Updated:** August 13, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1252` — Earned Sequence Breaks & Route Mastery  
-**`master` head when Release 1253 began:** `7768710a8b4fd4d4d798011eec70fe6f88112e81`
+**Current merged production frontier:** Release `1256` — Grue Ecology & Colony Reveal  
+**`master` head before Release 1257 merge:** `14d1be667db3110d532b0e2c28f00b92371693fc`
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -21,58 +21,49 @@ This board is the human operating surface for the active Zork product queue. The
 
 ## CURRENT
 
-### Release 1254 — Troll Disarm & Stolen Weapons
+### Release 1257 — Fire, Smoke & Structural Consequences
 
-**Active branch:** `agent/troll-disarm-stolen-weapons-20260812`  
-**Stacked on:** qualified Release 1253 / PR #58 (`agent/dam-survival-prepared-rescue-20260812`)
+**Active branch:** `agent/fire-smoke-structural-consequences-20260812`  
+**PR:** #62  
+**Base:** merged Release 1256 on `master`
 
-**Player outcome:** losing a real weapon to the canonical troll can now become persistent physical custody rather than a momentary combat message: the troll can seize the exact object, wield it against its owner, taunt with it, bargain over it, lose it through combat, and surrender it when subdued or killed.
+**Player outcome:** the canonical Timber Room now supports one persistent authored fire lifecycle using real flame, real bottled water, existing mine airflow, and persistent physical aftermath instead of a generic fire or chemistry simulator.
 
 Current showcase:
 
-- canonical troll combat remains the authority for `LOSE-WEAPON`; when that authored result occurs, the troll can snatch the adventurer's exact sword or knife before it reaches the floor;
-- the captured object is the one real canonical object—there is no duplicate weapon, ownership token, or shadow inventory;
-- while holding a captured player weapon, the troll prefers it as his combat weapon, so the player can literally face the sword or knife they lost;
-- direct attempts to take a weapon from the armed troll remain physically blocked rather than silently moving the object;
-- disarming the troll can knock a captured weapon loose through the existing combat result path;
-- unconsciousness or death releases real held player weapons for recovery;
-- food can buy the exact captured weapon back, but the bargain does not pacify the troll or open the exits;
-- examine/listen/greeting flavor makes stolen custody visible without adding a dialogue tree or relationship meter;
-- canonical troll strength, axe recovery, combat, unconsciousness/death, and exit gating remain authoritative.
+- the dry broken timbers are a real burn target, but first ignition produces a recoverable smolder rather than instant deletion or explosion;
+- a new smolder can be stamped out before it earns open flame;
+- ignored smolder becomes open flame, and the room's existing westward draft drives smoke into the narrow west crawl while preserving the wide east escape;
+- the real open bottle containing the real water can douse active timber fire, consuming that water and leaving scorched aftermath;
+- ignored open flame gives audible structural warning before one old brace drops into the burning clutter;
+- the fire eventually burns itself down to a persistent charred heap and fallen brace;
+- the collapse does not widen, delete, or brick the canonical `EMPTY-HANDED` narrow passage;
+- fire state is table-backed and consumes zero new VM globals;
+- canonical `gverbs.zil` / `V-BURN` and canonical Gas Room behavior in `1actions.zil` remain byte-for-byte unchanged;
+- the canonical coal object remains real, movable, and burnable.
 
-Release 1254 is fully qualified on the stacked branch. Locked production artifact SHA-256:
+Release 1257 is fully qualified against the repaired merged Release-1256 lineage. Locked production artifact SHA-256:
 
-`5db6a858d30cc2a06d1becb520795587753ca3d29791447f253a1cdd9bbd2fb4`
+`75bdbcd38a675e491b10af3b5900149e0a84218697d24adb27f7e90d5b4b0196`
 
-Final locked qualification run: `31629388400`.
+Exact qualified staged-source identities:
 
-### Qualified prerequisite awaiting merge
+- production: `f0ca60a87e519f84cc97721b1248aa86a688a6602a5e5b8f3395012ec2bc9514`
+- dev: `f3e44036429d93e46a1f8b12c71da4d3394f59dc5f3b07d02ce070069908328c`
 
-Release 1253 — Dam Survival & Prepared Rescue remains fully qualified in PR #58 and is **not merged**. Its locked production artifact remains:
-
-`41cf57d533f721c8be1d8932075d5e093c0daf8dde0610cc40bf85fea796cb11`
+Final locked qualification run: `31731130803`.
 
 ## NEXT — ordered
 
-### 1. Release 1255 — Thief Retaliation & Sabotage
-
-Add visible, causal retaliation through selective theft, sabotage, warnings, earned ambushes, avoidance, repair, and appeasement while preserving the canonical thief's roaming and treasure behavior.
-
-### 2. Release 1256 — Grue Ecology & Colony Reveal
-
-Support selected darkness experiments and authored grue ecology, including stronger-light consequences and a signature colony reveal without turning grues into ordinary combat mobs.
-
-### 3. Release 1257 — Fire, Smoke & Structural Consequences
-
-Extend physicality into a deliberately small set of authored fire, smoke, collapse, and machinery consequences.
-
-### 4. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+### 1. Release 1258 — Mara Reciprocal Rescue & Shared Danger
 
 Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions without an approval meter.
 
+**Discussion checkpoint:** do not begin implementation until the train is discussed with Justin.
+
 ## FUTURE
 
-- **Treasure Guardian Dragon & Hoard** — create an original Zork-native dragon encounter around a real treasure hoard, authored territorial behavior, visible warning signs, and dangerous fire breath. Fire should compose with the eventual fire/smoke/material-consequence systems, while the encounter supports multiple credible Zork solutions such as preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation rather than becoming a generic hit-point boss fight. Shadowgate is an inspiration for the encounter archetype only; all prose, code, map layout, puzzle expression, objects, and exact solution structure are rebuilt from scratch.
+- **Treasure Guardian Dragon & Hoard** — create an original Zork-native dragon encounter around a real treasure hoard, authored territorial behavior, visible warning signs, and dangerous fire breath. Fire should compose with the Release-1257 fire/smoke/material-consequence authority, while the encounter supports multiple credible Zork solutions such as preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation rather than becoming a generic hit-point boss fight. Shadowgate is inspiration for the encounter archetype only; all prose, code, map layout, puzzle expression, objects, and exact solution structure are rebuilt from scratch.
 - **Cross-IF / RPG Mechanics Adaptation — Shadowgate First** — deliberately study high-value mechanics and interaction patterns from other interactive-fiction games and RPGs, beginning with Shadowgate, then rebuild selected ideas as original Zork-native systems that compose with canonical state and the existing physicality mesh. Borrow concepts and design lessons, not source code, text, art, maps, exact puzzles, or expressive sequencing. Later widen the inspiration pool to other IF/RPGs and eventually selected S.T.A.L.K.E.R.-inspired mechanics, while keeping the separate S.T.A.L.K.E.R. Glulx product lane distinct.
 - **Forest That Answers Back / Described World = Interactive World** — promote selected concrete nouns already present in authored forest descriptions into targetable, stateful world objects whose interactions compose with existing physicality rather than becoming decorative prose or a generic object generator.
 - **Time, Weather & Disaster Arc** — layer authored time/weather conditions and selected disasters onto real geography and existing material state only where they create meaningful preparation, shelter, traversal, rescue, and aftermath play; no generic climate simulator.
@@ -116,15 +107,18 @@ Advance Mara through reciprocal rescue, injuries/recovery, promises, exact tempo
 | 1250 | Player Ingenuity / Systemic Workarounds | #55 |
 | 1251 | Cross-System Utility Mesh | #56 |
 | 1252 | Earned Sequence Breaks & Route Mastery | #57 |
+| 1253 | Dam Survival & Prepared Rescue | #58 |
+| 1254 | Troll Disarm & Stolen Weapons | #59 |
+| 1255 | Thief Retaliation & Sabotage | #60 |
+| 1256 | Grue Ecology & Colony Reveal | #61 |
 
-Release `1252` merged as `43a253a83a7349c9d3838e07488a90233f92410b`.
+Recent merged production receipts:
 
-Final Release 1252 production artifact SHA-256:
-
-`b376808be57262d3cec9c43d9bd2e8972e64362864bbe6a9bab682a0cc3334b6`
-
-The post-Release-1252 handoff commit left `master` at `7768710a8b4fd4d4d798011eec70fe6f88112e81` before Release 1253 began. Release 1253 and Release 1254 are qualified stacked trains, not merged frontier releases.
+- Release 1253 merge `f5b1f1a3e7f65ff11db06f344580f83c3ed191b1`; artifact `232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff`.
+- Release 1254 merge `7b99869d8cb2e6db93243432fd8140a937205f44`; artifact `86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0`.
+- Release 1255 merge `8ad53ebc2ec2ce2a454ce6951d919bb1a2025937`; artifact `03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be`.
+- Release 1256 merge `14d1be667db3110d532b0e2c28f00b92371693fc`; artifact `59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975`.
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and the post-1249 product arc. Release 1254 applies that doctrine to persistent troll weapon custody while preserving Release 1255 as the next committed train and retaining the dragon, cross-IF/RPG mechanics adaptation, forest-density, time/weather/disaster, and far-horizon experiment opportunities above.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and post-1249 product arc. Release 1257 establishes the first shared authored world-fire authority. Release 1258 remains the next committed train, but implementation is intentionally paused for discussion before any Mara work begins.
