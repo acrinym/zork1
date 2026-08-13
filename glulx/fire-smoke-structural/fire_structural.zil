@@ -41,10 +41,15 @@
            <RTRUE>)>
     <RFALSE>>
 
-<ROUTINE FIRE-STRUCTURAL-STOP-ACTION? ()
-    <COND (<AND <OR <VERB? SHADOW-USE-ON POUR-ON>>
-                <EQUAL? ,PRSI ,TIMBERS>
-                <EQUAL? ,PRSO ,WATER ,BOTTLE>>
+<ROUTINE FIRE-STRUCTURAL-STOP-ACTION? ("AUX" STAGE)
+    <SET STAGE <FIRE-STRUCTURAL-STAGE>>
+    <COND (<NOT <EQUAL? .STAGE ,FIRE-TIMBER-SMOLDER>>
+           <RFALSE>)
+          (<AND <OR <AND <VERB? SHADOW-USE-ON>
+                         <EQUAL? ,PRSO ,WATER ,BOTTLE>>
+                    <AND <VERB? POUR-ON>
+                         <EQUAL? ,PRSO ,WATER>>>
+                <EQUAL? ,PRSI ,TIMBERS>>
            <RTRUE>)
           (<AND <VERB? LAMP-OFF>
                 <EQUAL? ,PRSO ,TIMBERS>>
@@ -125,15 +130,15 @@
     <COND (<NOT <EQUAL? .STAGE ,FIRE-TIMBER-SMOLDER ,FIRE-TIMBER-BURNING ,FIRE-TIMBER-COLLAPSED-HOT>>
            <RFALSE>)
           (<NOT <SHADOW-HAS-BOTTLED-WATER?>>
-           <TELL "The open bottle must contain the real water before it can put out a timber fire." CR>)
-          (T
+           <TELL "The open bottle must contain the real water before it can affect the timber fire." CR>)
+          (<EQUAL? .STAGE ,FIRE-TIMBER-SMOLDER>
            <MATERIAL-CONSUME-BOTTLED-WATER>
            <FIRE-STRUCTURAL-SET-STAGE ,FIRE-TIMBER-DOUSED>
            <FIRE-STRUCTURAL-PUT ,FS-TIMBER-TIMER 0>
-           <TELL "You commit the bottled water to the hottest wood. Steam and dirty runoff replace the smoke; the flame dies. The timbers remain scorched">
-           <COND (<EQUAL? .STAGE ,FIRE-TIMBER-COLLAPSED-HOT>
-                  <TELL ", and the fallen brace remains exactly where gravity put it">)>
-           <TELL "." CR>)>
+           <TELL "You empty the bottled water over the small smoldering edge. Steam and dirty runoff replace the smoke before open flame can take hold. The timbers remain scorched." CR>)
+          (T
+           <MATERIAL-CONSUME-BOTTLED-WATER>
+           <TELL "You empty the bottle across the nearest burning wood. It hisses into steam and darkens one patch of timber, but this is now a structural fire, not a campfire. The flames keep moving through the dry pile. The wide passage east is the useful answer." CR>)>
     <RTRUE>>
 
 <ROUTINE FIRE-TIMBERS-FCN ("AUX" STAGE)
@@ -211,7 +216,7 @@
                   <FIRE-STRUCTURAL-PUT ,FS-TIMBER-TIMER 0>
                   <TELL "You grind the small smoldering edge out under a boot before it earns open flame. The wood remains lightly scorched." CR>)
                  (T
-                  <TELL "The fire has progressed past something you can extinguish by commanding it sternly. Real water can still end it; the wide passage east can end your participation." CR>)>
+                  <TELL "The fire has progressed past something a boot can end. A bottle is no fire hose; the wide passage east can end your participation." CR>)>
            <RTRUE>)
           (<AND <EQUAL? ,HERE ,TIMBER-ROOM>
                 <EQUAL? .STAGE ,FIRE-TIMBER-BURNING ,FIRE-TIMBER-COLLAPSED-HOT>
