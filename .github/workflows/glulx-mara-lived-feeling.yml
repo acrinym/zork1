@@ -1,0 +1,92 @@
+name: Zork I Mara Lived Feeling Rupture and Repair
+
+on:
+  push:
+    branches: [agent/mara-lived-feeling-rupture-repair-20260814]
+    paths:
+      - "glulx/mara-lived-feeling/**"
+      - ".github/workflows/glulx-mara-lived-feeling.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: glulx-mara-lived-feeling-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {contents: read}
+
+env:
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+
+jobs:
+  qualify-mara-lived-feeling:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: "3.12.13"}
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1
+        with: {dotnet-version: "10.0.302"}
+      - name: Install native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y build-essential libncurses-dev curl
+          {
+            echo "runner_image=ubuntu-24.04"
+            gcc --version | head -n 1
+            dpkg-query -W -f='${Package}\t${Version}\n' build-essential libncurses-dev curl
+          } | tee native-toolchain.txt
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: taradinoc/zork1
+          ref: "${{ env.ZORK_GLULX_COMMIT }}"
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: taradinoc/zilf
+          ref: "${{ env.GLULX_ZILF_COMMIT }}"
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/glulxe
+          ref: "${{ env.GLULXE_COMMIT }}"
+          path: .tooling/glulxe
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/cheapglk
+          ref: "${{ env.CHEAPGLK_COMMIT }}"
+          path: .tooling/cheapglk
+          persist-credentials: false
+      - name: Verify pinned Zork Glulx upstream
+        run: '[[ "$(git -C .upstream/zork1-glulx rev-parse HEAD)" == "$ZORK_GLULX_COMMIT" ]]'
+      - name: Prepare Glazer
+        run: |
+          mkdir -p .tooling/glazer-source
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glazer.tar.gz" | sha256sum --check
+          tar -xf glazer.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source
+      - name: Qualify Release 1260 Mara lived feeling rupture and repair
+        run: |
+          set -o pipefail
+          bash glulx/mara-lived-feeling/qualify.sh 2>&1 | tee mara-lived-feeling.log
+      - name: Upload Release 1260 evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mara-lived-feeling-${{ github.sha }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            native-toolchain.txt
+            mara-lived-feeling.log
+            glulx/build/mara-lived-feeling-rupture-repair-1260/*
