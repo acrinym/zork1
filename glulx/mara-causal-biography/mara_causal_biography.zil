@@ -174,6 +174,13 @@
            <TELL "The ladder is old iron, wet under discharge, and now part of our history in both directions, Mara says. You pulled me back once. I caught you once. Neither fact makes the next descent automatically safe." CR>)
           (<MARA-GET ,MARA-SLOT-BIO-RESCUED-MARA>
            <TELL "Mara flexes her injured hand. The ladder has already collected one bad assumption from me, she says. The useful fact is that you pulled me back instead of treating the slip as scenery." CR>)
+          (<AND <EQUAL? ,HERE ,DAM-ROOM>
+                <MARA-HERE?>
+                <ZERO? <MARA-GET ,MARA-SLOT-LADDER-INJURY>>
+                <ZERO? <MARA-GET ,MARA-SLOT-LADDER-PERIL>>
+                <IN? ,MARA-FIELD-ROPE ,MARA>>
+           <TELL "Mara studies the wet iron, the spray, and the lower landing. If we want evidence from below, somebody has to test the actual route, she says. I'll take the first run. You stay where you can see the line." CR>
+           <MARA-LADDER-ATTEMPT>)
           (T
            <TELL "Mara studies the maintenance ladder as structure rather than invitation. Old bolts, wet iron, poor redundancy, she says. Preparation first." CR>)>
     <RTRUE>>
