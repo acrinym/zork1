@@ -58,9 +58,11 @@
     <MOVE ,MARA-SURVEY-PLUMMET ,MARA>
     <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-FOLLOWING>
     <MOVE ,MARA ,DEEP-CANYON>
+    <MOVE ,LAMP ,ADVENTURER>
+    <FSET ,LAMP ,ONBIT>
     <SETG LOUD-FLAG T>
     <GOTO ,DEEP-CANYON>
-    <TELL "TEST PRECONDITION: Mara already lived through the Frigid swing, has the recovered brass plummet, and the canonical Loud Room has already been made safe." CR>
+    <TELL "TEST PRECONDITION: Mara already lived through the Frigid swing, has the recovered brass plummet, the Adventurer carries the lit canonical brass lantern, and the canonical Loud Room has already been made safe." CR>
     <RTRUE>>
 
 <ROUTINE V-MARA-CAP-STATUS-TEST ()
