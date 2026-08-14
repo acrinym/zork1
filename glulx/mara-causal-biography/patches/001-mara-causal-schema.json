@@ -1,7 +1,7 @@
 {
   "id": "001_MARA_CAUSAL_SCHEMA",
   "path": "mara_companion.zil",
-  "description": "Advance Mara to schema 6, add narrow promise/rescue grammar, named causal-biography slots, and the ladder topic.",
+  "description": "Advance Mara to schema 6, add narrow promise/rescue grammar, named causal-biography slots, and include the Release 1258 authority.",
   "replacements": [
     {
       "expected_count": 1,
@@ -16,7 +16,7 @@
     {
       "expected_count": 1,
       "old": "<INSERT-FILE \"mara_companion_state\" T>\n<INSERT-FILE \"mara_companion_movement\" T>",
-      "new": "<OBJECT MARA-LADDER-TOPIC\n    (IN GLOBAL-OBJECTS)\n    (SYNONYM LADDER RUNGS BOLT ACCESS ROUTE)\n    (ADJECTIVE DAM MAINTENANCE IRON RETAINING LOWER SURVEY)\n    (DESC \"the Dam maintenance ladder\")\n    (FLAGS NDESCBIT RMUNGBIT)>\n\n<INSERT-FILE \"mara_companion_state\" T>\n<INSERT-FILE \"mara_causal_biography\" T>\n<INSERT-FILE \"mara_companion_movement\" T>"
+      "new": "<INSERT-FILE \"mara_companion_state\" T>\n<INSERT-FILE \"mara_causal_biography\" T>\n<INSERT-FILE \"mara_companion_movement\" T>"
     }
   ]
 }
