@@ -74,6 +74,8 @@
     <MARA-ENSURE>
     <COND (<NOT <IN? ,MARA-FIELD-ROPE ,ADVENTURER>>
            <TELL "You are not holding Mara's field rope." CR>)
+          (<MARA-GET ,MARA-SLOT-LADDER-PERIL>
+           <TELL "Not yet, Mara says from below the ladder lip. Keep the useful end in your hands and get me back onto the platform first." CR>)
           (T
            <MOVE ,MARA-FIELD-ROPE ,MARA>
            <MARA-PUT ,MARA-SLOT-BIO-ROPE-RETURNED 1>
