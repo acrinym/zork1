@@ -72,7 +72,7 @@ jobs:
         run: |
           mkdir -p .tooling/glazer-source
           curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer.tar.gz
-          echo "$GLAZER_SOURCE_SHA256  glazer.tar.gz | sha256sum --check
+          echo "$GLAZER_SOURCE_SHA256  glazer.tar.gz" | sha256sum --check
           tar -xf glazer.tar.gz --strip-components=1 -C .tooling/glazer-source
           make -C .tooling/glazer-source
       - name: Qualify Release 1260 Mara lived feeling rupture and repair
