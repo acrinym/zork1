@@ -3,3 +3,5 @@
 *.infocom-corpus.local.jsonl
 __pycache__/
 *.py[cod]
+.tooling/cheapglk/
+.tooling/glulxe/
