@@ -52,7 +52,8 @@
 
 <ROUTINE MARA-SERVICE-PIPE-FCN ()
     <COND (<VERB? EXAMINE>
-           <TELL "The old iron service pipe is fixed into the Dam masonry above the narrow side channel. Its brackets are ugly but deep-set, and Mara's measured rope marks make the drop and return arc calculable rather than imaginary." CR>)
+           <TELL "The old iron service pipe is fixed into the Dam masonry above the narrow side channel. Its brackets are ugly but deep-set, and Mara's measured rope marks make the drop and return arc calculable rather than imaginary." CR>
+           <RTRUE>)
           (<VERB? TAKE MOVE PUSH MUNG>
            <TELL "The service pipe is part of the Dam. It can be inspected or used as a fixed point; it cannot sensibly be carried away." CR>
            <RTRUE>)>
@@ -60,7 +61,8 @@
 
 <ROUTINE MARA-CANYON-RINGBOLT-FCN ()
     <COND (<VERB? EXAMINE>
-           <TELL "The old ringbolt is driven into sound stone beside the Deep Canyon stair. Rust has taken the surface, not the depth of the iron." CR>)
+           <TELL "The old ringbolt is driven into sound stone beside the Deep Canyon stair. Rust has taken the surface, not the depth of the iron." CR>
+           <RTRUE>)
           (<VERB? TAKE MOVE MUNG>
            <TELL "The ringbolt is fixed into the canyon wall. Removing the anchor would defeat the useful part of finding it." CR>
            <RTRUE>)>
@@ -188,7 +190,7 @@
            <RTRUE>)
           (<EQUAL? .TOPIC ,MARA-SURVEY-PLUMMET>
            <COND (<MARA-GET ,MARA-SLOT-PLUMMET-RECOVERED>
-                  <TELL "Mara turns the old brass plummet in her palm. It was abandoned across the Frigid side channel. Recovering it taught me one thing about movement; striking it against canyon stone taught me another thing about listening." CR>)
+                  <TELL "Mara opens her hand around the old brass survey plummet: a dense teardrop of metal with a worn attachment eye and small imperial survey scratches around the shoulder. It was abandoned across the Frigid side channel, she says. Recovering it taught me one thing about movement; striking it against canyon stone taught me another thing about listening." CR>)
                  (T
                   <TELL "Mara has not recovered an old survey plummet in this history." CR>)>
            <RTRUE>)>
