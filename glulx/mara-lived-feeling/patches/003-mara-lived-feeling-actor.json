@@ -1,0 +1,17 @@
+{
+  "id": "003_MARA_LIVED_FEELING_ACTOR",
+  "path": "mara_companion_actor.zil",
+  "description": "Preserve Mara's Release 1245 physical evasion while recording intentional violence as rupture and refusing close following during unresolved betrayal.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "(<AND <EQUAL? ,WINNER ,MARA> <VERB? FOLLOW>>\n           <MARA-REQUEST-FOLLOW>)",
+      "new": "(<AND <EQUAL? ,WINNER ,MARA> <VERB? FOLLOW>>\n           <COND (<MARA-RUPTURE-OPEN?> <MARA-RUPTURE-FOLLOW-REFUSAL>)\n                 (T <MARA-REQUEST-FOLLOW>)>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<VERB? TAKE MOVE MUNG ATTACK>\n           <TELL \"Mara steps clear before the action can become force. She is another adventurer, not an obtainable object.\" CR>\n           <RTRUE>)",
+      "new": "          (<VERB? MUNG ATTACK>\n           <MARA-INTENTIONAL-HARM-ATTEMPT>)\n          (<VERB? TAKE MOVE>\n           <TELL \"Mara steps clear before the action can become force. She is another adventurer, not an obtainable object.\" CR>\n           <RTRUE>)"
+    }
+  ]
+}
