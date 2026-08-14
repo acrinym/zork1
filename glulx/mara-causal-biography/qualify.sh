@@ -193,7 +193,7 @@ GLULXE_BIN="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
 
 cat > "$BUILD/earned-reciprocity.txt" <<'EOF1'
 maraprep
-mara, climb down maintenance ladder
+tell mara to climb down maintenance ladder
 promise mara
 give field rope to mara
 examine field rope
@@ -240,7 +240,7 @@ grep -F 'rescued-mara=0' "$N"
 
 cat > "$BUILD/broken-promise.txt" <<'EOF3'
 maraprep
-mara, climb down maintenance ladder
+tell mara to climb down maintenance ladder
 promise mara
 rescue mara
 west
@@ -258,7 +258,7 @@ grep -F 'TEST rope custody: player.' "$P"
 
 cat > "$BUILD/abandonment.txt" <<'EOF4'
 maraprep
-mara, climb down maintenance ladder
+tell mara to climb down maintenance ladder
 west
 marastatus
 quit
