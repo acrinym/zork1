@@ -9,6 +9,7 @@
   "patches": [
     "patches/001-mara-lived-feeling-schema.json",
     "patches/002-mara-lived-feeling-state.json",
+    "patches/003-mara-lived-feeling-apology.json",
     "patches/003-mara-lived-feeling-actor.json",
     "patches/004-mara-lived-feeling-causal-hooks.json",
     "patches/005-release-1260.json"
@@ -16,6 +17,7 @@
   "expected_changed_paths": [
     "mara_causal_biography.zil",
     "mara_companion.zil",
+    "mara_companion_actions.zil",
     "mara_companion_actor.zil",
     "mara_companion_state.zil",
     "mara_lived_feeling.zil",
