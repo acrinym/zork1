@@ -53,7 +53,7 @@
 <ROUTINE MARA-SERVICE-PIPE-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "The old iron service pipe is fixed into the Dam masonry above the narrow side channel. Its brackets are ugly but deep-set, and Mara's measured rope marks make the drop and return arc calculable rather than imaginary." CR>)
-          (<VERB? TAKE MOVE PUSH PULL MUNG>
+          (<VERB? TAKE MOVE PUSH MUNG>
            <TELL "The service pipe is part of the Dam. It can be inspected or used as a fixed point; it cannot sensibly be carried away." CR>
            <RTRUE>)>
     <RFALSE>>
@@ -61,7 +61,7 @@
 <ROUTINE MARA-CANYON-RINGBOLT-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "The old ringbolt is driven into sound stone beside the Deep Canyon stair. Rust has taken the surface, not the depth of the iron." CR>)
-          (<VERB? TAKE MOVE PULL MUNG>
+          (<VERB? TAKE MOVE MUNG>
            <TELL "The ringbolt is fixed into the canyon wall. Removing the anchor would defeat the useful part of finding it." CR>
            <RTRUE>)>
     <RFALSE>>
@@ -88,7 +88,8 @@
                 <MARA-GET ,MARA-SLOT-HOUSE-STAY>
                 <EQUAL? <LOC ,MARA> ,ATTIC>>
            <MARA-PUT ,MARA-SLOT-LADDER-RECOVERED 1>
-           <TELL "By morning Mara has rewrapped the scraped palm herself. When she comes down from the Attic she rolls the injured shoulder through a careful circle, tests it twice, and finally lets the arm hang normally. The scar remains; the stiffness does not. Recovered, she says. Not erased." CR>)>
+           <TELL "By morning Mara has rewrapped the scraped palm herself. When she comes down from the Attic she rolls the injured shoulder through a careful circle, tests it twice, and finally lets the arm hang normally. The scar remains; the stiffness does not. Recovered, she says. Not erased." CR>
+           <RTRUE>)>
     <RFALSE>>
 
 <ROUTINE MARA-ABOUT-RECOVERY ()
