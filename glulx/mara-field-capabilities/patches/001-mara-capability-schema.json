@@ -1,0 +1,22 @@
+{
+  "id": "001_MARA_CAPABILITY_SCHEMA",
+  "path": "mara_companion.zil",
+  "description": "Advance Mara to schema 7 and include the authored field-capability authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SCHEMA 6>\n<CONSTANT MARA-PREVIOUS-SCHEMA 5>",
+      "new": "<CONSTANT MARA-SCHEMA 7>\n<CONSTANT MARA-PREVIOUS-SCHEMA 6>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SLOT-REUNION-PENDING 38>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>",
+      "new": "<CONSTANT MARA-SLOT-REUNION-PENDING 38>\n<CONSTANT MARA-SLOT-LADDER-RECOVERED 39>\n<CONSTANT MARA-SLOT-PENDULUM-DISCOVERED 40>\n<CONSTANT MARA-SLOT-PENDULUM-REUSED 41>\n<CONSTANT MARA-SLOT-ACOUSTIC-DISCOVERED 42>\n<CONSTANT MARA-SLOT-ACOUSTIC-REUSED 43>\n<CONSTANT MARA-SLOT-PLUMMET-RECOVERED 44>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_companion_state\" T>\n<INSERT-FILE \"mara_causal_biography\" T>\n<INSERT-FILE \"mara_companion_movement\" T>",
+      "new": "<INSERT-FILE \"mara_companion_state\" T>\n<INSERT-FILE \"mara_causal_biography\" T>\n<INSERT-FILE \"mara_field_capabilities\" T>\n<INSERT-FILE \"mara_companion_movement\" T>"
+    }
+  ]
+}
