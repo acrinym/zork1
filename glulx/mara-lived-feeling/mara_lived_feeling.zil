@@ -19,9 +19,6 @@
     (DESC "the rupture with Mara")
     (FLAGS NDESCBIT RMUNGBIT)>
 
-<SYNTAX APOLOGIZE TO OBJECT (FIND ACTORBIT) (ON-GROUND IN-ROOM) = V-MARA-RUPTURE-APOLOGIZE>
-<SYNONYM APOLOGIZE APOLOGISE>
-
 <ROUTINE MARA-RUPTURE-OPEN? ()
     <COND (<MARA-GET ,MARA-SLOT-RUPTURE-OPEN> <RTRUE>)>
     <RFALSE>>
@@ -91,21 +88,19 @@
            <TELL "Mara stays where she is. You gave me space when I asked, she says. Keep meaning it. I am not following yet." CR>)>
     <RTRUE>>
 
-<ROUTINE V-MARA-RUPTURE-APOLOGIZE ()
+<ROUTINE MARA-RUPTURE-APOLOGIZE ()
     <MARA-ENSURE>
-    <COND (<NOT <EQUAL? ,PRSO ,MARA>>
-           <TELL "An apology needs the person you mean to address." CR>)
-          (<MARA-RUPTURE-OPEN?>
+    <COND (<MARA-RUPTURE-OPEN?>
            <COND (<ZERO? <MARA-GET ,MARA-SLOT-APOLOGY-ACKNOWLEDGED>>
                   <MARA-PUT ,MARA-SLOT-APOLOGY-ACKNOWLEDGED 1>
                   <TELL "Mara lets the apology exist without rescuing you from it. I heard you, she says. That sentence matters because you named what you did. It does not make me safe with you again by itself. I need space, and then I need to see what you do when a boundary costs you something." CR>)
                  (T
-                  <TELL "I heard the apology the first time, Mara says. Repeating it is not the next step. Behavior is." CR>)>)
+                  <TELL "I heard the apology the first time, Mara says. Repeating it is not the next step. Behavior is." CR>)>
+           <RTRUE>)
           (<MARA-GET ,MARA-SLOT-RUPTURE-REPAIRED>
-           <TELL "Mara nods once. You already apologized, and later evidence mattered more than repetition would. The attack is remembered; so is the repair." CR>)
-          (T
-           <TELL "Mara raises an eyebrow. Name the thing you are apologizing for, she says. Do not make the word do all the work." CR>)>
-    <RTRUE>>
+           <TELL "Mara nods once. You already apologized, and later evidence mattered more than repetition would. The attack is remembered; so is the repair." CR>
+           <RTRUE>)>
+    <RFALSE>>
 
 <ROUTINE MARA-LIVED-AFTER-MOVE (FROM TO)
     <COND (<AND <NOT <EQUAL? .FROM .TO>>
