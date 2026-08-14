@@ -16,7 +16,7 @@
     {
       "expected_count": 1,
       "old": "    <COND (<EQUAL? .TOPIC ,MARA-UNEXPLAINED-TOPIC>",
-      "new": "    <COND (<EQUAL? .TOPIC ,MARA-LADDER-TOPIC ,DAM-MAINTENANCE-LADDER>\n           <MARA-ABOUT-LADDER>)\n          (<EQUAL? .TOPIC ,MARA-UNEXPLAINED-TOPIC>"
+      "new": "    <COND (<EQUAL? .TOPIC ,DAM-MAINTENANCE-LADDER>\n           <MARA-ABOUT-LADDER>)\n          (<EQUAL? .TOPIC ,MARA-UNEXPLAINED-TOPIC>"
     }
   ]
 }
