@@ -1,0 +1,27 @@
+{
+  "id": "003_MARA_CAUSAL_ACTOR",
+  "path": "mara_companion_actor.zil",
+  "description": "Let Mara attempt the real Dam ladder, preserve bodily injury, support rescue/promise actions, and return her exact entrusted field rope through ordinary GIVE.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (<VERB? TAKE GIVE MOVE MUNG>\n           <TELL \"Mara keeps custody of her own field equipment. Ask for help with a real task rather than treating her as an equipment locker.\" CR>\n           <RTRUE>)>",
+      "new": "          (<AND <VERB? GIVE>\n                <EQUAL? ,PRSO ,MARA-FIELD-ROPE>\n                <EQUAL? ,PRSI ,MARA>>\n           <MARA-RETURN-ENTRUSTED-ROPE>)\n          (<VERB? TAKE GIVE MOVE MUNG>\n           <TELL \"Mara keeps custody of her own field equipment. Ask for help with a real task rather than treating her as an equipment locker.\" CR>\n           <RTRUE>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-FCN ()\n    <MARA-ENSURE>\n    <COND (<AND <EQUAL? ,WINNER ,MARA> <VERB? ATTACK STAB>>",
+      "new": "<ROUTINE MARA-FCN ()\n    <MARA-ENSURE>\n    <COND (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? CLIMB-DOWN CLIMB-FOO>\n                <EQUAL? ,PRSO ,DAM-MAINTENANCE-LADDER>>\n           <MARA-LADDER-ATTEMPT>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? ATTACK STAB>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "           <COND (<MARA-GET ,MARA-SLOT-DEATH-WITNESSED>\n                  <TELL \" Since seeing you die, she watches your footing with an attention that is no longer merely professional.\">)>",
+      "new": "           <COND (<MARA-GET ,MARA-SLOT-LADDER-INJURY>\n                  <TELL \" One palm is scraped raw from the Dam ladder, and she is protecting a shoulder that stiffened under the catch.\">)>\n           <COND (<MARA-GET ,MARA-SLOT-DEATH-WITNESSED>\n                  <TELL \" Since seeing you die, she watches your footing with an attention that is no longer merely professional.\">)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? HELLO>>\n           <TELL \"Mara gives you a small nod. Hello, she says. Still here.\" CR>\n           <RTRUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? TAKE>>\n           <MARA-TAKE-REFUSAL>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? PUSH MOVE DROP THROW PUT PUT-ON>>\n           <MARA-RELOCATION-REFUSAL>)",
+      "new": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MARA-RESCUE>>\n           <V-MARA-RESCUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MARA-PROMISE>>\n           <V-MARA-PROMISE>)\n          (<AND <EQUAL? ,PRSO ,MARA>\n                <MARA-GET ,MARA-SLOT-LADDER-PERIL>\n                <VERB? TAKE PUSH MOVE>>\n           <V-MARA-RESCUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? HELLO>>\n           <TELL \"Mara gives you a small nod. Hello, she says. Still here.\" CR>\n           <RTRUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? TAKE>>\n           <MARA-TAKE-REFUSAL>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? PUSH MOVE DROP THROW PUT PUT-ON>>\n           <MARA-RELOCATION-REFUSAL>)"
+    }
+  ]
+}
