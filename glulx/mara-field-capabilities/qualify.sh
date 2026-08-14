@@ -234,7 +234,7 @@ look
 examine overhead service pipe
 ask mara about river
 ask mara about abilities
-examine old brass survey plummet
+ask mara about old brass survey plummet
 maracapstatus
 quit
 yes
@@ -245,7 +245,7 @@ F="$BUILD/frigid-discovery-transcript.txt"
 grep -F 'old fixed service pipe crosses above a narrow side channel' "$F"
 grep -F 'I knew the numbers. I did not know I could do that.' "$F"
 grep -F 'geometry still works when I am the moving point' "$F"
-grep -F 'old brass plummet is a dense teardrop of metal' "$F"
+grep -F 'old brass survey plummet: a dense teardrop of metal' "$F"
 grep -F 'pendulum-discovered=1' "$F"
 grep -F 'plummet=1' "$F"
 grep -F 'TEST plummet custody: Mara.' "$F"
