@@ -1,0 +1,39 @@
+{
+  "edition": "Mara Field Capability Discovery",
+  "release": 1259,
+  "serial": "260814",
+  "base_release": 1258,
+  "base_manifest": "../mara-causal-biography/patch-series.json",
+  "base_artifact_sha256": "cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263",
+  "base_source_sha256": {
+    "production": "6eef374cbd5101127a84a6976cbec5a93807a528132a28a37f57593bf77cb90e",
+    "dev": "65db7bcb614b77ec4e0d6047fd3a667f5a372be93b1b4db5445706b9cf8a7ee7"
+  },
+  "patches": [
+    "patches/001-mara-capability-schema.json",
+    "patches/002-mara-capability-state.json",
+    "patches/003-mara-capability-about.json",
+    "patches/004-mara-capability-actor.json",
+    "patches/005-mara-house-recovery.json",
+    "patches/006-mara-capability-world.json",
+    "patches/007-release-1259.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "house_rest_and_dreams.zil",
+    "mara_companion.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_state.zil",
+    "mara_field_capabilities.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-mara-field-capability-discovery.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103"
+  },
+  "added_files": [
+    "mara_field_capabilities.zil"
+  ]
+}
