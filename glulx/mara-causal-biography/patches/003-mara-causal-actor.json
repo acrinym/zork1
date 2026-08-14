@@ -1,7 +1,7 @@
 {
   "id": "003_MARA_CAUSAL_ACTOR",
   "path": "mara_companion_actor.zil",
-  "description": "Let Mara attempt the real Dam ladder, preserve bodily injury, support rescue/promise actions, keep exact entrusted-rope custody visible and truthful through ordinary GIVE, and preserve parser continuation when the Adventurer tells Mara to act.",
+  "description": "Let Mara attempt the real Dam ladder, preserve bodily injury, support rescue/promise actions, keep exact entrusted-rope custody visible and truthful through ordinary GIVE, and defer quoted actor continuation to canonical Zork V-TELL routing.",
   "replacements": [
     {
       "expected_count": 1,
@@ -26,7 +26,7 @@
     {
       "expected_count": 1,
       "old": "          (<VERB? TELL>\n           <COND (,P-CONT\n                  <SETG WINNER ,MARA>\n                  <SETG HERE <LOC ,MARA>>\n                  <RTRUE>)\n                 (,PRSI <MARA-ABOUT ,PRSI>)\n                 (T <MARA-MEET>)>)",
-      "new": "          (<VERB? TELL>\n           <COND (,P-CONT\n                  <SETG WINNER ,MARA>\n                  <SETG HERE <LOC ,MARA>>\n                  <SETG QUOTE-FLAG T>\n                  <RTRUE>)\n                 (,PRSI <MARA-ABOUT ,PRSI>)\n                 (T <MARA-MEET>)>)"
+      "new": "          (<VERB? TELL>\n           <COND (,P-CONT <RFALSE>)\n                 (,PRSI <MARA-ABOUT ,PRSI>)\n                 (T <MARA-MEET>)>)"
     },
     {
       "expected_count": 1,
