@@ -1,7 +1,7 @@
 {
   "id": "003_MARA_CAUSAL_ACTOR",
   "path": "mara_companion_actor.zil",
-  "description": "Let Mara attempt the real Dam ladder, preserve bodily injury, support rescue/promise actions, and keep exact entrusted-rope custody visible and truthful through ordinary GIVE.",
+  "description": "Let Mara attempt the real Dam ladder, preserve bodily injury, support rescue/promise actions, keep exact entrusted-rope custody visible and truthful through ordinary GIVE, and preserve parser continuation when the Adventurer tells Mara to act.",
   "replacements": [
     {
       "expected_count": 1,
@@ -22,6 +22,11 @@
       "expected_count": 1,
       "old": "           <COND (<MARA-GET ,MARA-SLOT-DEATH-WITNESSED>\n                  <TELL \" Since seeing you die, she watches your footing with an attention that is no longer merely professional.\">)>",
       "new": "           <COND (<MARA-GET ,MARA-SLOT-LADDER-INJURY>\n                  <TELL \" One palm is scraped raw from the Dam ladder, and she is protecting a shoulder that stiffened under the catch.\">)>\n           <COND (<MARA-GET ,MARA-SLOT-DEATH-WITNESSED>\n                  <TELL \" Since seeing you die, she watches your footing with an attention that is no longer merely professional.\">)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<VERB? TELL>\n           <COND (,P-CONT\n                  <SETG WINNER ,MARA>\n                  <SETG HERE <LOC ,MARA>>\n                  <RTRUE>)\n                 (,PRSI <MARA-ABOUT ,PRSI>)\n                 (T <MARA-MEET>)>)",
+      "new": "          (<VERB? TELL>\n           <COND (,P-CONT\n                  <SETG WINNER ,MARA>\n                  <SETG HERE <LOC ,MARA>>\n                  <SETG QUOTE-FLAG T>\n                  <RTRUE>)\n                 (,PRSI <MARA-ABOUT ,PRSI>)\n                 (T <MARA-MEET>)>)"
     },
     {
       "expected_count": 1,
