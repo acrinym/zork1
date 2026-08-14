@@ -112,6 +112,7 @@ for token in (
     "I remember the blue circuit",
     "without volunteering what caught her attention",
     "Keep the useful end in your hands",
+    "I'll take the first run",
 ):
     require(token in causal, f"missing causal biography token: {token}")
 
@@ -193,7 +194,7 @@ GLULXE_BIN="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
 
 cat > "$BUILD/earned-reciprocity.txt" <<'EOF1'
 maraprep
-tell mara to climb down maintenance ladder
+ask mara about ladder
 promise mara
 give field rope to mara
 examine field rope
@@ -210,6 +211,7 @@ EOF1
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
   < "$BUILD/earned-reciprocity.txt" > "$BUILD/earned-reciprocity-transcript.txt" 2>&1
 E="$BUILD/earned-reciprocity-transcript.txt"
+grep -F "I'll take the first run" "$E"
 grep -F 'Her field rope lands in your hands' "$E"
 grep -F 'Keep the useful end in your hands and get me back onto the platform first' "$E"
 grep -F 'The wet measured coil is currently in your hands' "$E"
@@ -240,7 +242,7 @@ grep -F 'rescued-mara=0' "$N"
 
 cat > "$BUILD/broken-promise.txt" <<'EOF3'
 maraprep
-tell mara to climb down maintenance ladder
+ask mara about ladder
 promise mara
 rescue mara
 west
@@ -258,7 +260,7 @@ grep -F 'TEST rope custody: player.' "$P"
 
 cat > "$BUILD/abandonment.txt" <<'EOF4'
 maraprep
-tell mara to climb down maintenance ladder
+ask mara about ladder
 west
 marastatus
 quit
