@@ -50,8 +50,12 @@
     <MARA-FEELING-TEST-BASE>
     <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-FOLLOWING>
     <MOVE ,MARA ,WEST-OF-HOUSE>
+    ;"The canonical ATTACK parser selects an available weapon before Mara's
+      personhood handler runs. Arm the Adventurer with an existing real weapon;
+      the following ATTACK MARA is still the real player action under test."
+    <MOVE ,FIELD-STONE ,ADVENTURER>
     <GOTO ,WEST-OF-HOUSE>
-    <TELL "TEST PRECONDITION: Mara and the Adventurer are together west of the House with no rupture preloaded. The next attack, apology, and movement are real player actions." CR>
+    <TELL "TEST PRECONDITION: Mara and the Adventurer are together west of the House with no rupture preloaded. The Adventurer carries the canonical loose field stone so the next attack reaches the real Mara personhood authority; attack, apology, and movement remain real player actions." CR>
     <RTRUE>>
 
 <ROUTINE V-MARA-REPAIR-TEST ()
