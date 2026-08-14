@@ -27,10 +27,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-mara-causal-biography-shared-danger.ulx",
     "format": "Glulx",
-    "version_hex": "0x00030103"
+    "version_hex": "0x00030103",
+    "size_bytes": 445440,
+    "checksum_hex": "0xa0517751",
+    "sha256": "cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263"
   },
   "added_files": [
     "mara_causal_biography.zil"
