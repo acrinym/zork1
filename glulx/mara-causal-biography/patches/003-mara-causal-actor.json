@@ -1,8 +1,13 @@
 {
   "id": "003_MARA_CAUSAL_ACTOR",
   "path": "mara_companion_actor.zil",
-  "description": "Let Mara attempt the real Dam ladder, preserve bodily injury, support rescue/promise actions, and return her exact entrusted field rope through ordinary GIVE.",
+  "description": "Let Mara attempt the real Dam ladder, preserve bodily injury, support rescue/promise actions, and keep exact entrusted-rope custody visible and truthful through ordinary GIVE.",
   "replacements": [
+    {
+      "expected_count": 1,
+      "old": "                 (<EQUAL? ,PRSO ,MARA-FIELD-ROPE>\n                  <TELL \"Mara's rope is waxed against water, marked at measured intervals, and coiled for use rather than decoration.\" CR>)",
+      "new": "                 (<EQUAL? ,PRSO ,MARA-FIELD-ROPE>\n                  <TELL \"Mara's rope is waxed against water, marked at measured intervals, and coiled for use rather than decoration.\">\n                  <COND (<IN? ,MARA-FIELD-ROPE ,ADVENTURER>\n                         <TELL \" The wet measured coil is currently in your hands under Mara's explicit temporary custody.\" CR>)\n                        (<IN? ,MARA-FIELD-ROPE ,MARA>\n                         <TELL \" Mara has the measured coil in her own custody.\" CR>)\n                        (T\n                         <TELL \" Its physical location, not a relationship flag, determines who has it.\" CR>)>)"
+    },
     {
       "expected_count": 1,
       "old": "          (<VERB? TAKE GIVE MOVE MUNG>\n           <TELL \"Mara keeps custody of her own field equipment. Ask for help with a real task rather than treating her as an equipment locker.\" CR>\n           <RTRUE>)>",
