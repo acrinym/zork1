@@ -1,0 +1,22 @@
+make: Entering directory '/home/runner/work/zork1/zork1/.tooling/glulxe'
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o main.o main.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o files.o files.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o vm.o vm.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o exec.o exec.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o funcs.o funcs.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o operand.o operand.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o string.o string.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o glkop.o glkop.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o heap.o heap.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o serial.o serial.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o search.o search.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o accel.o accel.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o float.o float.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o gestalt.o gestalt.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o osdepend.o osdepend.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o profile.o profile.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o debugger.o debugger.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o unixstrt.o unixstrt.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -I../cheapglk    -c -o unixautosave.o unixautosave.c
+cc -g -Wall -Wmissing-prototypes -Wno-unused -DOS_MAC -o glulxe main.o files.o vm.o exec.o funcs.o operand.o string.o glkop.o heap.o serial.o search.o accel.o float.o gestalt.o osdepend.o profile.o debugger.o unixstrt.o unixautosave.o -L../cheapglk /home/runner/work/zork1/zork1/.tooling/cheapglk/libcheapglk.a  -lm 
+make: Leaving directory '/home/runner/work/zork1/zork1/.tooling/glulxe'

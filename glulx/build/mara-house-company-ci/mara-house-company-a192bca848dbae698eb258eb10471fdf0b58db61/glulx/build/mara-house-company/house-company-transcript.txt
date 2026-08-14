@@ -1,0 +1,354 @@
+Welcome to the Cheap Glk Implementation, library version 1.0.7.
+
+ZORK I: The Great Underground Empire
+Infocom interactive fiction - a fantasy story
+Copyright (c) 1981, 1982, 1983, 1984, 1985, 1986 Infocom, Inc. All rights reserved.
+Adapted by Tara McGrew (2025)
+ZORK is a registered trademark of Infocom, Inc.
+Release 1244 / Serial number 260810
+
+West of House
+You are standing in an open field west of a white house, with a boarded front door.
+There is a small mailbox here.
+
+>  West of HouseScore: 0Moves: 0South of House
+You are facing the south side of a white house. There is no door here, and all the windows are boarded.
+
+>  South of HouseScore: 0Moves: 1Behind House
+You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.
+
+>  Behind HouseScore: 0Moves: 2With great effort, you open the window far enough to allow entry.
+
+>  Behind HouseScore: 0Moves: 3Kitchen
+You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. A passage leads to the west and a dark staircase can be seen leading upward. A dark chimney leads down and to the east is a small window which is open.
+The opened routes and recently used table make the kitchen feel less abandoned than merely unattended.
+ The room now contains a porcelain sink, a broad worktop, a wooden cupboard, and a cast-iron range.
+On the table is an elongated brown sack, smelling of hot peppers.
+A bottle is sitting on the table.
+The glass bottle contains:
+  A quantity of water
+
+>  KitchenScore: 10Moves: 4Living Room
+You are in the living room. There is a doorway to the east, a wooden door with strange gothic lettering to the west, which appears to be nailed shut, a trophy case, and a large oriental rug in the center of the room.
+For all its dust, the room bears the faint first impression of being used again.
+A deep frame, a bracketed weapon wall, a narrow record shelf, and a low relic stand make the room usable as a small private museum.
+Above the trophy case hangs an elvish sword of great antiquity.
+A battery-powered brass lantern is on the trophy case.
+A dark-backed case marked CREATURES AND MONSTROUS ZOOLOGY stands beyond the Forest display. A small provenance plaque sits beside it.
+A low glass case marked FOREST AND SURFACE LIFE stands beside the flowing Waters display.
+A shallow flowing museum case is built beneath a brass WATERS OF THE EMPIRE heading.
+A broad water-filled specimen jar stands beside the fishing rod.
+A jointed ash fishing rod leans beside the museum displays.
+
+>  Living RoomScore: 10Moves: 5Taken.
+
+>  Living RoomScore: 10Moves: 6Taken.
+
+>  Living RoomScore: 10Moves: 7With a great effort, the rug is moved to one side of the room, revealing the dusty cover of a closed trap door.
+
+>  Living RoomScore: 10Moves: 8The door reluctantly opens to reveal a rickety staircase descending into darkness.
+
+>  Living RoomScore: 10Moves: 9The brass lantern is now on.
+
+>  Living RoomScore: 10Moves: 10At the exposed trap-door threshold, you take stock before descending.
+No selected carried hazard requires a threshold warning.
+The trap door crashes shut, and you hear someone barring it.
+
+Cellar
+You are in a dark and damp cellar with a narrow passageway leading north, and a crawlway to the south. On the west is the bottom of a steep metal ramp which is unclimbable.
+The cellar feels less like another room of the house than the place where the house gives way to the underground.
+ A broad stone staging bench, iron gear hooks, and a closable quarantine niche occupy the house side of the room. The trap door is shut and barred from above.
+Your sword is glowing with a faint blue glow.
+
+>  CellarScore: 35Moves: 11The Troll Room
+This is a small room with passages to the east and south and a forbidding hole leading west. Bloodstains and deep scratches (perhaps made by an axe) mar the walls.
+A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room.
+Your sword has begun to glow very brightly.
+
+>  The Troll RoomScore: 35Moves: 12You charge, but the troll jumps nimbly aside.
+The troll swings his axe, but it misses.
+
+>  The Troll RoomScore: 35Moves: 13The troll is battered into unconsciousness.
+A coarse iron-grey tuft shakes loose from the sprawled troll and catches against one of the bloodstained wall scratches.
+
+>  The Troll RoomScore: 35Moves: 14The unconscious troll cannot defend himself: He dies.
+Almost as soon as the troll breathes his last breath, a cloud of sinister black fog envelops him, and when the fog lifts, the carcass has disappeared.
+Your sword is no longer glowing.
+
+>  The Troll RoomScore: 35Moves: 15East-West Passage
+This is a narrow east-west passageway. There is a narrow stairway leading down at the north end of the room.
+
+>  East-West PassageScore: 40Moves: 16Round Room
+This is a circular stone room with passages in all directions. Several of them have unfortunately been blocked by cave-ins.
+
+>  Round RoomScore: 40Moves: 17North-South Passage
+This is a high north-south passage, which forks to the northeast.
+
+>  North-South PassageScore: 40Moves: 18Deep Canyon
+You are on the south edge of a deep canyon. Passages lead off to the east, northwest and southwest. A stairway leads down. You can hear the sound of flowing water from below.
+
+>  Deep CanyonScore: 40Moves: 19Dam
+You are standing on the top of the Flood Control Dam #3, which was quite a tourist attraction in times far distant. There are paths to the north, south, and west, and a scramble down.
+The sluice gates on the dam are closed. Behind the dam, there can be seen a wide reservoir. Water is pouring over the top of the now abandoned dam.
+There is a control panel here, on which a large metal bolt is mounted. Directly above the bolt is a small green plastic bubble.
+Your sword is glowing with a faint blue glow.
+
+>  DamScore: 40Moves: 20Dam Base
+You are at the base of Flood Control Dam #3, which looms above you and to the north. The river Frigid is flowing by here. Along the river are the White Cliffs which seem to form giant walls stretching from north to south along the shores of the river as it winds its way downstream.
+There is a folded pile of plastic here which has a small valve attached.
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+Mara's waxed canvas field pack is secured with a surveyor's locking hitch.
+Your sword has begun to glow very brightly.
+
+>  Dam BaseScore: 40Moves: 21Dam Base
+You are at the base of Flood Control Dam #3, which looms above you and to the north. The river Frigid is flowing by here. Along the river are the White Cliffs which seem to form giant walls stretching from north to south along the shores of the river as it winds its way downstream.
+There is a folded pile of plastic here which has a small valve attached.
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+Mara's waxed canvas field pack is secured with a surveyor's locking hitch.
+
+>  Dam BaseScore: 40Moves: 22The woman closes a waxed survey book around one finger. Mara Tallow, she says. Field surveyor. I am reconstructing the Last Honest Survey of the Great Underground Empire, which means finding where the official maps began lying. This dam is currently giving testimony.
+
+>  Dam BaseScore: 40Moves: 22The Last Honest Survey was the final route record made before imperial embarrassment became cartography, Mara says. She needs measurements, witnessed mechanisms, and evidence that cannot be corrected by decree.
+
+>  Dam BaseScore: 40Moves: 22Mara closes her notebook. As far as the Dam survey takes us, she says. Do not mistake that for an oath to follow you into every hole in the Empire.
+
+>  Dam BaseScore: 40Moves: 23Dam
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  DamScore: 40Moves: 24The control panel reports no words, but its physical state is readable:
+- The yellow interlock circuit is disarmed.
+- The sluice gates are closed.
+- The reservoir is high and held behind the closed gates.
+- The maintenance-room leak circuit is inactive.
+
+>  DamScore: 40Moves: 25Dam Lobby
+This room appears to have been the waiting room for groups touring the dam. There are open doorways here to the north and east marked "Private", and there is a path leading south over the top of the dam.
+Some guidebooks entitled "Flood Control Dam #3" are on the reception desk.
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+There is a matchbook whose cover says "Visit Beautiful FCD#3" here.
+
+>  Dam LobbyScore: 40Moves: 26Maintenance Room
+This is what appears to have been the maintenance room for Flood Control Dam #3. Apparently, this room has been ransacked recently, for most of the valuable equipment is gone. On the wall in front of you is a group of buttons colored blue, yellow, brown, and red. There are doorways to the west and south.
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+There is a group of tool chests here.
+There is a wrench here.
+There is an object which looks like a tube of toothpaste here.
+There is a screwdriver here.
+
+>  Maintenance RoomScore: 40Moves: 27Taken.
+
+>  Maintenance RoomScore: 40Moves: 28Click.
+
+>  Maintenance RoomScore: 40Moves: 29Mara closes her notebook. As far as the Dam survey takes us, she says. Do not mistake that for an oath to follow you into every hole in the Empire.
+
+>  Maintenance RoomScore: 40Moves: 30Dam Lobby
+Some guidebooks entitled "Flood Control Dam #3" are on the reception desk.
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+There is a matchbook whose cover says "Visit Beautiful FCD#3" here.
+
+>  Dam LobbyScore: 40Moves: 31Dam
+You are standing on the top of the Flood Control Dam #3, which was quite a tourist attraction in times far distant. There are paths to the north, south, and west, and a scramble down.
+The sluice gates on the dam are closed. Behind the dam, there can be seen a wide reservoir. Water is pouring over the top of the now abandoned dam.
+There is a control panel here, on which a large metal bolt is mounted. Directly above the bolt is a small green plastic bubble which is glowing serenely.
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  DamScore: 40Moves: 32Mara plants one boot against the stone curb and braces the control panel at its load-bearing edge. Turn the bolt with the wrench, she says. If the yellow interlock is armed, I can keep the panel from walking while the gates take the force.
+
+>  DamScore: 40Moves: 33The sluice gates open and water pours through the dam.
+Mara keeps both hands against the shuddering panel while the bolt turns. When the deeper machinery takes the load, she does not celebrate; she watches the stone, counts the delay, and says, Again, but now we know which part of the map was lying.
+
+>  DamScore: 40Moves: 34You compare the armed circuit, bolt travel, gate state, reservoir trend, vibration delay, and old pressure scars. Mara records her measurements beside yours, crosses out the official claim of independent controls, and folds one waxed sheet into her coat. The first shared entry in the Last Honest Survey now exists as a physical document. Functional alliance has become chosen company within the routes you have actually earned together.
+
+>  DamScore: 40Moves: 35Deep Canyon
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  Deep CanyonScore: 40Moves: 36North-South Passage
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  North-South PassageScore: 40Moves: 37Round Room
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  Round RoomScore: 40Moves: 38East-West Passage
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  East-West PassageScore: 40Moves: 39The Troll Room
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+A coarse tuft of iron-grey troll fur lies here, dark at the roots and stiff as wire.
+There is a bloody axe here.
+A seedy-looking individual with a large bag just wandered through the room. On the way through, he quietly abstracted some valuables from your possession, mumbling something about "Doing unto others before..."
+
+>  The Troll RoomScore: 40Moves: 40Cellar
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+Someone carrying a large bag is casually leaning against one of the walls here. He does not speak, but it is clear from his aspect that the bag will be taken only over his dead body.
+
+>  CellarScore: 40Moves: 41A black thread catches in a crack beside a careful heel scuff.
+The threshold is not a new exit. It is the exact junction of the real trap-door stair, northern passage, southern crawlway, and the objects you deliberately leave here.
+The thief slowly approaches, strikes like a snake, and leaves you wounded.
+
+>  CellarScore: 40Moves: 42Mara uncoils her own measured rope and works its narrow end through the real trap-door seam. You lift from below until the wood takes some of the weight; she feeds the line across the hidden upper bar, catches it, and draws while you keep the door from dropping. The bar scrapes once across the floor above, then comes free.
+
+The same trap door that locked behind you now stands open above the same stair. Mara recoils her rope herself. Up is physically possible again, but only because two people just did the work.
+The thief attacks, and you fall back desperately.
+
+>  CellarScore: 40Moves: 43Before carrying the expedition back into the Living Room, the threshold records what is coming home.
+No selected carried hazard requires a threshold warning.
+Mara crosses the threshold, then stopsnot at the treasure, but at the signs that the House has been repaired, damaged, used, and returned to. So this is the base, she says.
+Living Room
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+A dark-backed case marked CREATURES AND MONSTROUS ZOOLOGY stands beyond the Forest display. A small provenance plaque sits beside it.
+A low glass case marked FOREST AND SURFACE LIFE stands beside the flowing Waters display.
+A shallow flowing museum case is built beneath a brass WATERS OF THE EMPIRE heading.
+A broad water-filled specimen jar stands beside the fishing rod.
+A jointed ash fishing rod leans beside the museum displays.
+
+>  Living RoomScore: 40Moves: 44The House is a base with the alarming habit of becoming a life, Mara says. She noticed the archive, the kitchen, the damage, and the fact that you returned to it rather than merely storing treasure there.
+
+>  Living RoomScore: 40Moves: 44Mara does not answer immediately. Then: I would consider using the House as a base. But my field pack is still at the Dam. We do not make a new life by pretending the old one teleported. Come back with me; at the Dam Base, ask me to take my pack.
+
+>  Living RoomScore: 40Moves: 45At the exposed trap-door threshold, you take stock before descending.
+No selected carried hazard requires a threshold warning.
+Cellar
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  CellarScore: 40Moves: 46The Troll Room
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+A coarse tuft of iron-grey troll fur lies here, dark at the roots and stiff as wire.
+There is a bloody axe here.
+
+>  The Troll RoomScore: 40Moves: 47East-West Passage
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  East-West PassageScore: 40Moves: 48Round Room
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  Round RoomScore: 40Moves: 49North-South Passage
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  North-South PassageScore: 40Moves: 50Deep Canyon
+You are on the south edge of a deep canyon. Passages lead off to the east, northwest and southwest. A stairway leads down. You can hear the sound of flowing water from below.
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  Deep CanyonScore: 40Moves: 51Dam
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  DamScore: 40Moves: 52Dam Base
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+There is a folded pile of plastic here which has a small valve attached.
+Mara's waxed canvas field pack is secured with a surveyor's locking hitch.
+
+>  Dam BaseScore: 40Moves: 53Mara kneels at the waxed pack, checks the notebook seal, coils the loose camp cord, and shoulders the weight herself. Nothing changes custody: the pack was hers at the Dam and is hers on the road. All right, she says. Now we can see whether your House can hold a second route without swallowing it.
+
+>  Dam BaseScore: 40Moves: 54Mara Tallow is a dark-haired field surveyor in a weathered coat, with a measured rope and hooded lantern carried as her own equipment. She watches routes, load-bearing stone, water marks, and people with the same patient suspicion. A folded joint Dam survey rests inside her coat. Her waxed field pack is on her own shoulder.
+
+>  Dam BaseScore: 40Moves: 55Mara settles the survey rope across her shoulder. For the routes we have actually agreed to share, yes.
+
+>  Dam BaseScore: 40Moves: 56Dam
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  DamScore: 40Moves: 57Deep Canyon
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  Deep CanyonScore: 40Moves: 58North-South Passage
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  North-South PassageScore: 40Moves: 59Round Room
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  Round RoomScore: 40Moves: 60East-West Passage
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  East-West PassageScore: 40Moves: 61The Troll Room
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+A coarse tuft of iron-grey troll fur lies here, dark at the roots and stiff as wire.
+There is a bloody axe here.
+
+>  The Troll RoomScore: 40Moves: 62Cellar
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+
+>  CellarScore: 40Moves: 63Before carrying the expedition back into the Living Room, the threshold records what is coming home.
+No selected carried hazard requires a threshold warning.
+Living Room
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+A dark-backed case marked CREATURES AND MONSTROUS ZOOLOGY stands beyond the Forest display. A small provenance plaque sits beside it.
+A low glass case marked FOREST AND SURFACE LIFE stands beside the flowing Waters display.
+A shallow flowing museum case is built beneath a brass WATERS OF THE EMPIRE heading.
+A broad water-filled specimen jar stands beside the fishing rod.
+A jointed ash fishing rod leans beside the museum displays.
+
+>  Living RoomScore: 40Moves: 64Kitchen
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+On the table is an elongated brown sack, smelling of hot peppers.
+A bottle is sitting on the table.
+The glass bottle contains:
+  A quantity of water
+
+>  KitchenScore: 40Moves: 65Attic
+This is the attic. The only exit is a stairway leading down.
+The dust remains, but the attic now feels less like forgotten storage and more like a place waiting to remember.
+The archive cabinet now contains a bounded file for the hazards that actually reached the house.
+A large coil of rope is lying in the corner.
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+On a table is a nasty-looking knife.
+A second completed expedition box remains physically separate from the first.
+A first completed expedition box waits beneath the chronology shelf.
+A corkboard holds maps and cross-reference strings between physical filing codes.
+A compact viewer handles film, slides, and microfiche without altering the events they depict.
+A portable cassette recorder rests beside the catalog for bounded textual playback.
+A green-phosphor terminal can locate physical records but stores none of them.
+A labeled banker box waits for records belonging to a separate expedition history.
+A gray steel filing cabinet occupies the driest wall of the Attic.
+The gray steel filing cabinet contains:
+  A house chronology cassette
+  A HOUSE-THRESHOLD-01 folder
+  A black thief property dossier
+  A bounded forensic printer strip
+  A red Flood Control Dam case file
+  A encounter timeline cassette
+  A green troll dossier
+  A brown underground case file
+  A cream chronology scene card
+  A green place scene card
+  A yellow actor scene card
+  A blue incident scene card
+  A expedition playback cassette
+  A continuous-feed expedition transcript
+  A gray house vulnerability file
+  A white house case file
+An oak card catalog stands beneath the rafters, its brass labels arranged by person, place, object, incident, chronology, and expedition.
+
+>  AtticScore: 40Moves: 66Mara tests the Attic floorboards, the roofline, the windowless angles, and the distance to the stair before setting down her own field pack. This will do, she says. I am choosing to use the House as a base. The pack stays mine, the room stays yours, and either of us may change the arrangement by saying so. For now, the House contains one more actual life.
+
+>  AtticScore: 40Moves: 67Mara Tallow is a dark-haired field surveyor in a weathered coat, with a measured rope and hooded lantern carried as her own equipment. She watches routes, load-bearing stone, water marks, and people with the same patient suspicion. A folded joint Dam survey rests inside her coat. Her field pack remains in the Attic where she chose to set it down. She is waiting here by explicit agreement.
+
+>  AtticScore: 40Moves: 68Mara settles the survey rope across her shoulder. For the routes we have actually agreed to share, yes.
+
+>  AtticScore: 40Moves: 69Kitchen
+Mara Tallow is here with a waxed survey book, watching the route rather than waiting to be assigned one.
+On the table is an elongated brown sack, smelling of hot peppers.
+A bottle is sitting on the table.
+The glass bottle contains:
+  A quantity of water
+
+>  KitchenScore: 40Moves: 70Taken.
+
+>  KitchenScore: 40Moves: 71Opening the brown sack reveals a lunch, and a clove of garlic.
+
+>  KitchenScore: 40Moves: 72Taken.
+
+>  KitchenScore: 40Moves: 73Done.
+
+>  KitchenScore: 40Moves: 74You unwrap and arrange the hot-pepper sandwich on the worktop. It remains the real lunch and carries no hunger score.
+
+>  KitchenScore: 40Moves: 75You divide the real prepared lunch on the wooden worktop. Mara takes one half and you take the other. There is no conjured second plate and no duplicate sandwich; one physical meal becomes two eaten portions. She eats in companionable silence for a while, then says, A base is partly where someone can be hungry without performing it. The shared meal clears your accumulated strain, though splitting it leaves a smaller reserve than eating the whole thing alone.
+
+>  KitchenScore: 40Moves: 76We have worked a dangerous mechanism, carried my camp from one base to another, and split food neither of us could eat twice, Mara says. That is friendship with weight in the world. I prefer it to a title.
+
+>  KitchenScore: 40Moves: 76The House has crossed from claim to evidence, Mara says. My pack is in the Attic by consent, and the Kitchen has produced one meal we both actually ate. That is a base, not scenery.
+
+>  KitchenScore: 40Moves: 76Mara's expression warms, but she does not meet you halfway. A shared base and a shared meal are history, she says, not permission to skip the history that has not happened yet.
+
+>  KitchenScore: 40Moves: 77You can't see any lunch here!
+
+>  KitchenScore: 40Moves: 78Your score is 40 (total of 350 points), in 78 moves.
+This gives you the rank of Amateur Adventurer.
+Do you wish to leave the game? (Y is affirmative): >

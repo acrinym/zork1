@@ -1,0 +1,20 @@
+  Determining projects to restore...
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/thirdparty/fyrevm-dotnet/FyreVM/FyreVM.csproj (in 1.5 sec).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Zilf.Emit/Zilf.Emit.csproj (in 1.5 sec).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/test/Zilf.Emit.Tests/Zilf.Emit.Tests.csproj (in 515 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/test/Zilf.Tests/Zilf.Tests.csproj (in 2.03 sec).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/test/Zapf.Tests/Zapf.Tests.csproj (in 92 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/test/Dezapf.Tests/Dezapf.Tests.csproj (in 6 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Dezapf/Dezapf.csproj (in 4 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/test/Zilf.Tests.Integration/Zilf.Tests.Integration.csproj (in 646 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/test/Zilf.Common.Tests/Zilf.Common.Tests.csproj (in 180 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Analyzers/ZilfAnalyzers/ZilfAnalyzers.csproj (in 757 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Analyzers/ZilfSourceGenerators/ZilfSourceGenerators.csproj (in 813 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Analyzers/ZilfAnalyzers.Test/ZilfAnalyzers.Test.csproj (in 3.16 sec).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Zilf.Common/Zilf.Common.csproj (in 2 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/ZilfPub/ZilfPub.csproj (in 8.57 sec).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Zilf/Zilf.csproj (in 7.96 sec).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Zapf/Zapf.csproj (in 7.48 sec).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Zapf.Parsing/Zapf.Parsing.csproj (in 2 ms).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/Zilf.Playground/Zilf.Playground.csproj (in 8.71 sec).
+  Restored /home/runner/work/zork1/zork1/.tooling/zilf-glulx/src/WindowsInstaller/WindowsInstaller.csproj (in 1.35 sec).

@@ -1,0 +1,85 @@
+south
+east
+open window
+enter
+west
+take lantern
+take sword
+move rug
+open trap door
+turn on lantern
+down
+north
+attack troll with sword
+attack troll with sword
+attack troll with sword
+east
+east
+north
+ne
+east
+down
+look
+talk to mara
+ask mara about survey
+mara, follow me
+up
+examine control panel
+north
+north
+take wrench
+mara, push yellow button
+mara, follow me
+south
+south
+mara, brace control panel
+turn bolt with wrench
+survey control panel with mara
+south
+sw
+south
+west
+west
+south
+examine threshold
+unbar trap door with mara
+up
+ask mara about house
+invite mara
+down
+north
+east
+east
+north
+ne
+east
+down
+mara, take pack
+examine mara
+mara, follow me
+up
+south
+sw
+south
+west
+west
+south
+up
+east
+up
+invite mara
+examine mara
+mara, follow me
+down
+take sack
+open sack
+take lunch
+put lunch on worktop
+prepare lunch
+share lunch with mara
+ask mara about company
+ask mara about house
+kiss mara
+share lunch with mara
+quit
+yes

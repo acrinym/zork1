@@ -1,0 +1,21 @@
+  ZilfSourceGenerators -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/netstandard2.0/ZilfSourceGenerators.dll
+  WindowsInstaller -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0-windows/WindowsInstaller.dll
+  Zilf.Common -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/Zilf.Common.dll
+  Zapf.Parsing -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/Zapf.Parsing.dll
+  ZilfAnalyzers -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/ZilfAnalyzers.dll
+  Successfully created package '/home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/ZilfAnalyzers.1.0.0.nupkg'.
+  FyreVM -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/netstandard2.1/FyreVM.dll
+  Zilf.Common.Tests -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/Zilf.Common.Tests.dll
+  ZilfPub -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/zilfpub.dll
+  Zapf -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/zapf.dll
+  Dezapf -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/Dezapf.dll
+  Zilf.Emit -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/Zilf.Emit.dll
+  Zilf -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/zilf.dll
+  Zilf.Playground -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/Zilf.Playground.dll
+  Zilf.Playground (Blazor output) -> /home/runner/work/zork1/zork1/.tooling/zilf-glulx/bin/Release/net10.0/wwwroot
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:35.15
