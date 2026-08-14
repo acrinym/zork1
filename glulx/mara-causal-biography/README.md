@@ -12,7 +12,7 @@ The existing Flood Control Dam #3 maintenance ladder becomes a shared-danger cha
 - her existing warned-and-ignored blue-circuit history;
 - ordinary player movement and object custody.
 
-When asked to descend the dangerous ladder, Mara can slip, scrape a palm, and injure her shoulder. Her rope physically lands in the Adventurer's custody.
+When asked about the dangerous ladder, Mara can decide to inspect the route herself. She can slip, scrape a palm, and injure her shoulder. Her rope physically lands in the Adventurer's custody.
 
 The Adventurer can:
 
@@ -66,6 +66,23 @@ Release 1258 advances Mara's table state to schema 6 with named propositions for
 These are not a generic psychology engine. They are compact, inspectable reasons attached to things that actually happened.
 
 Schema 3, 4, and 5 histories migrate forward without erasing previous House, Dam, hostility, evidence, or witnessed-death history.
+
+## Qualification
+
+Hosted qualification plays four complete histories rather than asserting only state transitions:
+
+1. earned reciprocity: Mara chooses the ladder, is rescued, receives her exact rope back, later catches the Adventurer, privately notices the survey punch, and discloses it only when asked;
+2. warned-but-not-repaired precedent: ignored-warning history blocks another overloaded improvisation;
+3. broken promise: Mara is rescued but the Adventurer leaves with her rope after promising its return;
+4. abandonment: the Adventurer leaves while Mara is still in active peril and she must get herself back over the ladder lip.
+
+The locked production artifact is:
+
+- size: `445440` bytes;
+- Glulx checksum: `0xa0517751`;
+- SHA-256: `cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263`.
+
+Candidate identity and all four gameplay histories were produced together by hosted qualification run `31771976811` before the identity was pinned for the final locked rerun.
 
 ## Product boundary
 
