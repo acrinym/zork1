@@ -1,9 +1,9 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** August 13, 2026  
+**Updated:** August 14, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1256` — Grue Ecology & Colony Reveal  
-**`master` head before Release 1257 merge:** `14d1be667db3110d532b0e2c28f00b92371693fc`
+**Current merged production frontier:** Release `1257` — Fire, Smoke & Structural Consequences  
+**`master` head:** `8b6a390f959b5156876faf9d421c345a74e54423`
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -16,69 +16,78 @@ This board is the human operating surface for the active Zork product queue. The
 - Reusable tools remain reusable where the same physical logic reasonably applies.
 - Player ingenuity should reduce repeated friction, not create a fetch-grind tax.
 - Soft sequence breaks are allowed when physically earned, state-safe, and non-bricking.
+- Mara remains one authored human adventurer: no approval meter, generic follower framework, skill tree, or omniscient companion AI.
 - No universal crafting grid, arbitrary object-pair matrix, generic physics simulator, recursive audit machinery, TODO-only slice, or no-op scaffolding.
 - **DONE** requires merged or otherwise immutable proof.
 
 ## CURRENT
 
-### Release 1257 — Fire, Smoke & Structural Consequences
+### Release 1258 — Mara Causal Biography & Shared Danger
 
-**Active branch:** `agent/fire-smoke-structural-consequences-20260812`  
-**PR:** #62  
-**Base:** merged Release 1256 on `master`
+**Active branch:** `agent/mara-causal-biography-shared-danger-20260813`  
+**PR:** #63  
+**Base:** merged Release 1257 on `master`  
+**Status:** artifact locked; final hosted qualification in progress / awaiting clean completion; merge still requires Justin's explicit whistle.
 
-**Player outcome:** the canonical Timber Room now supports one persistent authored fire lifecycle using real flame, limited bottled water, existing mine airflow, and persistent physical aftermath instead of a generic fire or chemistry simulator.
+**Player outcome:** Mara's later behavior can now be caused by named things she actually lived through rather than a global relationship score.
 
 Current showcase:
 
-- the dry broken timbers are a real burn target, but first ignition produces a recoverable smolder rather than instant deletion or explosion;
-- a new smolder can be stamped out or doused with the real bottled water before it earns open flame;
-- ignored smolder becomes open flame, and the room's existing westward draft drives smoke into the narrow west crawl while preserving the wide east escape;
-- once open flame has established through the timber pile, one bottle of water is no fire hose: it hisses into steam and darkens a patch, but the structural fire continues advancing;
-- repeatedly trying the bottle or `EXTINGUISH TIMBERS` after open flame cannot freeze the fire clock;
-- ignored open flame gives audible structural warning before one old brace drops into the burning clutter;
-- the fire eventually burns itself down to a persistent charred heap and fallen brace;
-- the collapse does not widen, delete, or brick the canonical `EMPTY-HANDED` narrow passage;
-- fire state is table-backed and consumes zero new VM globals;
-- canonical `gverbs.zil` / `V-BURN` and canonical Gas Room behavior in `1actions.zil` remain byte-for-byte unchanged;
-- the canonical coal object remains real, movable, and burnable.
+- asking Mara about the dangerous Dam ladder can lead **her** to decide to inspect it herself;
+- a real slip creates a persistent bodily injury and moves her one exact measured field rope into the Adventurer's custody;
+- `PROMISE MARA`, `RESCUE MARA`, ordinary `GIVE FIELD ROPE TO MARA`, movement, and abandonment create distinct lived facts;
+- returning the exact entrusted rope can complete the narrow promise, while leaving with it can break the promise without inventing a dialogue-choice abstraction;
+- later overloaded ladder danger can be refused because of concrete precedent or accepted because rescue + exact rope return created stronger contrary evidence;
+- in the earned history Mara catches the Adventurer with her own rope, then independently notices an old survey punch and withholds disclosure until later asked;
+- the new causal decision does not consult legacy `TRUST`, `RESPECT`, or `SAFETY` slots;
+- Release 1253 Dam survival remains authoritative outside Mara's narrow intervention; Release 1257 fire authority remains unchanged.
 
-Release 1257 is fully qualified against the repaired merged Release-1256 lineage. Locked production artifact SHA-256:
+Locked Release 1258 production artifact:
 
-`d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444`
+- SHA-256: `cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263`
+- size: `445440` bytes
+- checksum: `0xa0517751`
 
-Artifact size/checksum:
-
-- size: `438784` bytes
-- checksum: `0x73c14bad`
-
-Exact qualified staged-source identities:
-
-- production: `f73099921f56be8e496aab560e81c5fcf4722b6b9c45c97750597140d8d25ff6`
-- dev: `e99fd0e5331edbb4bc0a8faea0961f200e8fa356c84e8ac608c4df738814071c`
-
-Final locked qualification run: `31741847431`.
-
-The qualification explicitly proves both sides of the water-scale rule: bottled water can stop the fresh smolder, while bottled water used after open flame produces steam but leaves the fire burning, after which the brace still falls and the aftermath still reaches the charred state.
+Hosted candidate qualification run `31771976811` played all four histories successfully and intentionally stopped at the artifact-lock gate; the exact identity above is now pinned for the final rerun.
 
 ## NEXT — ordered
 
-### 1. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+### 1. Release 1259 — Mara Field Capability Discovery
 
-Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions without an approval meter.
+**Stack branch reserved:** `agent/mara-field-capability-discovery-20260814`  
+**Dependency:** inherit the final Release 1258 head after its locked qualification completes.
 
-**Discussion checkpoint:** do not begin implementation until the train is discussed with Justin.
+Build **capability biography**, not a skill tree. Mara discovers that things she already knows intellectually or professionally can become surprising physical and perceptual abilities under real conditions.
+
+Planned authored expedition arc:
+
+- a completed House rest can let her Dam shoulder recover without erasing the biographical fact or scar of the injury;
+- at the River Frigid, survey geometry plus her measured field rope and a real fixed overhead service point can become an improvised pendulum traversal she did not know she could physically execute;
+- the first successful traversal should surprise Mara herself rather than announce an unlock;
+- the traversal can recover a real old survey object, giving the discovery physical evidence rather than a capability flag alone;
+- a later Loud Room / canyon situation can reveal bounded acoustic-ranging ability rooted in years of listening to structures and spaces;
+- at least one newly discovered capability must later be deliberately reused by Mara, proving learning rather than a one-off cutscene;
+- helpful field competence may include bounded first aid / stabilization where an authored injury makes it physically relevant.
+
+Boundaries:
+
+- no `Acrobatics +1`, XP, perk menu, class system, or generic skill framework;
+- no superpowers or sudden personality rewrite;
+- no automatic puzzle solving or conversion of Mara into a hint engine;
+- no Lara Croft clone: adventurous physical competence is allowed, but Mara remains fallible, independent, injured by mistakes, and capable of choosing not to act;
+- discoveries must grow from Mara Tallow's existing biography: survey math, route history, field practice, observation, and lived danger.
 
 ## FUTURE
 
-- **Treasure Guardian Dragon & Hoard** — create an original Zork-native dragon encounter around a real treasure hoard, authored territorial behavior, visible warning signs, and dangerous fire breath. Fire should compose with the Release-1257 fire/smoke/material-consequence authority, while the encounter supports multiple credible Zork solutions such as preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation rather than becoming a generic hit-point boss fight. Shadowgate is inspiration for the encounter archetype only; all prose, code, map layout, puzzle expression, objects, and exact solution structure are rebuilt from scratch.
-- **Cross-IF / RPG Mechanics Adaptation — Shadowgate First** — deliberately study high-value mechanics and interaction patterns from other interactive-fiction games and RPGs, beginning with Shadowgate, then rebuild selected ideas as original Zork-native systems that compose with canonical state and the existing physicality mesh. Borrow concepts and design lessons, not source code, text, art, maps, exact puzzles, or expressive sequencing. Later widen the inspiration pool to other IF/RPGs and eventually selected S.T.A.L.K.E.R.-inspired mechanics, while keeping the separate S.T.A.L.K.E.R. Glulx product lane distinct.
-- **Forest That Answers Back / Described World = Interactive World** — promote selected concrete nouns already present in authored forest descriptions into targetable, stateful world objects whose interactions compose with existing physicality rather than becoming decorative prose or a generic object generator.
-- **Time, Weather & Disaster Arc** — layer authored time/weather conditions and selected disasters onto real geography and existing material state only where they create meaningful preparation, shelter, traversal, rescue, and aftermath play; no generic climate simulator.
-- **Causal Death & Warning Depth** — authored fair warning, near-death, delayed-consequence, and exact-object provenance expansions.
+- **Mara Longer Biography** — recovery over time, conflicting promises, longer separation, discoveries she chooses whether/when to disclose, archive disagreement, thief manipulation, troll judgment, mistakes made without the player present, repair after betrayal, changing interpretations of the Adventurer, deeper friendship, and optional romance only if lived history earns it.
+- **Treasure Guardian Dragon & Hoard** — original Zork-native dragon encounter around a real treasure hoard, authored territorial behavior, visible warning signs, dangerous fire breath, and multiple credible Zork approaches rather than a generic hit-point boss fight.
+- **Cross-IF / RPG Mechanics Adaptation — Shadowgate First** — study useful mechanics and rebuild selected concepts from scratch as original Zork-native systems; borrow design lessons, not protected expression.
+- **Forest That Answers Back / Described World = Interactive World** — promote selected concrete nouns already present in forest descriptions into targetable, stateful world objects.
+- **Time, Weather & Disaster Arc** — authored conditions layered onto real geography and existing material state; no generic climate simulator.
+- **Causal Death & Warning Depth** — fair warning, near-death, delayed-consequence, and exact-object provenance expansions.
 - **Museum & Ecology second expansion** — only where collection creates new field play rather than checklist accumulation.
 - **Narrative Perspective Experiments** — isolated first-person, third-person, and interactive-storybook editions against real canonical state.
-- **Far-horizon DRAW + multi-agent experiments** — isolated experimental editions/tools only after the playable product supports them; keep them out of the canonical release train until deliberately promoted.
+- **Far-horizon DRAW + multi-agent experiments** — isolated experimental editions/tools only after the playable product supports them.
 - Additional selected authored consequences from `LIVING_ZORK_FUTURE_IDEAS_KANBAN.md`.
 
 ## PARKED / SEPARATE
@@ -119,6 +128,7 @@ Advance Mara through reciprocal rescue, injuries/recovery, promises, exact tempo
 | 1254 | Troll Disarm & Stolen Weapons | #59 |
 | 1255 | Thief Retaliation & Sabotage | #60 |
 | 1256 | Grue Ecology & Colony Reveal | #61 |
+| 1257 | Fire, Smoke & Structural Consequences | #62 |
 
 Recent merged production receipts:
 
@@ -126,7 +136,8 @@ Recent merged production receipts:
 - Release 1254 merge `7b99869d8cb2e6db93243432fd8140a937205f44`; artifact `86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0`.
 - Release 1255 merge `8ad53ebc2ec2ce2a454ce6951d919bb1a2025937`; artifact `03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be`.
 - Release 1256 merge `14d1be667db3110d532b0e2c28f00b92371693fc`; artifact `59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975`.
+- Release 1257 merge `8b6a390f959b5156876faf9d421c345a74e54423`; artifact `d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444`.
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and post-1249 product arc. Release 1257 establishes the first shared authored world-fire authority with scale-aware suppression: a bottle can stop a fresh smolder but not an established structural fire. Release 1258 remains the next committed train, but implementation is intentionally paused for discussion before any Mara work begins.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the broader design doctrine. Release 1258 is the active qualified Mara causal-biography train. Release 1259 is the next concrete Mara train: abilities emerge from authored lived situations and are remembered because she did them, not because the game awarded a perk.
