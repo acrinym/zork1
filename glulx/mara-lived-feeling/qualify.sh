@@ -15,6 +15,8 @@ rm -rf "$BUILD"
 mkdir -p "$BUILD"
 cd "$ROOT"
 
+# Re-qualify the exact locked predecessor. Release 1260 is a stacked release,
+# not a free-standing source snapshot.
 bash glulx/mara-field-capabilities/qualify.sh
 python -m py_compile glulx/mara-lived-feeling/stage.py
 
@@ -24,19 +26,18 @@ from pathlib import Path
 spec = importlib.util.spec_from_file_location("stage1260", "glulx/mara-lived-feeling/stage.py")
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
-m = json.loads(Path(sys.argv[1]).read_text())
+manifest = json.loads(Path(sys.argv[1]).read_text())
 actual = {
     "production": mod.source_identity(Path(sys.argv[2])),
     "dev": mod.source_identity(Path(sys.argv[3])),
 }
 print("RELEASE_1260_BASE_SOURCE_IDENTITIES=" + json.dumps(actual, sort_keys=True))
-pins = m.get("base_source_sha256") or {}
+pins = manifest.get("base_source_sha256") or {}
 if pins:
     for profile, identity in actual.items():
         if pins.get(profile) != identity:
             raise SystemExit(
-                f"Release 1259 {profile} source identity drift: "
-                f"expected {pins.get(profile)}, got {identity}"
+                f"Release 1259 {profile} source identity drift: expected {pins.get(profile)}, got {identity}"
             )
 PY
 
@@ -64,38 +65,28 @@ stage = json.loads((s / "STAGING-RECEIPT.json").read_text())
 dev = json.loads((d / "STAGING-RECEIPT.json").read_text())
 smell = json.loads((b / "smell-report.json").read_text())
 dev_smell = json.loads((b / "dev-smell-report.json").read_text())
+manifest = json.loads(Path("glulx/mara-lived-feeling/patch-series.json").read_text())
 
-expected = sorted([
-    "mara_causal_biography.zil",
-    "mara_companion.zil",
-    "mara_companion_actor.zil",
-    "mara_companion_state.zil",
-    "mara_lived_feeling.zil",
-    "zork1.zil",
-])
-require(
-    stage["release"] == 1260
-    and stage["base"]["release"] == 1259
-    and stage["base"]["artifact_sha256"]
-        == "e3a1adc99a6849b4703a3fe4338310a12c8d38c6d94b1aeab762199bb8e43d77",
-    "Release 1260 staging receipt/base artifact mismatch",
-)
-require(
-    stage["changed_paths"] == expected
-    and stage["dev_mode"] is False
-    and dev["dev_mode"] is True,
-    "Release 1260 staged changed paths or profile mismatch",
-)
-require(not smell["errors"] and not dev_smell["errors"], "Release 1260 smell check reported errors")
-require(
-    (s / "mara_field_capabilities.zil").read_bytes()
-        == (base / "mara_field_capabilities.zil").read_bytes(),
-    "Release 1259 field-capability authority changed instead of being extended",
-)
+expected = sorted(manifest["expected_changed_paths"])
+require(stage["release"] == 1260 and stage["base"]["release"] == 1259,
+        "Release 1260 staging receipt/base release mismatch")
+require(stage["base"]["artifact_sha256"] ==
+        "e3a1adc99a6849b4703a3fe4338310a12c8d38c6d94b1aeab762199bb8e43d77",
+        "Release 1260 predecessor artifact drift")
+require(stage["changed_paths"] == expected and dev["changed_paths"] == expected,
+        "Release 1260 changed-path receipt mismatch")
+require(stage["dev_mode"] is False and dev["dev_mode"] is True,
+        "Release 1260 production/dev staging profile mismatch")
+require(not smell["errors"] and not dev_smell["errors"],
+        "Release 1260 smell check reported errors")
+require((s / "mara_field_capabilities.zil").read_bytes() ==
+        (base / "mara_field_capabilities.zil").read_bytes(),
+        "Release 1259 field-capability authority changed instead of being extended")
 
 feeling = (s / "mara_lived_feeling.zil").read_text()
 companion = (s / "mara_companion.zil").read_text()
 state = (s / "mara_companion_state.zil").read_text()
+actions = (s / "mara_companion_actions.zil").read_text()
 actor = (s / "mara_companion_actor.zil").read_text()
 causal = (s / "mara_causal_biography.zil").read_text()
 zork = (s / "zork1.zil").read_text()
@@ -104,7 +95,7 @@ for token in (
     "<ROUTINE MARA-ABOUT-RECKLESS-FEELING",
     "<ROUTINE MARA-ABOUT-RUPTURE",
     "<ROUTINE MARA-INTENTIONAL-HARM-ATTEMPT",
-    "<ROUTINE V-MARA-RUPTURE-APOLOGIZE",
+    "<ROUTINE MARA-RUPTURE-APOLOGIZE",
     "<ROUTINE MARA-LIVED-AFTER-MOVE",
     "<ROUTINE MARA-COMPLETE-RUPTURE-REPAIR",
     "<ROUTINE MARA-LIVED-DANGER-HOOK",
@@ -123,7 +114,15 @@ for forbidden in (
     "LOVE-METER",
     "EMOTION-VECTOR",
 ):
-    require(forbidden not in feeling, f"1260 lived-feeling authority crossed a product boundary: {forbidden}")
+    require(forbidden not in feeling,
+            f"1260 lived-feeling authority crossed product boundary: {forbidden}")
+
+require("<SYNTAX APOLOGIZE TO OBJECT" not in feeling,
+        "Release 1260 duplicated the existing APOLOGIZE parser authority")
+require("<MARA-RUPTURE-APOLOGIZE>" in actions,
+        "existing Mara apology verb does not delegate to Release 1260 rupture history")
+require("Seal the pipe first" in actions and "MARA-SLOT-LEAK-REPAIRED" in actions,
+        "older causal apology authority was replaced instead of extended")
 
 for token in (
     "<CONSTANT MARA-SCHEMA 8>",
@@ -138,17 +137,28 @@ for token in (
 ):
     require(token in companion, f"missing schema/include token: {token}")
 
-require("<MARA-LIVED-FEELING-ABOUT .TOPIC>" in state, "lived-feeling topics are not wired into Mara questions")
-require("<EQUAL? <GET ,MARA-STATE 0> 7>" in state, "schema-7 migration is missing")
-require("Release 1259 schema-7 saves retain every causal and capability fact" in state, "schema-7 migration semantics are not explicit")
-require("<MARA-INTENTIONAL-HARM-ATTEMPT>" in actor, "direct violence does not enter 1260 rupture authority")
-require("Mara steps clear before the blow can land" in feeling, "Release 1245 physical evasion is not preserved")
-require("<MARA-RUPTURE-FOLLOW-REFUSAL>" in actor, "unresolved rupture does not alter close cooperation")
-require("<MARA-LIVED-DANGER-HOOK> <RTRUE>" in causal, "lived feeling is not connected to shared danger")
-require("<MARA-LIVED-AFTER-MOVE .FROM .TO>" in causal, "movement cannot become boundary-respect evidence")
-require("<MARA-RUPTURE-OPEN?> <RFALSE>" in causal, "open rupture does not revoke close backstop eligibility")
-require("<CONSTANT RELEASEID 1260>" in zork, "Release 1260 identity missing")
-require("MARA LIVED FEELING RUPTURE AND REPAIR GLULX" in zork, "Release 1260 banner missing")
+require("<MARA-LIVED-FEELING-ABOUT .TOPIC>" in state,
+        "lived-feeling topics are not wired into Mara questions")
+require("<EQUAL? <GET ,MARA-STATE 0> 7>" in state,
+        "schema-7 migration is missing")
+require("Release 1259 schema-7 saves retain every causal and capability fact" in state,
+        "schema-7 migration semantics are not explicit")
+require("<MARA-INTENTIONAL-HARM-ATTEMPT>" in actor,
+        "direct violence does not enter 1260 rupture authority")
+require("<MARA-RUPTURE-FOLLOW-REFUSAL>" in actor,
+        "unresolved rupture does not alter close cooperation")
+require("Mara steps clear before the blow can land" in feeling,
+        "Release 1245 physical evasion is not preserved")
+require("<MARA-LIVED-DANGER-HOOK> <RTRUE>" in causal,
+        "lived feeling is not connected to shared danger")
+require("<MARA-LIVED-AFTER-MOVE .FROM .TO>" in causal,
+        "movement cannot become boundary-respect evidence")
+require("<MARA-RUPTURE-OPEN?> <RFALSE>" in causal,
+        "open rupture does not revoke close backstop eligibility")
+require("<CONSTANT RELEASEID 1260>" in zork,
+        "Release 1260 identity missing")
+require("MARA LIVED FEELING RUPTURE AND REPAIR GLULX" in zork,
+        "Release 1260 banner missing")
 PY
 
 IFS=$'\t' read -r SERIAL STORY_FILE < <(python - "$MANIFEST" <<'PY'
@@ -179,8 +189,7 @@ python glulx/tools/verify_ulx.py "$STORY" --json "$BUILD/story-report.json"
 
 rm -rf "$TEST_SRC"
 cp -a "$DEV_SRC" "$TEST_SRC"
-cp glulx/mara-lived-feeling/tests/mara_lived_feeling_test.zil \
-  "$TEST_SRC/mara_lived_feeling_test.zil"
+cp glulx/mara-lived-feeling/tests/mara_lived_feeling_test.zil "$TEST_SRC/mara_lived_feeling_test.zil"
 python - <<'PY'
 from pathlib import Path
 import sys
@@ -201,6 +210,12 @@ if [[ ! -x "$ROOT/.tooling/glulxe/glulxe" ]]; then
 fi
 GLULXE_BIN="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
 
+run_case() {
+  local name="$1"
+  timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
+    < "$BUILD/$name.txt" > "$BUILD/$name-transcript.txt" 2>&1
+}
+
 cat > "$BUILD/concerned-anger.txt" <<'EOF1'
 maraconcern
 climb down maintenance ladder
@@ -213,8 +228,7 @@ marafeelstatus
 quit
 yes
 EOF1
-timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
-  < "$BUILD/concerned-anger.txt" > "$BUILD/concerned-anger-transcript.txt" 2>&1
+run_case concerned-anger
 C="$BUILD/concerned-anger-transcript.txt"
 grep -F 'You know what this ladder does' "$C"
 grep -F 'I am still catching you because you are a person' "$C"
@@ -239,8 +253,7 @@ marafeelstatus
 quit
 yes
 EOF2
-timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
-  < "$BUILD/intentional-harm.txt" > "$BUILD/intentional-harm-transcript.txt" 2>&1
+run_case intentional-harm
 H="$BUILD/intentional-harm-transcript.txt"
 grep -F 'Mara steps clear before the blow can land' "$H"
 grep -F "This time you chose me as the danger's target" "$H"
@@ -261,8 +274,7 @@ marafeelstatus
 quit
 yes
 EOF3
-timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
-  < "$BUILD/unresolved-rupture-danger.txt" > "$BUILD/unresolved-rupture-danger-transcript.txt" 2>&1
+run_case unresolved-rupture-danger
 U="$BUILD/unresolved-rupture-danger-transcript.txt"
 grep -F 'I will call for help if you are injured' "$U"
 grep -F 'I will not put my body on the other end of a chosen fall' "$U"
@@ -283,8 +295,7 @@ marafeelstatus
 quit
 yes
 EOF4
-timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
-  < "$BUILD/earned-repair.txt" > "$BUILD/earned-repair-transcript.txt" 2>&1
+run_case earned-repair
 R="$BUILD/earned-repair-transcript.txt"
 grep -F 'You changed the action instead of arguing with the boundary' "$R"
 grep -F 'That is evidence. Not erasure.' "$R"
@@ -296,7 +307,6 @@ grep -F 'boundary=1 repair-evidence=1 repaired=1' "$R"
 python - "$STORY" "$MANIFEST" "$BASE_SRC" "$BASE_DEV_SRC" <<'PY'
 import hashlib, importlib.util, json, sys
 from pathlib import Path
-
 story = Path(sys.argv[1])
 manifest_path = Path(sys.argv[2])
 base_src = Path(sys.argv[3])
@@ -323,9 +333,7 @@ base_identities = {
     "production": mod.source_identity(base_src),
     "dev": mod.source_identity(base_dev_src),
 }
-(b / "BASE-SOURCE-IDENTITIES.json").write_text(
-    json.dumps(base_identities, indent=2, sort_keys=True) + "\n"
-)
+(b / "BASE-SOURCE-IDENTITIES.json").write_text(json.dumps(base_identities, indent=2, sort_keys=True) + "\n")
 
 expected = manifest["expected_artifact"]
 pins = manifest.get("base_source_sha256") or {}
@@ -355,6 +363,7 @@ receipt = {
     "intentional_harm": "intentional-harm-transcript.txt",
     "unresolved_rupture_danger": "unresolved-rupture-danger-transcript.txt",
     "earned_repair": "earned-repair-transcript.txt",
+    "uses_existing_apology_authority": True,
     "uses_legacy_relationship_scalars": False,
     "preserves_release_1245_physical_evasion": True,
     "repair_deletes_original_harm": False,
