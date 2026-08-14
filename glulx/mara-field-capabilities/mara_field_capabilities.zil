@@ -88,7 +88,7 @@
                 <MARA-GET ,MARA-SLOT-HOUSE-STAY>
                 <EQUAL? <LOC ,MARA> ,ATTIC>>
            <MARA-PUT ,MARA-SLOT-LADDER-RECOVERED 1>
-           <TELL "By morning Mara has rewrapped the scraped palm herself. When she comes down from the Attic she rolls the injured shoulder through a careful circle, tests it twice, and finally lets the arm hang normally. The scar remains; the stiffness does not. Recovered, she says. Not erased." CR>
+           <TELL "By morning Mara has rewrapped the scraped palm in the Attic. The injured shoulder has settled enough that she can test it through a careful circle without guarding it. The scar remains; the stiffness does not. Recovery is not erasure." CR>
            <RTRUE>)>
     <RFALSE>>
 
