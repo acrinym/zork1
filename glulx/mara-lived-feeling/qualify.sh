@@ -15,8 +15,6 @@ rm -rf "$BUILD"
 mkdir -p "$BUILD"
 cd "$ROOT"
 
-# Re-qualify the exact locked predecessor. Release 1260 is a stacked release,
-# not a free-standing source snapshot.
 bash glulx/mara-field-capabilities/qualify.sh
 python -m py_compile glulx/mara-lived-feeling/stage.py
 
@@ -280,7 +278,10 @@ grep -F 'I will call for help if you are injured' "$U"
 grep -F 'I will not put my body on the other end of a chosen fall' "$U"
 grep -F 'intentional-harm=1 betrayal=1 rupture-open=1' "$U"
 grep -F 'boundary=1 repair-evidence=0 repaired=0' "$U"
-! grep -F 'bruised, soaked, and alive' "$U"
+if grep -Fq 'bruised, soaked, and alive' "$U"; then
+  echo 'unresolved rupture unexpectedly received the close Mara rescue' >&2
+  exit 1
+fi
 
 cat > "$BUILD/earned-repair.txt" <<'EOF4'
 maraharm
