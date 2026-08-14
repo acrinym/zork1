@@ -1,0 +1,22 @@
+{
+  "id": "006_RELEASE_1258",
+  "path": "zork1.zil",
+  "description": "Advance the staged story identity from Release 1257 fire consequences to Release 1258 Mara Causal Biography & Shared Danger.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 FIRE SMOKE AND STRUCTURAL CONSEQUENCES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Fire, Smoke & Structural Consequences. Release 1257 composes\n  canonical BURN, real flame sources, real bottled water, mine airflow, and compact\n  physical state into one authored Timber Room fire. Smoldering can be stopped,\n  open flame produces route-relevant smoke, ignored fire drops an old brace, and\n  the permanent aftermath never widens or bricks the canonical coal-mine puzzle.\"\n",
+      "new": "\"ZORK1 MARA CAUSAL BIOGRAPHY AND SHARED DANGER GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Mara Causal Biography & Shared Danger. Release 1258 composes\n  Mara's existing witnessed history with the real Dam maintenance ladder, her\n  exact field rope, one explicit promise, persistent injury, reciprocal rescue,\n  and a private discovery. Her later ladder decision follows named reasons rather\n  than a global relationship score while canonical Dam survival stays authoritative.\"\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1257>",
+      "new": "<CONSTANT RELEASEID 1258>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Fire Smoke and Structural Consequences Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Mara Causal Biography and Shared Danger Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}
