@@ -29,6 +29,7 @@
 
 <ROUTINE V-MARA-PREP-TEST ()
     <MARA-TEST-RESET>
+    <SETG DEBUG T>
     <TELL "TEST PRECONDITION: Mara and her exact field rope at the dangerous Dam ladder; ignored-warning history is present." CR>
     <RTRUE>>
 
