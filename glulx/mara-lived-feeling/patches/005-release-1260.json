@@ -1,0 +1,22 @@
+{
+  "id": "005_RELEASE_1260",
+  "path": "zork1.zil",
+  "description": "Advance production identity and banner to Release 1260 Mara Lived Feeling, Rupture & Repair.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 MARA FIELD CAPABILITY DISCOVERY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Mara Field Capability Discovery. Release 1259 lets Mara's\n  existing survey knowledge become capability biography through bodily recovery,\n  an authored River Frigid pendulum traversal, deliberate movement reuse, and\n  acoustic ranging that she first discovers and later intentionally repeats.\n  No XP, perks, generic skill engine, traversal AI, or puzzle-solving companion.\"\n\n",
+      "new": "\"ZORK1 MARA LIVED FEELING RUPTURE AND REPAIR GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Mara Lived Feeling, Rupture & Repair. Release 1260 lets\n  specific events acquire authored personal meaning: chosen recklessness can\n  produce concerned anger, intentional violence creates remembered betrayal and\n  physical distance, and later concrete behavior can earn renewed cooperation\n  without deleting the event that required repair. No generic emotion engine.\"\n\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1259>",
+      "new": "<CONSTANT RELEASEID 1260>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Mara Field Capability Discovery Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Mara Lived Feeling Rupture and Repair Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}
