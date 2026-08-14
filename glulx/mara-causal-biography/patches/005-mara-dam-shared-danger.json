@@ -1,0 +1,12 @@
+{
+  "id": "005_MARA_DAM_SHARED_DANGER",
+  "path": "1actions.zil",
+  "description": "Give Mara's earned shared-danger response first refusal only at the exact overloaded open-sluice ladder hazard, then preserve Release 1253 canonical dam survival for every other case.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE DAM-SURVIVAL-HOOK ()\n\t<COND (<AND <EQUAL? ,PRSO ,DAM-MAINTENANCE-LADDER>",
+      "new": "<ROUTINE DAM-SURVIVAL-HOOK ()\n\t<COND (<MARA-SHARED-DANGER-HOOK> <RTRUE>)\n\t      (<AND <EQUAL? ,PRSO ,DAM-MAINTENANCE-LADDER>"
+    }
+  ]
+}
