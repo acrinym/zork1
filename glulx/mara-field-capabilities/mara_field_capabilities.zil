@@ -26,6 +26,13 @@
     (DESC "acoustic ranging")
     (FLAGS NDESCBIT RMUNGBIT)>
 
+<OBJECT MARA-PLUMMET-TOPIC
+    (IN GLOBAL-OBJECTS)
+    (SYNONYM PLUMMET BOB WEIGHT PLUMB)
+    (ADJECTIVE BRASS OLD SURVEY IMPERIAL)
+    (DESC "Mara's recovered survey plummet")
+    (FLAGS NDESCBIT RMUNGBIT)>
+
 <OBJECT MARA-SERVICE-PIPE
     (IN DAM-BASE)
     (SYNONYM PIPE CONDUIT BAR IRON)
@@ -188,7 +195,7 @@
           (<EQUAL? .TOPIC ,RIVER ,GLOBAL-WATER ,MARA-SERVICE-PIPE>
            <MARA-FRIGID-PENDULUM>
            <RTRUE>)
-          (<EQUAL? .TOPIC ,MARA-SURVEY-PLUMMET>
+          (<EQUAL? .TOPIC ,MARA-PLUMMET-TOPIC ,MARA-SURVEY-PLUMMET>
            <COND (<MARA-GET ,MARA-SLOT-PLUMMET-RECOVERED>
                   <TELL "Mara opens her hand around the old brass survey plummet: a dense teardrop of metal with a worn attachment eye and small imperial survey scratches around the shoulder. It was abandoned across the Frigid side channel, she says. Recovering it taught me one thing about movement; striking it against canyon stone taught me another thing about listening." CR>)
                  (T
