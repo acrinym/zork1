@@ -195,6 +195,9 @@ GLULXE_BIN="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
 cat > "$BUILD/house-recovery.txt" <<'EOF1'
 mararestprep
 sleep
+down
+east
+up
 examine mara
 ask mara about injury
 maracapstatus
@@ -204,10 +207,11 @@ EOF1
 timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
   < "$BUILD/house-recovery.txt" > "$BUILD/house-recovery-transcript.txt" 2>&1
 R="$BUILD/house-recovery-transcript.txt"
-grep -F 'The scar remains; the stiffness does not. Recovered' "$R"
+grep -F 'The scar remains; the stiffness does not. Recovery is not erasure.' "$R"
 grep -F 'pale rough scar of the Dam ladder' "$R"
 grep -F 'The ladder happened' "$R"
 grep -F 'injury=1 recovered=1' "$R"
+grep -F 'TEST Mara location: Attic.' "$R"
 
 cat > "$BUILD/injury-boundary.txt" <<'EOF2'
 marainjured
