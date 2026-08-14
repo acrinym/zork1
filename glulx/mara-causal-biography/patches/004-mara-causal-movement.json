@@ -1,0 +1,22 @@
+{
+  "id": "004_MARA_CAUSAL_MOVEMENT",
+  "path": "mara_companion_movement.zil",
+  "description": "Let promises and peril resolve through actual movement, advance the post-rescue reunion privately, and convert the existing warned-and-ignored blue-circuit event into a named biographical proposition.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-AFTER-PLAYER-MOVE (FROM TO)\n    <MARA-ENSURE>",
+      "new": "<ROUTINE MARA-AFTER-PLAYER-MOVE (FROM TO)\n    <MARA-ENSURE>\n    <MARA-CAUSAL-AFTER-MOVE .FROM .TO>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ADVANCE ()\n    <MARA-ENSURE>",
+      "new": "<ROUTINE MARA-ADVANCE ()\n    <MARA-ENSURE>\n    <MARA-CAUSAL-ADVANCE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "           <MARA-PUT ,MARA-SLOT-LEAK-CAUSED 1>\n           <MARA-DECREASE ,MARA-SLOT-SAFETY -3>",
+      "new": "           <MARA-PUT ,MARA-SLOT-LEAK-CAUSED 1>\n           <MARA-REMEMBER-IGNORED-WARNING>\n           <MARA-DECREASE ,MARA-SLOT-SAFETY -3>"
+    }
+  ]
+}
