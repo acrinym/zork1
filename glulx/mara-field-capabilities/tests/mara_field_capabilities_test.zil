@@ -23,10 +23,12 @@
     <MARA-PUT ,MARA-SLOT-LADDER-INJURY 1>
     <MOVE ,MARA ,ATTIC>
     <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-WAITING>
+    <MOVE ,LAMP ,ADVENTURER>
+    <FSET ,LAMP ,ONBIT>
     <REST-PUT ,RS-CYCLES 0>
     <REST-PUT ,RS-LAST-SIGNATURE 0>
     <GOTO ,BEDROOM>
-    <TELL "TEST PRECONDITION: Mara is resting in the Attic with the persistent Dam injury; the Adventurer is in the Bedroom before a full House sleep." CR>
+    <TELL "TEST PRECONDITION: Mara is resting in the Attic with the persistent Dam injury; the Adventurer is in the Bedroom before a full House sleep and carries the lit canonical brass lantern for the later physical walk upstairs." CR>
     <RTRUE>>
 
 <ROUTINE V-MARA-INJURED-TEST ()
