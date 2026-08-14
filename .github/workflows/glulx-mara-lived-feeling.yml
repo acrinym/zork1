@@ -89,4 +89,4 @@ jobs:
           path: |
             native-toolchain.txt
             mara-lived-feeling.log
-            glulx/build/mara-lived-feeling-rupture-repair-1260/*
+            glulx/build/mara-lived-feeling-rupture-repair-1260/
