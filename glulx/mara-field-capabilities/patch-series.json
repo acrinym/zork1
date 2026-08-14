@@ -28,10 +28,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-mara-field-capability-discovery.ulx",
     "format": "Glulx",
-    "version_hex": "0x00030103"
+    "version_hex": "0x00030103",
+    "size_bytes": 453376,
+    "checksum_hex": "0xf9e9abf8",
+    "sha256": "e3a1adc99a6849b4703a3fe4338310a12c8d38c6d94b1aeab762199bb8e43d77"
   },
   "added_files": [
     "mara_field_capabilities.zil"
