@@ -111,6 +111,7 @@ for token in (
     "Promise kept",
     "I remember the blue circuit",
     "without volunteering what caught her attention",
+    "Keep the useful end in your hands",
 ):
     require(token in causal, f"missing causal biography token: {token}")
 
@@ -128,6 +129,7 @@ for token in (
 
 require("<MARA-REMEMBER-IGNORED-WARNING>" in movement, "blue-circuit event does not create explicit biography")
 require("One palm is scraped raw from the Dam ladder" in actor, "persistent injury is not player-visible")
+require("The wet measured coil is currently in your hands" in actor, "temporary rope custody is not player-visible")
 require("<MARA-SHARED-DANGER-HOOK> <RTRUE>" in dam, "Mara shared-danger hook missing from canonical dam authority")
 require("<ROUTINE DAM-SURVIVAL-LADDER-MOVE" in dam, "Release 1253 ladder authority missing")
 require("<ROUTINE DAM-SURVIVAL-OVERBURDENED?" in dam, "Release 1253 load authority missing")
@@ -155,7 +157,7 @@ compile_story() {
   dotnet "$GLULX_ZILF_DLL" build --glulx --stop-after-compile zork1.zil "$assembly" \
     2>&1 | tee "$BUILD/$prefix-zilf-compile.log"
   popd
-  python glulx/tools/normalize_serial.py "$assembly" --serial "$SERIAL" \
+  python "$ROOT/glulx/tools/normalize_serial.py" "$assembly" --serial "$SERIAL" \
     --receipt "$BUILD/$prefix-SERIAL-NORMALIZATION.json"
   "$GLAZER_BIN" "$assembly" -o "$output" 2>&1 | tee "$BUILD/$prefix-glazer-assemble.log"
 }
@@ -187,6 +189,8 @@ cat > "$BUILD/earned-reciprocity.txt" <<'EOF1'
 maraprep
 mara, climb down maintenance ladder
 promise mara
+give field rope to mara
+examine field rope
 rescue mara
 give field rope to mara
 maraload
@@ -201,6 +205,8 @@ timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
   < "$BUILD/earned-reciprocity.txt" > "$BUILD/earned-reciprocity-transcript.txt" 2>&1
 E="$BUILD/earned-reciprocity-transcript.txt"
 grep -F 'Her field rope lands in your hands' "$E"
+grep -F 'Keep the useful end in your hands and get me back onto the platform first' "$E"
+grep -F 'The wet measured coil is currently in your hands' "$E"
 grep -F 'That was a rescue' "$E"
 grep -F 'Promise kept' "$E"
 grep -F 'I remember the blue circuit' "$E"
@@ -208,6 +214,7 @@ grep -F "Mara's rope goes hard across your chest" "$E"
 grep -F 'without volunteering what caught her attention' "$E"
 grep -F 'old survey punch under the lower retaining bolt' "$E"
 grep -F 'mara-rescued-you=1' "$E"
+grep -F 'injury=1' "$E"
 grep -F 'private=2' "$E"
 grep -F 'TEST rope custody: Mara.' "$E"
 
@@ -256,6 +263,7 @@ timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" \
 A="$BUILD/abandonment-transcript.txt"
 grep -F 'drag herself back over the ladder lip without the rope now leaving in your hands' "$A"
 grep -F 'abandoned=1' "$A"
+grep -F 'injury=1' "$A"
 grep -F 'TEST rope custody: player.' "$A"
 
 python - "$STORY" "$MANIFEST" <<'PY'
@@ -304,6 +312,7 @@ receipt = {
     "blocked_precedent": "blocked-precedent-transcript.txt",
     "broken_promise": "broken-promise-transcript.txt",
     "abandonment": "abandonment-transcript.txt",
+    "active_peril_rope_return_refused": True,
     "new_ladder_decision_uses_legacy_relationship_scalars": False,
 }
 (b / "QUALIFICATION-RECEIPT.json").write_text(
