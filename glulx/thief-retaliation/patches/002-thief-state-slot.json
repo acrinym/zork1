@@ -1,0 +1,12 @@
+{
+  "id": "thief-retaliation-002-state-slot",
+  "description": "Give the canonical thief one explicit existing VALUE property slot for the binary retaliation state without consuming another VM global.",
+  "path": "1dungeon.zil",
+  "replacements": [
+    {
+      "old": "<OBJECT THIEF\n\t(IN ROUND-ROOM)\n\t(SYNONYM THIEF ROBBER MAN PERSON)\n\t(ADJECTIVE SHADY SUSPICIOUS SEEDY)\n\t(DESC \"thief\")\n\t(FLAGS ACTORBIT INVISIBLE CONTBIT OPENBIT TRYTAKEBIT)\n\t(ACTION ROBBER-FUNCTION)\n\t(LDESC\n\"There is a suspicious-looking individual, holding a large bag, leaning\nagainst one wall. He is armed with a deadly stiletto.\")\n\t(STRENGTH 5)>",
+      "new": "<OBJECT THIEF\n\t(IN ROUND-ROOM)\n\t(SYNONYM THIEF ROBBER MAN PERSON)\n\t(ADJECTIVE SHADY SUSPICIOUS SEEDY)\n\t(DESC \"thief\")\n\t(FLAGS ACTORBIT INVISIBLE CONTBIT OPENBIT TRYTAKEBIT)\n\t(ACTION ROBBER-FUNCTION)\n\t(LDESC\n\"There is a suspicious-looking individual, holding a large bag, leaning\nagainst one wall. He is armed with a deadly stiletto.\")\n\t(STRENGTH 5)\n\t(VALUE 0)>",
+      "expected_count": 1
+    }
+  ]
+}

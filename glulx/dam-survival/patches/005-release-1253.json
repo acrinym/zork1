@@ -1,0 +1,12 @@
+{
+  "id": "dam-survival-005",
+  "description": "Stamp the staged story as Release 1253 Dam Survival & Prepared Rescue.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "\"ZORK1 EARNED SEQUENCE BREAKS AND ROUTE MASTERY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local route mastery. Release 1252 retains the qualified Release 1251\n  utility mesh while letting established canyon anchoring, cargo state, narrow\n  geography, and boat dimensions compose into earned traversal advantages without\n  teleport verbs, recipe matrices, or a universal physics engine.\"\n\n<VERSION ZIP>\n\n<SETG ZORK-NUMBER 1>\n\n<CONSTANT RELEASEID 1252>\n\n",
+      "new": "\"ZORK1 DAM SURVIVAL AND PREPARED RESCUE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Dam Survival & Prepared Rescue. Release 1253 retains the\n  qualified Release 1252 route-mastery world while making Flood Control Dam #3\n  answer to its canonical gate/water state, real encumbrance, the existing rope,\n  and a physical maintenance ladder. Normal authored travel remains deterministic;\n  danger is caused by deliberate hazardous actions and can be changed by preparation.\"\n\n<VERSION ZIP>\n\n<SETG ZORK-NUMBER 1>\n\n<CONSTANT RELEASEID 1253>\n\n",
+      "expected_count": 1
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "edition": "Grue Ecology & Colony Reveal",
+  "release": 1256,
+  "serial": "260812",
+  "base_release": 1255,
+  "base_manifest": "../thief-retaliation/patch-series.json",
+  "base_artifact_sha256": "03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be",
+  "base_source_sha256": {
+    "production": "4da18df9f39b02e5c7dfa21d3b42fd771f224ea3963e50fcfda841637fea7f47",
+    "dev": "f1d5cfc5ba40d2e00e2f111e98f00e204eb421071b74259596bae1d4c5ba96e6"
+  },
+  "patches": [
+    "patches/001-grue-global.json",
+    "patches/002-grue-colony-world.json",
+    "patches/003-grue-colony-actions.json",
+    "patches/004-grue-assistance.json",
+    "patches/005-release-1256.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "assistance.zil",
+    "gglobals.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-grue-ecology-colony-reveal.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 432896,
+    "checksum_hex": "0xb150314b",
+    "sha256": "59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975"
+  }
+}

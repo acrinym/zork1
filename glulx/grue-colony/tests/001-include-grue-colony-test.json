@@ -1,0 +1,12 @@
+{
+  "id": "grue-colony-test-include",
+  "description": "Include Release 1256 test-only verbs in dev qualification story.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "<INSERT-FILE \"cellar_recovery_locker\" T>\n",
+      "new": "<INSERT-FILE \"cellar_recovery_locker\" T>\n<INSERT-FILE \"grue_colony_test\" T>\n",
+      "expected_count": 1
+    }
+  ]
+}

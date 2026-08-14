@@ -1,0 +1,52 @@
+{
+  "id": "thief-retaliation-001",
+  "description": "Add a bounded, visible retaliation state to the canonical thief and route authored provocations, ambushes, avoidance, sabotage, selective theft, and appeasement through existing thief behavior.",
+  "path": "1actions.zil",
+  "replacements": [
+    {
+      "old": "\n<GLOBAL THIEF-HERE <>>\n\n;\"I-THIEF moved to DEMONS\"\n",
+      "new": "\n<GLOBAL THIEF-HERE <>>\n\n<ROUTINE THIEF-PROVOKE ()\n\t<COND (<NOT <G? <GETP ,THIEF ,P?VALUE> 0>>\n\t       <PUTP ,THIEF ,P?VALUE 1>\n\t       <TELL\n\"The thief's easy grin disappears. He studies you for one quiet second,\nthen nods as though adding your name to a private list. This has become\npersonal.\" CR>)>\n\t<RTRUE>>\n\n<ROUTINE THIEF-ARMED-DETERRENT? ()\n\t<COND (<OR <IN? ,SWORD ,WINNER>\n\t           <IN? ,KNIFE ,WINNER>\n\t           <IN? ,RUSTY-KNIFE ,WINNER>>\n\t       <RTRUE>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE THIEF-RETALIATION-TARGET ()\n\t<COND (<IN? ,WRENCH ,WINNER> ,WRENCH)\n\t      (<IN? ,SCREWDRIVER ,WINNER> ,SCREWDRIVER)\n\t      (<IN? ,KEYS ,WINNER> ,KEYS)\n\t      (<IN? ,MATCH ,WINNER> ,MATCH)\n\t      (<IN? ,SHOVEL ,WINNER> ,SHOVEL)\n\t      (T <RFALSE>)>>\n\n<ROUTINE THIEF-RETALIATION-STRIKE (\"AUX\" X)\n\t<COND (<OR ,DEAD <NOT <G? <GETP ,THIEF ,P?VALUE> 0>>> <RFALSE>)\n\t      (<THIEF-ARMED-DETERRENT?>\n\t       <TELL\n\"A shadow starts to detach itself from the passage, notices the weapon in\nyour hand, and thinks better of the arrangement. You catch only the thief's\nretreating footfall. The grudge, apparently, survives the tactical decision.\" CR>\n\t       <FSET ,THIEF ,INVISIBLE>\n\t       <SETG THIEF-HERE <>>\n\t       <RTRUE>)\n\t      (<AND <IN? ,SANDWICH-BAG ,WINNER>\n\t            <FIRST? ,SANDWICH-BAG>>\n\t       <TELL\n\"The thief comes out of nowhere, hooks the brown sack open, and turns it\nupside down before you can stop him. Its contents scatter across the floor.\nHe steps back into view with a small, vindictive bow. Nothing is destroyed;\nhe simply made sure you have to put your own affairs back in order.\" CR>\n\t       <MOVE-ALL ,SANDWICH-BAG ,HERE>\n\t       <FCLEAR ,THIEF ,INVISIBLE>\n\t       <SETG THIEF-HERE T>\n\t       <RTRUE>)\n\t      (<SET X <THIEF-RETALIATION-TARGET>>\n\t       <MOVE .X ,THIEF>\n\t       <FSET .X ,TOUCHBIT>\n\t       <FSET .X ,INVISIBLE>\n\t       <FCLEAR ,THIEF ,INVISIBLE>\n\t       <SETG THIEF-HERE T>\n\t       <TELL\n\"A gloved hand snaps in, takes the \" D .X \" with insulting precision, and\nvanishes into the large bag. The thief then steps where you can see him.\nThis time the theft is plainly about inconvenience, not resale value.\" CR>\n\t       <RTRUE>)\n\t      (T <RFALSE>)>>\n\n;\"I-THIEF moved to DEMONS\"\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t       (<PROB 70> <RFALSE>)\n\t       (<NOT ,DEAD>\n\t\t<COND (<ROB ,HERE ,THIEF 100>\n\t\t       <SET ROBBED? ,HERE>)\n",
+      "new": "\t       (<PROB 70> <RFALSE>)\n\t       (<NOT ,DEAD>\n\t\t<COND (<THIEF-RETALIATION-STRIKE> <RTRUE>)>\n\t\t<COND (<ROB ,HERE ,THIEF 100>\n\t\t       <SET ROBBED? ,HERE>)\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t(T\n\t <COND (.HERE?\t\t\t;\"Here, already announced.\"\n\t\t<COND (<PROB 30>\n\t\t       <COND (<ROB ,HERE ,THIEF 100>\n",
+      "new": "\t(T\n\t <COND (.HERE?\t\t\t;\"Here, already announced.\"\n\t\t<COND (<THIEF-RETALIATION-STRIKE> <RTRUE>)>\n\t\t<COND (<PROB 30>\n\t\t       <COND (<ROB ,HERE ,THIEF 100>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t\t\t      <TELL\n\"You missed. The thief makes no attempt to take the knife, though it\nwould be a fine addition to the collection in his bag. He does seem\nangered by your attempt.\" CR>\n\t\t\t      <FSET ,THIEF ,FIGHTBIT>)>)\n\t\t      (<AND <VERB? THROW GIVE>\n",
+      "new": "\t\t\t      <TELL\n\"You missed. The thief makes no attempt to take the knife, though it\nwould be a fine addition to the collection in his bag.\" CR>\n\t\t\t      <THIEF-PROVOKE>\n\t\t\t      <FSET ,THIEF ,FIGHTBIT>)>)\n\t\t      (<AND <VERB? THROW GIVE>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t\t\t      <TELL\n\"The thief is taken aback by your unexpected generosity, but accepts\nthe \" D ,PRSO \" and stops to admire its beauty.\" CR>)\n\t\t\t     (T\n\t\t\t      <TELL\n",
+      "new": "\t\t\t      <TELL\n\"The thief is taken aback by your unexpected generosity, but accepts\nthe \" D ,PRSO \" and stops to admire its beauty.\" CR>\n\t\t\t      <COND (<G? <GETP ,THIEF ,P?VALUE> 0>\n\t\t\t             <PUTP ,THIEF ,P?VALUE 0>\n\t\t\t             <TELL\n\"After a long appraisal of both the gift and you, he gives a tiny nod.\nThe personal account appears settled. His profession, of course, remains\nunchanged.\" CR>)>)\n\t\t\t     (T\n\t\t\t      <TELL\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t\t<MOVE ,STILETTO ,HERE>\n\t\t<FCLEAR ,STILETTO ,NDESCBIT>\n\t\t<SET X <DEPOSIT-BOOTY ,HERE>>\n\t\t<COND (<EQUAL? ,HERE ,TREASURE-ROOM>\n",
+      "new": "\t\t<MOVE ,STILETTO ,HERE>\n\t\t<FCLEAR ,STILETTO ,NDESCBIT>\n\t\t<PUTP ,THIEF ,P?VALUE 0>\n\t\t<SET X <DEPOSIT-BOOTY ,HERE>>\n\t\t<COND (<EQUAL? ,HERE ,TREASURE-ROOM>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "\t       (<EQUAL? .MODE ,F-UNCONSCIOUS>\n\t\t<DISABLE <INT I-THIEF>>\n\t\t<FCLEAR ,THIEF ,FIGHTBIT>\n\t\t<MOVE ,STILETTO ,HERE>\n",
+      "new": "\t       (<EQUAL? .MODE ,F-UNCONSCIOUS>\n\t\t<DISABLE <INT I-THIEF>>\n\t\t<THIEF-PROVOKE>\n\t\t<FCLEAR ,THIEF ,FIGHTBIT>\n\t\t<MOVE ,STILETTO ,HERE>\n",
+      "expected_count": 1
+    },
+    {
+      "old": "it would wake him.\" CR>)\n\t\t      (T\n\t\t       <TELL\n\"The bag will be taken over his dead body.\" CR>)>)\n",
+      "new": "it would wake him.\" CR>)\n\t\t      (T\n\t\t       <THIEF-PROVOKE>\n\t\t       <TELL\n\"The bag will be taken over his dead body.\" CR>)>)\n",
+      "expected_count": 1
+    },
+    {
+      "old": "Using passages unknown to you, he rushes to its defense.\" CR>\n\t\t       <MOVE ,THIEF ,HERE>)>\n\t\t<FSET ,THIEF ,FIGHTBIT>\n\t\t<FCLEAR ,THIEF ,INVISIBLE>\n",
+      "new": "Using passages unknown to you, he rushes to its defense.\" CR>\n\t\t       <MOVE ,THIEF ,HERE>)>\n\t\t<THIEF-PROVOKE>\n\t\t<FSET ,THIEF ,FIGHTBIT>\n\t\t<FCLEAR ,THIEF ,INVISIBLE>\n",
+      "expected_count": 1
+    }
+  ]
+}

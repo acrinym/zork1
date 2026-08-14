@@ -1,0 +1,37 @@
+{
+  "edition": "Fire, Smoke & Structural Consequences",
+  "release": 1257,
+  "serial": "260812",
+  "base_release": 1256,
+  "base_manifest": "../grue-colony/patch-series.json",
+  "base_artifact_sha256": "59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975",
+  "base_source_sha256": {
+    "production": "9bb9052e7897ae5d6e46b9ccec2c15d5eee0bd6e70f30d9ac736a5a1964a5123",
+    "dev": "b485c1c800fc1fc1beb124871d415df17e3dd6c6beccb3d5ef98a41edc02afeb"
+  },
+  "patches": [
+    "patches/001-fire-world.json",
+    "patches/002-fire-hook.json",
+    "patches/003-fire-assistance.json",
+    "patches/004-release-1257.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "assistance.zil",
+    "fire_structural.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-fire-smoke-structural-consequences.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 438784,
+    "checksum_hex": "0x73c14bad",
+    "sha256": "d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444"
+  },
+  "added_files": [
+    "fire_structural.zil"
+  ]
+}
