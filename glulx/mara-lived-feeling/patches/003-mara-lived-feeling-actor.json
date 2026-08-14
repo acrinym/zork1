@@ -10,8 +10,8 @@
     },
     {
       "expected_count": 1,
-      "old": "          (<VERB? TAKE MOVE MUNG ATTACK>\n           <TELL \"Mara steps clear before the action can become force. She is another adventurer, not an obtainable object.\" CR>\n           <RTRUE>)",
-      "new": "          (<VERB? MUNG ATTACK>\n           <MARA-INTENTIONAL-HARM-ATTEMPT>)\n          (<VERB? TAKE MOVE>\n           <TELL \"Mara steps clear before the action can become force. She is another adventurer, not an obtainable object.\" CR>\n           <RTRUE>)"
+      "old": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MUNG ATTACK>>\n           <TELL \"Mara steps clear before the action can become force. She is another adventurer, not an obtainable object.\" CR>\n           <RTRUE>)",
+      "new": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MUNG ATTACK>>\n           <MARA-INTENTIONAL-HARM-ATTEMPT>)"
     }
   ]
 }
