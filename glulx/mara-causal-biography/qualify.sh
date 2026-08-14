@@ -183,7 +183,13 @@ PY
 
 TEST_STORY="$BUILD/mara-causal-biography-test.ulx"
 compile_story "$TEST_SRC" "$BUILD/mara-causal-biography-test.asm" "$TEST_STORY" test
-GLULXE_BIN="$(realpath .tooling/glulxe/glulxe)"
+if [[ ! -x "$ROOT/.tooling/glulxe/glulxe" ]]; then
+  echo "Rebuilding pinned CheapGlk/Glulxe interpreter for Release 1258 gameplay qualification."
+  make -C "$ROOT/.tooling/cheapglk"
+  make -C "$ROOT/.tooling/glulxe" \
+    OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"
+fi
+GLULXE_BIN="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
 
 cat > "$BUILD/earned-reciprocity.txt" <<'EOF1'
 maraprep
