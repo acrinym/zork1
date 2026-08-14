@@ -1,0 +1,12 @@
+{
+  "id": "003_MARA_LIVED_FEELING_APOLOGY",
+  "path": "mara_companion_actions.zil",
+  "description": "Route the existing APOLOGIZE TO MARA verb through Release 1260 rupture handling first, then preserve the older leak-repair apology authority unchanged when no rupture history applies.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-MARA-APOLOGIZE ()\n    <MARA-ENSURE>\n    <COND (<NOT <EQUAL? ,PRSO ,MARA>>",
+      "new": "<ROUTINE V-MARA-APOLOGIZE ()\n    <MARA-ENSURE>\n    <COND (<AND <EQUAL? ,PRSO ,MARA>\n                <MARA-RUPTURE-APOLOGIZE>>\n           <RTRUE>)>\n    <COND (<NOT <EQUAL? ,PRSO ,MARA>>"
+    }
+  ]
+}
