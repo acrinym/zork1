@@ -53,6 +53,8 @@
     <RFALSE>>
 
 <ROUTINE MARA-ANTICIPATION-DANGER-HOOK ()
+    ; This hook records heeded/overridden outcome but does NOT provide the refusal.
+    ; When overridden, RFALSE passes through to Release 1260's existing refusal authority.
     <MARA-ENSURE>
     <COND (<AND <EQUAL? ,WINNER ,ADVENTURER>
                 <MARA-HERE?>
