@@ -5,7 +5,10 @@
   "base_release": 1259,
   "base_manifest": "../mara-field-capabilities/patch-series.json",
   "base_artifact_sha256": "e3a1adc99a6849b4703a3fe4338310a12c8d38c6d94b1aeab762199bb8e43d77",
-  "base_source_sha256": {},
+  "base_source_sha256": {
+    "production": "72c77d269d36cfb5fdeb5c2196f18af90d9e7722e00787499ab8dc17fcd84a0a",
+    "dev": "1416b2ffc7f03c0510c26902cbd28f128170a9886c8f188c59e8391c05aefdb2"
+  },
   "patches": [
     "patches/001-mara-lived-feeling-schema.json",
     "patches/002-mara-lived-feeling-state.json",
@@ -24,13 +27,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-mara-lived-feeling-rupture-repair.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": 0,
-    "checksum_hex": "candidate",
-    "sha256": "candidate"
+    "size_bytes": 457984,
+    "checksum_hex": "0x84a3c74e",
+    "sha256": "90c9bafc1089166f926c4d413477bbb11ff237a87835f237d445fdf988a2a907"
   },
   "added_files": [
     "mara_lived_feeling.zil"
