@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -62,6 +63,25 @@ def validate_base_source(base_source: Path, base_release: Any, manifest: dict[st
     return receipt
 
 
+def validate_state_capacity(destination: Path) -> None:
+    """Prove every declared Release 1261 Mara state slot is addressable."""
+    companion = (destination / "mara_companion.zil").read_text(encoding="utf-8")
+    slot_match = re.search(r"<CONSTANT MARA-SLOT-PROTECTIVE-PREPARATION\s+(\d+)>", companion)
+    table_match = re.search(r"<CONSTANT MARA-STATE\s+<TABLE\s+([^>]+)>>", companion)
+    if slot_match is None or table_match is None:
+        raise RuntimeError("Release 1261 could not prove Mara state table capacity")
+    highest_slot = int(slot_match.group(1))
+    entries = table_match.group(1).split()
+    if len(entries) <= highest_slot:
+        raise RuntimeError(
+            "Release 1261 Mara state table is undersized: "
+            f"highest slot is {highest_slot}, but table has only {len(entries)} entries"
+        )
+    print(
+        f"Validated Mara state capacity: {len(entries)} entries cover slots 0..{highest_slot}."
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-source", type=Path, required=True)
@@ -106,6 +126,8 @@ def main() -> int:
         if not source_file.is_file():
             raise RuntimeError(f"Release 1261 added file missing: {source_file}")
         shutil.copy2(source_file, target)
+
+    validate_state_capacity(destination)
 
     final_files = inventory(destination)
     changed = {
