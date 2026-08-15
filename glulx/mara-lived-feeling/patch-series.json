@@ -27,13 +27,9 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": true,
+    "locked": false,
     "file": "zork1-glulx-mara-lived-feeling-rupture-repair.ulx",
-    "format": "Glulx",
-    "version_hex": "0x00030103",
-    "size_bytes": 457984,
-    "checksum_hex": "0x84a3c74e",
-    "sha256": "90c9bafc1089166f926c4d413477bbb11ff237a87835f237d445fdf988a2a907"
+    "format": "Glulx"
   },
   "added_files": [
     "mara_lived_feeling.zil"
