@@ -73,6 +73,7 @@
 
 <ROUTINE MARA-ANTICIPATION-ABOUT (TOPIC)
     <COND (<NOT <EQUAL? .TOPIC ,MARA-ANTICIPATION-TOPIC>> <RFALSE>)>
+    <MARA-ENSURE>
     <COND (<ZERO? <MARA-GET ,MARA-SLOT-ANTICIPATED-KNOWN-RISK>>
            <TELL "Mara has no specific anticipated danger from shared history to name yet. She refuses to manufacture worry merely because a topic exists." CR>)
           (<MARA-GET ,MARA-SLOT-WARNING-OVERRIDDEN>
