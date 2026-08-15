@@ -1,12 +1,12 @@
 {
   "id": "001_MARA_LIVED_FEELING_SCHEMA",
   "path": "mara_companion.zil",
-  "description": "Advance Mara to schema 8 with named lived-feeling, rupture, boundary, and repair propositions; include the authored 1260 authority.",
+  "description": "Advance Mara to schema 8 with a named historical causal-schema boundary plus lived-feeling, rupture, boundary, and repair propositions; include the authored 1260 authority.",
   "replacements": [
     {
       "expected_count": 1,
       "old": "<CONSTANT MARA-SCHEMA 7>\n<CONSTANT MARA-PREVIOUS-SCHEMA 6>",
-      "new": "<CONSTANT MARA-SCHEMA 8>\n<CONSTANT MARA-PREVIOUS-SCHEMA 7>"
+      "new": "<CONSTANT MARA-SCHEMA 8>\n<CONSTANT MARA-PREVIOUS-SCHEMA 7>\n<CONSTANT MARA-CAUSAL-SCHEMA 6>"
     },
     {
       "expected_count": 1,

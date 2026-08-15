@@ -16,7 +16,7 @@
     {
       "expected_count": 1,
       "old": "<EQUAL? <GET ,MARA-STATE 0> ,MARA-PREVIOUS-SCHEMA>",
-      "new": "<EQUAL? <GET ,MARA-STATE 0> 6>"
+      "new": "<EQUAL? <GET ,MARA-STATE 0> ,MARA-CAUSAL-SCHEMA>"
     },
     {
       "expected_count": 1,
