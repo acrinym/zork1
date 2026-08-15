@@ -1,0 +1,12 @@
+{
+  "id": "001_INCLUDE_MARA_ANTICIPATION_TEST",
+  "path": "mara_companion.zil",
+  "description": "Include Release 1261 test-only setup and status verbs in the qualification copy only.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_anticipation\" T>",
+      "new": "<INSERT-FILE \"mara_anticipation\" T>\n<INSERT-FILE \"mara_anticipation_test\" T>"
+    }
+  ]
+}

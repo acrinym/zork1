@@ -1,0 +1,22 @@
+{
+  "id": "003_MARA_ANTICIPATION_LIVED_HOOKS",
+  "path": "mara_lived_feeling.zil",
+  "description": "Extend Release 1260 lived-feeling seams so remembered danger can influence Mara before injury and later distinguish heeded from knowingly overridden warnings.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-LIVED-FEELING-ABOUT (TOPIC)\n    <COND (<EQUAL? .TOPIC ,MARA-LIVED-FEELING-TOPIC>",
+      "new": "<ROUTINE MARA-LIVED-FEELING-ABOUT (TOPIC)\n    <COND (<MARA-ANTICIPATION-ABOUT .TOPIC> <RTRUE>)>\n    <COND (<EQUAL? .TOPIC ,MARA-LIVED-FEELING-TOPIC>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-LIVED-AFTER-MOVE (FROM TO)\n    <MARA-ENSURE>",
+      "new": "<ROUTINE MARA-LIVED-AFTER-MOVE (FROM TO)\n    <MARA-ENSURE>\n    <MARA-ANTICIPATION-AFTER-MOVE .FROM .TO>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-LIVED-DANGER-HOOK ()\n    <COND (<AND",
+      "new": "<ROUTINE MARA-LIVED-DANGER-HOOK ()\n    <COND (<MARA-ANTICIPATION-DANGER-HOOK> <RTRUE>)>\n    <COND (<AND"
+    }
+  ]
+}

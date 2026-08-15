@@ -1,0 +1,30 @@
+{
+  "edition": "Mara Anticipation, Worry & Protective Initiative",
+  "release": 1261,
+  "serial": "260815",
+  "base_release": 1260,
+  "base_manifest": "../mara-lived-feeling/patch-series.json",
+  "base_artifact_sha256": "81f686a1cd792b61f219e167fc0427e890151020d5b02f127cbd83d247c209c2",
+  "base_source_sha256": {},
+  "patches": [
+    "patches/001-mara-anticipation-schema.json",
+    "patches/002-mara-anticipation-state.json",
+    "patches/003-mara-anticipation-lived-hooks.json",
+    "patches/004-release-1261.json"
+  ],
+  "expected_changed_paths": [
+    "mara_anticipation.zil",
+    "mara_companion.zil",
+    "mara_companion_state.zil",
+    "mara_lived_feeling.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-mara-anticipation-protective-initiative.ulx",
+    "format": "Glulx"
+  },
+  "added_files": [
+    "mara_anticipation.zil"
+  ]
+}
