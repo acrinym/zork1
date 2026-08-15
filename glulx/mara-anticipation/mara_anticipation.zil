@@ -28,6 +28,9 @@
     <MARA-PUT ,MARA-SLOT-WORRY-SPOKEN 1>
     <COND (<IN? ,MARA-FIELD-ROPE ,MARA>
            <MARA-PUT ,MARA-SLOT-PROTECTIVE-PREPARATION 1>)>
+    ; Three branches: (1) rupture open = distance kept, concern without cooperation;
+    ; (2) rupture repaired = reference to past repair, still cautious;
+    ; (3) normal = standard warning with protective check
     <COND (<MARA-RUPTURE-OPEN?>
            <TELL "Before you can put a hand on the maintenance ladder, Mara speaks from the distance she has kept. I remember what happened here. I am not waiting until you are falling to say this: reduce the load or make the descent genuinely safe. I can care whether you fall without volunteering my body as your safety system." CR>)
           (<MARA-GET ,MARA-SLOT-RUPTURE-REPAIRED>
