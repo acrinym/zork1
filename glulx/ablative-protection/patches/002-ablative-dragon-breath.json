@@ -1,0 +1,12 @@
+{
+  "id": "002_ABLATIVE_DRAGON_BREATH",
+  "path": "dragon_hoard.zil",
+  "description": "Let the authored fire screen intercept the exact Release 1262 dragon-breath consequence before canonical death remains authoritative.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE DRAGON-BREATH-DEATH ()\n    <JIGS-UP \"The dragon has been watching you spend time in its room. Its chest expands once. The first wash of fire turns the air white, and the second makes further tactical reflection unnecessary.\">>",
+      "new": "<ROUTINE DRAGON-BREATH-DEATH ()\n    <COND (<ABLATIVE-DRAGON-BREATH?> <RTRUE>)>\n    <JIGS-UP \"The dragon has been watching you spend time in its room. Its chest expands once. The first wash of fire turns the air white, and the second makes further tactical reflection unnecessary.\">>"
+    }
+  ]
+}

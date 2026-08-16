@@ -1,0 +1,23 @@
+{
+  "id": "003_RELEASE_1263",
+  "path": "zork1.zil",
+  "description": "Advance production identity to Release 1263 and load ablative protection after the dragon authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 HOSTILE ROOMS AND REACTIVE THREATS GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Hostile Rooms & Reactive Threats. Release 1262 adds an\n  original treasure-guardian dragon and real hoard whose threat watches what the\n  Adventurer actually does. Retreat, bargaining, bait and containment, and\n  existing mine-fire smoke provide authored approaches without a boss HP layer.\"\n\n",
+      "new": "\"ZORK1 ABLATIVE PROTECTION AND EQUIPMENT CONSEQUENCE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Ablative Protection & Equipment Consequence. Release 1263\n  adds one physical fire screen whose material condition carries the consequence\n  of surviving the real dragon's breath. No armor points, durability meter,\n  generic block action, repair economy, or universal equipment-damage engine.\"\n\n"
+    },
+    {"expected_count": 1, "old": "<CONSTANT RELEASEID 1262>", "new": "<CONSTANT RELEASEID 1263>"},
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Hostile Rooms and Reactive Threats Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Ablative Protection and Equipment Consequence Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"dragon_hoard\" T>\n",
+      "new": "<INSERT-FILE \"dragon_hoard\" T>\n<INSERT-FILE \"ablative_protection\" T>\n"
+    }
+  ]
+}

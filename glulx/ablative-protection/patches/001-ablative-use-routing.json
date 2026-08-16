@@ -1,0 +1,12 @@
+{
+  "id": "001_ABLATIVE_USE_ROUTING",
+  "path": "shadow_logic.zil",
+  "description": "Use the existing USE ON/WITH action authority to brace the authored fire screen without adding parser grammar.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<RITUAL-USE-ON> <RTRUE>)\n\t      (<DAM-MECH-USE-ON> <RTRUE>)\n\t      (<EQUAL? ,PRSI ,ME>\n\t       <SHADOW-USE-ON-SELF>)",
+      "new": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<RITUAL-USE-ON> <RTRUE>)\n\t      (<DAM-MECH-USE-ON> <RTRUE>)\n\t      (<AND <EQUAL? ,PRSO ,DRAGON-FIRE-SCREEN>\n\t            <EQUAL? ,PRSI ,ME ,HOARD-DRAGON>>\n\t       <ABLATIVE-PREPARE>)\n\t      (<EQUAL? ,PRSI ,ME>\n\t       <SHADOW-USE-ON-SELF>)"
+    }
+  ]
+}
