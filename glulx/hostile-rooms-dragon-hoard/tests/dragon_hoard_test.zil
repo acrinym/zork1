@@ -35,5 +35,7 @@
           " lured=" N <DRAGON-GET ,DS-LURED>
           " contained=" N <DRAGON-GET ,DS-CONTAINED>
           " hoard-taken=" N <DRAGON-GET ,DS-HOARD-TAKEN>
+          " circlet-held=" N <COND (<IN? ,ASHEN-CIRCLET ,WINNER> 1) (T 0)>
+          " star-held=" N <COND (<IN? ,STAR-GLASS ,WINNER> 1) (T 0)>
           " fire-stage=" N <FIRE-STRUCTURAL-STAGE> CR>
     <RTRUE>>
