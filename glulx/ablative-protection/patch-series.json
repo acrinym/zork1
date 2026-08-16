@@ -1,0 +1,33 @@
+{
+  "edition": "Ablative Protection & Equipment Consequence",
+  "release": 1263,
+  "serial": "260816",
+  "base_release": 1262,
+  "base_manifest": "../hostile-rooms-dragon-hoard/patch-series.json",
+  "base_artifact_sha256": "2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9",
+  "base_source_sha256": {
+    "production": "0725e2c777b499356b2da6b13d3f3f6e37261abae2d59e780b6ea3d94c769fa2",
+    "dev": "be8b33560edaadd2af2ea13b6d9545d3daa65beeee8775d066af305b57e0022d"
+  },
+  "patches": [
+    "patches/001-ablative-use-routing.json",
+    "patches/002-ablative-dragon-breath.json",
+    "patches/003-release-1263.json"
+  ],
+  "expected_changed_paths": [
+    "ablative_protection.zil",
+    "dragon_hoard.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-ablative-protection-equipment-consequence.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": null,
+    "checksum_hex": null,
+    "sha256": null
+  },
+  "added_files": ["ablative_protection.zil"]
+}
