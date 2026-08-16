@@ -1,0 +1,22 @@
+{
+  "id": "004_RELEASE_1261",
+  "path": "zork1.zil",
+  "description": "Advance production identity and banner to Release 1261 Mara Anticipation, Worry & Protective Initiative.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 MARA LIVED FEELING RUPTURE AND REPAIR GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Mara Lived Feeling, Rupture & Repair. Release 1260 lets\n  specific events acquire authored personal meaning: chosen recklessness can\n  produce concerned anger, intentional violence creates remembered betrayal and\n  physical distance, and later concrete behavior can earn renewed cooperation\n  without deleting the event that required repair. No generic emotion engine.\"\n\n",
+      "new": "\"ZORK1 MARA ANTICIPATION WORRY AND PROTECTIVE INITIATIVE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Mara Anticipation, Worry & Protective Initiative. Release\n  1261 lets specific remembered danger alter future behavior before another\n  injury: Mara can recognize the live risk, warn without waiting for a fall,\n  truthfully prepare what she has, and remember whether the warning changed the\n  player's later action. No generic worry meter or autonomous puzzle solver.\"\n\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1260>",
+      "new": "<CONSTANT RELEASEID 1261>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Mara Lived Feeling Rupture and Repair Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Mara Anticipation Worry and Protective Initiative Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

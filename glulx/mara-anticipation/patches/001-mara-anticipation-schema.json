@@ -1,0 +1,22 @@
+{
+  "id": "001_MARA_ANTICIPATION_SCHEMA",
+  "path": "mara_companion.zil",
+  "description": "Advance Mara to schema 9 with a fixed anticipation-schema boundary, named prospective-risk propositions, a state table sized through the highest declared slot, and the Release 1261 anticipation authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SCHEMA 8>\n<CONSTANT MARA-PREVIOUS-SCHEMA 7>",
+      "new": "<CONSTANT MARA-SCHEMA 9>\n<CONSTANT MARA-PREVIOUS-SCHEMA 8>\n<CONSTANT MARA-ANTICIPATION-SCHEMA 9>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SLOT-RUPTURE-REPAIRED 55>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>",
+      "new": "<CONSTANT MARA-SLOT-RUPTURE-REPAIRED 55>\n<CONSTANT MARA-SLOT-ANTICIPATED-KNOWN-RISK 56>\n<CONSTANT MARA-SLOT-PROTECTIVE-INITIATIVE 57>\n<CONSTANT MARA-SLOT-WORRY-SPOKEN 58>\n<CONSTANT MARA-SLOT-WARNING-HEEDED 59>\n<CONSTANT MARA-SLOT-WARNING-OVERRIDDEN 60>\n<CONSTANT MARA-SLOT-RELIEF-AFTER-HEEDED 61>\n<CONSTANT MARA-SLOT-PROTECTIVE-PREPARATION 62>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_lived_feeling\" T>\n<INSERT-FILE \"mara_companion_movement\" T>",
+      "new": "<INSERT-FILE \"mara_lived_feeling\" T>\n<INSERT-FILE \"mara_anticipation\" T>\n<INSERT-FILE \"mara_companion_movement\" T>"
+    }
+  ]
+}
