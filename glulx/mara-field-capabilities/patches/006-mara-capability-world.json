@@ -1,0 +1,17 @@
+{
+  "id": "006_MARA_CAPABILITY_WORLD",
+  "path": "1actions.zil",
+  "description": "Put the Frigid service-pipe anchor and Deep Canyon ringbolt into ordinary room descriptions as real authored world geometry.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"You are at the base of Flood Control Dam #3, which looms above you\nand to the north. The river Frigid is flowing by here. An iron maintenance\nladder climbs the downstream face of the dam beside the ordinary scramble.\nAlong the river are the White Cliffs, giant walls stretching north to south\nas the river winds downstream.\" CR>",
+      "new": "\"You are at the base of Flood Control Dam #3, which looms above you\nand to the north. The river Frigid is flowing by here. An iron maintenance\nladder climbs the downstream face of the dam beside the ordinary scramble.\nAn old fixed service pipe crosses above a narrow side channel beside the landing.\nAlong the river are the White Cliffs, giant walls stretching north to south\nas the river winds downstream.\" CR>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\"You stand on the south edge of a deep underground canyon. Passages leave east, northwest, and southwest, while a stone stairway descends toward the chamber below. The far stone is mostly darkness, and the air at the edge is distinctly cooler.\">",
+      "new": "\"You stand on the south edge of a deep underground canyon. Passages leave east, northwest, and southwest, while a stone stairway descends toward the chamber below. An old iron ringbolt is driven into sound stone beside the worn stair. The far stone is mostly darkness, and the air at the edge is distinctly cooler.\">"
+    }
+  ]
+}

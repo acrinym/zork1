@@ -1,0 +1,12 @@
+{
+  "id": "001_INCLUDE_MARA_FIELD_CAPABILITIES_TEST",
+  "path": "mara_companion.zil",
+  "description": "Include Release 1259 test-only setup/status verbs in the qualification copy only.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_field_capabilities\" T>",
+      "new": "<INSERT-FILE \"mara_field_capabilities\" T>\n<INSERT-FILE \"mara_field_capabilities_test\" T>"
+    }
+  ]
+}

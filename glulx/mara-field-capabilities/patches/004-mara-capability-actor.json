@@ -1,0 +1,12 @@
+{
+  "id": "004_MARA_CAPABILITY_ACTOR",
+  "path": "mara_companion_actor.zil",
+  "description": "Make Mara examination distinguish an active ladder injury from a healed injury that remains part of her history.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "           <COND (<MARA-GET ,MARA-SLOT-LADDER-INJURY>\n                  <TELL \" One palm is scraped raw from the Dam ladder, and she is protecting a shoulder that stiffened under the catch.\">)>",
+      "new": "           <COND (<AND <MARA-GET ,MARA-SLOT-LADDER-INJURY>\n                       <MARA-GET ,MARA-SLOT-LADDER-RECOVERED>>\n                  <TELL \" One palm bears the pale rough scar of the Dam ladder; the shoulder that stiffened under the catch is moving freely again.\">)\n                 (<MARA-GET ,MARA-SLOT-LADDER-INJURY>\n                  <TELL \" One palm is scraped raw from the Dam ladder, and she is protecting a shoulder that stiffened under the catch.\">)>"
+    }
+  ]
+}

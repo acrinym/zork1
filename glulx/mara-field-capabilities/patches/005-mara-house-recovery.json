@@ -1,0 +1,12 @@
+{
+  "id": "005_MARA_HOUSE_RECOVERY",
+  "path": "house_rest_and_dreams.zil",
+  "description": "Let the existing completed House full-rest cycle recover Mara current bodily injury without erasing its historical fact.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (,SHADOW-GARLIC-SCENT\n           <SETG SHADOW-GARLIC-SCENT <>>\n           <SET SEEN T>\n           <TELL \"The aggressive garlic smell fades during the night.\" CR>)>\n    <COND (.SEEN <REST-PUT ,RS-EVENT-RECOVERY T>)>",
+      "new": "    <COND (,SHADOW-GARLIC-SCENT\n           <SETG SHADOW-GARLIC-SCENT <>>\n           <SET SEEN T>\n           <TELL \"The aggressive garlic smell fades during the night.\" CR>)>\n    <COND (<MARA-RECOVER-AFTER-HOUSE-REST>\n           <SET SEEN T>)>\n    <COND (.SEEN <REST-PUT ,RS-EVENT-RECOVERY T>)>"
+    }
+  ]
+}
