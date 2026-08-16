@@ -67,6 +67,17 @@ and to the exact staged Release 1263 source identities recovered from the final 
 - production: `5962b663b387d1a82d594f7a5ad3fc94881d87b13c32899a1a7043459b24a237`
 - dev: `be9927dc9b3153bad4d8abd9cd7ce793aa8601ea7da4e43dd48001d4791124a0`
 
-### Candidate artifact
+### Locked production artifact
 
-The Release 1264 artifact identity is intentionally **unlocked only for the first candidate qualification run**. That run must finish staging, compilation, and all natural-command histories before its exact candidate identity is accepted and pinned. Compiler/gameplay failures are blockers, not candidate evidence.
+Candidate qualification run `31948799279` first requalified Release 1263, staged Release 1264 with zero smell errors, compiled both production and test stories, and passed all six natural-command histories. It then stopped deliberately because the candidate identity was not yet locked.
+
+That proven candidate is now pinned exactly as:
+
+- file: `zork1-glulx-perilous-affordances-let-player-be-wrong.ulx`
+- format: Glulx
+- version: `0x00030103`
+- size: `471040` bytes
+- checksum: `0xb70ad718`
+- SHA-256: `04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d`
+
+The locked qualifier must reproduce that exact identity on the final reviewed head. Compiler, gameplay, source-lineage, changed-path, or artifact drift remains a hard failure.

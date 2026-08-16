@@ -25,9 +25,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-perilous-affordances-let-player-be-wrong.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 471040,
+    "checksum_hex": "0xb70ad718",
+    "sha256": "04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d"
   },
   "added_files": [
     "perilous_affordances.zil"
