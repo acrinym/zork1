@@ -176,9 +176,10 @@ run_case bargain
 B="$BUILD/bargain-transcript.txt"
 grep -F 'A bargain has occurred' "$B"
 grep -F 'passage, and one thing from the hoard' "$B"
-grep -F 'ashen silver circlet' "$B"
 grep -F 'toll=1' "$B"
 grep -F 'hoard-taken=1' "$B"
+grep -F 'circlet-held=1' "$B"
+grep -F 'star-held=0' "$B"
 
 cat > "$BUILD/containment.txt" <<'EOF2'
 dragonprep
@@ -186,7 +187,7 @@ drop chalice
 pull chain
 east
 take ashen circlet
-take star-glass
+take star glass
 west
 dragonstatus
 quit
@@ -196,9 +197,9 @@ run_case containment
 C="$BUILD/containment-transcript.txt"
 grep -F 'Greed wins a very small argument with vigilance' "$C"
 grep -F 'physically contained' "$C"
-grep -F 'ashen silver circlet' "$C"
-grep -F 'piece of star-glass' "$C"
 grep -F 'contained=1' "$C"
+grep -F 'circlet-held=1' "$C"
+grep -F 'star-held=1' "$C"
 
 cat > "$BUILD/smoke-leverage.txt" <<'EOF3'
 dragonfireprep
@@ -207,7 +208,7 @@ look
 north
 north
 east
-take star-glass
+take star glass
 dragonstatus
 quit
 yes
@@ -216,8 +217,8 @@ run_case smoke-leverage
 S="$BUILD/smoke-leverage-transcript.txt"
 grep -F 'Flame runs along the dry grain' "$S"
 grep -F 'Smoke from the Timber Room is now pouring through the old ventilation seam' "$S"
-grep -F 'piece of star-glass' "$S"
-grep -F 'fire-stage=2' "$S"
+grep -F 'star-held=1' "$S"
+grep -F 'fire-stage=3' "$S"
 
 cat > "$BUILD/ignored-warning.txt" <<'EOF4'
 dragonprep
