@@ -21,13 +21,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-ablative-protection-equipment-consequence.ulx",
     "format": "Glulx",
     "version_hex": "0x00030103",
-    "size_bytes": null,
-    "checksum_hex": null,
-    "sha256": null
+    "size_bytes": 468480,
+    "checksum_hex": "0xf5898239",
+    "sha256": "a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997"
   },
   "added_files": ["ablative_protection.zil"]
 }
