@@ -102,3 +102,7 @@ This release does **not** add:
 - TODO/stub/no-op scaffolding.
 
 Canonical Dam survival remains authoritative for every case outside the narrow Mara shared-danger intervention.
+
+## Merge-audit note
+
+The August 16 merge audit reconciled only stale product-board copies with the newer `master` board. Release 1258 production source, manifest, and locked artifact identity were not changed; this documentation-only touch exists to force an exact-head hosted rerun after that reconciliation.
