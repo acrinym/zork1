@@ -1,0 +1,17 @@
+{
+  "file": "zork1-glulx-mara-house-company.ulx",
+  "format": "Glulx",
+  "magic": "Glul",
+  "version_hex": "0x00030103",
+  "size_bytes": 386560,
+  "ram_start": 334336,
+  "ext_start": 386560,
+  "end_mem": 386816,
+  "stack_size": 65536,
+  "start_function": 987,
+  "decoding_table": 36,
+  "checksum": 159933356,
+  "checksum_hex": "0x098863ac",
+  "checksum_valid": true,
+  "sha256": "e02b4b7c5809179d11a326987dc9f6cdcf94f2aa7aa3709763b6f7cfcb7e1e1d"
+}

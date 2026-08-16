@@ -1,0 +1,21 @@
+make: Entering directory '/home/runner/work/zork1/zork1/.tooling/cheapglk'
+cc -g -Wall    -c -o cgfref.o cgfref.c
+cc -g -Wall    -c -o cggestal.o cggestal.c
+cc -g -Wall    -c -o cgmisc.o cgmisc.c
+cc -g -Wall    -c -o cgstream.o cgstream.c
+cc -g -Wall    -c -o cgstyle.o cgstyle.c
+cc -g -Wall    -c -o cgwindow.o cgwindow.c
+cc -g -Wall    -c -o cgschan.o cgschan.c
+cc -g -Wall    -c -o cgdate.o cgdate.c
+cc -g -Wall    -c -o cgunicod.o cgunicod.c
+cc -g -Wall    -c -o main.o main.c
+cc -g -Wall    -c -o gi_dispa.o gi_dispa.c
+cc -g -Wall    -c -o gi_blorb.o gi_blorb.c
+cc -g -Wall    -c -o gi_debug.o gi_debug.c
+cc -g -Wall    -c -o cgblorb.o cgblorb.c
+ar r libcheapglk.a cgfref.o cggestal.o cgmisc.o cgstream.o cgstyle.o cgwindow.o cgschan.o cgdate.o cgunicod.o main.o gi_dispa.o gi_blorb.o gi_debug.o cgblorb.o
+ar: creating libcheapglk.a
+ranlib libcheapglk.a
+echo LINKLIBS =   > Make.cheapglk
+echo GLKLIB = -lcheapglk >> Make.cheapglk
+make: Leaving directory '/home/runner/work/zork1/zork1/.tooling/cheapglk'

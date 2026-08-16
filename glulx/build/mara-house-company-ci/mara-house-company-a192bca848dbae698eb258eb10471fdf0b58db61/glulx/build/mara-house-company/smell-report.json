@@ -1,0 +1,303 @@
+{
+  "clock": null,
+  "duplicate_definitions": {
+    "LUCKY": [
+      "1actions.zil:GLOBAL",
+      "gverbs.zil:GLOBAL"
+    ],
+    "P-LEXELEN": [
+      "gparser.zil:CONSTANT",
+      "gparser.zil:CONSTANT"
+    ],
+    "P-LEXSTART": [
+      "gparser.zil:CONSTANT",
+      "gparser.zil:CONSTANT"
+    ],
+    "P-LEXWORDS": [
+      "gparser.zil:CONSTANT",
+      "gparser.zil:CONSTANT"
+    ],
+    "P-P1BITS": [
+      "gparser.zil:CONSTANT",
+      "gparser.zil:CONSTANT"
+    ],
+    "P-P1OFF": [
+      "gparser.zil:CONSTANT",
+      "gparser.zil:CONSTANT"
+    ],
+    "P-PSOFF": [
+      "gparser.zil:CONSTANT",
+      "gparser.zil:CONSTANT"
+    ],
+    "P-WORDLEN": [
+      "gparser.zil:CONSTANT",
+      "gparser.zil:CONSTANT"
+    ],
+    "WON-FLAG": [
+      "1dungeon.zil:GLOBAL",
+      "gverbs.zil:GLOBAL"
+    ],
+    "WORD-SIZE": [
+      "zork1.zil:CONSTANT",
+      "zork1.zil:CONSTANT"
+    ],
+    "WT?": [
+      "gparser.zil:ROUTINE",
+      "gparser.zil:ROUTINE"
+    ]
+  },
+  "errors": [],
+  "includes": [
+    {
+      "from": "mara_companion.zil",
+      "include": "mara_companion_state",
+      "resolved": "mara_companion_state.zil"
+    },
+    {
+      "from": "mara_companion.zil",
+      "include": "mara_companion_movement",
+      "resolved": "mara_companion_movement.zil"
+    },
+    {
+      "from": "mara_companion.zil",
+      "include": "mara_companion_actions",
+      "resolved": "mara_companion_actions.zil"
+    },
+    {
+      "from": "mara_companion.zil",
+      "include": "mara_companion_actor",
+      "resolved": "mara_companion_actor.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "gmacros",
+      "resolved": "gmacros.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "gsyntax",
+      "resolved": "gsyntax.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "1dungeon",
+      "resolved": "1dungeon.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "gglobals",
+      "resolved": "gglobals.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "gclock",
+      "resolved": "gclock.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "gmain",
+      "resolved": "gmain.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "gparser",
+      "resolved": "gparser.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "gverbs",
+      "resolved": "gverbs.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "1actions",
+      "resolved": "1actions.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "assistance",
+      "resolved": "assistance.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "reactive_surface",
+      "resolved": "reactive_surface.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "shadow_logic",
+      "resolved": "shadow_logic.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "absurd_alternates",
+      "resolved": "absurd_alternates.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "dam_mechanisms",
+      "resolved": "dam_mechanisms.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "ritual_resonance",
+      "resolved": "ritual_resonance.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "material_consequences",
+      "resolved": "material_consequences.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "room_density",
+      "resolved": "room_density.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_state_foundation",
+      "resolved": "house_state_foundation.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "living_room_museum",
+      "resolved": "living_room_museum.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_kitchen_laboratory",
+      "resolved": "house_kitchen_laboratory.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_cellar_threshold",
+      "resolved": "house_cellar_threshold.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_correspondence_visitors",
+      "resolved": "house_correspondence_visitors.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "attic_archive_core",
+      "resolved": "attic_archive_core.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "attic_npc_dossiers",
+      "resolved": "attic_npc_dossiers.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "attic_area_case_files",
+      "resolved": "attic_area_case_files.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "attic_playback",
+      "resolved": "attic_playback.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_rest_and_dreams",
+      "resolved": "house_rest_and_dreams.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_vulnerability",
+      "resolved": "house_vulnerability.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_vulnerability_actions",
+      "resolved": "house_vulnerability_actions.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_vulnerability_records",
+      "resolved": "house_vulnerability_records.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "house_vulnerability_integration",
+      "resolved": "house_vulnerability_integration.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "completed_expedition_archive",
+      "resolved": "completed_expedition_archive.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "corpus_causal_warning",
+      "resolved": "corpus_causal_warning.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "museum_ecology_dam_fishing",
+      "resolved": "museum_ecology_dam_fishing.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "museum_songbird_correspondence",
+      "resolved": "museum_songbird_correspondence.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "museum_troll_provenance",
+      "resolved": "museum_troll_provenance.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "museum_intake_first_gallery",
+      "resolved": "museum_intake_first_gallery.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "mara_companion",
+      "resolved": "mara_companion.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "cuisine_hunger_stamina",
+      "resolved": "cuisine_hunger_stamina.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "living_zork_consequences",
+      "resolved": "living_zork_consequences.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "zork_plus_veteran_expedition",
+      "resolved": "zork_plus_veteran_expedition.zil"
+    },
+    {
+      "from": "zork1.zil",
+      "include": "cellar_recovery_locker",
+      "resolved": "cellar_recovery_locker.zil"
+    }
+  ],
+  "metrics": {
+    "lines": 22256,
+    "tabs": 15534,
+    "trailing_whitespace_lines": 50,
+    "unfinished_markers": 0,
+    "zil_files": 47
+  },
+  "source": "/home/runner/work/zork1/zork1/glulx/build/mara-house-company/src",
+  "warnings": [
+    "duplicate definition LUCKY: 1actions.zil:GLOBAL, gverbs.zil:GLOBAL",
+    "duplicate definition P-LEXELEN: gparser.zil:CONSTANT, gparser.zil:CONSTANT",
+    "duplicate definition P-LEXSTART: gparser.zil:CONSTANT, gparser.zil:CONSTANT",
+    "duplicate definition P-LEXWORDS: gparser.zil:CONSTANT, gparser.zil:CONSTANT",
+    "duplicate definition P-P1BITS: gparser.zil:CONSTANT, gparser.zil:CONSTANT",
+    "duplicate definition P-P1OFF: gparser.zil:CONSTANT, gparser.zil:CONSTANT",
+    "duplicate definition P-PSOFF: gparser.zil:CONSTANT, gparser.zil:CONSTANT",
+    "duplicate definition P-WORDLEN: gparser.zil:CONSTANT, gparser.zil:CONSTANT",
+    "duplicate definition WON-FLAG: 1dungeon.zil:GLOBAL, gverbs.zil:GLOBAL",
+    "duplicate definition WORD-SIZE: zork1.zil:CONSTANT, zork1.zil:CONSTANT",
+    "duplicate definition WT?: gparser.zil:ROUTINE, gparser.zil:ROUTINE"
+  ]
+}

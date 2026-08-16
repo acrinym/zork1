@@ -1,290 +1,166 @@
-# Zork I Glulx lineage
+# Zork I Highly Extended Glulx lineage
 
-This directory defines the additive, unofficial Glulx lineage for this repository.
+This directory contains the repository's additive, unofficial Glulx lineage. It begins from a pinned upstream Glulx port and grows through individually staged, individually qualified release trains rather than one mutable “latest” source tree with no provenance.
 
-Ten production layers are represented. Release `1216` also has a qualification-only persistence train; Releases `1217` and `1218` add their own focused gameplay and save/restore qualifications without altering older artifacts.
+If you are here to **play** and are new to Zork or parser interactive fiction, start with [`../expanded/README.md`](../expanded/README.md). This README is the technical map of the Glulx line.
 
-| Layer | Identity | Purpose |
-|---|---:|---|
-| Unchanged upstream baseline | Release 1 / serial `251203` | Reproduce and qualify Tara McGrew's existing Glulx port without project changes |
-| Unofficial Optimized Glulx | Release 1201 / serial `260719` | Port only the conservative corrections from project Release 120 |
-| Unofficial Assisted Glulx | Release 1211 / serial `260719` | Port Release 121 action hooks and optional assistance with cross-VM semantic parity |
-| Unofficial Reactive Surface Glulx | Release 1212 / serial `260719` | Port proximity-safe white-house, door, board, window, mailbox, forest, tree, and songbird reactions without optional geography |
-| Unofficial Shadow Logic Glulx | Release 1213 / serial `260720` | Add native object-on-object experimentation, player consequences, material responses, light reporting, learned maintenance knowledge, and folly memory |
-| Unofficial Absurd Alternate Glulx | Release 1214 / serial `260720` | Port the earned Release 122 troll-restraint and nest-fire outcomes without broader comedy or optional geography |
-| Unofficial Dam Mechanisms Glulx | Release 1215 / serial `260720` | Make the real dam panel, interlock, bolt, buttons, leak, tools, reservoir state, and repair consequences readable and experimentally useful |
-| Unofficial Ritual Resonance Glulx | Release 1216 / serial `260720` | Deepen the real bell, candles, black book, mirrors, hot bell, and canonical exorcism without adding a spell system or alternate solution |
-| Unofficial Material Consequences Glulx | Release 1217 / serial `260722` | Add focused non-dam rope, water, tool, sack, nest, rust, and boarded-surface consequences without generalized crafting or physics |
-| Unofficial Room Density Glulx | Release 1218 / serial `260723` | Make explicitly described room scenery targetable through bounded canonical actions without a universal or free-form parser |
+Historical Release 119, repository Optimized Release 120, early Expanded Release 121, and other preserved `.z3` editions are not replaced or relabeled by these Glulx release numbers.
 
-Historical Release 119, Optimized Release 120, Expanded Release 121, and Absurd Alternate Release 122 remain supported `.z3` editions and are not replaced or relabeled.
+## Current lineage
 
-## Unchanged upstream baseline
+The Highly Extended line described by the current release manifests extends through:
 
-The baseline builds Tara McGrew's unchanged `taradinoc/zork1` `glulx` source at commit `1ada70e58ac4933446b907d67949d9cab3119c0e`.
+**Release 1263 — Ablative Protection & Equipment Consequence**
 
-### Locked repository artifact
+Its locked production artifact is:
 
-- output: `zork1-glulx-upstream.ulx`
-- identity: Release `1` / serial `251203`
-- Glulx version: `3.1.3` / `0x00030103`
-- size: `180,736` bytes
-- checksum: `0xad5a809b`, valid
-- SHA-256: `15dd2b654693e4f1c63e09a2308de1f366913c13be080baa33af3f76c5679ac8`
+- `zork1-glulx-ablative-protection-equipment-consequence.ulx`
+- Glulx `0x00030103`
+- size `468480` bytes
+- checksum `0xf5898239`
+- SHA-256 `a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997`
 
-The IF Archive reference is independently verified as a different toolchain build with the same Release 1 identity. Both stories open at West of House and run through pinned Glulxe/CheapGlk.
+Release 1263 derives from locked Release 1262 artifact SHA-256 `2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9` and pins the exact staged Release 1262 source identities:
 
-## Unofficial Optimized Glulx
+- production: `0725e2c777b499356b2da6b13d3f3f6e37261abae2d59e780b6ea3d94c769fa2`
+- dev: `be8b33560edaadd2af2ea13b6d9545d3daa65beeee8775d066af305b57e0022d`
 
-Release `1201` stages Tara's exact source and ports recursive-containment protection, printed-character portability corrections, dynamic temple-candle descriptions, lowercase include portability, and a repository-local identity.
+See [`ablative-protection/`](ablative-protection/) for the release-specific manifest, implementation, player contract, tests, staging logic, and qualification script.
 
-### Locked artifact
+## What “release train” means here
 
-- output: `zork1-glulx-optimized.ulx`
-- identity: Release `1201` / serial `260719`
-- size: `180,992` bytes
-- checksum: `0xaa478295`, valid
-- SHA-256: `f2f64b0696e91f325602f6d4f1a91182a940bfd28105576662bd54bdeb37d051`
+A modern train normally contains:
 
-See [`optimized/README.md`](optimized/README.md).
+- one substantial player-facing change;
+- a `patch-series.json` manifest naming its exact predecessor;
+- exact base artifact and staged-source identities once locked;
+- an explicit set of production paths the train is allowed to change;
+- a staging script which refuses predecessor or changed-path drift;
+- release-specific production source or patches;
+- test-only setup/status controls kept out of production;
+- parser-command or integration qualification routes;
+- a compiled Glulx artifact with validated header checksum;
+- a locked size/checksum/SHA-256 identity;
+- hosted evidence on the exact head being reviewed when applicable.
 
-## Unofficial Assisted Glulx
+The intent is to make the claim “Release N behaves this way” reproducible and reviewable rather than anecdotal.
 
-Release `1211` adds the state-neutral action hook, `GOALS`, `EXITS`, three-tier `HINT`, `RECAP`, contextual `WHY`, and `USE <object>` guidance, with shared semantic routes against Expanded Release 121 `.z3`.
+## Major lineage arcs
 
-### Locked artifact
+The directory still contains the early Glulx porting history—upstream, optimized, assistance, reactive surface, shadow logic, absurd alternates, Dam mechanisms, ritual resonance, material consequences, room density, and persistence work. Release-specific READMEs preserve that detail.
 
-- output: `zork1-glulx-assisted.ulx`
-- identity: Release `1211` / serial `260719`
-- size: `185,600` bytes
-- checksum: `0xd3e2209e`, valid
-- SHA-256: `cf5e51d414bd786bdb4e911263534dcb5c9c61aaebc35b944a96e5269a864777`
+The modern Highly Extended program then grew through these larger arcs:
 
-See [`assistance/README.md`](assistance/README.md).
+| Releases | Arc | Purpose |
+|---|---|---|
+| 1219–1230 | House of Records | Persistent expedition history, physical records, case files, playback, rest/dream history, vulnerability, chronology, comparison, export, save/corrupt/restore |
+| 1231–1242 | Parser / museum / ecology / field systems | Causal warning, parser depth, evidence custody, Mara's first presence, cuisine/hunger/stamina, canyon survival, veteran expedition, Cellar recovery, fishing and ecology provenance |
+| 1243–1245 | Mara / natural play | Physical companion foundation, House company, consent/boundaries, actor/personhood routing, creative-play repair |
+| 1246–1249 | Material and narrative physicality | Environmental destruction, richer physical prose, forest consequence, rope/cargo behavior, underground material/sensory detail |
+| 1250–1257 | Player ingenuity and living consequences | Systemic workarounds, cross-system utility, route mastery, Dam survival/rescue, troll weapons, thief retaliation, grue ecology, authored fire/smoke/structure |
+| 1258–1261 | Mara causal history | Shared danger, field capability, lived feeling, rupture/repair, anticipation, worry, protective initiative |
+| 1262 | Hostile Rooms & Reactive Threats | Original treasure-guardian dragon and hoard; retreat, bargain, bait/containment, real-fire smoke leverage, causal lethal mistakes |
+| 1263 | Ablative Protection & Equipment Consequence | Physical fire screen that survives by taking the dragon's consequence and carries sound → scorched → warped material history |
 
-## Unofficial Reactive Surface Glulx
+Major Mara-only subsystem expansion pauses after Release 1261 while the rest of Zork receives comparable authored depth.
 
-Release `1212` adds proximity-safe white-house and front-door reactions, board and window behavior, persistent scarring and painted splinter, mailbox maintenance slip, ordinary forest/tree/songbird reactions, and surface discoveries in `RECAP`.
+## Release 1262 — Dragon & Hoard
 
-### Locked artifact
+[`hostile-rooms-dragon-hoard/`](hostile-rooms-dragon-hoard/) adds a Scorched Cleft, Dragon Gallery, and Hoard Vault branching from the real Timber Room.
 
-- output: `zork1-glulx-reactive-surface.ulx`
-- identity: Release `1212` / serial `260719`
-- size: `189,440` bytes
-- checksum: `0x01ea5062`, valid
-- SHA-256: `78bbfd36d03c29714c4ccf0aac45f314568db1ef60aa37732167891a7329e002`
+The guardian dragon is encounter-specific. There is no HP pool, initiative system, random attack loop, generic hostility meter, or universal enemy framework. The player can physically retreat, bargain with a held real treasure, bait the dragon under a real grille and pull the canonical `MOVE`-mapped `PULL CHAIN` action, or exploit smoke produced by Release 1257's existing Timber Room fire authority.
 
-The route proves remote physical actions are rejected, ordinary forest/tree behavior works, `FOLLOW SONGBIRD` remains refused, and Hidden Glade is absent.
+Locked artifact:
 
-See [`reactive-surface/README.md`](reactive-surface/README.md).
+- `zork1-glulx-hostile-rooms-dragon-hoard.ulx`
+- size `466432`
+- checksum `0x8d167131`
+- SHA-256 `2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9`
 
-## Unofficial Shadow Logic Glulx
+The final qualifier proves actual hoard custody, not merely matching room prose: bargain ends with exactly one new hoard item held, containment permits both, real fire/smoke permits the intended environmental opening, ignored warnings remain lethal, and retreat remains safe.
 
-Release `1213` adds:
+## Release 1263 — Ablative Protection
 
-- native `USE <object> ON/WITH <object>` routing;
-- player targeting through the real `ME` object;
-- recoverable self-restraint;
-- telegraphed clothing fire and physically validated water rescue;
-- material-specific responses;
-- qualitative `LIGHTS` reporting;
-- learned `MELZAR` and `WORDS`;
-- mirror-shadow diagnostics;
-- discovered mortal-folly reports;
-- persistent state in `RECAP`.
+[`ablative-protection/`](ablative-protection/) composes with two existing authorities instead of replacing them:
 
-### Locked artifact
+1. the established `USE <object> ON/WITH <object>` action path; and
+2. Release 1262's exact `DRAGON-BREATH-DEATH` hazard routine.
 
-- output: `zork1-glulx-shadow-logic.ulx`
-- identity: Release `1213` / serial `260720`
-- size: `197,376` bytes
-- checksum: `0x2b0521e4`, valid
-- SHA-256: `3b69b321537641dc9758b1a4eca9d5677f320a9eb6d41143f1a4af419d14b75e`
+A held, deliberately braced iron-bound hide screen takes the actual dragon-breath consequence. One blast leaves it scorched; a second leaves it warped; the warped geometry no longer honestly supports another protection claim. The same object therefore becomes physical evidence of the danger it prevented.
 
-Qualification includes a real-map route, an isolated laboratory using production logic, and terminal consequence routes. Production contains no setup verb.
+There is no armor class, equipment HP, durability percentage, generic block verb, mitigation roll, repair economy, or universal equipment-damage system.
 
-See [`shadow-logic/README.md`](shadow-logic/README.md).
+Mutable screen state is held in a compact table rather than consuming additional VM globals.
 
-## Unofficial Absurd Alternate Glulx
+## Canonical-authority rule
 
-Release `1214` ports only the earned Release 122 outcomes:
+When original or earlier Zork code already owns a fact, later trains should observe or compose with that authority rather than invent a parallel truth.
 
-- alert troll-restraint failure;
-- one-use timed troll distraction;
-- living restraint with the real rope;
-- conditional drop of the real axe;
-- east/west passage opening;
-- `UNTIE TROLL` danger restoration;
-- bound-troll reactions;
-- deliberate real-sack preparation;
-- intact prepared egg catch;
-- unprepared canonical `BAD-EGG`;
-- canonical non-torch burning;
-- persistent parity state.
+This applies especially to:
 
-### Locked artifact
+- exact journey-critical object identity;
+- map exits and traversal state;
+- canonical puzzle flags and timers;
+- parser grammar and internal verb actions;
+- creature state;
+- existing physical authorities such as Release 1257 fire;
+- save/restore semantics;
+- canonical solutions and score-bearing routes.
 
-- output: `zork1-glulx-absurd-alternates.ulx`
-- identity: Release `1214` / serial `260720`
-- size: `202,240` bytes
-- checksum: `0x53f5066d`, valid
-- SHA-256: `10ea136e389aef8bf9e629ea854ea97ba69f1e5df3b9024540abc91cc61f0628`
+The rule is not “never add behavior.” It is “do not lie about who owns the state.”
 
-Qualification rebuilds locked Release 122 `.z3` and compares shared semantic outcomes under native interpreters.
+## VM/global budget
 
-See [`absurd-alternates/README.md`](absurd-alternates/README.md).
+The Glulx port is close to its legacy global-variable limit. New trains must not casually consume globals merely because a feature has state. Compact mutable tables, flags on real objects, and existing authorities are preferred when they represent the state honestly.
 
-## Unofficial Dam Mechanisms Glulx
-
-Release `1215` deepens Flood Control Dam #3 without replacing its canonical state machine:
-
-- readable panel, bubble, bolt, button, sluice, reservoir, and leak state;
-- possession-validated wrench, screwdriver, guidebook, water, and repair interactions;
-- canonical interlock and wrench/bolt gate cycle;
-- untouched reservoir timing;
-- canonical room lighting and leak escalation;
-- wrong-tool feedback and real all-purpose-gunk repair;
-- complete `MELZAR` diagnostics;
-- persistent mechanism discoveries.
-
-### Locked artifact
-
-- output: `zork1-glulx-dam-mechanisms.ulx`
-- identity: Release `1215` / serial `260720`
-- size: `207,360` bytes
-- checksum: `0x3d135bb8`, valid
-- SHA-256: `ea23c8ff739348162f32c798ff0ad6f5e8e6a4d310ad3daf5c2da58b86505eed`
-
-See [`dam-mechanisms/README.md`](dam-mechanisms/README.md).
-
-## Unofficial Ritual Resonance Glulx
-
-Release `1216` deepens the canonical exorcism materials while leaving the original state machine authoritative:
-
-- ordinary and hot-bell observation;
-- temple, mirror, dam-machinery, and ordinary-room resonance;
-- damaged-page study revealing order without naming solution objects;
-- paired-candle observation with original timers and misuse;
-- read-only `CEREMONY`, `RITE`, and `RITUAL` reporting;
-- mirror interactions;
-- ordering feedback;
-- real-water hot-bell cooling;
-- persistent wrong-order, resonance, cooling, and completion state;
-- observation only of canonical `XB`, `XC`, `LLD-FLAG`, bell exchange, timers, and ghost removal.
-
-### Locked artifact
-
-- output: `zork1-glulx-ritual-resonance.ulx`
-- identity: Release `1216` / serial `260720`
-- size: `211,968` bytes
-- checksum: `0x3d27d123`, valid
-- SHA-256: `4f406e656b892feb5224e4e52afb98768417e1e761918334dfa94595e6091db2`
-
-See [`ritual-resonance/README.md`](ritual-resonance/README.md).
-
-## Release 1216 persistence qualification
-
-A qualification-only train over the unchanged Release `1216` artifact proves ordinary native Glulxe save files preserve:
-
-- living bound troll, committed rope, dropped axe, and open passages;
-- prepared intact egg and canonical broken egg/broken canary object trees;
-- dam interlock, sluices, active reservoir timing, active leak, and repaired sentinel;
-- learned `MELZAR` and restored dam reporting;
-- completed exorcism, learned/wrong-order/mirror memory, ghost removal, transformed bell, and hot-bell cooldown;
-- restored `CEREMONY` and `RECAP` agreement;
-- deterministic repeated restore without object duplication.
-
-No production identity or save format changes were introduced.
-
-See [`persistence/README.md`](persistence/README.md).
-
-## Unofficial Material Consequences Glulx
-
-Release `1217` is the ninth production layer. It derives from exact Release `1216` and changes exactly four staged paths.
-
-It adds:
-
-- recoverable rope anchors at selected reachable scenery;
-- real-rope cinching of the real brown sack;
-- movement, tension, drop/give, opening, and `UNTIE` consequences;
-- real-water cleaning state for shovel, wrench, screwdriver, and axe;
-- timed worsening corrosion when the rusty knife is washed and left wet;
-- temporary soaking of the real nest;
-- failed torch ignition while wet and ordinary turn-based drying;
-- delegation to canonical prepared or destructive egg outcomes after drying;
-- distinct shovel, screwdriver, and wrench experiments at the boarded entrance;
-- painted-splinter reuse while preserving the inaccessible front door;
-- persistent material discoveries in `RECAP`.
-
-### Locked artifact
-
-- output: `zork1-glulx-material-consequences.ulx`
-- identity: Release `1217` / serial `260722`
-- Glulx version: `3.1.3` / `0x00030103`
-- size: `217,344` bytes
-- checksum: `0xb0028984`, valid
-- SHA-256: `2714d63760fa890be9ece3b23fc91bab67a660c42675e0302b745173aba700da`
-
-Qualification includes a deterministic native route and prompt-aware save/restore scenarios for anchored rope, cinched sack, board discoveries, cleaned shovel, worsened rust, and the active wet-nest timer. Test-only setup and mutation commands are rejected from production.
-
-See [`material-consequences/README.md`](material-consequences/README.md).
-
-## Unofficial Room Density Glulx
-
-Release `1218` is the tenth production layer. It derives from exact Release `1217` and changes exactly four staged paths.
-
-It adds bounded room-scoped responses for nouns explicitly advertised in:
-
-- Troll Room;
-- Gallery;
-- Studio;
-- East of Chasm;
-- Strange Passage;
-- Treasure Room;
-- Forest Path;
-- Stream View.
-
-The layer uses existing parser actions such as examination, search, listening, smell, touch, knock, push, pull, and looking in/under/behind. Established openings delegate to existing map exits. No portable scenery, hidden route, treasure, score, timer, actor state, or alternate solution is added.
-
-### Locked artifact
-
-- output: `zork1-glulx-room-density.ulx`
-- identity: Release `1218` / serial `260723`
-- Glulx version: `3.1.3` / `0x00030103`
-- size: `227,840` bytes
-- checksum: `0x3b65ecaf`, valid
-- SHA-256: `efc8bd9f264f60bb56f2daf3e4d7d6d32a272997434802ee76455781a8edf521`
-
-Qualification includes a deterministic native room tour, canonical travel delegation, persistent `RECAP` categories, and prompt-aware save/restore after deliberate clearing of all discovery flags. Test-only positioning, actor isolation, mutation, and reporting commands are rejected from production.
-
-See [`room-density/README.md`](room-density/README.md).
+Release 1262 initially exposed this limit during qualification; its dragon state was moved into a compact table. Release 1263 follows that model from the start.
 
 ## Locked toolchain
 
-All ten production layers and their qualification routes use:
+Modern qualification uses pinned toolchain/source inputs including:
 
-- ZILF 1.8: `45c60f1e37651f266ac92d49ae01748bb4909fa5`
-- Glazer 1.2.0: `1cc80bcdefb4b4125185e1170eb1ee178e97ff5a`
-- Glazer source SHA-256: `a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482`
-- Glulxe: `56ab8743bab565de307bd892c555d8d8897ed517`
-- CheapGlk: `14d8aaf6e4150669762bd4646a5368e75c1eeee6`
+| Component | Pin |
+|---|---|
+| Upstream Zork Glulx source | `1ada70e58ac4933446b907d67949d9cab3119c0e` |
+| ZILF 1.8 | `45c60f1e37651f266ac92d49ae01748bb4909fa5` |
+| Glazer source | v1.2.0, SHA-256 `a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482` |
+| Glulxe | `56ab8743bab565de307bd892c555d8d8897ed517` |
+| CheapGlk | `14d8aaf6e4150669762bd4646a5368e75c1eeee6` |
 
-Release 122 semantic parity uses its separately pinned Version 3 ZILF/ZAPF and `dfrotz` pipeline.
+See [`QUALIFICATION.md`](QUALIFICATION.md) and [`provenance.json`](provenance.json) for early toolchain/provenance history; later release-specific manifests and qualification scripts are authoritative for their own trains.
 
-## Deterministic serial normalization
+## Serial normalization
 
-Pinned ZILF emits Glulx metadata serial using the build date. Each production pipeline compiles to Glazer assembly, replaces exactly one generated serial with the edition's committed serial, and assembles the normalized output. Replacement count and artifact SHA are fail-closed.
+Pinned ZILF can emit build-date metadata. Production pipelines compile to assembly, normalize exactly the committed serial, and then assemble the `.ulx`. The normalization receipt, Glulx header checksum, size, and SHA-256 all participate in fail-closed qualification.
 
-## Next porting boundary
+## Production versus test controls
 
-Release `1218` completes the first focused room-density and parser-kindness train. Additional parser work should begin from demonstrated failures rather than another universal sweep.
+Many release qualifiers need deterministic setup so they can exercise a late-game situation without replaying the entire game for every scenario. Those setup/status verbs live in test-only source injected only into qualification stories.
 
-The strongest next candidates are:
+Production qualification specifically checks that the shipped staged tree does not contain those controls and that real player actions invoke the production behavior being claimed.
 
-1. restored troll restraint, `UNTIE`, queued recovery, weapon reacquisition, and renewed danger;
-2. cyclops impatience and lullaby timing;
-3. thief bargain with carried real treasure;
-4. focused actor memory for gifts, threats, mercy, deception, and restraint;
-5. optional geography only where story or puzzle logic justifies it.
+## Design boundaries
 
-Hidden Glade, songbird geography, broad character alternatives, generalized crafting, broad fire/flood propagation, Version 3 object-slot cleanup, and the Wizard of Frobozz remain separate scope.
+The active line deliberately avoids turning every successful authored feature into a universal framework. In particular:
+
+- no universal crafting grid;
+- no arbitrary object-pair matrix;
+- no generic physics simulator;
+- no generic creature AI brain;
+- no generic companion/relationship score;
+- no procedural loot treadmill;
+- no generic armor/durability engine;
+- no recursive audit machinery;
+- no TODO-only release slices or no-op scaffolding.
+
+A reusable abstraction should be earned by multiple real authored cases, not created preemptively because abstraction is fashionable.
+
+## Planning
+
+Current product sequencing lives under [`../docs/planning/`](../docs/planning/), especially:
+
+- [`../docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md`](../docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md)
+- [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
+- [`../docs/planning/product-kanban.json`](../docs/planning/product-kanban.json)
+
+For player-facing orientation, return to [`../expanded/README.md`](../expanded/README.md).

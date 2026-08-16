@@ -1,0 +1,262 @@
+{
+  "base": {
+    "artifact_sha256": "8d3f4bf555ba15be82d4d4e849c1501fa61bb3f57630f0a4e91061e89560d629",
+    "manifest_sha256": "8b2a1f53bbbacdb9a6c8ef545c6d8585e19bd7e5f19d1a3d5031488f439914de",
+    "release": 1243
+  },
+  "base_file_hashes": {
+    "1actions.zil": "8d00cd80de72b00e5b25147c579abbdd41d0b37314589550c7a6754c30514af6",
+    "1dungeon.zil": "7de58dc32bc1fcc2b8a62f74d1af8fc20f533325fdf3eb42b6d8415b8972295d",
+    "COMPILED/zork1.z3": "37084966477dff679282de42974b2077156b1bd68fad92a65d4ea94d8eb64d79",
+    "LICENSE": "98a96c38494df4963951e32b81ec4effebe4c8a812ab8d9e7d185d59e86fe2fc",
+    "README.md": "ff67525344ed06c709da8b5a98567ab82e1a0e1eb9a025670d6fa70ab30de22d",
+    "STAGING-RECEIPT.json": "1b7b5c6ddcbe9e8ecfee686ab5151970b070c923b42dbd8e04d227a42a02538c",
+    "absurd_alternates.zil": "28711beebf767ed440d56a80d5600fa36484a43606789da7ea389cd91df48323",
+    "assistance.zil": "1fbd4fa461f6042052c32b69f35215b822a782b1606b5b87d2f9997eb795f92a",
+    "attic_archive_core.zil": "0cb03af5bc1d3ebdcc4b7693e79bdc91dd0fc1455f332aea2a8f2b426e25ea39",
+    "attic_area_case_files.zil": "798ad4ab9f8caa473a778466687738102c4ae23fb4025a883f2a5517996132f6",
+    "attic_npc_dossiers.zil": "d96914acb016e78aa8500050cdd5dc7fd3cbdddcdcdde5503999137ba771f48d",
+    "attic_playback.zil": "e3a12295a986dd18ec8145da8a1a887fd1f988501c1aea0b19961e0d2038dd11",
+    "cellar_recovery_locker.zil": "102329330d9db4d1bac67999f45ec6de7d8b65bf989b49f70ad35b6df8667ed1",
+    "completed_expedition_archive.zil": "dbe85ef135a3b828537f6490d055d4cb0cd1eeda3dc8276d8850f4939adab449",
+    "corpus_causal_warning.zil": "5a47169308cd8d1cc8a1adf8cf9d90457c8be0bea2d7d34d1c893cce2fe9a694",
+    "cuisine_hunger_stamina.zil": "f3ac932ab0e5269dc1a302091eb88ef731f5594555151c7b30a5705c8d3d21f4",
+    "dam_mechanisms.zil": "fdbeca4cced0b36b7f147f9d119971b2f868a0a008de508dbb3d33ae8153a3bd",
+    "gclock.zil": "f67bc88b02b4315ff40bbb1cd012c0ccd12272a4dec44bc7be4bf4e81b61f1a8",
+    "gglobals.zil": "5945abfeeff71cd2b2088653c7572d3c72bf14d5af65c41b4425d945a6bb6e0a",
+    "gmacros.zil": "c97679105d516620d4297267c4936513265d671cd383e68a83ab9767d771e1a6",
+    "gmain.zil": "8cb3a8d996c36facd923e100c21e0b173f95ceb84889a30a7d0cef85be6c4a14",
+    "gparser.zil": "28ba43c8e15b2c8fdb79b090619a809de041de523611426c8a3c33a4bbf22072",
+    "gsyntax.zil": "7c3ea6bf9dccbb441be83dc349ca5e9456f79fa87c9172b2b0eb8385c2bbc58c",
+    "gverbs.zil": "9da9e9e2b245f1156a29f228d1bcd55848a48b475ab36e3f4ceb494af9719acb",
+    "house_cellar_threshold.zil": "7bddd7db7fe4451f1bf502198c1f5563dac8d9894d621f280768410404ea6859",
+    "house_correspondence_visitors.zil": "6adc7b1f369d59091f19eaefd702967144c40dab464fb633602584a3bef7cca4",
+    "house_kitchen_laboratory.zil": "28bdcfe3bfc80d0ff935061e58d52d88c1da5dc12b373e6da07411bf43b0b585",
+    "house_rest_and_dreams.zil": "5485a2a7bd946276f0e77e9c5c0f5e430003c2123a46353ea964b38e6d3876b7",
+    "house_state_foundation.zil": "04bba10fe81de76bd933fcd8e9f26a180ab267468144d64cced192d11b4d5752",
+    "house_vulnerability.zil": "98f06895e1078e0aad771c2c79372fc61075b348a084dcfd43f9cd007c6bcb52",
+    "house_vulnerability_actions.zil": "e6059a8ca32872d482bc3502c201a0809db0aa36d948fc2c701c1eff9e13a853",
+    "house_vulnerability_integration.zil": "b033d841df94efa1bfd0a91c762daa420a03d729a6ff08946fb4b0708e43ba59",
+    "house_vulnerability_records.zil": "3558f8a193336d2100995d5316ad74c39a067c681a727296db9e238d2b365f40",
+    "living_room_museum.zil": "1f6444a1b0e32eae5727e7df2e1f9073511c5df628ad40af3b6ab0c33e8ef8ba",
+    "living_zork_consequences.zil": "2a78f1caf23ee6b0c5a57f6caf0fed0e07f1c6c7258ac01754128ee690c8fc57",
+    "mara_companion.zil": "b8cfd6f527c80a26d63e175394bdbfc44af19e928edb1633950bdb62d844cc1d",
+    "mara_companion_actions.zil": "fe8e297660bfeb9c66a238e0ea2f682ee2a52981b8f213a548f7ec67d2b36a66",
+    "mara_companion_actor.zil": "f1069205bc4927d7b1a1e06b03e530ff24b0b2b1173281f9598a484a5f6c0c50",
+    "mara_companion_movement.zil": "21ce2e80fdf9ee9d7876352ab222052245539443c05a8d2daf198e96721c2852",
+    "mara_companion_state.zil": "95d18b6e437567afcc6c175b8f812946c1ff139c69928eff18a8555ab6ba96d2",
+    "material_consequences.zil": "1e39913100d0932d33e6a066574c100630eddfd58e53ad4d0da9aa52c94abd90",
+    "museum_ecology_dam_fishing.zil": "b43e28e8ca6b1a4343ff91e23cb27a3bb044eff5be66b675b9cfda58520964ee",
+    "museum_intake_first_gallery.zil": "5765bbc5d10a183d162b869976685f3316af2349ad05f972ca78b2606413d663",
+    "museum_songbird_correspondence.zil": "365ce971dc0dcfcb5f0df11c78fa5b6a2e3faf8315eeae54bf9a9023df4f7712",
+    "museum_troll_provenance.zil": "c388fc28a02922503bd72f4808d681f77743e7fc8b9507505c517b0595d99e4d",
+    "parser.cmp": "e4a898341d4285bfac17fddc6824b5648b49f770cc7685ac9c5de200d342d316",
+    "reactive_surface.zil": "9cb85fdff244c8ec4ded5727d4fb06a666a9f6d8244be49f29fafec7abd67212",
+    "ritual_resonance.zil": "8cc65b123eab1c6864a80fa482ce767e274a1d8cfec033633689c9c2a26b7b5e",
+    "room_density.zil": "93655715cfbf0a362c4b77a10cef7dfd571404391644a228864de58c62c45866",
+    "shadow_logic.zil": "d261b67e567a4de5822459ad04d745fed76af7902c8c3ec433e2f2f5ff9fb0c9",
+    "zork1.chart": "21075be29e439820e5ae634c772d09d0b47df009b0ffa715d72b389756795cc3",
+    "zork1.errors": "7cb1c20415840ee0c27e78c12d2d2091b0bedf02ddfcecc6331fb46f96f0a08b",
+    "zork1.record": "91b4644e2152ca7107d8b012e04803bf6963a366a96f7794c6813494f01a4300",
+    "zork1.serial": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "zork1.zil": "0aaa4c7353147372657336587b25ea4efa1c14da249e7459ef5c326bdcba825f",
+    "zork1.zip": "37084966477dff679282de42974b2077156b1bd68fad92a65d4ea94d8eb64d79",
+    "zork1freq.xzap": "dcc6aae1a8b09954d43c75f128420d31c1bd91c346a05c40a0f24a89a9118daa",
+    "zork_plus_veteran_expedition.zil": "9db15a086a6227f56673d19744e93e1fac86c0bb1455e2ea86439feced1dbac5"
+  },
+  "changed_paths": [
+    "house_cellar_threshold.zil",
+    "mara_companion.zil",
+    "mara_companion_actions.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_state.zil",
+    "zork1.zil"
+  ],
+  "edition": "Unofficial Zork Mara House Company Glulx",
+  "final_file_hashes": {
+    "1actions.zil": "8d00cd80de72b00e5b25147c579abbdd41d0b37314589550c7a6754c30514af6",
+    "1dungeon.zil": "7de58dc32bc1fcc2b8a62f74d1af8fc20f533325fdf3eb42b6d8415b8972295d",
+    "COMPILED/zork1.z3": "37084966477dff679282de42974b2077156b1bd68fad92a65d4ea94d8eb64d79",
+    "LICENSE": "98a96c38494df4963951e32b81ec4effebe4c8a812ab8d9e7d185d59e86fe2fc",
+    "README.md": "ff67525344ed06c709da8b5a98567ab82e1a0e1eb9a025670d6fa70ab30de22d",
+    "STAGING-RECEIPT.json": "1b7b5c6ddcbe9e8ecfee686ab5151970b070c923b42dbd8e04d227a42a02538c",
+    "absurd_alternates.zil": "28711beebf767ed440d56a80d5600fa36484a43606789da7ea389cd91df48323",
+    "assistance.zil": "1fbd4fa461f6042052c32b69f35215b822a782b1606b5b87d2f9997eb795f92a",
+    "attic_archive_core.zil": "0cb03af5bc1d3ebdcc4b7693e79bdc91dd0fc1455f332aea2a8f2b426e25ea39",
+    "attic_area_case_files.zil": "798ad4ab9f8caa473a778466687738102c4ae23fb4025a883f2a5517996132f6",
+    "attic_npc_dossiers.zil": "d96914acb016e78aa8500050cdd5dc7fd3cbdddcdcdde5503999137ba771f48d",
+    "attic_playback.zil": "e3a12295a986dd18ec8145da8a1a887fd1f988501c1aea0b19961e0d2038dd11",
+    "cellar_recovery_locker.zil": "102329330d9db4d1bac67999f45ec6de7d8b65bf989b49f70ad35b6df8667ed1",
+    "completed_expedition_archive.zil": "dbe85ef135a3b828537f6490d055d4cb0cd1eeda3dc8276d8850f4939adab449",
+    "corpus_causal_warning.zil": "5a47169308cd8d1cc8a1adf8cf9d90457c8be0bea2d7d34d1c893cce2fe9a694",
+    "cuisine_hunger_stamina.zil": "f3ac932ab0e5269dc1a302091eb88ef731f5594555151c7b30a5705c8d3d21f4",
+    "dam_mechanisms.zil": "fdbeca4cced0b36b7f147f9d119971b2f868a0a008de508dbb3d33ae8153a3bd",
+    "gclock.zil": "f67bc88b02b4315ff40bbb1cd012c0ccd12272a4dec44bc7be4bf4e81b61f1a8",
+    "gglobals.zil": "5945abfeeff71cd2b2088653c7572d3c72bf14d5af65c41b4425d945a6bb6e0a",
+    "gmacros.zil": "c97679105d516620d4297267c4936513265d671cd383e68a83ab9767d771e1a6",
+    "gmain.zil": "8cb3a8d996c36facd923e100c21e0b173f95ceb84889a30a7d0cef85be6c4a14",
+    "gparser.zil": "28ba43c8e15b2c8fdb79b090619a809de041de523611426c8a3c33a4bbf22072",
+    "gsyntax.zil": "7c3ea6bf9dccbb441be83dc349ca5e9456f79fa87c9172b2b0eb8385c2bbc58c",
+    "gverbs.zil": "9da9e9e2b245f1156a29f228d1bcd55848a48b475ab36e3f4ceb494af9719acb",
+    "house_cellar_threshold.zil": "d194b76b57b05abdb1ee4a94d38784fce02faf72a53600ab8645e27b3800bef6",
+    "house_correspondence_visitors.zil": "6adc7b1f369d59091f19eaefd702967144c40dab464fb633602584a3bef7cca4",
+    "house_kitchen_laboratory.zil": "28bdcfe3bfc80d0ff935061e58d52d88c1da5dc12b373e6da07411bf43b0b585",
+    "house_rest_and_dreams.zil": "5485a2a7bd946276f0e77e9c5c0f5e430003c2123a46353ea964b38e6d3876b7",
+    "house_state_foundation.zil": "04bba10fe81de76bd933fcd8e9f26a180ab267468144d64cced192d11b4d5752",
+    "house_vulnerability.zil": "98f06895e1078e0aad771c2c79372fc61075b348a084dcfd43f9cd007c6bcb52",
+    "house_vulnerability_actions.zil": "e6059a8ca32872d482bc3502c201a0809db0aa36d948fc2c701c1eff9e13a853",
+    "house_vulnerability_integration.zil": "b033d841df94efa1bfd0a91c762daa420a03d729a6ff08946fb4b0708e43ba59",
+    "house_vulnerability_records.zil": "3558f8a193336d2100995d5316ad74c39a067c681a727296db9e238d2b365f40",
+    "living_room_museum.zil": "1f6444a1b0e32eae5727e7df2e1f9073511c5df628ad40af3b6ab0c33e8ef8ba",
+    "living_zork_consequences.zil": "2a78f1caf23ee6b0c5a57f6caf0fed0e07f1c6c7258ac01754128ee690c8fc57",
+    "mara_companion.zil": "49e3d6c2256c4b6b54ae7244426d9e21c4a69e257186faaabf43b26c1c593773",
+    "mara_companion_actions.zil": "d274acf58f9805ae444ec47dcd91310debfe78a87bc23811156d813d75f18a3d",
+    "mara_companion_actor.zil": "4ff10aff768bbd6a6aaf4e94aed4deea92b823e433d0a3f9d5538c11049f7611",
+    "mara_companion_movement.zil": "21ce2e80fdf9ee9d7876352ab222052245539443c05a8d2daf198e96721c2852",
+    "mara_companion_state.zil": "628a102eee8e169bf5bc0c2a398d21c58ac3fc852277e0b3c53fbfbe92d91ed6",
+    "material_consequences.zil": "1e39913100d0932d33e6a066574c100630eddfd58e53ad4d0da9aa52c94abd90",
+    "museum_ecology_dam_fishing.zil": "b43e28e8ca6b1a4343ff91e23cb27a3bb044eff5be66b675b9cfda58520964ee",
+    "museum_intake_first_gallery.zil": "5765bbc5d10a183d162b869976685f3316af2349ad05f972ca78b2606413d663",
+    "museum_songbird_correspondence.zil": "365ce971dc0dcfcb5f0df11c78fa5b6a2e3faf8315eeae54bf9a9023df4f7712",
+    "museum_troll_provenance.zil": "c388fc28a02922503bd72f4808d681f77743e7fc8b9507505c517b0595d99e4d",
+    "parser.cmp": "e4a898341d4285bfac17fddc6824b5648b49f770cc7685ac9c5de200d342d316",
+    "reactive_surface.zil": "9cb85fdff244c8ec4ded5727d4fb06a666a9f6d8244be49f29fafec7abd67212",
+    "ritual_resonance.zil": "8cc65b123eab1c6864a80fa482ce767e274a1d8cfec033633689c9c2a26b7b5e",
+    "room_density.zil": "93655715cfbf0a362c4b77a10cef7dfd571404391644a228864de58c62c45866",
+    "shadow_logic.zil": "d261b67e567a4de5822459ad04d745fed76af7902c8c3ec433e2f2f5ff9fb0c9",
+    "zork1.chart": "21075be29e439820e5ae634c772d09d0b47df009b0ffa715d72b389756795cc3",
+    "zork1.errors": "7cb1c20415840ee0c27e78c12d2d2091b0bedf02ddfcecc6331fb46f96f0a08b",
+    "zork1.record": "91b4644e2152ca7107d8b012e04803bf6963a366a96f7794c6813494f01a4300",
+    "zork1.serial": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "zork1.zil": "d5752502ec135d8bb8dcd63654385241b6941b9cca94f55e370010147f00de00",
+    "zork1.zip": "37084966477dff679282de42974b2077156b1bd68fad92a65d4ea94d8eb64d79",
+    "zork1freq.xzap": "dcc6aae1a8b09954d43c75f128420d31c1bd91c346a05c40a0f24a89a9118daa",
+    "zork_plus_veteran_expedition.zil": "9db15a086a6227f56673d19744e93e1fac86c0bb1455e2ea86439feced1dbac5"
+  },
+  "overrides": [
+    {
+      "after_sha256": "7c707bf9ff3098c3758c74006f0dd0826607d6bbba7497f42ba5e7200935f20d",
+      "before_sha256": "b8cfd6f527c80a26d63e175394bdbfc44af19e928edb1633950bdb62d844cc1d",
+      "description": "Extend Mara state and grammar for House company",
+      "path": "mara_companion.zil",
+      "source": "/home/runner/work/zork1/zork1/glulx/mara-house-company/overrides/mara_companion.zil",
+      "source_sha256": "7c707bf9ff3098c3758c74006f0dd0826607d6bbba7497f42ba5e7200935f20d"
+    },
+    {
+      "after_sha256": "628a102eee8e169bf5bc0c2a398d21c58ac3fc852277e0b3c53fbfbe92d91ed6",
+      "before_sha256": "95d18b6e437567afcc6c175b8f812946c1ff139c69928eff18a8555ab6ba96d2",
+      "description": "Preserve Release 1243 history while adding House-specific memory",
+      "path": "mara_companion_state.zil",
+      "source": "/home/runner/work/zork1/zork1/glulx/mara-house-company/overrides/mara_companion_state.zil",
+      "source_sha256": "628a102eee8e169bf5bc0c2a398d21c58ac3fc852277e0b3c53fbfbe92d91ed6"
+    },
+    {
+      "after_sha256": "44a1cc4689a54df48947777013600e467617176359c2bb0adeefd583981173ef",
+      "before_sha256": "fe8e297660bfeb9c66a238e0ea2f682ee2a52981b8f213a548f7ec67d2b36a66",
+      "description": "Add invitation, physical camp retrieval, and shared meal actions",
+      "path": "mara_companion_actions.zil",
+      "source": "/home/runner/work/zork1/zork1/glulx/mara-house-company/overrides/mara_companion_actions.zil",
+      "source_sha256": "44a1cc4689a54df48947777013600e467617176359c2bb0adeefd583981173ef"
+    },
+    {
+      "after_sha256": "4ff10aff768bbd6a6aaf4e94aed4deea92b823e433d0a3f9d5538c11049f7611",
+      "before_sha256": "f1069205bc4927d7b1a1e06b03e530ff24b0b2b1173281f9598a484a5f6c0c50",
+      "description": "Let Mara act on her own pack and respond to earned House history",
+      "path": "mara_companion_actor.zil",
+      "source": "/home/runner/work/zork1/zork1/glulx/mara-house-company/overrides/mara_companion_actor.zil",
+      "source_sha256": "4ff10aff768bbd6a6aaf4e94aed4deea92b823e433d0a3f9d5538c11049f7611"
+    }
+  ],
+  "patches": [
+    {
+      "after_sha256": "49e3d6c2256c4b6b54ae7244426d9e21c4a69e257186faaabf43b26c1c593773",
+      "before_sha256": "7c707bf9ff3098c3758c74006f0dd0826607d6bbba7497f42ba5e7200935f20d",
+      "description": "Add an authored two-person command for the canonical barred cellar trap door",
+      "id": "001_MARA_THRESHOLD_GRAMMAR",
+      "patch": "/home/runner/work/zork1/zork1/glulx/mara-house-company/patches/001-mara-threshold-grammar.json",
+      "patch_sha256": "dc124f7c2a9a8ca5f587ab280696f1091a4945a245aa8dbbb8bff91c538527ee",
+      "path": "mara_companion.zil",
+      "replacements": [
+        {
+          "index": 1,
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "after_sha256": "d274acf58f9805ae444ec47dcd91310debfe78a87bc23811156d813d75f18a3d",
+      "before_sha256": "44a1cc4689a54df48947777013600e467617176359c2bb0adeefd583981173ef",
+      "description": "Let the earned Dam partnership reopen the real barred trap door from below without changing solo Zork",
+      "id": "002_MARA_THRESHOLD_ACTION",
+      "patch": "/home/runner/work/zork1/zork1/glulx/mara-house-company/patches/002-mara-threshold-action.json",
+      "patch_sha256": "79f366b71fb305682860776e188bf1024d24f6c1c445dfaefe2ecdc9acacc3c0",
+      "path": "mara_companion_actions.zil",
+      "replacements": [
+        {
+          "index": 1,
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "after_sha256": "def075a2363ac368d43cd183c3a3a59bdb16db6cea2b14652b26f77d638c950b",
+      "before_sha256": "7bddd7db7fe4451f1bf502198c1f5563dac8d9894d621f280768410404ea6859",
+      "description": "Let natural trap-door language resolve to the existing Cellar-side observational threshold without creating another door object",
+      "id": "003_CELLAR_THRESHOLD_VOCABULARY",
+      "patch": "/home/runner/work/zork1/zork1/glulx/mara-house-company/patches/003-cellar-threshold-vocabulary.json",
+      "patch_sha256": "dcb6968624c9e2589fa04e4b6b8fe3bbeafad2716f6907f1bee99b977f86c86d",
+      "path": "house_cellar_threshold.zil",
+      "replacements": [
+        {
+          "index": 1,
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "after_sha256": "d194b76b57b05abdb1ee4a94d38784fce02faf72a53600ab8645e27b3800bef6",
+      "before_sha256": "def075a2363ac368d43cd183c3a3a59bdb16db6cea2b14652b26f77d638c950b",
+      "description": "Let the existing Cellar threshold hand the authored Mara-assisted unbar verb to its real two-person action before its observational fallback",
+      "id": "004_CELLAR_THRESHOLD_DISPATCH",
+      "patch": "/home/runner/work/zork1/zork1/glulx/mara-house-company/patches/004-cellar-threshold-dispatch.json",
+      "patch_sha256": "12dd5017b0555e27805d26da6dc590f9366cd35bc8fb6b3da305e28cadcaa755",
+      "path": "house_cellar_threshold.zil",
+      "replacements": [
+        {
+          "index": 1,
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "after_sha256": "d5752502ec135d8bb8dcd63654385241b6941b9cca94f55e370010147f00de00",
+      "before_sha256": "0aaa4c7353147372657336587b25ea4efa1c14da249e7459ef5c326bdcba825f",
+      "description": "Assign Release 1244 to Mara House Company",
+      "id": "004_RELEASE_1244",
+      "patch": "/home/runner/work/zork1/zork1/glulx/mara-house-company/patches/004-release-1244.json",
+      "patch_sha256": "8f07ffbf5210f1a1fb43373b76e33cc691d8fad03595949441d9a21614cf4c92",
+      "path": "zork1.zil",
+      "replacements": [
+        {
+          "index": 1,
+          "matches": 1
+        },
+        {
+          "index": 2,
+          "matches": 1
+        },
+        {
+          "index": 3,
+          "matches": 1
+        },
+        {
+          "index": 4,
+          "matches": 1
+        }
+      ]
+    }
+  ],
+  "release": 1244,
+  "serial": "260810",
+  "test_only": false
+}
