@@ -5,8 +5,8 @@
   "replacements": [
     {
       "expected_count": 1,
-      "old": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<EQUAL? ,PRSI ,ME>\n\t       <SHADOW-USE-ON-SELF>)",
-      "new": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<AND <EQUAL? ,PRSO ,DRAGON-FIRE-SCREEN>\n\t            <EQUAL? ,PRSI ,ME ,HOARD-DRAGON>>\n\t       <ABLATIVE-PREPARE>)\n\t      (<EQUAL? ,PRSI ,ME>\n\t       <SHADOW-USE-ON-SELF>)"
+      "old": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<RITUAL-USE-ON> <RTRUE>)\n\t      (<DAM-MECH-USE-ON> <RTRUE>)\n\t      (<EQUAL? ,PRSI ,ME>\n\t       <SHADOW-USE-ON-SELF>)",
+      "new": "<ROUTINE V-SHADOW-USE-ON (\"AUX\" MAT)\n\t<COND (<RITUAL-USE-ON> <RTRUE>)\n\t      (<DAM-MECH-USE-ON> <RTRUE>)\n\t      (<AND <EQUAL? ,PRSO ,DRAGON-FIRE-SCREEN>\n\t            <EQUAL? ,PRSI ,ME ,HOARD-DRAGON>>\n\t       <ABLATIVE-PREPARE>)\n\t      (<EQUAL? ,PRSI ,ME>\n\t       <SHADOW-USE-ON-SELF>)"
     }
   ]
 }
