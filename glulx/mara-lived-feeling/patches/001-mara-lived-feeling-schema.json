@@ -1,0 +1,22 @@
+{
+  "id": "001_MARA_LIVED_FEELING_SCHEMA",
+  "path": "mara_companion.zil",
+  "description": "Advance Mara to schema 8 with named historical causal and lived-feeling schema boundaries plus lived-feeling, rupture, boundary, and repair propositions; include the authored 1260 authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SCHEMA 7>\n<CONSTANT MARA-PREVIOUS-SCHEMA 6>",
+      "new": "<CONSTANT MARA-SCHEMA 8>\n<CONSTANT MARA-PREVIOUS-SCHEMA 7>\n<CONSTANT MARA-LIVED-FEELING-SCHEMA 8>\n<CONSTANT MARA-CAUSAL-SCHEMA 6>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SLOT-PLUMMET-RECOVERED 44>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>",
+      "new": "<CONSTANT MARA-SLOT-PLUMMET-RECOVERED 44>\n<CONSTANT MARA-SLOT-KNOWN-RISK-INJURY 45>\n<CONSTANT MARA-SLOT-AIDED-RECKLESS-INJURY 46>\n<CONSTANT MARA-SLOT-RECKLESSNESS-ANGER 47>\n<CONSTANT MARA-SLOT-FEAR-REVEALED 48>\n<CONSTANT MARA-SLOT-INTENTIONAL-HARM 49>\n<CONSTANT MARA-SLOT-HARM-BETRAYAL 50>\n<CONSTANT MARA-SLOT-RUPTURE-OPEN 51>\n<CONSTANT MARA-SLOT-APOLOGY-ACKNOWLEDGED 52>\n<CONSTANT MARA-SLOT-BOUNDARY-RESPECTED 53>\n<CONSTANT MARA-SLOT-REPAIR-EVIDENCE 54>\n<CONSTANT MARA-SLOT-RUPTURE-REPAIRED 55>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_causal_biography\" T>\n<INSERT-FILE \"mara_field_capabilities\" T>\n<INSERT-FILE \"mara_companion_movement\" T>",
+      "new": "<INSERT-FILE \"mara_causal_biography\" T>\n<INSERT-FILE \"mara_field_capabilities\" T>\n<INSERT-FILE \"mara_lived_feeling\" T>\n<INSERT-FILE \"mara_companion_movement\" T>"
+    }
+  ]
+}

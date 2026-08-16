@@ -1,0 +1,22 @@
+{
+  "id": "004_MARA_LIVED_FEELING_CAUSAL_HOOKS",
+  "path": "mara_causal_biography.zil",
+  "description": "Extend the existing Dam shared-danger and movement authorities with authored appraisal, rupture distance, and repair evidence without replacing canonical hazard logic.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-LADDER-BACKSTOP-EARNED? ()\n    <COND (<MARA-GET ,MARA-SLOT-BIO-ABANDONED-PERIL> <RFALSE>)",
+      "new": "<ROUTINE MARA-LADDER-BACKSTOP-EARNED? ()\n    <COND (<MARA-RUPTURE-OPEN?> <RFALSE>)\n          (<MARA-GET ,MARA-SLOT-BIO-ABANDONED-PERIL> <RFALSE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-SHARED-DANGER-HOOK ()\n    <MARA-ENSURE>\n    <COND (",
+      "new": "<ROUTINE MARA-SHARED-DANGER-HOOK ()\n    <MARA-ENSURE>\n    <COND (<MARA-LIVED-DANGER-HOOK> <RTRUE>)>\n    <COND ("
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-CAUSAL-AFTER-MOVE (FROM TO)\n    ;\"A promise can be broken by movement, and abandoning a person in active",
+      "new": "<ROUTINE MARA-CAUSAL-AFTER-MOVE (FROM TO)\n    <MARA-LIVED-AFTER-MOVE .FROM .TO>\n    ;\"A promise can be broken by movement, and abandoning a person in active"
+    }
+  ]
+}

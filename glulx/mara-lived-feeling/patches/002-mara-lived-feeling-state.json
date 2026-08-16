@@ -1,0 +1,27 @@
+{
+  "id": "002_MARA_LIVED_FEELING_STATE",
+  "path": "mara_companion_state.zil",
+  "description": "Initialize Release 1260 authored propositions and migrate every recognized earlier Mara schema without leaking uninitialized lived-feeling state, while preserving each predecessor's authoritative history and the fixed schema-8 boundary for later releases.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <MARA-PUT ,MARA-SLOT-PLUMMET-RECOVERED 0>\n    <RTRUE>>\n\n<ROUTINE MARA-ENSURE ()",
+      "new": "    <MARA-PUT ,MARA-SLOT-PLUMMET-RECOVERED 0>\n    <MARA-PUT ,MARA-SLOT-KNOWN-RISK-INJURY 0>\n    <MARA-PUT ,MARA-SLOT-AIDED-RECKLESS-INJURY 0>\n    <MARA-PUT ,MARA-SLOT-RECKLESSNESS-ANGER 0>\n    <MARA-PUT ,MARA-SLOT-FEAR-REVEALED 0>\n    <MARA-PUT ,MARA-SLOT-INTENTIONAL-HARM 0>\n    <MARA-PUT ,MARA-SLOT-HARM-BETRAYAL 0>\n    <MARA-PUT ,MARA-SLOT-RUPTURE-OPEN 0>\n    <MARA-PUT ,MARA-SLOT-APOLOGY-ACKNOWLEDGED 0>\n    <MARA-PUT ,MARA-SLOT-BOUNDARY-RESPECTED 0>\n    <MARA-PUT ,MARA-SLOT-REPAIR-EVIDENCE 0>\n    <MARA-PUT ,MARA-SLOT-RUPTURE-REPAIRED 0>\n    <RTRUE>>\n\n<ROUTINE MARA-ENSURE ()"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ENSURE ()\n    <COND (",
+      "new": "<ROUTINE MARA-ENSURE ()\n    ;\"Only schemas older than Release 1260 predate lived-feeling state. Pin this comparison to schema 8 rather than MARA-SCHEMA so a later release can advance the current schema without erasing valid Release 1260 history.\"\n    <COND (<L? <GET ,MARA-STATE 0> ,MARA-LIVED-FEELING-SCHEMA>\n           <MARA-PUT ,MARA-SLOT-KNOWN-RISK-INJURY 0>\n           <MARA-PUT ,MARA-SLOT-AIDED-RECKLESS-INJURY 0>\n           <MARA-PUT ,MARA-SLOT-RECKLESSNESS-ANGER 0>\n           <MARA-PUT ,MARA-SLOT-FEAR-REVEALED 0>\n           <MARA-PUT ,MARA-SLOT-INTENTIONAL-HARM 0>\n           <MARA-PUT ,MARA-SLOT-HARM-BETRAYAL 0>\n           <MARA-PUT ,MARA-SLOT-RUPTURE-OPEN 0>\n           <MARA-PUT ,MARA-SLOT-APOLOGY-ACKNOWLEDGED 0>\n           <MARA-PUT ,MARA-SLOT-BOUNDARY-RESPECTED 0>\n           <MARA-PUT ,MARA-SLOT-REPAIR-EVIDENCE 0>\n           <MARA-PUT ,MARA-SLOT-RUPTURE-REPAIRED 0>)>\n    <COND (<EQUAL? <GET ,MARA-STATE 0> 7>\n           ;\"Release 1259 schema-7 saves retain every causal and capability fact. Only Release 1260 lived-feeling propositions begin empty.\"\n           <PUT ,MARA-STATE 0 ,MARA-SCHEMA>\n           <MARA-PUT ,MARA-SLOT-KNOWN-RISK-INJURY 0>\n           <MARA-PUT ,MARA-SLOT-AIDED-RECKLESS-INJURY 0>\n           <MARA-PUT ,MARA-SLOT-RECKLESSNESS-ANGER 0>\n           <MARA-PUT ,MARA-SLOT-FEAR-REVEALED 0>\n           <MARA-PUT ,MARA-SLOT-INTENTIONAL-HARM 0>\n           <MARA-PUT ,MARA-SLOT-HARM-BETRAYAL 0>\n           <MARA-PUT ,MARA-SLOT-RUPTURE-OPEN 0>\n           <MARA-PUT ,MARA-SLOT-APOLOGY-ACKNOWLEDGED 0>\n           <MARA-PUT ,MARA-SLOT-BOUNDARY-RESPECTED 0>\n           <MARA-PUT ,MARA-SLOT-REPAIR-EVIDENCE 0>\n           <MARA-PUT ,MARA-SLOT-RUPTURE-REPAIRED 0>)>\n    <COND ("
+    },
+    {
+      "expected_count": 1,
+      "old": "<EQUAL? <GET ,MARA-STATE 0> ,MARA-PREVIOUS-SCHEMA>",
+      "new": "<EQUAL? <GET ,MARA-STATE 0> ,MARA-CAUSAL-SCHEMA>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<COND (<MARA-FIELD-CAPABILITY-ABOUT .TOPIC> <RTRUE>)",
+      "new": "<COND (<MARA-LIVED-FEELING-ABOUT .TOPIC> <RTRUE>)\n          (<MARA-FIELD-CAPABILITY-ABOUT .TOPIC> <RTRUE>)"
+    }
+  ]
+}
