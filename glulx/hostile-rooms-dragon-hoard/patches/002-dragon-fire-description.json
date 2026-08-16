@@ -1,0 +1,12 @@
+{
+  "id": "002_DRAGON_FIRE_DESCRIPTION",
+  "path": "fire_structural.zil",
+  "description": "Keep the new northward dragon route visible through every authored Timber Room fire state.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "                 (T\n                  <TELL \"The long passage is marked by a permanent heap of charred timber and one fallen brace. The roof has settled, the smoke is gone, and the wide eastern route and narrow western crawl remain physically what they were.\" CR>)>\n           <RTRUE>)>\n",
+      "new": "                 (T\n                  <TELL \"The long passage is marked by a permanent heap of charred timber and one fallen brace. The roof has settled, the smoke is gone, and the wide eastern route and narrow western crawl remain physically what they were.\" CR>)>\n           <TELL \"A soot-dark cleft in the north wall climbs toward hotter basalt.\" CR>\n           <RTRUE>)>\n"
+    }
+  ]
+}
