@@ -88,11 +88,13 @@
                  (<DRAGON-SMOKE-COVER?> <RFALSE>)
                  (<VERB? WALK> <RFALSE>)
                  (<AND <VERB? GIVE>
-                       <EQUAL? ,PRSI ,HOARD-DRAGON>>
+                       <EQUAL? ,PRSI ,HOARD-DRAGON>
+                       <IN? ,PRSO ,WINNER>>
                   <DRAGON-ACCEPT-TOLL ,PRSO>
                   <RTRUE>)
                  (<AND <VERB? DROP>
-                       <DRAGON-TREASURE? ,PRSO>>
+                       <DRAGON-TREASURE? ,PRSO>
+                       <IN? ,PRSO ,WINNER>>
                   <DRAGON-LURE ,PRSO>
                   <RTRUE>)
                  (<AND <VERB? PULL>
