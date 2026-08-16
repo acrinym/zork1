@@ -1,9 +1,9 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** August 13, 2026  
+**Updated:** August 15, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1256` — Grue Ecology & Colony Reveal  
-**`master` head before Release 1257 merge:** `14d1be667db3110d532b0e2c28f00b92371693fc`
+**Current merged production frontier:** Release `1257` — Fire, Smoke & Structural Consequences  
+**`master` planning head before this update:** `8cd2edf91befab4411f3565a14e21d8b635bfe66`
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -16,70 +16,137 @@ This board is the human operating surface for the active Zork product queue. The
 - Reusable tools remain reusable where the same physical logic reasonably applies.
 - Player ingenuity should reduce repeated friction, not create a fetch-grind tax.
 - Soft sequence breaks are allowed when physically earned, state-safe, and non-bricking.
+- Mara remains one authored human adventurer: no approval meter, generic follower framework, skill tree, omniscient companion AI, or romance meter.
+- Mara becoming a genuine love interest is an explicit future product direction; romance must be earned through lived history and mutual choice rather than bolted on as a score system.
 - No universal crafting grid, arbitrary object-pair matrix, generic physics simulator, recursive audit machinery, TODO-only slice, or no-op scaffolding.
 - **DONE** requires merged or otherwise immutable proof.
 
-## CURRENT
+## CURRENT / STACKED FRONTIER
 
-### Release 1257 — Fire, Smoke & Structural Consequences
+The merged production frontier remains Release 1257. The active unmerged Mara stack currently extends beyond this board's older 1258 snapshot:
 
-**Active branch:** `agent/fire-smoke-structural-consequences-20260812`  
-**PR:** #62  
-**Base:** merged Release 1256 on `master`
+1. Release 1258 — Mara Causal Biography & Shared Danger — PR #63.
+2. Release 1259 — Mara Field Capability Discovery — PR #64, stacked on #63.
+3. Release 1260 — Mara Lived Feeling, Rupture & Repair — PR #65, stacked on #64.
+4. Release 1261 — Mara Anticipation, Worry & Protective Initiative — PR #66, stacked on #65; final artifact qualification still needs to be made honest/green before acceptance.
 
-**Player outcome:** the canonical Timber Room now supports one persistent authored fire lifecycle using real flame, limited bottled water, existing mine airflow, and persistent physical aftermath instead of a generic fire or chemistry simulator.
+All remain unmerged unless Justin gives the explicit merge whistle.
 
-Current showcase:
+The design purpose of this stack is now bounded: Mara has enough causal history, feeling, capability, rupture/repair, and prospective concern machinery to **live in the game**. After 1261, major Mara-only organ expansion pauses so the wider Zork world can catch up.
 
-- the dry broken timbers are a real burn target, but first ignition produces a recoverable smolder rather than instant deletion or explosion;
-- a new smolder can be stamped out or doused with the real bottled water before it earns open flame;
-- ignored smolder becomes open flame, and the room's existing westward draft drives smoke into the narrow west crawl while preserving the wide east escape;
-- once open flame has established through the timber pile, one bottle of water is no fire hose: it hisses into steam and darkens a patch, but the structural fire continues advancing;
-- repeatedly trying the bottle or `EXTINGUISH TIMBERS` after open flame cannot freeze the fire clock;
-- ignored open flame gives audible structural warning before one old brace drops into the burning clutter;
-- the fire eventually burns itself down to a persistent charred heap and fallen brace;
-- the collapse does not widen, delete, or brick the canonical `EMPTY-HANDED` narrow passage;
-- fire state is table-backed and consumes zero new VM globals;
-- canonical `gverbs.zil` / `V-BURN` and canonical Gas Room behavior in `1actions.zil` remain byte-for-byte unchanged;
-- the canonical coal object remains real, movable, and burnable.
+## NEXT — ordered after the Mara stack
 
-Release 1257 is fully qualified against the repaired merged Release-1256 lineage. Locked production artifact SHA-256:
+The next program is a deliberate **Shadowgate → Parser IF Adaptation Program**. Shadowgate is a design lens only: borrow interaction principles and rebuild them from scratch as original Zork-native parser play. Do not copy source code, prose, art, maps, spell names, exact puzzles, object lists, or expressive sequencing.
 
-`d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444`
+Full train specifications: `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md`.
 
-Artifact size/checksum:
+### 1. Release 1262 — Hostile Rooms & Reactive Threats
 
-- size: `438784` bytes
-- checksum: `0x73c14bad`
+Begin with the **Treasure Guardian Dragon & Hoard**, but treat the dragon as the first showcase of a deeper idea: a live threat observes and reacts to what the player actually does inside a dangerous room. Interaction costs opportunity because the threat is physically present, not because the game switched to generic combat turns.
 
-Exact qualified staged-source identities:
+- original Zork-native dragon and hoard;
+- visible warning signs and dangerous fire breath;
+- fire composes with existing fire/smoke/material consequence authorities;
+- preparation, trickery, environmental manipulation, avoidance, containment, theft, negotiation where appropriate, and direct confrontation can produce different outcomes;
+- retreat remains real where geography permits;
+- no generic hit-point boss fight.
 
-- production: `f73099921f56be8e496aab560e81c5fcf4722b6b9c45c97750597140d8d25ff6`
-- dev: `e99fd0e5331edbb4bc0a8faea0961f200e8fa356c84e8ac608c4df738814071c`
+### 2. Release 1263 — Ablative Protection & Equipment Consequence
 
-Final locked qualification run: `31741847431`.
+Protection takes the consequence itself. Shields, rope, clothing, helmets, improvised barriers, and other authored equipment can char, dent, soak, abrade, warp, crack, or otherwise carry physical evidence of what they survived.
 
-The qualification explicitly proves both sides of the water-scale rule: bottled water can stop the fresh smolder, while bottled water used after open flame produces steam but leaves the fire burning, after which the brace still falls and the aftermath still reaches the charred state.
+- no durability percentage;
+- condition is communicated through description and behavior;
+- degradation exists only where it creates interesting decisions rather than inventory maintenance.
 
-## NEXT — ordered
+### 3. Release 1264 — Perilous Affordances / Let the Player Be Wrong
 
-### 1. Release 1258 — Mara Reciprocal Rescue & Shared Danger
+Stop using meta-game refusals to protect puzzle-critical objects from physically possible bad choices. If the Adventurer can honestly break, burn, discard, consume, drop, or misuse something, allow it where the world can support the consequence.
 
-Advance Mara through reciprocal rescue, injuries/recovery, promises, exact temporary custody, separation/reunion, and difficult shared decisions without an approval meter.
+- recoverable failures and substitutes where physically credible;
+- alternate routes where appropriate;
+- genuine irreversible mistakes only when sufficiently warned;
+- agency, not arbitrary punishment.
 
-**Discussion checkpoint:** do not begin implementation until the train is discussed with Justin.
+### 4. Release 1265 — Consumable Light & Graduated Darkness
 
-## FUTURE
+Turn illumination into authored world state rather than a binary lamp flag.
 
-- **Treasure Guardian Dragon & Hoard** — create an original Zork-native dragon encounter around a real treasure hoard, authored territorial behavior, visible warning signs, and dangerous fire breath. Fire should compose with the Release-1257 fire/smoke/material-consequence authority, while the encounter supports multiple credible Zork solutions such as preparation, environmental manipulation, trickery, avoidance, containment, or direct confrontation rather than becoming a generic hit-point boss fight. Shadowgate is inspiration for the encounter archetype only; all prose, code, map layout, puzzle expression, objects, and exact solution structure are rebuilt from scratch.
-- **Cross-IF / RPG Mechanics Adaptation — Shadowgate First** — deliberately study high-value mechanics and interaction patterns from other interactive-fiction games and RPGs, beginning with Shadowgate, then rebuild selected ideas as original Zork-native systems that compose with canonical state and the existing physicality mesh. Borrow concepts and design lessons, not source code, text, art, maps, exact puzzles, or expressive sequencing. Later widen the inspiration pool to other IF/RPGs and eventually selected S.T.A.L.K.E.R.-inspired mechanics, while keeping the separate S.T.A.L.K.E.R. Glulx product lane distinct.
-- **Forest That Answers Back / Described World = Interactive World** — promote selected concrete nouns already present in authored forest descriptions into targetable, stateful world objects whose interactions compose with existing physicality rather than becoming decorative prose or a generic object generator.
-- **Time, Weather & Disaster Arc** — layer authored time/weather conditions and selected disasters onto real geography and existing material state only where they create meaningful preparation, shelter, traversal, rescue, and aftermath play; no generic climate simulator.
-- **Causal Death & Warning Depth** — authored fair warning, near-death, delayed-consequence, and exact-object provenance expansions.
+- bright / weak / ember / darkness states where useful;
+- flame transfer between real objects;
+- wet/damaged fuel behavior;
+- interaction with existing fire, smoke, and grue ecology;
+- loss of light can become an emergency rather than hidden timer busywork;
+- no universal lux simulator.
+
+### 5. Release 1266 — Learned Magic as Parser Capability
+
+Original Zork-native magical knowledge can expand what the parser meaningfully lets the Adventurer do because the character has actually learned a word, rite, formula, sign, or command.
+
+- no copied Shadowgate spells;
+- no mana bar pasted over Zork;
+- knowledge acquisition happens in-world;
+- learned capabilities remain bounded to authored world authorities.
+
+### 6. Release 1267 — Semantic Examination & Hidden Structure
+
+Promote selected meaningful descriptive details into trustworthy parser targets.
+
+- pale blocks, seams, scorches, drafts, stains, hinges, damaged fittings, and other authored details can be examined/referenced naturally;
+- targetability does not guarantee success;
+- no generic noun generator;
+- selected descriptions stop promising details the parser cannot honor.
+
+### 7. Release 1268 — Clue Chains & Knowledge-Gated Interpretation
+
+Knowledge persists as meaning rather than requiring the player to carry the original clue forever.
+
+- earlier inscriptions/documents/symbols can change later EXAMINE interpretation;
+- museum/archive knowledge can become useful in the field;
+- Mara or another being may know a different piece without becoming an automatic hint system;
+- prefer named causal facts over generic `FOUND_CLUE_17` design.
+
+### 8. Release 1269 — Structural Difficulty Modes
+
+Difficulty changes the puzzle/world structure instead of merely multiplying damage.
+
+- clearer evidence, redundant resources, and more recoverable mistakes at lower pressure;
+- subtler evidence, fewer substitutes, tighter consequence windows, and more irreversible choices at higher pressure;
+- same underlying world identity;
+- no parser-phrasing difficulty tax.
+
+### 9. Release 1270 — Causal Death & Failure Feedback
+
+Death and near-death should explain the physical cause, the warning/evidence involved, and whether part of the attempted idea was sound without simply giving the solution away.
+
+A strong failure should help the player infer: what killed me, what did I ignore, what part nearly worked, and what exact state/action changed the result.
+
+### 10. Release 1271 — Creature Encounters as Systemic Puzzles
+
+Living beings remain authored beings with motives, senses, capacities, fears, possessions, territory, and memory where appropriate rather than becoming hit-point-shaped locks.
+
+- frighten, bribe, distract, trap, outrun, negotiate, trick, incapacitate, kill, befriend, manipulate, avoid, or leave alone depending on the specific being and state;
+- troll, thief, grue, dragon, and Mara should remain meaningfully different;
+- no generic creature AI brain or universal disposition meter.
+
+### 11. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
+
+Capstone the program with a substantial original Zork region whose **design grammar** reflects the prior trains while all actual content/expression remains original.
+
+Target a roughly 20–30-room authored adventure region if the design earns that size, with cross-location clues, multiple-use objects, reactive threats, meaningful consumables, learned knowledge/magic, hidden structure, unsafe-before-prepared routes, creature situations, intersecting solution paths, persistent consequences, and optional secrets.
+
+The point is to prove that Releases 1262–1271 became a coherent gameplay language rather than eleven disconnected demonstrations.
+
+## FUTURE — explicit lanes after / around the Shadowgate program
+
+- **Mara Earned Romance & Partnership** — Mara becoming a genuine love interest is planned, not brushed aside. Build mutual attraction, explicit mutual choice, physical/emotional closeness, boundaries, disagreement, repair, initiative, and partnership out of lived history. Prior harm/repair remains true; romance does not reset biography. No dating-sim approval/love meter, and no compulsory romance in histories that have not earned or mutually chosen it.
+- **Forest That Answers Back / Described World = Interactive World** — continue promoting selected concrete nouns in authored descriptions into targetable, stateful objects whose interactions compose with existing physicality.
+- **Time, Weather & Disaster Arc** — layer authored conditions and selected disasters onto real geography/material state where they create preparation, shelter, traversal, rescue, and aftermath play; no generic climate simulator.
 - **Museum & Ecology second expansion** — only where collection creates new field play rather than checklist accumulation.
+- **Cross-IF / RPG Mechanics Adaptation — later inspirations** — after the Shadowgate-first program, study other games for transferable design principles and rebuild selected ideas from scratch. Keep S.T.A.L.K.E.R. Glulx a separate product lane.
 - **Narrative Perspective Experiments** — isolated first-person, third-person, and interactive-storybook editions against real canonical state.
-- **Far-horizon DRAW + multi-agent experiments** — isolated experimental editions/tools only after the playable product supports them; keep them out of the canonical release train until deliberately promoted.
-- Additional selected authored consequences from `LIVING_ZORK_FUTURE_IDEAS_KANBAN.md`.
+- **Far-horizon DRAW + multi-agent experiments** — isolated experimental editions/tools only after the playable product supports them.
+- Additional selected authored consequences from `LIVING_ZORK_FUTURE_IDEAS_KANBAN.md` where present.
 
 ## PARKED / SEPARATE
 
@@ -119,6 +186,7 @@ Advance Mara through reciprocal rescue, injuries/recovery, promises, exact tempo
 | 1254 | Troll Disarm & Stolen Weapons | #59 |
 | 1255 | Thief Retaliation & Sabotage | #60 |
 | 1256 | Grue Ecology & Colony Reveal | #61 |
+| 1257 | Fire, Smoke & Structural Consequences | #62 |
 
 Recent merged production receipts:
 
@@ -126,7 +194,10 @@ Recent merged production receipts:
 - Release 1254 merge `7b99869d8cb2e6db93243432fd8140a937205f44`; artifact `86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0`.
 - Release 1255 merge `8ad53ebc2ec2ce2a454ce6951d919bb1a2025937`; artifact `03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be`.
 - Release 1256 merge `14d1be667db3110d532b0e2c28f00b92371693fc`; artifact `59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975`.
+- Release 1257 merge is present on current `master`; its locked artifact is `d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444`.
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the design doctrine and post-1249 product arc. Release 1257 establishes the first shared authored world-fire authority with scale-aware suppression: a bottle can stop a fresh smolder but not an established structural fire. Release 1258 remains the next committed train, but implementation is intentionally paused for discussion before any Mara work begins.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for the broader design doctrine and `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md` for the detailed Releases 1262–1272 design program.
+
+The intended shape is now explicit: finish the current Mara stack through 1261; let the wider game catch up through the Shadowgate-derived parser-IF program; retain Mara romance/partnership as a real future authored path rather than replacing it with endless Mara-only subsystem trains.
