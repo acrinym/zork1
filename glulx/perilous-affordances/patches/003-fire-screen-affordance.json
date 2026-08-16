@@ -1,0 +1,27 @@
+{
+  "id": "003_FIRE_SCREEN_AFFORDANCE",
+  "path": "ablative_protection.zil",
+  "description": "Extend the existing authored screen condition with an honestly ruined state and route deliberate cutting/burning through that same equipment authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT AP-WARPED 2>\n",
+      "new": "<CONSTANT AP-WARPED 2>\n<CONSTANT AP-RUINED 3>\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<EQUAL? <ABLATIVE-GET ,APS-CONDITION> ,AP-WARPED>\n           <ABLATIVE-PUT ,APS-PREPARED 0>\n           <TELL \"You try to brace the fire screen again, but the iron rim has warped out of plane and the hide no longer covers the gap between shoulder and hip. It can still be carried. It cannot honestly be trusted as a fire barrier.\" CR>\n           <RTRUE>)",
+      "new": "          (<EQUAL? <ABLATIVE-GET ,APS-CONDITION> ,AP-RUINED>\n           <ABLATIVE-PUT ,APS-PREPARED 0>\n           <TELL \"You can still carry the fire screen's iron frame, but too much hide has been deliberately cut or burned away to put a continuous barrier between your body and the dragon. The ruined screen cannot honestly be braced as protection.\" CR>\n           <RTRUE>)\n          (<EQUAL? <ABLATIVE-GET ,APS-CONDITION> ,AP-WARPED>\n           <ABLATIVE-PUT ,APS-PREPARED 0>\n           <TELL \"You try to brace the fire screen again, but the iron rim has warped out of plane and the hide no longer covers the gap between shoulder and hip. It can still be carried. It cannot honestly be trusted as a fire barrier.\" CR>\n           <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ABLATIVE-SCREEN-F ()\n    <COND (<VERB? EXAMINE>\n           <COND (<EQUAL? <ABLATIVE-GET ,APS-CONDITION> ,AP-SOUND>\n                  <TELL \"The portable screen is a broad slab of layered hide stretched inside an iron rim, with forearm straps on the protected face. It is heavy, intact, and plainly meant to put sacrificial material between a person and brief extreme heat.\" CR>)\n                 (<EQUAL? <ABLATIVE-GET ,APS-CONDITION> ,AP-SCORCHED>\n                  <TELL \"The screen's hide is blackened, blistered, and shrunken around the edges. The iron rim is heat-discolored but still straight enough to brace. It looks used, not numerically damaged.\" CR>)\n                 (T\n                  <TELL \"The screen is badly warped. Its hide has burned tight and cracked, and the iron rim no longer lies in a protective plane. It records exactly what it survived, but it cannot honestly promise the same protection again.\" CR>)>\n           <RTRUE>)>\n    <RFALSE>>",
+      "new": "<ROUTINE ABLATIVE-SCREEN-F ()\n    <COND (<PERILOUS-SCREEN-ACTION> <RTRUE>)\n          (<VERB? EXAMINE>\n           <COND (<EQUAL? <ABLATIVE-GET ,APS-CONDITION> ,AP-SOUND>\n                  <TELL \"The portable screen is a broad slab of layered hide stretched inside an iron rim, with forearm straps on the protected face. It is heavy, intact, and plainly meant to put sacrificial material between a person and brief extreme heat.\" CR>)\n                 (<EQUAL? <ABLATIVE-GET ,APS-CONDITION> ,AP-SCORCHED>\n                  <TELL \"The screen's hide is blackened, blistered, and shrunken around the edges. The iron rim is heat-discolored but still straight enough to brace. It looks used, not numerically damaged.\" CR>)\n                 (<EQUAL? <ABLATIVE-GET ,APS-CONDITION> ,AP-WARPED>\n                  <TELL \"The screen is badly warped. Its hide has burned tight and cracked, and the iron rim no longer lies in a protective plane. It records exactly what it survived, but it cannot honestly promise the same protection again.\" CR>)\n                 (T\n                  <TELL \"The fire screen is now mostly an iron frame with straps and ragged islands of hide. Deliberate cutting or burning has opened gaps too large to pretend this remains a barrier, although the ruined object can still be carried as evidence of the choice.\" CR>)>\n           <RTRUE>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"iron-bound hide fire screen\")\n    (FLAGS TAKEBIT)\n    (ACTION ABLATIVE-SCREEN-F)",
+      "new": "    (DESC \"iron-bound hide fire screen\")\n    (FLAGS TAKEBIT BURNBIT)\n    (ACTION ABLATIVE-SCREEN-F)"
+    }
+  ]
+}
