@@ -1,10 +1,17 @@
 "Release 1262 Hostile Rooms & Reactive Threats: Treasure Guardian Dragon & Hoard."
 
-<GLOBAL DRAGON-WATCH 0>
-<GLOBAL DRAGON-TOLL-PAID <>>
-<GLOBAL DRAGON-LURED <>>
-<GLOBAL DRAGON-CONTAINED <>>
-<GLOBAL DRAGON-HOARD-TAKEN <>>
+<CONSTANT DS-WATCH 0>
+<CONSTANT DS-TOLL-PAID 1>
+<CONSTANT DS-LURED 2>
+<CONSTANT DS-CONTAINED 3>
+<CONSTANT DS-HOARD-TAKEN 4>
+<CONSTANT DRAGON-STATE <TABLE 0 0 0 0 0>>
+
+<ROUTINE DRAGON-GET (SLOT)
+    <GET ,DRAGON-STATE .SLOT>>
+
+<ROUTINE DRAGON-PUT (SLOT VALUE)
+    <PUT ,DRAGON-STATE .SLOT .VALUE>>
 
 <ROUTINE DRAGON-TREASURE? (OBJ)
     <COND (<EQUAL? .OBJ ,CHALICE ,SCEPTRE ,TRIDENT ,ASHEN-CIRCLET ,STAR-GLASS>
@@ -18,23 +25,23 @@
     <RFALSE>>
 
 <ROUTINE DRAGON-RESET ()
-    <SETG DRAGON-WATCH 0>
-    <SETG DRAGON-TOLL-PAID <>>
-    <SETG DRAGON-LURED <>>
-    <SETG DRAGON-CONTAINED <>>
-    <SETG DRAGON-HOARD-TAKEN <>>
+    <DRAGON-PUT ,DS-WATCH 0>
+    <DRAGON-PUT ,DS-TOLL-PAID 0>
+    <DRAGON-PUT ,DS-LURED 0>
+    <DRAGON-PUT ,DS-CONTAINED 0>
+    <DRAGON-PUT ,DS-HOARD-TAKEN 0>
     <MOVE ,HOARD-DRAGON ,DRAGON-GALLERY>
     <MOVE ,ASHEN-CIRCLET ,DRAGON-HOARD-VAULT>
     <MOVE ,STAR-GLASS ,DRAGON-HOARD-VAULT>
     <RTRUE>>
 
 <ROUTINE DRAGON-EAST-EXIT ()
-    <COND (,DRAGON-CONTAINED
+    <COND (<DRAGON-GET ,DS-CONTAINED>
            ,DRAGON-HOARD-VAULT)
           (<DRAGON-SMOKE-COVER?>
            <TELL "Smoke from the Timber Room is now pouring through the old ventilation seam. The dragon recoils from it, blinking and coughing flame into the stone instead of holding the eastern arch. You have a brief physical opening." CR>
            ,DRAGON-HOARD-VAULT)
-          (,DRAGON-TOLL-PAID
+          (<DRAGON-GET ,DS-TOLL-PAID>
            <TELL "The dragon lifts one foreclaw from the eastern arch. The bargain is painfully clear: passage, and one thing from the hoard." CR>
            ,DRAGON-HOARD-VAULT)
           (T
@@ -46,26 +53,26 @@
            <TELL "The dragon studies the offer, then you. Whatever arithmetic governs draconic greed, that object does not improve your position." CR>
            <RTRUE>)>
     <MOVE .OBJ ,DRAGON-HOARD-VAULT>
-    <SETG DRAGON-TOLL-PAID T>
-    <SETG DRAGON-WATCH 0>
+    <DRAGON-PUT ,DS-TOLL-PAID 1>
+    <DRAGON-PUT ,DS-WATCH 0>
     <TELL "The dragon hooks the offered treasure away with one black claw and settles it behind the eastern arch. Its head moves aside by exactly the width of a person. A bargain has occurred without either party insulting it by pretending this is friendship." CR>
     <RTRUE>>
 
 <ROUTINE DRAGON-LURE (OBJ)
     <COND (<NOT <DRAGON-TREASURE? .OBJ>> <RFALSE>)>
     <MOVE .OBJ ,DRAGON-GALLERY>
-    <SETG DRAGON-LURED T>
-    <SETG DRAGON-WATCH 0>
+    <DRAGON-PUT ,DS-LURED 1>
+    <DRAGON-PUT ,DS-WATCH 0>
     <TELL "You put the treasure down on the scorched stone instead of offering it. The dragon's pupils narrow. Greed wins a very small argument with vigilance, and the beast steps beneath the hanging iron grille to hook the prize closer." CR>
     <RTRUE>>
 
 <ROUTINE DRAGON-PULL-CHAIN ()
-    <COND (,DRAGON-CONTAINED
+    <COND (<DRAGON-GET ,DS-CONTAINED>
            <TELL "The chain is already taut. The iron grille is already down, and the dragon has had quite enough time to form an opinion about engineering." CR>
            <RTRUE>)
-          (,DRAGON-LURED
-           <SETG DRAGON-CONTAINED T>
-           <SETG DRAGON-WATCH 0>
+          (<DRAGON-GET ,DS-LURED>
+           <DRAGON-PUT ,DS-CONTAINED 1>
+           <DRAGON-PUT ,DS-WATCH 0>
            <TELL "You haul the chain. Counterweights thump inside the wall and the old iron grille drops between two basalt slots with a violence that explains the grooves in the floor. The dragon jerks back too late. It is alive, furious, and physically contained on the western side of the hoard arch." CR>
            <RTRUE>)
           (T
@@ -76,7 +83,7 @@
 
 <ROUTINE DRAGON-GALLERY-F (RARG)
     <COND (<EQUAL? .RARG ,M-LOOK>
-           <COND (,DRAGON-CONTAINED
+           <COND (<DRAGON-GET ,DS-CONTAINED>
                   <TELL "This basalt gallery is blackened by old heat. An iron grille now stands down across the eastern hoard arch, with the treasure guardian dragon furious on the near side of it. A heavy counterweight chain hangs from the north wall. The south passage returns toward the Timber Room." CR>)
                  (<DRAGON-SMOKE-COVER?>
                   <TELL "This basalt gallery is blackened by old heat. Smoke from the burning Timber Room is curling through a high ventilation seam. The dragon guarding the eastern hoard arch hates the smoke enough to keep giving ground from it. A heavy chain controls an iron grille above the arch; south returns toward the mine." CR>)
@@ -84,7 +91,7 @@
                   <TELL "This basalt gallery is blackened by old heat. A large copper-black dragon lies across the eastern arch to a visible hoard, watching you rather than waiting politely for combat mode. An old iron grille hangs above the arch, controlled by a heavy chain on the north wall. The south passage remains open behind you." CR>)>
            <RTRUE>)
           (<EQUAL? .RARG ,M-BEG>
-           <COND (,DRAGON-CONTAINED <RFALSE>)
+           <COND (<DRAGON-GET ,DS-CONTAINED> <RFALSE>)
                  (<DRAGON-SMOKE-COVER?> <RFALSE>)
                  (<VERB? WALK> <RFALSE>)
                  (<AND <VERB? GIVE>
@@ -105,8 +112,8 @@
                        <EQUAL? ,PRSO ,HOARD-DRAGON>>
                   <JIGS-UP "You choose direct violence while the dragon is unrestrained and already facing you. The sword is still becoming an argument when the room becomes fire.">
                   <RTRUE>)
-                 (<ZERO? ,DRAGON-WATCH>
-                  <SETG DRAGON-WATCH 1>
+                 (<ZERO? <DRAGON-GET ,DS-WATCH>>
+                  <DRAGON-PUT ,DS-WATCH 1>
                   <TELL "The dragon does not attack merely because you entered. It watches the action you chose instead. Heat leaks between its teeth as a very clear statement that you have spent one opportunity in a room containing a live territorial animal." CR>
                   <RFALSE>)
                  (T
@@ -120,13 +127,13 @@
            <RTRUE>)
           (<EQUAL? .RARG ,M-BEG>
            <COND (<VERB? WALK> <RFALSE>)
-                 (,DRAGON-CONTAINED <RFALSE>)
+                 (<DRAGON-GET ,DS-CONTAINED> <RFALSE>)
                  (<DRAGON-SMOKE-COVER?> <RFALSE>)
-                 (<AND ,DRAGON-TOLL-PAID
+                 (<AND <DRAGON-GET ,DS-TOLL-PAID>
                        <VERB? TAKE>
                        <DRAGON-TREASURE? ,PRSO>>
-                  <COND (<NOT ,DRAGON-HOARD-TAKEN>
-                         <SETG DRAGON-HOARD-TAKEN T>
+                  <COND (<ZERO? <DRAGON-GET ,DS-HOARD-TAKEN>>
+                         <DRAGON-PUT ,DS-HOARD-TAKEN 1>
                          <TELL "From the gallery, one claw taps stone once. One thing. The bargain remains a bargain because the dragon is counting too." CR>
                          <RFALSE>)
                         (T
@@ -164,7 +171,7 @@
 
 <ROUTINE DRAGON-GRILLE-F ()
     <COND (<VERB? EXAMINE>
-           <COND (,DRAGON-CONTAINED
+           <COND (<DRAGON-GET ,DS-CONTAINED>
                   <TELL "The old grille is down in deep basalt slots. The bars glow faintly where the dragon has tested them, but the counterweight and stone are holding." CR>)
                  (T
                   <TELL "A heavy iron grille is suspended above the eastern arch. Its bars align with old slots cut into the basalt floor." CR>)>
