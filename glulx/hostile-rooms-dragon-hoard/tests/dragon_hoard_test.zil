@@ -28,10 +28,10 @@
     <RTRUE>>
 
 <ROUTINE V-DRAGON-STATUS-TEST ()
-    <TELL "TEST dragon state: watch=" N ,DRAGON-WATCH
-          " toll=" N <COND (,DRAGON-TOLL-PAID 1) (T 0)>
-          " lured=" N <COND (,DRAGON-LURED 1) (T 0)>
-          " contained=" N <COND (,DRAGON-CONTAINED 1) (T 0)>
-          " hoard-taken=" N <COND (,DRAGON-HOARD-TAKEN 1) (T 0)>
+    <TELL "TEST dragon state: watch=" N <DRAGON-GET ,DS-WATCH>
+          " toll=" N <DRAGON-GET ,DS-TOLL-PAID>
+          " lured=" N <DRAGON-GET ,DS-LURED>
+          " contained=" N <DRAGON-GET ,DS-CONTAINED>
+          " hoard-taken=" N <DRAGON-GET ,DS-HOARD-TAKEN>
           " fire-stage=" N <FIRE-STRUCTURAL-STAGE> CR>
     <RTRUE>>
