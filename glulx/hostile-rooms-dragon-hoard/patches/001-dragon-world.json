@@ -1,0 +1,12 @@
+{
+  "id": "001_DRAGON_WORLD",
+  "path": "1dungeon.zil",
+  "description": "Connect the original dragon region to the real Timber Room without replacing the canonical east/west mine routes.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROOM TIMBER-ROOM\t;\"was TIMBE\"\n      (IN ROOMS)\n      (DESC \"Timber Room\")\n      (EAST TO LADDER-BOTTOM)\n      (WEST TO LOWER-SHAFT\n       IF EMPTY-HANDED\n       ELSE \"You cannot fit through this passage with that load.\")\n      (ACTION FIRE-TIMBER-ROOM-FCN)\n      (FLAGS RLANDBIT SACREDBIT)>\n",
+      "new": "<ROOM TIMBER-ROOM\t;\"was TIMBE\"\n      (IN ROOMS)\n      (DESC \"Timber Room\")\n      (EAST TO LADDER-BOTTOM)\n      (WEST TO LOWER-SHAFT\n       IF EMPTY-HANDED\n       ELSE \"You cannot fit through this passage with that load.\")\n      (NORTH TO DRAGON-APPROACH)\n      (ACTION FIRE-TIMBER-ROOM-FCN)\n      (FLAGS RLANDBIT SACREDBIT)>\n"
+    }
+  ]
+}
