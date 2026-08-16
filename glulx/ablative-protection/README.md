@@ -69,7 +69,7 @@ No qualification verb exists in production; setup/status commands are test-only.
 
 ### Locked production artifact
 
-The candidate qualification completed all four player histories and produced a valid Glulx artifact before stopping at the deliberate identity-lock gate. That exact production identity is now pinned in `patch-series.json`:
+The exact production identity pinned in `patch-series.json` is:
 
 - file: `zork1-glulx-ablative-protection-equipment-consequence.ulx`
 - Glulx version: `0x00030103`
@@ -77,9 +77,13 @@ The candidate qualification completed all four player histories and produced a v
 - checksum: `0xf5898239`
 - SHA-256: `a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997`
 
-The exact Release 1262 predecessor remains pinned at artifact SHA-256 `2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9`, with staged-source identities:
+The exact Release 1262 predecessor is pinned at artifact SHA-256 `2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9`, with staged-source identities:
 
 - production: `0725e2c777b499356b2da6b13d3f3f6e37261abae2d59e780b6ea3d94c769fa2`
 - dev: `be8b33560edaadd2af2ea13b6d9545d3daa65beeee8775d066af305b57e0022d`
 
-A final hosted qualification is required on the exact locked head; once that run is green, its run ID is the final release receipt rather than the earlier discovery run.
+### Final hosted receipt
+
+Hosted qualification run **`31929398064` completed successfully on exact locked PR head `ce340dfd72e656172fac53c3037ce4c439f8223c`** before merge. It requalified the complete Release 1262 predecessor and all four Release 1263 player histories against the locked artifact above.
+
+Release 1263 merged through PR #68 at merge commit `565d24d910e75ac6b28f1ce9d57de1506a642b62`.
