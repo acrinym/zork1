@@ -28,8 +28,8 @@
     "format": "Glulx",
     "version_hex": "0x00030103",
     "size_bytes": 460544,
-    "checksum_hex": "0xd765e20d",
-    "sha256": "a522ee69714c70b25a62ac873031515e17d89fd0c7918cc7bb4e4dd785691fb8"
+    "checksum_hex": "0xcc424c84",
+    "sha256": "bc6f86c43803994143e5e188b8256d5ac681b51f1ab7711aeed27bbd4c6208a4"
   },
   "added_files": [
     "mara_anticipation.zil"
