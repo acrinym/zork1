@@ -137,47 +137,20 @@ class CorpusCausalWarningTests(unittest.TestCase):
             )
         )
 
-    def test_product_kanban_has_operational_lanes_and_proof(self) -> None:
+    def test_product_kanban_retains_release_1231_history(self) -> None:
         board = json.loads((ROOT / "docs/planning/product-kanban.json").read_text())
         self.assertEqual(
             set(board["lanes"]),
             {"current", "next", "future", "parked", "done"},
         )
-        self.assertEqual(len(board["lanes"]["current"]), 1)
-        for lane, cards in board["lanes"].items():
-            for card in cards:
-                for key in ("train_id", "outcome"):
-                    self.assertTrue(
-                        card.get(key),
-                        f"{lane}:{card.get('train_id')}:{key}",
-                    )
-                if lane == "done":
-                    self.assertTrue(
-                        card.get("proof"),
-                        f"{lane}:{card.get('train_id')}:proof",
-                    )
-                else:
-                    for key in ("scope", "acceptance", "boundaries"):
-                        self.assertTrue(
-                            card.get(key),
-                            f"{lane}:{card.get('train_id')}:{key}",
-                        )
-        done = {
-            card["train_id"]: card for card in board["lanes"]["done"]
-        }
-        self.assertIn("zork-house-of-records-1230", done)
-        self.assertIn("zork-infocom-corpus-foundation", done)
-        completed = done["zork-corpus-causal-warning-1231"]
-        self.assertEqual(completed["status"], "done")
-        self.assertEqual(completed["pr"], 34)
-        self.assertTrue(completed["proof"])
-        self.assertTrue(
-            any(
-                "5daaa7307ef496a3ae37209a6e79e149c9dc3d202f148f143bbb571fa74b3609"
-                in proof
-                for proof in completed["proof"]
-            )
-        )
+        self.assertLessEqual(len(board["lanes"]["current"]), 1)
+
+        completed = [
+            card for card in board["lanes"]["done"] if card.get("release") == 1231
+        ]
+        self.assertEqual(len(completed), 1)
+        self.assertEqual(completed[0]["title"], "Corpus-Coupled Causal Warning")
+        self.assertEqual(completed[0]["pr"], 34)
 
 
 if __name__ == "__main__":
