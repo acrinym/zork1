@@ -1,0 +1,37 @@
+"TEST-ONLY RELEASE 1262 DRAGON PRECONDITIONS AND STATUS"
+
+<SYNTAX DRAGONPREP = V-DRAGON-PREP-TEST>
+<SYNTAX DRAGONFIREPREP = V-DRAGON-FIRE-PREP-TEST>
+<SYNTAX DRAGONSTATUS = V-DRAGON-STATUS-TEST>
+
+<ROUTINE DRAGON-TEST-BASE ()
+    <DRAGON-RESET>
+    <FIRE-STRUCTURAL-RESET>
+    <MOVE ,CHALICE ,WINNER>
+    <MOVE ,SCEPTRE ,WINNER>
+    <MOVE ,TRIDENT ,WINNER>
+    <RTRUE>>
+
+<ROUTINE V-DRAGON-PREP-TEST ()
+    <DRAGON-TEST-BASE>
+    <GOTO ,DRAGON-GALLERY>
+    <TELL "TEST PRECONDITION: live dragon, three offerable canonical treasures, cold Timber Room fire." CR>
+    <RTRUE>>
+
+<ROUTINE V-DRAGON-FIRE-PREP-TEST ()
+    <DRAGON-TEST-BASE>
+    <MOVE ,TORCH ,WINNER>
+    <FSET ,TORCH ,ONBIT>
+    <FSET ,TORCH ,FLAMEBIT>
+    <GOTO ,TIMBER-ROOM>
+    <TELL "TEST PRECONDITION: Timber Room, live ivory torch, live dragon beyond north cleft." CR>
+    <RTRUE>>
+
+<ROUTINE V-DRAGON-STATUS-TEST ()
+    <TELL "TEST dragon state: watch=" N ,DRAGON-WATCH
+          " toll=" N <COND (,DRAGON-TOLL-PAID 1) (T 0)>
+          " lured=" N <COND (,DRAGON-LURED 1) (T 0)>
+          " contained=" N <COND (,DRAGON-CONTAINED 1) (T 0)>
+          " hoard-taken=" N <COND (,DRAGON-HOARD-TAKEN 1) (T 0)>
+          " fire-stage=" N <FIRE-STRUCTURAL-STAGE> CR>
+    <RTRUE>>
