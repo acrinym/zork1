@@ -1,0 +1,12 @@
+{
+  "id": "ablative-protection-test-include",
+  "description": "Include Release 1263 test-only setup/status verbs in the qualification story.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "<INSERT-FILE \"ablative_protection\" T>\n",
+      "new": "<INSERT-FILE \"ablative_protection\" T>\n<INSERT-FILE \"ablative_protection_test\" T>\n",
+      "expected_count": 1
+    }
+  ]
+}
