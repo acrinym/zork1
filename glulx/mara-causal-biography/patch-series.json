@@ -1,0 +1,41 @@
+{
+  "edition": "Mara Causal Biography & Shared Danger",
+  "release": 1258,
+  "serial": "260813",
+  "base_release": 1257,
+  "base_manifest": "../fire-smoke-structural/patch-series.json",
+  "base_artifact_sha256": "d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444",
+  "base_source_sha256": {
+    "production": "f73099921f56be8e496aab560e81c5fcf4722b6b9c45c97750597140d8d25ff6",
+    "dev": "e99fd0e5331edbb4bc0a8faea0961f200e8fa356c84e8ac608c4df738814071c"
+  },
+  "patches": [
+    "patches/001-mara-causal-schema.json",
+    "patches/002-mara-causal-state.json",
+    "patches/003-mara-causal-actor.json",
+    "patches/004-mara-causal-movement.json",
+    "patches/005-mara-dam-shared-danger.json",
+    "patches/006-release-1258.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "mara_causal_biography.zil",
+    "mara_companion.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_movement.zil",
+    "mara_companion_state.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-mara-causal-biography-shared-danger.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 445440,
+    "checksum_hex": "0xa0517751",
+    "sha256": "cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263"
+  },
+  "added_files": [
+    "mara_causal_biography.zil"
+  ]
+}

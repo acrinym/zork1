@@ -1,0 +1,22 @@
+{
+  "id": "001_MARA_CAUSAL_SCHEMA",
+  "path": "mara_companion.zil",
+  "description": "Advance Mara to schema 6, add narrow promise/rescue grammar, named causal-biography slots, and include the Release 1258 authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SCHEMA 5>\n<CONSTANT MARA-PREVIOUS-SCHEMA 4>",
+      "new": "<SYNTAX PROMISE OBJECT (FIND ACTORBIT) (IN-ROOM) = V-MARA-PROMISE>\n<SYNONYM PROMISE PLEDGE>\n<SYNTAX RESCUE OBJECT (FIND ACTORBIT) (IN-ROOM) = V-MARA-RESCUE>\n<SYNONYM RESCUE>\n\n<CONSTANT MARA-SCHEMA 6>\n<CONSTANT MARA-PREVIOUS-SCHEMA 5>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SLOT-OFFSCREEN-GAG 27>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>",
+      "new": "<CONSTANT MARA-SLOT-OFFSCREEN-GAG 27>\n<CONSTANT MARA-SLOT-BIO-IGNORED-WARNING 28>\n<CONSTANT MARA-SLOT-BIO-RESCUED-MARA 29>\n<CONSTANT MARA-SLOT-BIO-ROPE-RETURNED 30>\n<CONSTANT MARA-SLOT-BIO-BROKE-PROMISE 31>\n<CONSTANT MARA-SLOT-BIO-ABANDONED-PERIL 32>\n<CONSTANT MARA-SLOT-BIO-MARA-RESCUED-YOU 33>\n<CONSTANT MARA-SLOT-LADDER-PERIL 34>\n<CONSTANT MARA-SLOT-LADDER-INJURY 35>\n<CONSTANT MARA-SLOT-ROPE-PROMISE 36>\n<CONSTANT MARA-SLOT-PRIVATE-LADDER-DISCOVERY 37>\n<CONSTANT MARA-SLOT-REUNION-PENDING 38>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_companion_state\" T>\n<INSERT-FILE \"mara_companion_movement\" T>",
+      "new": "<INSERT-FILE \"mara_companion_state\" T>\n<INSERT-FILE \"mara_causal_biography\" T>\n<INSERT-FILE \"mara_companion_movement\" T>"
+    }
+  ]
+}

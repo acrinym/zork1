@@ -1,0 +1,12 @@
+{
+  "id": "001_INCLUDE_MARA_CAUSAL_BIOGRAPHY_TEST",
+  "path": "mara_companion.zil",
+  "description": "Include Release 1258 test-only setup/status verbs in the qualification copy only.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_causal_biography\" T>",
+      "new": "<INSERT-FILE \"mara_causal_biography\" T>\n<INSERT-FILE \"mara_causal_biography_test\" T>"
+    }
+  ]
+}

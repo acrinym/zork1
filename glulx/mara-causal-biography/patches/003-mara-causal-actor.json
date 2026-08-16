@@ -1,0 +1,42 @@
+{
+  "id": "003_MARA_CAUSAL_ACTOR",
+  "path": "mara_companion_actor.zil",
+  "description": "Let Mara attempt the real Dam ladder, preserve bodily injury, support rescue/promise actions, keep exact entrusted-rope custody visible and truthful through ordinary GIVE, and defer quoted actor continuation to canonical Zork V-TELL routing.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "                 (<EQUAL? ,PRSO ,MARA-FIELD-ROPE>\n                  <TELL \"Mara's rope is waxed against water, marked at measured intervals, and coiled for use rather than decoration.\" CR>)",
+      "new": "                 (<EQUAL? ,PRSO ,MARA-FIELD-ROPE>\n                  <TELL \"Mara's rope is waxed against water, marked at measured intervals, and coiled for use rather than decoration.\">\n                  <COND (<IN? ,MARA-FIELD-ROPE ,ADVENTURER>\n                         <TELL \" The wet measured coil is currently in your hands under Mara's explicit temporary custody.\" CR>)\n                        (<IN? ,MARA-FIELD-ROPE ,MARA>\n                         <TELL \" Mara has the measured coil in her own custody.\" CR>)\n                        (T\n                         <TELL \" Its physical location, not a relationship flag, determines who has it.\" CR>)>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<VERB? TAKE GIVE MOVE MUNG>\n           <TELL \"Mara keeps custody of her own field equipment. Ask for help with a real task rather than treating her as an equipment locker.\" CR>\n           <RTRUE>)>",
+      "new": "          (<AND <VERB? GIVE>\n                <EQUAL? ,PRSO ,MARA-FIELD-ROPE>\n                <EQUAL? ,PRSI ,MARA>>\n           <MARA-RETURN-ENTRUSTED-ROPE>)\n          (<VERB? TAKE GIVE MOVE MUNG>\n           <TELL \"Mara keeps custody of her own field equipment. Ask for help with a real task rather than treating her as an equipment locker.\" CR>\n           <RTRUE>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-FCN ()\n    <MARA-ENSURE>\n    <COND (<AND <EQUAL? ,WINNER ,MARA> <VERB? ATTACK STAB>>",
+      "new": "<ROUTINE MARA-FCN ()\n    <MARA-ENSURE>\n    <COND (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? CLIMB-DOWN CLIMB-FOO>\n                <EQUAL? ,PRSO ,DAM-MAINTENANCE-LADDER>>\n           <MARA-LADDER-ATTEMPT>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? ATTACK STAB>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "           <COND (<MARA-GET ,MARA-SLOT-DEATH-WITNESSED>\n                  <TELL \" Since seeing you die, she watches your footing with an attention that is no longer merely professional.\">)>",
+      "new": "           <COND (<MARA-GET ,MARA-SLOT-LADDER-INJURY>\n                  <TELL \" One palm is scraped raw from the Dam ladder, and she is protecting a shoulder that stiffened under the catch.\">)>\n           <COND (<MARA-GET ,MARA-SLOT-DEATH-WITNESSED>\n                  <TELL \" Since seeing you die, she watches your footing with an attention that is no longer merely professional.\">)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<VERB? TELL>\n           <COND (,P-CONT\n                  <SETG WINNER ,MARA>\n                  <SETG HERE <LOC ,MARA>>\n                  <RTRUE>)\n                 (,PRSI <MARA-ABOUT ,PRSI>)\n                 (T <MARA-MEET>)>)",
+      "new": "          (<VERB? TELL>\n           <COND (,P-CONT <RFALSE>)\n                 (,PRSI <MARA-ABOUT ,PRSI>)\n                 (T <MARA-MEET>)>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<AND <VERB? GIVE> <EQUAL? ,PRSI ,MARA>>\n           <TELL \"Mara does not accept permanent custody merely because an object was offered. SHOW it to her if the point is evidence; keep it if the point is ownership.\" CR>\n           <RTRUE>)",
+      "new": "          (<AND <VERB? GIVE>\n                <EQUAL? ,PRSI ,MARA>\n                <EQUAL? ,PRSO ,MARA-FIELD-ROPE>>\n           <MARA-RETURN-ENTRUSTED-ROPE>)\n          (<AND <VERB? GIVE> <EQUAL? ,PRSI ,MARA>>\n           <TELL \"Mara does not accept permanent custody merely because an object was offered. SHOW it to her if the point is evidence; keep it if the point is ownership.\" CR>\n           <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? HELLO>>\n           <TELL \"Mara gives you a small nod. Hello, she says. Still here.\" CR>\n           <RTRUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? TAKE>>\n           <MARA-TAKE-REFUSAL>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? PUSH MOVE DROP THROW PUT PUT-ON>>\n           <MARA-RELOCATION-REFUSAL>)",
+      "new": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MARA-RESCUE>>\n           <V-MARA-RESCUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MARA-PROMISE>>\n           <V-MARA-PROMISE>)\n          (<AND <EQUAL? ,PRSO ,MARA>\n                <MARA-GET ,MARA-SLOT-LADDER-PERIL>\n                <VERB? TAKE PUSH MOVE>>\n           <V-MARA-RESCUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? HELLO>>\n           <TELL \"Mara gives you a small nod. Hello, she says. Still here.\" CR>\n           <RTRUE>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? TAKE>>\n           <MARA-TAKE-REFUSAL>)\n          (<AND <EQUAL? ,PRSO ,MARA> <VERB? PUSH MOVE DROP THROW PUT PUT-ON>>\n           <MARA-RELOCATION-REFUSAL>)"
+    }
+  ]
+}
