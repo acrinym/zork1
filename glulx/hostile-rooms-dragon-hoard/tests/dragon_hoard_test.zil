@@ -7,6 +7,8 @@
 <ROUTINE DRAGON-TEST-BASE ()
     <DRAGON-RESET>
     <FIRE-STRUCTURAL-RESET>
+    <MOVE ,LAMP ,WINNER>
+    <FSET ,LAMP ,ONBIT>
     <MOVE ,CHALICE ,WINNER>
     <MOVE ,SCEPTRE ,WINNER>
     <MOVE ,TRIDENT ,WINNER>
@@ -15,7 +17,7 @@
 <ROUTINE V-DRAGON-PREP-TEST ()
     <DRAGON-TEST-BASE>
     <GOTO ,DRAGON-GALLERY>
-    <TELL "TEST PRECONDITION: live dragon, three offerable canonical treasures, cold Timber Room fire." CR>
+    <TELL "TEST PRECONDITION: lit brass lantern, live dragon, three offerable canonical treasures, cold Timber Room fire." CR>
     <RTRUE>>
 
 <ROUTINE V-DRAGON-FIRE-PREP-TEST ()
@@ -24,7 +26,7 @@
     <FSET ,TORCH ,ONBIT>
     <FSET ,TORCH ,FLAMEBIT>
     <GOTO ,TIMBER-ROOM>
-    <TELL "TEST PRECONDITION: Timber Room, live ivory torch, live dragon beyond north cleft." CR>
+    <TELL "TEST PRECONDITION: Timber Room, live brass lantern, live ivory torch, live dragon beyond north cleft." CR>
     <RTRUE>>
 
 <ROUTINE V-DRAGON-STATUS-TEST ()
