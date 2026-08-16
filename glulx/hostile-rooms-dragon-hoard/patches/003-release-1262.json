@@ -1,0 +1,27 @@
+{
+  "id": "003_RELEASE_1262",
+  "path": "zork1.zil",
+  "description": "Advance production identity to Release 1262 and load the original dragon encounter after the existing fire authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 MARA ANTICIPATION WORRY AND PROTECTIVE INITIATIVE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Mara Anticipation, Worry & Protective Initiative. Release\n  1261 lets specific remembered danger alter future behavior before another\n  injury: Mara can recognize the live risk, warn without waiting for a fall,\n  truthfully prepare what she has, and remember whether the warning changed the\n  player's later action. No generic worry meter or autonomous puzzle solver.\"\n\n",
+      "new": "\"ZORK1 HOSTILE ROOMS AND REACTIVE THREATS GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Hostile Rooms & Reactive Threats. Release 1262 adds an\n  original treasure-guardian dragon and real hoard whose threat watches what the\n  Adventurer actually does. Retreat, bargaining, bait and containment, and\n  existing mine-fire smoke provide authored approaches without a boss HP layer.\"\n\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1261>",
+      "new": "<CONSTANT RELEASEID 1262>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Mara Anticipation Worry and Protective Initiative Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Hostile Rooms and Reactive Threats Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"fire_structural\" T>\n",
+      "new": "<INSERT-FILE \"fire_structural\" T>\n<INSERT-FILE \"dragon_hoard\" T>\n"
+    }
+  ]
+}

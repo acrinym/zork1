@@ -1,0 +1,35 @@
+{
+  "edition": "Hostile Rooms & Reactive Threats — Treasure Guardian Dragon & Hoard",
+  "release": 1262,
+  "serial": "260816",
+  "base_release": 1261,
+  "base_manifest": "../mara-anticipation/patch-series.json",
+  "base_artifact_sha256": "bc6f86c43803994143e5e188b8256d5ac681b51f1ab7711aeed27bbd4c6208a4",
+  "base_source_sha256": {
+    "production": "03d6a7ae7f4b0cfd052b42fc1daaf60dee14fe0871a70dc08fd5f5bcf5d5eb45",
+    "dev": "13ae275fd7d4801bb443d03e3eae3af8674a984759ca86a8d6e54c0587447309"
+  },
+  "patches": [
+    "patches/001-dragon-world.json",
+    "patches/002-dragon-fire-description.json",
+    "patches/003-release-1262.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "dragon_hoard.zil",
+    "fire_structural.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-hostile-rooms-dragon-hoard.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 466432,
+    "checksum_hex": "0x8d167131",
+    "sha256": "2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9"
+  },
+  "added_files": [
+    "dragon_hoard.zil"
+  ]
+}

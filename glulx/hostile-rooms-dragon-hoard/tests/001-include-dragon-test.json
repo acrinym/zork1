@@ -1,0 +1,12 @@
+{
+  "id": "dragon-hoard-test-include",
+  "description": "Include Release 1262 test-only setup/status verbs in the qualification story.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "<INSERT-FILE \"dragon_hoard\" T>\n",
+      "new": "<INSERT-FILE \"dragon_hoard\" T>\n<INSERT-FILE \"dragon_hoard_test\" T>\n",
+      "expected_count": 1
+    }
+  ]
+}
