@@ -97,7 +97,7 @@
                        <IN? ,PRSO ,WINNER>>
                   <DRAGON-LURE ,PRSO>
                   <RTRUE>)
-                 (<AND <VERB? PULL>
+                 (<AND <VERB? MOVE>
                        <EQUAL? ,PRSO ,DRAGON-CHAIN>>
                   <DRAGON-PULL-CHAIN>
                   <RTRUE>)
@@ -157,7 +157,7 @@
     <COND (<VERB? EXAMINE>
            <TELL "The iron chain disappears into a counterweight channel above the gallery. Pulling it would drop the slotted grille over the eastern arch. The grooves in the floor suggest this was built for something approximately dragon-shaped." CR>
            <RTRUE>)
-          (<VERB? PULL>
+          (<VERB? MOVE>
            <DRAGON-PULL-CHAIN>
            <RTRUE>)>
     <RFALSE>>
