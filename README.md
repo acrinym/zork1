@@ -1,5 +1,9 @@
 # Zork I Source Code Collection
 
+> **Looking for the actively developed Highly Extended Zork I?** Start with [`expanded/README.md`](expanded/README.md). It includes a newcomer-friendly guide for people who have never played Zork or parser interactive fiction, followed by the current expanded-game and technical/reproducibility material.
+>
+> The historical source collection described below remains preserved. The Highly Extended project is additive rather than a relabeling of an official Infocom release.
+
 Zork I is a 1980 interactive fiction game written by Marc Blank, Dave Lebling, Bruce Daniels and Tim Anderson and published by Infocom.
 
 Further information on Zork I:
