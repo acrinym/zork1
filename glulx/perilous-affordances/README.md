@@ -71,7 +71,7 @@ and to the exact staged Release 1263 source identities recovered from the final 
 
 Candidate qualification run `31948799279` first requalified Release 1263, staged Release 1264 with zero smell errors, compiled both production and test stories, and passed all six natural-command histories. It then stopped deliberately because the candidate identity was not yet locked.
 
-That proven candidate is now pinned exactly as:
+That proven candidate is pinned exactly as:
 
 - file: `zork1-glulx-perilous-affordances-let-player-be-wrong.ulx`
 - format: Glulx
@@ -80,4 +80,8 @@ That proven candidate is now pinned exactly as:
 - checksum: `0xb70ad718`
 - SHA-256: `04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d`
 
-The locked qualifier must reproduce that exact identity on the final reviewed head. Compiler, gameplay, source-lineage, changed-path, or artifact drift remains a hard failure.
+Locked qualification run `31949037137` reproduced that exact artifact and all six histories successfully on head `c80af99c864cfb9f58aa77415121ef476ca14e7d` before the planning-board refresh.
+
+### Pull request state
+
+Release 1264 is open as **PR #69**. It is not merged and must not be merged without a new explicit merge whistle. Any later release-path or substantive code change must reproduce the locked artifact and qualification evidence on the new exact head before the PR can be considered clean.

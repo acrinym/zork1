@@ -1,1 +1,100 @@
-{"schema_version":"2.1","board_id":"highly-extended-zork-product-kanban","updated_on":"2026-08-16","frontier":{"default_branch":"master","master_head_when_updated":"8d7cea39675d3685021defa9907e30a4aa54c33a","latest_merged_release":1263,"latest_merged_release_title":"Ablative Protection & Equipment Consequence","latest_merged_pr":68},"operating_rules":["CURRENT contains at most one actively implemented product train and may be empty between trains.","NEXT is ordered and contains substantial player-facing work.","Preserve canonical Zork solutions and exact object/state authority while layering physically credible alternatives.","Mara remains one authored person; no approval/love meter, generic follower framework, skill tree, or omniscient companion AI.","No universal crafting/physics/creature machinery, recursive audit machinery, TODO-only slices, stubs, or no-op scaffolding.","DONE requires merged or otherwise immutable proof."],"planning_documents":{"human_board":"docs/planning/PRODUCT_KANBAN.md","shadowgate_parser_if_program":"docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md","broader_roadmap":"docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md"},"lanes":{"current":[],"next":[{"release":1264,"train_id":"zork-perilous-affordances-1264","title":"Perilous Affordances / Let the Player Be Wrong","status":"next-1-planned"},{"release":1265,"train_id":"zork-consumable-light-graduated-darkness-1265","title":"Consumable Light & Graduated Darkness","status":"next-2-planned"},{"release":1266,"train_id":"zork-learned-magic-parser-capability-1266","title":"Learned Magic as Parser Capability","status":"next-3-planned"},{"release":1267,"train_id":"zork-semantic-examination-hidden-structure-1267","title":"Semantic Examination & Hidden Structure","status":"next-4-planned"},{"release":1268,"train_id":"zork-clue-chains-knowledge-interpretation-1268","title":"Clue Chains & Knowledge-Gated Interpretation","status":"next-5-planned"},{"release":1269,"train_id":"zork-structural-difficulty-modes-1269","title":"Structural Difficulty Modes","status":"next-6-planned"},{"release":1270,"train_id":"zork-causal-death-failure-feedback-1270","title":"Causal Death & Failure Feedback","status":"next-7-planned"},{"release":1271,"train_id":"zork-creature-encounters-systemic-puzzles-1271","title":"Creature Encounters as Systemic Puzzles","status":"next-8-planned"},{"release":1272,"train_id":"zork-shadowgate-style-original-region-1272","title":"Shadowgate-Style Macrostructure, Original Zork Region","status":"next-9-capstone-planned","target_shape":"roughly 20-30 authored rooms if design earns that size"}],"future":[{"train_id":"zork-mara-earned-romance-partnership","title":"Mara Earned Romance & Partnership","status":"future-explicit-authored-relationship-arc"},{"train_id":"zork-forest-that-answers-back","title":"Forest That Answers Back / Described World = Interactive World","status":"future-promotion-candidate"},{"train_id":"zork-time-weather-disaster-arc","title":"Time, Weather & Disaster Arc","status":"future-arc"},{"train_id":"zork-museum-ecology-second-expansion","title":"Museum & Ecology Second Expansion","status":"future"},{"train_id":"zork-cross-if-rpg-later-inspirations","title":"Cross-IF / RPG Mechanics Adaptation — Later Inspirations","status":"future-mechanics-inspiration-program"},{"train_id":"zork-narrative-perspective-experiments","title":"Narrative Perspective Experiments","status":"future-isolated-editions"},{"train_id":"zork-draw-multi-agent-experiments","title":"DRAW + Multi-Agent Experiments","status":"far-horizon-isolated-experiments"}],"parked":[{"train_id":"stalker-glulx-separate-lane","title":"S.T.A.L.K.E.R. Glulx Game","status":"parked-separate-product","outcome":"Remain a separate interactive-fiction product lane, never mixed into a Zork gameplay PR."},{"train_id":"infocom-protected-artifact-expansion","title":"Protected Corpus Acquisition","status":"parked-rights-dependent","outcome":"Expand source evidence only through lawfully held local copies or verified rights."}],"done":[{"release_range":"1219-1230","title":"House of Records","proof":"completed 12-train / 96-bead program; Release 1230 merged through PR #32"},{"release":1231,"title":"Corpus-Coupled Causal Warning","pr":34},{"release":1232,"title":"Parser Comprehension and Deep Affordances","pr":35},{"release":1233,"title":"Museum Intake and First Gallery","pr":36},{"release":1234,"title":"Mara Arrival and Evidence Memory","pr":37},{"release":1235,"title":"Cuisine, Hunger, and Stamina","pr":38},{"release":1236,"title":"Great Canyon Living Consequences","pr":39},{"release":1237,"title":"Zork Plus Veteran Survey Expedition","pr":40},{"release":1238,"title":"Cellar Expedition Recovery Locker","pr":41},{"release":1239,"title":"Museum Ecology and Dam Fishing","pr":42},{"release":1240,"title":"Museum Songbird Correspondence","pr":43},{"release":1241,"title":"Museum Troll Provenance","pr":44},{"release":1242,"title":"Natural-Play Regression Repair","pr":45},{"release":1243,"title":"Mara Companion Expedition Foundation","pr":46},{"title":"Narrative Perspective Experiments","pr":47,"type":"documentation lane"},{"release":1244,"title":"Mara House Company","pr":48},{"release":1245,"title":"Creative Natural Play","pr":49},{"release":1246,"title":"Environmental Destruction","pr":50},{"release":1247,"title":"Narrative Physicality","pr":51},{"release":1248,"title":"Forest Consequence Physicality","pr":52},{"release":1249,"title":"Underground Sensory Physicality","pr":53},{"release":1250,"title":"Player Ingenuity / Systemic Workarounds","pr":55},{"release":1251,"title":"Cross-System Utility Mesh","pr":56},{"release":1252,"title":"Earned Sequence Breaks & Route Mastery","pr":57},{"release":1253,"title":"Dam Survival & Prepared Rescue","pr":58,"artifact_sha256":"232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff"},{"release":1254,"title":"Troll Disarm & Stolen Weapons","pr":59,"artifact_sha256":"86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0"},{"release":1255,"title":"Thief Retaliation & Sabotage","pr":60,"artifact_sha256":"03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be"},{"release":1256,"title":"Grue Ecology & Colony Reveal","pr":61,"artifact_sha256":"59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975"},{"release":1257,"title":"Fire, Smoke & Structural Consequences","pr":62,"artifact_sha256":"d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444"},{"release":1258,"title":"Mara Causal Biography & Shared Danger","pr":63,"merge_commit":"e50e81ddfd356cb13c60d61c641d3e7ce1225685","artifact_sha256":"cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263","qualification_run":31929719820},{"release":1259,"title":"Mara Field Capability Discovery","pr":64,"merge_commit":"2cb9fd6ef66914c64c8c57d6b9b51767595c664c","artifact_sha256":"e3a1adc99a6849b4703a3fe4338310a12c8d38c6d94b1aeab762199bb8e43d77","qualification_run":31828682046},{"release":1260,"title":"Mara Lived Feeling, Rupture & Repair","pr":65,"merge_commit":"2fe55b412818b2eabd9207fa91ed48f20b32ca41","artifact_sha256":"81f686a1cd792b61f219e167fc0427e890151020d5b02f127cbd83d247c209c2","qualification_run":31886864766},{"release":1261,"title":"Mara Anticipation, Worry & Protective Initiative","pr":66,"merge_commit":"56772b585f6a6f87e2a7365e5ca813af5b59beb8","artifact_sha256":"bc6f86c43803994143e5e188b8256d5ac681b51f1ab7711aeed27bbd4c6208a4","qualification_run":31927382213},{"release":1262,"title":"Hostile Rooms & Reactive Threats / Dragon & Hoard","pr":67,"merge_commit":"32ddee571a686411f672235aecffeab6b614bbb6","artifact_sha256":"2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9","qualification_run":31928781090},{"release":1263,"title":"Ablative Protection & Equipment Consequence","pr":68,"merge_commit":"565d24d910e75ac6b28f1ce9d57de1506a642b62","artifact_sha256":"a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997","qualification_run":31929398064}]}}
+{
+  "schema_version": "2.1",
+  "board_id": "highly-extended-zork-product-kanban",
+  "updated_on": "2026-08-16",
+  "frontier": {
+    "default_branch": "master",
+    "master_head_when_updated": "1a5b9cb27e85648fd7cd95cd1c9c890be1d71e66",
+    "latest_merged_release": 1263,
+    "latest_merged_release_title": "Ablative Protection & Equipment Consequence",
+    "latest_merged_pr": 68
+  },
+  "operating_rules": [
+    "CURRENT contains at most one actively implemented product train and may be empty between trains.",
+    "NEXT is ordered and contains substantial player-facing work.",
+    "Preserve canonical Zork solutions and exact object/state authority while layering physically credible alternatives.",
+    "Mara remains one authored person; no approval/love meter, generic follower framework, skill tree, or omniscient companion AI.",
+    "No universal crafting/physics/creature machinery, recursive audit machinery, TODO-only slices, stubs, or no-op scaffolding.",
+    "DONE requires merged or otherwise immutable proof."
+  ],
+  "planning_documents": {
+    "human_board": "docs/planning/PRODUCT_KANBAN.md",
+    "shadowgate_parser_if_program": "docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md",
+    "broader_roadmap": "docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md"
+  },
+  "lanes": {
+    "current": [
+      {
+        "release": 1264,
+        "train_id": "zork-perilous-affordances-1264",
+        "title": "Perilous Affordances / Let the Player Be Wrong",
+        "status": "qualified-open-pr-awaiting-review-and-merge-whistle",
+        "pr": 69,
+        "branch": "agent/perilous-affordances-1264-20260816",
+        "artifact_sha256": "04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d",
+        "qualification_run": 31949037137,
+        "merge_rule": "do not merge without a new explicit merge whistle"
+      }
+    ],
+    "next": [
+      {"release":1265,"train_id":"zork-consumable-light-graduated-darkness-1265","title":"Consumable Light & Graduated Darkness","status":"next-1-planned"},
+      {"release":1266,"train_id":"zork-learned-magic-parser-capability-1266","title":"Learned Magic as Parser Capability","status":"next-2-planned"},
+      {"release":1267,"train_id":"zork-semantic-examination-hidden-structure-1267","title":"Semantic Examination & Hidden Structure","status":"next-3-planned"},
+      {"release":1268,"train_id":"zork-clue-chains-knowledge-interpretation-1268","title":"Clue Chains & Knowledge-Gated Interpretation","status":"next-4-planned"},
+      {"release":1269,"train_id":"zork-structural-difficulty-modes-1269","title":"Structural Difficulty Modes","status":"next-5-planned"},
+      {"release":1270,"train_id":"zork-causal-death-failure-feedback-1270","title":"Causal Death & Failure Feedback","status":"next-6-planned"},
+      {"release":1271,"train_id":"zork-creature-encounters-systemic-puzzles-1271","title":"Creature Encounters as Systemic Puzzles","status":"next-7-planned"},
+      {"release":1272,"train_id":"zork-shadowgate-style-original-region-1272","title":"Shadowgate-Style Macrostructure, Original Zork Region","status":"next-8-capstone-planned","target_shape":"roughly 20-30 authored rooms if design earns that size"}
+    ],
+    "future": [
+      {"train_id":"zork-mara-earned-romance-partnership","title":"Mara Earned Romance & Partnership","status":"future-explicit-authored-relationship-arc"},
+      {"train_id":"zork-forest-that-answers-back","title":"Forest That Answers Back / Described World = Interactive World","status":"future-promotion-candidate"},
+      {"train_id":"zork-time-weather-disaster-arc","title":"Time, Weather & Disaster Arc","status":"future-arc"},
+      {"train_id":"zork-museum-ecology-second-expansion","title":"Museum & Ecology Second Expansion","status":"future"},
+      {"train_id":"zork-cross-if-rpg-later-inspirations","title":"Cross-IF / RPG Mechanics Adaptation — Later Inspirations","status":"future-mechanics-inspiration-program"},
+      {"train_id":"zork-narrative-perspective-experiments","title":"Narrative Perspective Experiments","status":"future-isolated-editions"},
+      {"train_id":"zork-draw-multi-agent-experiments","title":"DRAW + Multi-Agent Experiments","status":"far-horizon-isolated-experiments"}
+    ],
+    "parked": [
+      {"train_id":"stalker-glulx-separate-lane","title":"S.T.A.L.K.E.R. Glulx Game","status":"parked-separate-product","outcome":"Remain a separate interactive-fiction product lane, never mixed into a Zork gameplay PR."},
+      {"train_id":"infocom-protected-artifact-expansion","title":"Protected Corpus Acquisition","status":"parked-rights-dependent","outcome":"Expand source evidence only through lawfully held local copies or verified rights."}
+    ],
+    "done": [
+      {"release_range":"1219-1230","title":"House of Records","proof":"completed 12-train / 96-bead program; Release 1230 merged through PR #32"},
+      {"release":1231,"title":"Corpus-Coupled Causal Warning","pr":34},
+      {"release":1232,"title":"Parser Comprehension and Deep Affordances","pr":35},
+      {"release":1233,"title":"Museum Intake and First Gallery","pr":36},
+      {"release":1234,"title":"Mara Arrival and Evidence Memory","pr":37},
+      {"release":1235,"title":"Cuisine, Hunger, and Stamina","pr":38},
+      {"release":1236,"title":"Great Canyon Living Consequences","pr":39},
+      {"release":1237,"title":"Zork Plus Veteran Survey Expedition","pr":40},
+      {"release":1238,"title":"Cellar Expedition Recovery Locker","pr":41},
+      {"release":1239,"title":"Museum Ecology and Dam Fishing","pr":42},
+      {"release":1240,"title":"Museum Songbird Correspondence","pr":43},
+      {"release":1241,"title":"Museum Troll Provenance","pr":44},
+      {"release":1242,"title":"Natural-Play Regression Repair","pr":45},
+      {"release":1243,"title":"Mara Companion Expedition Foundation","pr":46},
+      {"title":"Narrative Perspective Experiments","pr":47,"type":"documentation lane"},
+      {"release":1244,"title":"Mara House Company","pr":48},
+      {"release":1245,"title":"Creative Natural Play","pr":49},
+      {"release":1246,"title":"Environmental Destruction","pr":50},
+      {"release":1247,"title":"Narrative Physicality","pr":51},
+      {"release":1248,"title":"Forest Consequence Physicality","pr":52},
+      {"release":1249,"title":"Underground Sensory Physicality","pr":53},
+      {"release":1250,"title":"Player Ingenuity / Systemic Workarounds","pr":55},
+      {"release":1251,"title":"Cross-System Utility Mesh","pr":56},
+      {"release":1252,"title":"Earned Sequence Breaks & Route Mastery","pr":57},
+      {"release":1253,"title":"Dam Survival & Prepared Rescue","pr":58,"artifact_sha256":"232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff"},
+      {"release":1254,"title":"Troll Disarm & Stolen Weapons","pr":59,"artifact_sha256":"86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0"},
+      {"release":1255,"title":"Thief Retaliation & Sabotage","pr":60,"artifact_sha256":"03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be"},
+      {"release":1256,"title":"Grue Ecology & Colony Reveal","pr":61,"artifact_sha256":"59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975"},
+      {"release":1257,"title":"Fire, Smoke & Structural Consequences","pr":62,"artifact_sha256":"d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444"},
+      {"release":1258,"title":"Mara Causal Biography & Shared Danger","pr":63,"merge_commit":"e50e81ddfd356cb13c60d61c641d3e7ce1225685","artifact_sha256":"cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263","qualification_run":31929719820},
+      {"release":1259,"title":"Mara Field Capability Discovery","pr":64,"merge_commit":"2cb9fd6ef66914c64c8c57d6b9b51767595c664c","artifact_sha256":"e3a1adc99a6849b4703a3fe4338310a12c8d38c6d94b1aeab762199bb8e43d77","qualification_run":31828682046},
+      {"release":1260,"title":"Mara Lived Feeling, Rupture & Repair","pr":65,"merge_commit":"2fe55b412818b2eabd9207fa91ed48f20b32ca41","artifact_sha256":"81f686a1cd792b61f219e167fc0427e890151020d5b02f127cbd83d247c209c2","qualification_run":31886864766},
+      {"release":1261,"title":"Mara Anticipation, Worry & Protective Initiative","pr":66,"merge_commit":"56772b585f6a6f87e2a7365e5ca813af5b59beb8","artifact_sha256":"bc6f86c43803994143e5e188b8256d5ac681b51f1ab7711aeed27bbd4c6208a4","qualification_run":31927382213},
+      {"release":1262,"title":"Hostile Rooms & Reactive Threats / Dragon & Hoard","pr":67,"merge_commit":"32ddee571a686411f672235aecffeab6b614bbb6","artifact_sha256":"2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9","qualification_run":31928781090},
+      {"release":1263,"title":"Ablative Protection & Equipment Consequence","pr":68,"merge_commit":"565d24d910e75ac6b28f1ce9d57de1506a642b62","artifact_sha256":"a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997","qualification_run":31929398064}
+    ]
+  }
+}
