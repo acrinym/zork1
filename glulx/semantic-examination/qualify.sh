@@ -266,6 +266,12 @@ EOF_SEAM
 run_case hidden-seam
 F="$BUILD/hidden-seam-transcript.txt"
 [[ "$(grep -Fc 'seam-discovered=0 fire-stage=0 smoke-cover=0' "$F")" -ge 2 ]]
+grep -F "You can't see any seam here!" "$F"
+NO_VISIBLE_LINE="$(grep -Fn -m1 "You can't see any seam here!" "$F" | cut -d: -f1)"
+REVEAL_LINE="$(grep -Fn -m1 'old ventilation seam cut through the stone' "$F" | cut -d: -f1)"
+DISCOVERED_DESCRIPTION_LINE="$(grep -Fn -m1 'The ventilation seam is a narrow engineered break' "$F" | cut -d: -f1)"
+[[ "$NO_VISIBLE_LINE" -lt "$REVEAL_LINE" ]]
+[[ "$DISCOVERED_DESCRIPTION_LINE" -gt "$REVEAL_LINE" ]]
 grep -F 'old ventilation seam cut through the stone' "$F"
 grep -F 'seam-discovered=1 fire-stage=0 smoke-cover=0' "$F"
 grep -F 'It is an air route, not a person-sized exit and not a new door.' "$F"
