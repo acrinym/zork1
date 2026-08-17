@@ -45,9 +45,9 @@
     <SEMANTIC-TEST-RESET>
     <MOVE ,DRAGON-VENT-SEAM ,DRAGON-GALLERY>
     <FIRE-STRUCTURAL-SET-STAGE ,FIRE-TIMBER-BURNING>
-    <FIRE-STRUCTURAL-PUT ,FS-TIMBER-TIMER 3>
+    <FIRE-STRUCTURAL-PUT ,FS-TIMBER-TIMER 8>
     <GOTO ,DRAGON-GALLERY>
-    <TELL "TEST PRECONDITION: lit Gallery with discovered ventilation seam and the existing Release 1257 Timber Room fire in its real burning state." CR>
+    <TELL "TEST PRECONDITION: lit Gallery with discovered ventilation seam and the existing Release 1257 Timber Room fire in its real burning state with enough clock runway for inspection." CR>
     <RTRUE>>
 
 <ROUTINE V-SEMANTIC-STATUS-TEST ()
