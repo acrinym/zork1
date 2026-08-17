@@ -85,7 +85,7 @@ wicks need time and explicitly told when they can hold flame again.
 
 Release 1257 remains the only Timber Room fire authority.
 
-When its real authored state is actively burning or collapsed-hot, an**ember-stage held candle pair* * cannot survive the room's hot smoke and hard
+When its real authored state is actively burning or collapsed-hot, a held **ember-stage candle pair** cannot survive the room's hot smoke and hard
 westward draft. The tiny flames gutter out. Release 1265 reads the existing fire
 stage; it does not create parallel smoke, draft, or fire state.
 
