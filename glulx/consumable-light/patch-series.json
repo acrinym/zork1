@@ -25,9 +25,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-consumable-light-graduated-darkness.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 474112,
+    "checksum_hex": "0x69f582b5",
+    "sha256": "6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070"
   },
   "added_files": [
     "consumable_light.zil"

@@ -85,8 +85,7 @@ wicks need time and explicitly told when they can hold flame again.
 
 Release 1257 remains the only Timber Room fire authority.
 
-When its real authored state is actively burning or collapsed-hot, an
-**ember-stage held candle pair** cannot survive the room's hot smoke and hard
+When its real authored state is actively burning or collapsed-hot, an**ember-stage held candle pair* * cannot survive the room's hot smoke and hard
 westward draft. The tiny flames gutter out. Release 1265 reads the existing fire
 stage; it does not create parallel smoke, draft, or fire state.
 
@@ -154,10 +153,21 @@ green hosted qualification artifact:
 - development:
   `fa6f07494fc29647abc13d09ba3f4494ae4c18c1c1cde9a266f1d5211c9bc45d`
 
-### Candidate artifact
+### Locked Release 1265 artifact
 
-The first Release 1265 hosted qualification intentionally leaves the new
-artifact identity unlocked. It may stop at that final lock gate **only after**
-predecessor replay, staging, smell checks, compilation, static authority checks,
-and all six player histories have passed. Compiler or gameplay failure is a
-real blocker, not candidate evidence.
+Candidate run `32029901887` on exact head
+`63775f454e5fab4538f63a37dca8b637047cfdc0` requalified the complete locked
+Release 1264 predecessor, staged exactly the six intended production paths,
+compiled production and test stories, passed all six natural-command histories,
+and then stopped only at the intentional artifact-lock gate.
+
+That proved and locked this exact production artifact:
+
+- file: `zork1-glulx-consumable-light-graduated-darkness.ulx`
+- Glulx version: `0x00030103`
+- size: `474112` bytes
+- checksum: `0x69f582b5`
+- SHA-256: `6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070`
+
+Every subsequent qualification must reproduce that identity exactly as well as
+all six player histories.
