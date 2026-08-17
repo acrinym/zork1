@@ -21,128 +21,63 @@
   "planning_documents": {
     "human_board": "docs/planning/PRODUCT_KANBAN.md",
     "shadowgate_parser_if_program": "docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md",
-    "broader_roadmap": "docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md"
+    "broader_roadmap": "docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md",
+    "environmental_mechanisms_1274": "docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md"
   },
-  "stacked_predecessor": null,
+  "stacked_predecessor": {
+    "release": 1267,
+    "train_id": "zork-semantic-examination-hidden-structure-1267",
+    "title": "Semantic Examination & Hidden Structure",
+    "status": "review-clean-qualified-open-pr-awaiting-merge-whistle",
+    "pr": 72,
+    "branch": "agent/semantic-examination-hidden-structure-1267-20260817",
+    "head": "4c3522a0cfa8194764f52ce2e91930ef89bda1bf",
+    "base_branch": "master",
+    "base_head": "4425732bfc2fa28347453d9991513aeb28aaa531",
+    "artifact_sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0",
+    "qualification_run": 32046910749,
+    "merge_rule": "do not merge without a new explicit merge whistle"
+  },
   "lanes": {
     "current": [
-      {
-        "release": 1267,
-        "train_id": "zork-semantic-examination-hidden-structure-1267",
-        "title": "Semantic Examination & Hidden Structure",
-        "status": "qualified-open-pr-awaiting-review-and-merge-whistle",
-        "pr": 72,
-        "branch": "agent/semantic-examination-hidden-structure-1267-20260817",
-        "base_branch": "master",
-        "base_head": "4425732bfc2fa28347453d9991513aeb28aaa531",
-        "artifact_sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0",
-        "qualification_run": 32045369750,
-        "merge_rule": "do not merge without a new explicit merge whistle",
-        "locked_implementation_head": "a939301c669a7bacadfad53ec72374a9eabbab48"
-      }
-    ],
-    "next": [
       {
         "release": 1268,
         "train_id": "zork-clue-chains-knowledge-interpretation-1268",
         "title": "Clue Chains & Knowledge-Gated Interpretation",
-        "status": "next-1-planned"
-      },
-      {
-        "release": 1269,
-        "train_id": "zork-structural-difficulty-modes-1269",
-        "title": "Structural Difficulty Modes",
-        "status": "next-2-planned"
-      },
-      {
-        "release": 1270,
-        "train_id": "zork-causal-death-failure-feedback-1270",
-        "title": "Causal Death & Failure Feedback",
-        "status": "next-3-planned"
-      },
-      {
-        "release": 1271,
-        "train_id": "zork-creature-encounters-systemic-puzzles-1271",
-        "title": "Creature Encounters as Systemic Puzzles",
-        "status": "next-4-planned"
-      },
-      {
-        "release": 1272,
-        "train_id": "zork-shadowgate-style-original-region-1272",
-        "title": "Shadowgate-Style Macrostructure, Original Zork Region",
-        "status": "next-5-capstone-planned",
-        "target_shape": "roughly 20-30 authored rooms if design earns that size"
-      },
-      {
-        "release": 1273,
-        "train_id": "zork-living-biomes-wilderness-expansion-1273",
-        "title": "Living Biomes & Wilderness Expansion",
-        "status": "next-6-post-shadowgate-world-expansion-planned",
-        "initial_scope": [
-          "add a genuinely new forest subregion beyond the existing forest/tree scene and vine/underbrush edge",
-          "add a first wholly new climate/biome: an authored jungle or rainforest region",
-          "give the new biome distinct climate, canopy, water, ground, flora, fauna, traversal, hazards, resources, sensory language, and scripted scenes"
-        ],
-        "boundary": "authored geography and ecology only; no procedural biome generator, palette-swapped room factory, universal biome stat sheet, or generic climate simulator"
+        "status": "qualified-open-stacked-pr-awaiting-review-and-merge-whistle",
+        "pr": 73,
+        "branch": "agent/clue-chains-knowledge-interpretation-1268-20260817",
+        "base_branch": "agent/semantic-examination-hidden-structure-1267-20260817",
+        "base_head": "4c3522a0cfa8194764f52ce2e91930ef89bda1bf",
+        "artifact_sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16",
+        "qualification_run": 32050047910,
+        "merge_rule": "do not merge without a new explicit merge whistle",
+        "locked_implementation_head": "78a6c0ef6a4202c384deab93accd66f2620b3e4c"
       }
+    ],
+    "next": [
+      {"release":1269,"train_id":"zork-structural-difficulty-modes-1269","title":"Structural Difficulty Modes","status":"next-1-planned"},
+      {"release":1270,"train_id":"zork-causal-death-failure-feedback-1270","title":"Causal Death & Failure Feedback","status":"next-2-planned"},
+      {"release":1271,"train_id":"zork-creature-encounters-systemic-puzzles-1271","title":"Creature Encounters as Systemic Puzzles","status":"next-3-planned"},
+      {"release":1272,"train_id":"zork-shadowgate-style-original-region-1272","title":"Shadowgate-Style Macrostructure, Original Zork Region","status":"next-4-capstone-planned","target_shape":"roughly 20-30 authored rooms if design earns that size"},
+      {"release":1273,"train_id":"zork-living-biomes-wilderness-expansion-1273","title":"Living Biomes & Wilderness Expansion","status":"next-5-post-shadowgate-world-expansion-planned","initial_scope":["add a genuinely new forest subregion beyond the existing forest/tree scene and vine/underbrush edge","add a first wholly new climate/biome: an authored jungle or rainforest region","give the new biome distinct climate, canopy, water, ground, flora, fauna, traversal, hazards, resources, sensory language, and scripted scenes"],"boundary":"authored geography and ecology only; no procedural biome generator, palette-swapped room factory, universal biome stat sheet, or generic climate simulator"},
+      {"release":1274,"train_id":"zork-environmental-mechanisms-diegetic-puzzle-furniture-1274","title":"Environmental Mechanisms & Diegetic Puzzle Furniture","status":"next-6-environmental-puzzle-language-planned","planning_document":"docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md","outcome":"Translate the environmental-puzzle grammar of noticing a prose-visible irregularity, examining it, learning a physical fact, and manipulating the correct concrete detail into original Zork-native mechanisms that change real persistent room/object state.","boundary":"no generic secret-switch framework, noun auto-promotion, universal furniture state machine, arbitrary USE matrix, unfair pixel-hunt equivalent, or copied Resident Evil puzzles/maps/prose/art/sequences"}
     ],
     "future": [
-      {
-        "train_id": "zork-mara-earned-romance-partnership",
-        "title": "Mara Earned Romance & Partnership",
-        "status": "future-explicit-authored-relationship-arc"
-      },
-      {
-        "train_id": "zork-forest-that-answers-back",
-        "title": "Forest That Answers Back / Described World = Interactive World",
-        "status": "future-promotion-candidate"
-      },
-      {
-        "train_id": "zork-time-weather-disaster-arc",
-        "title": "Time, Weather & Disaster Arc",
-        "status": "future-arc"
-      },
-      {
-        "train_id": "zork-museum-ecology-second-expansion",
-        "title": "Museum & Ecology Second Expansion",
-        "status": "future"
-      },
-      {
-        "train_id": "zork-cross-if-rpg-later-inspirations",
-        "title": "Cross-IF / RPG Mechanics Adaptation — Later Inspirations",
-        "status": "future-mechanics-inspiration-program"
-      },
-      {
-        "train_id": "zork-narrative-perspective-experiments",
-        "title": "Narrative Perspective Experiments",
-        "status": "future-isolated-editions"
-      },
-      {
-        "train_id": "zork-draw-multi-agent-experiments",
-        "title": "DRAW + Multi-Agent Experiments",
-        "status": "far-horizon-isolated-experiments"
-      }
+      {"train_id":"zork-mara-earned-romance-partnership","title":"Mara Earned Romance & Partnership","status":"future-explicit-authored-relationship-arc"},
+      {"train_id":"zork-forest-that-answers-back","title":"Forest That Answers Back / Described World = Interactive World","status":"future-promotion-candidate"},
+      {"train_id":"zork-time-weather-disaster-arc","title":"Time, Weather & Disaster Arc","status":"future-arc"},
+      {"train_id":"zork-museum-ecology-second-expansion","title":"Museum & Ecology Second Expansion","status":"future"},
+      {"train_id":"zork-cross-if-rpg-later-inspirations","title":"Cross-IF / RPG Mechanics Adaptation — Later Inspirations","status":"future-mechanics-inspiration-program"},
+      {"train_id":"zork-narrative-perspective-experiments","title":"Narrative Perspective Experiments","status":"future-isolated-editions"},
+      {"train_id":"zork-draw-multi-agent-experiments","title":"DRAW + Multi-Agent Experiments","status":"far-horizon-isolated-experiments"}
     ],
     "parked": [
-      {
-        "train_id": "stalker-glulx-separate-lane",
-        "title": "S.T.A.L.K.E.R. Glulx Game",
-        "status": "parked-separate-product",
-        "outcome": "Remain a separate interactive-fiction product lane, never mixed into a Zork gameplay PR."
-      },
-      {
-        "train_id": "infocom-protected-artifact-expansion",
-        "title": "Protected Corpus Acquisition",
-        "status": "parked-rights-dependent",
-        "outcome": "Expand source evidence only through lawfully held local copies or verified rights."
-      }
+      {"train_id":"stalker-glulx-separate-lane","title":"S.T.A.L.K.E.R. Glulx Game","status":"parked-separate-product","outcome":"Remain a separate interactive-fiction product lane, never mixed into a Zork gameplay PR."},
+      {"train_id":"infocom-protected-artifact-expansion","title":"Protected Corpus Acquisition","status":"parked-rights-dependent","outcome":"Expand source evidence only through lawfully held local copies or verified rights."}
     ],
     "done": [
-      {
-        "release_range": "1219-1230",
-        "title": "House of Records",
-        "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"
-      },
+      {"release_range":"1219-1230","title":"House of Records","proof":"completed 12-train / 96-bead program; Release 1230 merged through PR #32"},
       {"release":1231,"title":"Corpus-Coupled Causal Warning","pr":34},
       {"release":1232,"title":"Parser Comprehension and Deep Affordances","pr":35},
       {"release":1233,"title":"Museum Intake and First Gallery","pr":36},
