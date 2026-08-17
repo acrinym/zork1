@@ -38,6 +38,23 @@ The hosted qualifier reruns the complete locked Release 1267 chain, stages only 
 4. the complete clue chain changes later examination and identifies the existing ventilation seam;
 5. Release 1267's blackening route still independently discovers that same seam with zero clue knowledge.
 
+Candidate run `32049638837` passed the complete predecessor replay, production/test compilation, and all five natural-command histories, then intentionally stopped at the artifact-lock gate.
+
+Locked run **`32050047910`** is green on exact implementation head **`78a6c0ef6a4202c384deab93accd66f2620b3e4c`** and reproduced the locked production artifact exactly.
+
+Locked artifact:
+
+- file: `zork1-glulx-clue-chains-knowledge-interpretation.ulx`
+- Glulx: `0x00030103`
+- size: `482816` bytes
+- checksum: `0x53de973e`
+- SHA-256: `bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16`
+
+Pinned Release 1267 staged identities:
+
+- production: `8b6e2080f34dce6000ec54377649775ad17953063780345db1ad2ad0f49de4e6`
+- development: `d9da3ad47c92abe719c52ea424c17e3066fc6f71253c0117f358325093d34563`
+
 ## Boundaries
 
 - no generic clue counter or clue registry;
