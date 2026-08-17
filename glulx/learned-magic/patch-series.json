@@ -17,8 +17,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
-    "file": "zork1-glulx-learned-magic-parser-capability.ulx"
+    "locked": true,
+    "file": "zork1-glulx-learned-magic-parser-capability.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 475904,
+    "checksum_hex": "0xb7efb785",
+    "sha256": "d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9"
   },
   "added_files": [
     "learned_magic.zil"
