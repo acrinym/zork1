@@ -284,7 +284,7 @@ yes
 EOF_EMBER
 run_case ember-emergency
 F="$BUILD/ember-emergency-transcript.txt"
-grep -F "It's pitch black in here" "$F"
+grep -F 'It is now pitch black.' "$F"
 grep -F 'Your tiny failing light buys only a close circle around you' "$F"
 grep -F 'One match gives a tiny, brief ember-scale circle of light' "$F"
 grep -F 'grue-revealed=1' "$F"
