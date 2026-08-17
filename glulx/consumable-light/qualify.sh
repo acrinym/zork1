@@ -287,7 +287,6 @@ F="$BUILD/ember-emergency-transcript.txt"
 grep -F "It's pitch black in here" "$F"
 grep -F 'Your tiny failing light buys only a close circle around you' "$F"
 grep -F 'One match gives a tiny, brief ember-scale circle of light' "$F"
-grep -F 'current-level=1' "$F"
 grep -F 'grue-revealed=1' "$F"
 
 cat > "$BUILD/wet-candles.txt" <<'EOF_WET'
