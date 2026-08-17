@@ -21,7 +21,7 @@
     <COND (<VERB? EXAMINE>
            <TELL "The deepest scratches are broad, overlapping arcs with chipped stone at their ends. They are consistent with repeated axe blows made in anger or defense, not with mining, sharpening, or a single accidental scrape." CR>
            <RTRUE>)
-          (<VERB? TOUCH>
+          (<VERB? RUB>
            <TELL "The cuts are rough under your fingers. Several edges have weathered smooth enough to prove the marks are older than your arrival." CR>
            <RTRUE>)
           (<VERB? TAKE MOVE>
@@ -51,7 +51,7 @@
     <COND (<VERB? EXAMINE>
            <TELL "These marks dwarf the axe-scars in the Troll Room. Four roughly parallel gouges repeat at shoulder height, then climb toward the blackened gallery. The spacing is anatomical rather than mechanical: something large with several claws has used this cleft often." CR>
            <RTRUE>)
-          (<VERB? TOUCH>
+          (<VERB? RUB>
            <TELL "The basalt is chipped inward along each groove. These were cut by pressure against stone, not painted on as a warning." CR>
            <RTRUE>)
           (<VERB? TAKE MOVE>
@@ -79,7 +79,7 @@
                  (T
                   <TELL "The old heat marks still converge on the high ventilation seam above the eastern arch. The pattern explains where hot air and smoke repeatedly found a route; it does not make the seam large enough to travel through." CR>)>
            <RTRUE>)
-          (<VERB? TOUCH>
+          (<VERB? RUB>
            <TELL "The blackening is baked into the basalt in overlapping old layers. The stone itself is solid." CR>
            <RTRUE>)
           (<VERB? TAKE MOVE>
@@ -106,7 +106,7 @@
                  (T
                   <TELL "Old soot and mineral dust cling around the seam. There is no current fire to invent smoke from." CR>)>
            <RTRUE>)
-          (<VERB? ENTER WALK CLIMB>
+          (<VERB? THROUGH>
            <TELL "The ventilation seam is an air route measured in inches, not an alternate corridor. Knowing it exists does not enlarge it." CR>
            <RTRUE>)
           (<VERB? TAKE MOVE>

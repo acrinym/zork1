@@ -6,8 +6,8 @@
   "base_manifest": "../learned-magic/patch-series.json",
   "base_artifact_sha256": "d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9",
   "base_source_sha256": {
-    "production": "UNLOCKED",
-    "dev": "UNLOCKED"
+    "production": "fa81100a54147f926eb20361ab9fb7314fe34695185626ee1999ead8e5e87ae9",
+    "dev": "ca3ffeb0a4f0b4962120cb0506bcbe4566e5b0ca7b68474126c1a276198264b6"
   },
   "patches": [
     "patches/001-release-1267.json"
