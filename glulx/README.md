@@ -10,7 +10,7 @@ Historical Release 119, repository Optimized Release 120, early Expanded Release
 
 **Merged production frontier:** Release 1266 — Learned Magic as Parser Capability, merged through PR #71 at `4425732bfc2fa28347453d9991513aeb28aaa531`.
 
-**Qualified open train:** Release 1267 — Semantic Examination & Hidden Structure, PR #72. Its locked production artifact is:
+**Open stacked predecessor:** Release 1267 — Semantic Examination & Hidden Structure, PR #72, reviewed exact head `4c3522a0cfa8194764f52ce2e91930ef89bda1bf`. Its locked production artifact is:
 
 - `zork1-glulx-semantic-examination-hidden-structure.ulx`
 - Glulx `0x00030103`
@@ -18,12 +18,20 @@ Historical Release 119, repository Optimized Release 120, early Expanded Release
 - checksum `0x464b20d2`
 - SHA-256 `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0`
 
-Release 1267 derives from locked Release 1266 artifact SHA-256 `d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9` and pins exact staged Release 1266 source identities:
+**Qualified current stacked train:** Release 1268 — Clue Chains & Knowledge-Gated Interpretation, PR #73. Its locked production artifact is:
 
-- production: `fa81100a54147f926eb20361ab9fb7314fe34695185626ee1999ead8e5e87ae9`
-- development: `ca3ffeb0a4f0b4962120cb0506bcbe4566e5b0ca7b68474126c1a276198264b6`
+- `zork1-glulx-clue-chains-knowledge-interpretation.ulx`
+- Glulx `0x00030103`
+- size `482816` bytes
+- checksum `0x53de973e`
+- SHA-256 `bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16`
 
-See [`semantic-examination/`](semantic-examination/) for the release-specific manifest, implementation, player contract, tests, staging logic, and qualification script.
+Release 1268 derives from locked Release 1267 and pins exact staged Release 1267 source identities:
+
+- production: `8b6e2080f34dce6000ec54377649775ad17953063780345db1ad2ad0f49de4e6`
+- development: `d9da3ad47c92abe719c52ea424c17e3066fc6f71253c0117f358325093d34563`
+
+See [`semantic-examination/`](semantic-examination/) and [`clue-chains/`](clue-chains/) for release-specific manifests, implementations, player contracts, tests, staging logic, and qualification scripts.
 
 ## What “release train” means here
 
@@ -60,6 +68,7 @@ The directory still contains the early Glulx porting history—upstream, optimiz
 | 1265 | Consumable light | Existing light timers gain authored bright/weak/ember reach, wet ritual candles, and fire/smoke composition |
 | 1266 | Learned magic | In-world reconstructed knowledge makes a bounded stilling ward meaningful without a generic spell system |
 | 1267 | Semantic examination | Selected prose details become trustworthy parser targets; existing detail authority is preserved; examination can reveal bounded hidden structure |
+| 1268 | Clue chains | Named learned meaning persists across fixed source clues and changes later interpretation without a generic clue registry or inventory-key requirement |
 
 Major Mara-only subsystem expansion pauses after Release 1261 while the rest of Zork receives comparable authored depth.
 
@@ -86,6 +95,18 @@ Examining the existing heat/soot geometry can reveal a real high ventilation sea
 Qualification also found that Release 1218 Room Density already owns Troll Room bloodstains/scratches. The initial duplicate 1267 objects were removed and the predecessor module is byte-identity checked, turning that discovery into an authority-preservation regression.
 
 Release 1267 adds zero legacy VM globals.
+
+## Release 1268 — Clue Chains & Knowledge-Gated Interpretation
+
+Release 1268 adds the bounded `INTERPRET`/`DECIPHER` action and one original field marking while preserving the canonical fixed Temple prayer and Engravings Cave inscription byte-for-byte.
+
+Deliberately interpreting the North Temple prayer learns enough of the old script's structure to compare a second source. Interpreting the damaged Engravings Cave material before that knowledge fails safely; afterward, one surviving practical air-passage motif becomes recognizable without reconstructing the deliberately excised doctrine.
+
+That remembered motif changes how the same visible old marking in the Dragon Gallery is understood. Deliberate interpretation can identify Release 1267's existing `DRAGON-VENT-SEAM`; it never creates a second vent, smoke authority, or hidden route. Release 1267's physical `EXAMINE BLACKENING` route remains independently valid with all 1268 clue facts unset.
+
+The prayer and engravings remain in their original rooms throughout qualification. Three exact facts use one compact mutable table; Release 1268 adds zero legacy VM globals and no generic clue registry, notebook, archaeology engine, or automatic hint system.
+
+Candidate qualification `32049638837` passed all five histories and intentionally stopped at the lock gate. Locked run `32050047910` reproduced artifact SHA-256 `bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16` on locked implementation head `78a6c0ef6a4202c384deab93accd66f2620b3e4c`.
 
 ## Canonical-authority rule
 
@@ -134,6 +155,7 @@ A reusable abstraction should be earned by multiple real authored cases, not cre
 Current product sequencing lives under [`../docs/planning/`](../docs/planning/), especially:
 
 - [`../docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md`](../docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md)
+- [`../docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md`](../docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md)
 - [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 - [`../docs/planning/product-kanban.json`](../docs/planning/product-kanban.json)
 
