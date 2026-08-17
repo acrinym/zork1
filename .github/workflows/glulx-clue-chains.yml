@@ -3,16 +3,12 @@ on:
   push:
     branches: [agent/clue-chains-knowledge-interpretation-1268-20260817]
     paths:
-      - "glulx/clue-chains/**"
-      - "glulx/semantic-examination/**"
-      - "glulx/learned-magic/**"
-      - "glulx/tools/**"
+      - "glulx/**"
       - "optimized/tools/**"
       - ".github/workflows/glulx-clue-chains.yml"
       - "docs/planning/PRODUCT_KANBAN.md"
       - "docs/planning/product-kanban.json"
       - "docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md"
-      - "glulx/README.md"
   workflow_dispatch:
 concurrency:
   group: glulx-clue-chains-${{ github.ref }}
