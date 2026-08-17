@@ -13,7 +13,7 @@ rm -rf "$BUILD"
 mkdir -p "$BUILD"
 cd "$ROOT"
 
-# A stacked train proves the immediate gameplay predecessor from scratch.
+# Every stacked train re-proves its immediate gameplay predecessor.
 bash glulx/consumable-light/qualify.sh
 python -m py_compile glulx/learned-magic/stage.py
 
@@ -52,6 +52,7 @@ python optimized/tools/zil_smell_check.py --source "$DEV_SRC" --json "$BUILD/dev
 
 python - <<'PY_STATIC'
 import json
+import re
 from pathlib import Path
 
 
@@ -88,9 +89,17 @@ for token in (
     "<SYNTAX STUDY OBJECT",
     "<SYNTAX WARD OBJECT",
     "<SYNTAX KNOWLEDGE = V-LEARNED-KNOWLEDGE>",
-    "<GLOBAL LEARNED-STILLING-WARD <>>",
+    "<CONSTANT LM-STILLING-KNOWN 0>",
+    "<CONSTANT LM-UNTAUGHT-FAIL 1>",
+    "<CONSTANT LM-CANDLES-DRIED 2>",
+    "<CONSTANT LM-HOT-BELL-COOLED 3>",
+    "<CONSTANT LEARNED-MAGIC-STATE <TABLE 0 0 0 0>>",
+    "<ROUTINE LEARNED-MAGIC-GET",
+    "<ROUTINE LEARNED-MAGIC-PUT",
     "<ROUTINE V-LEARNED-STUDY",
     "<ROUTINE V-LEARNED-WARD",
+    "<NOT ,RITUAL-CEREMONY-KNOWN>",
+    "<LEARNED-MAGIC-TRUE? ,LM-STILLING-KNOWN>",
     "<CONSUMABLE-CANDLES-WET?>",
     "<CONSUMABLE-LIGHT-PUT ,CL-CANDLE-WET 0>",
     "<QUEUE I-XBH 0>",
@@ -98,12 +107,8 @@ for token in (
 ):
     require(token in magic, f"missing Release 1266 learned-magic token: {token}")
 require(
-    "<NOT ,RITUAL-CEREMONY-KNOWN>" in magic,
-    "stilling capability can be learned without first reconstructing ritual knowledge",
-)
-require(
-    "<NOT ,LEARNED-STILLING-WARD>" in magic,
-    "ward capability is not gated on learned knowledge",
+    re.search(r"(?m)^<GLOBAL\b", magic) is None,
+    "Release 1266 consumed legacy VM globals instead of compact table state",
 )
 for forbidden in (
     "MANA",
@@ -116,7 +121,7 @@ for forbidden in (
 ):
     require(forbidden not in magic, f"Release 1266 crossed generic magic-system boundary: {forbidden}")
 
-# The train composes with exact authorities instead of rewriting them.
+# Existing parser, ritual, light, and house-ward authorities remain byte-identical.
 for name in (
     "gsyntax.zil",
     "gverbs.zil",
@@ -130,11 +135,13 @@ for name in (
         f"Release 1266 unexpectedly rewrote existing authority: {name}",
     )
 require(
-    "<SYNTAX WARD OBJECT WITH OBJECT = V-HOUSE-RISK-WARD>" in (source / "house_vulnerability.zil").read_text(),
+    "<SYNTAX WARD OBJECT WITH OBJECT = V-HOUSE-RISK-WARD>"
+    in (source / "house_vulnerability.zil").read_text(),
     "existing bounded house ward grammar disappeared",
 )
 require(
-    "<CONSTANT RELEASEID 1266>" in zork and '<INSERT-FILE "learned_magic" T>' in zork,
+    "<CONSTANT RELEASEID 1266>" in zork
+    and '<INSERT-FILE "learned_magic" T>' in zork,
     "Release 1266 identity/include missing",
 )
 PY_STATIC
@@ -229,8 +236,8 @@ EOF_WET
 run_case wet-ward
 F="$BUILD/wet-ward-transcript.txt"
 grep -F 'leaving the wicks dry enough to accept flame again. They remain unlit.' "$F"
-grep -F 'candle-wet=0 candles-on=0' "$F"
 grep -F 'candles-dried=1' "$F"
+grep -F 'candle-wet=0 candles-on=0' "$F"
 
 cat > "$BUILD/hot-bell-ward.txt" <<'EOF_BELL'
 lmritual
@@ -277,39 +284,37 @@ identity = {
     "checksum_hex": report["checksum_hex"],
     "sha256": hashlib.sha256(story.read_bytes()).hexdigest(),
 }
-(build / "CANDIDATE-IDENTITY.json").write_text(json.dumps(identity, indent=2, sort_keys=True) + "\n")
+(build / "CANDIDATE-IDENTITY.json").write_text(
+    json.dumps(identity, indent=2, sort_keys=True) + "\n"
+)
 print("RELEASE_1266_ARTIFACT_IDENTITY=" + json.dumps(identity, sort_keys=True))
 expected = manifest["expected_artifact"]
+receipt = {
+    "release": 1266,
+    "serial": manifest["serial"],
+    "base_release": 1265,
+    "base_artifact_sha256": manifest["base_artifact_sha256"],
+    "base_source_sha256": manifest["base_source_sha256"],
+    "histories": ["learning", "wet-ward", "hot-bell-ward", "house-ward-grammar"],
+}
 if expected.get("locked") is not True:
+    receipt.update({"artifact_identity_locked": False, "candidate": identity})
     (build / "QUALIFICATION-RECEIPT.json").write_text(
-        json.dumps({
-            "release": 1266,
-            "serial": manifest["serial"],
-            "artifact_identity_locked": False,
-            "candidate": identity,
-            "base_release": 1265,
-            "base_artifact_sha256": manifest["base_artifact_sha256"],
-            "base_source_sha256": manifest["base_source_sha256"],
-            "histories": ["learning", "wet-ward", "hot-bell-ward", "house-ward-grammar"],
-        }, indent=2, sort_keys=True) + "\n"
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n"
     )
     raise SystemExit(
-        "Release 1266 candidate completed gameplay qualification; lock the exact artifact identity and rerun."
+        "Release 1266 candidate completed gameplay qualification; "
+        "lock the exact artifact identity and rerun."
     )
 for key in ("file", "version_hex", "size_bytes", "checksum_hex", "sha256"):
     if identity.get(key) != expected.get(key):
-        raise SystemExit(f"Release 1266 artifact drift for {key}: expected {expected.get(key)}, got {identity.get(key)}")
+        raise SystemExit(
+            f"Release 1266 artifact drift for {key}: "
+            f"expected {expected.get(key)}, got {identity.get(key)}"
+        )
+receipt.update({"artifact_identity_locked": True, "artifact": identity})
 (build / "QUALIFICATION-RECEIPT.json").write_text(
-    json.dumps({
-        "release": 1266,
-        "serial": manifest["serial"],
-        "artifact_identity_locked": True,
-        "artifact": identity,
-        "base_release": 1265,
-        "base_artifact_sha256": manifest["base_artifact_sha256"],
-        "base_source_sha256": manifest["base_source_sha256"],
-        "histories": ["learning", "wet-ward", "hot-bell-ward", "house-ward-grammar"],
-    }, indent=2, sort_keys=True) + "\n"
+    json.dumps(receipt, indent=2, sort_keys=True) + "\n"
 )
 PY_IDENTITY
 
