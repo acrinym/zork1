@@ -8,24 +8,22 @@ Historical Release 119, repository Optimized Release 120, early Expanded Release
 
 ## Current lineage
 
-The Highly Extended line described by the current release manifests extends through:
+**Merged production frontier:** Release 1266 — Learned Magic as Parser Capability, merged through PR #71 at `4425732bfc2fa28347453d9991513aeb28aaa531`.
 
-**Release 1263 — Ablative Protection & Equipment Consequence**
+**Qualified open train:** Release 1267 — Semantic Examination & Hidden Structure, PR #72. Its locked production artifact is:
 
-Its locked production artifact is:
-
-- `zork1-glulx-ablative-protection-equipment-consequence.ulx`
+- `zork1-glulx-semantic-examination-hidden-structure.ulx`
 - Glulx `0x00030103`
-- size `468480` bytes
-- checksum `0xf5898239`
-- SHA-256 `a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997`
+- size `479744` bytes
+- checksum `0x464b20d2`
+- SHA-256 `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0`
 
-Release 1263 derives from locked Release 1262 artifact SHA-256 `2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9` and pins the exact staged Release 1262 source identities:
+Release 1267 derives from locked Release 1266 artifact SHA-256 `d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9` and pins exact staged Release 1266 source identities:
 
-- production: `0725e2c777b499356b2da6b13d3f3f6e37261abae2d59e780b6ea3d94c769fa2`
-- dev: `be8b33560edaadd2af2ea13b6d9545d3daa65beeee8775d066af305b57e0022d`
+- production: `fa81100a54147f926eb20361ab9fb7314fe34695185626ee1999ead8e5e87ae9`
+- development: `ca3ffeb0a4f0b4962120cb0506bcbe4566e5b0ca7b68474126c1a276198264b6`
 
-See [`ablative-protection/`](ablative-protection/) for the release-specific manifest, implementation, player contract, tests, staging logic, and qualification script.
+See [`semantic-examination/`](semantic-examination/) for the release-specific manifest, implementation, player contract, tests, staging logic, and qualification script.
 
 ## What “release train” means here
 
@@ -49,8 +47,6 @@ The intent is to make the claim “Release N behaves this way” reproducible an
 
 The directory still contains the early Glulx porting history—upstream, optimized, assistance, reactive surface, shadow logic, absurd alternates, Dam mechanisms, ritual resonance, material consequences, room density, and persistence work. Release-specific READMEs preserve that detail.
 
-The modern Highly Extended program then grew through these larger arcs:
-
 | Releases | Arc | Purpose |
 |---|---|---|
 | 1219–1230 | House of Records | Persistent expedition history, physical records, case files, playback, rest/dream history, vulnerability, chronology, comparison, export, save/corrupt/restore |
@@ -59,61 +55,49 @@ The modern Highly Extended program then grew through these larger arcs:
 | 1246–1249 | Material and narrative physicality | Environmental destruction, richer physical prose, forest consequence, rope/cargo behavior, underground material/sensory detail |
 | 1250–1257 | Player ingenuity and living consequences | Systemic workarounds, cross-system utility, route mastery, Dam survival/rescue, troll weapons, thief retaliation, grue ecology, authored fire/smoke/structure |
 | 1258–1261 | Mara causal history | Shared danger, field capability, lived feeling, rupture/repair, anticipation, worry, protective initiative |
-| 1262 | Hostile Rooms & Reactive Threats | Original treasure-guardian dragon and hoard; retreat, bargain, bait/containment, real-fire smoke leverage, causal lethal mistakes |
-| 1263 | Ablative Protection & Equipment Consequence | Physical fire screen that survives by taking the dragon's consequence and carries sound → scorched → warped material history |
+| 1262–1263 | Hostile rooms and physical protection | Dragon/hoard reactive threat plus ablative fire-screen consequence |
+| 1264 | Perilous affordances | Physically possible destruction and misuse stop being parser-protected merely for puzzle utility |
+| 1265 | Consumable light | Existing light timers gain authored bright/weak/ember reach, wet ritual candles, and fire/smoke composition |
+| 1266 | Learned magic | In-world reconstructed knowledge makes a bounded stilling ward meaningful without a generic spell system |
+| 1267 | Semantic examination | Selected prose details become trustworthy parser targets; existing detail authority is preserved; examination can reveal bounded hidden structure |
 
 Major Mara-only subsystem expansion pauses after Release 1261 while the rest of Zork receives comparable authored depth.
 
-## Release 1262 — Dragon & Hoard
+## Releases 1262–1263 — Dragon and protection foundation
 
-[`hostile-rooms-dragon-hoard/`](hostile-rooms-dragon-hoard/) adds a Scorched Cleft, Dragon Gallery, and Hoard Vault branching from the real Timber Room.
+Release 1262 adds a Scorched Cleft, Dragon Gallery, and Hoard Vault branching from the real Timber Room. The guardian dragon is encounter-specific: retreat, bargain, containment, and Release 1257 real-fire smoke leverage remain authored alternatives rather than a generic boss system.
 
-The guardian dragon is encounter-specific. There is no HP pool, initiative system, random attack loop, generic hostility meter, or universal enemy framework. The player can physically retreat, bargain with a held real treasure, bait the dragon under a real grille and pull the canonical `MOVE`-mapped `PULL CHAIN` action, or exploit smoke produced by Release 1257's existing Timber Room fire authority.
+Release 1263 adds an iron-bound hide fire screen that physically takes the existing dragon-breath consequence and carries sound → scorched → warped history. There is no armor class, durability percentage, mitigation roll, repair economy, or universal equipment-damage engine.
 
-Locked artifact:
+## Releases 1264–1266 — Agency, light, and learned capability
 
-- `zork1-glulx-hostile-rooms-dragon-hoard.ulx`
-- size `466432`
-- checksum `0x8d167131`
-- SHA-256 `2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9`
+Release 1264 lets selected physically possible bad ideas occur: the canonical lantern and rope, Release 1263 screen, and Release 1262 star-glass can suffer authored consequences rather than meta-game refusal.
 
-The final qualifier proves actual hoard custody, not merely matching room prose: bargain ends with exactly one new hoard item held, containment permits both, real fire/smoke permits the intended environmental opening, ignored warnings remain lethal, and retreat remains safe.
+Release 1265 preserves canonical lamp/candle timers and binary `LIT?` while adding authored useful-reach states, real waterlogged ritual candle wicks, and composition with existing fire/smoke/draft authorities.
 
-## Release 1263 — Ablative Protection
+Release 1266 makes deliberate in-world study meaningful. The original GUE stilling ward can settle Release 1265 candle wetness or canonical hot-bell state only after the Adventurer genuinely learns it. Existing Hades ceremony and house-ward grammar remain authoritative. Learned state uses a compact mutable table rather than new legacy globals.
 
-[`ablative-protection/`](ablative-protection/) composes with two existing authorities instead of replacing them:
+## Release 1267 — Semantic Examination & Hidden Structure
 
-1. the established `USE <object> ON/WITH <object>` action path; and
-2. Release 1262's exact `DRAGON-BREATH-DEATH` hazard routine.
+Release 1267 promotes selected currently-unaddressable prose details into real scoped parser objects: the Timber Room draft, Scorched Cleft scratches/bones, and Dragon Gallery heat blackening.
 
-A held, deliberately braced iron-bound hide screen takes the actual dragon-breath consequence. One blast leaves it scorched; a second leaves it warped; the warped geometry no longer honestly supports another protection claim. The same object therefore becomes physical evidence of the danger it prevented.
+Examining the existing heat/soot geometry can reveal a real high ventilation seam. The seam starts outside parser scope, so guessing its noun before discovery does not reveal it. Once discovered, its ordinary object location is the knowledge state. It remains too small to traverse and reports Release 1257/1262 fire-smoke truth rather than inventing a second ventilation or dragon model.
 
-There is no armor class, equipment HP, durability percentage, generic block verb, mitigation roll, repair economy, or universal equipment-damage system.
+Qualification also found that Release 1218 Room Density already owns Troll Room bloodstains/scratches. The initial duplicate 1267 objects were removed and the predecessor module is byte-identity checked, turning that discovery into an authority-preservation regression.
 
-Mutable screen state is held in a compact table rather than consuming additional VM globals.
+Release 1267 adds zero legacy VM globals.
 
 ## Canonical-authority rule
 
 When original or earlier Zork code already owns a fact, later trains should observe or compose with that authority rather than invent a parallel truth.
 
-This applies especially to:
-
-- exact journey-critical object identity;
-- map exits and traversal state;
-- canonical puzzle flags and timers;
-- parser grammar and internal verb actions;
-- creature state;
-- existing physical authorities such as Release 1257 fire;
-- save/restore semantics;
-- canonical solutions and score-bearing routes.
+This applies especially to exact journey-critical object identity, map exits/traversal state, canonical puzzle flags/timers, parser grammar/internal verb actions, creature state, existing physical authorities such as Release 1257 fire, save/restore semantics, canonical solutions, and previously promoted semantic targets.
 
 The rule is not “never add behavior.” It is “do not lie about who owns the state.”
 
 ## VM/global budget
 
-The Glulx port is close to its legacy global-variable limit. New trains must not casually consume globals merely because a feature has state. Compact mutable tables, flags on real objects, and existing authorities are preferred when they represent the state honestly.
-
-Release 1262 initially exposed this limit during qualification; its dragon state was moved into a compact table. Release 1263 follows that model from the start.
+The Glulx port is close to its legacy global-variable limit. New trains must not casually consume globals merely because a feature has state. Compact mutable tables, flags on real objects, ordinary object location, and existing authorities are preferred when they represent the state honestly.
 
 ## Locked toolchain
 
@@ -141,17 +125,7 @@ Production qualification specifically checks that the shipped staged tree does n
 
 ## Design boundaries
 
-The active line deliberately avoids turning every successful authored feature into a universal framework. In particular:
-
-- no universal crafting grid;
-- no arbitrary object-pair matrix;
-- no generic physics simulator;
-- no generic creature AI brain;
-- no generic companion/relationship score;
-- no procedural loot treadmill;
-- no generic armor/durability engine;
-- no recursive audit machinery;
-- no TODO-only release slices or no-op scaffolding.
+The active line deliberately avoids turning every successful authored feature into a universal framework. In particular: no universal crafting grid, arbitrary object-pair matrix, generic physics simulator, generic creature AI brain, generic companion/relationship score, procedural loot treadmill, generic armor/durability engine, recursive audit machinery, TODO-only release slices, or no-op scaffolding.
 
 A reusable abstraction should be earned by multiple real authored cases, not created preemptively because abstraction is fashionable.
 

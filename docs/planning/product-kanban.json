@@ -4,10 +4,10 @@
   "updated_on": "2026-08-17",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "1a5b9cb27e85648fd7cd95cd1c9c890be1d71e66",
-    "latest_merged_release": 1263,
-    "latest_merged_release_title": "Ablative Protection & Equipment Consequence",
-    "latest_merged_pr": 68
+    "master_head_when_updated": "4425732bfc2fa28347453d9991513aeb28aaa531",
+    "latest_merged_release": 1266,
+    "latest_merged_release_title": "Learned Magic as Parser Capability",
+    "latest_merged_pr": 71
   },
   "operating_rules": [
     "CURRENT contains at most one actively implemented product train and may be empty between trains.",
@@ -23,81 +23,61 @@
     "shadowgate_parser_if_program": "docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md",
     "broader_roadmap": "docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md"
   },
-  "stacked_predecessor": {
-    "release": 1265,
-    "train_id": "zork-consumable-light-graduated-darkness-1265",
-    "title": "Consumable Light & Graduated Darkness",
-    "status": "qualified-open-pr-awaiting-merge-whistle",
-    "pr": 70,
-    "branch": "agent/consumable-light-graduated-darkness-1265-20260817",
-    "head": "3d0b15efbf6ba227fcbc1a2edad1b325e2e0c197",
-    "base_pr": 69,
-    "base_branch": "agent/perilous-affordances-1264-20260816",
-    "base_head": "7a11375160d8893698f6df3ce16b8c8c35a810fc",
-    "artifact_sha256": "6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070",
-    "qualification_run": 32034566984,
-    "merge_rule": "do not merge Release 1265 or its open Release 1264 predecessor without a new explicit merge whistle"
-  },
+  "stacked_predecessor": null,
   "lanes": {
     "current": [
-      {
-        "release": 1266,
-        "train_id": "zork-learned-magic-parser-capability-1266",
-        "title": "Learned Magic as Parser Capability",
-        "status": "qualified-open-stacked-pr-awaiting-review-and-merge-whistle",
-        "pr": 71,
-        "branch": "agent/learned-magic-parser-capability-1266-20260817",
-        "base_pr": 70,
-        "base_head": "3d0b15efbf6ba227fcbc1a2edad1b325e2e0c197",
-        "artifact_sha256": "d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9",
-        "qualification_run": 32042145187,
-        "merge_rule": "do not merge without a new explicit merge whistle",
-        "locked_implementation_head": "8e242267b9919be1f33828f1030a7ece24013d13"
-      }
-    ],
-    "next": [
       {
         "release": 1267,
         "train_id": "zork-semantic-examination-hidden-structure-1267",
         "title": "Semantic Examination & Hidden Structure",
-        "status": "next-1-planned"
-      },
+        "status": "qualified-open-pr-awaiting-review-and-merge-whistle",
+        "pr": 72,
+        "branch": "agent/semantic-examination-hidden-structure-1267-20260817",
+        "base_branch": "master",
+        "base_head": "4425732bfc2fa28347453d9991513aeb28aaa531",
+        "artifact_sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0",
+        "qualification_run": 32045369750,
+        "merge_rule": "do not merge without a new explicit merge whistle",
+        "locked_implementation_head": "a939301c669a7bacadfad53ec72374a9eabbab48"
+      }
+    ],
+    "next": [
       {
         "release": 1268,
         "train_id": "zork-clue-chains-knowledge-interpretation-1268",
         "title": "Clue Chains & Knowledge-Gated Interpretation",
-        "status": "next-2-planned"
+        "status": "next-1-planned"
       },
       {
         "release": 1269,
         "train_id": "zork-structural-difficulty-modes-1269",
         "title": "Structural Difficulty Modes",
-        "status": "next-3-planned"
+        "status": "next-2-planned"
       },
       {
         "release": 1270,
         "train_id": "zork-causal-death-failure-feedback-1270",
         "title": "Causal Death & Failure Feedback",
-        "status": "next-4-planned"
+        "status": "next-3-planned"
       },
       {
         "release": 1271,
         "train_id": "zork-creature-encounters-systemic-puzzles-1271",
         "title": "Creature Encounters as Systemic Puzzles",
-        "status": "next-5-planned"
+        "status": "next-4-planned"
       },
       {
         "release": 1272,
         "train_id": "zork-shadowgate-style-original-region-1272",
         "title": "Shadowgate-Style Macrostructure, Original Zork Region",
-        "status": "next-6-capstone-planned",
+        "status": "next-5-capstone-planned",
         "target_shape": "roughly 20-30 authored rooms if design earns that size"
       },
       {
         "release": 1273,
         "train_id": "zork-living-biomes-wilderness-expansion-1273",
         "title": "Living Biomes & Wilderness Expansion",
-        "status": "next-7-post-shadowgate-world-expansion-planned",
+        "status": "next-6-post-shadowgate-world-expansion-planned",
         "initial_scope": [
           "add a genuinely new forest subregion beyond the existing forest/tree scene and vine/underbrush edge",
           "add a first wholly new climate/biome: an authored jungle or rainforest region",
@@ -196,7 +176,10 @@
       {"release":1260,"title":"Mara Lived Feeling, Rupture & Repair","pr":65,"merge_commit":"2fe55b412818b2eabd9207fa91ed48f20b32ca41","artifact_sha256":"81f686a1cd792b61f219e167fc0427e890151020d5b02f127cbd83d247c209c2","qualification_run":31886864766},
       {"release":1261,"title":"Mara Anticipation, Worry & Protective Initiative","pr":66,"merge_commit":"56772b585f6a6f87e2a7365e5ca813af5b59beb8","artifact_sha256":"bc6f86c43803994143e5e188b8256d5ac681b51f1ab7711aeed27bbd4c6208a4","qualification_run":31927382213},
       {"release":1262,"title":"Hostile Rooms & Reactive Threats / Dragon & Hoard","pr":67,"merge_commit":"32ddee571a686411f672235aecffeab6b614bbb6","artifact_sha256":"2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9","qualification_run":31928781090},
-      {"release":1263,"title":"Ablative Protection & Equipment Consequence","pr":68,"merge_commit":"565d24d910e75ac6b28f1ce9d57de1506a642b62","artifact_sha256":"a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997","qualification_run":31929398064}
+      {"release":1263,"title":"Ablative Protection & Equipment Consequence","pr":68,"merge_commit":"565d24d910e75ac6b28f1ce9d57de1506a642b62","artifact_sha256":"a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997","qualification_run":31929398064},
+      {"release":1264,"title":"Perilous Affordances / Let the Player Be Wrong","pr":69,"merge_commit":"cdc8f51b08721756c796904d7132587ec40026f1","artifact_sha256":"04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d","qualification_run":31949574481},
+      {"release":1265,"title":"Consumable Light & Graduated Darkness","pr":70,"merge_commit":"59c9e843c4723692a0017e9f189407272b5a284f","artifact_sha256":"6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070","qualification_run":32034566984},
+      {"release":1266,"title":"Learned Magic as Parser Capability","pr":71,"merge_commit":"4425732bfc2fa28347453d9991513aeb28aaa531","artifact_sha256":"d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9","qualification_run":32042641179}
     ]
   }
 }
