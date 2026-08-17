@@ -182,7 +182,7 @@ require(
 )
 PY_STATIC
 
-IFS=$'\t' read -r SERIAL STORY_FILE < <(python - "$MANIFEST" <<'PY_MANIFEST'
+MANIFEST_OUTPUT=$(python - "$MANIFEST" <<'PY_MANIFEST'
 import json
 import sys
 from pathlib import Path
@@ -191,6 +191,13 @@ m = json.loads(Path(sys.argv[1]).read_text())
 print("\t".join((m["serial"], m["expected_artifact"]["file"])))
 PY_MANIFEST
 )
+IFS=$'\t' read -r SERIAL STORY_FILE <<< "$MANIFEST_OUTPUT"
+
+if [[ -z "$SERIAL" || -z "$STORY_FILE" ]]; then
+    echo "ERROR: manifest Python output missing serial or artifact filename" >&2
+    echo "MANIFEST_OUTPUT was: $MANIFEST_OUTPUT" >&2
+    exit 1
+fi
 
 GLULX_ZILF_DLL="$(realpath "$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)")"
 GLAZER_BIN="$(realpath "$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)")"

@@ -4,6 +4,9 @@ on:
     branches: [agent/consumable-light-graduated-darkness-1265-20260817]
     paths:
       - "glulx/consumable-light/**"
+      - "glulx/perilous-affordances/**"
+      - "glulx/tools/**"
+      - "optimized/tools/**"
       - ".github/workflows/glulx-consumable-light.yml"
       - "docs/planning/PRODUCT_KANBAN.md"
       - "docs/planning/product-kanban.json"
