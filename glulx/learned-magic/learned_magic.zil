@@ -11,7 +11,7 @@
 <SYNONYM KNOWLEDGE LORE>
 
 <CONSTANT LM-STILLING-KNOWN 0>
-<CONSTANT LM-UNTaught-FAIL 1>
+<CONSTANT LM-UNTAUGHT-FAIL 1>
 <CONSTANT LM-CANDLES-DRIED 2>
 <CONSTANT LM-HOT-BELL-COOLED 3>
 <CONSTANT LEARNED-MAGIC-STATE <TABLE 0 0 0 0>>
@@ -49,7 +49,7 @@
 
 <ROUTINE V-LEARNED-WARD ()
     <COND (<NOT <LEARNED-MAGIC-TRUE? ,LM-STILLING-KNOWN>>
-           <LEARNED-MAGIC-PUT ,LM-UNTaught-FAIL 1>
+           <LEARNED-MAGIC-PUT ,LM-UNTAUGHT-FAIL 1>
            <TELL "You can make a solemn gesture at the " D ,PRSO ", but solemnity is not technique. You have not learned a ward precise enough to change anything." CR>
            <RTRUE>)
           (<EQUAL? ,PRSO ,CANDLES>
