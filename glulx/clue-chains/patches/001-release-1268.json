@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1268",
+  "path": "zork1.zil",
+  "description": "Advance story identity to Release 1268 and load the clue-interpretation module after semantic examination.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 SEMANTIC EXAMINATION AND HIDDEN STRUCTURE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Semantic Examination & Hidden Structure. Release 1267 makes\n  selected concrete details already promised by room prose honest parser targets.\n  Examination can reveal one real ventilation structure without a generic noun\n  promoter, hidden-object lottery, or replacement world authority.\"\n\n",
+      "new": "\"ZORK1 CLUE CHAINS AND KNOWLEDGE-GATED INTERPRETATION GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Clue Chains & Knowledge-Gated Interpretation. Release 1268\n  lets exact learned meaning travel beyond fixed source clues and alter later\n  field interpretation without a generic clue registry, notebook, or inventory\n  key check.\"\n\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1267>",
+      "new": "<CONSTANT RELEASEID 1268>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Semantic Examination and Hidden Structure Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Clue Chains and Knowledge-Gated Interpretation Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"semantic_examination\" T>\n<INSERT-FILE \"room_density\" T>",
+      "new": "<INSERT-FILE \"semantic_examination\" T>\n<INSERT-FILE \"clue_interpretation\" T>\n<INSERT-FILE \"room_density\" T>"
+    }
+  ]
+}
