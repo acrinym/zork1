@@ -11,6 +11,7 @@
     <REMOVE-CAREFULLY ,DRAGON-VENT-SEAM>
     <FIRE-STRUCTURAL-RESET>
     <DRAGON-RESET>
+    <SETG ALWAYS-LIT T>
     <RTRUE>>
 
 <ROUTINE V-SEMANTIC-TROLL-TEST ()
@@ -18,26 +19,26 @@
     <SETG TROLL-FLAG T>
     <REMOVE-CAREFULLY ,TROLL>
     <GOTO ,TROLL-ROOM>
-    <TELL "TEST PRECONDITION: Troll Room quiet enough to inspect; the canonical wall bloodstains and deep scratches remain exactly where the room prose says they are." CR>
+    <TELL "TEST PRECONDITION: lit Troll Room quiet enough to inspect; the pre-existing Room Density bloodstains and scratches remain authoritative." CR>
     <RTRUE>>
 
 <ROUTINE V-SEMANTIC-TIMBER-TEST ()
     <SEMANTIC-TEST-RESET>
     <GOTO ,TIMBER-ROOM>
-    <TELL "TEST PRECONDITION: cold untouched Timber Room with its canonical strong draft and Release 1257 fire authority reset." CR>
+    <TELL "TEST PRECONDITION: lit cold untouched Timber Room with its canonical strong draft and Release 1257 fire authority reset." CR>
     <RTRUE>>
 
 <ROUTINE V-SEMANTIC-APPROACH-TEST ()
     <SEMANTIC-TEST-RESET>
     <GOTO ,DRAGON-APPROACH>
-    <TELL "TEST PRECONDITION: untouched Scorched Cleft with its described broad scratches and old white bones." CR>
+    <TELL "TEST PRECONDITION: lit untouched Scorched Cleft with its described broad scratches and old white bones." CR>
     <RTRUE>>
 
 <ROUTINE V-SEMANTIC-GALLERY-TEST ()
     <SEMANTIC-TEST-RESET>
     <DRAGON-PUT ,DS-CONTAINED 1>
     <GOTO ,DRAGON-GALLERY>
-    <TELL "TEST PRECONDITION: dragon physically contained so the Gallery's old heat blackening can be inspected without spending the live-threat action window; ventilation seam not yet discovered." CR>
+    <TELL "TEST PRECONDITION: lit Gallery with dragon physically contained so old heat blackening can be inspected without spending the live-threat action window; ventilation seam not yet discovered." CR>
     <RTRUE>>
 
 <ROUTINE V-SEMANTIC-SMOKE-TEST ()
@@ -46,7 +47,7 @@
     <FIRE-STRUCTURAL-SET-STAGE ,FIRE-TIMBER-BURNING>
     <FIRE-STRUCTURAL-PUT ,FS-TIMBER-TIMER 3>
     <GOTO ,DRAGON-GALLERY>
-    <TELL "TEST PRECONDITION: discovered ventilation seam with the existing Release 1257 Timber Room fire in its real burning state." CR>
+    <TELL "TEST PRECONDITION: lit Gallery with discovered ventilation seam and the existing Release 1257 Timber Room fire in its real burning state." CR>
     <RTRUE>>
 
 <ROUTINE V-SEMANTIC-STATUS-TEST ()

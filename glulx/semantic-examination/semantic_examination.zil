@@ -3,31 +3,8 @@
 ;"Selected concrete details already promised by room prose become honest parser
   targets. One described heat/soot pattern can reveal the existing Dragon Gallery
   ventilation seam; discovery is represented by the seam object's real location,
-  not a generic noun promoter or clue counter."
-
-<ROUTINE SEMANTIC-TROLL-BLOOD-F ()
-    <COND (<VERB? EXAMINE>
-           <TELL "The bloodstains are old enough to have gone brown-black at the edges. They overlap at several heights and continue toward the passages rather than forming one neat pool. Whatever happened here involved movement, not a ceremonial decoration somebody forgot to explain." CR>
-           <RTRUE>)
-          (<VERB? SMELL>
-           <TELL "Dust, stone, and the faint iron smell of very old blood. Nothing about it is fresh enough to identify a current wound." CR>
-           <RTRUE>)
-          (<VERB? TAKE MOVE>
-           <TELL "The stains are in the stone's surface history, not lying on it as an object you can collect." CR>
-           <RTRUE>)>
-    <RFALSE>>
-
-<ROUTINE SEMANTIC-TROLL-SCRATCHES-F ()
-    <COND (<VERB? EXAMINE>
-           <TELL "The deepest scratches are broad, overlapping arcs with chipped stone at their ends. They are consistent with repeated axe blows made in anger or defense, not with mining, sharpening, or a single accidental scrape." CR>
-           <RTRUE>)
-          (<VERB? RUB>
-           <TELL "The cuts are rough under your fingers. Several edges have weathered smooth enough to prove the marks are older than your arrival." CR>
-           <RTRUE>)
-          (<VERB? TAKE MOVE>
-           <TELL "You cannot take scratches out of a wall without first developing a much more ambitious relationship with masonry." CR>
-           <RTRUE>)>
-    <RFALSE>>
+  not a generic noun promoter or clue counter. Existing Room Density targets remain
+  authoritative rather than being duplicated by this release."
 
 <ROUTINE SEMANTIC-TIMBER-DRAFT-F ()
     <COND (<VERB? EXAMINE>
@@ -113,22 +90,6 @@
            <TELL "The seam is a narrow opening in a basalt wall. Moving the wall would be a different release train entirely." CR>
            <RTRUE>)>
     <RFALSE>>
-
-<OBJECT SEMANTIC-TROLL-BLOODSTAINS
-    (IN TROLL-ROOM)
-    (SYNONYM BLOODSTAIN BLOODSTAINS STAIN STAINS BLOOD)
-    (ADJECTIVE OLD DARK WALL)
-    (DESC "old bloodstains")
-    (FLAGS NDESCBIT TRYTAKEBIT)
-    (ACTION SEMANTIC-TROLL-BLOOD-F)>
-
-<OBJECT SEMANTIC-TROLL-SCRATCHES
-    (IN TROLL-ROOM)
-    (SYNONYM SCRATCH SCRATCHES GOUGE GOUGES MARKS)
-    (ADJECTIVE DEEP AXE WALL)
-    (DESC "deep wall scratches")
-    (FLAGS NDESCBIT TRYTAKEBIT)
-    (ACTION SEMANTIC-TROLL-SCRATCHES-F)>
 
 <OBJECT SEMANTIC-TIMBER-DRAFT
     (IN TIMBER-ROOM)

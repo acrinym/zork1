@@ -93,9 +93,8 @@ require(
 
 semantic = (source / "semantic_examination.zil").read_text()
 zork = (source / "zork1.zil").read_text()
+room_density = (source / "room_density.zil").read_text()
 for token in (
-    "<OBJECT SEMANTIC-TROLL-BLOODSTAINS",
-    "<OBJECT SEMANTIC-TROLL-SCRATCHES",
     "<OBJECT SEMANTIC-TIMBER-DRAFT",
     "<OBJECT SEMANTIC-DRAGON-SCRATCHES",
     "<OBJECT SEMANTIC-DRAGON-BONES",
@@ -107,6 +106,15 @@ for token in (
 ):
     require(token in semantic, f"missing Release 1267 semantic token: {token}")
 require(
+    "SEMANTIC-TROLL" not in semantic,
+    "Release 1267 duplicated Troll Room detail authority already owned by Room Density",
+)
+for inherited in (
+    "The old bloodstains have soaked into cracks in the stone.",
+    "The scratches are deep, irregular, and mostly at axe height.",
+):
+    require(inherited in room_density, f"missing inherited Room Density authority: {inherited}")
+require(
     re.search(r"(?m)^<GLOBAL\b", semantic) is None,
     "Release 1267 consumed legacy VM globals",
 )
@@ -116,6 +124,7 @@ require(
 )
 for name in (
     "1dungeon.zil",
+    "room_density.zil",
     "fire_structural.zil",
     "dragon_hoard.zil",
     "learned_magic.zil",
@@ -190,7 +199,7 @@ run_case() {
     timeout 120s "$GLULXE_BIN" --rngseed 123456 "$TEST_STORY" < "$BUILD/$name.txt" > "$BUILD/$name-transcript.txt" 2>&1
 }
 
-cat > "$BUILD/troll-details.txt" <<'EOF_TROLL'
+cat > "$BUILD/troll-regression.txt" <<'EOF_TROLL'
 sxtroll
 examine bloodstains
 smell stains
@@ -200,12 +209,12 @@ sxstat
 quit
 yes
 EOF_TROLL
-run_case troll-details
-F="$BUILD/troll-details-transcript.txt"
-grep -F 'bloodstains are old enough to have gone brown-black' "$F"
-grep -F 'faint iron smell of very old blood' "$F"
-grep -F 'deepest scratches are broad, overlapping arcs' "$F"
-grep -F 'marks are older than your arrival' "$F"
+run_case troll-regression
+F="$BUILD/troll-regression-transcript.txt"
+grep -F 'old bloodstains have soaked into cracks in the stone' "$F"
+grep -F 'blood is far too old to smell fresh' "$F"
+grep -F 'scratches are deep, irregular, and mostly at axe height' "$F"
+grep -F 'gouges are rough-edged and deep enough to catch a fingertip' "$F"
 grep -F 'troll-cleared=1' "$F"
 
 cat > "$BUILD/timber-draft.txt" <<'EOF_TIMBER'
@@ -244,6 +253,8 @@ grep -F 'hotter gallery has been occupied for a long time' "$F"
 cat > "$BUILD/hidden-seam.txt" <<'EOF_SEAM'
 sxgallery
 sxstat
+examine seam
+sxstat
 examine blackening
 sxstat
 examine seam
@@ -254,7 +265,7 @@ yes
 EOF_SEAM
 run_case hidden-seam
 F="$BUILD/hidden-seam-transcript.txt"
-grep -F 'seam-discovered=0 fire-stage=0 smoke-cover=0' "$F"
+[[ "$(grep -Fc 'seam-discovered=0 fire-stage=0 smoke-cover=0' "$F")" -ge 2 ]]
 grep -F 'old ventilation seam cut through the stone' "$F"
 grep -F 'seam-discovered=1 fire-stage=0 smoke-cover=0' "$F"
 grep -F 'It is an air route, not a person-sized exit and not a new door.' "$F"
@@ -302,7 +313,7 @@ receipt = {
     "base_release": 1266,
     "base_artifact_sha256": manifest["base_artifact_sha256"],
     "base_source_sha256": manifest["base_source_sha256"],
-    "histories": ["troll-details", "timber-draft", "approach-evidence", "hidden-seam", "smoke-seam"],
+    "histories": ["troll-regression", "timber-draft", "approach-evidence", "hidden-seam", "smoke-seam"],
 }
 if expected.get("locked") is not True:
     receipt.update({"artifact_identity_locked": False, "candidate": identity})
