@@ -12,13 +12,13 @@
   "patches": ["patches/001-release-1268.json"],
   "expected_changed_paths": ["clue_interpretation.zil", "zork1.zil"],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-clue-chains-knowledge-interpretation.ulx",
     "format": "Glulx",
-    "version_hex": "UNLOCKED",
-    "size_bytes": "UNLOCKED",
-    "checksum_hex": "UNLOCKED",
-    "sha256": "UNLOCKED"
+    "version_hex": "0x00030103",
+    "size_bytes": 482816,
+    "checksum_hex": "0x53de973e",
+    "sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16"
   },
   "added_files": ["clue_interpretation.zil"]
 }
