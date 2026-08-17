@@ -1,0 +1,12 @@
+{
+  "id": "001-include-clue-interpretation-test",
+  "path": "zork1.zil",
+  "description": "Load Release 1268 test-only transit/status commands after the production clue-interpretation module.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"clue_interpretation\" T>\n<INSERT-FILE \"room_density\" T>",
+      "new": "<INSERT-FILE \"clue_interpretation\" T>\n<INSERT-FILE \"clue_interpretation_test\" T>\n<INSERT-FILE \"room_density\" T>"
+    }
+  ]
+}
