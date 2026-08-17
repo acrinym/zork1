@@ -1,0 +1,12 @@
+{
+  "id": "004_STAR_GLASS_AFFORDANCE",
+  "path": "dragon_hoard.zil",
+  "description": "Allow an explicit destructive command to destroy the exact star-glass treasure while leaving the dragon bargain, other treasures, and route authorities unchanged.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE DRAGON-TREASURE-F ()\n    <COND (<VERB? EXAMINE>",
+      "new": "<ROUTINE DRAGON-TREASURE-F ()\n    <COND (<AND <EQUAL? ,PRSO ,STAR-GLASS> <VERB? MUNG CUT>>\n           <PERILOUS-BREAK-STAR-GLASS>\n           <RTRUE>)\n          (<VERB? EXAMINE>"
+    }
+  ]
+}

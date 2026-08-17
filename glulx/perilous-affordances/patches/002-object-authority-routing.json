@@ -1,0 +1,17 @@
+{
+  "id": "002_OBJECT_AUTHORITY_ROUTING",
+  "path": "1actions.zil",
+  "description": "Route explicit lantern destruction and rope cutting/burning through authored Release 1264 consequences while leaving normal canonical routines in place.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE LANTERN ()\n\t <COND (<VERB? THROW>\n\t\t<TELL\n\"The lamp has smashed into the floor, and the light has gone out.\" CR>\n\t\t<DISABLE <INT I-LANTERN>>\n\t\t<REMOVE-CAREFULLY ,LAMP>\n\t\t<MOVE ,BROKEN-LAMP ,HERE>)",
+      "new": "<ROUTINE LANTERN ()\n\t <COND (<VERB? THROW>\n\t\t<TELL\n\"The lamp has smashed into the floor, and the light has gone out.\" CR>\n\t\t<DISABLE <INT I-LANTERN>>\n\t\t<REMOVE-CAREFULLY ,LAMP>\n\t\t<MOVE ,BROKEN-LAMP ,HERE>)\n\t       (<VERB? MUNG>\n\t\t<PERILOUS-BREAK-LAMP>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ROPE-FUNCTION (\"AUX\" RLOC)\n\t <COND (<NOT <EQUAL? ,HERE ,DOME-ROOM>>",
+      "new": "<ROUTINE ROPE-FUNCTION (\"AUX\" RLOC)\n\t <COND (<VERB? CUT BURN>\n\t\t<PERILOUS-DESTROY-ROPE>)\n\t       (<NOT <EQUAL? ,HERE ,DOME-ROOM>>"
+    }
+  ]
+}

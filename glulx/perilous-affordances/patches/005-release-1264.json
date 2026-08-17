@@ -1,0 +1,27 @@
+{
+  "id": "005_RELEASE_1264",
+  "path": "zork1.zil",
+  "description": "Advance production identity to Release 1264 and load the authored perilous-affordance consequences after the exact dragon/screen authorities.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 ABLATIVE PROTECTION AND EQUIPMENT CONSEQUENCE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Ablative Protection & Equipment Consequence. Release 1263\n  adds one physical fire screen whose material condition carries the consequence\n  of surviving the real dragon's breath. No armor points, durability meter,\n  generic block action, repair economy, or universal equipment-damage engine.\"\n\n",
+      "new": "\"ZORK1 PERILOUS AFFORDANCES / LET THE PLAYER BE WRONG GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Perilous Affordances. Release 1264 lets explicit destructive\n  player choices reach authored consequences for the canonical lantern and rope,\n  the Release 1263 fire screen, and the Release 1262 star-glass. It composes exact\n  object authorities rather than adding a universal destruction or durability system.\"\n\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1263>",
+      "new": "<CONSTANT RELEASEID 1264>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Ablative Protection and Equipment Consequence Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Perilous Affordances / Let the Player Be Wrong Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"ablative_protection\" T>\n",
+      "new": "<INSERT-FILE \"ablative_protection\" T>\n<INSERT-FILE \"perilous_affordances\" T>\n"
+    }
+  ]
+}

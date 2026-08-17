@@ -1,0 +1,39 @@
+{
+  "edition": "Perilous Affordances / Let the Player Be Wrong",
+  "release": 1264,
+  "serial": "260816",
+  "base_release": 1263,
+  "base_manifest": "../ablative-protection/patch-series.json",
+  "base_artifact_sha256": "a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997",
+  "base_source_sha256": {
+    "production": "5962b663b387d1a82d594f7a5ad3fc94881d87b13c32899a1a7043459b24a237",
+    "dev": "be9927dc9b3153bad4d8abd9cd7ce793aa8601ea7da4e43dd48001d4791124a0"
+  },
+  "patches": [
+    "patches/001-rope-material-affordance.json",
+    "patches/002-object-authority-routing.json",
+    "patches/003-fire-screen-affordance.json",
+    "patches/004-star-glass-affordance.json",
+    "patches/005-release-1264.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "ablative_protection.zil",
+    "dragon_hoard.zil",
+    "perilous_affordances.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-perilous-affordances-let-player-be-wrong.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 471040,
+    "checksum_hex": "0xb70ad718",
+    "sha256": "04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d"
+  },
+  "added_files": [
+    "perilous_affordances.zil"
+  ]
+}

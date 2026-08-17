@@ -1,0 +1,100 @@
+"TEST-ONLY RELEASE 1264 PERILOUS-AFFORDANCE PRECONDITIONS"
+
+<SYNTAX PALAMP = V-PERILOUS-LAMP-TEST>
+<SYNTAX PAROPE = V-PERILOUS-ROPE-TEST>
+<SYNTAX PASCRN = V-PERILOUS-SCREEN-TEST>
+<SYNTAX PASTAR = V-PERILOUS-STAR-TEST>
+<SYNTAX PANORM = V-PERILOUS-NORMAL-TEST>
+<SYNTAX PANSTR = V-PERILOUS-NORMAL-STAR-TEST>
+<SYNTAX PASTAT = V-PERILOUS-STATUS-TEST>
+
+<ROUTINE PERILOUS-TEST-LIGHT ()
+    <MOVE ,LAMP ,WINNER>
+    <FSET ,LAMP ,ONBIT>
+    <ENABLE <INT I-LANTERN>>
+    <RTRUE>>
+
+<ROUTINE V-PERILOUS-LAMP-TEST ()
+    <REMOVE-CAREFULLY ,BROKEN-LAMP>
+    <MOVE ,LAMP ,WINNER>
+    <FCLEAR ,LAMP ,ONBIT>
+    <MOVE ,SWORD ,WINNER>
+    <GOTO ,LIVING-ROOM>
+    <TELL "TEST PRECONDITION: working brass lantern and real sword in the lit Living Room." CR>
+    <RTRUE>>
+
+<ROUTINE V-PERILOUS-ROPE-TEST ()
+    <SETG SHADOW-SELF-TIED <>>
+    <SETG SHADOW-SELF-FIRE 0>
+    <SETG MATERIAL-ROPE-ANCHOR <>>
+    <SETG MATERIAL-SACK-CINCHED <>>
+    <SETG DOME-FLAG <>>
+    <FCLEAR ,ROPE ,NDESCBIT>
+    <MOVE ,ROPE ,WINNER>
+    <MOVE ,TORCH ,WINNER>
+    <FSET ,TORCH ,ONBIT>
+    <FSET ,TORCH ,FLAMEBIT>
+    <MOVE ,BOTTLE ,WINNER>
+    <FSET ,BOTTLE ,OPENBIT>
+    <MOVE ,WATER ,BOTTLE>
+    <GOTO ,LIVING-ROOM>
+    <TELL "TEST PRECONDITION: canonical rope, live torch, and bottled water held in a safe room." CR>
+    <RTRUE>>
+
+<ROUTINE V-PERILOUS-SCREEN-TEST ()
+    <DRAGON-RESET>
+    <ABLATIVE-RESET>
+    <FIRE-STRUCTURAL-RESET>
+    <PERILOUS-TEST-LIGHT>
+    <MOVE ,DRAGON-FIRE-SCREEN ,WINNER>
+    <MOVE ,TORCH ,WINNER>
+    <FSET ,TORCH ,ONBIT>
+    <FSET ,TORCH ,FLAMEBIT>
+    <GOTO ,DRAGON-APPROACH>
+    <TELL "TEST PRECONDITION: sound fire screen and live torch held in the lit Scorched Cleft." CR>
+    <RTRUE>>
+
+<ROUTINE V-PERILOUS-STAR-TEST ()
+    <DRAGON-RESET>
+    <ABLATIVE-RESET>
+    <FIRE-STRUCTURAL-RESET>
+    <PERILOUS-TEST-LIGHT>
+    <MOVE ,STAR-GLASS ,WINNER>
+    <MOVE ,CHALICE ,WINNER>
+    <MOVE ,SWORD ,WINNER>
+    <GOTO ,DRAGON-APPROACH>
+    <TELL "TEST PRECONDITION: star-glass, substitute chalice, and sword held before the live Dragon Gallery." CR>
+    <RTRUE>>
+
+<ROUTINE V-PERILOUS-NORMAL-TEST ()
+    <SETG DOME-FLAG <>>
+    <SETG MATERIAL-ROPE-ANCHOR <>>
+    <SETG MATERIAL-SACK-CINCHED <>>
+    <FCLEAR ,ROPE ,NDESCBIT>
+    <MOVE ,ROPE ,WINNER>
+    <MOVE ,LAMP ,WINNER>
+    <FCLEAR ,LAMP ,ONBIT>
+    <GOTO ,DOME-ROOM>
+    <TELL "TEST PRECONDITION: untouched canonical lantern and rope held at the Dome Room railing." CR>
+    <RTRUE>>
+
+<ROUTINE V-PERILOUS-NORMAL-STAR-TEST ()
+    <DRAGON-RESET>
+    <ABLATIVE-RESET>
+    <FIRE-STRUCTURAL-RESET>
+    <PERILOUS-TEST-LIGHT>
+    <MOVE ,STAR-GLASS ,WINNER>
+    <GOTO ,DRAGON-APPROACH>
+    <TELL "TEST PRECONDITION: untouched star-glass held before the live Dragon Gallery." CR>
+    <RTRUE>>
+
+<ROUTINE V-PERILOUS-STATUS-TEST ()
+    <TELL "TEST perilous state: lamp-live=" N <COND (<LOC ,LAMP> 1) (T 0)>
+          " broken-lamp=" N <COND (<LOC ,BROKEN-LAMP> 1) (T 0)>
+          " rope-live=" N <COND (<LOC ,ROPE> 1) (T 0)>
+          " self-tied=" N <COND (,SHADOW-SELF-TIED 1) (T 0)>
+          " self-fire=" N ,SHADOW-SELF-FIRE
+          " screen-condition=" N <ABLATIVE-GET ,APS-CONDITION>
+          " star-live=" N <COND (<LOC ,STAR-GLASS> 1) (T 0)>
+          " circlet-held=" N <COND (<IN? ,ASHEN-CIRCLET ,WINNER> 1) (T 0)> CR>
+    <RTRUE>>

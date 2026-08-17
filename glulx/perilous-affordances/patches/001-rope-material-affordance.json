@@ -1,0 +1,12 @@
+{
+  "id": "001_ROPE_MATERIAL_AFFORDANCE",
+  "path": "1dungeon.zil",
+  "description": "Let the canonical hemp rope participate in the existing BURN grammar; authored consequence routing remains object-specific.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT ROPE\n\t(IN ATTIC)\n\t(SYNONYM ROPE HEMP COIL)\n\t(ADJECTIVE LARGE)\n\t(DESC \"rope\")\n\t(FLAGS TAKEBIT SACREDBIT TRYTAKEBIT)",
+      "new": "<OBJECT ROPE\n\t(IN ATTIC)\n\t(SYNONYM ROPE HEMP COIL)\n\t(ADJECTIVE LARGE)\n\t(DESC \"rope\")\n\t(FLAGS TAKEBIT SACREDBIT TRYTAKEBIT BURNBIT)"
+    }
+  ]
+}

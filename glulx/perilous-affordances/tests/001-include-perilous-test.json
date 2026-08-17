@@ -1,0 +1,12 @@
+{
+  "id": "perilous-affordances-test-include",
+  "description": "Include Release 1264 test-only setup/status verbs in the qualification story.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "<INSERT-FILE \"perilous_affordances\" T>\n",
+      "new": "<INSERT-FILE \"perilous_affordances\" T>\n<INSERT-FILE \"perilous_affordances_test\" T>\n",
+      "expected_count": 1
+    }
+  ]
+}

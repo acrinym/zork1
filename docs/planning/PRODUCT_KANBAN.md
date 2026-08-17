@@ -3,7 +3,7 @@
 **Updated:** August 16, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
 **Current merged production frontier:** Release `1263` — Ablative Protection & Equipment Consequence  
-**`master` head before this board refresh:** `565d24d910e75ac6b28f1ce9d57de1506a642b62`
+**`master` head when Release 1264 started:** `1a5b9cb27e85648fd7cd95cd1c9c890be1d71e66`
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -22,9 +22,25 @@ This board is the human operating surface for the active Zork product queue. The
 
 ## CURRENT
 
-**None.** Release 1263 is merged and the product is between trains.
+### Release 1264 — Perilous Affordances / Let the Player Be Wrong
 
-The Mara-focused run is intentionally paused after Release 1261. Releases 1262–1263 have already begun letting the wider world catch up with authored hostile-room and equipment-consequence depth.
+**PR:** #69 — open, non-draft, **do not merge without a new explicit merge whistle**.  
+**Status:** implemented; exact artifact locked; natural-command qualification green before final review.  
+**Locked artifact SHA-256:** `04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d`  
+**Locked qualification:** run `31949037137` green on head `c80af99c864cfb9f58aa77415121ef476ca14e7d` before this board refresh.
+
+Release 1264 answers the program's first agency question with authored consequences rather than a universal destruction engine:
+
+- explicit weapon-driven destruction of the canonical brass lantern reaches the existing `BROKEN-LAMP` consequence family;
+- the canonical hemp rope can be deliberately cut or burned, and exact rope/tie authorities are cleared when that exact object is gone;
+- burning the rope while it is tied around the Adventurer's legs frees the legs but transfers the existing authored clothing-fire state, recoverable with real bottled water;
+- deliberate burning/cutting of the Release 1263 fire screen consumes or ruins its existing qualitative protection state;
+- explicit destruction of Release 1262 star-glass removes that treasure while other dragon treasures and bargain/containment/smoke routes remain real substitutes;
+- untouched canonical lantern, rope, and star-glass histories remain qualified.
+
+The qualifier replays the complete locked Release 1263 predecessor before staging 1264, proves generic parser grammar and verb authority did not change, compiles production and test stories, then exercises six real parser-command histories. Candidate run `31948799279` was intentionally red only after all gameplay evidence passed so the exact artifact identity could be pinned.
+
+The Mara-focused run remains intentionally paused after Release 1261 while the wider world receives comparable authored depth.
 
 ## NEXT — Shadowgate → Parser IF Adaptation Program
 
@@ -32,17 +48,7 @@ Shadowgate is a **design lens only**. Borrow interaction principles and rebuild 
 
 Full train specifications: `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md`.
 
-### 1. Release 1264 — Perilous Affordances / Let the Player Be Wrong
-
-Stop using meta-game refusals to protect puzzle-critical objects from physically possible bad choices. If the Adventurer can honestly break, burn, discard, consume, drop, or misuse something, allow it where the world can support the consequence.
-
-- recoverable failures and substitutes where physically credible;
-- alternate routes where appropriate;
-- genuine irreversible mistakes only when sufficiently warned;
-- agency rather than arbitrary punishment;
-- no unfair softlocks caused by parser ambiguity.
-
-### 2. Release 1265 — Consumable Light & Graduated Darkness
+### 1. Release 1265 — Consumable Light & Graduated Darkness
 
 Turn illumination into authored world state rather than a binary lamp flag.
 
@@ -53,7 +59,7 @@ Turn illumination into authored world state rather than a binary lamp flag.
 - darkness can become an emergency without becoming hidden-timer busywork;
 - no universal lux simulator.
 
-### 3. Release 1266 — Learned Magic as Parser Capability
+### 2. Release 1266 — Learned Magic as Parser Capability
 
 Let original Zork-native magical knowledge expand what the parser meaningfully permits because the Adventurer actually learned a word, rite, formula, sign, or command.
 
@@ -62,7 +68,7 @@ Let original Zork-native magical knowledge expand what the parser meaningfully p
 - knowledge acquisition happens in-world;
 - learned capability remains bounded to authored world authority.
 
-### 4. Release 1267 — Semantic Examination & Hidden Structure
+### 3. Release 1267 — Semantic Examination & Hidden Structure
 
 Promote selected meaningful descriptive details into trustworthy parser targets.
 
@@ -70,7 +76,7 @@ Promote selected meaningful descriptive details into trustworthy parser targets.
 - targetability does not guarantee success;
 - no generic noun generator.
 
-### 5. Release 1268 — Clue Chains & Knowledge-Gated Interpretation
+### 4. Release 1268 — Clue Chains & Knowledge-Gated Interpretation
 
 Carry learned meaning across locations so earlier documents, symbols, observations, museum evidence, and testimony can change later interpretation without requiring the original clue object forever.
 
@@ -78,7 +84,7 @@ Carry learned meaning across locations so earlier documents, symbols, observatio
 - museum/archive knowledge can become useful in the field;
 - companions do not become automatic hint engines.
 
-### 6. Release 1269 — Structural Difficulty Modes
+### 5. Release 1269 — Structural Difficulty Modes
 
 Difficulty changes evidence redundancy, recoverability, substitutes, resources, and consequence windows instead of merely multiplying damage.
 
@@ -86,11 +92,11 @@ Difficulty changes evidence redundancy, recoverability, substitutes, resources, 
 - no parser-phrasing difficulty tax;
 - no enemy-health multiplier masquerading as puzzle difficulty.
 
-### 7. Release 1270 — Causal Death & Failure Feedback
+### 6. Release 1270 — Causal Death & Failure Feedback
 
 Death and near-death should communicate physical cause, ignored evidence, partially sound ideas, and what exact state/action changed the outcome without simply handing over the solution.
 
-### 8. Release 1271 — Creature Encounters as Systemic Puzzles
+### 7. Release 1271 — Creature Encounters as Systemic Puzzles
 
 Living beings remain authored situations with distinct motives, senses, capacities, fears, possessions, territory, and memory rather than hit-point-shaped locks.
 
@@ -98,7 +104,7 @@ Living beings remain authored situations with distinct motives, senses, capaciti
 - troll, thief, grue, dragon, and Mara remain meaningfully different;
 - no generic creature AI brain or universal disposition meter.
 
-### 9. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
+### 8. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
 
 Capstone the program with a substantial original Zork region whose **design grammar** composes the prior trains into one coherent adventure language.
 
@@ -171,8 +177,10 @@ Target roughly 20–30 authored rooms only if the design earns that size, with c
 | 1262 | `32ddee571a686411f672235aecffeab6b614bbb6` | `2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9` | `31928781090` |
 | 1263 | `565d24d910e75ac6b28f1ce9d57de1506a642b62` | `a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997` | `31929398064` |
 
+Release 1264 remains in **CURRENT**, not DONE, until PR #69 is merged after an explicit merge whistle.
+
 ## Canonical roadmap
 
 See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for broader design doctrine and `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md` for Releases 1262–1272.
 
-The current shape is now concrete: the Mara stack through 1261 is merged; the Shadowgate-derived parser-IF program has shipped its first two trains; **Release 1264 — Perilous Affordances / Let the Player Be Wrong — is next.**
+The current shape is concrete: the Mara stack through 1261 is merged; the Shadowgate-derived parser-IF program has shipped Releases 1262–1263; **Release 1264 is the qualified open train; Release 1265 — Consumable Light & Graduated Darkness — is next.**
