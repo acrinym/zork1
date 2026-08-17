@@ -1,0 +1,12 @@
+{
+  "id": "001-include-semantic-examination-test",
+  "path": "zork1.zil",
+  "description": "Load Release 1267 test-only precondition commands after the production semantic-examination module.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"semantic_examination\" T>\n<INSERT-FILE \"room_density\" T>",
+      "new": "<INSERT-FILE \"semantic_examination\" T>\n<INSERT-FILE \"semantic_examination_test\" T>\n<INSERT-FILE \"room_density\" T>"
+    }
+  ]
+}
