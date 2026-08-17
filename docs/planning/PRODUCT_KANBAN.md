@@ -3,7 +3,7 @@
 **Updated:** August 17, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
 **Current merged production frontier:** Release `1263` — Ablative Protection & Equipment Consequence  
-**`master` head when the 1264–1265 stack started:** `1a5b9cb27e85648fd7cd95cd1c9c890be1d71e66`
+**`master` head when the 1264–1266 stack started:** `1a5b9cb27e85648fd7cd95cd1c9c890be1d71e66`
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -21,18 +21,22 @@ This board is the human operating surface for the active Zork product queue. The
 - No universal crafting grid, arbitrary object-pair matrix, generic physics simulator, generic creature brain, recursive audit machinery, TODO-only slice, or no-op scaffolding.
 - **DONE** requires merged or otherwise immutable proof.
 
-## OPEN STACKED PREDECESSOR
+## OPEN STACKED PREDECESSORS
+
+The active stack is:
+
+`master` / merged Release 1263 → **PR #69 / Release 1264** → **PR #70 / Release 1265** → **PR #71 / Release 1266 CURRENT**.
+
+None of the three open releases is DONE, and none may be merged without a new explicit merge whistle.
 
 ### Release 1264 — Perilous Affordances / Let the Player Be Wrong
 
-**PR:** #69 — open, non-draft, mergeable, **do not merge without a new explicit merge whistle**.  
+**PR:** #69 — open, non-draft, mergeable.  
 **Current branch head:** `7a11375160d8893698f6df3ce16b8c8c35a810fc`  
 **Locked artifact SHA-256:** `04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d`  
 **Release-specific exact-artifact qualification:** run `31949574481` green on implementation/review head `931b7653b38db58b71e77b8efe6085d7120b6dbd`; the later `7a113751...` change is maintenance-only Kanban regression repair and does not alter Release 1264 production/staging inputs.
 
-Release 1264 remains an unmerged prerequisite for Release 1265. It is not CURRENT because its descendant train is now the active product surface, and it is not DONE because PR #69 has not been merged.
-
-Its authored consequences remain:
+Release 1264 remains the first unmerged prerequisite in the current stack. Its authored consequences remain:
 
 - explicit weapon-driven destruction of the canonical brass lantern reaches the existing `BROKEN-LAMP` consequence family;
 - the canonical hemp rope can be deliberately cut or burned, including the recoverable self-fire history when burned around the Adventurer's legs;
@@ -40,29 +44,47 @@ Its authored consequences remain:
 - explicit destruction of Release 1262 star-glass removes that treasure while other dragon routes and substitutes remain real;
 - untouched canonical lantern, rope, and star-glass histories remain qualified.
 
-## CURRENT
-
 ### Release 1265 — Consumable Light & Graduated Darkness
 
-**PR:** #70 — open stacked PR targeting the Release 1264 branch; **do not merge without a new explicit merge whistle**.  
+**PR:** #70 — open, non-draft, mergeable, stacked on PR #69.  
+**Current branch head:** `3d0b15efbf6ba227fcbc1a2edad1b325e2e0c197`  
 **Stack base:** PR #69 head `7a11375160d8893698f6df3ce16b8c8c35a810fc`  
 **Locked artifact SHA-256:** `6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070`  
-**Locked qualification:** run `32030511091` green on head `461f55f566770cfec17d87708cc85fdec388a1ed`.
+**Final exact production-head qualification:** run `32034566984` green on `b431122a87b20340e1c4ebbd2515549012e21bd6`; the later `3d0b15ef...` commit changes only workflow trigger/error-handling surfaces and no Release 1265 production story path.
 
-Release 1265 promotes existing light/resource authorities into qualitative authored world state rather than replacing them:
+Release 1265 remains the immediate unmerged predecessor for Release 1266. It promotes existing light/resource authorities into qualitative authored world state rather than replacing them:
 
-- the canonical `LAMP-TABLE`, `CANDLE-TABLE`, `I-LANTERN`, `I-CANDLES`, and `LIGHT-INT` remain the consumable-resource authority;
-- selected exact portable sources now have authored **bright / weak / ember / dark** useful reach while binary `LIT?` remains authoritative for visibility and canonical darkness;
-- a fresh bright brass lantern can physically reveal the Release 1256 grue colony, while a weak lamp preserves ordinary visibility without reaching deeply enough into the fissures;
-- a real lit match provides only a tiny, one-turn ember-scale emergency circle before its canonical flame expires;
-- real bottled water can waterlog the ritual candles, extinguish them, block immediate relighting for a stated physical reason, and then allow the existing match-to-candle transfer route again after narrated drying;
-- Release 1257's real Timber Room fire/smoke/draft can snuff carried ember-stage candles without any duplicate fire state;
-- the canonical ivory torch remains permanent bright light and still reveals the colony;
+- canonical lamp/candle timers remain the consumable-resource authority;
+- selected exact portable sources have authored **bright / weak / ember / dark** useful reach while binary `LIT?` remains authoritative;
+- a bright lamp or canonical ivory torch can reveal the existing grue colony, while weaker light has contracted reach;
+- real bottled water can waterlog ritual candles and the existing flame-transfer route works again after narrated drying;
+- Release 1257's Timber Room fire/smoke/draft can snuff carried ember-stage candles;
 - no lux map, numeric fuel points, generic light-source class, universal fuel registry, replacement grue logic, replacement `LIT?`, or new legacy VM globals were added.
 
-Qualification replays the complete locked Release 1264 predecessor, stages exactly six intended production paths, compiles production and test stories, and proves six natural-command histories: bright lamp, weak lamp, ember emergency, wet/dry candles, Timber Room smoke versus ember candles, and canonical ivory torch.
+## CURRENT
 
-Candidate run `32029901887` intentionally stopped only after all six histories passed to obtain the exact artifact identity. Locked run `32030511091` reproduced that identity exactly and passed the complete nested qualification green.
+### Release 1266 — Learned Magic as Parser Capability
+
+**PR:** #71 — open, non-draft stacked PR targeting the Release 1265 branch; **do not merge without a new explicit merge whistle**.  
+**Stack base:** PR #70 head `3d0b15efbf6ba227fcbc1a2edad1b325e2e0c197`  
+**Locked artifact SHA-256:** `d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9`  
+**Locked implementation qualification:** run `32042145187` green on exact implementation head `8e242267b9919be1f33828f1030a7ece24013d13`.
+
+Release 1266 makes learned knowledge change what the parser can meaningfully do without introducing a generic spell system:
+
+- `STUDY <readable object>` creates a deliberate learning action rather than treating possession as expertise;
+- one-object `WARD <object>` parses before learning but changes nothing until the Adventurer has actually learned the technique;
+- `KNOWLEDGE` / `LORE` reports what has genuinely been learned;
+- the existing damaged black-book material must first be reconstructed through existing Ritual Resonance interaction; only then can deliberate study teach the original GUE **stilling ward**;
+- `WARD CANDLES` dries Release 1265's exact waterlogged-wick state without lighting or restoring the candles;
+- after natural `RING BELL` produces the canonical `HOT-BELL`, `WARD BELL` routes through canonical `I-XBH` cooldown while leaving the active ceremony interval authoritative;
+- the existing two-object `WARD HOUSE WITH GARLIC` grammar remains owned by House Vulnerability;
+- unrelated objects are explicitly not generic spell targets;
+- learned state occupies one compact four-slot mutable table and adds **zero new legacy VM globals**.
+
+The qualifier reruns the complete locked Release 1265 predecessor, pins its exact staged production/development source identities, stages exactly `learned_magic.zil` plus Release identity/include wiring in `zork1.zil`, byte-checks unchanged parser/ritual/light/house-ward authorities, compiles production and test stories, and proves four natural-command histories: learning gate, wet-candle ward, canonical hot-bell ward, and old house-ward grammar coexistence.
+
+Candidate run `32041714915` intentionally stopped only at the artifact-lock gate after all gameplay and compile/static gates passed. Locked run `32042145187` reproduced the exact artifact and passed the complete nested qualification green.
 
 The Mara-focused run remains intentionally paused after Release 1261 while the wider world receives comparable authored depth.
 
@@ -72,16 +94,7 @@ Shadowgate is a **design lens only**. Borrow interaction principles and rebuild 
 
 Full train specifications: `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md`.
 
-### 1. Release 1266 — Learned Magic as Parser Capability
-
-Let original Zork-native magical knowledge expand what the parser meaningfully permits because the Adventurer actually learned a word, rite, formula, sign, or command.
-
-- no copied Shadowgate spells;
-- no mana-bar overlay;
-- knowledge acquisition happens in-world;
-- learned capability remains bounded to authored world authority.
-
-### 2. Release 1267 — Semantic Examination & Hidden Structure
+### 1. Release 1267 — Semantic Examination & Hidden Structure
 
 Promote selected meaningful descriptive details into trustworthy parser targets.
 
@@ -89,7 +102,7 @@ Promote selected meaningful descriptive details into trustworthy parser targets.
 - targetability does not guarantee success;
 - no generic noun generator.
 
-### 3. Release 1268 — Clue Chains & Knowledge-Gated Interpretation
+### 2. Release 1268 — Clue Chains & Knowledge-Gated Interpretation
 
 Carry learned meaning across locations so earlier documents, symbols, observations, museum evidence, and testimony can change later interpretation without requiring the original clue object forever.
 
@@ -97,7 +110,7 @@ Carry learned meaning across locations so earlier documents, symbols, observatio
 - museum/archive knowledge can become useful in the field;
 - companions do not become automatic hint engines.
 
-### 4. Release 1269 — Structural Difficulty Modes
+### 3. Release 1269 — Structural Difficulty Modes
 
 Difficulty changes evidence redundancy, recoverability, substitutes, resources, and consequence windows instead of merely multiplying damage.
 
@@ -105,11 +118,11 @@ Difficulty changes evidence redundancy, recoverability, substitutes, resources, 
 - no parser-phrasing difficulty tax;
 - no enemy-health multiplier masquerading as puzzle difficulty.
 
-### 5. Release 1270 — Causal Death & Failure Feedback
+### 4. Release 1270 — Causal Death & Failure Feedback
 
 Death and near-death should communicate physical cause, ignored evidence, partially sound ideas, and what exact state/action changed the outcome without simply handing over the solution.
 
-### 6. Release 1271 — Creature Encounters as Systemic Puzzles
+### 5. Release 1271 — Creature Encounters as Systemic Puzzles
 
 Living beings remain authored situations with distinct motives, senses, capacities, fears, possessions, territory, and memory rather than hit-point-shaped locks.
 
@@ -117,7 +130,7 @@ Living beings remain authored situations with distinct motives, senses, capaciti
 - troll, thief, grue, dragon, and Mara remain meaningfully different;
 - no generic creature AI brain or universal disposition meter.
 
-### 7. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
+### 6. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
 
 Capstone the program with a substantial original Zork region whose **design grammar** composes the prior trains into one coherent adventure language.
 
@@ -223,10 +236,10 @@ The existing **Forest That Answers Back** lane remains complementary: it deepens
 | 1262 | `32ddee571a686411f672235aecffeab6b614bbb6` | `2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9` | `31928781090` |
 | 1263 | `565d24d910e75ac6b28f1ce9d57de1506a642b62` | `a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997` | `31929398064` |
 
-Releases 1264 and 1265 are explicitly **not DONE** while PRs #69 and #70 remain open.
+Releases 1264, 1265, and 1266 are explicitly **not DONE** while PRs #69, #70, and #71 remain open.
 
 ## Canonical roadmap
 
 See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for broader design doctrine and `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md` for Releases 1262–1272.
 
-The current shape is concrete: the Mara stack through 1261 is merged; Releases 1262–1263 are the merged Shadowgate-derived trains; Release 1264 is the open stacked predecessor; **Release 1265 is the qualified CURRENT train; Release 1266 — Learned Magic as Parser Capability — is next; Release 1273 — Living Biomes & Wilderness Expansion — is now the first explicitly queued post-Shadowgate world-expansion train.**
+The current shape is concrete: the Mara stack through 1261 is merged; Releases 1262–1263 are the merged Shadowgate-derived trains; Releases 1264 and 1265 are open stacked predecessors; **Release 1266 is the qualified CURRENT train; Release 1267 — Semantic Examination & Hidden Structure — is next; Release 1273 — Living Biomes & Wilderness Expansion — remains the first explicitly queued post-Shadowgate world-expansion train.**

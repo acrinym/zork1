@@ -1,0 +1,31 @@
+{
+  "edition": "Learned Magic as Parser Capability",
+  "release": 1266,
+  "serial": "260817",
+  "base_release": 1265,
+  "base_manifest": "../consumable-light/patch-series.json",
+  "base_artifact_sha256": "6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070",
+  "base_source_sha256": {
+    "production": "e7302276f42a32c2359a694797ff5498e43a6bb62f6e44958b7921b92e002bbd",
+    "dev": "d9defde0413a845f43514f3dac5a355721b8f0cedd12efe2b66a6b2efc8629eb"
+  },
+  "patches": [
+    "patches/001-release-1266.json"
+  ],
+  "expected_changed_paths": [
+    "learned_magic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-learned-magic-parser-capability.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 475904,
+    "checksum_hex": "0xb7efb785",
+    "sha256": "d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9"
+  },
+  "added_files": [
+    "learned_magic.zil"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1266",
+  "path": "zork1.zil",
+  "description": "Advance story identity to Release 1266 and load the bounded learned-magic module after Release 1265.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 CONSUMABLE LIGHT AND GRADUATED DARKNESS GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Consumable Light & Graduated Darkness. Release 1265 promotes\n  the canonical lamp/candle countdowns, match and ivory torch, existing mine fire,\n  and the authored grue colony into qualitative bright/weak/ember consequences.\n  Binary visibility, canonical timers, and canonical grue danger remain authoritative.\"\n\n",
+      "new": "\"ZORK1 LEARNED MAGIC AS PARSER CAPABILITY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Learned Magic as Parser Capability. Release 1266 makes one\n  bounded GUE ritual technique learnable through real black-book interaction.\n  Knowledge gates capability; Release 1265 candle wetness, canonical hot-bell\n  cooldown, and the original Hades ceremony remain authoritative.\"\n\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1265>",
+      "new": "<CONSTANT RELEASEID 1266>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Consumable Light and Graduated Darkness Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Learned Magic as Parser Capability Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"consumable_light\" T>\n<INSERT-FILE \"room_density\" T>",
+      "new": "<INSERT-FILE \"consumable_light\" T>\n<INSERT-FILE \"learned_magic\" T>\n<INSERT-FILE \"room_density\" T>"
+    }
+  ]
+}
