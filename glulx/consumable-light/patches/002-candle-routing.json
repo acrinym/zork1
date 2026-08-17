@@ -1,0 +1,12 @@
+{
+  "id": "002-candle-routing",
+  "path": "ritual_resonance.zil",
+  "description": "Let Release 1265 candle wetness and qualitative condition answer before the existing ritual wrapper while preserving ritual behavior.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE RITUAL-CANDLES-F ()\n\t<COND (<VERB? EXAMINE DIAGNOSE>",
+      "new": "<ROUTINE RITUAL-CANDLES-F ()\n\t<COND (<CONSUMABLE-CANDLES-HOOK> <RTRUE>)>\n\t<COND (<VERB? EXAMINE DIAGNOSE>"
+    }
+  ]
+}

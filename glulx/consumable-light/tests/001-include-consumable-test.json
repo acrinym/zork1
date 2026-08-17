@@ -1,0 +1,12 @@
+{
+  "id": "consumable-light-test-include",
+  "description": "Include Release 1265 test-only setup/status verbs in the qualification story.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "<INSERT-FILE \"consumable_light\" T>\n",
+      "new": "<INSERT-FILE \"consumable_light\" T>\n<INSERT-FILE \"consumable_light_test\" T>\n",
+      "expected_count": 1
+    }
+  ]
+}

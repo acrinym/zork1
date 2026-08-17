@@ -1,0 +1,27 @@
+{
+  "id": "005-release-1265",
+  "path": "zork1.zil",
+  "description": "Advance story identity to Release 1265 and load the bounded qualitative light module after Release 1264.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 PERILOUS AFFORDANCES / LET THE PLAYER BE WRONG GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Perilous Affordances. Release 1264 lets explicit destructive\n  player choices reach authored consequences for the canonical lantern and rope,\n  the Release 1263 fire screen, and the Release 1262 star-glass. It composes exact\n  object authorities rather than adding a universal destruction or durability system.\"\n\n",
+      "new": "\"ZORK1 CONSUMABLE LIGHT AND GRADUATED DARKNESS GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Consumable Light & Graduated Darkness. Release 1265 promotes\n  the canonical lamp/candle countdowns, match and ivory torch, existing mine fire,\n  and the authored grue colony into qualitative bright/weak/ember consequences.\n  Binary visibility, canonical timers, and canonical grue danger remain authoritative.\"\n\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1264>",
+      "new": "<CONSTANT RELEASEID 1265>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Perilous Affordances / Let the Player Be Wrong Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Consumable Light and Graduated Darkness Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"perilous_affordances\" T>\n<INSERT-FILE \"room_density\" T>",
+      "new": "<INSERT-FILE \"perilous_affordances\" T>\n<INSERT-FILE \"consumable_light\" T>\n<INSERT-FILE \"room_density\" T>"
+    }
+  ]
+}

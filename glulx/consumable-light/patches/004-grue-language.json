@@ -1,0 +1,17 @@
+{
+  "id": "004-grue-language",
+  "path": "gglobals.zil",
+  "description": "Make the revealed grue-colony evidence describe strong illumination rather than hard-code the ivory torch as the only possible source.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"You still cannot get a clean look at a grue. The torch proved only that\nmany separate shapes retreat through the mine fissures whenever strong\nlight reaches them. Whatever lives here has made a colony of the darkness,\nnot an exhibit of itself.\" CR>)",
+      "new": "\"You still cannot get a clean look at a grue. Strong light proved only that\nmany separate shapes retreat through the mine fissures whenever its bright\nreach finds them. Whatever lives here has made a colony of the darkness,\nnot an exhibit of itself.\" CR>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\"The fissures are the answer. Nothing remains in the light long enough to\nbe seen, but too many separate retreats have answered the torch for this to\nbe one lurking grue.\" CR>)",
+      "new": "\"The fissures are the answer. Nothing remains in the light long enough to\nbe seen, but too many separate retreats have answered strong illumination\nfor this to be one lurking grue.\" CR>)"
+    }
+  ]
+}

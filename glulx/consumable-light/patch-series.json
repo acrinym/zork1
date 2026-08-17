@@ -1,0 +1,39 @@
+{
+  "edition": "Consumable Light & Graduated Darkness",
+  "release": 1265,
+  "serial": "260817",
+  "base_release": 1264,
+  "base_manifest": "../perilous-affordances/patch-series.json",
+  "base_artifact_sha256": "04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d",
+  "base_source_sha256": {
+    "production": "6833f6c84654294fdf701f043a9fd8cb04168967addb3f8e471d1a7cde52cf8b",
+    "dev": "fa6f07494fc29647abc13d09ba3f4494ae4c18c1c1cde9a266f1d5211c9bc45d"
+  },
+  "patches": [
+    "patches/001-light-authority.json",
+    "patches/002-candle-routing.json",
+    "patches/003-shadow-light-composition.json",
+    "patches/004-grue-language.json",
+    "patches/005-release-1265.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "consumable_light.zil",
+    "gglobals.zil",
+    "ritual_resonance.zil",
+    "shadow_logic.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-consumable-light-graduated-darkness.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 474112,
+    "checksum_hex": "0x69f582b5",
+    "sha256": "6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070"
+  },
+  "added_files": [
+    "consumable_light.zil"
+  ]
+}
