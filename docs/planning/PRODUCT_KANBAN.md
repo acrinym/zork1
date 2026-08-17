@@ -21,53 +21,46 @@ This board is the human operating surface for the active Zork product queue. The
 - No universal crafting grid, arbitrary object-pair matrix, generic physics simulator, generic creature brain, recursive audit machinery, TODO-only slice, or no-op scaffolding.
 - **DONE** requires merged or otherwise immutable proof.
 
-## OPEN STACKED PREDECESSORS
-
-None. The former #69 → #70 → #71 stack was review-cleaned, retargeted to `master` in order, and merged on August 17, 2026. The merged frontier is now Release 1266.
-
-## CURRENT
+## OPEN STACKED PREDECESSOR
 
 ### Release 1267 — Semantic Examination & Hidden Structure
 
-**PR:** #72 — open, non-draft, based directly on merged `master`; **do not merge without a new explicit merge whistle**.  
+**PR:** #72 — open, non-draft, review-clean, mergeable, based directly on merged `master`; **do not merge without a new explicit merge whistle**.  
+**Current reviewed head:** `4c3522a0cfa8194764f52ce2e91930ef89bda1bf`  
 **Base:** Release 1266 / `4425732bfc2fa28347453d9991513aeb28aaa531`  
-**Locked implementation head:** `a939301c669a7bacadfad53ec72374a9eabbab48`  
 **Locked artifact SHA-256:** `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0`  
-**Locked qualification:** run `32045369750` green.
+**Post-review exact-head qualification:** run `32046910749` green.
 
-Release 1267 makes selected details that prose already promises into trustworthy parser targets without introducing a generic noun generator:
+1267 remains the immediate gameplay predecessor for CURRENT Release 1268. Its one CodeRabbit qualification finding was fixed, replied to, confirmed, and resolved; OpenHands judged the PR ready to merge. It remains deliberately unmerged because the previous merge whistle was already consumed.
 
-- the Timber Room's strong westward draft can be examined, listened to, smelled, and physically refused as inventory;
-- the Scorched Cleft's broad scratches can be examined/touched as claw-shaped evidence and its old white bones can be examined/smelled as heat-marked occupation evidence;
-- the Dragon Gallery's existing old heat blackening can be examined closely enough to reveal a high ventilation seam;
-- `DRAGON-VENT-SEAM` is not placed in parser scope before discovery, so guessing `SEAM` does not reveal or mutate hidden structure;
-- after discovery, the seam remains inches wide rather than becoming a surprise corridor;
-- when Release 1257's real Timber Room fire is producing smoke, the seam reports that existing state while Release 1262's `DRAGON-SMOKE-COVER?` remains the dragon-effect authority;
-- discovery is represented by the seam object's ordinary location and adds **zero new legacy VM globals**.
+## CURRENT
 
-The first natural-play candidate also found an important predecessor fact: Release 1218 Room Density already owns the Troll Room bloodstains/scratches. The duplicate 1267 objects were removed rather than creating a second authority. Qualification now byte-checks `room_density.zil` and carries an inherited Troll semantic regression instead.
+### Release 1268 — Clue Chains & Knowledge-Gated Interpretation
 
-Qualification reruns the complete locked Release 1266 chain, pins exact staged predecessor identities, stages only `semantic_examination.zil` plus `zork1.zil` identity/include wiring, compiles production/test stories, and proves five histories: inherited Troll details, Timber draft, Scorched Cleft evidence, hidden seam scope/discovery/traversal refusal, and seam + real fire/smoke composition.
+**PR:** #73 — open, non-draft, stacked directly on PR #72; **do not merge without a new explicit merge whistle**.  
+**Base:** Release 1267 / `4c3522a0cfa8194764f52ce2e91930ef89bda1bf`  
+**Locked implementation head:** `78a6c0ef6a4202c384deab93accd66f2620b3e4c`  
+**Locked artifact SHA-256:** `bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16`  
+**Locked qualification:** run `32050047910` green.
 
-Candidate run `32045064064` passed all five histories and intentionally stopped at the artifact-lock gate. Locked run `32045369750` reproduced the exact artifact and passed green.
+Release 1268 proves that learned meaning can travel without carrying the original clue object:
 
-The Mara-focused run remains intentionally paused after Release 1261 while the wider world receives comparable authored depth.
+- `INTERPRET PRAYER` at the fixed North Temple prayer learns a bounded piece of ancient-script grammar;
+- `INTERPRET ENGRAVINGS` at the fixed Engravings Cave refuses secure interpretation before that knowledge exists, then recognizes one surviving practical air-passage motif after the Temple comparison is learned;
+- an old geometric marking in the Dragon Gallery is physically visible before learning but semantically opaque;
+- after the motif is learned, the same `EXAMINE MARKING` has more meaning;
+- deliberate `INTERPRET MARKING` can identify Release 1267's **existing** ventilation seam rather than creating a second structure;
+- the Temple prayer and cave engravings remain physically fixed in their canonical rooms throughout qualification;
+- Release 1267's independent `EXAMINE BLACKENING` route still discovers the same seam with every 1268 knowledge bit at zero;
+- three exact facts live in one compact table and the train adds zero legacy VM globals.
 
-## NEXT — Shadowgate → Parser IF Adaptation Program
+The hosted qualifier reruns the complete locked Release 1267 chain, pins exact predecessor staged identities, stages only `clue_interpretation.zil` plus `zork1.zil` identity/include wiring, smell-checks production/dev trees, compiles production/test stories, and drives five natural-command histories: premature Engravings refusal, learning across fixed source clues, unread field marking refusal, the full Temple → Cave → Gallery chain, and the untouched predecessor blackening route.
 
-Shadowgate is a **design lens only**. Borrow interaction principles and rebuild them from scratch as original Zork-native parser play. Do not copy source code, prose, art, maps, exact puzzles, spell names, object lists, or expressive sequencing.
+Candidate run `32049638837` passed all five histories and intentionally stopped at the artifact-lock gate. Locked run `32050047910` reproduced the exact artifact and passed green.
 
-Full train specifications: `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md`.
+## NEXT — queued product trains
 
-### 1. Release 1268 — Clue Chains & Knowledge-Gated Interpretation
-
-Carry learned meaning across locations so earlier documents, symbols, observations, museum evidence, and testimony can change later interpretation without requiring the original clue object forever.
-
-- prefer named causal facts over generic clue counters;
-- museum/archive knowledge can become useful in the field;
-- companions do not become automatic hint engines.
-
-### 2. Release 1269 — Structural Difficulty Modes
+### 1. Release 1269 — Structural Difficulty Modes
 
 Difficulty changes evidence redundancy, recoverability, substitutes, resources, and consequence windows instead of merely multiplying damage.
 
@@ -75,11 +68,11 @@ Difficulty changes evidence redundancy, recoverability, substitutes, resources, 
 - no parser-phrasing difficulty tax;
 - no enemy-health multiplier masquerading as puzzle difficulty.
 
-### 3. Release 1270 — Causal Death & Failure Feedback
+### 2. Release 1270 — Causal Death & Failure Feedback
 
 Death and near-death should communicate physical cause, ignored evidence, partially sound ideas, and what exact state/action changed the outcome without simply handing over the solution.
 
-### 4. Release 1271 — Creature Encounters as Systemic Puzzles
+### 3. Release 1271 — Creature Encounters as Systemic Puzzles
 
 Living beings remain authored situations with distinct motives, senses, capacities, fears, possessions, territory, and memory rather than hit-point-shaped locks.
 
@@ -87,28 +80,31 @@ Living beings remain authored situations with distinct motives, senses, capaciti
 - troll, thief, grue, dragon, and Mara remain meaningfully different;
 - no generic creature AI brain or universal disposition meter.
 
-### 5. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
+### 4. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
 
-Capstone the program with a substantial original Zork region whose **design grammar** composes the prior trains into one coherent adventure language.
+Capstone the Shadowgate-as-design-lens program with a substantial original Zork region whose design grammar composes the prior trains into one coherent adventure language.
 
-Target roughly 20–30 authored rooms only if the design earns that size, with cross-location clues, multiple-use objects, reactive threats, meaningful consumables, learned knowledge/magic, hidden structure, unsafe-before-prepared routes, creature situations, intersecting solution paths, persistent consequences, and optional secrets.
+Target roughly 20–30 authored rooms only if the design earns that size. Do not copy Shadowgate source code, prose, art, maps, exact puzzles, spell names, object lists, or expressive sequencing.
 
-## POST-SHADOWGATE WORLD EXPANSION
+### 5. Release 1273 — Living Biomes & Wilderness Expansion
 
-### Release 1273 — Living Biomes & Wilderness Expansion
+Expand Zork's actual geography and ecology with genuinely new wilderness identities, including a new forest subregion and a first wholly new jungle/rainforest climate if the authored design earns them.
 
-Expand Zork's **actual geography and ecology**, rather than treating “enhance the forest” as another pass over the existing tree/bird/egg scene or the existing vine-and-dense-underbrush edge.
+No procedural biome generator, palette-swapped room factory, universal biome stat sheet, generic climate simulator, or room-count padding.
 
-The initial train should earn at least two genuinely new wilderness identities:
+### 6. Release 1274 — Environmental Mechanisms & Diegetic Puzzle Furniture
 
-1. **a new forest subregion** — additional connected forest geography with its own landmarks, routes, material state, animals/plants, discoveries, hazards, and authored situations; and
-2. **a first wholly new climate/biome: jungle or rainforest** — a place whose heat, humidity, canopy, water, mud, flora, fauna, visibility, sounds, traversal, and danger make it play differently from the existing temperate forest.
+**Planning contract:** `docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md`
 
-A biome is not a palette swap. New geography should create new things that can happen. Existing light, fire, water, equipment consequence, creature behavior, learned knowledge, evidence, Mara, and survival authorities should be reused when the same physical fact genuinely applies.
+Translate the environmental-puzzle interaction grammar common to survival-horror/adventure games into original Zork-native parser play:
 
-Deliberate boundaries: no procedural biome generator, palette-swapped room factory, universal biome stat sheet, generic climate simulator, “every plant is harvestable” crafting economy, or map growth merely to increase room count.
+**notice a prose-visible irregularity → examine it → learn a physical fact → manipulate the correct concrete detail → the environment changes**.
 
-The existing **Forest That Answers Back** lane remains complementary: it deepens targetability and consequence inside already-described places. Release 1273 is the separate expansion lane that creates **new places and new ecological situations**.
+Candidate authored situations include pivoting/sliding bookcases or panels, paintings/reliefs concealing catches, clocks/dials/counterweights, fireplaces/masonry/tiles, movable statue details, false backs/hidden drawers, multi-position furniture, and linked mechanisms.
+
+The important part is the interaction language, not copying Resident Evil content. A suspicious book can support sensible attempts such as `EXAMINE BOOK`, `TAKE BOOK`, `PULL BOOK`, `LOOK BEHIND SHELF`, or `LISTEN TO SHELF`; the correct physical manipulation may expose a real persistent route or compartment.
+
+Boundaries are strict: no generic secret-switch framework, no automatic noun promotion, no universal furniture state machine, no arbitrary `USE X ON Y` matrix, no unfair parser pixel hunt, and no copied Resident Evil maps, prose, art, exact puzzles, objects, or sequences.
 
 ## FUTURE — explicit lanes
 
@@ -116,7 +112,7 @@ The existing **Forest That Answers Back** lane remains complementary: it deepens
 - **Forest That Answers Back / Existing-Region Interactivity** — continue promoting selected concrete nouns in existing forest and wilderness prose into targetable stateful world objects; complements Release 1273 rather than substituting for geographic expansion.
 - **Time, Weather & Disaster Arc** — authored conditions/disasters layered onto real geography and material state; no generic climate simulator.
 - **Museum & Ecology second expansion** — only where collection creates new field play instead of checklist accumulation.
-- **Cross-IF / RPG Mechanics Adaptation — later inspirations** — after the Shadowgate-first program, rebuild transferable design principles as original Zork-native systems.
+- **Cross-IF / RPG Mechanics Adaptation — later inspirations** — rebuild transferable design principles as original Zork-native systems.
 - **Narrative Perspective Experiments** — isolated first-person, third-person, and interactive-storybook editions.
 - **Far-horizon DRAW + multi-agent experiments** — isolated experiments only after the playable product supports them.
 
@@ -183,10 +179,10 @@ The existing **Forest That Answers Back** lane remains complementary: it deepens
 | 1265 | `59c9e843c4723692a0017e9f189407272b5a284f` | `6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070` | `32034566984` |
 | 1266 | `4425732bfc2fa28347453d9991513aeb28aaa531` | `d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9` | `32042641179` |
 
-Release 1267 is explicitly **not DONE** while PR #72 remains open.
+Releases 1267 and 1268 are explicitly **not DONE** while PRs #72 and #73 remain open.
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for broader design doctrine and `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md` for Releases 1262–1272.
+See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for broader design doctrine, `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md` for Releases 1262–1272, and `docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md` for the newly queued environmental-mechanism train.
 
-The current shape is concrete: Releases 1262–1266 are merged; **Release 1267 is the qualified CURRENT train; Release 1268 — Clue Chains & Knowledge-Gated Interpretation — is next; Release 1273 — Living Biomes & Wilderness Expansion — remains the first explicitly queued post-Shadowgate world-expansion train.**
+The current shape is concrete: Releases 1262–1266 are merged; **Release 1267 / PR #72 is the open stacked predecessor; Release 1268 / PR #73 is CURRENT; Release 1269 — Structural Difficulty Modes — is next; Release 1274 — Environmental Mechanisms & Diegetic Puzzle Furniture — is now the end of the explicit queue.**

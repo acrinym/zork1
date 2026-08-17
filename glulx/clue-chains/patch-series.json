@@ -1,0 +1,24 @@
+{
+  "edition": "Clue Chains & Knowledge-Gated Interpretation",
+  "release": 1268,
+  "serial": "260817",
+  "base_release": 1267,
+  "base_manifest": "../semantic-examination/patch-series.json",
+  "base_artifact_sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0",
+  "base_source_sha256": {
+    "production": "8b6e2080f34dce6000ec54377649775ad17953063780345db1ad2ad0f49de4e6",
+    "dev": "d9da3ad47c92abe719c52ea424c17e3066fc6f71253c0117f358325093d34563"
+  },
+  "patches": ["patches/001-release-1268.json"],
+  "expected_changed_paths": ["clue_interpretation.zil", "zork1.zil"],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-clue-chains-knowledge-interpretation.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 482816,
+    "checksum_hex": "0x53de973e",
+    "sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16"
+  },
+  "added_files": ["clue_interpretation.zil"]
+}
