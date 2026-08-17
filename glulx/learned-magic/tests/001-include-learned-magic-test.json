@@ -1,0 +1,12 @@
+{
+  "id": "001-include-learned-magic-test",
+  "path": "zork1.zil",
+  "description": "Load Release 1266 test-only precondition commands after the production learned-magic module.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"learned_magic\" T>\n<INSERT-FILE \"room_density\" T>",
+      "new": "<INSERT-FILE \"learned_magic\" T>\n<INSERT-FILE \"learned_magic_test\" T>\n<INSERT-FILE \"room_density\" T>"
+    }
+  ]
+}
