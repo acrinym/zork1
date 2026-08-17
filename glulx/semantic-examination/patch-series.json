@@ -17,8 +17,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
-    "file": "zork1-glulx-semantic-examination-hidden-structure.ulx"
+    "locked": true,
+    "file": "zork1-glulx-semantic-examination-hidden-structure.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 479744,
+    "checksum_hex": "0x464b20d2",
+    "sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0"
   },
   "added_files": [
     "semantic_examination.zil"
