@@ -1,0 +1,26 @@
+{
+  "edition": "Semantic Examination & Hidden Structure",
+  "release": 1267,
+  "serial": "260817",
+  "base_release": 1266,
+  "base_manifest": "../learned-magic/patch-series.json",
+  "base_artifact_sha256": "d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9",
+  "base_source_sha256": {
+    "production": "UNLOCKED",
+    "dev": "UNLOCKED"
+  },
+  "patches": [
+    "patches/001-release-1267.json"
+  ],
+  "expected_changed_paths": [
+    "semantic_examination.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-semantic-examination-hidden-structure.ulx"
+  },
+  "added_files": [
+    "semantic_examination.zil"
+  ]
+}
