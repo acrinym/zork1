@@ -1,0 +1,37 @@
+{
+  "id": "001-light-authority",
+  "path": "1actions.zil",
+  "description": "Promote canonical lamp/candle timers and the authored grue colony into qualitative light states without changing binary parser visibility.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE GRUE-COLONY-STRONG-LIGHT? ()\n    <COND (<EQUAL? <META-LOC ,TORCH> ,HERE> <RTRUE>)\n          (T <RFALSE>)>>",
+      "new": "<ROUTINE GRUE-COLONY-STRONG-LIGHT? ()\n    <COND (<EQUAL? <CONSUMABLE-CURRENT-LIGHT-LEVEL> ,LIGHT-BRIGHT> <RTRUE>)\n          (T <RFALSE>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE GRUE-COLONY-REVEAL ()\n    <COND (<NOT <G? <GETP ,GRUE-FISSURES ,P?VALUE> 0>>\n           <PUTP ,GRUE-FISSURES ,P?VALUE 1>\n           <TELL\n\"The flaming ivory torch drives light much farther into the cracks than the\nordinary glow did. Not one shadow but many pull away at once. Coal ticks\ndown several different fissures as separate movements retreat beyond the\nfirelight. Nothing stays illuminated long enough to show you a body, but the\npattern is unmistakable: this dead end borders a grue colony.\" CR>)\n          (T\n           <TELL\n\"The torch reaches into the fissures again. Several different patches of\ndarkness withdraw from its edge, each choosing a separate crack. The colony\nstays beyond the strong light.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE GRUE-COLONY-REVEAL ()\n    <COND (<NOT <G? <GETP ,GRUE-FISSURES ,P?VALUE> 0>>\n           <PUTP ,GRUE-FISSURES ,P?VALUE 1>\n           <TELL\n\"The strong light drives much farther into the cracks than the ordinary glow\ndid. Not one shadow but many pull away at once. Coal ticks down several\ndifferent fissures as separate movements retreat beyond the bright reach.\nNothing stays illuminated long enough to show you a body, but the pattern is\nunmistakable: this dead end borders a grue colony.\" CR>)\n          (T\n           <TELL\n\"The strong light reaches into the fissures again. Several different patches\nof darkness withdraw from its edge, each choosing a separate crack. The\ncolony stays beyond the bright reach.\" CR>)>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE GRUE-COLONY-ROOM-FCN (RARG)\n    <COND (<EQUAL? .RARG ,M-LOOK>\n           <TELL\n\"You have come to a dead end in the mine. The coal-dark wall is split by a\nfan of narrow fissures too small for an adventurer.\" CR>\n           <COND (<GRUE-COLONY-STRONG-LIGHT?>\n                  <GRUE-COLONY-REVEAL>)\n                 (<G? <GETP ,GRUE-FISSURES ,P?VALUE> 0>\n                  <TELL\n\"Your present light is enough to keep the room usable, but not enough to\nreach as deeply as the torch did. The fissures look empty only until you\nnotice that every small scrape begins just beyond the useful edge of light.\" CR>)\n                 (T\n                  <TELL\n\"At the edge of ordinary light, a scrape from one fissure is answered by a\nsecond scrape somewhere else. Coal shifts, then becomes perfectly still.\" CR>)>\n           <RTRUE>)>>",
+      "new": "<ROUTINE GRUE-COLONY-ROOM-FCN (RARG \"AUX\" LEVEL)\n    <COND (<EQUAL? .RARG ,M-LOOK>\n           <SET LEVEL <CONSUMABLE-CURRENT-LIGHT-LEVEL>>\n           <TELL\n\"You have come to a dead end in the mine. The coal-dark wall is split by a\nfan of narrow fissures too small for an adventurer.\" CR>\n           <COND (<EQUAL? .LEVEL ,LIGHT-BRIGHT>\n                  <GRUE-COLONY-REVEAL>)\n                 (<EQUAL? .LEVEL ,LIGHT-WEAK>\n                  <COND (<G? <GETP ,GRUE-FISSURES ,P?VALUE> 0>\n                         <TELL\n\"Your weaker light keeps the room usable, but the known colony sits just\noutside its contracted reach. Every small scrape begins beyond the useful\nedge of illumination.\" CR>)\n                        (T\n                         <TELL\n\"The weaker light reaches the mouths of the fissures but not deeply enough\nto settle what is moving there. One scrape is answered by another farther\nalong the wall.\" CR>)>)\n                 (<EQUAL? .LEVEL ,LIGHT-EMBER>\n                  <TELL\n\"Your tiny failing light buys only a close circle around you. Scrapes crowd\nthe edge of that circle from more than one fissure. This is illumination,\nbut it is no longer command of the room.\" CR>)\n                 (T\n                  <TELL\n\"Darkness owns the fissures completely. Whatever is there has no reason to\nretreat.\" CR>)>\n           <RTRUE>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "Strong firelight proved",
+      "new": "Strong light proved"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t       (<VERB? EXAMINE>\n\t\t<TELL \"The lamp \">\n\t\t<COND (<FSET? ,LAMP ,RMUNGBIT>\n\t\t       <TELL \"has burned out.\">)\n\t\t      (<FSET? ,LAMP ,ONBIT>\n\t\t       <TELL \"is on.\">)\n\t\t      (T\n\t\t       <TELL \"is turned off.\">)>\n\t\t<CRLF>)>>",
+      "new": "\t       (<VERB? EXAMINE>\n\t\t<CONSUMABLE-LAMP-EXAMINE>)>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE I-LANTERN (\"AUX\" TICK (TBL <VALUE LAMP-TABLE>))\n\t <ENABLE <QUEUE I-LANTERN <SET TICK <GET .TBL 0>>>>\n\t <LIGHT-INT ,LAMP .TBL .TICK>\n\t <COND (<NOT <0? .TICK>>\n\t\t<SETG LAMP-TABLE <REST .TBL 4>>)>>\n\n<ROUTINE I-CANDLES (\"AUX\" TICK (TBL <VALUE CANDLE-TABLE>))\n\t <FSET ,CANDLES ,TOUCHBIT>\n\t <ENABLE <QUEUE I-CANDLES <SET TICK <GET .TBL 0>>>>\n\t <LIGHT-INT ,CANDLES .TBL .TICK>\n\t <COND (<NOT <0? .TICK>>\n\t\t<SETG CANDLE-TABLE <REST .TBL 4>>)>>",
+      "new": "<ROUTINE I-LANTERN (\"AUX\" TICK (TBL <VALUE LAMP-TABLE>))\n\t <ENABLE <QUEUE I-LANTERN <SET TICK <GET .TBL 0>>>>\n\t <CONSUMABLE-NOTE-LAMP-TICK .TICK>\n\t <LIGHT-INT ,LAMP .TBL .TICK>\n\t <COND (<NOT <0? .TICK>>\n\t\t<SETG LAMP-TABLE <REST .TBL 4>>)>>\n\n<ROUTINE I-CANDLES (\"AUX\" TICK (TBL <VALUE CANDLE-TABLE>))\n\t <FSET ,CANDLES ,TOUCHBIT>\n\t <ENABLE <QUEUE I-CANDLES <SET TICK <GET .TBL 0>>>>\n\t <CONSUMABLE-NOTE-CANDLE-TICK .TICK>\n\t <LIGHT-INT ,CANDLES .TBL .TICK>\n\t <COND (<NOT <0? .TICK>>\n\t\t<SETG CANDLE-TABLE <REST .TBL 4>>)>>"
+    }
+  ]
+}
