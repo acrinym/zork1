@@ -123,10 +123,43 @@ Capstone the program with a substantial original Zork region whose **design gram
 
 Target roughly 20–30 authored rooms only if the design earns that size, with cross-location clues, multiple-use objects, reactive threats, meaningful consumables, learned knowledge/magic, hidden structure, unsafe-before-prepared routes, creature situations, intersecting solution paths, persistent consequences, and optional secrets.
 
+## POST-SHADOWGATE WORLD EXPANSION
+
+### Release 1273 — Living Biomes & Wilderness Expansion
+
+Expand Zork's **actual geography and ecology**, rather than treating “enhance the forest” as another pass over the existing tree/bird/egg scene or the existing vine-and-dense-underbrush edge.
+
+The initial train should earn at least two genuinely new wilderness identities:
+
+1. **a new forest subregion** — additional connected forest geography with its own landmarks, routes, material state, animals/plants, discoveries, hazards, and authored situations; and
+2. **a first wholly new climate/biome: jungle or rainforest** — a place whose heat, humidity, canopy, water, mud, flora, fauna, visibility, sounds, traversal, and danger make it play differently from the existing temperate forest.
+
+A biome is not a palette swap. New geography should create new things that can happen:
+
+- canopy and undergrowth can alter sight lines, light, navigation, falling objects, climbing, concealment, and shelter;
+- rain, standing water, mud, heat, and humidity can matter to real objects and existing material authorities where physically appropriate;
+- biome-specific plants and animals can be concrete parser targets with authored behavior rather than decorative nouns;
+- routes can include rivers, ravines, flooded crossings, roots, cliffs, fallen trees, dense growth, clearings, caves, ruins, nests, or other terrain when the map earns them;
+- new areas can own fully scripted scenes, encounters, discoveries, weather moments, creature situations, optional secrets, and persistent consequences;
+- existing systems such as light, fire, water, equipment consequence, creature behavior, learned knowledge, evidence, Mara, and survival should be reused when the same physical fact genuinely applies rather than duplicated under biome-specific counters.
+
+This train also establishes the **authored-biome doctrine** for later expansion: future marsh/wetland, highland/alpine, arid/desert, coast, or other climates may be added if they earn distinct geography and play. Release 1273 does not promise all of those at once.
+
+Deliberate boundaries:
+
+- no procedural biome generator;
+- no palette-swapped room factory;
+- no universal biome stat sheet;
+- no generic climate simulator;
+- no “every plant is harvestable” crafting economy;
+- no map growth merely to increase room count.
+
+The existing **Forest That Answers Back** lane remains complementary: it deepens targetability and consequence inside already-described places. Release 1273 is the separate expansion lane that creates **new places and new ecological situations**.
+
 ## FUTURE — explicit lanes
 
 - **Mara Earned Romance & Partnership** — mutual attraction, explicit mutual choice, closeness, boundaries, disagreement, initiative, repair, and partnership growing from lived history; no approval/love meter and no compulsory romance.
-- **Forest That Answers Back / Described World = Interactive World** — continue promoting selected concrete nouns into targetable stateful world objects.
+- **Forest That Answers Back / Existing-Region Interactivity** — continue promoting selected concrete nouns in existing forest and wilderness prose into targetable stateful world objects; complements Release 1273 rather than substituting for geographic expansion.
 - **Time, Weather & Disaster Arc** — authored conditions/disasters layered onto real geography and material state; no generic climate simulator.
 - **Museum & Ecology second expansion** — only where collection creates new field play instead of checklist accumulation.
 - **Cross-IF / RPG Mechanics Adaptation — later inspirations** — after the Shadowgate-first program, rebuild transferable design principles as original Zork-native systems.
@@ -196,4 +229,4 @@ Releases 1264 and 1265 are explicitly **not DONE** while PRs #69 and #70 remain 
 
 See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for broader design doctrine and `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md` for Releases 1262–1272.
 
-The current shape is concrete: the Mara stack through 1261 is merged; Releases 1262–1263 are the merged Shadowgate-derived trains; Release 1264 is the open stacked predecessor; **Release 1265 is the qualified CURRENT train; Release 1266 — Learned Magic as Parser Capability — is next.**
+The current shape is concrete: the Mara stack through 1261 is merged; Releases 1262–1263 are the merged Shadowgate-derived trains; Release 1264 is the open stacked predecessor; **Release 1265 is the qualified CURRENT train; Release 1266 — Learned Magic as Parser Capability — is next; Release 1273 — Living Biomes & Wilderness Expansion — is now the first explicitly queued post-Shadowgate world-expansion train.**
