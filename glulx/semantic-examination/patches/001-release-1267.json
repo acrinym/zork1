@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1267",
+  "path": "zork1.zil",
+  "description": "Advance story identity to Release 1267 and load the semantic-examination module after learned magic.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 LEARNED MAGIC AS PARSER CAPABILITY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Learned Magic as Parser Capability. Release 1266 makes one\n  bounded GUE ritual technique learnable through real black-book interaction.\n  Knowledge gates capability; Release 1265 candle wetness, canonical hot-bell\n  cooldown, and the original Hades ceremony remain authoritative.\"\n\n",
+      "new": "\"ZORK1 SEMANTIC EXAMINATION AND HIDDEN STRUCTURE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Semantic Examination & Hidden Structure. Release 1267 makes\n  selected concrete details already promised by room prose honest parser targets.\n  Examination can reveal one real ventilation structure without a generic noun\n  promoter, hidden-object lottery, or replacement world authority.\"\n\n"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1266>",
+      "new": "<CONSTANT RELEASEID 1267>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Learned Magic as Parser Capability Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Semantic Examination and Hidden Structure Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"learned_magic\" T>\n<INSERT-FILE \"room_density\" T>",
+      "new": "<INSERT-FILE \"learned_magic\" T>\n<INSERT-FILE \"semantic_examination\" T>\n<INSERT-FILE \"room_density\" T>"
+    }
+  ]
+}
