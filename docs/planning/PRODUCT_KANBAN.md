@@ -2,114 +2,92 @@
 
 **Updated:** August 17, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1266` — Learned Magic as Parser Capability  
-**Current `master`:** `4425732bfc2fa28347453d9991513aeb28aaa531`
+**Current merged production frontier:** Release `1268` — Clue Chains & Knowledge-Gated Interpretation  
+**Live `master` observed before this refresh:** `82f65bdea713f7609c1fb16d1504713ce3a778d3`  
+**Open PRs observed before this refresh:** none
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
+
+## Repository boundary
+
+- **Writable product repository:** `acrinym/zork1`.
+- **Read-only upstream reference:** `historicalsource/zork1`.
+- Never open, push, commit, retarget, merge, or otherwise mutate `historicalsource/zork1`.
 
 ## Operating rules
 
 - **CURRENT** contains at most one actively implemented product train and may be empty between trains.
 - **NEXT** is ordered and contains concrete player-facing work, not cleanup placeholders.
-- Open stacked predecessors are recorded separately from CURRENT and are never treated as DONE merely because a descendant train is active.
-- Canonical Zork solutions remain valid when new physically credible alternatives are added.
-- Reusable tools remain useful where the same physical logic reasonably applies.
-- Cleverness should reduce repeated friction rather than create a new fetch-grind tax.
-- Soft sequence breaks are allowed only when physically earned, state-safe, and non-bricking.
+- Preserve canonical Zork solutions and exact object/state authority while layering physically credible alternatives.
+- Natural player commands are the product qualification surface.
+- No universal crafting grid, arbitrary object-pair matrix, generic physics simulator, generic creature brain, recursive audit machinery, TODO-only slice, stub, or no-op scaffolding.
+- Difficulty must never become a parser-phrasing tax or enemy-health multiplier masquerading as puzzle difficulty.
 - Mara remains one authored human adventurer: no approval meter, generic follower framework, skill tree, omniscient companion AI, or romance meter.
-- Mara romance/partnership remains an explicit future authored path and must grow from lived history and mutual choice.
-- No universal crafting grid, arbitrary object-pair matrix, generic physics simulator, generic creature brain, recursive audit machinery, TODO-only slice, or no-op scaffolding.
 - **DONE** requires merged or otherwise immutable proof.
+- Do not merge any new PR without a fresh explicit Justin merge whistle.
 
-## OPEN STACKED PREDECESSOR
+## OPEN STACKED PREDECESSORS
 
-### Release 1267 — Semantic Examination & Hidden Structure
+None.
 
-**PR:** #72 — open, non-draft, review-clean, mergeable, based directly on merged `master`; **do not merge without a new explicit merge whistle**.  
-**Current reviewed head:** `4c3522a0cfa8194764f52ce2e91930ef89bda1bf`  
-**Base:** Release 1266 / `4425732bfc2fa28347453d9991513aeb28aaa531`  
-**Locked artifact SHA-256:** `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0`  
-**Post-review exact-head qualification:** run `32046910749` green.
-
-1267 remains the immediate gameplay predecessor for CURRENT Release 1268. Its one CodeRabbit qualification finding was fixed, replied to, confirmed, and resolved; OpenHands judged the PR ready to merge. It remains deliberately unmerged because the previous merge whistle was already consumed.
+Releases 1267 and 1268 are merged. There are no open PRs at this refresh point.
 
 ## CURRENT
 
-### Release 1268 — Clue Chains & Knowledge-Gated Interpretation
+Empty between trains.
 
-**PR:** #73 — open, non-draft, stacked directly on PR #72; **do not merge without a new explicit merge whistle**.  
-**Base:** Release 1267 / `4c3522a0cfa8194764f52ce2e91930ef89bda1bf`  
-**Locked implementation head:** `78a6c0ef6a4202c384deab93accd66f2620b3e4c`  
-**Locked artifact SHA-256:** `bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16`  
-**Locked qualification:** run `32050047910` green.
-
-Release 1268 proves that learned meaning can travel without carrying the original clue object:
-
-- `INTERPRET PRAYER` at the fixed North Temple prayer learns a bounded piece of ancient-script grammar;
-- `INTERPRET ENGRAVINGS` at the fixed Engravings Cave refuses secure interpretation before that knowledge exists, then recognizes one surviving practical air-passage motif after the Temple comparison is learned;
-- an old geometric marking in the Dragon Gallery is physically visible before learning but semantically opaque;
-- after the motif is learned, the same `EXAMINE MARKING` has more meaning;
-- deliberate `INTERPRET MARKING` can identify Release 1267's **existing** ventilation seam rather than creating a second structure;
-- the Temple prayer and cave engravings remain physically fixed in their canonical rooms throughout qualification;
-- Release 1267's independent `EXAMINE BLACKENING` route still discovers the same seam with every 1268 knowledge bit at zero;
-- three exact facts live in one compact table and the train adds zero legacy VM globals.
-
-The hosted qualifier reruns the complete locked Release 1267 chain, pins exact predecessor staged identities, stages only `clue_interpretation.zil` plus `zork1.zil` identity/include wiring, smell-checks production/dev trees, compiles production/test stories, and drives five natural-command histories: premature Engravings refusal, learning across fixed source clues, unread field marking refusal, the full Temple → Cave → Gallery chain, and the untouched predecessor blackening route.
-
-Candidate run `32049638837` passed all five histories and intentionally stopped at the artifact-lock gate. Locked run `32050047910` reproduced the exact artifact and passed green.
-
-## NEXT — queued product trains
+## NEXT — explicit queued product trains
 
 ### 1. Release 1269 — Structural Difficulty Modes
 
-Difficulty changes evidence redundancy, recoverability, substitutes, resources, and consequence windows instead of merely multiplying damage.
+Difficulty changes the **structure of problem-solving**, not just numbers.
 
-- same underlying world identity;
-- no parser-phrasing difficulty tax;
-- no enemy-health multiplier masquerading as puzzle difficulty.
+- preserve the same underlying world identity across modes;
+- lower-pressure play may expose clearer environmental evidence, redundant resources/substitutes, more recoverable failures, or wider consequence windows;
+- higher-pressure play may rely on subtler but still fair evidence, fewer substitutes, less recovery, and tighter consequence windows;
+- no deliberately obscure parser phrasing;
+- no enemy-health multiplier pretending to be puzzle difficulty;
+- no generic scalar difficulty framework sprayed across unrelated systems;
+- authored differences must be testable through natural commands.
 
 ### 2. Release 1270 — Causal Death & Failure Feedback
 
-Death and near-death should communicate physical cause, ignored evidence, partially sound ideas, and what exact state/action changed the outcome without simply handing over the solution.
+Death and near-death should communicate physical cause, ignored evidence, partially sound ideas, and the exact state/action difference that changed the outcome without turning the failure screen into a walkthrough.
 
 ### 3. Release 1271 — Creature Encounters as Systemic Puzzles
 
-Living beings remain authored situations with distinct motives, senses, capacities, fears, possessions, territory, and memory rather than hit-point-shaped locks.
-
-- frighten, bribe, distract, trap, outrun, negotiate, trick, incapacitate, kill, befriend, manipulate, avoid, or leave alone where appropriate to that specific being;
-- troll, thief, grue, dragon, and Mara remain meaningfully different;
-- no generic creature AI brain or universal disposition meter.
+Living beings remain authored situations with distinct motives, senses, capacities, fears, possessions, territory, and memory rather than hit-point-shaped locks. Troll, thief, grue, dragon, Mara, and future creatures must remain meaningfully different; no generic creature AI brain or universal disposition meter.
 
 ### 4. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
 
-Capstone the Shadowgate-as-design-lens program with a substantial original Zork region whose design grammar composes the prior trains into one coherent adventure language.
-
-Target roughly 20–30 authored rooms only if the design earns that size. Do not copy Shadowgate source code, prose, art, maps, exact puzzles, spell names, object lists, or expressive sequencing.
+Build a substantial original Zork region composing the preceding design language into one coherent adventure. Roughly 20–30 authored rooms only if the design earns that size. Do not copy Shadowgate source code, maps, prose, art, exact puzzles, spell names, object lists, or expressive sequencing.
 
 ### 5. Release 1273 — Living Biomes & Wilderness Expansion
 
-Expand Zork's actual geography and ecology with genuinely new wilderness identities, including a new forest subregion and a first wholly new jungle/rainforest climate if the authored design earns them.
-
-No procedural biome generator, palette-swapped room factory, universal biome stat sheet, generic climate simulator, or room-count padding.
+Expand actual Zork geography/ecology with genuinely new wilderness identities, including a new forest subregion and a first wholly new climate/biome if the authored design earns them. No procedural biome generator, palette-swapped room factory, universal biome stat sheet, generic climate simulator, or room-count padding.
 
 ### 6. Release 1274 — Environmental Mechanisms & Diegetic Puzzle Furniture
 
 **Planning contract:** `docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md`
 
-Translate the environmental-puzzle interaction grammar common to survival-horror/adventure games into original Zork-native parser play:
+Interaction grammar: **notice a prose-visible irregularity → examine it → learn a physical fact → manipulate the correct concrete detail → the environment changes**.
 
-**notice a prose-visible irregularity → examine it → learn a physical fact → manipulate the correct concrete detail → the environment changes**.
+No generic secret-switch framework, automatic noun promotion, universal furniture state machine, arbitrary `USE X ON Y` matrix, parser pixel hunt, or copied Resident Evil content.
 
-Candidate authored situations include pivoting/sliding bookcases or panels, paintings/reliefs concealing catches, clocks/dials/counterweights, fireplaces/masonry/tiles, movable statue details, false backs/hidden drawers, multi-position furniture, and linked mechanisms.
+### 7. Release 1275 — Expand Existing Slim Locales / Locations — with Justin's Explicit Feedback
 
-The important part is the interaction language, not copying Resident Evil content. A suspicious book can support sensible attempts such as `EXAMINE BOOK`, `TAKE BOOK`, `PULL BOOK`, `LOOK BEHIND SHELF`, or `LISTEN TO SHELF`; the correct physical manipulation may expose a real persistent route or compartment.
+**Planning contract:** `docs/planning/RELEASE_1275_EXPAND_EXISTING_SLIM_LOCALES_WITH_JUSTIN_FEEDBACK.md`
 
-Boundaries are strict: no generic secret-switch framework, no automatic noun promotion, no universal furniture state machine, no arbitrary `USE X ON Y` matrix, no unfair parser pixel hunt, and no copied Resident Evil maps, prose, art, exact puzzles, objects, or sequences.
+Release 1275 returns to existing geography and expands only under-realized locations that genuinely benefit from authored growth. **Justin's explicit feedback is required for each expansion target and intended direction before implementation.**
+
+The assistant may inspect candidates, explain why a locale feels slim, surface materially different expansion axes, and show tradeoffs. It must not independently settle which locale grows, which direction it grows, how much is enough, or whether a compact locale needs expansion at all.
+
+No procedural locale expander, generic room generator, room-count quota, palette-swapped filler, or ceremonial after-the-fact approval.
 
 ## FUTURE — explicit lanes
 
 - **Mara Earned Romance & Partnership** — mutual attraction, explicit mutual choice, closeness, boundaries, disagreement, initiative, repair, and partnership growing from lived history; no approval/love meter and no compulsory romance.
-- **Forest That Answers Back / Existing-Region Interactivity** — continue promoting selected concrete nouns in existing forest and wilderness prose into targetable stateful world objects; complements Release 1273 rather than substituting for geographic expansion.
+- **Forest That Answers Back / Existing-Region Interactivity** — continue promoting selected concrete nouns in existing forest and wilderness prose into targetable stateful world objects.
 - **Time, Weather & Disaster Arc** — authored conditions/disasters layered onto real geography and material state; no generic climate simulator.
 - **Museum & Ecology second expansion** — only where collection creates new field play instead of checklist accumulation.
 - **Cross-IF / RPG Mechanics Adaptation — later inspirations** — rebuild transferable design principles as original Zork-native systems.
@@ -122,11 +100,11 @@ Boundaries are strict: no generic secret-switch framework, no automatic noun pro
 - **Protected Corpus Acquisition** remains rights-dependent.
 - Universal crafting, randomized loot progression, generic physics, and procedural world generation remain out of scope.
 
-## DONE — current merged frontier
+## DONE — merged production history
 
-| Release | Train | PR |
-|---:|---|---:|
-| 1219–1230 | House of Records program | #32 |
+| Release | Train | PR / proof |
+|---:|---|---|
+| 1219–1230 | House of Records program | PR #32 |
 | 1231 | Corpus-Coupled Causal Warning | #34 |
 | 1232 | Parser Comprehension and Deep Affordances | #35 |
 | 1233 | Museum Intake and First Gallery | #36 |
@@ -164,8 +142,10 @@ Boundaries are strict: no generic secret-switch framework, no automatic noun pro
 | 1264 | Perilous Affordances / Let the Player Be Wrong | #69 |
 | 1265 | Consumable Light & Graduated Darkness | #70 |
 | 1266 | Learned Magic as Parser Capability | #71 |
+| 1267 | Semantic Examination & Hidden Structure | #72 — merged `90e30d59fcd44a5297d7524f65ee34c72aaff319` |
+| 1268 | Clue Chains & Knowledge-Gated Interpretation | #73 — merged `2e16f6cebbfb5a7892feac08d9e6461e6bb9313b` |
 
-### Releases 1258–1266 merge and artifact receipts
+### Recent locked artifact / qualification receipts
 
 | Release | Merge commit | Locked artifact SHA-256 | Final hosted qualification |
 |---:|---|---|---:|
@@ -178,11 +158,14 @@ Boundaries are strict: no generic secret-switch framework, no automatic noun pro
 | 1264 | `cdc8f51b08721756c796904d7132587ec40026f1` | `04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d` | `31949574481` |
 | 1265 | `59c9e843c4723692a0017e9f189407272b5a284f` | `6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070` | `32034566984` |
 | 1266 | `4425732bfc2fa28347453d9991513aeb28aaa531` | `d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9` | `32042641179` |
-
-Releases 1267 and 1268 are explicitly **not DONE** while PRs #72 and #73 remain open.
+| 1267 | `90e30d59fcd44a5297d7524f65ee34c72aaff319` | `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0` | `32046910749` |
+| 1268 | `2e16f6cebbfb5a7892feac08d9e6461e6bb9313b` | `bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16` | `32052058707` |
 
 ## Canonical roadmap
 
-See `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md` for broader design doctrine, `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md` for Releases 1262–1272, and `docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md` for the newly queued environmental-mechanism train.
+- `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md`
+- `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md`
+- `docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md`
+- `docs/planning/RELEASE_1275_EXPAND_EXISTING_SLIM_LOCALES_WITH_JUSTIN_FEEDBACK.md`
 
-The current shape is concrete: Releases 1262–1266 are merged; **Release 1267 / PR #72 is the open stacked predecessor; Release 1268 / PR #73 is CURRENT; Release 1269 — Structural Difficulty Modes — is next; Release 1274 — Environmental Mechanisms & Diegetic Puzzle Furniture — is now the end of the explicit queue.**
+The live shape at this refresh is concrete: Releases 1267 and 1268 are merged; there are no open PRs; CURRENT is empty; Release 1269 is next; the explicit queue continues in order through Release 1275; and Release 1275 requires Justin's explicit target/direction feedback before each locale expansion is implemented.
