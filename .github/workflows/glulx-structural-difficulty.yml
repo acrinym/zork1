@@ -1,7 +1,7 @@
 name: Zork I Structural Difficulty Modes
 on:
-  push:
-    branches: [agent/structural-difficulty-modes-1269-20260817]
+  pull_request:
+    branches: [master]
     paths:
       - "glulx/**"
       - "optimized/tools/**"
