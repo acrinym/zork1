@@ -1,7 +1,7 @@
 {
   "id": "001-release-1269-identity",
   "path": "zork1.zil",
-  "description": "Advance story identity to Release 1269 and load structural difficulty before the dragon authority it parameterizes.",
+  "description": "Advance story identity to Release 1269 and load structural difficulty after the canonical dragon and fire-screen authorities it parameterizes.",
   "replacements": [
     {
       "expected_count": 1,
@@ -16,8 +16,8 @@
     },
     {
       "expected_count": 1,
-      "old": "<INSERT-FILE \"fire_structural\" T>\n<INSERT-FILE \"dragon_hoard\" T>",
-      "new": "<INSERT-FILE \"fire_structural\" T>\n<INSERT-FILE \"structural_difficulty\" T>\n<INSERT-FILE \"dragon_hoard\" T>"
+      "old": "<INSERT-FILE \"dragon_hoard\" T>\n<INSERT-FILE \"ablative_protection\" T>\n<INSERT-FILE \"perilous_affordances\" T>",
+      "new": "<INSERT-FILE \"dragon_hoard\" T>\n<INSERT-FILE \"ablative_protection\" T>\n<INSERT-FILE \"structural_difficulty\" T>\n<INSERT-FILE \"perilous_affordances\" T>"
     }
   ]
 }
