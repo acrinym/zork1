@@ -21,8 +21,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
-    "file": "zork1-glulx-structural-difficulty-modes.ulx"
+    "locked": true,
+    "file": "zork1-glulx-structural-difficulty-modes.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 485632,
+    "checksum_hex": "0xe38b6225",
+    "sha256": "00911e852643ebb14643ff2d923d1bff422686c70c36fddc6cc18710eed206f6"
   },
   "added_files": ["structural_difficulty.zil"]
 }
