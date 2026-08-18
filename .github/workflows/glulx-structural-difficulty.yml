@@ -34,9 +34,10 @@ jobs:
         with:
           dotnet-version: "10.0.302"
       - name: Install native dependencies
+        timeout-minutes: 5
         run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y build-essential libncurses-dev curl
+          sudo apt-get -o Acquire::Retries=3 update
+          sudo apt-get -o Acquire::Retries=3 install --no-install-recommends -y build-essential libncurses-dev curl
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: taradinoc/zork1
