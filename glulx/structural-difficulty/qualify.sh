@@ -144,6 +144,7 @@ use screen on me
 sdgallery
 examine dragon
 listen to dragon
+south
 sdstat
 quit
 yes
@@ -152,7 +153,7 @@ run_case exacting-screen; F="$BUILD/exacting-screen-transcript.txt"
 grep -F 'Structural difficulty set to Exacting.' "$F"
 grep -F "screen's hide is blackened, blistered, and shrunken" "$F"
 grep -F 'A second blast catches the already-shrunken hide' "$F"
-grep -F 'mode=3 locked=1 recovery-used=0 dragon-initialized=1 watch=0 screen-condition=2' "$F"
+grep -F 'mode=3 locked=1 recovery-used=0 dragon-initialized=1 watch=0 screen-condition=2 here-approach=1' "$F"
 
 cat > "$BUILD/exacting-toll-route.txt" <<'EOF5'
 sdreset
