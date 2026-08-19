@@ -1,0 +1,12 @@
+{
+  "id": "001-include-causal-failure-test",
+  "path": "zork1.zil",
+  "description": "TEST ONLY: include Release 1270 authored scenario setup verbs.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"cellar_recovery_locker\" T>",
+      "new": "<INSERT-FILE \"cellar_recovery_locker\" T>\n<INSERT-FILE \"causal_failure_feedback_test\" T>"
+    }
+  ]
+}
