@@ -1,0 +1,32 @@
+{
+  "id": "001-release-1271-identity",
+  "path": "zork1.zil",
+  "description": "Advance release identity and include three creature-specific authored situation modules.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 CAUSAL DEATH AND FAILURE FEEDBACK GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 CREATURE ENCOUNTERS AS SYSTEMIC PUZZLES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Causal Death & Failure Feedback. Release 1270 makes selected\n  authored failures explain physical cause, prior evidence, partial validity, and\n  the decisive state/action difference while preserving canonical hazard and\n  JIGS-UP death/restore authority.\"",
+      "new": ";\"Repository-local Creature Encounters as Systemic Puzzles. Release 1271 lets\n  several distinct beings create routes and recoveries from their own authored\n  attention, appetite, light aversion, memory, and existing state without a\n  generic creature brain or universal disposition meter.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1270>",
+      "new": "<CONSTANT RELEASEID 1271>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Causal Death and Failure Feedback Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Creature Encounters as Systemic Puzzles Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"causal_failure_feedback\" T>\n<INSERT-FILE \"dragon_hoard\" T>",
+      "new": "<INSERT-FILE \"causal_failure_feedback\" T>\n<INSERT-FILE \"troll_passage_opportunity\" T>\n<INSERT-FILE \"cyclops_appetite_route\" T>\n<INSERT-FILE \"grue_fissure_recovery\" T>\n<INSERT-FILE \"dragon_hoard\" T>"
+    }
+  ]
+}
