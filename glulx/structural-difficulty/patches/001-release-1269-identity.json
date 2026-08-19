@@ -1,0 +1,23 @@
+{
+  "id": "001-release-1269-identity",
+  "path": "zork1.zil",
+  "description": "Advance story identity to Release 1269 and load structural difficulty after the canonical dragon and fire-screen authorities it parameterizes.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 CLUE CHAINS AND KNOWLEDGE-GATED INTERPRETATION GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Clue Chains & Knowledge-Gated Interpretation. Release 1268\n  lets exact learned meaning travel beyond fixed source clues and alter later\n  field interpretation without a generic clue registry, notebook, or inventory\n  key check.\"\n\n",
+      "new": "\"ZORK1 STRUCTURAL DIFFICULTY MODES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"\n\n;\"Repository-local Structural Difficulty Modes. Release 1269 changes authored\n  problem structure in the dragon situation through evidence redundancy,\n  recoverability, consequence windows, and a real resource condition while\n  preserving one world, one parser language, and canonical routes.\"\n\n"
+    },
+    {"expected_count": 1, "old": "<CONSTANT RELEASEID 1268>", "new": "<CONSTANT RELEASEID 1269>"},
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Clue Chains and Knowledge-Gated Interpretation Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Structural Difficulty Modes Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"dragon_hoard\" T>\n<INSERT-FILE \"ablative_protection\" T>\n<INSERT-FILE \"perilous_affordances\" T>",
+      "new": "<INSERT-FILE \"dragon_hoard\" T>\n<INSERT-FILE \"ablative_protection\" T>\n<INSERT-FILE \"structural_difficulty\" T>\n<INSERT-FILE \"perilous_affordances\" T>"
+    }
+  ]
+}

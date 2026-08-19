@@ -1,0 +1,12 @@
+{
+  "id": "003-release-1269-ablative",
+  "path": "ablative_protection.zil",
+  "description": "Let Exacting structure begin the existing fire screen visibly scorched without creating a second protection authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ABLATIVE-RESET ()\n    <ABLATIVE-PUT ,APS-CONDITION ,AP-SOUND>\n    <ABLATIVE-PUT ,APS-PREPARED 0>\n    <MOVE ,DRAGON-FIRE-SCREEN ,DRAGON-APPROACH>\n    <RTRUE>>",
+      "new": "<ROUTINE ABLATIVE-RESET ()\n    <ABLATIVE-PUT ,APS-CONDITION ,AP-SOUND>\n    <ABLATIVE-PUT ,APS-PREPARED 0>\n    <MOVE ,DRAGON-FIRE-SCREEN ,DRAGON-APPROACH>\n    <RTRUE>>\n\n<ROUTINE ABLATIVE-APPLY-STRUCTURAL-DIFFICULTY ()\n    <ABLATIVE-PUT ,APS-PREPARED 0>\n    <COND (<STRUCTURAL-DIFFICULTY-EXACTING?>\n           <ABLATIVE-PUT ,APS-CONDITION ,AP-SCORCHED>)\n          (T\n           <ABLATIVE-PUT ,APS-CONDITION ,AP-SOUND>)>\n    <RTRUE>>"
+    }
+  ]
+}
