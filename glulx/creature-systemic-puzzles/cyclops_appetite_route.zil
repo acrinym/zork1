@@ -7,7 +7,7 @@
 <GLOBAL CYCLOPS-FOOD-DISTRACTED <>>
 
 <ROUTINE CREATURE-CYCLOPS-DROP-LUNCH ()
-    <COND (,CYCLOPS-FLAG <RFALSE>)
+    <COND (,CYCLOPS-FLAG <RFALSE>)>
     <COND (,CYCLOPS-FOOD-DISTRACTED
            <TELL "The cyclops is already crouched over the food and away from the stair. The opportunity is physical and brief." CR>
            <RTRUE>)>
