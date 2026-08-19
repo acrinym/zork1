@@ -136,7 +136,7 @@ grep -F 'this did not put him to sleep' "$F"
 grep -F 'having eaten the hot peppers, appears to be gasping' "$F"
 
 cat > "$BUILD/grue-bright-recovery.txt" <<'EOF3'
-creategrue
+brightgrue
 look
 examine survey tube
 take survey tube
@@ -151,7 +151,7 @@ grep -F 'bright light holds the separate movements deep in the fissures' "$F"
 grep -F 'dented brass survey tube' "$F"
 
 cat > "$BUILD/grue-weak-refusal.txt" <<'EOF4'
-creategrueweak
+weakgrue
 take survey tube
 inventory
 quit
