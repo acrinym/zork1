@@ -1,0 +1,37 @@
+{
+  "edition": "Creature Encounters as Systemic Puzzles",
+  "release": 1271,
+  "serial": "260819",
+  "base_release": 1270,
+  "base_manifest": "../causal-failure-feedback/patch-series.json",
+  "base_artifact_sha256": "73ecf3a152bdb808681e9b6f67a694278058e2e491ef42b8926d4e4952a39c1f",
+  "base_source_sha256": {
+    "production": "edf41aea08f8169c306ce73ab7125427eb5393874191428b18a8c97c78126bb2",
+    "dev": "07c7ce020656a69d1e72004d13f8707cee0156a51e5c4ca280f5d8ffdcdd8e0d"
+  },
+  "patches": [
+    "patches/001-release-1271-identity.json",
+    "patches/002-release-1271-troll.json",
+    "patches/003-release-1271-cyclops-room.json",
+    "patches/004-release-1271-cyclops-action.json",
+    "patches/005-release-1271-grue.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "cyclops_appetite_route.zil",
+    "grue_fissure_recovery.zil",
+    "troll_passage_opportunity.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-creature-systemic-puzzles.ulx",
+    "format": "Glulx"
+  },
+  "added_files": [
+    "troll_passage_opportunity.zil",
+    "cyclops_appetite_route.zil",
+    "grue_fissure_recovery.zil"
+  ]
+}
