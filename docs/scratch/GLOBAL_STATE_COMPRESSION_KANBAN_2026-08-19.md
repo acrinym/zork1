@@ -25,13 +25,14 @@ This is **semantic compression, not variable golf**.
 1. Preserve canonical and earlier-release authority. Do not duplicate state merely to make packing convenient.
 2. Use a bit/flag set when facts are independent yes/no members of one coherent family.
 3. Use a compact mutable table when a subsystem owns several counters, enums, object references, or flags together.
-4. Prefer real object flags or object location when those already truthfully represent the state.
-5. Do not pack unrelated values merely because they fit in one word.
-6. Preserve save/restore behavior and player-visible behavior exactly unless a separate design change is explicitly approved.
-7. Every implemented compression must record before/after legacy-global count and validation evidence.
-8. Newer Highly Extended precedent is valid: recent trains already use constant-address mutable tables instead of casually consuming legacy globals.
-9. Favor named accessors/constants over raw magic indexes or bit masks at call sites.
-10. A compression candidate may be rejected when separate globals communicate genuinely separate authorities better than a packed representation.
+4. Prefer real object flags, object location, or an existing canonical value when those already truthfully represent the state.
+5. **Derive before storing.** A redundant global should disappear rather than merely move into a table.
+6. Do not pack unrelated values merely because they fit in one word.
+7. Preserve save/restore behavior and player-visible behavior exactly unless a separate design change is explicitly approved.
+8. Every implemented compression must record before/after legacy-global count and validation evidence.
+9. Newer Highly Extended precedent is valid: recent trains already use constant-address mutable tables instead of casually consuming legacy globals.
+10. Favor named accessors/constants over raw magic indexes or bit masks at call sites.
+11. A compression candidate may be rejected when separate globals communicate genuinely separate authorities better than a packed representation.
 
 ## Status legend
 
@@ -47,10 +48,13 @@ This is **semantic compression, not variable golf**.
 
 | Metric | Current value |
 |---|---:|
-| Current-line candidate globals positively identified | 12 |
-| Current-line candidate families ready for decision | 2 |
+| Current-line globals under credible compression/redundancy review | **49** |
+| Current-line candidate families ready for decision | **7** |
+| Current-line globals positively identified as derivation/elimination leads | **3** |
 | Confirmed reclaimed globals | 0 |
 | Historical candidates awaiting lineage classification | 23 |
+
+The three current derivation/elimination leads are `MATERIAL-SACK-CINCHED`, `DAM-MECH-LEAK-REPAIRED`, and `RITUAL-PRAYER-COMPLETED`; exact equivalence must be proved before implementation. `DAM-MECH-LEAK-TRIGGERED` is also a possible derivation lead and remains under inspection.
 
 The 23 historical candidates are from older Adventurer Misconduct / Expanded Release 121-era source previously inspected. They remain useful audit leads but are **not counted as current-line savings** until their equivalents/current ownership are traced into the Glulx lineage.
 
@@ -61,9 +65,8 @@ The 23 historical candidates are from older Adventurer Misconduct / Expanded Rel
 ## C01 — Glulx Assistance context state
 
 **Status:** `PROPOSED`  
-**Current-line source:** `glulx/assistance/overrides/assistance.zil`
-
-Current globals:
+**Source:** `glulx/assistance/overrides/assistance.zil`  
+**Globals:** 6
 
 - `ASSIST-HINT-ROOM`
 - `ASSIST-HINT-LEVEL`
@@ -72,50 +75,28 @@ Current globals:
 - `ASSIST-LAST-PRSO`
 - `ASSIST-LAST-PRSI`
 
-### Why these are one state family
+### Semantic grouping
 
-The first two are one hint-session state: **which room is being hinted and which tier is next**. The remaining four are one immediate action/failure context: **what action just happened, to what direct/indirect objects, and whether that action has a WHY explanation**.
+- hint session: room + tier;
+- immediate action context: action + direct object + indirect object + WHY/failure code.
 
-They are not six independent world authorities. They are transient parser-assistance context owned by one subsystem.
+These are transient parser-assistance context, not six independent world authorities.
 
-### Recommended representation
+### Recommendation
 
-Use one constant-address mutable table, with named slots/accessors, for example conceptually:
+**Approve one constant-address `ASSIST-STATE` table with named slots/accessors.** This keeps the two conceptual subgroups readable while consuming zero legacy globals.
 
-```zil
-<CONSTANT AS-HINT-ROOM 0>
-<CONSTANT AS-HINT-LEVEL 1>
-<CONSTANT AS-LAST-FAIL 2>
-<CONSTANT AS-LAST-ACTION 3>
-<CONSTANT AS-LAST-PRSO 4>
-<CONSTANT AS-LAST-PRSI 5>
-<CONSTANT ASSIST-STATE <TABLE <> 0 0 <> <> <>>>
-```
+Potential reclamation: **6**.
 
-Exact syntax/initial values must be verified against the pinned compiler before implementation.
-
-### Choices
-
-- **A — Full assistance-state table (recommended):** 6 globals → 0 legacy globals for this subsystem; potential reclamation **6**.
-- **B — Split tables:** hint pair in one table + action context in another; still potentially 6 → 0, with stronger conceptual separation at the cost of two table authorities.
-- **C — Leave separate:** no reclamation.
-
-### Validation requirements
-
-- `HINT` resets tier when room changes and advances tiers identically.
-- global action hook preserves `PRSA`/`PRSO`/`PRSI` behavior.
-- `WHY` still describes only the immediately relevant failure.
-- save/restore preserves assistance state exactly as before.
-- existing assistance qualification passes unchanged.
+Validation: HINT room reset/tiering, action-hook PRSA/PRSO/PRSI capture, immediate WHY behavior, save/restore, existing assistance qualification.
 
 ---
 
 ## C02 — Glulx Absurd Alternates state
 
 **Status:** `PROPOSED`  
-**Current-line source:** `glulx/absurd-alternates/overrides/absurd_alternates.zil`
-
-Current boolean globals:
+**Source:** `glulx/absurd-alternates/overrides/absurd_alternates.zil`  
+**Globals:** 6 booleans
 
 - `GLULX-ALT-TROLL-DISTRACTED`
 - `GLULX-ALT-TROLL-TRICK-USED`
@@ -124,37 +105,171 @@ Current boolean globals:
 - `GLULX-ALT-EGG-CAUGHT`
 - `GLULX-ALT-SACK-PREPARED`
 
-### Why these are combinable
+### Semantic grouping
 
-All six are yes/no facts owned by one bounded alternate-solutions layer. They naturally divide into two coherent subfamilies:
+- troll alternate state: distracted / trick-used / bound;
+- nest alternate state: nest-burned / egg-caught / sack-prepared.
 
-- **Troll alternate state:** distracted / trick-used / bound.
-- **Nest alternate state:** nest-burned / egg-caught / sack-prepared.
+### Recommendation
 
-Several are also constrained by real canonical object/world state, so implementation must avoid creating a packed parallel authority where an existing object fact can replace a boolean altogether.
+First prove none can be replaced by an existing canonical/object authority. Then store remaining independent facts in a named alternate-state flags field/table, with named bit accessors rather than raw masks at call sites.
 
-### Recommended decision order
+Potential reclamation: **up to 6** with a constant-address table; **5** if implemented as one legacy-global bitfield instead. Table is preferred because the point is to relieve the legacy-global budget.
 
-1. First test whether any boolean is redundant with truthful object/location/flag state.
-2. Pack only the remaining independent alternate-history facts.
-3. Prefer one named flags field/table for the subsystem, or two named flag fields if troll and nest state should remain visibly separate.
+Validation: troll recovery timer, trick-used permanence, bound/unbound topology and canonical `TROLL-FLAG`, nest burn/catch/break paths, recap, save/restore, existing absurd-alternates qualification.
 
-### Choices
+---
 
-- **A — One alternate-state flags field/table (recommended pending redundancy check):** potentially 6 globals → 0; potential reclamation **up to 6**.
-- **B — Two subfamily flag fields/tables:** troll + nest; potentially still 6 → 0 while preserving conceptual separation.
-- **C — One legacy-global bitfield:** 6 → 1; reclamation **5**, simpler but still consumes a scarce legacy global.
-- **D — Leave separate:** no reclamation.
+## C03 — Reactive Surface memory/state
 
-### Validation requirements
+**Status:** `PROPOSED`  
+**Source:** `glulx/reactive-surface/overrides/reactive_surface.zil`  
+**Globals:** 3
 
-- troll distraction timer/recovery remains identical.
-- trick-used permanence is preserved.
-- bound/unbound troll behavior and canonical `TROLL-FLAG` authority remain correct.
-- prepared sack, nest destruction, egg catch/break outcomes remain identical.
-- `GLULX-ALT-RECAP` reports exactly the same histories.
-- save/restore works across each alternate state transition.
-- existing absurd-alternates qualification passes unchanged.
+- `SURFACE-HOUSE-KNOCKS` — counter; prose distinguishes first, second, then repeated knocks.
+- `SURFACE-BOARDS-SCARRED` — durable history fact.
+- `SURFACE-MAIL-SLIP-FOUND` — durable discovery fact.
+
+### Recommendation
+
+Use one compact `SURFACE-STATE` table: one capped/ordinary knock-count slot plus a small flags slot for durable yes/no history. Do not infer scar/slip history solely from current object location because the splinter/slip can subsequently move.
+
+Potential reclamation: **3**.
+
+Validation: all knock prose thresholds, board first-damage behavior, one-time slip discovery, recap, object movement after discovery, save/restore, reactive-surface qualification.
+
+---
+
+## C04 — Dam Mechanisms observation/history flags
+
+**Status:** `PROPOSED`  
+**Source:** `glulx/dam-mechanisms/overrides/dam_mechanisms.zil`  
+**Globals:** 8 booleans
+
+- `DAM-MECH-PANEL-DIAGNOSED`
+- `DAM-MECH-INTERLOCK-SEEN`
+- `DAM-MECH-BOLT-ATTEMPTED`
+- `DAM-MECH-GATES-CYCLED`
+- `DAM-MECH-LIGHTS-TOGGLED`
+- `DAM-MECH-LEAK-TRIGGERED`
+- `DAM-MECH-LEAK-REPAIRED`
+- `DAM-MECH-TOOL-PROBED`
+
+### Semantic grouping
+
+These are all **what the player has learned/done with the enhancement layer**. The actual dam continues to be owned by canonical authorities such as `GATE-FLAG`, `GATES-OPEN`, `LOW-TIDE`, `WATER-LEVEL`, and their interrupts.
+
+### Derivation leads
+
+- `DAM-MECH-LEAK-REPAIRED` is a strong elimination candidate because canonical repaired state is `WATER-LEVEL < 0` with the maintenance interrupt cancelled; persistence qualification explicitly treats canonical state, not extension scenery, as the sentinel.
+- `DAM-MECH-LEAK-TRIGGERED` may also be derivable from canonical leak history/state (`WATER-LEVEL != 0`) if no production path returns it to zero after a genuine leak. Prove before removing.
+
+### Recommendation
+
+Derive leak facts where equivalence is exact; pack the remaining observation/history booleans in a named `DAM-MECH-MEMORY` flags state/table. Never pack or replace the canonical machine-state globals themselves as part of this candidate.
+
+Potential reclamation: **8**.
+
+Validation: button/interlock behavior, gate cycling, real leak/repair, MELZAR/status output, recap histories, save/restore with queued dam/leak interrupts, existing dam and persistence qualifications.
+
+---
+
+## C05 — Ritual Resonance memory flags
+
+**Status:** `PROPOSED`  
+**Source:** `glulx/ritual-resonance/overrides/ritual_resonance.zil`  
+**Globals:** 8 booleans
+
+- `RITUAL-CEREMONY-KNOWN`
+- `RITUAL-BELL-RESONANCE-HEARD`
+- `RITUAL-BELL-ANSWERED`
+- `RITUAL-CANDLES-ANSWERED`
+- `RITUAL-PRAYER-COMPLETED`
+- `RITUAL-MIRROR-RESONANCE`
+- `RITUAL-HOT-BELL-COOLED`
+- `RITUAL-WRONG-ORDER-SEEN`
+
+### Semantic grouping
+
+All eight are learned/history facts surrounding a ritual whose live machinery remains canonical (`XB`, `XC`, `LLD-FLAG`, bell/candle/book state and timers).
+
+### Derivation lead
+
+`RITUAL-PRAYER-COMPLETED` appears potentially redundant with persistent canonical `LLD-FLAG`, because the layer explicitly refuses to advance exorcism outside the original LLD state machine. Prove that no production path can set `LLD-FLAG` without the completion meaning represented by this history flag before deleting it.
+
+`RITUAL-MIRROR-RESONANCE` must not be blindly replaced with `SHADOW-MIRROR-DIAGNOSED`: ritual-specific recap asks whether *ritual resonance* exposed the mirror behavior, while the shadow diagnosis can have another cause.
+
+### Recommendation
+
+Derive exact canonical-equivalent facts; pack remaining ritual memories in `RITUAL-MEMORY` flags state/table.
+
+Potential reclamation: **8**.
+
+Validation: canonical LLD progression, timers, bell/candle response histories, wrong-order observation, mirror-specific history, hot-bell cooling, CEREMONY status, recap, save/restore, ritual and persistence qualification.
+
+---
+
+## C06 — Material Consequences state
+
+**Status:** `PROPOSED`  
+**Source:** `glulx/material-consequences/overrides/material_consequences.zil`  
+**Globals:** 11
+
+- `MATERIAL-ROPE-ANCHOR` — object reference / current rope commitment.
+- `MATERIAL-SACK-CINCHED` — boolean.
+- `MATERIAL-NEST-WET` — countdown.
+- `MATERIAL-SHOVEL-CLEANED`
+- `MATERIAL-WRENCH-CLEANED`
+- `MATERIAL-SCREWDRIVER-CLEANED`
+- `MATERIAL-AXE-CLEANED`
+- `MATERIAL-RUST-WET` — countdown.
+- `MATERIAL-RUST-WORSE` — durable outcome.
+- `MATERIAL-BOARDS-PRIED` — durable history.
+- `MATERIAL-BOARDS-HARDWARE-KNOWN` — durable knowledge.
+
+### Confirmed structural opportunity
+
+The four `*-CLEANED` globals are already accessed through `MATERIAL-TOOL-CLEAN?` / `MATERIAL-MARK-TOOL-CLEAN`; the code itself exposes that they are one multi-object property family. A flags slot or compact indexed representation fits the existing abstraction directly.
+
+### Derivation lead
+
+`MATERIAL-SACK-CINCHED` appears redundant with `MATERIAL-ROPE-ANCHOR == SANDWICH-BAG`: the inspected implementation sets them together when the bag is cinched and clears them together when the knot is undone. Prove there is no other production writer before deleting the boolean.
+
+### Recommendation
+
+Use one coherent `MATERIAL-STATE` table with named slots for anchor reference and countdowns plus named flags for cleaned tools/history facts. Derive sack-cinched if exact equivalence is confirmed.
+
+Potential reclamation: **11**.
+
+Validation: rope-anchor movement limits, sack cinch/open behavior, all four cleaned tools, nest wet countdown, rusty-knife wet/worse sequence, board-pry/hardware histories, recap, cross-composition with Absurd Alternates, save/restore, material qualification.
+
+---
+
+## C07 — Room Density seen-state family
+
+**Status:** `PROPOSED`  
+**Source:** `glulx/room-density/overrides/room_density.zil`  
+**Globals:** 7 booleans
+
+- `ROOM-DENSITY-TROLL-SEEN`
+- `ROOM-DENSITY-GALLERY-SEEN`
+- `ROOM-DENSITY-STUDIO-SEEN`
+- `ROOM-DENSITY-CHASM-SEEN`
+- `ROOM-DENSITY-PASSAGE-SEEN`
+- `ROOM-DENSITY-TREASURE-SEEN`
+- `ROOM-DENSITY-PATH-SEEN`
+
+### Semantic grouping
+
+All seven answer one question for different promoted-scenery families: **has the player meaningfully interacted with this room-density evidence yet?**
+
+### Recommendation
+
+One named room-density seen-flags state/table. Pseudo scenery is not a reliable independent object-state authority, so a compact remembered-seen set is clearer than inventing fake object state.
+
+Potential reclamation: **7**.
+
+Validation: every pseudo-scene interaction sets the correct seen bit, recap/history remains identical, no room cross-talk, save/restore, room-density qualification.
 
 ---
 
@@ -164,86 +279,49 @@ Several are also constrained by real canonical object/world state, so implementa
 
 **Status:** `DISCOVERED / TRACE INTO GLULX`
 
-Previously identified booleans:
-
-- `ABS-THREW-SELF`
-- `ABS-THREW-TROLL`
-- `ABS-THREW-VOICE`
-- `ABS-THREW-FIT`
-- `ABS-SACKED-TROLL`
-- `ABS-KILLED-WITH-SELF`
-- `ABS-ATE-NEST`
-- `ABS-WORE-NEST`
-- `ABS-CHOPPED-TREE`
-- `ABS-MARRIED-SCENERY`
-
-Related counters:
-
-- `ABS-TREE-CHOPS`
-- `ABS-TROLL-SACKS`
-
-These are an excellent semantic-compression family in the historical source, but the active Glulx equivalent must be traced before assigning current-line savings.
+Ten boolean misconduct-history globals plus `ABS-TREE-CHOPS` and `ABS-TROLL-SACKS` counters were identified in the historical source. They remain an excellent compression family if that source is still shipped in a separate release, but they are not counted against the current Glulx-line total.
 
 ## H02 — Release 121 Expanded state
 
 **Status:** `DISCOVERED / TRACE INTO GLULX`
 
-Previously identified globals:
-
-- `EXP-HOUSE-KNOCKS`
-- `EXP-BOARDS-SCARRED`
-- `EXP-SONGBIRD-FOLLOWED`
-- `EXP-MAIL-SLIP-FOUND`
-- `EXP-TROLL-BRIBED`
-- `EXP-CYCLOPS-SONG`
-- `EXP-THIEF-BARGAINED`
-- `EXP-BOOK-PAGE`
-- `EXP-HINT-ROOM`
-- `EXP-HINT-LEVEL`
-- `EXP-LAST-FAIL`
-
-Strong historical subfamilies:
-
-- five permanent yes/no discovery/history facts → flags candidate;
-- `EXP-HINT-ROOM` + `EXP-HINT-LEVEL` → one hint-state pair;
-- other counters/enums require semantic inspection before grouping.
-
-The modern assistance layer appears to carry a cleaner descendant of some hint/failure behavior, so do **not** compress both as though both independently exist in the current production build.
+Eleven historical `EXP-*` globals were identified. The modern Assistance and Reactive Surface layers visibly carry cleaner descendants of some of that behavior, so historical and current state must not be double-counted.
 
 ---
 
 # Audit backlog
 
-The following areas are to be inventoried for current globals and state ownership. Finding a global does not automatically make it a compression target.
+Finding a global does not automatically make it a compression target.
 
-- [x] Glulx assistance — first candidate family recorded as C01.
-- [x] Glulx absurd alternates — first candidate family recorded as C02.
-- [ ] reactive surface
-- [ ] Dam mechanisms
-- [ ] ritual resonance
-- [ ] material consequences
-- [ ] room density
-- [ ] persistence
-- [ ] House of Records / expedition-history releases 1219–1230
-- [ ] parser / museum / ecology / field-system releases 1231–1242
-- [ ] Mara / natural-play releases 1243–1261
-- [ ] dragon / hostile-room state 1262
-- [x] ablative protection 1263 — known good table-state precedent; inspect for no further action.
-- [ ] perilous affordances 1264
-- [ ] consumable light 1265
+- [x] Glulx assistance — C01.
+- [x] Glulx absurd alternates — C02.
+- [x] reactive surface — C03.
+- [x] Dam mechanisms — C04.
+- [x] ritual resonance — C05.
+- [x] material consequences — C06.
+- [x] room density — C07.
+- [x] persistence qualification — **no production source/state added**; this is validation infrastructure, not another state family.
+- [ ] shadow logic / general object-combination state.
+- [ ] House of Records / expedition-history releases 1219–1230.
+- [ ] parser / museum / ecology / field-system releases 1231–1242.
+- [ ] Mara / natural-play releases 1243–1261.
+- [ ] dragon / hostile-room state 1262.
+- [x] ablative protection 1263 — known good table-state precedent; inspect only for derivable redundancy.
+- [ ] perilous affordances 1264.
+- [ ] consumable light 1265.
 - [ ] learned magic 1266 — known table-state precedent; confirm no legacy globals added.
 - [ ] semantic examination 1267 — documented zero-new-global precedent.
 - [ ] clue chains 1268 — documented compact-table / zero-new-global precedent.
-- [ ] any post-1268 production/staged trains present on current `master`; inventory against the actual staged lineage, not only planning docs.
-- [ ] inherited upstream/global authorities only where changing representation is safe and does not damage canonical ownership.
+- [ ] post-1268 production/staged trains present on current `master`; inventory against actual staged lineage, not only planning docs.
+- [ ] inherited upstream/global authorities only where representation can safely change without damaging canonical ownership.
 
 ---
 
 # Implementation ledger
 
-No compression has been implemented yet.
+No compression has been implemented yet. Candidate approval and source changes are intentionally separate from inventory.
 
-| ID | Before | After | Reclaimed | Validation | Durable docs |
+| ID | Before globals | After globals | Reclaimed | Validation | Durable docs |
 |---|---:|---:|---:|---|---|
 | — | — | — | 0 | — | — |
 
