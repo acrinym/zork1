@@ -23,9 +23,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-causal-failure-feedback.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 486656,
+    "checksum_hex": "0xb4c4b836",
+    "sha256": "73ecf3a152bdb808681e9b6f67a694278058e2e491ef42b8926d4e4952a39c1f"
   },
   "added_files": [
     "causal_failure_feedback.zil"
