@@ -14,7 +14,8 @@
     "patches/002-release-1271-troll.json",
     "patches/003-release-1271-cyclops-room.json",
     "patches/004-release-1271-cyclops-action.json",
-    "patches/005-release-1271-grue.json"
+    "patches/005-release-1271-grue.json",
+    "patches/006-release-1271-cyclops-recovery.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
