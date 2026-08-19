@@ -1,0 +1,32 @@
+{
+  "id": "002-release-1270-dragon",
+  "path": "dragon_hoard.zil",
+  "description": "Keep dragon threat/routes/state canonical while replacing selected terminal prose with authored causal failure messages.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<JIGS-UP \"You pull the trap chain while the dragon is still watching the trap instead of the bait. Its answer is a cone of white-orange fire. The mechanism works perfectly several seconds after you stop needing it.\">",
+      "new": "<CAUSAL-FAILURE-DRAGON-TRAP>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<JIGS-UP \"The dragon has been watching you spend time in its room. Its chest expands once. The first wash of fire turns the air white, and the second makes further tactical reflection unnecessary.\">",
+      "new": "<CAUSAL-FAILURE-DRAGON-WATCH>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<JIGS-UP \"You choose direct violence while the dragon is unrestrained and already facing you. The sword is still becoming an argument when the room becomes fire.\">",
+      "new": "<CAUSAL-FAILURE-DRAGON-ATTACK>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<JIGS-UP \"You reach for a second piece after buying permission for one. The dragon does not renegotiate. Fire crosses the arch faster than contract law.\">",
+      "new": "<CAUSAL-FAILURE-DRAGON-TOLL-BREACH>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<JIGS-UP \"You reach into an unguarded-looking hoard while its guardian still owns the doorway. The dragon's fire arrives from the gallery before the treasure leaves the stone.\">",
+      "new": "<CAUSAL-FAILURE-DRAGON-HOARD-THEFT>"
+    }
+  ]
+}

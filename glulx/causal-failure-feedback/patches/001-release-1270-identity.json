@@ -1,0 +1,32 @@
+{
+  "id": "001-release-1270-identity",
+  "path": "zork1.zil",
+  "description": "Advance release identity and include the state-free authored causal feedback phrasing before the existing hazard authorities use it.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 STRUCTURAL DIFFICULTY MODES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 CAUSAL DEATH AND FAILURE FEEDBACK GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Structural Difficulty Modes. Release 1269 changes authored\n  problem structure in the dragon situation through evidence redundancy,\n  recoverability, consequence windows, and a real resource condition while\n  preserving one world, one parser language, and canonical routes.\"",
+      "new": ";\"Repository-local Causal Death & Failure Feedback. Release 1270 makes selected\n  authored failures explain physical cause, prior evidence, partial validity, and\n  the decisive state/action difference while preserving canonical hazard and\n  JIGS-UP death/restore authority.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1269>",
+      "new": "<CONSTANT RELEASEID 1270>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Structural Difficulty Modes Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Causal Death and Failure Feedback Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"fire_structural\" T>\n<INSERT-FILE \"dragon_hoard\" T>",
+      "new": "<INSERT-FILE \"fire_structural\" T>\n<INSERT-FILE \"causal_failure_feedback\" T>\n<INSERT-FILE \"dragon_hoard\" T>"
+    }
+  ]
+}
