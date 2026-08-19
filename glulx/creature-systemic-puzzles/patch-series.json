@@ -26,9 +26,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-creature-systemic-puzzles.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 488960,
+    "checksum_hex": "0xb7548a26",
+    "sha256": "29ed98d19946617e0c64cbcaa0403c0a62a3ab4efe4f97781b00c2f39e37de21"
   },
   "added_files": [
     "troll_passage_opportunity.zil",
