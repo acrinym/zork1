@@ -1,12 +1,12 @@
 {
   "id": "006-release-1271-cyclops-recovery",
   "path": "1actions.zil",
-  "description": "Add recovery message to I-CYCLOPS when CYCLOWRATH reaches zero from negative (food distraction recovery).",
+  "description": "Add recovery message to I-CYCLOPS when CYCLOWRATH reaches zero from negative while preserving the predecessor's shared agitation-message branch.",
   "replacements": [
     {
       "expected_count": 1,
-      "old": "<ROUTINE I-CYCLOPS ()\n\t <COND (<OR ,CYCLOPS-FLAG ,DEAD> <RTRUE>)\n\t       (<NOT <EQUAL? ,HERE ,CYCLOPS-ROOM>>\n\t\t<DISABLE <INT I-CYCLOPS>>)\n\t       (T\n\t\t<COND (<G? <ABS ,CYCLOWRATH> 5>\n\t\t       <DISABLE <INT I-CYCLOPS>>\n\t\t       <JIGS-UP\n\"The cyclops, tired of all of your games and trickery, grabs you firmly.\nAs he licks his chops, he says \\\"Mmm. Just like Mom used to make 'em.\\\"\nIt's nice to be appreciated.\">)\n\t\t      (T\n\t\t       <COND (<L? ,CYCLOWRATH 0>\n\t\t\t      <SETG CYCLOWRATH <- ,CYCLOWRATH 1>>)\n\t\t\t     (T\n\t\t\t      <SETG CYCLOWRATH <+ ,CYCLOWRATH 1>>)\n\t\t       <COND (<NOT ,CYCLOPS-FLAG>\n\t\t\t      <TELL <NTH ,CYCLOMAD <- <ABS ,CYCLOWRATH> 1>>\n\t\t\t\t    CR>)>)>)>>",
-      "new": "<ROUTINE I-CYCLOPS ()\n\t <COND (<OR ,CYCLOPS-FLAG ,DEAD> <RTRUE>)\n\t       (<NOT <EQUAL? ,HERE ,CYCLOPS-ROOM>>\n\t\t<DISABLE <INT I-CYCLOPS>>)\n\t       (T\n\t\t<COND (<G? <ABS ,CYCLOWRATH> 5>\n\t\t       <DISABLE <INT I-CYCLOPS>>\n\t\t       <JIGS-UP\n\"The cyclops, tired of all of your games and trickery, grabs you firmly.\nAs he licks his chops, he says \\\"Mmm. Just like Mom used to make 'em.\\\"\nIt's nice to be appreciated.\">)\n\t\t      (T\n\t\t       <COND (<L? ,CYCLOWRATH 0>\n\t\t\t      <SETG CYCLOWRATH <- ,CYCLOWRATH 1>>\n\t\t\t      <COND (<EQUAL? ,CYCLOWRATH 0>\n\t\t\t             <TELL \"The cyclops finishes the last peppery mouthful, wipes his burning tongue with one forearm, and plants himself near the stair again. He is no longer hungry. He is very definitely thirsty.\" CR>)>)\n\t\t\t     (T\n\t\t\t      <SETG CYCLOWRATH <+ ,CYCLOWRATH 1>>\n\t\t\t      <COND (<NOT ,CYCLOPS-FLAG>\n\t\t\t             <TELL <NTH ,CYCLOMAD <- <ABS ,CYCLOWRATH> 1>>\n\t\t\t\t           CR>)>)>)>>"
+      "old": "\t\t       <COND (<L? ,CYCLOWRATH 0>\n\t\t\t      <SETG CYCLOWRATH <- ,CYCLOWRATH 1>>)\n\t\t\t     (T\n\t\t\t      <SETG CYCLOWRATH <+ ,CYCLOWRATH 1>>)>\n\t\t       <COND (<NOT ,CYCLOPS-FLAG>",
+      "new": "\t\t       <COND (<L? ,CYCLOWRATH 0>\n\t\t\t      <SETG CYCLOWRATH <- ,CYCLOWRATH 1>>\n\t\t\t      <COND (<EQUAL? ,CYCLOWRATH 0>\n\t\t\t             <TELL \"The cyclops finishes the last peppery mouthful, wipes his burning tongue with one forearm, and plants himself near the stair again. He is no longer hungry. He is very definitely thirsty.\" CR>)>)\n\t\t\t     (T\n\t\t\t      <SETG CYCLOWRATH <+ ,CYCLOWRATH 1>>)>\n\t\t       <COND (<NOT ,CYCLOPS-FLAG>"
     }
   ]
 }
