@@ -2,17 +2,20 @@
 
 ;"One explicit temporary physical fact: after the dropped hot-pepper lunch,
   the cyclops is away from the stair eating it. Hunger/thirst/agitation and
-  sleeping remain canonical CYCLOWRATH/CYCLOPS-FLAG state."
+  sleeping remain canonical CYCLOWRATH/CYCLOPS-FLAG state. The scheduled
+  recovery interrupt is the sole authority for this brief positional window."
 
-<GLOBAL CYCLOPS-FOOD-DISTRACTED <>>
+<ROUTINE CREATURE-CYCLOPS-FOOD-DISTRACTED? ("AUX" CINT)
+    <SET CINT <INT I-CREATURE-CYCLOPS-FOOD-RECOVER>>
+    <AND <NOT <0? <GET .CINT ,C-ENABLED?>>>
+         <G? <GET .CINT ,C-TICK> 0>>>
 
 <ROUTINE CREATURE-CYCLOPS-DROP-LUNCH ()
     <COND (,CYCLOPS-FLAG <RFALSE>)>
-    <COND (,CYCLOPS-FOOD-DISTRACTED
+    <COND (<CREATURE-CYCLOPS-FOOD-DISTRACTED?>
            <TELL "The cyclops is already crouched over the food and away from the stair. The opportunity is physical and brief." CR>
            <RTRUE>)>
     <REMOVE-CAREFULLY ,LUNCH>
-    <SETG CYCLOPS-FOOD-DISTRACTED T>
     <SETG CYCLOWRATH <MIN -1 <- ,CYCLOWRATH>>>
     <ENABLE <QUEUE I-CYCLOPS -1>>
     <ENABLE <QUEUE I-CREATURE-CYCLOPS-FOOD-RECOVER 2>>
@@ -20,16 +23,14 @@
     <RTRUE>>
 
 <ROUTINE I-CREATURE-CYCLOPS-FOOD-RECOVER ()
-    <COND (,CYCLOPS-FOOD-DISTRACTED
-           <SETG CYCLOPS-FOOD-DISTRACTED <>>
-           <COND (<EQUAL? ,HERE ,CYCLOPS-ROOM>
-                  <TELL "The cyclops finishes the last peppery mouthful, wipes his burning tongue with one forearm, and plants himself near the stair again. He is no longer hungry. He is very definitely thirsty." CR>)>)>>
+    <DISABLE <INT I-CREATURE-CYCLOPS-FOOD-RECOVER>>
+    <COND (<EQUAL? ,HERE ,CYCLOPS-ROOM>
+           <TELL "The cyclops finishes the last peppery mouthful, wipes his burning tongue with one forearm, and plants himself near the stair again. He is no longer hungry. He is very definitely thirsty." CR>)>>
 
 <ROUTINE CREATURE-CYCLOPS-UP-EXIT ()
     <COND (,CYCLOPS-FLAG ,TREASURE-ROOM)
-          (,CYCLOPS-FOOD-DISTRACTED
+          (<CREATURE-CYCLOPS-FOOD-DISTRACTED?>
            <DISABLE <INT I-CREATURE-CYCLOPS-FOOD-RECOVER>>
-           <SETG CYCLOPS-FOOD-DISTRACTED <>>
            <TELL "The cyclops is still occupied with the peppers in the corner. You take the stairs while his body is somewhere other than the route he normally guards. Behind you comes a strangled, thirsty growl; this did not put him to sleep." CR>
            ,TREASURE-ROOM)
           (T
