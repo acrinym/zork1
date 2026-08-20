@@ -204,7 +204,7 @@
 <ROUTINE ASHGLASS-CISTERN-WET-CANDLES ()
     <COND (<AND <IN? ,CANDLES ,WINNER>
                 <NOT <FSET? ,CANDLES ,RMUNGBIT>>>
-           <CONSUMABLE-LIGHT-PUT ,CL-CANDLE-WET 1>
+           <CONSUMABLE-LIGHT-PUT ,CL-CANDLE-WET 4>
            <FCLEAR ,CANDLES ,ONBIT>
            <TELL "A cold sheet of cistern spray catches the carried candles. Their flames die at once and water visibly soaks the paired wicks. The candles still exist; their condition has changed." CR>)>
     <RTRUE>>
