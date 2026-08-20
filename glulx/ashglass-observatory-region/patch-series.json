@@ -19,9 +19,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-ashglass-observatory.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 503040,
+    "checksum_hex": "0x33bc915d",
+    "sha256": "a20aad283b54ebde253078a5a061c75dde7cd2fa9b95fd51f4beed78b521c28c"
   },
   "added_files": [
     "ashglass_observatory.zil"
