@@ -6,8 +6,8 @@
   "base_manifest": "../ashglass-observatory-region/patch-series.json",
   "base_artifact_sha256": "a20aad283b54ebde253078a5a061c75dde7cd2fa9b95fd51f4beed78b521c28c",
   "base_source_sha256": {
-    "production": "9108da2f852c1a1f2bebad0f27abdc7dca7cb4b959a2eceb44e020c1b87a9743",
-    "dev": "187c20d4d4a962554d55659bf29ad424fb19a26d6b265846cd0fec037bb50c69"
+    "production": "91f49b3fd8f2ca5a3f1320890b1268dde1c048eb27544fb7598a5e87ca5a2bbb",
+    "dev": "ea3f0ab32adb59b6a5476b17ba2c62ab322c2103fb6c6120aa298e4262cf5261"
   },
   "patches": [
     "patches/001-release-1273-identity.json",
@@ -23,5 +23,7 @@
     "file": "zork1-glulx-living-biomes-wilderness.ulx",
     "format": "Glulx"
   },
-  "added_files": ["living_biomes_wilderness.zil"]
+  "added_files": [
+    "living_biomes_wilderness.zil"
+  ]
 }
