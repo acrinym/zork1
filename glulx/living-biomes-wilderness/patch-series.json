@@ -11,12 +11,14 @@
   },
   "patches": [
     "patches/001-release-1273-identity.json",
-    "patches/002-release-1273-forest-entry.json"
+    "patches/002-release-1273-forest-entry.json",
+    "patches/003-release-1273-cross-router.json"
   ],
   "expected_changed_paths": [
     "1dungeon.zil",
     "living_biomes_wilderness.zil",
-    "zork1.zil"
+    "zork1.zil",
+    "zork_plus_veteran_expedition.zil"
   ],
   "expected_artifact": {
     "locked": false,
