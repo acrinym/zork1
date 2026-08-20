@@ -21,9 +21,13 @@
     "zork_plus_veteran_expedition.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-living-biomes-wilderness.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 517120,
+    "checksum_hex": "0x6b3c49aa",
+    "sha256": "d0450e37d99e3619245416e63a99be80a0a56e5be6c9d9815cbcdf4ad489c6bf"
   },
   "added_files": [
     "living_biomes_wilderness.zil"
