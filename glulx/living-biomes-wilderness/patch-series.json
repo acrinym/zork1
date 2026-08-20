@@ -1,0 +1,27 @@
+{
+  "edition": "Living Biomes & Wilderness Expansion",
+  "release": 1273,
+  "serial": "260819",
+  "base_release": 1272,
+  "base_manifest": "../ashglass-observatory-region/patch-series.json",
+  "base_artifact_sha256": "a20aad283b54ebde253078a5a061c75dde7cd2fa9b95fd51f4beed78b521c28c",
+  "base_source_sha256": {
+    "production": "9108da2f852c1a1f2bebad0f27abdc7dca7cb4b959a2eceb44e020c1b87a9743",
+    "dev": "187c20d4d4a962554d55659bf29ad424fb19a26d6b265846cd0fec037bb50c69"
+  },
+  "patches": [
+    "patches/001-release-1273-identity.json",
+    "patches/002-release-1273-forest-entry.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "living_biomes_wilderness.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-living-biomes-wilderness.ulx",
+    "format": "Glulx"
+  },
+  "added_files": ["living_biomes_wilderness.zil"]
+}
