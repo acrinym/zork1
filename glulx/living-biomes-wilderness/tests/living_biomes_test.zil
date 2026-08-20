@@ -89,11 +89,17 @@
     <TELL "TEST PRECONDITION: caiman owns ford; exact living dam silverfin held." CR>
     <RTRUE>>
 
+;"The Glulx parser's bounded vocabulary makes BIOMECAIMAN and
+  BIOMECAIMANDEATH collide. Both qualification histories therefore begin from
+  the same truthful physical state: predator in the ford, live silverfin held.
+  One history spends the fish; the other deliberately ignores it."
 <ROUTINE V-BIOME-CAIMAN-DEATH-TEST ()
     <BIOME-TEST-RESET>
+    <COND (<LOC ,DAM-SILVERFIN> <REMOVE-CAREFULLY ,DAM-SILVERFIN>)>
+    <MOVE ,DAM-SILVERFIN ,WINNER>
     <MOVE ,WARMRAIN-CAIMAN ,WARMRAIN-CAIMAN-FORD>
     <GOTO ,WARMRAIN-CAIMAN-FORD>
-    <TELL "TEST PRECONDITION: occupied caiman ford ready for repeated reckless entry." CR>
+    <TELL "TEST PRECONDITION: occupied caiman ford; exact living dam silverfin held for lure-or-reckless-entry histories." CR>
     <RTRUE>>
 
 <ROUTINE V-BIOME-VINES-TEST ()
