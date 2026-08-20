@@ -100,7 +100,7 @@ cat > "$BUILD/weather-clock.txt" <<'EOF3'
 dfclock
 examine clock
 pull chain
-turn hand
+move hand
 pull chain
 examine recess
 quit
