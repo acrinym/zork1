@@ -63,7 +63,7 @@
                   <ASHGLASS-PUT ,AR-CANYON-OPEN 1>)>
            <CRLF>
            <RTRUE>)
-          (<VERB? INTERPRET>
+          (<VERB? CLUE-INTERPRET>
            <COND (<CLUE-KNOWLEDGE-TRUE? ,CK-AIR-PASSAGE-MOTIF>
                   <ASHGLASS-PUT ,AR-CANYON-OPEN 1>
                   <TELL "The air-passage motif makes the engineering legible. The milestone marks a maintenance descent cut behind the root mat; once you look for an opening rather than a boundary stone, the narrow rain-shelf is obvious." CR>)
@@ -93,7 +93,7 @@
     (ACTION ASHGLASS-MILESTONE-F)>
 
 <ROUTINE ASHGLASS-ARCHIVE-TABLET-F ()
-    <COND (<VERB? EXAMINE READ STUDY>
+    <COND (<VERB? EXAMINE READ LEARNED-STUDY>
            <ASHGLASS-PUT ,AR-FOCUS-KNOWN 1>
            <TELL "The slate is a maintenance lesson disguised as astronomical devotion. A circular lens symbol is shown deliberately off-axis, then centered on a three-star notch. The surviving imperative is practical: FOCUS the ring only after the three-star notch is visible. You have learned an operation, not collected a magic word." CR>
            <RTRUE>)>
@@ -152,7 +152,7 @@
                   <TELL " You recognize the same air-passage motif learned elsewhere; the geometry says the wall once carried moving air.">)>
            <CRLF>
            <RTRUE>)
-          (<VERB? INTERPRET>
+          (<VERB? CLUE-INTERPRET>
            <COND (<CLUE-KNOWLEDGE-TRUE? ,CK-AIR-PASSAGE-MOTIF>
                   <ASHGLASS-PUT ,AR-VENT-READ 1>
                   <TELL "This is the old air-passage motif again. The sign does not open anything, but it tells you the soot-dark seam deserves physical examination as ventilation structure." CR>)
@@ -280,7 +280,7 @@
     <COND (<VERB? EXAMINE>
            <TELL "The brake lever has three worn notches. The upper and lower notches are gouged and battered; the middle notch is polished by repeated controlled use. A painted warning shows a falling stone block beside a stick figure with exceptionally poor timing." CR>
            <RTRUE>)
-          (<VERB? PUSH PULL TURN MOVE>
+          (<VERB? PUSH TURN MOVE>
            <ASHGLASS-PUT ,AR-BRAKE-SET 1>
            <TELL "You seat the lever into the polished middle notch. A pawl drops audibly into the counterweight ratchet. The hanging stone still carries enormous load, but the mechanism is now arrested before you touch the release chain." CR>
            <RTRUE>)>
@@ -290,7 +290,7 @@
     <COND (<VERB? EXAMINE>
            <TELL "The chain runs over a ceiling sheave to a stone counterweight larger than you are. Pulling it releases the vault lift. The brake lever beside you is the only visible arrest for that mass." CR>
            <RTRUE>)
-          (<VERB? PULL>
+          (<VERB? MOVE>
            <COND (<NOT <ASHGLASS-TRUE? ,AR-BRAKE-SET>>
                   <JIGS-UP "You pull the release chain with the counterweight unarrested. The mechanism works exactly as built: the stone block drops, the chain whips through the sheave, and the iron sweep crosses the standing space faster than a person can reconsider mechanical advantage. The polished middle brake notch was the missing physical state, not decoration.">
                   <RTRUE>)>
