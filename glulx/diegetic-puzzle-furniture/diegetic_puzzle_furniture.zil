@@ -138,15 +138,15 @@
                  (T
                   <TELL "The single brass hand is stopped short of a narrow index notch. Dust fills every other mark on the dial, but that notch is clean and polished on one edge. The hand itself turns under firm pressure." CR>)>
            <RTRUE>)
-          (<VERB? TURN>
+          (<VERB? MOVE>
            <COND (<DIEGETIC-TRUE? ,DF-CLOCK-HAND-ALIGNED>
                   <TELL "The hand is already seated in the only clean mechanical stop." CR>
                   <RTRUE>)>
            <DIEGETIC-PUT ,DF-CLOCK-HAND-ALIGNED 1>
            <TELL "You rotate the hand into the clean notch. It settles with a distinct spring-loaded click, and the slack winding chain below rises half an inch." CR>
            <RTRUE>)
-          (<VERB? PUSH MOVE>
-           <TELL "The hand resists sideways force but turns normally around its axle. Its useful motion is rotation, not bending." CR>
+          (<VERB? PUSH>
+           <TELL "The hand resists direct pressure but moves normally around its axle. Its useful motion follows the dial, not into the wall." CR>
            <RTRUE>)>
     <RFALSE>>
 
