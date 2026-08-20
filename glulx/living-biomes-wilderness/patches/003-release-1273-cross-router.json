@@ -1,12 +1,12 @@
 {
   "id": "003-release-1273-cross-router",
   "path": "zork_plus_veteran_expedition.zil",
-  "description": "Preserve the Release 1237 CROSS grammar while routing the exact new beaver dam to its authored crossing behavior.",
+  "description": "Preserve the Release 1237 CROSS grammar while routing the exact new beaver dam through canonical CROSS object dispatch.",
   "replacements": [
     {
       "expected_count": 1,
       "old": "<ROUTINE V-VETERAN-CROSS ()\n    <VETERAN-ENSURE>\n    <COND (<NOT <VETERAN-GET ,VETERAN-SLOT-ACTIVE>>\n           <TELL \"No veteran expedition is active.\" CR>)",
-      "new": "<ROUTINE V-VETERAN-CROSS ()\n    <VETERAN-ENSURE>\n    <COND (<EQUAL? ,PRSO ,BACKCOUNTRY-BEAVER-DAM>\n           <BACKCOUNTRY-BEAVER-DAM-F>)\n          (<NOT <VETERAN-GET ,VETERAN-SLOT-ACTIVE>>\n           <TELL \"No veteran expedition is active.\" CR>)"
+      "new": "<ROUTINE V-VETERAN-CROSS ()\n    <VETERAN-ENSURE>\n    <COND (<EQUAL? ,PRSO ,BACKCOUNTRY-BEAVER-DAM>\n           <PERFORM ,V?CROSS ,PRSO>)\n          (<NOT <VETERAN-GET ,VETERAN-SLOT-ACTIVE>>\n           <TELL \"No veteran expedition is active.\" CR>)"
     }
   ]
 }
