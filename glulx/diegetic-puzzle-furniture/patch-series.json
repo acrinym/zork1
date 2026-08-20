@@ -19,9 +19,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-diegetic-puzzle-furniture.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 525312,
+    "checksum_hex": "0xdb20623c",
+    "sha256": "6098cd4c5ee48f5967876b366c6590a56caf823241ae305e5b355c0688220f2d"
   },
   "added_files": [
     "diegetic_puzzle_furniture.zil"
