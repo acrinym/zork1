@@ -1,7 +1,7 @@
 {
   "id": "004-mara-field-movement-hooks",
   "path": "mara_companion_movement.zil",
-  "description": "Record only Mara's real physical field visits, attempted route boundaries, and ordinary dropped-object placements she personally witnesses.",
+  "description": "Record only Mara's real physical field visits, the authored Warmrain boundary she personally declines to enter, and ordinary dropped-object placements she personally witnesses.",
   "replacements": [
     {
       "expected_count": 1,
@@ -11,7 +11,7 @@
     {
       "expected_count": 1,
       "old": "                 (T\n                  <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-WAITING>\n                  <COND (",
-      "new": "                 (T\n                  <MARA-FIELD-GUIDANCE-RECORD-BLOCKED .TO>\n                  <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-WAITING>\n                  <COND ("
+      "new": "                 (T\n                  <COND (<AND <EQUAL? .TO ,WARMRAIN-CANOPY-EDGE>\n                              <EQUAL? <LOC ,MARA> ,BACKCOUNTRY-BASIN-OVERLOOK>>\n                         <MARA-FIELD-GUIDANCE-RECORD-BLOCKED .TO>)>\n                  <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-WAITING>\n                  <COND ("
     },
     {
       "expected_count": 1,
