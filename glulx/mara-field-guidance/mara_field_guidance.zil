@@ -17,8 +17,7 @@
 <CONSTANT MFG-CACHE-OBJECT 8>
 <CONSTANT MFG-CACHE-ROOM 9>
 <CONSTANT MFG-FOX-DISCOVERED 10>
-<CONSTANT MFG-FOX-VOLUNTEERED 11>
-<CONSTANT MARA-FIELD-GUIDANCE-STATE <TABLE 0 0 0 0 0 0 0 0 0 0 0 0>>
+<CONSTANT MARA-FIELD-GUIDANCE-STATE <TABLE 0 0 0 0 0 0 0 0 0 0 0>>
 
 <ROUTINE MFG-GET (SLOT) <GET ,MARA-FIELD-GUIDANCE-STATE .SLOT>>
 <ROUTINE MFG-PUT (SLOT VALUE) <PUT ,MARA-FIELD-GUIDANCE-STATE .SLOT .VALUE>>
@@ -102,7 +101,6 @@
            <COND (<ZERO? <MFG-GET ,MFG-FOX-DISCOVERED>>
                   <MFG-PUT ,MFG-FOX-DISCOVERED 1>
                   <COND (<STRUCTURAL-DIFFICULTY-FORGIVING?>
-                         <MFG-PUT ,MFG-FOX-VOLUNTEERED 1>
                          <TELL "Mara crouches over the small muddy prints, follows them with her eyes beneath the huckleberry, then checks the opening herself. Fox route southwest, she says. It reaches the warm-air notch and avoids the exposed ridge. I am marking it because I actually traced it, not because a map told me it existed." CR>
                          <COND (<ZERO? <WILDERNESS-GET ,WB-FOX-TRAIL-SEEN>>
                                 <WILDERNESS-PUT ,WB-FOX-TRAIL-SEEN 1>)>)
