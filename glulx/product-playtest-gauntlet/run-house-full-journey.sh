@@ -5,13 +5,25 @@ ROOT="${GITHUB_WORKSPACE:-$(git rev-parse --show-toplevel)}"
 BASE_BUILD="$ROOT/glulx/build/mara-field-guidance-1276"
 OUT="$ROOT/glulx/build/product-playtest-gauntlet/house"
 STORY="$BASE_BUILD/zork1-glulx-mara-field-guidance-earned-clues.ulx"
-SCENARIO="$ROOT/glulx/product-playtest-gauntlet/house-full-journey.json"
+SCENARIO_SOURCE="$ROOT/glulx/product-playtest-gauntlet/house-full-journey.json"
+SCENARIO="$OUT/house-full-journey-effective.json"
 GLULXE_BIN="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
 
 rm -rf "$OUT"
 mkdir -p "$OUT"
 test -s "$STORY"
 test -x "$GLULXE_BIN"
+
+# Local parser output is immediate. A long timeout hides the exact command seam and
+# wastes hosted minutes; keep every expectation strict while failing stalled play fast.
+python - "$SCENARIO_SOURCE" "$SCENARIO" <<'PY_SCENARIO'
+import json
+from pathlib import Path
+import sys
+src = json.loads(Path(sys.argv[1]).read_text())
+src["timeout_seconds"] = 20
+Path(sys.argv[2]).write_text(json.dumps(src, indent=2) + "\n")
+PY_SCENARIO
 
 SAVE_FILE="$OUT/house-full-journey.sav"
 TRANSCRIPT="$OUT/house-full-journey-transcript.txt"
@@ -23,7 +35,7 @@ python "$ROOT/glulx/tools/run_interactive_story.py" \
   -- "$GLULXE_BIN" --rngseed 123456 "$STORY"
 
 test -s "$SAVE_FILE"
-cp "$SCENARIO" "$OUT/house-full-journey-commands.json"
+cp "$SCENARIO_SOURCE" "$OUT/house-full-journey-commands.json"
 cp "$BASE_BUILD/story-report.json" "$OUT/story-report.json"
 git -C "$ROOT" rev-parse HEAD > "$OUT/exact-commit-sha.txt"
 git -C "$ROOT/.tooling/glulxe" rev-parse HEAD > "$OUT/glulxe-commit.txt"
