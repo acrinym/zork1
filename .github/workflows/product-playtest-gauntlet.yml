@@ -1,10 +1,5 @@
 name: Zork I Product Playtest Gauntlet
 on:
-  push:
-    branches: [agent/product-playtest-gauntlet-20260822]
-    paths:
-      - "glulx/product-playtest-gauntlet/**"
-      - ".github/workflows/product-playtest-gauntlet.yml"
   pull_request:
     branches: [agent/mara-field-guidance-1276-20260821]
     paths:
