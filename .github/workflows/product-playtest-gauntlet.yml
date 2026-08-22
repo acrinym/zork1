@@ -6,7 +6,7 @@ on:
       - "glulx/product-playtest-gauntlet/**"
       - ".github/workflows/product-playtest-gauntlet.yml"
   pull_request:
-    branches: [agent/mara-field-guidance-1276-20260821]
+    branches: [agent/diegetic-puzzle-furniture-1274-20260820]
     paths:
       - "glulx/product-playtest-gauntlet/**"
       - ".github/workflows/product-playtest-gauntlet.yml"
@@ -16,43 +16,41 @@ concurrency:
   cancel-in-progress: true
 permissions:
   contents: read
+  actions: read
 env:
   PLAYTEST_REF: ${{ github.event.pull_request.head.sha || github.sha }}
-  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
-  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
-  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
-  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  LOCKED_1276_HEAD: 38102a6d506fc9903496e252112cf364e6b1be32
+  LOCKED_1276_RUN: "32550222333"
+  LOCKED_1276_ARTIFACT: mara-field-guidance-38102a6d506fc9903496e252112cf364e6b1be32
+  LOCKED_1276_STORY_SHA256: 5ef91f7b6983780a6bed341d5ea8ab6d05d34d09154eff3cba98da02aa665b3c
   GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
   CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
 jobs:
   house-full-journey:
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ env.PLAYTEST_REF }}
+          fetch-depth: 0
           persist-credentials: false
-      - name: Verify exact playtest checkout
-        run: '[[ "$(git rev-parse HEAD)" == "$PLAYTEST_REF" ]]'
+      - name: Verify exact playtest checkout and product immutability
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$PLAYTEST_REF" ]]
+          git cat-file -e "$LOCKED_1276_HEAD^{commit}"
+          unexpected="$(git diff --name-only "$LOCKED_1276_HEAD" HEAD -- \
+            ':!.github/workflows/product-playtest-gauntlet.yml' \
+            ':!glulx/product-playtest-gauntlet/**')"
+          if [[ -n "$unexpected" ]]; then
+            echo "Playtest branch changed production/non-playtest paths relative to locked 1276:" >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: "3.12.13"
-      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1
-        with:
-          dotnet-version: "10.0.302"
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          repository: taradinoc/zork1
-          ref: "${{ env.ZORK_GLULX_COMMIT }}"
-          path: .upstream/zork1-glulx
-          persist-credentials: false
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          repository: taradinoc/zilf
-          ref: "${{ env.GLULX_ZILF_COMMIT }}"
-          path: .tooling/zilf-glulx
-          persist-credentials: false
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: erkyrath/glulxe
@@ -65,19 +63,29 @@ jobs:
           ref: "${{ env.CHEAPGLK_COMMIT }}"
           path: .tooling/cheapglk
           persist-credentials: false
-      - name: Prepare Glazer
+      - name: Build pinned interpreter
         run: |
-          mkdir -p .tooling/glazer-source
-          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer.tar.gz
-          echo "$GLAZER_SOURCE_SHA256  glazer.tar.gz" | sha256sum --check
-          tar -xf glazer.tar.gz --strip-components=1 -C .tooling/glazer-source
-          make -C .tooling/glazer-source
+          set -euo pipefail
+          make -C .tooling/cheapglk
+          make -C .tooling/glulxe OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"
       - name: Install prompt-aware play driver dependency
         run: python -m pip install --disable-pip-version-check pexpect==4.9.0
-      - name: Rebuild and requalify exact locked Release 1276 product
+      - name: Fetch exact green Release 1276 product receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          set -o pipefail
-          bash glulx/mara-field-guidance/qualify.sh 2>&1 | tee product-build-and-1276-qualification.log
+          set -euo pipefail
+          gh run download "$LOCKED_1276_RUN" --repo "$GITHUB_REPOSITORY" --name "$LOCKED_1276_ARTIFACT" --dir "$GITHUB_WORKSPACE"
+          story="glulx/build/mara-field-guidance-1276/zork1-glulx-mara-field-guidance-earned-clues.ulx"
+          test -s "$story"
+          echo "$LOCKED_1276_STORY_SHA256  $story" | sha256sum --check
+          test -s glulx/build/mara-field-guidance-1276/story-report.json
+          printf '%s\n' \
+            "locked_head=$LOCKED_1276_HEAD" \
+            "locked_run=$LOCKED_1276_RUN" \
+            "artifact=$LOCKED_1276_ARTIFACT" \
+            "story_sha256=$LOCKED_1276_STORY_SHA256" \
+            > locked-1276-receipt.txt
       - name: Play full House journey
         run: |
           set -o pipefail
@@ -90,6 +98,6 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
           path: |
-            product-build-and-1276-qualification.log
+            locked-1276-receipt.txt
             house-full-journey.log
             glulx/build/product-playtest-gauntlet/house/
