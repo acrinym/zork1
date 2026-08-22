@@ -23,9 +23,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-mara-field-guidance-earned-clues.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 529152,
+    "checksum_hex": "0x79bb3611",
+    "sha256": "5ef91f7b6983780a6bed341d5ea8ab6d05d34d09154eff3cba98da02aa665b3c"
   },
   "added_files": [
     "mara_field_guidance.zil"
