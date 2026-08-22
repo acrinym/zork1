@@ -6,7 +6,7 @@ on:
       - "glulx/product-playtest-gauntlet/**"
       - ".github/workflows/product-playtest-gauntlet.yml"
   pull_request:
-    branches: [agent/diegetic-puzzle-furniture-1274-20260820]
+    branches: [agent/mara-field-guidance-1276-20260821]
     paths:
       - "glulx/product-playtest-gauntlet/**"
       - ".github/workflows/product-playtest-gauntlet.yml"
