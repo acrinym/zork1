@@ -33,6 +33,8 @@ Natural polite aliases may be accepted where parser-safe, such as `MARA, COULD Y
 
 Direct second-person imperative syntax may be parsed for robustness if existing Zork grammar naturally reaches it, but it must not bypass Mara's decision. If the player types `MARA, MOVE THE CARPET`, the engine may interpret that as a request directed at Mara rather than as guaranteed command execution. Mara remains free to object to the tone, refuse, reinterpret it, or cooperate according to authored circumstances.
 
+Direct imperative phrasing should not make Mara automatically snippy. Tone is contextual. The important distinction is agency, not policing the player's grammar.
+
 Do not implement a universal natural-language planner. The grammar should dispatch only into explicitly supported companion-request actions.
 
 ## Mara's answer is a decision, not a canned gate
