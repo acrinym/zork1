@@ -70,7 +70,7 @@
     {"expect": "Last Honest Survey"},
     {"expect": ">"},
     {"sendline": "mara, follow me"},
-    {"expect": "For the routes we have actually agreed to share, yes"},
+    {"expect": "As far as the Dam survey takes us"},
     {"expect": ">"},
     {"sendline": "up"},
     {"expect": "Dam"},
