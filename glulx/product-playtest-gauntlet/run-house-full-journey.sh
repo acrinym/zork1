@@ -60,7 +60,7 @@ required = [
     "Behind House",
     "House vulnerability status:",
     "A broad wooden worktop supports real food, containers, and tools.",
-    "A cast-iron range can be lit with a real held flame.",
+    "A cast iron range can be lit with a real held flame.",
     "You unwrap and arrange the hot-pepper sandwich on the worktop.",
     "It is a bounded late-1970s archive surface.",
     "Completed expedition archive status: no sealed victory record.",
