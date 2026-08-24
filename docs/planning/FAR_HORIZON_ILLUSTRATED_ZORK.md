@@ -5,6 +5,8 @@
 **Implementation posture:** Do not pull forward ahead of the existing world-state, time/weather, consequence, and renderer-export work.  
 **Network posture:** EXCLUSIVE OPT-IN. No external model call may occur unless the player explicitly enables the feature and invokes it.
 
+> **2026-08-23 boundary clarification:** Release 1285 — Opt-In Playthrough Chronicle Export promotes only the local truthful scene/event export prerequisite into the active product queue. This far-horizon item remains separate. Release 1285 performs no image generation, provider calls, computer-vision integration, book composition, or other downstream consumption.
+
 ## Vision
 
 Eventually, Highly Extended Zork should be able to illustrate the exact current scene from authoritative game state.
