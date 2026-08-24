@@ -278,7 +278,7 @@ The product goal is:
 
 > **Mara has agency because she is a companion rather than the player's avatar.**
 
-Any future autonomous companion should receive the same architectural respect.
+Any future autonomous companion should receive the same architectural respect and request semantics regardless of gender.
 
 ## What this extension must not do
 
