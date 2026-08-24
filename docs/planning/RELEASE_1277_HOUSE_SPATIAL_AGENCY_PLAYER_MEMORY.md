@@ -20,6 +20,8 @@ This is spatial agency, not a decorating minigame.
 
 It extends the same persistent physical-world rules already required for field caches into the player's home base.
 
+Companion-assisted rearrangement is governed by the sibling plan `docs/planning/RELEASE_1277_MARA_COOPERATIVE_REQUESTS.md`. The player may ask Mara for help, but Mara remains an autonomous companion who decides whether, when, and how she agrees.
+
 ## Existing authorities this extension must preserve
 
 This work must compose with the current Zork lineage rather than create a parallel house/furniture/save system.
@@ -77,6 +79,8 @@ Desired ordinary play includes:
 The carpet may remain heavy and awkward. Heavy must mean **difficult**, not **cosmically fixed**.
 
 Do not solve this by silently teleporting it between room IDs. The command history should represent the player's physical handling of it.
+
+Where the carpet is awkward or genuinely benefits from two people, the player may ask Mara to assist through the cooperative-request authority. Her agreement can change practical feasibility, but cannot override route geometry, injury, custody, or other physical truth.
 
 ### West of House welcome-mat consequence
 
@@ -137,6 +141,8 @@ A chair or rolled carpet may be carryable if existing carrying authority permits
 A loaded filing cabinet or large table should generally be pushed, dragged, hauled, emptied, or otherwise handled as a bulky object rather than disappearing into the Adventurer's pocket.
 
 The implementation may add narrow parser synonyms or movement forms where existing grammar is insufficient, but must not create a universal furniture/navigation engine.
+
+For selected awkward objects, asking Mara for help may make a move easier or make an authored two-person move possible. Her help is never implicit: the player requests it and Mara evaluates the request under the companion-agency rules.
 
 ### Contents move with their container
 
@@ -272,6 +278,8 @@ If she is absent and never learns about it, she does not automatically know the 
 
 A photograph can itself later become evidence the player shows her if an existing or future authored interaction supports that.
 
+When the player wants Mara's physical help, that is a request rather than companion command authority. `ASK MARA TO ...` routes into the sibling cooperative-request design, where Mara may agree, refuse, say she is busy, defer the task, make a real promise to do it later, or tell the player that the idea is bad based only on facts she truthfully knows.
+
 Do not create a second Mara-memory system solely for furniture.
 
 ## Persistence and consequence
@@ -339,13 +347,16 @@ The journey should demonstrate, with ordinary commands and no teleport/setup che
 
 One particularly valuable scenario is deliberately silly:
 
-- put the oriental carpet outside the boarded front entrance;
-- take a snapshot of the absurd improvised welcome mat;
+- ask Mara to help bring the oriental carpet outside;
+- if she agrees, physically haul it together through a real route to the boarded front entrance;
+- put the oriental carpet outside as an improvised welcome mat;
+- let Mara react from her own knowledge and personality rather than guaranteed compliance;
+- take a snapshot of the absurd shared result;
 - later move the carpet elsewhere;
 - return to the photograph in the House;
 - verify the photograph still describes the old outside-carpet moment while `WEST-OF-HOUSE` correctly describes the current world without it.
 
-That single history proves spatial agency, location-aware narration, frozen player memory, and separation between historical record and live state.
+That single history proves spatial agency, companion request agency, location-aware narration, frozen player memory, and separation between historical record and live state.
 
 ## Success criteria
 
