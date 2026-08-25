@@ -142,3 +142,11 @@ printf '%s\n' \
   > "$OUT/PLAYTEST-NOTES.txt"
 
 echo "New-area full-system journey passed; replay evidence: $OUT"
+
+echo "Starting final ordered cross-region expedition gate..."
+bash "$ROOT/glulx/product-playtest-gauntlet/run-cross-region-expedition.sh"
+CROSS_OUT="$ROOT/glulx/build/product-playtest-gauntlet/cross-region"
+test -s "$CROSS_OUT/cross-region-expedition-transcript.txt"
+rm -rf "$OUT/cross-region-expedition-evidence"
+cp -a "$CROSS_OUT" "$OUT/cross-region-expedition-evidence"
+echo "Cross-region expedition gate passed and evidence was attached to the serialized gauntlet artifact."
