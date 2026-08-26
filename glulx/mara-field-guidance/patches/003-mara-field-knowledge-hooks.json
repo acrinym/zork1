@@ -1,12 +1,12 @@
 {
   "id": "003-mara-field-knowledge-hooks",
   "path": "mara_companion_state.zil",
-  "description": "Compose Release 1276 field access and earned field questions with existing Mara movement and conversation authorities.",
+  "description": "Compose Release 1276 field access and earned field questions with existing Mara movement and conversation authorities, including the ordinary surface approach between the House and Western Backcountry.",
   "replacements": [
     {
       "expected_count": 1,
       "old": "          (<AND <MARA-GET ,MARA-SLOT-DAM-SURVEY>\n                <MARA-HOUSE-ROUTE? .RM>>\n           <RTRUE>)>\n    <RFALSE>>",
-      "new": "          (<AND <MARA-GET ,MARA-SLOT-DAM-SURVEY>\n                <MARA-HOUSE-ROUTE? .RM>>\n           <RTRUE>)\n          (<MARA-FIELD-GUIDANCE-CAN-ENTER? .RM> <RTRUE>)>\n    <RFALSE>>"
+      "new": "          (<AND <MARA-GET ,MARA-SLOT-DAM-SURVEY>\n                <MARA-HOUSE-ROUTE? .RM>>\n           <RTRUE>)\n          (<AND <MARA-GET ,MARA-SLOT-DAM-SURVEY>\n                <EQUAL? .RM ,EAST-OF-HOUSE ,CLEARING ,CANYON-VIEW\n                            ,FOREST-2 ,FOREST-3 ,PATH ,NORTH-OF-HOUSE>>\n           <RTRUE>)\n          (<MARA-FIELD-GUIDANCE-CAN-ENTER? .RM> <RTRUE>)>\n    <RFALSE>>"
     },
     {
       "expected_count": 1,
