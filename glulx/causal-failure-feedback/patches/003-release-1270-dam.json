@@ -1,0 +1,17 @@
+{
+  "id": "003-release-1270-dam",
+  "path": "1actions.zil",
+  "description": "Preserve the dam survival decisions/state and route their two terminal authored failures through Release 1270 causal prose.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<JIGS-UP \"The river below completes the lesson in prepared rescue.\">",
+      "new": "<CAUSAL-FAILURE-DAM-LADDER>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<JIGS-UP \"Prepared rescue would have made this an experiment instead of an ending.\">",
+      "new": "<CAUSAL-FAILURE-DAM-CURRENT>"
+    }
+  ]
+}

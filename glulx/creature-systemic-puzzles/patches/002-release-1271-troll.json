@@ -1,0 +1,12 @@
+{
+  "id": "002-release-1271-troll",
+  "path": "1dungeon.zil",
+  "description": "Let existing troll distraction state create a real one-turn geographic passage opportunity.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (EAST TO EW-PASSAGE\n       IF TROLL-FLAG ELSE \"The troll fends you off with a menacing gesture.\")\n      (WEST TO MAZE-1\n       IF TROLL-FLAG ELSE \"The troll fends you off with a menacing gesture.\")",
+      "new": "      (EAST PER CREATURE-TROLL-EAST-EXIT)\n      (WEST PER CREATURE-TROLL-WEST-EXIT)"
+    }
+  ]
+}

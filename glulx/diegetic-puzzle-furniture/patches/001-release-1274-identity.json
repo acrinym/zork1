@@ -1,0 +1,32 @@
+{
+  "id": "001-release-1274-identity",
+  "path": "zork1.zil",
+  "description": "Advance release identity and include the authored diegetic furniture module.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 LIVING BIOMES AND WILDERNESS EXPANSION GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 ENVIRONMENTAL MECHANISMS AND DIEGETIC PUZZLE FURNITURE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Living Biomes & Wilderness Expansion. Release 1273 grows\n  the canonical western forest into a distinct backcountry and geothermally fed\n  rain forest whose ecology creates authored navigation, hazard, and evidence.\"",
+      "new": ";\"Repository-local Environmental Mechanisms & Diegetic Puzzle Furniture.\n  Release 1274 turns prose-visible architectural irregularities into several\n  distinct persistent mechanisms without a generic secret-switch framework.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1273>",
+      "new": "<CONSTANT RELEASEID 1274>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Living Biomes and Wilderness Expansion Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Environmental Mechanisms and Diegetic Puzzle Furniture Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"living_biomes_wilderness\" T>\n<INSERT-FILE \"dragon_hoard\" T>",
+      "new": "<INSERT-FILE \"living_biomes_wilderness\" T>\n<INSERT-FILE \"diegetic_puzzle_furniture\" T>\n<INSERT-FILE \"dragon_hoard\" T>"
+    }
+  ]
+}

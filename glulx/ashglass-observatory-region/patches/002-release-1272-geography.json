@@ -1,0 +1,17 @@
+{
+  "id": "002-release-1272-geography",
+  "path": "1dungeon.zil",
+  "description": "Replace two storm-blocked southern boundaries with authored Ashglass entry routines.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (SOUTH \"Storm-tossed trees block your way.\")\n      (WEST TO FOREST-1)",
+      "new": "      (SOUTH PER ASHGLASS-FOREST-ENTRY)\n      (WEST TO FOREST-1)"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (WEST TO FOREST-3)\n      (SOUTH \"Storm-tossed trees block your way.\")\n      (FLAGS RLANDBIT ONBIT SACREDBIT)",
+      "new": "      (WEST TO FOREST-3)\n      (SOUTH PER ASHGLASS-CANYON-ENTRY)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)"
+    }
+  ]
+}
