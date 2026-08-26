@@ -1,0 +1,28 @@
+{
+  "id": "001-release-1273-identity",
+  "path": "zork1.zil",
+  "description": "Advance release identity and include the two authored living-biome wilderness regions.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 ASHGLASS OBSERVATORY MACROSTRUCTURE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 LIVING BIOMES AND WILDERNESS EXPANSION GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Ashglass Observatory. Release 1272 composes prior light,\n  knowledge, semantic examination, creature, failure, and physical-state work\n  into one original 24-room Zork region with intersecting authored routes.\"",
+      "new": ";\"Repository-local Living Biomes & Wilderness Expansion. Release 1273 grows\n  the canonical western forest into a distinct backcountry and geothermally fed\n  rain forest whose ecology creates authored navigation, hazard, and evidence.\""
+    },
+    {"expected_count":1,"old":"<CONSTANT RELEASEID 1272>","new":"<CONSTANT RELEASEID 1273>"},
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Ashglass Observatory Macrostructure Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Living Biomes and Wilderness Expansion Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"ashglass_observatory\" T>\n<INSERT-FILE \"dragon_hoard\" T>",
+      "new": "<INSERT-FILE \"ashglass_observatory\" T>\n<INSERT-FILE \"living_biomes_wilderness\" T>\n<INSERT-FILE \"dragon_hoard\" T>"
+    }
+  ]
+}
