@@ -1,0 +1,408 @@
+name: Zork I Product Playtest Gauntlet
+on:
+  pull_request:
+    branches:
+      - agent/mara-field-guidance-1276-20260821
+      - agent/mara-field-guidance-1276-reachability-repair-20260825
+    paths:
+      - "glulx/product-playtest-gauntlet/**"
+      - ".github/workflows/product-playtest-gauntlet.yml"
+  workflow_dispatch:
+concurrency:
+  group: zork-product-playtest-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+  actions: read
+env:
+  PLAYTEST_REF: ${{ github.event.pull_request.head.sha || github.sha }}
+  LOCKED_1276_HEAD: 202e4170d4c8b885de0e51e636c83b08bcfc5f4c
+  LOCKED_1276_RUN: "32913084600"
+  LOCKED_1276_ARTIFACT: mara-field-guidance-202e4170d4c8b885de0e51e636c83b08bcfc5f4c
+  LOCKED_1276_STORY_SHA256: 3eb5247a63c4784dec6a846ce631a23e3e631109a6a8661c6010ed6b40a5db42
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+jobs:
+  house-full-journey:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.PLAYTEST_REF }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact playtest checkout and product immutability
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$PLAYTEST_REF" ]]
+          git cat-file -e "$LOCKED_1276_HEAD^{commit}"
+          unexpected="$(git diff --name-only "$LOCKED_1276_HEAD" HEAD -- \
+            ':!.github/workflows/product-playtest-gauntlet.yml' \
+            ':!glulx/product-playtest-gauntlet/**')"
+          if [[ -n "$unexpected" ]]; then
+            echo "Playtest branch changed production/non-playtest paths relative to locked 1276:" >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12.13"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/glulxe
+          ref: "${{ env.GLULXE_COMMIT }}"
+          path: .tooling/glulxe
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/cheapglk
+          ref: "${{ env.CHEAPGLK_COMMIT }}"
+          path: .tooling/cheapglk
+          persist-credentials: false
+      - name: Build pinned interpreter
+        run: |
+          set -euo pipefail
+          make -C .tooling/cheapglk
+          make -C .tooling/glulxe OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"
+      - name: Install prompt-aware play driver dependency
+        run: python -m pip install --disable-pip-version-check pexpect==4.9.0
+      - name: Fetch exact green Release 1276 product receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run download "$LOCKED_1276_RUN" --repo "$GITHUB_REPOSITORY" --name "$LOCKED_1276_ARTIFACT" --dir "$GITHUB_WORKSPACE"
+          story="glulx/build/mara-field-guidance-1276/zork1-glulx-mara-field-guidance-earned-clues.ulx"
+          test -s "$story"
+          echo "$LOCKED_1276_STORY_SHA256  $story" | sha256sum --check
+          test -s glulx/build/mara-field-guidance-1276/story-report.json
+          printf '%s\n' \
+            "locked_head=$LOCKED_1276_HEAD" \
+            "locked_run=$LOCKED_1276_RUN" \
+            "artifact=$LOCKED_1276_ARTIFACT" \
+            "story_sha256=$LOCKED_1276_STORY_SHA256" \
+            > locked-1276-receipt.txt
+      - name: Play full House journey
+        run: |
+          set -o pipefail
+          bash glulx/product-playtest-gauntlet/run-house-full-journey.sh 2>&1 | tee house-full-journey.log
+      - name: Upload House replay evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: house-full-journey-${{ env.PLAYTEST_REF }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            locked-1276-receipt.txt
+            house-full-journey.log
+            glulx/build/product-playtest-gauntlet/house/
+
+  mara-full-system:
+    needs: house-full-journey
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.PLAYTEST_REF }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact playtest checkout and product immutability
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$PLAYTEST_REF" ]]
+          git cat-file -e "$LOCKED_1276_HEAD^{commit}"
+          unexpected="$(git diff --name-only "$LOCKED_1276_HEAD" HEAD -- \
+            ':!.github/workflows/product-playtest-gauntlet.yml' \
+            ':!glulx/product-playtest-gauntlet/**')"
+          if [[ -n "$unexpected" ]]; then
+            echo "Playtest branch changed production/non-playtest paths relative to locked 1276:" >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12.13"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/glulxe
+          ref: "${{ env.GLULXE_COMMIT }}"
+          path: .tooling/glulxe
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/cheapglk
+          ref: "${{ env.CHEAPGLK_COMMIT }}"
+          path: .tooling/cheapglk
+          persist-credentials: false
+      - name: Build pinned interpreter
+        run: |
+          set -euo pipefail
+          make -C .tooling/cheapglk
+          make -C .tooling/glulxe OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"
+      - name: Install prompt-aware play driver dependency
+        run: python -m pip install --disable-pip-version-check pexpect==4.9.0
+      - name: Fetch exact green Release 1276 product receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run download "$LOCKED_1276_RUN" --repo "$GITHUB_REPOSITORY" --name "$LOCKED_1276_ARTIFACT" --dir "$GITHUB_WORKSPACE"
+          story="glulx/build/mara-field-guidance-1276/zork1-glulx-mara-field-guidance-earned-clues.ulx"
+          test -s "$story"
+          echo "$LOCKED_1276_STORY_SHA256  $story" | sha256sum --check
+          test -s glulx/build/mara-field-guidance-1276/story-report.json
+          printf '%s\n' \
+            "locked_head=$LOCKED_1276_HEAD" \
+            "locked_run=$LOCKED_1276_RUN" \
+            "artifact=$LOCKED_1276_ARTIFACT" \
+            "story_sha256=$LOCKED_1276_STORY_SHA256" \
+            > locked-1276-receipt.txt
+      - name: Play Mara full-system journey
+        run: |
+          set -o pipefail
+          bash glulx/product-playtest-gauntlet/run-mara-full-system.sh 2>&1 | tee mara-full-system.log
+      - name: Upload Mara replay evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mara-full-system-${{ env.PLAYTEST_REF }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            locked-1276-receipt.txt
+            mara-full-system.log
+            glulx/build/product-playtest-gauntlet/mara/
+
+  upstairs-full-system:
+    needs: mara-full-system
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.PLAYTEST_REF }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact playtest checkout and product immutability
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$PLAYTEST_REF" ]]
+          git cat-file -e "$LOCKED_1276_HEAD^{commit}"
+          unexpected="$(git diff --name-only "$LOCKED_1276_HEAD" HEAD -- \
+            ':!.github/workflows/product-playtest-gauntlet.yml' \
+            ':!glulx/product-playtest-gauntlet/**')"
+          if [[ -n "$unexpected" ]]; then
+            echo "Playtest branch changed production/non-playtest paths relative to locked 1276:" >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12.13"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/glulxe
+          ref: "${{ env.GLULXE_COMMIT }}"
+          path: .tooling/glulxe
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/cheapglk
+          ref: "${{ env.CHEAPGLK_COMMIT }}"
+          path: .tooling/cheapglk
+          persist-credentials: false
+      - name: Build pinned interpreter
+        run: |
+          set -euo pipefail
+          make -C .tooling/cheapglk
+          make -C .tooling/glulxe OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"
+      - name: Install prompt-aware play driver dependency
+        run: python -m pip install --disable-pip-version-check pexpect==4.9.0
+      - name: Fetch exact green Release 1276 product receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run download "$LOCKED_1276_RUN" --repo "$GITHUB_REPOSITORY" --name "$LOCKED_1276_ARTIFACT" --dir "$GITHUB_WORKSPACE"
+          story="glulx/build/mara-field-guidance-1276/zork1-glulx-mara-field-guidance-earned-clues.ulx"
+          test -s "$story"
+          echo "$LOCKED_1276_STORY_SHA256  $story" | sha256sum --check
+          test -s glulx/build/mara-field-guidance-1276/story-report.json
+          printf '%s\n' \
+            "locked_head=$LOCKED_1276_HEAD" \
+            "locked_run=$LOCKED_1276_RUN" \
+            "artifact=$LOCKED_1276_ARTIFACT" \
+            "story_sha256=$LOCKED_1276_STORY_SHA256" \
+            > locked-1276-receipt.txt
+      - name: Play upstairs full-system journey
+        run: |
+          set -o pipefail
+          bash glulx/product-playtest-gauntlet/run-upstairs-full-system.sh 2>&1 | tee upstairs-full-system.log
+      - name: Upload upstairs replay evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: upstairs-full-system-${{ env.PLAYTEST_REF }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            locked-1276-receipt.txt
+            upstairs-full-system.log
+            glulx/build/product-playtest-gauntlet/upstairs/
+
+  new-areas-full-system:
+    needs: upstairs-full-system
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.PLAYTEST_REF }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact playtest checkout and product immutability
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$PLAYTEST_REF" ]]
+          git cat-file -e "$LOCKED_1276_HEAD^{commit}"
+          unexpected="$(git diff --name-only "$LOCKED_1276_HEAD" HEAD -- \
+            ':!.github/workflows/product-playtest-gauntlet.yml' \
+            ':!glulx/product-playtest-gauntlet/**')"
+          if [[ -n "$unexpected" ]]; then
+            echo "Playtest branch changed production/non-playtest paths relative to locked 1276:" >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12.13"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/glulxe
+          ref: "${{ env.GLULXE_COMMIT }}"
+          path: .tooling/glulxe
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/cheapglk
+          ref: "${{ env.CHEAPGLK_COMMIT }}"
+          path: .tooling/cheapglk
+          persist-credentials: false
+      - name: Build pinned interpreter
+        run: |
+          set -euo pipefail
+          make -C .tooling/cheapglk
+          make -C .tooling/glulxe OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"
+      - name: Install prompt-aware play driver dependency
+        run: python -m pip install --disable-pip-version-check pexpect==4.9.0
+      - name: Fetch exact green Release 1276 product receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run download "$LOCKED_1276_RUN" --repo "$GITHUB_REPOSITORY" --name "$LOCKED_1276_ARTIFACT" --dir "$GITHUB_WORKSPACE"
+          story="glulx/build/mara-field-guidance-1276/zork1-glulx-mara-field-guidance-earned-clues.ulx"
+          test -s "$story"
+          echo "$LOCKED_1276_STORY_SHA256  $story" | sha256sum --check
+          test -s glulx/build/mara-field-guidance-1276/story-report.json
+          printf '%s\n' \
+            "locked_head=$LOCKED_1276_HEAD" \
+            "locked_run=$LOCKED_1276_RUN" \
+            "artifact=$LOCKED_1276_ARTIFACT" \
+            "story_sha256=$LOCKED_1276_STORY_SHA256" \
+            > locked-1276-receipt.txt
+      - name: Play new-areas full-system journey
+        run: |
+          set -o pipefail
+          bash glulx/product-playtest-gauntlet/run-new-areas-full-system.sh 2>&1 | tee new-areas-full-system.log
+      - name: Upload new-areas replay evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: new-areas-full-system-${{ env.PLAYTEST_REF }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            locked-1276-receipt.txt
+            new-areas-full-system.log
+            glulx/build/product-playtest-gauntlet/new-areas/
+
+  cross-region-expedition:
+    needs: new-areas-full-system
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.PLAYTEST_REF }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact playtest checkout and product immutability
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$PLAYTEST_REF" ]]
+          git cat-file -e "$LOCKED_1276_HEAD^{commit}"
+          unexpected="$(git diff --name-only "$LOCKED_1276_HEAD" HEAD -- \
+            ':!.github/workflows/product-playtest-gauntlet.yml' \
+            ':!glulx/product-playtest-gauntlet/**')"
+          if [[ -n "$unexpected" ]]; then
+            echo "Playtest branch changed production/non-playtest paths relative to locked 1276:" >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12.13"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/glulxe
+          ref: "${{ env.GLULXE_COMMIT }}"
+          path: .tooling/glulxe
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/cheapglk
+          ref: "${{ env.CHEAPGLK_COMMIT }}"
+          path: .tooling/cheapglk
+          persist-credentials: false
+      - name: Build pinned interpreter
+        run: |
+          set -euo pipefail
+          make -C .tooling/cheapglk
+          make -C .tooling/glulxe OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"
+      - name: Install prompt-aware play driver dependency
+        run: python -m pip install --disable-pip-version-check pexpect==4.9.0
+      - name: Fetch exact green Release 1276 product receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run download "$LOCKED_1276_RUN" --repo "$GITHUB_REPOSITORY" --name "$LOCKED_1276_ARTIFACT" --dir "$GITHUB_WORKSPACE"
+          story="glulx/build/mara-field-guidance-1276/zork1-glulx-mara-field-guidance-earned-clues.ulx"
+          test -s "$story"
+          echo "$LOCKED_1276_STORY_SHA256  $story" | sha256sum --check
+          test -s glulx/build/mara-field-guidance-1276/story-report.json
+          printf '%s\n' \
+            "locked_head=$LOCKED_1276_HEAD" \
+            "locked_run=$LOCKED_1276_RUN" \
+            "artifact=$LOCKED_1276_ARTIFACT" \
+            "story_sha256=$LOCKED_1276_STORY_SHA256" \
+            > locked-1276-receipt.txt
+      - name: Play cross-region expedition
+        run: |
+          set -o pipefail
+          bash glulx/product-playtest-gauntlet/run-cross-region-expedition.sh 2>&1 | tee cross-region-expedition.log
+      - name: Upload cross-region replay evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: cross-region-expedition-${{ env.PLAYTEST_REF }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            locked-1276-receipt.txt
+            cross-region-expedition.log
+            glulx/build/product-playtest-gauntlet/cross-region/
