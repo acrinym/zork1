@@ -1,0 +1,37 @@
+{
+  "edition": "Mara Field Guidance & Earned Clues",
+  "release": 1276,
+  "serial": "260821",
+  "base_release": 1274,
+  "base_manifest": "../diegetic-puzzle-furniture/patch-series.json",
+  "base_artifact_sha256": "6098cd4c5ee48f5967876b366c6590a56caf823241ae305e5b355c0688220f2d",
+  "base_source_sha256": {
+    "production": "51a914d3543342d6cd8106f377bd1d1444e9d76dbc64766166daaf3b11ffe485",
+    "dev": "23cc0da74be3df373bcac0c68c12a0294ba5c3915196d9d3d20ab0d0b3eedbb2"
+  },
+  "patches": [
+    "patches/001-release-1276-identity.json",
+    "patches/002-include-mara-field-guidance.json",
+    "patches/003-mara-field-knowledge-hooks.json",
+    "patches/004-mara-field-movement-hooks.json"
+  ],
+  "expected_changed_paths": [
+    "mara_companion.zil",
+    "mara_companion_movement.zil",
+    "mara_companion_state.zil",
+    "mara_field_guidance.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-mara-field-guidance-earned-clues.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 529152,
+    "checksum_hex": "0x7754f5aa",
+    "sha256": "3eb5247a63c4784dec6a846ce631a23e3e631109a6a8661c6010ed6b40a5db42"
+  },
+  "added_files": [
+    "mara_field_guidance.zil"
+  ]
+}

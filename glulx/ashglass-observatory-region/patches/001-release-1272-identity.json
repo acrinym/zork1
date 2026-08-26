@@ -1,0 +1,32 @@
+{
+  "id": "001-release-1272-identity",
+  "path": "zork1.zil",
+  "description": "Advance release identity and include the Ashglass Observatory macrostructure.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 CREATURE ENCOUNTERS AS SYSTEMIC PUZZLES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 ASHGLASS OBSERVATORY MACROSTRUCTURE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Creature Encounters as Systemic Puzzles. Release 1271 lets\n  several distinct beings create routes and recoveries from their own authored\n  attention, appetite, light aversion, memory, and existing state without a\n  generic creature brain or universal disposition meter.\"",
+      "new": ";\"Repository-local Ashglass Observatory. Release 1272 composes prior light,\n  knowledge, semantic examination, creature, failure, and physical-state work\n  into one original 24-room Zork region with intersecting authored routes.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1271>",
+      "new": "<CONSTANT RELEASEID 1272>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Creature Encounters as Systemic Puzzles Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Ashglass Observatory Macrostructure Glulx ZORK I: The Great Underground Empire\n \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"grue_fissure_recovery\" T>\n<INSERT-FILE \"dragon_hoard\" T>",
+      "new": "<INSERT-FILE \"grue_fissure_recovery\" T>\n<INSERT-FILE \"ashglass_observatory\" T>\n<INSERT-FILE \"dragon_hoard\" T>"
+    }
+  ]
+}
