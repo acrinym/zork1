@@ -1,0 +1,27 @@
+{
+  "id": "002-release-1274-ashglass-furniture",
+  "path": "ashglass_observatory.zil",
+  "description": "Expose four fair architectural irregularities and route two resulting persistent passages.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROOM ASHGLASS-SCRIPTORIUM (IN ROOMS) (DESC \"Ruined Scriptorium\")\n      (LDESC \"Collapsed shelves leave one stone desk intact beneath a dry arch. A black archive slate rests there. North returns to the yard and west to the cistern. A blocked eastern wall suggests the archive once continued farther, but no usable opening remains on this side.\")\n      (NORTH TO ASHGLASS-OBSERVATORY-YARD) (WEST TO ASHGLASS-LOW-CISTERN) (FLAGS RLANDBIT)>",
+      "new": "<ROOM ASHGLASS-SCRIPTORIUM (IN ROOMS) (DESC \"Ruined Scriptorium\")\n      (LDESC \"Collapsed shelves leave one stone desk intact beneath a dry arch. A black archive slate rests there. One narrow archive shelf alone remains upright against the blocked east wall, and one black index volume in it is strangely clean. North returns to the yard and west to the cistern.\")\n      (NORTH TO ASHGLASS-OBSERVATORY-YARD) (WEST TO ASHGLASS-LOW-CISTERN) (EAST PER DIEGETIC-SCRIPTORIUM-EAST-EXIT) (FLAGS RLANDBIT)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROOM ASHGLASS-LOW-CISTERN (IN ROOMS) (DESC \"Low Cistern\")\n      (LDESC \"A masonry cistern catches rain from the observatory roofs. The west court is north, the scriptorium east, and a narrow spillway passage runs south through cold spray.\")\n      (NORTH TO ASHGLASS-WEST-COURT) (EAST TO ASHGLASS-SCRIPTORIUM) (SOUTH PER ASHGLASS-CISTERN-EAST-EXIT) (FLAGS RLANDBIT)>",
+      "new": "<ROOM ASHGLASS-LOW-CISTERN (IN ROOMS) (DESC \"Low Cistern\")\n      (LDESC \"A masonry cistern catches rain from the observatory roofs. Nearly every brick is dark with mineral stain except one oddly pale rectangle above the spillway. The west court is north, the scriptorium east, and a narrow passage runs south through cold spray unless the old drainage works can still change that water.\")\n      (NORTH TO ASHGLASS-WEST-COURT) (EAST TO ASHGLASS-SCRIPTORIUM) (SOUTH PER DIEGETIC-CISTERN-SOUTH-EXIT) (FLAGS RLANDBIT)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROOM ASHGLASS-BELL-TOWER (IN ROOMS) (DESC \"Bell Tower\")\n      (LDESC \"The observatory bell is gone, but its open tower still catches every gust. South is the rookery, east an exposed balcony, and down the broken gallery stair.\")",
+      "new": "<ROOM ASHGLASS-BELL-TOWER (IN ROOMS) (DESC \"Bell Tower\")\n      (LDESC \"The observatory bell is gone, but its open tower still catches every gust. A bronze weather regulator clock remains on the north wall: one hand is stopped just short of an unusually clean notch, and a slack winding chain hangs below a precise seam in the case. South is the rookery, east an exposed balcony, and down the broken gallery stair.\")"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROOM ASHGLASS-VAULT (IN ROOMS) (DESC \"Ashglass Vault\")\n      (LDESC \"The vault is disappointingly small and therefore convincing. Shelves hold broken observation plates, mineral samples, and one intact dark glass prism. West returns to the antechamber. Nothing here claims the universe owes you a quest reward.\")",
+      "new": "<ROOM ASHGLASS-VAULT (IN ROOMS) (DESC \"Ashglass Vault\")\n      (LDESC \"The vault is disappointingly small and therefore convincing. Shelves hold broken observation plates, mineral samples, and one intact dark glass prism. One lower mineral tray sits a finger-width proud of every neighboring tray, with straight scrape marks disappearing behind it. West returns to the antechamber. Nothing here claims the universe owes you a quest reward.\")"
+    }
+  ]
+}

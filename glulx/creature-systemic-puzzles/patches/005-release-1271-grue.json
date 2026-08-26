@@ -1,0 +1,12 @@
+{
+  "id": "005-release-1271-grue",
+  "path": "1actions.zil",
+  "description": "When canonical strong-light colony reveal occurs, expose the specific physical recovery object.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "           <PUTP ,GRUE-FISSURES ,P?VALUE 1>\n           <TELL",
+      "new": "           <PUTP ,GRUE-FISSURES ,P?VALUE 1>\n           <CREATURE-GRUE-RECOVERY-REVEAL>\n           <TELL"
+    }
+  ]
+}

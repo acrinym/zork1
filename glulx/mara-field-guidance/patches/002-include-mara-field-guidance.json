@@ -1,0 +1,12 @@
+{
+  "id": "002-include-mara-field-guidance",
+  "path": "mara_companion.zil",
+  "description": "Insert the narrow Release 1276 field-guidance authority after existing Mara anticipation and before movement hooks.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_lived_feeling\" T>\n<INSERT-FILE \"mara_anticipation\" T>\n<INSERT-FILE \"mara_companion_movement\" T>",
+      "new": "<INSERT-FILE \"mara_lived_feeling\" T>\n<INSERT-FILE \"mara_anticipation\" T>\n<INSERT-FILE \"mara_field_guidance\" T>\n<INSERT-FILE \"mara_companion_movement\" T>"
+    }
+  ]
+}

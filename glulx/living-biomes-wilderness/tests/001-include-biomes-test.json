@@ -1,0 +1,6 @@
+{
+  "id": "001-include-biomes-test",
+  "path": "zork1.zil",
+  "description": "TEST ONLY: include Release 1273 living-biome scenario setup verbs.",
+  "replacements": [{"expected_count":1,"old":"<INSERT-FILE \"cellar_recovery_locker\" T>","new":"<INSERT-FILE \"cellar_recovery_locker\" T>\n<INSERT-FILE \"living_biomes_test\" T>"}]
+}
