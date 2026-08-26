@@ -1,0 +1,12 @@
+{
+  "id": "003-release-1271-cyclops-room",
+  "path": "1dungeon.zil",
+  "description": "Route the cyclops stair through the specific appetite/position exit authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (UP TO TREASURE-ROOM IF CYCLOPS-FLAG\n        ELSE \"The cyclops doesn't look like he'll let you past.\")",
+      "new": "      (UP PER CREATURE-CYCLOPS-UP-EXIT)"
+    }
+  ]
+}

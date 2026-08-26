@@ -1,0 +1,37 @@
+{
+  "edition": "Causal Death & Failure Feedback",
+  "release": 1270,
+  "serial": "260819",
+  "base_release": 1269,
+  "base_manifest": "../structural-difficulty/patch-series.json",
+  "base_artifact_sha256": "00911e852643ebb14643ff2d923d1bff422686c70c36fddc6cc18710eed206f6",
+  "base_source_sha256": {
+    "production": "73c1520056643ac0638120f68cb0c413b4690413a94e22a953cdf8d167d34ae8",
+    "dev": "34cc10e799f87012334d67b569b3a30134abf1b43f1f247c4b118d74892bf7f5"
+  },
+  "patches": [
+    "patches/001-release-1270-identity.json",
+    "patches/002-release-1270-dragon.json",
+    "patches/003-release-1270-dam.json",
+    "patches/004-release-1270-canyon.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "causal_failure_feedback.zil",
+    "dragon_hoard.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-causal-failure-feedback.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 486656,
+    "checksum_hex": "0xb4c4b836",
+    "sha256": "73ecf3a152bdb808681e9b6f67a694278058e2e491ef42b8926d4e4952a39c1f"
+  },
+  "added_files": [
+    "causal_failure_feedback.zil"
+  ]
+}

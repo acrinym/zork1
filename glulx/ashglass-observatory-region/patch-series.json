@@ -1,0 +1,33 @@
+{
+  "edition": "Ashglass Observatory Macrostructure",
+  "release": 1272,
+  "serial": "260819",
+  "base_release": 1271,
+  "base_manifest": "../creature-systemic-puzzles/patch-series.json",
+  "base_artifact_sha256": "29ed98d19946617e0c64cbcaa0403c0a62a3ab4efe4f97781b00c2f39e37de21",
+  "base_source_sha256": {
+    "production": "5b5a553521a66d20ac8bc37923478c2f355bbcdeae993787f4bf392a3b2598e3",
+    "dev": "464f9c85485ff69c286cdf6daed16127ea47621e62239ecfce1c4d9063869292"
+  },
+  "patches": [
+    "patches/001-release-1272-identity.json",
+    "patches/002-release-1272-geography.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "ashglass_observatory.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-ashglass-observatory.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 503040,
+    "checksum_hex": "0x33bc915d",
+    "sha256": "a20aad283b54ebde253078a5a061c75dde7cd2fa9b95fd51f4beed78b521c28c"
+  },
+  "added_files": [
+    "ashglass_observatory.zil"
+  ]
+}

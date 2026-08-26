@@ -1,0 +1,12 @@
+{
+  "id": "004-release-1271-cyclops-action",
+  "path": "1actions.zil",
+  "description": "Intercept only the authored DROP LUNCH cyclops-room action before canonical action handling.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE CYCLOPS-ROOM-FCN (RARG)\n\t<COND (<EQUAL? .RARG ,M-LOOK>",
+      "new": "<ROUTINE CYCLOPS-ROOM-FCN (RARG)\n\t<COND (<EQUAL? .RARG ,M-BEG>\n           <COND (<CREATURE-CYCLOPS-ROOM-BEGIN> <RTRUE>)>)\n          (<EQUAL? .RARG ,M-LOOK>"
+    }
+  ]
+}

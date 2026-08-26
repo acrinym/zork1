@@ -1,0 +1,33 @@
+{
+  "edition": "Structural Difficulty Modes",
+  "release": 1269,
+  "serial": "260817",
+  "base_release": 1268,
+  "base_manifest": "../clue-chains/patch-series.json",
+  "base_artifact_sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16",
+  "base_source_sha256": {
+    "production": "c1a8633ef41cb678ddb9f383a5a05aced3fe65310d197a41273e314aeb5ea318",
+    "dev": "5ce0f2206086f2b47771dcad63a43680ba698eeb4eaee3bf29649b86fb5fc729"
+  },
+  "patches": [
+    "patches/001-release-1269-identity.json",
+    "patches/002-release-1269-dragon.json",
+    "patches/003-release-1269-ablative.json"
+  ],
+  "expected_changed_paths": [
+    "ablative_protection.zil",
+    "dragon_hoard.zil",
+    "structural_difficulty.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-structural-difficulty-modes.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 485632,
+    "checksum_hex": "0xe38b6225",
+    "sha256": "00911e852643ebb14643ff2d923d1bff422686c70c36fddc6cc18710eed206f6"
+  },
+  "added_files": ["structural_difficulty.zil"]
+}
