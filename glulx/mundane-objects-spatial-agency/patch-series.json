@@ -1,0 +1,33 @@
+{
+  "edition": "Mundane Objects, Field Caching & House Spatial Agency",
+  "release": 1277,
+  "serial": "260827",
+  "base_release": 1276,
+  "base_manifest": "../mara-field-guidance/patch-series.json",
+  "base_artifact_sha256": "3eb5247a63c4784dec6a846ce631a23e3e631109a6a8661c6010ed6b40a5db42",
+  "base_source_sha256": {
+    "production": null,
+    "dev": null
+  },
+  "patches": [
+    "patches/001-release-1277-identity.json",
+    "patches/002-include-release1277.json",
+    "patches/003-canonical-rug-mobility.json",
+    "patches/004-material-rug-and-arrangement.json"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "mara_companion.zil",
+    "material_consequences.zil",
+    "release1277.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-release-1277-mundane-spatial-agency.ulx",
+    "format": "Glulx"
+  },
+  "added_files": [
+    "release1277.zil"
+  ]
+}

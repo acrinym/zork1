@@ -1,0 +1,12 @@
+{
+  "id": "003-canonical-rug-mobility",
+  "path": "1actions.zil",
+  "description": "Keep canonical RUG-FCN reveal authority but turn TAKE from a cosmic refusal into Release 1277's authored rolling/hauling path.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (<VERB? TAKE>\n           <TELL \"The rug is extremely heavy and cannot be carried.\" CR>)",
+      "new": "          (<VERB? TAKE>\n           <R1277-TAKE-RUG>)"
+    }
+  ]
+}

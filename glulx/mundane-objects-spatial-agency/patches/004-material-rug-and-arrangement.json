@@ -1,0 +1,17 @@
+{
+  "id": "004-material-rug-and-arrangement",
+  "path": "material_consequences.zil",
+  "description": "Finish the canonical carpet's destructive consequence and project real west-of-House carpet placement through the existing physicality hook.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE NARRATIVE-PHYSICALITY-HOOK ()\n    <COND",
+      "new": "<ROUTINE NARRATIVE-PHYSICALITY-HOOK ()\n    <COND\n      (<AND <VERB? LOOK> <EQUAL? ,HERE ,WEST-OF-HOUSE>>\n       <R1277-WEST-HOUSE-ARRANGEMENT>\n       <RFALSE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "             (<AND <VERB? CUT MUNG> ,PRSI <MATERIAL-DESTRUCTIVE-IMPACT? ,PRSI>>\n              <FSET ,RUG ,RMUNGBIT>\n              <TELL \"The \" D ,PRSI \" parts some of the dense outer fibers and leaves a ragged edge. The rug is damaged, not transformed into a convenient trap-door solution.\" CR>\n              <RTRUE>)",
+      "new": "             (<AND <VERB? CUT> ,PRSI <MATERIAL-DESTRUCTIVE-IMPACT? ,PRSI>>\n              <R1277-CUT-RUG>\n              <RTRUE>)\n             (<AND <VERB? MUNG> ,PRSI <MATERIAL-DESTRUCTIVE-IMPACT? ,PRSI>>\n              <FSET ,RUG ,RMUNGBIT>\n              <TELL \"The \" D ,PRSI \" tears and frays the dense outer fibers, but impact is not the same operation as cutting through the backed weave.\" CR>\n              <RTRUE>)"
+    }
+  ]
+}
