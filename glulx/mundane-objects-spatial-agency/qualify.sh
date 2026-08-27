@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="${GITHUB_WORKSPACE:-$(git rev-parse --show-toplevel)}"
+BASE_BUILD="$ROOT/glulx/build/mara-field-guidance-1276"
+BUILD="$ROOT/glulx/build/mundane-objects-spatial-agency-1277"
+BASE_SRC="$BASE_BUILD/src"
+BASE_DEV_SRC="$BASE_BUILD/dev-src"
+SRC="$BUILD/src"
+DEV_SRC="$BUILD/dev-src"
+MANIFEST="$ROOT/glulx/mundane-objects-spatial-agency/patch-series.json"
+rm -rf "$BUILD"; mkdir -p "$BUILD"; cd "$ROOT"
+
+# The predecessor is a locked product artifact. Rebuild it rather than trusting
+# an unqualified source checkout.
+bash glulx/mara-field-guidance/qualify.sh
+python -m py_compile glulx/mundane-objects-spatial-agency/stage.py
+
+python - "$BASE_SRC" "$BASE_DEV_SRC" "$MANIFEST" "$BUILD" <<'PY_BASE'
+import hashlib,json,sys
+from pathlib import Path
+def ident(root):
+    r=Path(root)
+    files={p.relative_to(r).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(r.rglob('*')) if p.is_file() and p.name!='STAGING-RECEIPT.json'}
+    return hashlib.sha256(json.dumps(files,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+m=json.loads(Path(sys.argv[3]).read_text()); ids={'production':ident(sys.argv[1]),'dev':ident(sys.argv[2])}
+print('RELEASE_1277_BASE_SOURCE_IDENTITIES='+json.dumps(ids,sort_keys=True))
+Path(sys.argv[4],'BASE-SOURCE-IDENTITIES.json').write_text(json.dumps(ids,indent=2,sort_keys=True)+'\n')
+expected=m.get('base_source_sha256') or {}
+if any(not isinstance(expected.get(k),str) or not expected.get(k) for k in ('production','dev')):
+    raise SystemExit('Release 1277 predecessor source identities are candidate-only; lock the printed exact identities and rerun.')
+if ids!=expected:
+    raise SystemExit(f'Release 1277 predecessor source pins drift: expected {expected}, got {ids}')
+PY_BASE
+
+python glulx/mundane-objects-spatial-agency/stage.py --base-source "$BASE_SRC" --destination "$SRC" --manifest "$MANIFEST"
+python glulx/mundane-objects-spatial-agency/stage.py --base-source "$BASE_DEV_SRC" --destination "$DEV_SRC" --manifest "$MANIFEST"
+python optimized/tools/zil_smell_check.py --source "$SRC" --json "$BUILD/smell-report.json"
+python optimized/tools/zil_smell_check.py --source "$DEV_SRC" --json "$BUILD/dev-smell-report.json"
+
+python - <<'PY_STATIC'
+import json
+from pathlib import Path
+def req(c,m):
+    if not c: raise SystemExit(m)
+b=Path('glulx/build/mundane-objects-spatial-agency-1277'); s=b/'src'; p=Path('glulx/build/mara-field-guidance-1276/src'); m=json.loads(Path('glulx/mundane-objects-spatial-agency/patch-series.json').read_text()); r=json.loads((s/'STAGING-RECEIPT.json').read_text())
+req(r['release']==1277 and r['base']['release']==1276,'Release 1277 staging/base mismatch')
+req(r['changed_paths']==sorted(m['expected_changed_paths']),'Release 1277 changed paths mismatch')
+req(not json.loads((b/'smell-report.json').read_text())['errors'],'Release 1277 production smell errors')
+req(not json.loads((b/'dev-smell-report.json').read_text())['errors'],'Release 1277 dev smell errors')
+a=(s/'release1277.zil').read_text()
+for token in (
+ 'R1277-LARGE-THUMBTACK','R1277-SEAT-CUSHION','R1277-LUXURIOUS-PILLOW','R1277-HOT-COFFEE','R1277-BENDY-STRAW','R1277-OATMEAL-BOX','R1277-KETCHUP-PACKET','R1277-GLASSES-FRAME','R1277-BEEHIVE','R1277-COPPER-WIRE','R1277-INCENSE-CONES','R1277-LEFT-GLOVE','R1277-PURPLE-STONE','R1277-SALT-SHAKER','R1277-CLOTHESPIN','R1277-SHOELACE','R1277-GROCERY-RECEIPT','R1277-RUBBER-DUCK','R1277-CRACKED-COMB','R1277-MARBLE','R1277-CORK-COASTER','R1277-BUTTON-ONE','R1277-PINECONE',
+ 'R1277-LEFT-LENS','R1277-RIGHT-LENS','R1277-RUG-PIECE-ONE','V-R1277-SNAPSHOT','V-R1277-ASK-MOVE'):
+    req(token in a,'Release 1277 missing product token: '+token)
+req('<GLOBAL ' not in a,'Release 1277 must add zero legacy globals')
+for bad in ('CRAFTING-GRID','QUEST-ITEM','JUNK-GENERATOR','NPC-TASK-QUEUE','OBEDIENCE-SCORE','FURNITURE-COORDINATES'):
+    req(bad not in a,'Release 1277 crossed a forbidden generic-system boundary: '+bad)
+for f in ('mara_field_guidance.zil','living_biomes_wilderness.zil','structural_difficulty.zil','diegetic_puzzle_furniture.zil'):
+    req((s/f).read_bytes()==(p/f).read_bytes(),'Release 1277 unexpectedly rewrote predecessor authority: '+f)
+req('<CONSTANT RELEASEID 1277>' in (s/'zork1.zil').read_text(),'Release 1277 identity missing')
+req('R1277-TAKE-RUG' in (s/'1actions.zil').read_text(),'Canonical RUG-FCN was not extended')
+req('R1277-CUT-RUG' in (s/'material_consequences.zil').read_text(),'Canonical rug material consequence was not extended')
+PY_STATIC
+
+read -r SERIAL STORY_FILE < <(python - "$MANIFEST" <<'PY_M'
+import json,sys
+from pathlib import Path
+m=json.loads(Path(sys.argv[1]).read_text()); print(m['serial'],m['expected_artifact']['file'])
+PY_M
+)
+ZILF="$(realpath "$(find .tooling/zilf-glulx -path '*/bin/Release/*/zilf.dll' -print -quit)")"
+GLAZER="$(realpath "$(find .tooling/glazer-source -type f -name glazer -perm -111 -print -quit)")"
+compile_story(){ local source="$1" asm="$2" out="$3" prefix="$4"; pushd "$source"; dotnet "$ZILF" build --glulx --stop-after-compile zork1.zil "$asm" 2>&1 | tee "$BUILD/$prefix-zilf-compile.log"; popd; python "$ROOT/glulx/tools/normalize_serial.py" "$asm" --serial "$SERIAL" --receipt "$BUILD/$prefix-SERIAL-NORMALIZATION.json"; "$GLAZER" "$asm" -o "$out" 2>&1 | tee "$BUILD/$prefix-glazer-assemble.log"; }
+STORY="$BUILD/$STORY_FILE"
+compile_story "$SRC" "$BUILD/release1277.asm" "$STORY" production
+python glulx/tools/verify_ulx.py "$STORY" --json "$BUILD/story-report.json"
+
+# Boot the actual production story through the interpreter. Richer product
+# journeys are added before final artifact lock; this smoke is deliberately not
+# a setup verb or teleport.
+if [[ ! -x "$ROOT/.tooling/glulxe/glulxe" ]]; then make -C "$ROOT/.tooling/cheapglk"; make -C "$ROOT/.tooling/glulxe" OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"; fi
+GLULXE="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
+printf 'look\nquit\nyes\n' > "$BUILD/production-smoke.txt"
+timeout 120s "$GLULXE" --rngseed 123456 "$STORY" < "$BUILD/production-smoke.txt" > "$BUILD/production-smoke-transcript.txt" 2>&1
+grep -F 'West of House' "$BUILD/production-smoke-transcript.txt"
+
+python - "$STORY" "$MANIFEST" <<'PY_ID'
+import hashlib,json,sys
+from pathlib import Path
+story=Path(sys.argv[1]); m=json.loads(Path(sys.argv[2]).read_text()); b=Path('glulx/build/mundane-objects-spatial-agency-1277'); r=json.loads((b/'story-report.json').read_text())
+ident={'file':story.name,'format':'Glulx','version_hex':r['version_hex'],'size_bytes':story.stat().st_size,'checksum_hex':r['checksum_hex'],'sha256':hashlib.sha256(story.read_bytes()).hexdigest()}
+print('RELEASE_1277_ARTIFACT_IDENTITY='+json.dumps(ident,sort_keys=True))
+if r.get('checksum_valid') is not True: raise SystemExit('Release 1277 artifact checksum invalid')
+(b/'CANDIDATE-IDENTITY.json').write_text(json.dumps(ident,indent=2,sort_keys=True)+'\n')
+e=m['expected_artifact']; rec={'release':1277,'serial':m['serial'],'base_release':1276,'base_artifact_sha256':m['base_artifact_sha256'],'base_source_sha256':m['base_source_sha256'],'histories':['production-smoke']}
+if e.get('locked') is not True:
+    rec.update({'artifact_identity_locked':False,'candidate':ident}); (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(rec,indent=2,sort_keys=True)+'\n'); raise SystemExit('Release 1277 candidate compiled and booted; lock exact artifact identity and strengthen product journeys before final rerun.')
+for k in ('file','version_hex','size_bytes','checksum_hex','sha256'):
+    if ident.get(k)!=e.get(k): raise SystemExit(f'Release 1277 artifact drift for {k}: expected {e.get(k)}, got {ident.get(k)}')
+rec.update({'artifact_identity_locked':True,'artifact':ident}); (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(rec,indent=2,sort_keys=True)+'\n')
+PY_ID
+
+echo 'Release 1277 Mundane Objects, Field Caching & House Spatial Agency qualification passed.'
