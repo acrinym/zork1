@@ -1,0 +1,12 @@
+{
+  "id": "019-fix-help-with-object-syntax",
+  "path": "release1277.zil",
+  "description": "Remove the invalid bare FIND qualifier from HELP WITH OBJECT; native actor parsing supplies the requested object normally.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX HELP WITH OBJECT (FIND) = V-R1277-MARA-HELP>",
+      "new": "<SYNTAX HELP WITH OBJECT = V-R1277-MARA-HELP>"
+    }
+  ]
+}
