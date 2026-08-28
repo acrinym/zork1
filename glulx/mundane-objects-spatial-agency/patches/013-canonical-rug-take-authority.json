@@ -1,0 +1,12 @@
+{
+  "id": "013-canonical-rug-take-authority",
+  "path": "1dungeon.zil",
+  "description": "Let the canonical whole rug enter Zork's ordinary ITAKE carrying authority once Release 1277 has made it physically transportable.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT RUG\n\t(IN LIVING-ROOM)\n\t(SYNONYM RUG CARPET)\n\t(ADJECTIVE LARGE ORIENTAL)\n\t(DESC \"carpet\")\n\t(FLAGS NDESCBIT TRYTAKEBIT)\n\t(ACTION RUG-FCN)>",
+      "new": "<OBJECT RUG\n\t(IN LIVING-ROOM)\n\t(SYNONYM RUG CARPET)\n\t(ADJECTIVE LARGE ORIENTAL)\n\t(DESC \"carpet\")\n\t(FLAGS NDESCBIT TRYTAKEBIT TAKEBIT)\n\t(ACTION RUG-FCN)>"
+    }
+  ]
+}

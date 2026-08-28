@@ -5,8 +5,8 @@
   "replacements": [
     {
       "expected_count": 1,
-      "old": "          (<VERB? TAKE>\n           <TELL \"The rug is extremely heavy and cannot be carried.\" CR>)",
-      "new": "          (<VERB? TAKE>\n           <R1277-TAKE-RUG>)"
+      "old": "\t (<VERB? TAKE>\n\t  <TELL\n\"The rug is extremely heavy and cannot be carried.\" CR>)",
+      "new": "\t (<VERB? TAKE>\n\t  <R1277-TAKE-RUG>)"
     }
   ]
 }
