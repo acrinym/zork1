@@ -1,0 +1,12 @@
+{
+  "id": "018-native-mara-request-dispatch",
+  "path": "mara_companion_actor.zil",
+  "description": "Route ASK MARA TO MOVE/CARRY through Mara actor dispatch before generic inventory refusal or direct object action.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (<AND <EQUAL? ,WINNER ,MARA> <VERB? MARA-BRACE>>\n           <V-MARA-BRACE>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MARA-FIELD-PACK>>",
+      "new": "          (<AND <EQUAL? ,WINNER ,MARA> <VERB? MARA-BRACE>>\n           <V-MARA-BRACE>)\n          (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? MOVE TAKE>\n                <R1277-REQUESTABLE-OBJECT? ,PRSO>>\n           <R1277-MARA-REQUEST-OBJECT ,PRSO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MARA-FIELD-PACK>>"
+    }
+  ]
+}
