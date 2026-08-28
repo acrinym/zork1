@@ -43,6 +43,7 @@ def main()->int:
         rel=Path(n); source=(mp.parent/rel).resolve(); target=(dst/rel).resolve()
         if rel.is_absolute() or '..' in rel.parts or target.exists() or not source.is_file(): raise RuntimeError(f'invalid Release 1277 added file: {n}')
         shutil.copy2(source,target)
+    applied.extend(apply_patch((mp.parent/n).resolve(),dst) for n in m.get('post_patches') or [])
     after=inventory(dst); changed={p for p in set(before)|set(after) if before.get(p)!=after.get(p)}; expected=set(m.get('expected_changed_paths') or [])
     if changed!=expected: raise RuntimeError(f'changed-path mismatch: expected {sorted(expected)}, got {sorted(changed)}')
     rec={'edition':m.get('edition'),'release':1277,'serial':m.get('serial'),'base':{'release':1276,'artifact_sha256':(base.get('expected_artifact') or {}).get('sha256'),'source_sha256':base_id,'staging_receipt_sha256':digest((bs/'STAGING-RECEIPT.json').read_bytes()),'changed_paths':br.get('changed_paths')},'patches':applied,'changed_paths':sorted(changed),'dev_mode':bool(br.get('dev_mode')),'test_only':bool(br.get('test_only'))}

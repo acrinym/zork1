@@ -6,20 +6,32 @@
   "base_manifest": "../mara-field-guidance/patch-series.json",
   "base_artifact_sha256": "3eb5247a63c4784dec6a846ce631a23e3e631109a6a8661c6010ed6b40a5db42",
   "base_source_sha256": {
-    "production": null,
-    "dev": null
+    "production": "15348d948219de4fdd87eb33ad1dcd5374858a5f184300388d2c7428c66165f6",
+    "dev": "e384595e65a3866aad567f4419cebca01db44047da6fc53200c5e6fc939067af"
   },
   "patches": [
     "patches/001-release-1277-identity.json",
     "patches/002-include-release1277.json",
     "patches/003-canonical-rug-mobility.json",
-    "patches/004-material-rug-and-arrangement.json"
+    "patches/004-material-rug-and-arrangement.json",
+    "patches/005-include-house-furniture.json",
+    "patches/006-canonical-house-furniture-actions.json",
+    "patches/007-archive-cabinet-hauling.json",
+    "patches/008-promise-lifecycle-hook.json",
+    "patches/009-house-arrangement-projection.json"
+  ],
+  "post_patches": [
+    "patches/010-request-object-and-promise-expansion.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
+    "1dungeon.zil",
+    "attic_archive_core.zil",
     "mara_companion.zil",
+    "mara_companion_movement.zil",
     "material_consequences.zil",
     "release1277.zil",
+    "release1277_house_furniture.zil",
     "zork1.zil"
   ],
   "expected_artifact": {
@@ -28,6 +40,7 @@
     "format": "Glulx"
   },
   "added_files": [
-    "release1277.zil"
+    "release1277.zil",
+    "release1277_house_furniture.zil"
   ]
 }

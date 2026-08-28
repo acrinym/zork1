@@ -1,0 +1,22 @@
+{
+  "id": "010-request-object-and-promise-expansion",
+  "path": "release1277.zil",
+  "description": "Bind Mara cooperation to the requested real object, allow selected furniture requests, and keep only one explicit deferred promise.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<COND (<R1277-GET ,R1277-SLOT-MARA-HELPING>\n                  <R1277-PUT ,R1277-SLOT-MARA-HELPING 0>",
+      "new": "<COND (<EQUAL? <R1277-GET ,R1277-SLOT-MARA-HELPING> ,RUG>\n                  <R1277-PUT ,R1277-SLOT-MARA-HELPING 0>"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<NOT <EQUAL? ,PRSI ,RUG>>\n           <TELL \"Mara looks at the requested object. That is not one of the bounded cooperative moves she and you have actually worked out.\" CR>)",
+      "new": "          (<NOT <R1277-REQUESTABLE-OBJECT? ,PRSI>>\n           <TELL \"Mara looks at the requested object. That is not one of the bounded cooperative moves she and you have actually worked out.\" CR>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE>\n           <TELL \"Mara looks at you, then the carpet. If somebody is trapped under it, I help. Optional close hauling after the rope promise? No. Not yet.\" CR>)\n          (<NOT <EQUAL? <LOC ,RUG> ,HERE>>\n           <R1277-PUT ,R1277-SLOT-MARA-PROMISE ,RUG>\n           <TELL \"Mara considers the carpet's last known place. I will help when we are both with the actual thing, she says. That is a promise to revisit the lift, not permission to teleport it here.\" CR>)\n          (T\n           <R1277-PUT ,R1277-SLOT-MARA-HELPING 1>\n           <COND (<EQUAL? ,HERE ,WEST-OF-HOUSE>\n                  <TELL \"Mara looks from the oriental carpet to the boarded entrance. There isn't even a porch, she says. Then she takes the other end. Fine. Your imaginary welcome mat.\" CR>)\n                 (T\n                  <TELL \"Mara checks the carpet, the route, and her own footing. All right, she says. You take that end. She is agreeing to this move, not surrendering judgment over every command that can be typed.\" CR>)>)>",
+      "new": "          (<MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE>\n           <TELL \"Mara looks at you, then the \" D ,PRSI \". If somebody is trapped, I help. Optional close hauling after the rope promise? No. Not yet.\" CR>)\n          (<AND <R1277-GET ,R1277-SLOT-MARA-PROMISE>\n                <NOT <EQUAL? <R1277-GET ,R1277-SLOT-MARA-PROMISE> ,PRSI>>>\n           <TELL \"Mara shakes her head. I already promised to revisit the \" D <R1277-GET ,R1277-SLOT-MARA-PROMISE> \" when we reach it. I am not stacking another invisible job behind that one.\" CR>)\n          (<NOT <EQUAL? <LOC ,PRSI> ,HERE>>\n           <R1277-PUT ,R1277-SLOT-MARA-PROMISE ,PRSI>\n           <R1277-HOUSE-PUT ,R1277-HS-PROMISE-NOTED 0>\n           <TELL \"Mara considers where the actual \" D ,PRSI \" is. I will help when we are both with it, she says. That is a real promise to revisit the lift, not permission to teleport anything here.\" CR>)\n          (T\n           <R1277-PUT ,R1277-SLOT-MARA-HELPING ,PRSI>\n           <COND (<AND <EQUAL? ,PRSI ,RUG> <EQUAL? ,HERE ,WEST-OF-HOUSE>>\n                  <TELL \"Mara looks from the oriental carpet to the boarded entrance. There isn't even a porch, she says. Then she takes the other end. Fine. Your imaginary welcome mat.\" CR>)\n                 (T\n                  <TELL \"Mara checks the \" D ,PRSI \", the route, and her own footing. All right, she says. You take that end. She is agreeing to this move, not surrendering judgment over every command that can be typed.\" CR>)>)>"
+    }
+  ]
+}

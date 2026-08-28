@@ -1,0 +1,17 @@
+{
+  "id": "006-canonical-house-furniture-actions",
+  "path": "1dungeon.zil",
+  "description": "Give the real Kitchen and Attic tables bounded Release 1277 hauling behavior without creating replacement furniture.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT KITCHEN-TABLE\n\t(IN KITCHEN)\n\t(SYNONYM TABLE)\n\t(ADJECTIVE KITCHEN)\n\t(DESC \"kitchen table\")\n\t(FLAGS NDESCBIT CONTBIT OPENBIT SURFACEBIT)\n\t(CAPACITY 50)>",
+      "new": "<OBJECT KITCHEN-TABLE\n\t(IN KITCHEN)\n\t(SYNONYM TABLE)\n\t(ADJECTIVE KITCHEN)\n\t(DESC \"kitchen table\")\n\t(FLAGS NDESCBIT CONTBIT OPENBIT SURFACEBIT)\n\t(ACTION R1277-FURNITURE-FCN)\n\t(CAPACITY 50)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<OBJECT ATTIC-TABLE\n\t(IN ATTIC)\n\t(SYNONYM TABLE)\n\t(DESC \"table\")\n\t(FLAGS NDESCBIT CONTBIT OPENBIT SURFACEBIT)\n\t(CAPACITY 40)>",
+      "new": "<OBJECT ATTIC-TABLE\n\t(IN ATTIC)\n\t(SYNONYM TABLE)\n\t(DESC \"table\")\n\t(FLAGS NDESCBIT CONTBIT OPENBIT SURFACEBIT)\n\t(ACTION R1277-FURNITURE-FCN)\n\t(CAPACITY 40)>"
+    }
+  ]
+}

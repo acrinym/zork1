@@ -1,0 +1,12 @@
+{
+  "id": "007-archive-cabinet-hauling",
+  "path": "attic_archive_core.zil",
+  "description": "Compose the real archive cabinet with Release 1277 hauling while preserving its archive surface behavior and contents.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT ARCHIVE-CABINET\n    (IN ATTIC)\n    (SYNONYM CABINET DRAWER FILE FILES)\n    (ADJECTIVE STEEL FILING GRAY)\n    (DESC \"gray steel filing cabinet\")\n    (LDESC \"A gray steel filing cabinet occupies the driest wall of the Attic.\")\n    (FLAGS TRYTAKEBIT CONTBIT OPENBIT SEARCHBIT)\n    (CAPACITY 60)\n    (ACTION ARCHIVE-SURFACE-FCN)>",
+      "new": "<OBJECT ARCHIVE-CABINET\n    (IN ATTIC)\n    (SYNONYM CABINET DRAWER FILE FILES)\n    (ADJECTIVE STEEL FILING GRAY)\n    (DESC \"gray steel filing cabinet\")\n    (LDESC \"A gray steel filing cabinet occupies the driest wall of the Attic.\")\n    (FLAGS TRYTAKEBIT CONTBIT OPENBIT SEARCHBIT)\n    (CAPACITY 60)\n    (ACTION R1277-ARCHIVE-CABINET-FCN)>"
+    }
+  ]
+}
