@@ -16,7 +16,6 @@
     "patches/004-material-rug-and-arrangement.json",
     "patches/005-include-house-furniture.json",
     "patches/006-canonical-house-furniture-actions.json",
-    "patches/007-archive-cabinet-hauling.json",
     "patches/008-promise-lifecycle-hook.json",
     "patches/009-house-arrangement-projection.json",
     "patches/013-canonical-rug-take-authority.json"
@@ -25,12 +24,13 @@
     "patches/010-request-object-and-promise-expansion.json",
     "patches/011-coffee-clock-and-frozen-house-photo-hooks.json",
     "patches/012-frozen-house-scene-and-promise-renegotiation.json",
-    "patches/014-rug-use-normal-carrying-pressure.json"
+    "patches/014-rug-use-normal-carrying-pressure.json",
+    "patches/015-current-mara-trust-authority.json",
+    "patches/016-promise-current-boundary-renegotiation.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
     "1dungeon.zil",
-    "attic_archive_core.zil",
     "mara_companion.zil",
     "mara_companion_movement.zil",
     "material_consequences.zil",
