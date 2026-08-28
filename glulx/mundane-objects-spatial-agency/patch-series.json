@@ -28,7 +28,8 @@
     "patches/015-current-mara-trust-authority.json",
     "patches/016-promise-current-boundary-renegotiation.json",
     "patches/017-native-mara-request-grammar.json",
-    "patches/018-native-mara-request-dispatch.json"
+    "patches/018-native-mara-request-dispatch.json",
+    "patches/019-fix-help-with-object-syntax.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
