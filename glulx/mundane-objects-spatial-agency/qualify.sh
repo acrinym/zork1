@@ -7,6 +7,7 @@ BASE_SRC="$BASE_BUILD/src"
 BASE_DEV_SRC="$BASE_BUILD/dev-src"
 SRC="$BUILD/src"
 DEV_SRC="$BUILD/dev-src"
+TEST_SRC="$BUILD/test-src"
 MANIFEST="$ROOT/glulx/mundane-objects-spatial-agency/patch-series.json"
 rm -rf "$BUILD"; mkdir -p "$BUILD"; cd "$ROOT"
 
@@ -50,7 +51,7 @@ req(not json.loads((b/'dev-smell-report.json').read_text())['errors'],'Release 1
 a=(s/'release1277.zil').read_text()
 for token in (
  'R1277-LARGE-THUMBTACK','R1277-SEAT-CUSHION','R1277-LUXURIOUS-PILLOW','R1277-HOT-COFFEE','R1277-BENDY-STRAW','R1277-OATMEAL-BOX','R1277-KETCHUP-PACKET','R1277-GLASSES-FRAME','R1277-BEEHIVE','R1277-COPPER-WIRE','R1277-INCENSE-CONES','R1277-LEFT-GLOVE','R1277-PURPLE-STONE','R1277-SALT-SHAKER','R1277-CLOTHESPIN','R1277-SHOELACE','R1277-GROCERY-RECEIPT','R1277-RUBBER-DUCK','R1277-CRACKED-COMB','R1277-MARBLE','R1277-CORK-COASTER','R1277-BUTTON-ONE','R1277-PINECONE',
- 'R1277-LEFT-LENS','R1277-RIGHT-LENS','R1277-RUG-PIECE-ONE','V-R1277-SNAPSHOT','V-R1277-ASK-MOVE'):
+ 'R1277-LEFT-LENS','R1277-RIGHT-LENS','R1277-RUG-PIECE-ONE','V-R1277-SNAPSHOT','V-R1277-ASK-MOVE','R1277-MARA-REQUEST-OBJECT'):
     req(token in a,'Release 1277 missing product token: '+token)
 req('<GLOBAL ' not in a,'Release 1277 must add zero legacy globals')
 for bad in ('CRAFTING-GRID','QUEST-ITEM','JUNK-GENERATOR','NPC-TASK-QUEUE','OBEDIENCE-SCORE','FURNITURE-COORDINATES'):
@@ -60,6 +61,8 @@ for f in ('mara_field_guidance.zil','living_biomes_wilderness.zil','structural_d
 req('<CONSTANT RELEASEID 1277>' in (s/'zork1.zil').read_text(),'Release 1277 identity missing')
 req('R1277-TAKE-RUG' in (s/'1actions.zil').read_text(),'Canonical RUG-FCN was not extended')
 req('R1277-CUT-RUG' in (s/'material_consequences.zil').read_text(),'Canonical rug material consequence was not extended')
+req('R1277-MARA-REQUEST-OBJECT' in (s/'mara_companion_actor.zil').read_text(),'Native Mara actor requests do not reach Release 1277 consent logic')
+req(not (s/'release1277_test.zil').exists(),'Release 1277 test-only setup verbs leaked into production staging')
 PY_STATIC
 
 read -r SERIAL STORY_FILE < <(python - "$MANIFEST" <<'PY_M'
@@ -75,14 +78,109 @@ STORY="$BUILD/$STORY_FILE"
 compile_story "$SRC" "$BUILD/release1277.asm" "$STORY" production
 python glulx/tools/verify_ulx.py "$STORY" --json "$BUILD/story-report.json"
 
-# Boot the actual production story through the interpreter. Richer product
-# journeys are added before final artifact lock; this smoke is deliberately not
-# a setup verb or teleport.
+# Compile a test-only copy with deterministic setup verbs. Production never
+# contains these verbs; every assertion below is made through normal player
+# commands after setup, matching the established Release 1276 qualification pattern.
+rm -rf "$TEST_SRC"; cp -a "$DEV_SRC" "$TEST_SRC"
+cp glulx/mundane-objects-spatial-agency/tests/release1277_test.zil "$TEST_SRC/release1277_test.zil"
+python - <<'PY_TEST'
+from pathlib import Path
+import sys; sys.path.insert(0,str(Path('glulx/tools').resolve())); from stage_release120 import apply_patch
+apply_patch(Path('glulx/mundane-objects-spatial-agency/tests/001-include-release1277-test.json').resolve(),Path('glulx/build/mundane-objects-spatial-agency-1277/test-src').resolve())
+PY_TEST
+TEST_STORY="$BUILD/release1277-test.ulx"
+compile_story "$TEST_SRC" "$BUILD/release1277-test.asm" "$TEST_STORY" test
+
 if [[ ! -x "$ROOT/.tooling/glulxe/glulxe" ]]; then make -C "$ROOT/.tooling/cheapglk"; make -C "$ROOT/.tooling/glulxe" OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"; fi
 GLULXE="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
+run_case(){ local n="$1"; timeout 120s "$GLULXE" --rngseed 123456 "$TEST_STORY" < "$BUILD/$n.txt" > "$BUILD/$n-transcript.txt" 2>&1; }
+
+# Actual production artifact still gets a real boot, independent of test setup verbs.
 printf 'look\nquit\nyes\n' > "$BUILD/production-smoke.txt"
 timeout 120s "$GLULXE" --rngseed 123456 "$STORY" < "$BUILD/production-smoke.txt" > "$BUILD/production-smoke-transcript.txt" 2>&1
 grep -F 'West of House' "$BUILD/production-smoke-transcript.txt"
+
+cat > "$BUILD/mara-rug.txt" <<'EOF_RUG'
+r1277rug
+ask mara to move rug
+take rug
+quit
+yes
+EOF_RUG
+run_case mara-rug; F="$BUILD/mara-rug-transcript.txt"
+grep -F 'She is agreeing to this move, not surrendering judgment over every command that can be typed.' "$F"
+grep -F 'Mara takes one end while you roll and lift the real oriental carpet.' "$F"
+grep -F 'without pretending it weighs nothing' "$F"
+
+cat > "$BUILD/promise-furniture.txt" <<'EOF_PROMISE'
+r1277promise
+ask mara to help with kitchen table
+east
+haul kitchen table west
+west
+take sack
+quit
+yes
+EOF_PROMISE
+run_case promise-furniture; F="$BUILD/promise-furniture-transcript.txt"
+grep -F 'That is a real promise to revisit the lift, not permission to teleport anything here.' "$F"
+grep -F 'I said I would revisit this when we were both with the actual thing. I meant it.' "$F"
+grep -F 'Mara keeps the opposite corner under control while you haul the real kitchen table into Living Room.' "$F"
+grep -F 'Taken.' "$F"
+
+cat > "$BUILD/photo-freeze.txt" <<'EOF_PHOTO'
+r1277photo
+snapshot
+take rug
+examine first photograph
+snapshot
+snapshot
+snapshot
+quit
+yes
+EOF_PHOTO
+run_case photo-freeze; F="$BUILD/photo-freeze-transcript.txt"
+grep -F 'The instant photograph preserves Living Room as it was when the shutter fired.' "$F"
+grep -F 'Mara is visibly present in the captured moment.' "$F"
+grep -F 'The whole oriental carpet is visibly part of that old arrangement' "$F"
+grep -F 'Nothing in the photograph changes merely because the live room has changed since then.' "$F"
+grep -F "The camera's three-exposure film pack is empty." "$F"
+
+cat > "$BUILD/coffee-clock.txt" <<'EOF_COFFEE'
+r1277coffee
+examine coffee
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+examine coffee
+quit
+yes
+EOF_COFFEE
+run_case coffee-clock; F="$BUILD/coffee-clock-transcript.txt"
+grep -F 'Steam still lifts from the coffee.' "$F"
+grep -F 'The coffee has gone cool.' "$F"
+
+cat > "$BUILD/beehive.txt" <<'EOF_HIVE'
+r1277hive
+examine beehive
+take beehive
+quit
+yes
+EOF_HIVE
+run_case beehive; F="$BUILD/beehive-transcript.txt"
+grep -F 'The hive is a living colony built into sheltering wood.' "$F"
+grep -F 'The hive is not a box waiting to become inventory.' "$F"
+grep -F 'defensive boil of bees' "$F"
 
 python - "$STORY" "$MANIFEST" <<'PY_ID'
 import hashlib,json,sys
@@ -92,9 +190,9 @@ ident={'file':story.name,'format':'Glulx','version_hex':r['version_hex'],'size_b
 print('RELEASE_1277_ARTIFACT_IDENTITY='+json.dumps(ident,sort_keys=True))
 if r.get('checksum_valid') is not True: raise SystemExit('Release 1277 artifact checksum invalid')
 (b/'CANDIDATE-IDENTITY.json').write_text(json.dumps(ident,indent=2,sort_keys=True)+'\n')
-e=m['expected_artifact']; rec={'release':1277,'serial':m['serial'],'base_release':1276,'base_artifact_sha256':m['base_artifact_sha256'],'base_source_sha256':m['base_source_sha256'],'histories':['production-smoke']}
+e=m['expected_artifact']; rec={'release':1277,'serial':m['serial'],'base_release':1276,'base_artifact_sha256':m['base_artifact_sha256'],'base_source_sha256':m['base_source_sha256'],'histories':['production-smoke','mara-rug','promise-furniture','photo-freeze','coffee-clock','beehive']}
 if e.get('locked') is not True:
-    rec.update({'artifact_identity_locked':False,'candidate':ident}); (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(rec,indent=2,sort_keys=True)+'\n'); raise SystemExit('Release 1277 candidate compiled and booted; lock exact artifact identity and strengthen product journeys before final rerun.')
+    rec.update({'artifact_identity_locked':False,'candidate':ident}); (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(rec,indent=2,sort_keys=True)+'\n'); raise SystemExit('Release 1277 candidate completed product gameplay qualification; lock exact artifact identity and rerun.')
 for k in ('file','version_hex','size_bytes','checksum_hex','sha256'):
     if ident.get(k)!=e.get(k): raise SystemExit(f'Release 1277 artifact drift for {k}: expected {e.get(k)}, got {ident.get(k)}')
 rec.update({'artifact_identity_locked':True,'artifact':ident}); (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(rec,indent=2,sort_keys=True)+'\n')
