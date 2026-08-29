@@ -16,6 +16,7 @@
     <MARA-RESET-STATE>
     <MARA-PUT ,MARA-SLOT-MET 1>
     <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-FOLLOWING>
+    <MARA-PUT ,MARA-SLOT-DAM-SURVEY 1>
     <R1277-PUT ,R1277-SLOT-EXPOSURES 0>
     <R1277-PUT ,R1277-SLOT-RUG-CUT 0>
     <R1277-PUT ,R1277-SLOT-MARA-HELPING 0>
@@ -46,7 +47,7 @@
     <R1277-TEST-RESET ,LIVING-ROOM>
     <MOVE ,KITCHEN-TABLE ,KITCHEN>
     <MOVE ,SANDWICH-BAG ,KITCHEN-TABLE>
-    <TELL "TEST PRECONDITION: Mara and Adventurer share the Living Room; the real loaded kitchen table remains in the Kitchen; no deferred hauling promise exists." CR>
+    <TELL "TEST PRECONDITION: Mara and Adventurer share the Living Room with their existing House-route survey history; the real loaded kitchen table remains in the Kitchen; no deferred hauling promise exists." CR>
     <RTRUE>>
 
 <ROUTINE V-R1277-PHOTO-TEST ()
