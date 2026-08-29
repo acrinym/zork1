@@ -101,7 +101,7 @@ timeout 120s "$GLULXE" --rngseed 123456 "$STORY" < "$BUILD/production-smoke.txt"
 grep -F 'West of House' "$BUILD/production-smoke-transcript.txt"
 
 cat > "$BUILD/mara-rug.txt" <<'EOF_RUG'
-r1277rug
+rugset
 ask mara to move rug
 take rug
 quit
@@ -113,7 +113,7 @@ grep -F 'Mara takes one end while you roll and lift the real oriental carpet.' "
 grep -F 'without pretending it weighs nothing' "$F"
 
 cat > "$BUILD/promise-furniture.txt" <<'EOF_PROMISE'
-r1277promise
+tableset
 ask mara to help with kitchen table
 east
 haul kitchen table west
@@ -129,7 +129,7 @@ grep -F 'Mara keeps the opposite corner under control while you haul the real ki
 grep -F 'Taken.' "$F"
 
 cat > "$BUILD/photo-freeze.txt" <<'EOF_PHOTO'
-r1277photo
+photoset
 snapshot
 take rug
 examine first photograph
@@ -147,7 +147,7 @@ grep -F 'Nothing in the photograph changes merely because the live room has chan
 grep -F "The camera's three-exposure film pack is empty." "$F"
 
 cat > "$BUILD/coffee-clock.txt" <<'EOF_COFFEE'
-r1277coffee
+coffeeset
 examine coffee
 wait
 wait
@@ -171,7 +171,7 @@ grep -F 'Steam still lifts from the coffee.' "$F"
 grep -F 'The coffee has gone cool.' "$F"
 
 cat > "$BUILD/beehive.txt" <<'EOF_HIVE'
-r1277hive
+hiveset
 examine beehive
 take beehive
 quit
