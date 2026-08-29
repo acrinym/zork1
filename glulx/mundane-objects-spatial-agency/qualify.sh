@@ -116,7 +116,7 @@ cat > "$BUILD/promise-furniture.txt" <<'EOF_PROMISE'
 tableset
 ask mara to help with kitchen table
 east
-haul kitchen table westward
+haul kitchen table
 west
 take sack
 quit
