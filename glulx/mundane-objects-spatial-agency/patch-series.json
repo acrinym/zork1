@@ -30,11 +30,14 @@
     "patches/017-native-mara-request-grammar.json",
     "patches/018-native-mara-request-dispatch.json",
     "patches/019-fix-help-with-object-syntax.json",
-    "patches/020-canonical-furniture-pull-verb.json"
+    "patches/020-canonical-furniture-pull-verb.json",
+    "patches/021-parser-safe-house-haul-and-remote-request.json",
+    "patches/022-mara-remote-not-here-bridge.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
     "1dungeon.zil",
+    "gglobals.zil",
     "mara_companion.zil",
     "mara_companion_actor.zil",
     "mara_companion_movement.zil",
