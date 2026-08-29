@@ -48,9 +48,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-release-1277-mundane-spatial-agency.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 548352,
+    "checksum_hex": "0x6919b9ee",
+    "sha256": "582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599"
   },
   "added_files": [
     "release1277.zil",
