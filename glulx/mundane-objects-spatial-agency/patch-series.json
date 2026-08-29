@@ -32,7 +32,8 @@
     "patches/019-fix-help-with-object-syntax.json",
     "patches/020-canonical-furniture-pull-verb.json",
     "patches/021-parser-safe-house-haul-and-remote-request.json",
-    "patches/022-mara-remote-not-here-bridge.json"
+    "patches/022-mara-remote-not-here-bridge.json",
+    "patches/023-parser-native-contextual-haul.json"
   ],
   "expected_changed_paths": [
     "1actions.zil",
