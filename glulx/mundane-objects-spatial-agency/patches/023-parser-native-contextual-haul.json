@@ -1,0 +1,22 @@
+{
+  "id": "023-parser-native-contextual-haul",
+  "path": "release1277_house_furniture.zil",
+  "description": "Use the legacy parser's native HAUL OBJECT form and choose the bounded authored one-room route from the furnishing identity and its real current House room.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) WESTWARD = V-R1277-HAUL-WEST>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) EASTWARD = V-R1277-HAUL-EAST>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) UPSTAIRS = V-R1277-HAUL-UP>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) DOWNSTAIRS = V-R1277-HAUL-DOWN>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) OUTSIDE = V-R1277-HAUL-OUT>\n<SYNONYM HAUL DRAG>",
+      "new": "<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) = V-R1277-HAUL>\n<SYNONYM HAUL DRAG>"
+    },
+    {
+      "expected_count": 1,
+      "old": "HAUL it one real House route at a time -- for example, HAUL \" D ,PRSO \" WESTWARD -- and the route itself decides whether it fits.",
+      "new": "HAUL it one real House route at a time. Release 1277 uses the furnishing and its actual House room to select the bounded authored route, then the geometry decides whether it fits."
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-R1277-HAUL-WEST () <R1277-HAUL-COMMON 1>>",
+      "new": "<ROUTINE V-R1277-HAUL ()\n    <COND (<EQUAL? ,HERE ,ATTIC>\n           <R1277-HAUL-COMMON 4>)\n          (<EQUAL? ,HERE ,LIVING-ROOM>\n           <R1277-HAUL-COMMON 2>)\n          (<EQUAL? ,HERE ,KITCHEN>\n           <COND (<EQUAL? ,PRSO ,KITCHEN-TABLE>\n                  <R1277-HAUL-COMMON 1>)\n                 (T\n                  <R1277-HAUL-COMMON 3>)>)\n          (T\n           <R1277-HAUL-NO-ROUTE ,PRSO 0>)>\n    <RTRUE>>\n\n<ROUTINE V-R1277-HAUL-WEST () <R1277-HAUL-COMMON 1>>"
+    }
+  ]
+}
