@@ -26,13 +26,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-leaflet-hour-noun-honesty.ulx",
     "format": "Glulx",
-    "version_hex": "",
-    "size_bytes": 0,
-    "checksum_hex": "",
-    "sha256": ""
+    "version_hex": "0x00030103",
+    "size_bytes": 559360,
+    "checksum_hex": "0x7506dcd5",
+    "sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a"
   },
   "planning_map": {
     "1296": "house-ring vanilla architecture",
