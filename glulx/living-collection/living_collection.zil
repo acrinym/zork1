@@ -3,14 +3,8 @@
 ;"Renumbered POST_1286 program (planning ids 1287-1292). Parser-native only.
   One authored reservoir species, Mara's witnessed knowledge, the Waters case as
   a real vessel, house stewardship as decisions, exact-object custody, and
-  agreed Dam errands. No GUI, no aquarium engine, no quest log."
-
-<SYNTAX TAKE OBJECT TO OBJECT = V-LC-TAKE-TO>
-<SYNTAX ASK OBJECT (FIND ACTORBIT) TO OBJECT = V-LC-ASK-TO>
-<SYNTAX FILE = V-LC-MARA-FILE>
-<SYNTAX PREPARE = V-LC-MARA-PREPARE>
-<SYNTAX REST = V-LC-MARA-REST>
-<SYNTAX SLEEP = V-LC-MARA-REST>
+  agreed Dam errands. No GUI, no aquarium engine, no quest log.
+  Parser SYNTAX lives in living_collection_syntax.zil (inserted before Mara)."
 
 <CONSTANT LC-SCHEMA 1>
 <CONSTANT LC-SLOT-VERSION 0>

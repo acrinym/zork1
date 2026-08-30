@@ -18,10 +18,12 @@
     "patches/006-mara-honest-catch-ignorance.json"
   ],
   "added_files": [
+    "living_collection_syntax.zil",
     "living_collection.zil"
   ],
   "expected_changed_paths": [
     "living_collection.zil",
+    "living_collection_syntax.zil",
     "mara_companion_actions.zil",
     "mara_companion_actor.zil",
     "mara_companion_movement.zil",
