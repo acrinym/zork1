@@ -1,10 +1,10 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** August 17, 2026  
+**Updated:** August 30, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1268` — Clue Chains & Knowledge-Gated Interpretation  
-**Live `master` observed before this refresh:** `82f65bdea713f7609c1fb16d1504713ce3a778d3`  
-**Open PRs observed before this refresh:** none
+**Current merged production frontier:** Release `1277` — Mundane Objects, Field Caching & House Spatial Agency  
+**Live `master` observed before this refresh:** `42c110095cb99c9aff6ef83956c391b437c76bef` (PR #85)  
+**Open PRs observed before this refresh:** Release 1278 honest-playthrough / house-jar (this train)
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -30,15 +30,27 @@ This board is the human operating surface for the active Zork product queue. The
 
 None.
 
-Releases 1267 and 1268 are merged. There are no open PRs at this refresh point.
+Releases 1269–1277 are merged through PR #85. Writable merges stay on `acrinym/zork1` `master` only.
 
 ## CURRENT
 
-Empty between trains.
+### Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar
+
+A new playthrough must not recap unearned attic architecture, rug/trap events, or garlic slicing. Rest records must not print qualification telemetry. `LIE` / `LIE DOWN` must put the Adventurer to bed. `DRINK FROM SINK` must reach the tap. A sword or axe can shatter the museum field jar. No generic smash engine.
+
+Playtest evidence: `docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md`.
 
 ## NEXT — explicit queued product trains
 
-### 1. Release 1269 — Structural Difficulty Modes
+The former **1278–1284 runtime foundation queue** slides by one after this honesty/destruction repair. See `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`.
+
+### 1. Release 1279 — Glulxe Optimization
+
+**Planning contract:** `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md` (numbering slide: that document is now the 1279 train).
+
+### 2. Release 1269 — Structural Difficulty Modes (MERGED; kept here only as historical queue text)
+
+Historical queue text below 1269–1275 remains as the completed post-1268 program. Do not re-open those trains.
 
 Difficulty changes the **structure of problem-solving**, not just numbers.
 
@@ -144,6 +156,8 @@ No procedural locale expander, generic room generator, room-count quota, palette
 | 1266 | Learned Magic as Parser Capability | #71 |
 | 1267 | Semantic Examination & Hidden Structure | #72 — merged `90e30d59fcd44a5297d7524f65ee34c72aaff319` |
 | 1268 | Clue Chains & Knowledge-Gated Interpretation | #73 — merged `2e16f6cebbfb5a7892feac08d9e6461e6bb9313b` |
+| 1269–1276 | Structural difficulty through Mara field guidance | merged on `acrinym/zork1` `master` before #85 |
+| 1277 | Mundane Objects, Field Caching & House Spatial Agency | #85 — merged `42c110095cb99c9aff6ef83956c391b437c76bef` |
 
 ### Recent locked artifact / qualification receipts
 
@@ -168,4 +182,4 @@ No procedural locale expander, generic room generator, room-count quota, palette
 - `docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md`
 - `docs/planning/RELEASE_1275_EXPAND_EXISTING_SLIM_LOCALES_WITH_JUSTIN_FEEDBACK.md`
 
-The live shape at this refresh is concrete: Releases 1267 and 1268 are merged; there are no open PRs; CURRENT is empty; Release 1269 is next; the explicit queue continues in order through Release 1275; and Release 1275 requires Justin's explicit target/direction feedback before each locale expansion is implemented.
+The live shape at this refresh: Release 1277 is merged on `acrinym/zork1` `master`; Release 1278 is the honesty/jar train in CURRENT; Glulxe optimization and the rest of the runtime foundation queue begin at 1279. Never merge to `historicalsource/zork1`.

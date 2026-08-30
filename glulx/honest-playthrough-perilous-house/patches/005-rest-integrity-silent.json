@@ -1,0 +1,12 @@
+{
+  "id": "005-rest-integrity-silent",
+  "path": "house_rest_and_dreams.zil",
+  "description": "Keep rest-record integrity as a non-turning check without printing qualification telemetry to the player.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<AND <EQUAL? ,HERE .OLD-HERE>\n                <EQUAL? ,SCORE .OLD-SCORE>\n                <EQUAL? ,SHADOW-SELF-FIRE .OLD-TIMER>\n                <EQUAL? ,P-IT-OBJECT .OLD-IT>\n                <EQUAL? <LOC .OBJ> .RLOC>>\n           <TELL \"REST-RECORD-INTEGRITY:PASS (location, score, timer, pronoun, and custody unchanged).\" CR>)\n          (T\n           <TELL \"REST-RECORD-INTEGRITY:FAIL.\" CR>)>",
+      "new": "    <COND (<NOT <AND <EQUAL? ,HERE .OLD-HERE>\n                     <EQUAL? ,SCORE .OLD-SCORE>\n                     <EQUAL? ,SHADOW-SELF-FIRE .OLD-TIMER>\n                     <EQUAL? ,P-IT-OBJECT .OLD-IT>\n                     <EQUAL? <LOC .OBJ> .RLOC>>>\n           <TELL \"The notebook's account of the rest does not match the room you are still standing in.\" CR>)>"
+    }
+  ]
+}

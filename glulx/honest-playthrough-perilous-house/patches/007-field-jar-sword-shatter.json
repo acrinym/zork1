@@ -1,0 +1,12 @@
+{
+  "id": "007-field-jar-sword-shatter",
+  "path": "museum_ecology_dam_fishing.zil",
+  "description": "Let an explicit sword or axe blow shatter the water-filled field jar instead of a generic futile refusal.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MUSEUM-FIELD-JAR-FCN ()\n    <COND (<VERB? EXAMINE>",
+      "new": "<ROUTINE MUSEUM-FIELD-JAR-FCN ()\n    <COND (<OR <AND <VERB? MUNG ATTACK CUT>\n                    <EQUAL? ,PRSO ,MUSEUM-FIELD-JAR>\n                    <EQUAL? ,PRSI ,SWORD ,AXE>>\n               <AND <VERB? THROW>\n                    <EQUAL? ,PRSI ,MUSEUM-FIELD-JAR>\n                    <EQUAL? ,PRSO ,SWORD ,AXE>>>\n           <TELL \"The blow reaches the glass. Water and leather slap the floor; the jar is no longer a vessel, only wet fragments.\" CR>\n           <COND (<IN? ,DAM-SILVERFIN ,MUSEUM-FIELD-JAR>\n                  <MOVE ,DAM-SILVERFIN ,HERE>\n                  <TELL \"The silverfin thrashes once in the spill and lies in open air.\" CR>)>\n           <REMOVE-CAREFULLY ,MUSEUM-FIELD-JAR>\n           <RTRUE>)\n          (<VERB? EXAMINE>"
+    }
+  ]
+}

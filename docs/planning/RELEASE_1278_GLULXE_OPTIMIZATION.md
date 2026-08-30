@@ -1,6 +1,8 @@
-# Release 1278 — Glulxe Optimization
+# Release 1279 — Glulxe Optimization
 
-**Queued after:** Release 1277 — Mundane Objects, Field Caching & Uncertain Utility  
+**Numbering slide (2026-08-30):** this train was planned as Release 1278. Release 1278 is now Honest Playthrough Records / House Jar. Keep this filename so existing links resolve.
+
+**Queued after:** Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar  
 **Status:** planned product train
 
 ## Purpose

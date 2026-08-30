@@ -1,14 +1,14 @@
 {
   "schema_version": "2.1",
   "board_id": "highly-extended-zork-product-kanban",
-  "updated_on": "2026-08-17",
+  "updated_on": "2026-08-30",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "687cc25b4a919fd82dc47384f7fba6c58158b0cd",
-    "latest_merged_release": 1268,
-    "latest_merged_release_title": "Clue Chains & Knowledge-Gated Interpretation",
-    "latest_merged_pr": 73,
-    "open_pr_count_when_refreshed": 0
+    "master_head_when_updated": "42c110095cb99c9aff6ef83956c391b437c76bef",
+    "latest_merged_release": 1277,
+    "latest_merged_release_title": "Mundane Objects, Field Caching & House Spatial Agency",
+    "latest_merged_pr": 85,
+    "open_pr_count_when_refreshed": 1
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -35,64 +35,61 @@
   },
   "stacked_predecessor": null,
   "lanes": {
-    "current": [],
+    "current": [
+      {
+        "release": 1278,
+        "train_id": "zork-honest-playthrough-perilous-house-1278",
+        "title": "Honest Playthrough Records, Rest Syntax, House Jar",
+        "status": "current-in-pr",
+        "planning_document": "docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md",
+        "outcome": "A fresh playthrough recaps only earned facts; LIE/LIE DOWN sleep; DRINK FROM SINK works; the field jar can be shattered with a sword or axe.",
+        "boundary": "No generic smash engine, recap-on-boot architecture dump, or player-visible qualification telemetry."
+      }
+    ],
     "next": [
       {
-        "release": 1269,
-        "train_id": "zork-structural-difficulty-modes-1269",
-        "title": "Structural Difficulty Modes",
+        "release": 1279,
+        "train_id": "zork-glulxe-optimization-1279",
+        "title": "Glulxe Optimization",
         "status": "next-1-planned",
-        "outcome": "Change authored problem-solving structure through evidence redundancy, recoverability, substitutes/resources, and consequence windows while preserving one world identity.",
-        "boundary": "No parser-phrasing tax, enemy-health multiplier, or generic scalar difficulty framework."
+        "planning_document": "docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md",
+        "numbering_slide": "Planned as 1278 until the 2026-08-30 honesty/jar repair took that number."
       },
       {
-        "release": 1270,
-        "train_id": "zork-causal-death-failure-feedback-1270",
-        "title": "Causal Death & Failure Feedback",
+        "release": 1280,
+        "train_id": "zork-future-proof-runtime-contract-1280",
+        "title": "Future-Proof Runtime Contract",
         "status": "next-2-planned"
       },
       {
-        "release": 1271,
-        "train_id": "zork-creature-encounters-systemic-puzzles-1271",
-        "title": "Creature Encounters as Systemic Puzzles",
+        "release": 1281,
+        "train_id": "zork-extended-globals-compiler-state-1281",
+        "title": "Extended Globals / Compiler State Scaling",
         "status": "next-3-planned"
       },
       {
-        "release": 1272,
-        "train_id": "zork-shadowgate-style-original-region-1272",
-        "title": "Shadowgate-Style Macrostructure, Original Zork Region",
-        "status": "next-4-capstone-planned",
-        "target_shape": "roughly 20-30 authored rooms if design earns that size"
+        "release": 1282,
+        "train_id": "zork-story-code-optimization-1282",
+        "title": "Story-Code Optimization",
+        "status": "next-4-planned"
       },
       {
-        "release": 1273,
-        "train_id": "zork-living-biomes-wilderness-expansion-1273",
-        "title": "Living Biomes & Wilderness Expansion",
-        "status": "next-5-post-shadowgate-world-expansion-planned",
-        "initial_scope": [
-          "add a genuinely new forest subregion beyond the existing forest/tree scene and vine/underbrush edge",
-          "add a first wholly new climate/biome if authored design earns it",
-          "give the new biome distinct climate, canopy, water, ground, flora, fauna, traversal, hazards, resources, sensory language, and scripted scenes"
-        ],
-        "boundary": "authored geography and ecology only; no procedural biome generator, palette-swapped room factory, universal biome stat sheet, generic climate simulator, or room-count padding"
+        "release": 1283,
+        "train_id": "zork-cross-interpreter-compatibility-1283",
+        "title": "Cross-Interpreter Compatibility",
+        "status": "next-5-planned"
       },
       {
-        "release": 1274,
-        "train_id": "zork-environmental-mechanisms-diegetic-puzzle-furniture-1274",
-        "title": "Environmental Mechanisms & Diegetic Puzzle Furniture",
-        "status": "next-6-environmental-puzzle-language-planned",
-        "planning_document": "docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md",
-        "outcome": "Translate prose-visible irregularity -> examination -> physical inference -> authored manipulation into persistent Zork-native environmental mechanisms.",
-        "boundary": "no generic secret-switch framework, noun auto-promotion, universal furniture state machine, arbitrary USE matrix, unfair parser pixel hunt, or copied Resident Evil content"
+        "release": 1284,
+        "train_id": "zork-large-world-scaling-1284",
+        "title": "Large-World Scaling",
+        "status": "next-6-planned"
       },
       {
-        "release": 1275,
-        "train_id": "zork-expand-existing-slim-locales-1275",
-        "title": "Expand Existing Slim Locales / Locations — with Justin's Explicit Feedback",
-        "status": "next-7-human-directed-existing-geography-expansion-planned",
-        "planning_document": "docs/planning/RELEASE_1275_EXPAND_EXISTING_SLIM_LOCALES_WITH_JUSTIN_FEEDBACK.md",
-        "human_gate": "Justin's explicit feedback is required for every expansion target and intended direction before implementation.",
-        "boundary": "no autonomous succession of locale expansions, procedural locale expander, generic room generator, room-count quota, palette-swapped filler, or ceremonial after-the-fact approval"
+        "release": 1285,
+        "train_id": "zork-portable-runtime-bundle-1285",
+        "title": "Portable Runtime Bundle",
+        "status": "next-7-planned"
       }
     ],
     "future": [
@@ -148,7 +145,9 @@
       {"release": 1265, "title": "Consumable Light & Graduated Darkness", "pr": 70, "merge_commit": "59c9e843c4723692a0017e9f189407272b5a284f", "artifact_sha256": "6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070", "qualification_run": 32034566984},
       {"release": 1266, "title": "Learned Magic as Parser Capability", "pr": 71, "merge_commit": "4425732bfc2fa28347453d9991513aeb28aaa531", "artifact_sha256": "d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9", "qualification_run": 32042641179},
       {"release": 1267, "title": "Semantic Examination & Hidden Structure", "pr": 72, "merge_commit": "90e30d59fcd44a5297d7524f65ee34c72aaff319", "artifact_sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0", "qualification_run": 32046910749},
-      {"release": 1268, "title": "Clue Chains & Knowledge-Gated Interpretation", "pr": 73, "merge_commit": "2e16f6cebbfb5a7892feac08d9e6461e6bb9313b", "artifact_sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16", "qualification_run": 32052058707}
+      {"release": 1268, "title": "Clue Chains & Knowledge-Gated Interpretation", "pr": 73, "merge_commit": "2e16f6cebbfb5a7892feac08d9e6461e6bb9313b", "artifact_sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16", "qualification_run": 32052058707},
+      {"release_range": "1269-1276", "title": "Structural difficulty through Mara field guidance", "proof": "merged on acrinym/zork1 master before PR #85"},
+      {"release": 1277, "title": "Mundane Objects, Field Caching & House Spatial Agency", "pr": 85, "merge_commit": "42c110095cb99c9aff6ef83956c391b437c76bef", "artifact_sha256": "582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599"}
     ]
   }
 }

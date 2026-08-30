@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1278-identity",
+  "path": "zork1.zil",
+  "description": "Advance the staged story identity from locked Release 1277 to Release 1278.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 MUNDANE OBJECTS FIELD CACHING AND HOUSE SPATIAL AGENCY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 HONEST PLAYTHROUGH RECORDS REST SYNTAX AND HOUSE JAR GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Mundane Objects, Field Caching & House Spatial Agency.\n  Release 1277 gives ordinary objects persistent uncertain utility, lets the real\n  House arrangement change, freezes player-authored photographs, and treats Mara\n  cooperation as an autonomous request decision rather than command authority.\"",
+      "new": ";\"Repository-local Honest Playthrough Records, Rest Syntax, and House Jar.\n  Release 1278 stops recap from claiming unearned attic, rug, trap, or garlic facts,\n  keeps rest-record integrity out of player text, restores LIE/LIE DOWN sleep, and\n  lets a sword shatter the museum field jar.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1277>",
+      "new": "<CONSTANT RELEASEID 1278>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Mundane Objects, Field Caching and House Spatial Agency Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Honest Playthrough Records, Rest Syntax and House Jar Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "006-lie-and-drink-from-syntax",
+  "path": "gsyntax.zil",
+  "description": "Let LIE / LIE DOWN reach Bedroom sleep and DRINK FROM reach the Kitchen sink.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX LIE DOWN = V-HOUSE-SLEEP>\n<SYNTAX LIE ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>",
+      "new": "<SYNTAX LIE = V-HOUSE-SLEEP>\n<SYNTAX LIE DOWN = V-HOUSE-SLEEP>\n<SYNTAX LIE DOWN ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>\n<SYNTAX LIE ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX DRINK FROM OBJECT (HELD CARRIED) = V-DRINK-FROM>",
+      "new": "<SYNTAX DRINK FROM OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-DRINK-FROM>"
+    }
+  ]
+}
