@@ -6,7 +6,7 @@ from pathlib import Path
 
 NEEDLE = '<ROUTINE JIGS-UP (DESC "OPTIONAL" (PLAYER? <>))'
 INSERT = """<ROUTINE JIGS-UP (DESC "OPTIONAL" (PLAYER? <>))
-	 <COND (,SURVEY-NO-RESET
+	 <COND (<FSET? ,PLAYER ,TRYTAKEBIT>
 		<TELL "SURVEY REWIND: you remain " D ,HERE " with the same inventory. Try a different command." CR>
 		<RFATAL>)>
 """

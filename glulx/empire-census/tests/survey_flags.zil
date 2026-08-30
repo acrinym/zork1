@@ -1,7 +1,7 @@
 "TEST-ONLY SURVEY FLAGS (1301) — never production"
 
-<GLOBAL SURVEY-NO-KILLING <>>
-<GLOBAL SURVEY-NO-RESET <>>
+;"No extra <GLOBAL>s: production Glulx is already at the 236-global ceiling.
+  Rewind is a test-only TRYTAKEBIT on PLAYER."
 
 <SYNTAX SURVEYKILL = V-SURVEY-KILL>
 <SYNTAX SURVEYREWIND = V-SURVEY-REWIND>
@@ -22,7 +22,6 @@
 	<RTRUE>>
 
 <ROUTINE V-SURVEY-KILL ()
-	<SETG SURVEY-NO-KILLING T>
 	<SETG TROLL-FLAG T>
 	<SETG CYCLOPS-FLAG T>
 	<SETG ALWAYS-LIT T>
@@ -31,7 +30,7 @@
 	<RTRUE>>
 
 <ROUTINE V-SURVEY-REWIND ()
-	<SETG SURVEY-NO-RESET T>
+	<FSET ,PLAYER ,TRYTAKEBIT>
 	<TELL "SURVEY FLAG --no-reset-on-death: a fatal command rewinds in place." CR>
 	<RTRUE>>
 
