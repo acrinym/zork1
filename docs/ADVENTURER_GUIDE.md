@@ -4,7 +4,7 @@ This is the player document **outside the game**. It is not a map and not a walk
 
 The in-game leaflet in the mailbox is still an advertisement. It now also names this edition honestly. For how to play a parser game at all, start with [`expanded/README.md`](../expanded/README.md). For what the current story file actually is, use this page.
 
-**Current locked story on `master`:** Release 1294 — Forest That Answers Back, then this train (1295) while it is in review.
+**Current locked story on `master` (after this train merges):** Release 1295 — West-of-House Described Nouns.
 
 **Play the Glulx story**, not a random `.z3` in the historical collection, unless you mean to play original Infocom Zork I.
 
