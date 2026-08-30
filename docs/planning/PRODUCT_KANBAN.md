@@ -4,7 +4,7 @@
 **Board data:** `docs/planning/product-kanban.json`  
 **Current merged production frontier:** Release `1304` — Living Collection (and runtime 1280–1286 on the same merge)  
 **Live `master` observed before this refresh:** `71c4a83` (PR #91)  
-**Open PRs observed before this refresh:** Release 1296 Leaflet Hour Noun Honesty (1296–1300)
+**Open PRs observed before this refresh:** [PR #92](https://github.com/acrinym/zork1/pull/92) — Release 1296 Leaflet Hour Noun Honesty (1296–1300), GraphQL `MERGEABLE` / `CLEAN` / checks `SUCCESS` after artifact lock. Not merged until an explicit Justin whistle.
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -38,6 +38,10 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 ### Releases 1296–1300 — Leaflet Hour Noun Honesty
 
 The white house ring, cellar commitment, Dam #3 as the only factory, score as geography, and unique vanilla set-pieces. One locked Glulx story staging 1304. Law: `docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`. Train: `glulx/leaflet-spine/`.
+
+- **PR:** [#92](https://github.com/acrinym/zork1/pull/92) on `acrinym/zork1` (`agent/1296-1300-leaflet-spine` → `master`)
+- **Babysit:** hosted `qualify-release-1296` pass on run `33336057382` after locking the candidate identity; nested `qualify-release-1304` still green. CodeRabbit skipped (OSS star threshold); Devin skipped (credits). No unresolved inline review threads.
+- **Locked candidate (not on `master` until merge):** `zork1-glulx-leaflet-hour-noun-honesty.ulx`, SHA-256 `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a`, size 559360, checksum `0x7506dcd5`
 
 ## NEXT — explicit queued product trains
 
@@ -159,4 +163,4 @@ Also remaining:
 - `docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`
 - `docs/ADVENTURER_GUIDE.md`
 
-The live shape at this refresh: Releases 1278–1286, 1293–1295, and 1304 are merged on `acrinym/zork1` `master` (`71c4a83`, PR #91). CURRENT is 1296–1300 leaflet-hour noun honesty. Never merge to `historicalsource/zork1`.
+The live shape at this refresh: Releases 1278–1286, 1293–1295, and 1304 are merged on `acrinym/zork1` `master` (`71c4a83`, PR #91). CURRENT is 1296–1300 leaflet-hour noun honesty, merge-ready on PR #92. Never merge to `historicalsource/zork1`.

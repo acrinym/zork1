@@ -16,7 +16,15 @@ Locked 1304 production artifact:
 - Glulx `0x00030103`
 - SHA-256 `6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b`
 
-**Open current train:** Releases 1296–1300 — Leaflet Hour Noun Honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)), on `acrinym/zork1` only. Stages locked 1304. Does not steal 1280–1292.
+**Open current train (merge-ready, not merged):** Releases 1296–1300 — Leaflet Hour Noun Honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)), on `acrinym/zork1` only. Stages locked 1304. Does not steal 1280–1292.
+
+Locked 1296 candidate artifact:
+
+- `zork1-glulx-leaflet-hour-noun-honesty.ulx`
+- Glulx `0x00030103`
+- SHA-256 `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a`
+- size 559360, checksum `0x7506dcd5`
+- hosted qualification: `qualify-release-1296` run `33336057382`
 
 See [`living-collection/`](living-collection/), [`runtime-foundation/`](runtime-foundation/), [`leaflet-spine/`](leaflet-spine/), [`west-of-house-nouns/`](west-of-house-nouns/), [`forest-answers-back/`](forest-answers-back/), [`honest-system-recap/`](honest-system-recap/), [`glulxe-optimization/`](glulxe-optimization/), and [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/).
 

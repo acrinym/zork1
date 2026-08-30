@@ -8,7 +8,7 @@ This project keeps the original Zork I world and canonical puzzle solutions, the
 
 The technical and reproducibility material is intentionally **after** the player guide.
 
-**Current Highly Extended lineage described here:** through Release `1304` — **Living Collection** (PR #91), including runtime foundation 1280–1286. Open CURRENT: Releases **1296–1300** leaflet-hour noun honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)).  
+**Current Highly Extended lineage described here:** through Release `1304` — **Living Collection** (PR #91), including runtime foundation 1280–1286. Open CURRENT (merge-ready, not on `master` until merge): Releases **1296–1300** leaflet-hour noun honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)), locked candidate SHA-256 `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a`.  
 **Default branch:** `master`  
 **Live board:** [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 

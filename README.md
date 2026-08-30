@@ -2,7 +2,7 @@
 
 > **Looking for the actively developed Highly Extended Zork I?** Start with [`docs/ADVENTURER_GUIDE.md`](docs/ADVENTURER_GUIDE.md) for what this edition is, then [`expanded/README.md`](expanded/README.md) for how to play a parser game. Product sequence lives on [`docs/planning/PRODUCT_KANBAN.md`](docs/planning/PRODUCT_KANBAN.md).
 >
-> **Merged production on `master`:** through Release **1304** Living Collection (PR #91), including runtime foundation **1280–1286**. **Open CURRENT:** Release **1296–1300** leaflet-hour noun honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)). Law: if the game already named a thing, the parser must treat it as real ([`docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`](docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md)).
+> **Merged production on `master`:** through Release **1304** Living Collection (PR #91), including runtime foundation **1280–1286**. **Open CURRENT (merge-ready, not merged):** Release **1296–1300** leaflet-hour noun honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)) — locked candidate `zork1-glulx-leaflet-hour-noun-honesty.ulx` SHA-256 `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a`. Law: if the game already named a thing, the parser must treat it as real ([`docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`](docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md)).
 >
 > Writable product is **`acrinym/zork1` only**. `historicalsource/zork1` is a read-only Infocom snapshot — never commit or open PRs there. The historical collection described below remains preserved. Highly Extended is additive, not a relabeling of an official Infocom release.
 

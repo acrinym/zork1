@@ -9,7 +9,8 @@
     "latest_merged_release_title": "Living Collection and Companionship",
     "latest_merged_pr": 91,
     "open_pr_count_when_refreshed": 1,
-    "open_pr_when_refreshed": "1296-leaflet-hour-noun-honesty"
+    "open_pr_when_refreshed": "https://github.com/acrinym/zork1/pull/92",
+    "open_pr_merge_ready_when_refreshed": true
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -48,7 +49,10 @@
         "release": 1296,
         "train_id": "zork-leaflet-hour-noun-honesty-1296-1300",
         "title": "Leaflet Hour Noun Honesty",
-        "status": "current-in-pr",
+        "status": "current-merge-ready",
+        "pr": 92,
+        "qualification_run": 33336057382,
+        "artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a",
         "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
         "outcome": "House ring, cellar commitment, Dam #3, leaflet-hour containers, and unique vanilla set-pieces answer the nouns those rooms already name.",
         "boundary": "Stages locked 1304. Does not steal 1280-1292. No GUI. No AI. No scenery engine. Test verbs LSPDAM through LSPTHIEF stay out of production."

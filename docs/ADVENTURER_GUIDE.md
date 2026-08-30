@@ -4,7 +4,7 @@ This is the player document **outside the game**. It is not a map and not a walk
 
 The in-game leaflet in the mailbox is still an advertisement. It now also names this edition honestly. For how to play a parser game at all, start with [`expanded/README.md`](../expanded/README.md). For what the current story file actually is, use this page.
 
-**Current locked story on `master`:** Release 1304 — Living Collection and Companionship (planning ids 1287–1292), merge `71c4a83` / PR #91. Open CURRENT train: Releases 1296–1300 leaflet-hour noun honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)).
+**Current locked story on `master`:** Release 1304 — Living Collection and Companionship (planning ids 1287–1292), merge `71c4a83` / PR #91. Open CURRENT train (merge-ready, not merged): Releases 1296–1300 leaflet-hour noun honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)), locked candidate `zork1-glulx-leaflet-hour-noun-honesty.ulx` SHA-256 `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a`.
 
 **Play the Glulx story**, not a random `.z3` in the historical collection, unless you mean to play original Infocom Zork I.
 
