@@ -1,0 +1,12 @@
+{
+  "id": "005-mara-show-tells-catch",
+  "path": "mara_companion_actions.zil",
+  "description": "Showing Mara a catch is in-world telling; she does not learn a solo fish she never saw or was shown.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "           <MARA-PUT ,MARA-SLOT-LAST-EVIDENCE ,PRSO>\n           <COND (<ZERO? <MARA-GET ,MARA-SLOT-EVIDENCE-SHARED>>",
+      "new": "           <MARA-PUT ,MARA-SLOT-LAST-EVIDENCE ,PRSO>\n           <LC-NOTE-SHOW ,PRSO>\n           <COND (<ZERO? <MARA-GET ,MARA-SLOT-EVIDENCE-SHARED>>"
+    }
+  ]
+}

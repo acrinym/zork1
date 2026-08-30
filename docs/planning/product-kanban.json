@@ -4,12 +4,12 @@
   "updated_on": "2026-08-30",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "691926c5b4f91106ed5534b293cbaff4df82630f",
-    "latest_merged_release": 1294,
-    "latest_merged_release_title": "Forest That Answers Back",
-    "latest_merged_pr": 89,
+    "master_head_when_updated": "f87089e",
+    "latest_merged_release": 1295,
+    "latest_merged_release_title": "West-of-House Described Nouns",
+    "latest_merged_pr": 90,
     "open_pr_count_when_refreshed": 1,
-    "open_pr_when_refreshed": "1295-west-of-house-nouns"
+    "open_pr_when_refreshed": "1304-living-collection"
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",

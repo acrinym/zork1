@@ -1,8 +1,9 @@
 # Post-1286 — Living Collection & Companionship
 
 **Captured:** 2026-08-30  
-**Status:** FUTURE program — not CURRENT, not NEXT  
-**Starts after:** Release 1286 opt-in chronicle export is locked  
+**Updated:** 2026-08-30  
+**Status:** Implemented as Release **1304** (planning ids 1287–1292, one locked story). Runtime numbers **1280–1292 stay reserved** and are not stolen.  
+**Train:** `glulx/living-collection/`  
 **Writable repo:** `acrinym/zork1` only. Never `historicalsource/zork1`.
 
 This is the player-facing program after the runtime foundation. It deepens the museum, dam waters, and Mara as a person. It is not a GUI, not photographs, not DRAW, and not an illustrated frontend.
@@ -65,8 +66,12 @@ Player outcome: `ASK MARA TO TAKE THE JAR TO THE DAM` is a credible errand only 
 - Illustrated Zork, `DRAW`, computer vision, book layout, or any GUI.
 - Expanding 1277 photographs into a picture browser.
 - Chronicle export (that is Release 1286, runtime-side, opt-in, local).
-- Stealing 1279–1286 numbers from the runtime foundation queue.
+- Stealing 1280–1286 numbers from the runtime foundation queue.
+
+## Live numbering
+
+Justin authorized building this program before 1286. The six capabilities ship as **Release 1304** so 1280–1292 remain the runtime reservation. Filenames and section headings below keep 1287–1292 so old links resolve.
 
 ## Promotion rule
 
-Do not open an implementation branch for 1287 until 1286 is locked on `acrinym/zork1` `master` and Justin gives a fresh merge-whistle for that train. Planning this program is not a merge authorization.
+Superseded 2026-08-30: implementation is Release 1304 on `acrinym/zork1`. Do not reuse 1287–1292 as live release ids.
