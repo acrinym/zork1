@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1304-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only Living Collection setup after production sources",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"living_collection\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"living_collection\" T>\n<INSERT-FILE \"living_collection_test\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}

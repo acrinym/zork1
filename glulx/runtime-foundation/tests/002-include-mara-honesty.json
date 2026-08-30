@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-MARA-HONEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only Mara honesty setup",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_companion\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"mara_companion\" T>\n<INSERT-FILE \"mara_honesty_test\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}

@@ -2,9 +2,9 @@
 
 **Updated:** August 30, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1294` — Forest That Answers Back  
-**Live `master` observed before this refresh:** `691926c5b4f91106ed5534b293cbaff4df82630f` (PR #89)  
-**Open PRs observed before this refresh:** Release 1295 West-of-House described nouns
+**Current merged production frontier:** Release `1295` — West-of-House Described Nouns  
+**Live `master` observed before this refresh:** `f87089e` (PR #90)  
+**Open PRs observed before this refresh:** Release 1304 Living Collection (POST_1286 program, renumbered)
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -34,15 +34,15 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-### Release 1295 — West-of-House Described Nouns
+### Release 1304 — Living Collection and Companionship
 
-The opening look text already names wild grass, weathered boards, and settled silence. 1295 stages locked 1294 and makes grass and silence parser-real. Boards already answered. The mailbox leaflet keeps the Infocom ad and names Highly Extended honesty. Player companion: `docs/ADVENTURER_GUIDE.md`. No GUI. No AI. No scenery engine. Does not steal 1280–1292.
+The POST_1286 fishery / Mara witness / waters husbandry / house stewardship / custody / field-errand program, **renumbered** so 1280–1292 stay the runtime reservation. One locked Glulx story. No GUI. No AI.
 
-Planning: `docs/ADVENTURER_GUIDE.md`. Train: `glulx/west-of-house-nouns/`.
+Planning: `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`. Train: `glulx/living-collection/`.
 
 ## NEXT — explicit queued product trains
 
-Runtime foundation continues. No museum/Mara/fish implementation until 1279–1286 have reached the locked frontier. Filenames below keep their original numbers so old links resolve; **live release numbers** are in parentheses.
+Runtime foundation **1280–1286** is implemented in `glulx/runtime-foundation/` (same PR lane as 1304). Filenames on disk may still say 1279–1285.
 
 See `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`.
 
@@ -67,22 +67,15 @@ See `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`.
 ### 7. Release 1286 — Opt-In Playthrough Chronicle Export
 `docs/planning/RELEASE_1285_OPT_IN_PLAYTHROUGH_CHRONICLE_EXPORT.md` — local side-channel export only. Not a GUI, not illustration, not a network feature.
 
-## FUTURE — Living Collection & Companionship (after 1286)
+## FUTURE — remaining companionship (Living Collection is live **1304**)
 
-Parser-native whole trains. No photographs, DRAW, illustrated frontend, or other GUI. Planning contract: `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`.
+Parser-native. No photographs, DRAW, illustrated frontend, or other GUI. The 1287–1292 capabilities are CURRENT as Release 1304; see `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`.
 
-1. **1287 — Second Water / Reservoir Fishery** — one authored second species from Reservoir water, using the existing rod and smashable field jar.
-2. **1288 — Mara as Collection Witness** — she only knows catches, releases, and exhibits she actually saw or was told in the world.
-3. **1289 — Living Waters Husbandry** — the circulating case stays a real vessel: dam water, absence, and smashable-jar risk, not an aquarium checklist.
-4. **1290 — Mara House Stewardship** — she uses Kitchen, Bedroom, Attic, and museum as a person living there, not a maid skill tree.
-5. **1291 — Specimen Custody & Return** — real objects move on loan or return the way the songbird feather can return to the nest.
-6. **1292 — Mara Agreed Field Errands** — she travels on a real agreed purpose using 1276 field guidance, not a quest log.
-
-Also remaining (not numbered until 1286 lands):
+Also remaining:
 
 - **Mara Earned Romance & Partnership** — explicit mutual choice; no approval/love meter.
 - **Forest That Answers Back** — live **1294** (merged PR #89).
-- **West-of-House described nouns** — live **1295** (CURRENT). Grass, silence, honest leaflet, adventurer guide.
+- **West-of-House described nouns** — live **1295** (merged PR #90).
 - **Time, Weather & Disaster Arc** — authored conditions on real geography; no climate simulator.
 
 ## PARKED / SEPARATE
@@ -140,6 +133,10 @@ Also remaining (not numbered until 1286 lands):
 | 1269–1276 | Structural difficulty through Mara field guidance | merged on `acrinym/zork1` `master` before #85 |
 | 1277 | Mundane Objects, Field Caching & House Spatial Agency | #85 — merged `42c110095cb99c9aff6ef83956c391b437c76bef` |
 | 1278 | Honest Playthrough Records, Rest Syntax, House Jar | #86 — merged `080ba3a3d35f8f61da23f264ba088a6d59991b21` |
+| 1279 | Glulxe optimization | #87 |
+| 1293 | Honest System Recap | #88 |
+| 1294 | Forest That Answers Back | #89 |
+| 1295 | West-of-House Described Nouns | #90 |
 
 ### Recent locked artifact / qualification receipts
 
@@ -160,6 +157,7 @@ Also remaining (not numbered until 1286 lands):
 | 1279 | `0e8ad864b644a7351cd795e43e402b59bc058dc8` | runtime Glulxe; story unchanged | PR #87 |
 | 1293 | `983bb03f4f193eb056533e3aec65e1c57f59db53` | `79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641` | PR #88 |
 | 1294 | `691926c5b4f91106ed5534b293cbaff4df82630f` | `20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831` | PR #89 |
+| 1295 | `f87089e` | `a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b` | PR #90 |
 
 ## Canonical roadmap
 
@@ -172,4 +170,4 @@ Also remaining (not numbered until 1286 lands):
 
 - `docs/ADVENTURER_GUIDE.md`
 
-The live shape at this refresh: Releases 1278–1279, 1293, and 1294 are merged on `acrinym/zork1` `master`; Release 1295 (West-of-House nouns, honest leaflet, adventurer guide) is CURRENT and does not steal 1280–1292; runtime foundation remains 1280–1285; chronicle export is 1286; Living Collection is 1287–1292 after that. Never merge to `historicalsource/zork1`.
+The live shape at this refresh: Releases 1278–1279, 1293, 1294, and 1295 are merged on `acrinym/zork1` `master`; Release 1304 (Living Collection, planning 1287–1292) is CURRENT and does not steal 1280–1292; runtime foundation remains 1280–1286. Never merge to `historicalsource/zork1`.

@@ -1,0 +1,29 @@
+[train]
+name        = "cursor_zork_living_collection"
+title       = "Release 1304 Living Collection (POST_1286, renumbered)"
+description = """
+Planning 1287-1292 as one locked story: reservoir char, Mara witness honesty, waters husbandry, house stewardship, exact custody, Dam jar errands. No GUI. No AI. Does not steal 1280-1292.
+"""
+created     = "2026-08-30"
+status      = "in_progress"
+
+[[cars]]
+id = "fishery-witness-husbandry-stewardship-custody-errands"
+bead = "zork1-1304-001"
+title = "Living Collection player capabilities"
+parallel_start = true
+depends_on = []
+summary = "All six POST_1286 outcomes exist in one production story: reservoir FISH, honest ASK MARA, case feed/smash/absence, house ASK MARA TO PREPARE/REST/FILE, RELEASE/EXHIBIT exact objects, MARA TAKE JAR TO DAM."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1304-002"
+title = "Living Collection qualification"
+parallel_start = false
+depends_on = ["fishery-witness-husbandry-stewardship-custody-errands"]
+summary = "Hosted qualify stages 1295, compiles 1304, and proves the six outcomes on Glulxe."
+
+[meta]
+one_liner = "The museum, waters, and Mara stay objects and a person."
+couples_with = []
+watch = ["docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md"]

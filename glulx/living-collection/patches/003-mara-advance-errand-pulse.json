@@ -1,0 +1,12 @@
+{
+  "id": "003-mara-advance-errand-pulse",
+  "path": "mara_companion_movement.zil",
+  "description": "Pulse an accepted Dam jar errand on Mara's existing clock without teleporting her through unsurveyed stone.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ADVANCE ()\n    <MARA-ENSURE>\n    <MARA-CAUSAL-ADVANCE>",
+      "new": "<ROUTINE MARA-ADVANCE ()\n    <MARA-ENSURE>\n    <MARA-CAUSAL-ADVANCE>\n    <LC-ERRAND-PULSE>"
+    }
+  ]
+}

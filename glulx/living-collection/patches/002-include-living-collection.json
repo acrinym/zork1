@@ -1,0 +1,12 @@
+{
+  "id": "002-include-living-collection",
+  "path": "zork1.zil",
+  "description": "Load Living Collection after Mara so stewardship and errands can call MARA-HERE?.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_companion\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"living_collection_syntax\" T>\n<INSERT-FILE \"mara_companion\" T>\n<INSERT-FILE \"living_collection\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}

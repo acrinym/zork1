@@ -1,7 +1,7 @@
 # Post-1277 Runtime Foundation Queue — Releases 1278–1286
 
 **Approved queue:** 2026-08-21  
-**Refresh:** 2026-08-30 — Release **1278** is the honest-playthrough / house-jar repair required by the 1245 live playtest. The runtime foundation trains below slide by one.
+**Refresh:** 2026-08-30 — Releases **1278** and **1279** are merged. Live **1280–1286** are implemented as the runtime-foundation train (`glulx/runtime-foundation/`) on the locked 1295 story; the player `.ulx` SHA does not change.
 
 ## Order
 

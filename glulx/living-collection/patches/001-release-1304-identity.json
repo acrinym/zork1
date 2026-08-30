@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1304-identity",
+  "path": "zork1.zil",
+  "description": "Advance staged identity from locked Release 1295 to Release 1304 Living Collection.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 WEST-OF-HOUSE DESCRIBED NOUNS GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 LIVING COLLECTION AND COMPANIONSHIP GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local West-of-House Described Nouns.\n  Release 1295 makes the opening field grass and settled silence parser-real, and\n  the mailbox leaflet names Highly Extended honesty without a scenery engine.\"",
+      "new": ";\"Repository-local Living Collection and Companionship.\n  Release 1304 is the POST_1286 museum/Mara/waters program, renumbered so 1280-1292\n  stay the runtime reservation. Reservoir char, witnessed knowledge, husbandry,\n  house stewardship, custody, and agreed Dam errands. No GUI.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1295>",
+      "new": "<CONSTANT RELEASEID 1304>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"West-of-House Described Nouns Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Living Collection and Companionship Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

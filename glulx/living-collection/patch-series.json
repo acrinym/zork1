@@ -1,0 +1,58 @@
+{
+  "edition": "Living Collection and Companionship",
+  "release": 1304,
+  "serial": "260830",
+  "base_release": 1295,
+  "base_manifest": "../west-of-house-nouns/patch-series.json",
+  "base_artifact_sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b",
+  "base_source_sha256": {
+    "production": "2bac3083f957eb5f4704443c705c6964f0c58f9ac09b592b9a0973b2f2f66d1a",
+    "dev": "2741b36c9b0a75cbca0fda5669a4e8a803f524b6a7f911aeee63ac722b6ebc19"
+  },
+  "patches": [
+    "patches/001-release-1304-identity.json",
+    "patches/002-include-living-collection.json",
+    "patches/003-mara-advance-errand-pulse.json",
+    "patches/004-mara-actor-stewardship-and-errand.json",
+    "patches/005-mara-show-tells-catch.json",
+    "patches/006-mara-honest-catch-ignorance.json"
+  ],
+  "added_files": [
+    "living_collection_syntax.zil",
+    "living_collection.zil"
+  ],
+  "expected_changed_paths": [
+    "living_collection.zil",
+    "living_collection_syntax.zil",
+    "mara_companion_actions.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_movement.zil",
+    "mara_companion_state.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-living-collection.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 558080,
+    "checksum_hex": "0xeedee5f3",
+    "sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b"
+  },
+  "planning_map": {
+    "1287": "reservoir fishery",
+    "1288": "Mara collection witness",
+    "1289": "living waters husbandry",
+    "1290": "Mara house stewardship",
+    "1291": "specimen custody and return",
+    "1292": "Mara agreed field errands"
+  },
+  "player_outcomes": [
+    "FISH at the reservoir banks while they hold water produces one authored reservoir char, distinct from the dam silverfin",
+    "ASK MARA ABOUT a solo catch she did not see or get shown is honest ignorance",
+    "the Waters case reports circulating dam water, stagnant feed, smashed-jar ruin, presence, and absence without cloning fish",
+    "ASK MARA TO PREPARE / REST / FILE is an autonomous house decision, not furniture teleports",
+    "RELEASE and EXHIBIT move the exact char or silverfin; plaques record absence",
+    "ASK MARA TO TAKE THE JAR TO THE DAM is accepted only with a surveyed Dam route and a real jar"
+  ]
+}
