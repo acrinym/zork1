@@ -122,7 +122,7 @@ ask mara about silverfin
 lctide
 fish
 lckitchen
-ask mara to supper
+mara, cook
 lcerrand
 mara, take jar to dam
 look
