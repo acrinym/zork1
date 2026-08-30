@@ -31,10 +31,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-living-collection.ulx",
     "format": "Glulx",
-    "version_hex": "0x00030103"
+    "version_hex": "0x00030103",
+    "size_bytes": 558080,
+    "checksum_hex": "0xeedee5f3",
+    "sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b"
   },
   "planning_map": {
     "1287": "reservoir fishery",
