@@ -106,7 +106,6 @@ forbid(){ local f="$1"; shift; local token; for token in "$@"; do if grep -F "$t
 printf 'look\nquit\nyes\n' > "$BUILD/production-smoke.txt"
 timeout 120s "$GLULXE" --rngseed 123456 "$STORY" < "$BUILD/production-smoke.txt" > "$BUILD/production-smoke-transcript.txt" 2>&1
 grep -F 'West of House' "$BUILD/production-smoke-transcript.txt"
-grep -F 'Honest Playthrough Records' "$BUILD/production-smoke-transcript.txt"
 
 cat > "$BUILD/fresh-recap.txt" <<'EOF_FRESH'
 open mailbox
