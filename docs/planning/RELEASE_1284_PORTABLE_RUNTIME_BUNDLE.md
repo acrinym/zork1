@@ -1,6 +1,9 @@
 # Release 1284 — Portable Runtime Bundle
 
-**Queued after:** Release 1283 — Large-World Scaling  
+**Live release number (2026-08-30):** 1285  
+**This filename keeps 1284 so existing links resolve.**  
+**Queued after (live):** Release 1284 — Large-World Scaling  
+
 **Status:** planned product train
 
 ## Purpose

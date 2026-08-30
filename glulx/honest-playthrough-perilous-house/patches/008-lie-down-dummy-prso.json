@@ -1,0 +1,12 @@
+{
+  "id": "008-lie-down-dummy-prso",
+  "path": "house_rest_and_dreams.zil",
+  "description": "Let LIE DOWN's parser dummy object sleep in the Bedroom; refuse only a present thing that is not the bed.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (<AND ,PRSO <NOT <EQUAL? ,PRSO ,REST-BED ,ROOMS>>>\n           <REST-PUT ,RS-EVENT-REFUSED T>\n           <TELL \"That is not the Bedroom's bed.\" CR>\n           <RFALSE>)",
+      "new": "          (<AND ,PRSO\n                <NOT <EQUAL? ,PRSO ,REST-BED ,ROOMS>>\n                <OR <IN? ,PRSO ,HERE> <IN? ,PRSO ,WINNER>>>\n           <REST-PUT ,RS-EVENT-REFUSED T>\n           <TELL \"That is not the Bedroom's bed.\" CR>\n           <RFALSE>)"
+    }
+  ]
+}

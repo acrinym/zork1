@@ -1,6 +1,9 @@
 # Release 1282 — Cross-Interpreter Compatibility
 
-**Queued after:** Release 1281 — Story-Code Optimization  
+**Live release number (2026-08-30):** 1283  
+**This filename keeps 1282 so existing links resolve.**  
+**Queued after (live):** Release 1282 — Story-Code Optimization  
+
 **Status:** planned product train
 
 ## Purpose

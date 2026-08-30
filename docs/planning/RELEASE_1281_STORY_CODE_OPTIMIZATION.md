@@ -1,13 +1,16 @@
 # Release 1281 — Story-Code Optimization
 
-**Queued after:** Release 1280 — Extended Globals / Compiler State Scaling  
-**Status:** planned product train
+**Live release number (2026-08-30):** 1282  
+**This filename keeps 1281 so existing links resolve.**  
+**Queued after (live):** Release 1281 — Extended Globals / Compiler State Scaling  
+
+Release 1279 makes one native interpreter faster. This train makes the story itself cheaper to execute.
 
 ## Purpose
 
 Reduce the amount of work the compiled HOE story asks any conforming Glulx interpreter to perform.
 
-Release 1278 makes one native interpreter faster. Release 1281 makes the story itself cheaper to execute so the gain carries across Glulxe, Git, Quixe, and future interpreters.
+Live Release 1279 makes one native interpreter faster. Live Release 1282 makes the story itself cheaper to execute so the gain carries across Glulxe, Git, Quixe, and future interpreters.
 
 ## Product work
 

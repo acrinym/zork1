@@ -1,10 +1,15 @@
 # Expansion frontier and next trains
 
-**Updated:** August 11, 2026  
-**Current production frontier:** Release `1249` — Underground Sensory Physicality  
-**Current `master` head:** `bacb1a358f0ee126ee6ae629b589c3d3a0269ee9`
+**Updated:** August 30, 2026  
+**Current production frontier:** Release `1277` — Mundane Objects, Field Caching & House Spatial Agency  
+**Current `master` head:** `42c110095cb99c9aff6ef83956c391b437c76bef`  
+**Open PR:** #86 — Release 1278 honesty / jar. Do not merge until all green.
 
-The old House of Records frontier at Release `1230` is historical. The active product lineage has continued through Release `1249`.
+The live operating board is [`../../docs/planning/PRODUCT_KANBAN.md`](../../docs/planning/PRODUCT_KANBAN.md). This file no longer carries an independent next-train queue.
+
+Post-1286 museum / Mara / fish program: [`../../docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`](../../docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md).
+
+The old House of Records frontier at Release `1230` is historical.
 
 For the full post-1249 rationale, design laws, and acceptance direction, see:
 

@@ -1,6 +1,9 @@
 # Release 1279 — Future-Proof Runtime Contract
 
-**Queued after:** Release 1278 — Glulxe Optimization  
+**Live release number (2026-08-30):** 1280  
+**This filename keeps 1279 so existing links resolve.**  
+**Queued after (live):** Release 1279 — Glulxe Optimization  
+
 **Status:** planned product train
 
 ## Purpose

@@ -1,0 +1,49 @@
+{
+  "edition": "Honest Playthrough Records, Rest Syntax, House Jar",
+  "release": 1278,
+  "serial": "260830",
+  "base_release": 1277,
+  "base_manifest": "../mundane-objects-spatial-agency/patch-series.json",
+  "base_artifact_sha256": "582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599",
+  "base_source_sha256": {
+    "production": "1bf61f85f264b412db1bb78a2834b6fdc4a160a3e10cc2b7f1e3a68784a8efa2",
+    "dev": "066a2cf4fa6ff1feb201f4a87a1b167589281242fad67b5296c4b63771dcc9d8"
+  },
+  "patches": [
+    "patches/001-release-1278-identity.json",
+    "patches/002-attic-recap-requires-attic-visit.json",
+    "patches/003-house-recap-split-disturbance.json",
+    "patches/004-kitchen-recap-split-food.json",
+    "patches/005-rest-integrity-silent.json",
+    "patches/006-lie-and-drink-from-syntax.json",
+    "patches/007-field-jar-sword-shatter.json",
+    "patches/008-lie-down-dummy-prso.json"
+  ],
+  "expected_changed_paths": [
+    "attic_archive_core.zil",
+    "gsyntax.zil",
+    "house_kitchen_laboratory.zil",
+    "house_rest_and_dreams.zil",
+    "house_state_foundation.zil",
+    "museum_ecology_dam_fishing.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-honest-playthrough-perilous-house.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 548864,
+    "checksum_hex": "0xfd84063d",
+    "sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1"
+  },
+  "player_outcomes": [
+    "a fresh playthrough RECAP does not claim attic microfiche, catalog, or archive migration until the Attic has been visited",
+    "RECAP names an open kitchen window, a moved rug, and an open trap door as separate facts rather than one OR-list",
+    "RECAP names prepared lunch and sliced garlic as separate facts",
+    "reading the dream notebook does not print REST-RECORD-INTEGRITY telemetry",
+    "LIE, LIE DOWN, and LIE ON BED reach Bedroom sleep",
+    "DRINK FROM SINK reaches the Kitchen tap drink instead of the generic How peculiar refusal",
+    "BREAK JAR WITH SWORD shatters the real field jar"
+  ]
+}

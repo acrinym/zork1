@@ -1,6 +1,9 @@
 # Release 1283 — Large-World Scaling
 
-**Queued after:** Release 1282 — Cross-Interpreter Compatibility  
+**Live release number (2026-08-30):** 1284  
+**This filename keeps 1283 so existing links resolve.**  
+**Queued after (live):** Release 1283 — Cross-Interpreter Compatibility  
+
 **Status:** planned product train
 
 ## Purpose

@@ -1,0 +1,12 @@
+{
+  "id": "002-attic-recap-requires-attic-visit",
+  "path": "attic_archive_core.zil",
+  "description": "Do not recap House-of-Records architecture until the Adventurer has actually visited the Attic.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ARCHIVE-RECAP (\"AUX\" (SEEN <>))\n    <COND (<ARCHIVE-GET ,AS-EVENT-SCHEMA>",
+      "new": "<ROUTINE ARCHIVE-RECAP (\"AUX\" (SEEN <>))\n    <COND (<NOT <FSET? ,ATTIC ,TOUCHBIT>>\n           <RFALSE>)>\n    <COND (<ARCHIVE-GET ,AS-EVENT-SCHEMA>"
+    }
+  ]
+}

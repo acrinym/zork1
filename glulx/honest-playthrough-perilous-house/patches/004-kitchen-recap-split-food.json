@@ -1,0 +1,17 @@
+{
+  "id": "004-kitchen-recap-split-food",
+  "path": "house_kitchen_laboratory.zil",
+  "description": "Recap prepared lunch and sliced garlic only when each actually happened, and let DRINK FROM the sink reach the tap drink.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<KITCHEN-GET ,KS-EVENT-FOOD>\n           <SET SEEN T>\n           <TELL \"- You prepared the real lunch or sliced the real garlic without creating a recipe economy.\" CR>)>",
+      "new": "    <COND (<KITCHEN-GET ,KS-LUNCH-PREPARED>\n           <SET SEEN T>\n           <TELL \"- You prepared the real lunch without creating a recipe economy.\" CR>)>\n    <COND (<KITCHEN-GET ,KS-GARLIC-SLICED>\n           <SET SEEN T>\n           <TELL \"- You sliced the real garlic without creating a recipe economy.\" CR>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<AND <EQUAL? .OBJ ,KITCHEN-SINK>\n                <VERB? DRINK>>",
+      "new": "          (<AND <EQUAL? .OBJ ,KITCHEN-SINK>\n                <VERB? DRINK DRINK-FROM>>"
+    }
+  ]
+}

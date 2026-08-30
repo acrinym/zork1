@@ -1,0 +1,12 @@
+{
+  "id": "003-house-recap-split-disturbance",
+  "path": "house_state_foundation.zil",
+  "description": "Recap open window, moved rug, and open trap as separate earned facts.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (,HOUSE-EVENT-DISTURBANCE\n           <SET SEEN T>\n           <TELL \"- Opened routes, the moved rug, or the exposed trap door left visible evidence that the house has been disturbed.\" CR>)>",
+      "new": "    <COND (<FSET? ,KITCHEN-WINDOW ,OPENBIT>\n           <SET SEEN T>\n           <TELL \"- The kitchen window is open.\" CR>)>\n    <COND (,RUG-MOVED\n           <SET SEEN T>\n           <TELL \"- You moved the living-room rug.\" CR>)>\n    <COND (<FSET? ,TRAP-DOOR ,OPENBIT>\n           <SET SEEN T>\n           <TELL \"- The living-room trap door is open.\" CR>)>"
+    }
+  ]
+}

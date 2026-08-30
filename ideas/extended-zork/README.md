@@ -2,9 +2,7 @@
 
 ## Status
 
-Future Zork concept lane. The House of Records program is complete in Release `1230`; this directory remains outside that closed 12-train, 96-bead lineage and does not retroactively add sub-beads to it.
-
-Highly Extended Zork is now a valid candidate for the next Zork product phase, but this PR remains documentation-only until Justin explicitly promotes one product family into implementation.
+Concept lane. Live product work is on `docs/planning/PRODUCT_KANBAN.md`. Post-1286 museum / Mara / fish is `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`. This directory does not add beads to the closed House of Records program.
 
 ## Core direction
 
