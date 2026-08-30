@@ -101,7 +101,7 @@ compile_story "$TEST_SRC" "$BUILD/release1278-test.asm" "$TEST_STORY" test
 if [[ ! -x "$ROOT/.tooling/glulxe/glulxe" ]]; then make -C "$ROOT/.tooling/cheapglk"; make -C "$ROOT/.tooling/glulxe" OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"; fi
 GLULXE="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
 run_case(){ local n="$1"; timeout 120s "$GLULXE" --rngseed 123456 "$TEST_STORY" < "$BUILD/$n.txt" > "$BUILD/$n-transcript.txt" 2>&1; }
-forbid(){ local f="$1"; shift; local token; for token in "$@"; do if grep -F "$token" "$f"; then echo "Release 1278 unearned recap leaked: $token" >&2; exit 1; fi; done; }
+forbid(){ local f="$1"; shift; local token; for token in "$@"; do if grep -F -- "$token" "$f"; then echo "Release 1278 unearned recap leaked: $token" >&2; exit 1; fi; done; }
 
 printf 'look\nquit\nyes\n' > "$BUILD/production-smoke.txt"
 timeout 120s "$GLULXE" --rngseed 123456 "$STORY" < "$BUILD/production-smoke.txt" > "$BUILD/production-smoke-transcript.txt" 2>&1
@@ -126,7 +126,7 @@ quit
 yes
 EOF_WIN
 run_case window-recap; F="$BUILD/window-recap-transcript.txt"
-grep -F '- The kitchen window is open.' "$F"
+grep -F -- '- The kitchen window is open.' "$F"
 forbid "$F" 'You moved the living-room rug.' 'The living-room trap door is open.' 'microfiche' 'You sliced the real garlic'
 
 cat > "$BUILD/lie.txt" <<'EOF_LIE'
