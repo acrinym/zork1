@@ -1,0 +1,12 @@
+{
+  "id": "005-include-house-furniture",
+  "path": "mara_companion.zil",
+  "description": "Load bounded Release 1277 House furniture and promise lifecycle after the core 1277 object/request authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_field_guidance\" T>\n<INSERT-FILE \"release1277\" T>\n<INSERT-FILE \"mara_companion_movement\" T>",
+      "new": "<INSERT-FILE \"mara_field_guidance\" T>\n<INSERT-FILE \"release1277\" T>\n<INSERT-FILE \"release1277_house_furniture\" T>\n<INSERT-FILE \"mara_companion_movement\" T>"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "021-parser-safe-house-haul-and-remote-request",
+  "path": "release1277_house_furniture.zil",
+  "description": "Use parser-safe route words for bounded House hauling and recover only explicitly authored remote Mara request targets from NOT-HERE noun state.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) WEST = V-R1277-HAUL-WEST>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) EAST = V-R1277-HAUL-EAST>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) UP = V-R1277-HAUL-UP>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) DOWN = V-R1277-HAUL-DOWN>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) OUT = V-R1277-HAUL-OUT>\n<SYNONYM HAUL DRAG>",
+      "new": "<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) WESTWARD = V-R1277-HAUL-WEST>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) EASTWARD = V-R1277-HAUL-EAST>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) UPSTAIRS = V-R1277-HAUL-UP>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) DOWNSTAIRS = V-R1277-HAUL-DOWN>\n<SYNTAX HAUL OBJECT (ON-GROUND IN-ROOM) OUTSIDE = V-R1277-HAUL-OUT>\n<SYNONYM HAUL DRAG>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE R1277-REQUESTABLE-OBJECT? (OBJ)\n    <COND (<EQUAL? .OBJ ,RUG ,KITCHEN-TABLE ,ATTIC-TABLE> <RTRUE>)\n          (<EQUAL? .OBJ ,ARCHIVE-CABINET> <RTRUE>)>\n    <RFALSE>>",
+      "new": "<ROUTINE R1277-REQUESTABLE-OBJECT? (OBJ)\n    <COND (<EQUAL? .OBJ ,RUG ,KITCHEN-TABLE ,ATTIC-TABLE> <RTRUE>)\n          (<EQUAL? .OBJ ,ARCHIVE-CABINET> <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE R1277-REMOTE-REQUESTED-OBJECT ()\n    <COND (<AND <EQUAL? ,P-XNAM ,W?TABLE>\n                <EQUAL? ,P-XADJ ,W?KITCHEN>>\n           <RETURN ,KITCHEN-TABLE>)\n          (<AND <EQUAL? ,P-XNAM ,W?TABLE>\n                <EQUAL? ,P-XADJ ,W?ATTIC>>\n           <RETURN ,ATTIC-TABLE>)\n          (<EQUAL? ,P-XNAM ,W?CABINET ,W?DRAWER>\n           <RETURN ,ARCHIVE-CABINET>)\n          (<EQUAL? ,P-XNAM ,W?FILE ,W?FILES>\n           <RETURN ,ARCHIVE-CABINET>)\n          (<EQUAL? ,P-XNAM ,W?RUG ,W?CARPET>\n           <RETURN ,RUG>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "HAUL it one real House route at a time -- for example, HAUL \" D ,PRSO \" WEST -- and the route itself decides whether it fits.",
+      "new": "HAUL it one real House route at a time -- for example, HAUL \" D ,PRSO \" WESTWARD -- and the route itself decides whether it fits."
+    }
+  ]
+}

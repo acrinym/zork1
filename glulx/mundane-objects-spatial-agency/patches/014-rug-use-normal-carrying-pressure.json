@@ -1,0 +1,12 @@
+{
+  "id": "014-rug-use-normal-carrying-pressure",
+  "path": "release1277.zil",
+  "description": "Take the whole carpet through the engine's real ITAKE capacity/custody path instead of directly assigning it to the Adventurer.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (T\n           <R1277-REVEAL-UNDER-RUG>\n           <MOVE ,RUG ,ADVENTURER>\n           <COND (<EQUAL? <R1277-GET ,R1277-SLOT-MARA-HELPING> ,RUG>",
+      "new": "          (T\n           <R1277-REVEAL-UNDER-RUG>\n           <COND (<NOT <EQUAL? <ITAKE> T>>\n                  <TELL \"The rolled carpet is physically movable, but your current load leaves no honest way to carry it as well. You will have to set something down or cache it first.\" CR>\n                  <RTRUE>)>\n           <COND (<EQUAL? <R1277-GET ,R1277-SLOT-MARA-HELPING> ,RUG>"
+    }
+  ]
+}

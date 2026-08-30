@@ -1,0 +1,12 @@
+{
+  "id": "020-canonical-furniture-pull-verb",
+  "path": "release1277_house_furniture.zil",
+  "description": "Use the legacy parser's canonical PUSH action for pull/push furniture handling instead of referencing nonexistent V?PULL.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<COND (<VERB? MOVE PUSH PULL TAKE>",
+      "new": "<COND (<VERB? MOVE PUSH TAKE>"
+    }
+  ]
+}

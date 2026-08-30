@@ -1,0 +1,12 @@
+{
+  "id": "016-promise-current-boundary-renegotiation",
+  "path": "release1277_house_furniture.zil",
+  "description": "Renegotiate the bounded hauling promise from Mara's current rupture/custody state rather than treating old biography as a permanent boundary.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "                 (<MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE>\n                  <R1277-PUT ,R1277-SLOT-MARA-PROMISE 0>\n                  <R1277-HOUSE-PUT ,R1277-HS-PROMISE-NOTED 0>\n                  <TELL \"Mara faces the promised \" D .OBJ \" without pretending the relationship state stayed the same. I made that commitment before the rupture. I am releasing this optional hauling promise explicitly rather than letting it disappear in silence.\" CR>\n                  <RTRUE>)",
+      "new": "                 (<MARA-RUPTURE-OPEN?>\n                  <R1277-PUT ,R1277-SLOT-MARA-PROMISE 0>\n                  <R1277-HOUSE-PUT ,R1277-HS-PROMISE-NOTED 0>\n                  <TELL \"Mara faces the promised \" D .OBJ \" without pretending the relationship state stayed the same. I made that commitment before the rupture, she says. The current boundary is distance. I am releasing this optional hauling promise explicitly rather than letting it disappear in silence.\" CR>\n                  <RTRUE>)\n                 (<AND <MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE>\n                       <ZERO? <MARA-GET ,MARA-SLOT-BIO-ROPE-RETURNED>>>\n                  <R1277-PUT ,R1277-SLOT-MARA-PROMISE 0>\n                  <R1277-HOUSE-PUT ,R1277-HS-PROMISE-NOTED 0>\n                  <TELL \"Mara looks from the promised \" D .OBJ \" to the still-unresolved rope custody. I cannot honestly keep an optional close-labor promise stacked on top of an entrusted thing you have not returned, she says. Settle the real custody first; this promise is released, not forgotten.\" CR>\n                  <RTRUE>)"
+    }
+  ]
+}

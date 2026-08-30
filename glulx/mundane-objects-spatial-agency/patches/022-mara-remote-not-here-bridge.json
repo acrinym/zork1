@@ -1,0 +1,12 @@
+{
+  "id": "022-mara-remote-not-here-bridge",
+  "path": "gglobals.zil",
+  "description": "Allow ASK MARA TO HELP WITH a bounded authored remote object to become a real deferred promise before generic NOT-HERE actor confusion, without making remote objects generally accessible.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE NOT-HERE-OBJECT-F (\"AUX\" TBL (PRSO? T) OBJ)\n\t ;\"This COND is game independent (except the TELL)\"\n\t <COND (<AND <EQUAL? ,PRSO ,NOT-HERE-OBJECT>",
+      "new": "<ROUTINE NOT-HERE-OBJECT-F (\"AUX\" TBL (PRSO? T) OBJ)\n\t ;\"Release 1277: a Mara help request may name one bounded real object elsewhere.\"\n\t <COND (<AND <EQUAL? ,WINNER ,MARA>\n\t             <VERB? R1277-MARA-HELP>\n\t             <EQUAL? ,PRSO ,NOT-HERE-OBJECT>>\n\t        <SET OBJ <R1277-REMOTE-REQUESTED-OBJECT>>\n\t        <COND (.OBJ\n\t               <SETG P-CONT <>>\n\t               <SETG QUOTE-FLAG <>>\n\t               <R1277-MARA-REQUEST-OBJECT .OBJ>\n\t               <RTRUE>)>)>\n\t ;\"This COND is game independent (except the TELL)\"\n\t <COND (<AND <EQUAL? ,PRSO ,NOT-HERE-OBJECT>"
+    }
+  ]
+}

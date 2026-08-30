@@ -1,0 +1,22 @@
+{
+  "id": "015-current-mara-trust-authority",
+  "path": "release1277.zil",
+  "description": "Use Mara's live rupture/custody authority for current cooperation without erasing historical promise breaches.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE R1277-MARA-CAN-COOPERATE? ()\n    <COND (<NOT <MARA-HERE?>> <RFALSE>)\n          (<MARA-GET ,MARA-SLOT-LADDER-PERIL> <RFALSE>)\n          (<AND <MARA-GET ,MARA-SLOT-LADDER-INJURY>\n                <ZERO? <MARA-GET ,MARA-SLOT-LADDER-RECOVERED>>>\n           <RFALSE>)\n          (<MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE> <RFALSE>)>\n    <RTRUE>>",
+      "new": "<ROUTINE R1277-MARA-TRUST-CLOSED? ()\n    <COND (<MARA-RUPTURE-OPEN?> <RTRUE>)\n          (<AND <MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE>\n                <ZERO? <MARA-GET ,MARA-SLOT-BIO-ROPE-RETURNED>>>\n           <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE R1277-MARA-CAN-COOPERATE? ()\n    <COND (<NOT <MARA-HERE?>> <RFALSE>)\n          (<MARA-GET ,MARA-SLOT-LADDER-PERIL> <RFALSE>)\n          (<AND <MARA-GET ,MARA-SLOT-LADDER-INJURY>\n                <ZERO? <MARA-GET ,MARA-SLOT-LADDER-RECOVERED>>>\n           <RFALSE>)\n          (<R1277-MARA-TRUST-CLOSED?> <RFALSE>)>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE>\n           <TELL \"Mara looks at you, then the \" D ,PRSI \". If somebody is trapped, I help. Optional close hauling after the rope promise? No. Not yet.\" CR>)",
+      "new": "          (<MARA-RUPTURE-OPEN?>\n           <TELL \"Mara looks at you, then the \" D ,PRSI \". If somebody is trapped, I help. Optional close hauling while the rupture is still open? No. The current boundary is distance, not obedience with furniture.\" CR>)\n          (<AND <MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE>\n                <ZERO? <MARA-GET ,MARA-SLOT-BIO-ROPE-RETURNED>>>\n           <TELL \"Mara looks at you, then the \" D ,PRSI \". You still have an entrusted-rope fact left physically unresolved, she says. I am not adding optional close hauling on top of unrepaired custody.\" CR>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "                 (T\n                  <TELL \"Mara checks the \" D ,PRSI \", the route, and her own footing. All right, she says. You take that end. She is agreeing to this move, not surrendering judgment over every command that can be typed.\" CR>)>)>",
+      "new": "                 (<MARA-GET ,MARA-SLOT-BIO-BROKE-PROMISE>\n                  <TELL \"Mara checks the \" D ,PRSI \", the route, and her own footing. I remember the promise you broke, she says. I also remember that the rope eventually came back and that later choices became new evidence. All right. You take that end.\" CR>)\n                 (T\n                  <TELL \"Mara checks the \" D ,PRSI \", the route, and her own footing. All right, she says. You take that end. She is agreeing to this move, not surrendering judgment over every command that can be typed.\" CR>)>)>"
+    }
+  ]
+}

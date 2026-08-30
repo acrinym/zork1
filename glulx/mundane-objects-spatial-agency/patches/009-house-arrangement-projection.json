@@ -1,0 +1,12 @@
+{
+  "id": "009-house-arrangement-projection",
+  "path": "material_consequences.zil",
+  "description": "Project selected real House furniture placements during LOOK without introducing a second location authority.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (<AND <VERB? LOOK> <EQUAL? ,HERE ,WEST-OF-HOUSE>>\n       <R1277-WEST-HOUSE-ARRANGEMENT>\n       <RFALSE>)",
+      "new": "      (<VERB? LOOK>\n       <COND (<EQUAL? ,HERE ,WEST-OF-HOUSE> <R1277-WEST-HOUSE-ARRANGEMENT>)\n             (T <R1277-HOUSE-ARRANGEMENT>)>\n       <RFALSE>)"
+    }
+  ]
+}

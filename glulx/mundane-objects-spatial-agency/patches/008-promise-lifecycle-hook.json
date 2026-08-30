@@ -1,0 +1,12 @@
+{
+  "id": "008-promise-lifecycle-hook",
+  "path": "mara_companion_movement.zil",
+  "description": "Advance only the one bounded Release 1277 cooperative promise through the existing per-action Mara hook.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ACTION-HOOK ()\n    <MARA-ENSURE>\n    <COND",
+      "new": "<ROUTINE MARA-ACTION-HOOK ()\n    <MARA-ENSURE>\n    <R1277-PROMISE-TICK>\n    <COND"
+    }
+  ]
+}

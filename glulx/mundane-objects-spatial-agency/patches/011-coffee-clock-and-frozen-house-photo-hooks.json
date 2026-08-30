@@ -1,0 +1,27 @@
+{
+  "id": "011-coffee-clock-and-frozen-house-photo-hooks",
+  "path": "release1277.zil",
+  "description": "Start the absurd coffee's cooling clock at first real interaction and compose snapshots with the frozen House arrangement fingerprint.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT R1277-SLOT-MARA-HELPED-CARPET 4>\n<CONSTANT R1277-STATE <TABLE 0 0 0 0 0>>",
+      "new": "<CONSTANT R1277-SLOT-MARA-HELPED-CARPET 4>\n<CONSTANT R1277-SLOT-COFFEE-START 5>\n<CONSTANT R1277-STATE <TABLE 0 0 0 0 0 0>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE R1277-COFFEE-HOT? ()\n    <COND (<L? ,MOVES 12> <RTRUE>)>\n    <RFALSE>>",
+      "new": "<ROUTINE R1277-COFFEE-HOT? (\"AUX\" START AGE)\n    <SET START <R1277-GET ,R1277-SLOT-COFFEE-START>>\n    <COND (<ZERO? .START>\n           <SET START <+ ,MOVES 1>>\n           <R1277-PUT ,R1277-SLOT-COFFEE-START .START>)>\n    <SET AGE <- ,MOVES <- .START 1>>>\n    <COND (<L? .AGE 12> <RTRUE>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "           <PUT ,R1277-PHOTO-STATE 10 .RUG-LOC>\n           <PUT ,R1277-PHOTO-STATE 11 .RUG-DAMAGED>)>\n    <RTRUE>>",
+      "new": "           <PUT ,R1277-PHOTO-STATE 10 .RUG-LOC>\n           <PUT ,R1277-PHOTO-STATE 11 .RUG-DAMAGED>)>\n    <R1277-CAPTURE-HOUSE-SCENE .IDX .RM>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "           <TELL \".\">)>\n    <TELL \" Nothing in the photograph changes merely because the live room has changed since then.\" CR>",
+      "new": "           <TELL \".\">)>\n    <R1277-DESCRIBE-HOUSE-SCENE .IDX .RM>\n    <TELL \" Nothing in the photograph changes merely because the live room has changed since then.\" CR>"
+    }
+  ]
+}

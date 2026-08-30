@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1277-identity",
+  "path": "zork1.zil",
+  "description": "Advance the staged story identity from locked Release 1276 to Release 1277.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 MARA FIELD GUIDANCE AND EARNED CLUES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 MUNDANE OBJECTS FIELD CACHING AND HOUSE SPATIAL AGENCY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Mara Field Guidance & Earned Clues. Release 1276 lets\n  Mara guide only from geography, evidence, object placement, and field facts\n  she can truthfully possess, without turning her into an omniscient hint UI.\"",
+      "new": ";\"Repository-local Mundane Objects, Field Caching & House Spatial Agency.\n  Release 1277 gives ordinary objects persistent uncertain utility, lets the real\n  House arrangement change, freezes player-authored photographs, and treats Mara\n  cooperation as an autonomous request decision rather than command authority.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1276>",
+      "new": "<CONSTANT RELEASEID 1277>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Mara Field Guidance and Earned Clues Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Mundane Objects, Field Caching and House Spatial Agency Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}
