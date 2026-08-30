@@ -5,7 +5,7 @@ description = """
 Live 1280-1286: Glulx contract, scaled globals/rooms fixtures, dual-Glulxe transcripts, portable bundle, opt-in chronicle. Then opening playthrough and Mara honesty. Production 1295 .ulx SHA unchanged.
 """
 created     = "2026-08-30"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "runtime-1280-1286"

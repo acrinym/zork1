@@ -5,7 +5,7 @@ description = """
 Vanilla score is objects moved through geography into the trophy case. The leaflet is the contract. Sack, bottle, case, and thief's bag are containers on that route. Lantern time remains the clock. No loot engine, no GUI, no AI. Does not steal 1280-1292.
 """
 created     = "2026-08-30"
-status      = "planned"
+status      = "complete"
 
 [[cars]]
 id = "leaflet-contract"
