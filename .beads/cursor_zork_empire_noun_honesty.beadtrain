@@ -1,0 +1,53 @@
+[train]
+name        = "cursor_zork_empire_noun_honesty"
+title       = "Release 1303 Empire Noun Honesty"
+description = """
+After the census, make the entire reachable map keep its own sentences. Close every ledger row on a flagless production play. No scenery engine, no GUI, no AI, no new continent. Does not steal 1280-1292. Leaflet-spine trains 1294-1300 are the same law on the first loop and may close overlapping rows.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "close-surface"
+bead = "zork1-1303-001"
+title = "Close surface and wilderness ledger rows"
+parallel_start = true
+depends_on = []
+summary = "Every remaining census row in forest, mountain, clearing, and other above-ground wilderness gets a real local noun. Forest Path climbable tree and 1294/1295 work stay authoritative where they already closed a row."
+
+[[cars]]
+id = "close-house"
+bead = "zork1-1303-002"
+title = "Close house-ring and interior ledger rows"
+parallel_start = true
+depends_on = ["close-surface"]
+summary = "Every remaining census row in the white house ring, kitchen, living room, attic, and related interiors becomes parser-real. Trophy case, chimney, boards, and 1296 remain the house-ring chapter of the same law."
+
+[[cars]]
+id = "close-underground"
+bead = "zork1-1303-003"
+title = "Close underground ledger rows"
+parallel_start = true
+depends_on = ["close-house"]
+summary = "Every remaining census row in cellar, maze, mines, Hades approaches, and other underground rooms becomes parser-real. 1297 cellar commitment and 1300 set-pieces stay where they already closed a row."
+
+[[cars]]
+id = "close-water-air"
+bead = "zork1-1303-004"
+title = "Close dam, river, boat, and rainbow ledger rows"
+parallel_start = true
+depends_on = ["close-underground"]
+summary = "Every remaining census row at Dam #3, reservoir, boat, river, and rainbow becomes parser-real. 1298 dam-as-only-machine stays. Do not start 1287 fishery."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1303-005"
+title = "Flagless play: ledger empty"
+parallel_start = false
+depends_on = ["close-water-air"]
+summary = "A production play without survey flags revisits every census room. No remaining described noun refuses EXAMINE. Canonical puzzles, score, and lethality remain."
+
+[meta]
+one_liner = "The whole map believes its own sentences."
+couples_with = ["cursor_zork_described_world_census"]
+watch = ["docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"]

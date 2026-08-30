@@ -1,0 +1,54 @@
+[train]
+name        = "cursor_zork_leaflet_score_geography"
+title       = "Release 1299 Leaflet Hour / Score as Geography"
+description = """
+Vanilla score is objects moved through geography into the trophy case. The leaflet is the contract. Sack, bottle, case, and thief's bag are containers on that route. Lantern time remains the clock. No loot engine, no GUI, no AI. Does not steal 1280-1292.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "leaflet-contract"
+bead = "zork1-1299-001"
+title = "Leaflet is the opening contract"
+parallel_start = true
+depends_on = []
+summary = "READ LEAFLET and EXAMINE LEAFLET still teach the house-and-empire frame. The leaflet remains a paper object, not a quest log."
+
+[[cars]]
+id = "opening-containers"
+bead = "zork1-1299-002"
+title = "Sack, bottle, and case are the opening containers"
+parallel_start = true
+depends_on = ["leaflet-contract"]
+summary = "The brown sack, glass bottle, and trophy case remain containment on the leaflet route: put, take, look inside, fail. No universal inventory grid."
+
+[[cars]]
+id = "thief-bag"
+bead = "zork1-1299-003"
+title = "Thief bag is a bag that holds stolen things"
+parallel_start = true
+depends_on = ["opening-containers"]
+summary = "The thief's bag is a real container in the world. Stolen objects have a place. He still steals; he is not a loot table."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1299-004"
+title = "Leaflet-hour score-geography qualification"
+parallel_start = false
+depends_on = ["thief-bag"]
+summary = "Natural commands on the leaflet-to-case route prove leaflet, sack/bottle/case, and thief-bag containment. Canonical scoring by depositing treasures stays."
+
+[[couplers]]
+id = "to-vanilla-set-pieces"
+from_train = "cursor_zork_leaflet_score_geography"
+from_car = "capstone"
+to_train = "cursor_zork_vanilla_set_pieces"
+to_car = "cyclops-hunger"
+mode = "after"
+note = "1300 stages locked 1299. Unique vanilla set-pieces after the score geography is honest."
+
+[meta]
+one_liner = "Score is a trip, not a counter."
+couples_with = ["cursor_zork_dam_only_machine", "cursor_zork_vanilla_set_pieces"]
+watch = ["docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md"]

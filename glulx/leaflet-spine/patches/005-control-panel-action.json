@@ -1,0 +1,12 @@
+{
+  "id": "005-control-panel-action",
+  "path": "1dungeon.zil",
+  "description": "Control panel examine uses the authored dam-panel reply.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT CONTROL-PANEL\n\t(IN DAM-ROOM)\n\t(SYNONYM PANEL)\n\t(ADJECTIVE CONTROL)\n\t(DESC \"control panel\")\n\t(FLAGS NDESCBIT)>",
+      "new": "<OBJECT CONTROL-PANEL\n\t(IN DAM-ROOM)\n\t(SYNONYM PANEL)\n\t(ADJECTIVE CONTROL)\n\t(DESC \"control panel\")\n\t(FLAGS NDESCBIT)\n\t(ACTION LEAFLET-PANEL-F)>"
+    }
+  ]
+}

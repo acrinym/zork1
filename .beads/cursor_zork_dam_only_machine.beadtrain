@@ -1,0 +1,54 @@
+[train]
+name        = "cursor_zork_dam_only_machine"
+title       = "Release 1298 Dam #3 as the Only Industrial Machine"
+description = """
+Flood Control Dam #3 is unique machinery, not a systems engine. Walkway, control panel, gates, and reservoir water become parser-real as the industrial objects the dam already is. Vanilla dam buttons and water authority stay. No GUI. No AI. Does not steal 1280-1292 or the 1287 fishery.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "walkway"
+bead = "zork1-1298-001"
+title = "Dam walkway is a walkway"
+parallel_start = true
+depends_on = []
+summary = "EXAMINE WALKWAY and walking the dam reach the walkway the room already describes."
+
+[[cars]]
+id = "panel-gates"
+bead = "zork1-1298-002"
+title = "Panel and gates stay the dam's unique controls"
+parallel_start = true
+depends_on = ["walkway"]
+summary = "EXAMINE PANEL / BUTTONS / GATES and the vanilla bolt/bubble/gate verbs still operate the one dam, not a generic machine class."
+
+[[cars]]
+id = "reservoir-body"
+bead = "zork1-1298-003"
+title = "Reservoir is a body of water you can stand at"
+parallel_start = true
+depends_on = ["panel-gates"]
+summary = "EXAMINE RESERVOIR / WATER at the dam and reservoir rooms reaches that water as a place, without starting the 1287 second-species fishery."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1298-004"
+title = "Dam-machine qualification"
+parallel_start = false
+depends_on = ["reservoir-body"]
+summary = "Natural commands prove walkway, panel/gates, and reservoir nouns while canonical dam solutions remain."
+
+[[couplers]]
+id = "to-leaflet-score-geography"
+from_train = "cursor_zork_dam_only_machine"
+from_car = "capstone"
+to_train = "cursor_zork_leaflet_score_geography"
+to_car = "leaflet-contract"
+mode = "after"
+note = "1299 stages locked 1298. Score geography after the dam is a real machine."
+
+[meta]
+one_liner = "One dam, not a factory."
+couples_with = ["cursor_zork_cellar_commitment", "cursor_zork_leaflet_score_geography"]
+watch = ["docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md"]

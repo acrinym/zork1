@@ -1,0 +1,54 @@
+[train]
+name        = "cursor_zork_cellar_commitment"
+title       = "Release 1297 Cellar as Commitment"
+description = """
+The rug and trap door are a physical lie: furniture that is also a door. Going down is a commitment. Cellar timber, grating, and the troll-in-a-doorway become parser-real as place and person, not a combat tutorial. No GUI. No AI. No generic enemy. Does not steal 1280-1292.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "trap-commitment"
+bead = "zork1-1297-001"
+title = "Rug and trap stay distinct; descent is commitment"
+parallel_start = true
+depends_on = []
+summary = "MOVE RUG, OPEN TRAP, and going down remain separate facts. The trap door is a commitment, not a fast-travel hatch."
+
+[[cars]]
+id = "timber-grating"
+bead = "zork1-1297-002"
+title = "Cellar timber and grating answer examination"
+parallel_start = true
+depends_on = ["trap-commitment"]
+summary = "EXAMINE TIMBER and EXAMINE GRATING reach the cellar and grating the vanilla rooms already name."
+
+[[cars]]
+id = "troll-doorway"
+bead = "zork1-1297-003"
+title = "Troll is a person in a doorway"
+parallel_start = true
+depends_on = ["timber-grating"]
+summary = "The troll room doorway is a place you can look at. The troll still blocks; he is not a health bar or generic creature brain."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1297-004"
+title = "Cellar-commitment qualification"
+parallel_start = false
+depends_on = ["troll-doorway"]
+summary = "Natural commands prove rug/trap distinction, timber/grating nouns, and troll-as-doorway-blocker without stealing maze or troll-weapon authority."
+
+[[couplers]]
+id = "to-dam-only-machine"
+from_train = "cursor_zork_cellar_commitment"
+from_car = "capstone"
+to_train = "cursor_zork_dam_only_machine"
+to_car = "walkway"
+mode = "after"
+note = "1298 stages locked 1297. The dam is the only industrial machine after the cellar is a real descent."
+
+[meta]
+one_liner = "Down is a door you mean."
+couples_with = ["cursor_zork_house_ring_vanilla", "cursor_zork_dam_only_machine"]
+watch = ["docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md"]

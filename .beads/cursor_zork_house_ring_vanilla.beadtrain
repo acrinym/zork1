@@ -1,0 +1,54 @@
+[train]
+name        = "cursor_zork_house_ring_vanilla"
+title       = "Release 1296 House Ring Vanilla Architecture"
+description = """
+The white house is a door with a lie on three sides. North, south, and west are boarded; only Behind House has an honest window. Chimney, kitchen crumbs and table, and the living-room trophy case become parser-real as the architecture they already are. No GUI. No AI. No scenery engine. Does not steal 1280-1292.
+"""
+created     = "2026-08-30"
+status      = "in_progress"
+
+[[cars]]
+id = "boarded-apertures"
+bead = "zork1-1296-001"
+title = "Boarded sides and chimney answer as architecture"
+parallel_start = true
+depends_on = []
+summary = "EXAMINE BOARDS, EXAMINE DOOR, and EXAMINE CHIMNEY on the house ring reach the boarded apertures and chimney the rooms already describe, without inventing a secret-door verb."
+
+[[cars]]
+id = "kitchen-domestic"
+bead = "zork1-1296-002"
+title = "Kitchen interrupted life is examinable"
+parallel_start = true
+depends_on = ["boarded-apertures"]
+summary = "Crumbs, table, and other interrupted-domestic nouns the Kitchen already names become examinable locals. The kitchen window stays the only honest above-ground entry."
+
+[[cars]]
+id = "trophy-cabinet"
+bead = "zork1-1296-003"
+title = "Trophy case is a cabinet you can fail"
+parallel_start = true
+depends_on = ["kitchen-domestic"]
+summary = "The living-room trophy case behaves as a real cabinet: look in, put in, fail to use well. It is not a score UI. Canonical treasure deposit stays."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1296-004"
+title = "House-ring vanilla qualification"
+parallel_start = false
+depends_on = ["trophy-cabinet"]
+summary = "Natural commands around the house ring prove boarded architecture, kitchen domestic nouns, and trophy-case cabinet behavior without a scenery engine."
+
+[[couplers]]
+id = "to-cellar-commitment"
+from_train = "cursor_zork_house_ring_vanilla"
+from_car = "capstone"
+to_train = "cursor_zork_cellar_commitment"
+to_car = "trap-commitment"
+mode = "after"
+note = "1297 stages locked 1296. Going down stays a commitment after the house is honest."
+
+[meta]
+one_liner = "Three boarded sides, one window, one cabinet."
+couples_with = ["cursor_zork_west_of_house_nouns", "cursor_zork_cellar_commitment"]
+watch = ["docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md"]

@@ -1,0 +1,55 @@
+{
+  "edition": "Leaflet Hour Noun Honesty",
+  "release": 1296,
+  "serial": "260830",
+  "base_release": 1304,
+  "base_manifest": "../living-collection/patch-series.json",
+  "base_artifact_sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b",
+  "base_source_sha256": {
+    "production": "",
+    "dev": ""
+  },
+  "patches": [
+    "patches/001-release-1296-identity.json",
+    "patches/002-include-leaflet-spine.json",
+    "patches/003-trophy-case-cabinet.json",
+    "patches/004-panel-and-rainbow-examine.json",
+    "patches/005-control-panel-action.json"
+  ],
+  "added_files": [
+    "leaflet_spine.zil"
+  ],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "1dungeon.zil",
+    "leaflet_spine.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-leaflet-hour-noun-honesty.ulx",
+    "format": "Glulx",
+    "version_hex": "",
+    "size_bytes": 0,
+    "checksum_hex": "",
+    "sha256": ""
+  },
+  "planning_map": {
+    "1296": "house-ring vanilla architecture",
+    "1297": "cellar as commitment",
+    "1298": "Dam #3 as the only industrial machine",
+    "1299": "leaflet hour / score as geography",
+    "1300": "vanilla set-pieces stay unique"
+  },
+  "player_outcomes": [
+    "EXAMINE BOARDS and EXAMINE DOOR on the house ring still reach boarded architecture",
+    "Kitchen CRUMBS and TABLE answer the interrupted cooking the kitchen already names",
+    "The trophy case refuses TAKE as a fastened cabinet",
+    "Cellar descent still closes the trap; EXAMINE RAMP reaches the unclimbable slide",
+    "Troll-room HOLE and BLOODSTAINS answer as place and evidence",
+    "EXAMINE WALKWAY and EXAMINE PANEL at the dam reach that unique machine",
+    "READ LEAFLET keeps the Infocom advertisement",
+    "EXAMINE BAG on the thief reaches a real bag",
+    "EXAMINE CYCLOPS and EXAMINE RAINBOW remain unique geographies"
+  ]
+}

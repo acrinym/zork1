@@ -2,9 +2,9 @@
 
 **Updated:** August 30, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1295` — West-of-House Described Nouns  
-**Live `master` observed before this refresh:** `f87089e` (PR #90)  
-**Open PRs observed before this refresh:** Release 1304 Living Collection (POST_1286 program, renumbered)
+**Current merged production frontier:** Release `1304` — Living Collection (and runtime 1280–1286 on the same merge)  
+**Live `master` observed before this refresh:** `71c4a83` (PR #91)  
+**Open PRs observed before this refresh:** Release 1296 Leaflet Hour Noun Honesty (1296–1300)
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -34,38 +34,22 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-### Release 1304 — Living Collection and Companionship
+### Releases 1296–1300 — Leaflet Hour Noun Honesty
 
-The POST_1286 fishery / Mara witness / waters husbandry / house stewardship / custody / field-errand program, **renumbered** so 1280–1292 stay the runtime reservation. One locked Glulx story. No GUI. No AI.
-
-Planning: `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`. Train: `glulx/living-collection/`.
+The white house ring, cellar commitment, Dam #3 as the only factory, score as geography, and unique vanilla set-pieces. One locked Glulx story staging 1304. Law: `docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`. Train: `glulx/leaflet-spine/`.
 
 ## NEXT — explicit queued product trains
 
-Runtime foundation **1280–1286** is implemented in `glulx/runtime-foundation/` (same PR lane as 1304). Filenames on disk may still say 1279–1285.
+Census program after the leaflet spine locks:
 
-See `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`.
+### 1. Release 1301 — Survey Developer Flags
+`--no-killing` and `--no-reset-on-death` for census play only. Never in the production `.ulx`.
 
-### 1. Release 1280 — Future-Proof Runtime Contract
-`docs/planning/RELEASE_1279_FUTURE_PROOF_RUNTIME_CONTRACT.md`
+### 2. Release 1302 — Described-World Census
+Walk the reachable map; ledger every prose/parser lie.
 
-### 2. Release 1281 — Extended Globals / Compiler State Scaling
-`docs/planning/RELEASE_1280_EXTENDED_GLOBALS_COMPILER_STATE_SCALING.md`
-
-### 3. Release 1282 — Story-Code Optimization
-`docs/planning/RELEASE_1281_STORY_CODE_OPTIMIZATION.md`
-
-### 4. Release 1283 — Cross-Interpreter Compatibility
-`docs/planning/RELEASE_1282_CROSS_INTERPRETER_COMPATIBILITY.md`
-
-### 5. Release 1284 — Large-World Scaling
-`docs/planning/RELEASE_1283_LARGE_WORLD_SCALING.md`
-
-### 6. Release 1285 — Portable Runtime Bundle
-`docs/planning/RELEASE_1284_PORTABLE_RUNTIME_BUNDLE.md`
-
-### 7. Release 1286 — Opt-In Playthrough Chronicle Export
-`docs/planning/RELEASE_1285_OPT_IN_PLAYTHROUGH_CHRONICLE_EXPORT.md` — local side-channel export only. Not a GUI, not illustration, not a network feature.
+### 3. Release 1303 — Empire Noun Honesty
+Close every census row on a flagless production play.
 
 ## FUTURE — remaining companionship (Living Collection is live **1304**)
 
@@ -137,6 +121,8 @@ Also remaining:
 | 1293 | Honest System Recap | #88 |
 | 1294 | Forest That Answers Back | #89 |
 | 1295 | West-of-House Described Nouns | #90 |
+| 1280–1286 | Runtime foundation (contract, globals, opt, interpreters, scale, bundle, chronicle) | #91 |
+| 1304 | Living Collection and Companionship | #91 |
 
 ### Recent locked artifact / qualification receipts
 
@@ -158,6 +144,8 @@ Also remaining:
 | 1293 | `983bb03f4f193eb056533e3aec65e1c57f59db53` | `79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641` | PR #88 |
 | 1294 | `691926c5b4f91106ed5534b293cbaff4df82630f` | `20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831` | PR #89 |
 | 1295 | `f87089e` | `a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b` | PR #90 |
+| 1280–1286 | `71c4a83` | runtime foundation; production player `.ulx` stayed 1295 until 1304 | PR #91 |
+| 1304 | `71c4a83` | `6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b` | PR #91 |
 
 ## Canonical roadmap
 
@@ -170,4 +158,4 @@ Also remaining:
 
 - `docs/ADVENTURER_GUIDE.md`
 
-The live shape at this refresh: Releases 1278–1279, 1293, 1294, and 1295 are merged on `acrinym/zork1` `master`; Release 1304 (Living Collection, planning 1287–1292) is CURRENT and does not steal 1280–1292; runtime foundation remains 1280–1286. Never merge to `historicalsource/zork1`.
+The live shape at this refresh: Releases 1278–1286, 1293–1295, and 1304 are merged on `acrinym/zork1` `master` (`71c4a83`, PR #91). CURRENT is 1296–1300 leaflet-hour noun honesty. Never merge to `historicalsource/zork1`.

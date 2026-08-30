@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1296-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only leaflet-spine setups after production sources",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"leaflet_spine\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"leaflet_spine\" T>\n<INSERT-FILE \"leaflet_spine_test\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}

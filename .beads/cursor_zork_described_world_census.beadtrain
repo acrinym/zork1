@@ -1,0 +1,46 @@
+[train]
+name        = "cursor_zork_described_world_census"
+title       = "Release 1302 Described-World Census"
+description = """
+Play the entire reachable map. Every noun the game already spoke that the parser then denies is a lie. Write those lies into a ledger. That ledger is law for later honesty trains. Uses 1301 survey flags. No GUI. No AI. No scenery engine. Does not steal 1280-1292.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "whole-map-play"
+bead = "zork1-1302-001"
+title = "Walk the entire reachable map under survey flags"
+parallel_start = true
+depends_on = []
+summary = "A documented full-map play under --no-killing and --no-reset-on-death visits house, forest, underground, dam, river, and remaining Highly Extended rooms. Combat and death rewind exist only to keep the census moving."
+
+[[cars]]
+id = "prose-parser-ledger"
+bead = "zork1-1302-002"
+title = "Ledger every described noun the parser refuses"
+parallel_start = true
+depends_on = ["whole-map-play"]
+summary = "Each ledger row names room, quoted prose, command, and refusal. EXAMINE TREE at North of House is the prototype row. Rows are the only honesty backlog."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1302-003"
+title = "Census qualification"
+parallel_start = false
+depends_on = ["prose-parser-ledger"]
+summary = "The ledger exists, is complete for the play, and is the published spec. Production flagless play is unchanged. 1294-1300 may already close some rows; remaining rows belong to 1303."
+
+[[couplers]]
+id = "to-empire-noun-honesty"
+from_train = "cursor_zork_described_world_census"
+from_car = "capstone"
+to_train = "cursor_zork_empire_noun_honesty"
+to_car = "close-surface"
+mode = "after"
+note = "1303 stages locked 1302. Build until the ledger is empty. Do not invent a new continent."
+
+[meta]
+one_liner = "What the game already said is the map of remaining work."
+couples_with = ["cursor_zork_survey_dev_flags", "cursor_zork_empire_noun_honesty"]
+watch = ["docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"]
