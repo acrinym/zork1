@@ -2,13 +2,13 @@
 
 **A much larger, more reactive, still-recognizably-Zork version of the original adventure.**
 
-If you have never played Zork, never played interactive fiction, or have no idea what a `.ulx` file is, start here. You do **not** need to understand Infocom history, ZIL, Glulx, release manifests, checksums, or this repository's development process to play.
+If you have never played Zork, never played interactive fiction, or have no idea what a `.ulx` file is, start with [`../docs/ADVENTURER_GUIDE.md`](../docs/ADVENTURER_GUIDE.md) for this edition, then keep reading here for parser basics.
 
 This project keeps the original Zork I world and canonical puzzle solutions, then builds outward: more concrete things can be examined and manipulated, useful objects retain useful physical meaning, actions carry consequences, creatures and companions can remember meaningful history, and reasonable experiments are increasingly answered by the world instead of disappearing into a generic refusal.
 
 The technical and reproducibility material is intentionally **after** the player guide.
 
-**Current Highly Extended lineage described here:** through Release `1278` — **Honest Playthrough Records, Rest Syntax, House Jar** (PR #86). Release 1279 (Glulxe optimization) is the open CURRENT train and is not merged until all green.  
+**Current Highly Extended lineage described here:** through Release `1294` — **Forest That Answers Back** (PR #89). Release 1295 (West-of-House described nouns and honest leaflet) is the open CURRENT train.  
 **Default branch:** `master`  
 **Live board:** [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 

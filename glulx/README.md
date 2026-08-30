@@ -2,27 +2,23 @@
 
 This directory contains the repository's additive, unofficial Glulx lineage. It begins from a pinned upstream Glulx port and grows through individually staged, individually qualified release trains rather than one mutable “latest” source tree with no provenance.
 
-If you are here to **play** and are new to Zork or parser interactive fiction, start with [`../expanded/README.md`](../expanded/README.md). This README is the technical map of the Glulx line.
+If you are here to **play** and are new to Zork or parser interactive fiction, start with [`../docs/ADVENTURER_GUIDE.md`](../docs/ADVENTURER_GUIDE.md) and [`../expanded/README.md`](../expanded/README.md). This README is the technical map of the Glulx line.
 
 Historical Release 119, repository Optimized Release 120, early Expanded Release 121, and other preserved `.z3` editions are not replaced or relabeled by these Glulx release numbers.
 
 ## Current lineage
 
-**Merged production frontier:** Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar, merged through PR #86 at `080ba3a3d35f8f61da23f264ba088a6d59991b21`.
+**Merged production frontier:** Release 1294 — Forest That Answers Back, merged through PR #89 at `691926c5b4f91106ed5534b293cbaff4df82630f`.
 
-Locked 1278 production artifact:
+Locked 1294 production artifact:
 
-- `zork1-glulx-honest-playthrough-perilous-house.ulx`
+- `zork1-glulx-forest-answers-back.ulx`
 - Glulx `0x00030103`
-- SHA-256 `d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1`
+- SHA-256 `20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831`
 
-**Open trains on `acrinym/zork1` only:**
+**Open current train:** Release 1295 — West-of-House Described Nouns (grass, silence, honest leaflet), on `acrinym/zork1` only. Does not steal 1280–1292.
 
-- Release 1279 — Glulxe Optimization (runtime; story file unchanged), PR #87
-- Release 1293 — Honest System Recap (locked story on PR #88)
-- Release 1294 — Forest That Answers Back (story; does not steal 1280–1292)
-
-See [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/), [`glulxe-optimization/`](glulxe-optimization/), [`honest-system-recap/`](honest-system-recap/), and [`forest-answers-back/`](forest-answers-back/). Releases 1267 and 1268 are merged history; their locked artifacts remain in those train directories.
+See [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/), [`glulxe-optimization/`](glulxe-optimization/), [`honest-system-recap/`](honest-system-recap/), [`forest-answers-back/`](forest-answers-back/), and [`west-of-house-nouns/`](west-of-house-nouns/). Releases 1267 and 1268 are merged history; their locked artifacts remain in those train directories.
 
 ## What “release train” means here
 

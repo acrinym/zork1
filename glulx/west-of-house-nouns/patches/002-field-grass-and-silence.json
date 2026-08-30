@@ -1,0 +1,12 @@
+{
+  "id": "002-field-grass-and-silence",
+  "path": "1dungeon.zil",
+  "description": "Local-global grass and silence next to the existing BOARD. No scenery registry.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT HOUSE-FOUNDATION-STONE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM FOUNDATION)\n\t(ADJECTIVE OLD HOUSE)\n\t(DESC \"old foundation stone\")\n\t(FLAGS NDESCBIT)\n\t(ACTION HOUSE-FOUNDATION-STONE-F)>\n\n<OBJECT MOUNTAIN-RANGE",
+      "new": "<OBJECT HOUSE-FOUNDATION-STONE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM FOUNDATION)\n\t(ADJECTIVE OLD HOUSE)\n\t(DESC \"old foundation stone\")\n\t(FLAGS NDESCBIT)\n\t(ACTION HOUSE-FOUNDATION-STONE-F)>\n\n<OBJECT FIELD-GRASS\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM GRASS)\n\t(ADJECTIVE WILD OPEN)\n\t(DESC \"wild grass\")\n\t(FLAGS NDESCBIT)\n\t(ACTION FIELD-GRASS-F)>\n\n<OBJECT FIELD-SILENCE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM SILENCE QUIET)\n\t(ADJECTIVE SETTLED)\n\t(DESC \"settled silence\")\n\t(FLAGS NDESCBIT)\n\t(ACTION FIELD-SILENCE-F)>\n\n<OBJECT MOUNTAIN-RANGE"
+    }
+  ]
+}

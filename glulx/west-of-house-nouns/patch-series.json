@@ -1,0 +1,40 @@
+{
+  "edition": "West-of-House Described Nouns",
+  "release": 1295,
+  "serial": "260830",
+  "base_release": 1294,
+  "base_manifest": "../forest-answers-back/patch-series.json",
+  "base_artifact_sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831",
+  "base_source_sha256": {
+    "production": "934d530ac401b2892e3d2a0ca3fa2644b5f490ac97d2f776702cbd810490ee70",
+    "dev": "14e871ac1b46a7eded9b4b7fc2a3e74d19e0c25f70a89e75c2e1a3df099fce1d"
+  },
+  "patches": [
+    "patches/001-release-1295-identity.json",
+    "patches/002-field-grass-and-silence.json",
+    "patches/003-west-of-house-globals.json",
+    "patches/004-opening-noun-actions.json",
+    "patches/005-honest-leaflet.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "reactive_surface.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-west-of-house-nouns.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 551168,
+    "checksum_hex": "0x424c1150",
+    "sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b"
+  },
+  "player_outcomes": [
+    "EXAMINE GRASS at West of House reaches the wild grass the look text already names",
+    "EXAMINE SILENCE at West of House reaches the settled silence the look text already names",
+    "EXAMINE BOARDS still reaches the fastened boards",
+    "READ LEAFLET keeps the Infocom advertisement and names Highly Extended honesty without becoming a walkthrough",
+    "Mailbox, white house, and boarded door stay the opening authorities they already were"
+  ]
+}

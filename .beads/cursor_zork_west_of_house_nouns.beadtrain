@@ -5,7 +5,7 @@ description = """
 The opening already describes wild grass, weathered boards, and settled silence. Those nouns become examinable locals. No GUI. No AI. No scenery engine.
 """
 created     = "2026-08-30"
-status      = "planned"
+status      = "in_progress"
 
 [[cars]]
 id = "opening-nouns"

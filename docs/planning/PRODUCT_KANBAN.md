@@ -2,9 +2,9 @@
 
 **Updated:** August 30, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1278` — Honest Playthrough Records, Rest Syntax, House Jar  
-**Live `master` observed before this refresh:** `080ba3a3d35f8f61da23f264ba088a6d59991b21` (PR #86)  
-**Open PRs observed before this refresh:** Release 1279 Glulxe optimization (PR #87); Release 1293 Honest System Recap
+**Current merged production frontier:** Release `1294` — Forest That Answers Back  
+**Live `master` observed before this refresh:** `691926c5b4f91106ed5534b293cbaff4df82630f` (PR #89)  
+**Open PRs observed before this refresh:** Release 1295 West-of-House described nouns
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -34,13 +34,11 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-### Release 1294 — Forest That Answers Back
+### Release 1295 — West-of-House Described Nouns
 
-A live 1293 playtest still failed `EXAMINE TREE` at North of House while the room named trees. 1294 stages locked 1293 and makes those named wilderness nouns parser-real. Forest Path keeps the climbable tree. No GUI. No AI. No scenery engine. Does not steal 1280–1292.
+The opening look text already names wild grass, weathered boards, and settled silence. 1295 stages locked 1294 and makes grass and silence parser-real. Boards already answered. The mailbox leaflet keeps the Infocom ad and names Highly Extended honesty. Player companion: `docs/ADVENTURER_GUIDE.md`. No GUI. No AI. No scenery engine. Does not steal 1280–1292.
 
-Planning: `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`. Train: `glulx/forest-answers-back/`.
-
-Release 1279 Glulxe Optimization remains a parallel runtime PR (#87). Release 1293 Honest System Recap remains a parallel locked-story PR (#88). Both are parked as parallel-in-pr so CURRENT stays one train.
+Planning: `docs/ADVENTURER_GUIDE.md`. Train: `glulx/west-of-house-nouns/`.
 
 ## NEXT — explicit queued product trains
 
@@ -83,14 +81,12 @@ Parser-native whole trains. No photographs, DRAW, illustrated frontend, or other
 Also remaining (not numbered until 1286 lands):
 
 - **Mara Earned Romance & Partnership** — explicit mutual choice; no approval/love meter.
-- **Forest That Answers Back** — live **1294** (CURRENT). Promote selected existing wilderness nouns into stateful objects.
-- **West-of-House described nouns** — live **1295** after 1294.
+- **Forest That Answers Back** — live **1294** (merged PR #89).
+- **West-of-House described nouns** — live **1295** (CURRENT). Grass, silence, honest leaflet, adventurer guide.
 - **Time, Weather & Disaster Arc** — authored conditions on real geography; no climate simulator.
 
 ## PARKED / SEPARATE
 
-- **1279 Glulxe Optimization** — PR #87. Runtime-only; parked here only because CURRENT is 1294. Not abandoned.
-- **1293 Honest System Recap** — PR #88. Locked hosted story identity; parked here only because CURRENT is 1294.
 - **Illustrated Zork / DRAW / external scene rendering** — `docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md`. Not in the product queue. Justin excluded photo/graphic and GUI work from the post-1286 program.
 - **1277 instant photographs** stay as the already-shipped in-world camera. Do not grow them into a gallery UI or illustrated frontend.
 - **S.T.A.L.K.E.R. Glulx** remains a separate product lane.
@@ -161,6 +157,9 @@ Also remaining (not numbered until 1286 lands):
 | 1267 | `90e30d59fcd44a5297d7524f65ee34c72aaff319` | `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0` | `32046910749` |
 | 1277 | `42c110095cb99c9aff6ef83956c391b437c76bef` | `582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599` | PR #85 |
 | 1278 | `080ba3a3d35f8f61da23f264ba088a6d59991b21` | `d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1` | PR #86 |
+| 1279 | `0e8ad864b644a7351cd795e43e402b59bc058dc8` | runtime Glulxe; story unchanged | PR #87 |
+| 1293 | `983bb03f4f193eb056533e3aec65e1c57f59db53` | `79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641` | PR #88 |
+| 1294 | `691926c5b4f91106ed5534b293cbaff4df82630f` | `20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831` | PR #89 |
 
 ## Canonical roadmap
 
@@ -171,4 +170,6 @@ Also remaining (not numbered until 1286 lands):
 
 - `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`
 
-The live shape at this refresh: Release 1278 is merged on `acrinym/zork1` `master`; Release 1279 (runtime) is PR #87; Release 1293 (story honesty) is locked on PR #88; Release 1294 (Forest That Answers Back) is CURRENT and does not steal 1280–1292; runtime foundation remains 1280–1285; chronicle export is 1286; Living Collection is 1287–1292 after that. Never merge to `historicalsource/zork1`.
+- `docs/ADVENTURER_GUIDE.md`
+
+The live shape at this refresh: Releases 1278–1279, 1293, and 1294 are merged on `acrinym/zork1` `master`; Release 1295 (West-of-House nouns, honest leaflet, adventurer guide) is CURRENT and does not steal 1280–1292; runtime foundation remains 1280–1285; chronicle export is 1286; Living Collection is 1287–1292 after that. Never merge to `historicalsource/zork1`.
