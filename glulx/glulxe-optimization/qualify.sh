@@ -128,6 +128,7 @@ seed = sys.argv[3]
 story = build / m['base_story_file']
 # CheapGlk writes the save next to the story file, not an arbitrary cwd.
 cwd = build
+sav = build / 'r1279.sav'
 ref = build / 'glulxe-reference-bin'
 opt = build / 'glulxe-optimized-bin'
 def play(bin_path, script):
@@ -139,23 +140,40 @@ def play(bin_path, script):
         stderr=subprocess.PIPE,
         check=False,
     )
-    return proc.stdout
+    return proc.stdout, proc.stderr
+def dump_pair(label, a, b):
+    (build / (label + '-a.txt')).write_bytes(a)
+    (build / (label + '-b.txt')).write_bytes(b)
+    return 'REF:\n%s\nOPT:\n%s' % (a.decode('latin1'), b.decode('latin1'))
 save_script = Path('glulx/glulxe-optimization/workloads/save-restore/save-setup.txt')
 restore_script = Path('glulx/glulxe-optimization/workloads/save-restore/restore-check.txt')
-ref_save = play(ref, save_script)
-opt_save = play(opt, save_script)
+if sav.is_file():
+    sav.unlink()
+ref_save, ref_save_err = play(ref, save_script)
+if not sav.is_file():
+    raise SystemExit('Release 1279 reference binary did not write a save file\n' + ref_save.decode('latin1') + '\n' + ref_save_err.decode('latin1'))
+ref_sav_bytes = sav.read_bytes()
+sav.unlink()
+opt_save, opt_save_err = play(opt, save_script)
+if not sav.is_file():
+    raise SystemExit('Release 1279 optimized binary did not write a save file\n' + opt_save.decode('latin1') + '\n' + opt_save_err.decode('latin1'))
+opt_sav_bytes = sav.read_bytes()
 if ref_save != opt_save:
-    raise SystemExit('Release 1279 save transcripts diverge')
-if not (build / 'r1279.sav').is_file():
-    raise SystemExit('Release 1279 did not write a save file')
-ref_rest = play(ref, restore_script)
-opt_rest = play(opt, restore_script)
+    raise SystemExit('Release 1279 save transcripts diverge\n' + dump_pair('save-transcript', ref_save, opt_save))
+sav.write_bytes(ref_sav_bytes)
+ref_rest, ref_rest_err = play(ref, restore_script)
+sav.write_bytes(ref_sav_bytes)
+opt_rest, opt_rest_err = play(opt, restore_script)
+(build / 'save-restore-reference.txt').write_bytes(ref_rest)
+(build / 'save-restore-optimized.txt').write_bytes(opt_rest)
 if ref_rest != opt_rest:
-    raise SystemExit('Release 1279 restore transcripts diverge')
+    raise SystemExit('Release 1279 restore transcripts diverge\n' + dump_pair('restore-transcript', ref_rest, opt_rest))
 if b'West of House' not in ref_rest:
     raise SystemExit('Release 1279 restore did not return to West of House')
-(build / 'save-restore-reference.txt').write_bytes(ref_rest)
 print('RELEASE_1279_SAVE_RESTORE=ok')
+print('RELEASE_1279_SAVE_BYTES=' + str(len(ref_sav_bytes)) + '/' + str(len(opt_sav_bytes)))
+print('RELEASE_1279_SAVE_SHA256_REF=' + hashlib.sha256(ref_sav_bytes).hexdigest())
+print('RELEASE_1279_SAVE_SHA256_OPT=' + hashlib.sha256(opt_sav_bytes).hexdigest())
 PY_SAVE
 
 python - "$BUILD" "$MANIFEST" <<'PY_ID'
