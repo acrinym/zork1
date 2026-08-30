@@ -1,0 +1,12 @@
+{
+  "id": "003-trophy-case-cabinet",
+  "path": "1actions.zil",
+  "description": "Trophy case is a cabinet you can look into and fail to take. Canonical treasure deposit stays.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE TROPHY-CASE-FCN ()\n    <COND (<AND <VERB? TAKE> <EQUAL? ,PRSO ,TROPHY-CASE>>\n\t   <TELL\n\"The trophy case is securely fastened to the wall.\" CR>)>>",
+      "new": "<ROUTINE TROPHY-CASE-FCN ()\n    <COND (<AND <VERB? TAKE> <EQUAL? ,PRSO ,TROPHY-CASE>>\n\t   <TELL\n\"The trophy case is securely fastened to the wall. It is a cabinet, not a score panel.\" CR>)\n\t  (<VERB? EXAMINE>\n\t   <TELL \"The trophy case is a real wall cabinet. Treasures go in; it is not a score interface.\" CR>)>>"
+    }
+  ]
+}

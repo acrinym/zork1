@@ -5,7 +5,7 @@ description = """
 The opening already describes wild grass, weathered boards, and settled silence. Those nouns become examinable locals. No GUI. No AI. No scenery engine.
 """
 created     = "2026-08-30"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "opening-nouns"
@@ -23,7 +23,16 @@ parallel_start = false
 depends_on = ["opening-nouns"]
 summary = "A fresh West of House playtest proves the described nouns without changing mailbox, stone, or boarded-door authority."
 
+[[couplers]]
+id = "to-house-ring-vanilla"
+from_train = "cursor_zork_west_of_house_nouns"
+from_car = "capstone"
+to_train = "cursor_zork_house_ring_vanilla"
+to_car = "boarded-apertures"
+mode = "after"
+note = "1296 stages locked 1304. Vanilla house-ring nouns after Living Collection."
+
 [meta]
 one_liner = "The first room's prose is also its parser."
-couples_with = ["cursor_zork_forest_answers_back"]
+couples_with = ["cursor_zork_forest_answers_back", "cursor_zork_house_ring_vanilla"]
 watch = ["docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md"]

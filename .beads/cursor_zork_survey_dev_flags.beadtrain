@@ -1,0 +1,54 @@
+[train]
+name        = "cursor_zork_survey_dev_flags"
+title       = "Release 1301 Survey Developer Flags"
+description = """
+Developer-only play flags so a census of the whole map can traverse without combat hassle or full-game reset on death. --no-killing and --no-reset-on-death. Never a GUI. Never present in the production story file. No AI. Does not steal 1280-1292.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "no-killing"
+bead = "zork1-1301-001"
+title = "--no-killing for survey traversal"
+parallel_start = true
+depends_on = []
+summary = "A developer/qualify flag --no-killing prevents lethal combat and unnecessary enemy obstruction from ending a survey play. Production .ulx without the flag keeps troll, thief, cyclops, grue, and all other canonical lethality."
+
+[[cars]]
+id = "no-reset-on-death"
+bead = "zork1-1301-002"
+title = "--no-reset-on-death rewinds one command in place"
+parallel_start = true
+depends_on = ["no-killing"]
+summary = "A developer/qualify flag --no-reset-on-death resumes in the death room with world and inventory exactly as before the fatal command (one-step rewind) so the next command can be different. Not a save restore. Not a GUI."
+
+[[cars]]
+id = "production-sealed"
+bead = "zork1-1301-003"
+title = "Production story never carries survey flags"
+parallel_start = true
+depends_on = ["no-reset-on-death"]
+summary = "Locked production artifacts contain no --no-killing, --no-reset-on-death, invulnerability, or survey-only death rewind. Test-only wrappers or inserts stay out of production staging."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1301-004"
+title = "Survey-flag qualification"
+parallel_start = false
+depends_on = ["production-sealed"]
+summary = "With flags on, a survey play survives a troll/thief/grue encounter and a non-combat death rewinds one command in that room. With flags off, the same production story still kills and still does a normal death restart."
+
+[[couplers]]
+id = "to-described-world-census"
+from_train = "cursor_zork_survey_dev_flags"
+from_car = "capstone"
+to_train = "cursor_zork_described_world_census"
+to_car = "whole-map-play"
+mode = "after"
+note = "1302 stages locked 1301. The census play uses both flags and never ships them."
+
+[meta]
+one_liner = "Survey can walk the empire without dying the play."
+couples_with = ["cursor_zork_described_world_census"]
+watch = ["docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"]

@@ -1,0 +1,17 @@
+{
+  "id": "004-panel-and-rainbow-examine",
+  "path": "1actions.zil",
+  "description": "Dam panel and rainbow answer examination as unique geography, not systems.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE DAM-FUNCTION ()\n\t <COND (<VERB? OPEN CLOSE>\n\t\t<TELL \"Sounds reasonable, but this isn't how.\" CR>)",
+      "new": "<ROUTINE DAM-FUNCTION ()\n\t <COND (<VERB? EXAMINE>\n\t\t<TELL \"Flood Control Dam #3 is one machine: walkway, gates, reservoir. Not a factory class.\" CR>)\n\t       (<VERB? OPEN CLOSE>\n\t\t<TELL \"Sounds reasonable, but this isn't how.\" CR>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE RAINBOW-FCN ()\n\t <COND (<VERB? CROSS THROUGH>",
+      "new": "<ROUTINE RAINBOW-FCN ()\n\t <COND (<VERB? EXAMINE>\n\t\t<TELL \"The rainbow is a walkable lie when the pot of gold has been earned. It is this crossing, not a bridge system.\" CR>)\n\t       (<VERB? CROSS THROUGH>"
+    }
+  ]
+}

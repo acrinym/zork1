@@ -1,0 +1,54 @@
+[train]
+name        = "cursor_zork_vanilla_set_pieces"
+title       = "Release 1300 Vanilla Set-Pieces Stay Unique"
+description = """
+Cyclops is a hunger wearing an actor. The rainbow is a walkable lie. Hades is a ritual, not a keycard. These remain unique geographies, not biomes or a creature engine. No GUI. No AI. Does not steal 1280-1292.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "cyclops-hunger"
+bead = "zork1-1300-001"
+title = "Cyclops hunger is the puzzle"
+parallel_start = true
+depends_on = []
+summary = "EXAMINE CYCLOPS and the vanilla hunger/odyssey solution remain. He is one job in one room, not a generic giant class."
+
+[[cars]]
+id = "rainbow-lie"
+bead = "zork1-1300-002"
+title = "Rainbow is a walkable lie"
+parallel_start = true
+depends_on = ["cyclops-hunger"]
+summary = "EXAMINE RAINBOW and walking it after the pot of gold remain a unique crossing, not a bridge system."
+
+[[cars]]
+id = "hades-ritual"
+bead = "zork1-1300-003"
+title = "Hades is a ritual"
+parallel_start = true
+depends_on = ["rainbow-lie"]
+summary = "Entrance to Hades stays a ritual with bell, book, and candles. EXAMINE of those named ritual objects reaches them as ceremony, not a keycard slot."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1300-004"
+title = "Vanilla set-piece qualification"
+parallel_start = false
+depends_on = ["hades-ritual"]
+summary = "Natural commands prove cyclops hunger, rainbow crossing, and Hades ritual uniqueness without a biome, creature, or GUI layer."
+
+[[couplers]]
+id = "to-survey-dev-flags"
+from_train = "cursor_zork_vanilla_set_pieces"
+from_car = "capstone"
+to_train = "cursor_zork_survey_dev_flags"
+to_car = "no-killing"
+mode = "after"
+note = "1301 stages after the leaflet-spine uniqueness trains."
+
+[meta]
+one_liner = "One hunger, one rainbow, one ritual."
+couples_with = ["cursor_zork_leaflet_score_geography", "cursor_zork_survey_dev_flags"]
+watch = ["docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md"]

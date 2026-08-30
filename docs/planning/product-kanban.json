@@ -4,12 +4,13 @@
   "updated_on": "2026-08-30",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "f87089e",
-    "latest_merged_release": 1295,
-    "latest_merged_release_title": "West-of-House Described Nouns",
-    "latest_merged_pr": 90,
+    "master_head_when_updated": "71c4a83",
+    "latest_merged_release": 1304,
+    "latest_merged_release_title": "Living Collection and Companionship",
+    "latest_merged_pr": 91,
     "open_pr_count_when_refreshed": 1,
-    "open_pr_when_refreshed": "1304-living-collection"
+    "open_pr_when_refreshed": "https://github.com/acrinym/zork1/pull/92",
+    "open_pr_merge_ready_when_refreshed": true
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -20,6 +21,7 @@
     "CURRENT contains at most one actively implemented product train and may be empty between trains.",
     "NEXT is ordered and contains substantial player-facing work.",
     "Preserve canonical Zork solutions and exact object/state authority while layering physically credible alternatives.",
+    "Described world is law: if room prose named a noun, the parser must treat it as real.",
     "Qualify product behavior through natural player commands.",
     "Mara remains one authored person; no approval/love meter, generic follower framework, skill tree, or omniscient companion AI.",
     "No universal crafting/physics/creature machinery, recursive audit machinery, TODO-only slices, stubs, or no-op scaffolding.",
@@ -37,80 +39,49 @@
     "playtest_honesty_gaps": "docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md",
     "playtest_1278_system_recap": "docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md",
     "playtest_1293_system_recap": "docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md",
+    "described_world_is_law": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
     "adventurer_guide": "docs/ADVENTURER_GUIDE.md"
   },
   "stacked_predecessor": null,
   "lanes": {
     "current": [
       {
-        "release": 1295,
-        "train_id": "zork-west-of-house-described-nouns-1295",
-        "title": "West-of-House Described Nouns",
-        "status": "current-in-pr",
-        "planning_document": "docs/ADVENTURER_GUIDE.md",
-        "outcome": "EXAMINE GRASS and EXAMINE SILENCE at West of House reach the field the look text already names. Boards still answer. Leaflet keeps the Infocom ad and names Highly Extended honesty.",
-        "boundary": "Does not steal 1280-1292. No GUI. No AI. No scenery engine. Mailbox and boarded door stay."
+        "release": 1296,
+        "train_id": "zork-leaflet-hour-noun-honesty-1296-1300",
+        "title": "Leaflet Hour Noun Honesty",
+        "status": "current-merge-ready",
+        "pr": 92,
+        "qualification_run": 33336057382,
+        "artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a",
+        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
+        "outcome": "House ring, cellar commitment, Dam #3, leaflet-hour containers, and unique vanilla set-pieces answer the nouns those rooms already name.",
+        "boundary": "Stages locked 1304. Does not steal 1280-1292. No GUI. No AI. No scenery engine. Test verbs LSPDAM through LSPTHIEF stay out of production."
       }
     ],
     "next": [
       {
-        "release": 1280,
-        "train_id": "zork-future-proof-runtime-contract-1280",
-        "title": "Future-Proof Runtime Contract",
+        "release": 1301,
+        "train_id": "zork-survey-dev-flags-1301",
+        "title": "Survey Developer Flags",
+        "status": "next-1-planned",
+        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"
+      },
+      {
+        "release": 1302,
+        "train_id": "zork-described-world-census-1302",
+        "title": "Described-World Census",
         "status": "next-2-planned",
-        "planning_document": "docs/planning/RELEASE_1279_FUTURE_PROOF_RUNTIME_CONTRACT.md"
+        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"
       },
       {
-        "release": 1281,
-        "train_id": "zork-extended-globals-compiler-state-1281",
-        "title": "Extended Globals / Compiler State Scaling",
+        "release": 1303,
+        "train_id": "zork-empire-noun-honesty-1303",
+        "title": "Empire Noun Honesty",
         "status": "next-3-planned",
-        "planning_document": "docs/planning/RELEASE_1280_EXTENDED_GLOBALS_COMPILER_STATE_SCALING.md"
-      },
-      {
-        "release": 1282,
-        "train_id": "zork-story-code-optimization-1282",
-        "title": "Story-Code Optimization",
-        "status": "next-4-planned",
-        "planning_document": "docs/planning/RELEASE_1281_STORY_CODE_OPTIMIZATION.md"
-      },
-      {
-        "release": 1283,
-        "train_id": "zork-cross-interpreter-compatibility-1283",
-        "title": "Cross-Interpreter Compatibility",
-        "status": "next-5-planned",
-        "planning_document": "docs/planning/RELEASE_1282_CROSS_INTERPRETER_COMPATIBILITY.md"
-      },
-      {
-        "release": 1284,
-        "train_id": "zork-large-world-scaling-1284",
-        "title": "Large-World Scaling",
-        "status": "next-6-planned",
-        "planning_document": "docs/planning/RELEASE_1283_LARGE_WORLD_SCALING.md"
-      },
-      {
-        "release": 1285,
-        "train_id": "zork-portable-runtime-bundle-1285",
-        "title": "Portable Runtime Bundle",
-        "status": "next-7-planned",
-        "planning_document": "docs/planning/RELEASE_1284_PORTABLE_RUNTIME_BUNDLE.md"
-      },
-      {
-        "release": 1286,
-        "train_id": "zork-opt-in-playthrough-chronicle-1286",
-        "title": "Opt-In Playthrough Chronicle Export",
-        "status": "next-8-planned",
-        "planning_document": "docs/planning/RELEASE_1285_OPT_IN_PLAYTHROUGH_CHRONICLE_EXPORT.md",
-        "boundary": "Local side-channel only. Not a GUI, not illustration, not a network feature."
+        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"
       }
     ],
     "future": [
-      {"release": 1287, "train_id": "zork-reservoir-fishery-1287", "title": "Second Water / Reservoir Fishery", "status": "future-after-1286", "planning_document": "docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md"},
-      {"release": 1288, "train_id": "zork-mara-collection-witness-1288", "title": "Mara as Collection Witness", "status": "future-after-1286"},
-      {"release": 1289, "train_id": "zork-living-waters-husbandry-1289", "title": "Living Waters Husbandry", "status": "future-after-1286"},
-      {"release": 1290, "train_id": "zork-mara-house-stewardship-1290", "title": "Mara House Stewardship", "status": "future-after-1286"},
-      {"release": 1291, "train_id": "zork-specimen-custody-return-1291", "title": "Specimen Custody & Return", "status": "future-after-1286"},
-      {"release": 1292, "train_id": "zork-mara-agreed-field-errands-1292", "title": "Mara Agreed Field Errands", "status": "future-after-1286"},
       {"train_id": "zork-mara-earned-romance-partnership", "title": "Mara Earned Romance & Partnership", "status": "future-explicit-authored-relationship-arc"},
       {"train_id": "zork-time-weather-disaster-arc", "title": "Time, Weather & Disaster Arc", "status": "future-arc"}
     ],
@@ -165,7 +136,10 @@
       {"release": 1278, "title": "Honest Playthrough Records, Rest Syntax, House Jar", "pr": 86, "merge_commit": "080ba3a3d35f8f61da23f264ba088a6d59991b21", "artifact_sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1"},
       {"release": 1279, "title": "Glulxe Optimization", "pr": 87, "merge_commit": "0e8ad864b644a7351cd795e43e402b59bc058dc8", "note": "Runtime only; 1278 story file unchanged."},
       {"release": 1293, "title": "Honest System Recap", "pr": 88, "merge_commit": "983bb03f4f193eb056533e3aec65e1c57f59db53", "artifact_sha256": "79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641"},
-      {"release": 1294, "title": "Forest That Answers Back", "pr": 89, "merge_commit": "691926c5b4f91106ed5534b293cbaff4df82630f", "artifact_sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831"}
+      {"release": 1294, "title": "Forest That Answers Back", "pr": 89, "merge_commit": "691926c5b4f91106ed5534b293cbaff4df82630f", "artifact_sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831"},
+      {"release": 1295, "title": "West-of-House Described Nouns", "pr": 90, "merge_commit": "f87089e2", "artifact_sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b"},
+      {"release_range": "1280-1286", "title": "Runtime foundation", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56"},
+      {"release": 1304, "title": "Living Collection and Companionship", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56", "artifact_sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b"}
     ]
   }
 }

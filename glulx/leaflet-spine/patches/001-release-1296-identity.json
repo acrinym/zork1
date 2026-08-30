@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1296-identity",
+  "path": "zork1.zil",
+  "description": "Advance staged identity from locked Release 1304 to Release 1296 leaflet-hour noun honesty.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 LIVING COLLECTION AND COMPANIONSHIP GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 LEAFLET HOUR NOUN HONESTY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Living Collection and Companionship.\n  Release 1304 is the POST_1286 museum/Mara/waters program, renumbered so 1280-1292\n  stay the runtime reservation. Reservoir char, witnessed knowledge, husbandry,\n  house stewardship, custody, and agreed Dam errands. No GUI.\"",
+      "new": ";\"Repository-local Leaflet Hour Noun Honesty.\n  Releases 1296-1300: house ring, cellar commitment, Dam #3 as the only factory,\n  score as geography, and unique vanilla set-pieces. Stages locked 1304. No GUI.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1304>",
+      "new": "<CONSTANT RELEASEID 1296>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Living Collection and Companionship Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Leaflet Hour Noun Honesty Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}
