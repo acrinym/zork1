@@ -1,0 +1,12 @@
+{
+  "id": "002-named-forest-locals",
+  "path": "1dungeon.zil",
+  "description": "Add local-global needles, canopy, understory, and foundation stone next to the existing TREE local-global. No scenery registry.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT TREE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM TREE BRANCH)\n\t(ADJECTIVE LARGE STORM ;\"-TOSSED\")\n\t(DESC \"tree\")\n\t(FLAGS NDESCBIT CLIMBBIT)\n\t(ACTION GLULX-ALT-TREE-F)>\n\n<OBJECT MOUNTAIN-RANGE",
+      "new": "<OBJECT TREE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM TREE BRANCH)\n\t(ADJECTIVE LARGE STORM ;\"-TOSSED\")\n\t(DESC \"tree\")\n\t(FLAGS NDESCBIT CLIMBBIT)\n\t(ACTION GLULX-ALT-TREE-F)>\n\n<OBJECT FOREST-NEEDLES\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM NEEDLES)\n\t(ADJECTIVE OLD PINE FALLEN)\n\t(DESC \"needles\")\n\t(FLAGS NDESCBIT)\n\t(ACTION FOREST-NEEDLES-F)>\n\n<OBJECT FOREST-CANOPY\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM CANOPY)\n\t(ADJECTIVE THIN GREEN)\n\t(DESC \"canopy\")\n\t(FLAGS NDESCBIT)\n\t(ACTION FOREST-CANOPY-F)>\n\n<OBJECT FOREST-UNDERSTORY\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM UNDERGROWTH)\n\t(ADJECTIVE DIM EASTERN)\n\t(DESC \"undergrowth\")\n\t(FLAGS NDESCBIT)\n\t(ACTION FOREST-UNDERSTORY-F)>\n\n<OBJECT HOUSE-FOUNDATION-STONE\n\t(IN LOCAL-GLOBALS)\n\t(SYNONYM FOUNDATION)\n\t(ADJECTIVE OLD HOUSE)\n\t(DESC \"old foundation stone\")\n\t(FLAGS NDESCBIT)\n\t(ACTION HOUSE-FOUNDATION-STONE-F)>\n\n<OBJECT MOUNTAIN-RANGE"
+    }
+  ]
+}

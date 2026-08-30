@@ -1,0 +1,12 @@
+{
+  "id": "005-forest-local-actions",
+  "path": "reactive_surface.zil",
+  "description": "Authored examine/take replies for the named forest and foundation locals. No scenery engine.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE SURFACE-TREE-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"The tree is old, deeply rooted, and entirely committed to remaining part of the forest.\" CR>)\n\t      (<VERB? LISTEN>\n\t       <TELL \"Branches shift overhead while the trunk contributes the patient silence of wood.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE SURFACE-SONGBIRD-F ()",
+      "new": "<ROUTINE SURFACE-TREE-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"The tree is old, deeply rooted, and entirely committed to remaining part of the forest.\" CR>)\n\t      (<VERB? LISTEN>\n\t       <TELL \"Branches shift overhead while the trunk contributes the patient silence of wood.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE FOREST-NEEDLES-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"Old needles make a quiet layer over the soil. They catch at the undergrowth instead of offering a path of their own.\" CR>)\n\t      (<VERB? TAKE>\n\t       <TELL \"You scoop a handful. They are only needles, and they fall back where they belong.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE FOREST-CANOPY-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"The canopy thins to the east, enough for a clear wash of sunlight to reach the needles below.\" CR>)\n\t      (<VERB? LOOK-UNDER>\n\t       <TELL \"Under the thinning cover the ground is still pine forest, not a new room.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE FOREST-UNDERSTORY-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"Roots and old needles make the ground look easier to cross than the undergrowth actually permits.\" CR>)\n\t      (<VERB? CUT>\n\t       <TELL \"This tangle is not the western wall that already yielded to a machete. It is ordinary dim-forest undergrowth, and it stays where it is.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE HOUSE-FOUNDATION-STONE-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"Old foundation stone shows where the painted wall gives way to weeds and the darker edge of the forest. It is part of the house, not a loose rock.\" CR>)\n\t      (<VERB? TAKE>\n\t       <TELL \"The foundation is still doing the work of holding the house up.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE SURFACE-SONGBIRD-F ()"
+    }
+  ]
+}
