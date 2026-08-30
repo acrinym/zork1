@@ -50,6 +50,7 @@ spine=(s/'leaflet_spine.zil').read_text()
 zork=(s/'zork1.zil').read_text()
 act=(s/'1actions.zil').read_text()
 req('<OBJECT KITCHEN-CRUMBS' in spine,'Release 1296 missing kitchen crumbs')
+req('SYNONYM WINDOW WINDOWS' in (s/'1dungeon.zil').read_text(),'Release 1296 boarded windows synonym missing')
 req('<OBJECT TROLL-HOLE' in spine,'Release 1296 missing troll doorway')
 req('<OBJECT DAM-WALKWAY' in spine,'Release 1296 missing dam walkway')
 req('cabinet, not a score panel' in act,'Release 1296 trophy case lost cabinet refusal')
@@ -105,7 +106,7 @@ cat > "$BUILD/house-ring.txt" <<'EOF_HOUSE'
 north
 examine boards
 examine windows
-south
+west
 south
 east
 open window
@@ -116,11 +117,11 @@ examine chimney
 west
 take lamp
 turn on lamp
-examine case
-look in case
-take case
+examine trophy case
+look in trophy case
+take trophy case
 move rug
-open trap
+open trap door
 down
 examine ramp
 north

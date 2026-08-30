@@ -13,13 +13,15 @@
     "patches/001-release-1296-identity.json",
     "patches/002-include-leaflet-spine.json",
     "patches/003-trophy-case-cabinet.json",
-    "patches/004-panel-and-rainbow-examine.json"
+    "patches/004-panel-and-rainbow-examine.json",
+    "patches/005-boarded-windows-synonym.json"
   ],
   "added_files": [
     "leaflet_spine.zil"
   ],
   "expected_changed_paths": [
     "1actions.zil",
+    "1dungeon.zil",
     "leaflet_spine.zil",
     "zork1.zil"
   ],

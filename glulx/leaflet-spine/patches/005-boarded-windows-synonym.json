@@ -1,0 +1,12 @@
+{
+  "id": "005-boarded-windows-synonym",
+  "path": "1dungeon.zil",
+  "description": "North and south of house already name windows; WINDOWS must parse to the boarded window.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<OBJECT BOARDED-WINDOW\n\t(IN LOCAL-GLOBALS)\n        (SYNONYM WINDOW)\n\t(ADJECTIVE BOARDED)\n\t(DESC \"boarded window\")\n\t(FLAGS NDESCBIT)\n\t(ACTION SURFACE-BOARDED-WINDOW-F)>",
+      "new": "<OBJECT BOARDED-WINDOW\n\t(IN LOCAL-GLOBALS)\n        (SYNONYM WINDOW WINDOWS)\n\t(ADJECTIVE BOARDED)\n\t(DESC \"boarded window\")\n\t(FLAGS NDESCBIT)\n\t(ACTION SURFACE-BOARDED-WINDOW-F)>"
+    }
+  ]
+}
