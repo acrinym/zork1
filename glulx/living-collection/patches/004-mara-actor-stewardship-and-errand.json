@@ -1,12 +1,12 @@
 {
   "id": "004-mara-actor-stewardship-and-errand",
   "path": "mara_companion_actor.zil",
-  "description": "Let Mara answer cook/nap/archive and TAKE JAR TO DAM as autonomous decisions, not a maid skill tree.",
+  "description": "TAKE JAR TO DAM as Mara-winner. ASK MARA TO PREPARE/REST/FILE is player-winner ASK OBJECT TO OBJECT, not V?PREPARE.",
   "replacements": [
     {
       "expected_count": 1,
       "old": "          (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? MOVE TAKE>\n                <R1277-REQUESTABLE-OBJECT? ,PRSO>>\n           <R1277-MARA-REQUEST-OBJECT ,PRSO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MARA-FIELD-PACK>>",
-      "new": "          (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? MOVE TAKE>\n                <R1277-REQUESTABLE-OBJECT? ,PRSO>>\n           <R1277-MARA-REQUEST-OBJECT ,PRSO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? LC-TAKE-TO>>\n           <V-LC-TAKE-TO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? COOK>>\n           <V-LC-MARA-PREPARE>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? NAP>>\n           <V-LC-MARA-REST>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? ARCHIVE>>\n           <V-LC-MARA-FILE>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MARA-FIELD-PACK>>"
+      "new": "          (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? MOVE TAKE>\n                <R1277-REQUESTABLE-OBJECT? ,PRSO>>\n           <R1277-MARA-REQUEST-OBJECT ,PRSO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? LC-TAKE-TO>>\n           <V-LC-TAKE-TO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MARA-FIELD-PACK>>"
     }
   ]
 }
