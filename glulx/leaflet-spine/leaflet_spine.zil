@@ -59,10 +59,3 @@
 	      (<VERB? WALK ENTER>
 	       <TELL "You are already standing on it." CR>)
 	      (T <RFALSE>)>>
-
-<ROUTINE LEAFLET-PANEL-F ()
-	<COND (<VERB? EXAMINE>
-	       <TELL "The panel is unique to this dam: bolt, bubble, and the gate controls that already work. It is not a generic machine class." CR>)
-	      (<VERB? TAKE>
-	       <INTEGRAL-PART>)
-	      (T <RFALSE>)>>

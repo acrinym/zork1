@@ -164,7 +164,7 @@ timeout 180s "$GLULXE" --rngseed 123456 --undo 16 "$BUILD/release1296-test.ulx" 
 F="$BUILD/leaflet-setpieces-transcript.txt"
 dump_f() { echo '--- leaflet setpieces transcript ---' >&2; cat "$F" >&2; }
 grep -F 'walkable crown of Flood Control Dam #3' "$F" || { dump_f; exit 1; }
-grep -F 'unique to this dam' "$F" || { dump_f; exit 1; }
+grep -F 'The control panel reports no words, but its physical state is readable:' "$F" || { dump_f; exit 1; }
 grep -F 'hungry cyclops' "$F" || { dump_f; exit 1; }
 grep -F 'walkable lie' "$F" || { dump_f; exit 1; }
 grep -F 'invisible force' "$F" || { dump_f; exit 1; }
