@@ -16,7 +16,8 @@
     "patches/004-kitchen-recap-split-food.json",
     "patches/005-rest-integrity-silent.json",
     "patches/006-lie-and-drink-from-syntax.json",
-    "patches/007-field-jar-sword-shatter.json"
+    "patches/007-field-jar-sword-shatter.json",
+    "patches/008-lie-down-dummy-prso.json"
   ],
   "expected_changed_paths": [
     "attic_archive_core.zil",

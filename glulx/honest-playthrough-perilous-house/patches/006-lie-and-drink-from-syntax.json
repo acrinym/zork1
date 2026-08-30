@@ -1,12 +1,12 @@
 {
   "id": "006-lie-and-drink-from-syntax",
   "path": "gsyntax.zil",
-  "description": "Let LIE, LIE DOWN, and LIE ON BED reach Bedroom sleep and DRINK FROM reach the Kitchen sink. ZILF rejects LIE DOWN ON OBJECT as two prepositions.",
+  "description": "Let LIE, LIE DOWN, and LIE ON BED reach Bedroom sleep and DRINK FROM reach the Kitchen sink. LIE DOWN uses FIND RMUNGBIT like LOOK DOWN; ZILF rejects LIE DOWN ON OBJECT as two prepositions.",
   "replacements": [
     {
       "expected_count": 1,
       "old": "<SYNTAX LIE DOWN = V-HOUSE-SLEEP>\n<SYNTAX LIE ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>",
-      "new": "<SYNTAX LIE = V-HOUSE-SLEEP>\n<SYNTAX LIE DOWN = V-HOUSE-SLEEP>\n<SYNTAX LIE ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>"
+      "new": "<SYNTAX LIE = V-HOUSE-SLEEP>\n<SYNTAX LIE DOWN OBJECT (FIND RMUNGBIT) = V-HOUSE-SLEEP>\n<SYNTAX LIE ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>"
     },
     {
       "expected_count": 1,

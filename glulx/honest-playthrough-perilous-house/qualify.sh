@@ -62,9 +62,11 @@ req('You prepared the real lunch or sliced the real garlic' not in kitchen,'Rele
 req('<VERB? DRINK DRINK-FROM>' in kitchen,'Release 1278 kitchen sink does not accept DRINK FROM')
 req('REST-RECORD-INTEGRITY' not in rest,'Release 1278 still prints rest-record integrity telemetry to the player')
 req('<SYNTAX LIE = V-HOUSE-SLEEP>' in gsyn,'Release 1278 missing bare LIE sleep syntax')
-req('<SYNTAX LIE DOWN = V-HOUSE-SLEEP>' in gsyn,'Release 1278 missing LIE DOWN sleep syntax')
+req('<SYNTAX LIE DOWN OBJECT (FIND RMUNGBIT) = V-HOUSE-SLEEP>' in gsyn,'Release 1278 LIE DOWN is not using the Infocom particle pattern')
 req('<SYNTAX LIE ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>' in gsyn,'Release 1278 missing LIE ON OBJECT sleep syntax')
 req('<SYNTAX LIE DOWN ON OBJECT' not in gsyn,'Release 1278 still uses illegal two-preposition LIE DOWN ON OBJECT syntax')
+req('<AND ,PRSO <NOT <EQUAL? ,PRSO ,REST-BED ,ROOMS>>>' not in rest,'Release 1278 still refuses LIE DOWN because of a parser dummy PRSO')
+req('<OR <IN? ,PRSO ,HERE> <IN? ,PRSO ,WINNER>>' in rest,'Release 1278 rest does not confine non-bed refusals to present objects')
 req('<SYNTAX DRINK FROM OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-DRINK-FROM>' in gsyn,'Release 1278 DRINK FROM still cannot target room fixtures')
 req('The blow reaches the glass.' in jar,'Release 1278 field jar has no authored shatter')
 for bad in ('DURABILITY','ARMOR-CLASS','HIT-POINT','CRAFTING-REGISTRY','MATERIAL-TYPE-REGISTRY','BAD-CHOICE-COUNTER'):
