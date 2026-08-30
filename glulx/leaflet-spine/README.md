@@ -6,9 +6,9 @@ If a room on that first loop already names a thing, the parser must treat it as 
 
 Production `.ulx` must not contain the test verbs `LSPDAM`, `LSPCYCLOPS`, `LSPRAINBOW`, `LSPHADES`, `LSPTIMBER`, or `LSPTHIEF`.
 
-**Open PR:** [#92](https://github.com/acrinym/zork1/pull/92). Merge-ready after hosted gameplay lock; not on `master` until an explicit Justin whistle.
+**Merged:** [PR #92](https://github.com/acrinym/zork1/pull/92) merge `9be10c1969cbebd30ca82ec219991116b9b58e89`.
 
-Locked candidate:
+Locked production:
 
 - `zork1-glulx-leaflet-hour-noun-honesty.ulx`
 - SHA-256 `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a`

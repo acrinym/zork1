@@ -5,7 +5,7 @@ description = """
 Play the entire reachable map. Every noun the game already spoke that the parser then denies is a lie. Write those lies into a ledger. That ledger is law for later honesty trains. Uses 1301 survey flags. No GUI. No AI. No scenery engine. Does not steal 1280-1292.
 """
 created     = "2026-08-30"
-status      = "planned"
+status      = "in_progress"
 
 [[cars]]
 id = "whole-map-play"

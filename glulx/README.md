@@ -8,25 +8,17 @@ Historical Release 119, repository Optimized Release 120, early Expanded Release
 
 ## Current lineage
 
-**Merged production frontier:** Release 1304 — Living Collection and Companionship, merged through PR #91 at `71c4a831b956184fd0bd811be498c61724987d56`. Runtime foundation 1280–1286 shipped on the same merge; the player `.ulx` is the locked 1304 story.
+**Merged production frontier:** Release 1296 — Leaflet Hour Noun Honesty, merged through PR #92 at `9be10c1969cbebd30ca82ec219991116b9b58e89`. That story still includes locked 1304 Living Collection. Runtime foundation 1280–1286 remains from PR #91.
 
-Locked 1304 production artifact:
-
-- `zork1-glulx-living-collection.ulx`
-- Glulx `0x00030103`
-- SHA-256 `6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b`
-
-**Open current train (merge-ready, not merged):** Releases 1296–1300 — Leaflet Hour Noun Honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)), on `acrinym/zork1` only. Stages locked 1304. Does not steal 1280–1292.
-
-Locked 1296 candidate artifact:
+Locked 1296 production artifact:
 
 - `zork1-glulx-leaflet-hour-noun-honesty.ulx`
 - Glulx `0x00030103`
 - SHA-256 `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a`
-- size 559360, checksum `0x7506dcd5`
-- hosted qualification: `qualify-release-1296` run `33336057382`
 
-See [`living-collection/`](living-collection/), [`runtime-foundation/`](runtime-foundation/), [`leaflet-spine/`](leaflet-spine/), [`west-of-house-nouns/`](west-of-house-nouns/), [`forest-answers-back/`](forest-answers-back/), [`honest-system-recap/`](honest-system-recap/), [`glulxe-optimization/`](glulxe-optimization/), and [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/).
+**Open current train:** Releases 1301–1303 — Survey flags, described-world census, empire noun honesty, on `acrinym/zork1` only. Stages locked 1296. Survey flags never enter production.
+
+See [`empire-census/`](empire-census/), [`leaflet-spine/`](leaflet-spine/), [`living-collection/`](living-collection/), [`runtime-foundation/`](runtime-foundation/), [`west-of-house-nouns/`](west-of-house-nouns/), [`forest-answers-back/`](forest-answers-back/), [`honest-system-recap/`](honest-system-recap/), [`glulxe-optimization/`](glulxe-optimization/), and [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/).
 
 ## What “release train” means here
 

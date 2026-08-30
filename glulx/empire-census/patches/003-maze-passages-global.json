@@ -1,0 +1,12 @@
+{
+  "id": "003-maze-passages-global",
+  "path": "1dungeon.zil",
+  "description": "Twisty maze rooms already name passages; expose a local-global so EXAMINE PASSAGES is not a lie.",
+  "replacements": [
+    {
+      "expected_count": 19,
+      "old": "      (FLAGS RLANDBIT MAZEBIT)>",
+      "new": "      (FLAGS RLANDBIT MAZEBIT)\n      (GLOBAL MAZE-TWISTS)>"
+    }
+  ]
+}

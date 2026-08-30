@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1303-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only survey flags after production empire nouns",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"empire_nouns\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"empire_nouns\" T>\n<INSERT-FILE \"survey_flags\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}

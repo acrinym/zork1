@@ -1,0 +1,12 @@
+{
+  "id": "002-include-empire-nouns",
+  "path": "zork1.zil",
+  "description": "Load empire noun honesty after leaflet-hour spine.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"leaflet_spine\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"leaflet_spine\" T>\n<INSERT-FILE \"empire_nouns\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}

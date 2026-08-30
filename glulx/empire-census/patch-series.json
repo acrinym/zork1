@@ -1,0 +1,45 @@
+{
+  "edition": "Empire Noun Honesty",
+  "release": 1303,
+  "serial": "260830",
+  "base_release": 1296,
+  "base_manifest": "../leaflet-spine/patch-series.json",
+  "base_artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a",
+  "base_source_sha256": {
+    "production": "",
+    "dev": ""
+  },
+  "planning_map": {
+    "1301": "survey developer flags --no-killing and --no-reset-on-death (test-only)",
+    "1302": "described-world census ledger",
+    "1303": "close remaining ledger rows on flagless production play"
+  },
+  "patches": [
+    "patches/001-release-1303-identity.json",
+    "patches/002-include-empire-nouns.json",
+    "patches/003-maze-passages-global.json",
+    "patches/004-forest-sunlight-global.json"
+  ],
+  "added_files": [
+    "empire_nouns.zil"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "empire_nouns.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-empire-noun-honesty.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103"
+  },
+  "player_outcomes": [
+    "Gallery PAINTINGS and VANDALS answer the stolen-gallery look",
+    "Maze PASSAGES answer the twisty-little-passages look",
+    "Forest SUNLIGHT at the western pines answers the look",
+    "Temple PRAYER and PILLARS answer the north temple look",
+    "Dam lobby DOORWAYS answer the touring-room look",
+    "Survey flags exist only on the test story, never in production"
+  ]
+}
