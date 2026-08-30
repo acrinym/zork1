@@ -126,8 +126,8 @@ build = Path(sys.argv[1])
 m = json.loads(Path(sys.argv[2]).read_text())
 seed = sys.argv[3]
 story = build / m['base_story_file']
-cwd = build / 'save-restore'
-cwd.mkdir(parents=True, exist_ok=True)
+# CheapGlk writes the save next to the story file, not an arbitrary cwd.
+cwd = build
 ref = build / 'glulxe-reference-bin'
 opt = build / 'glulxe-optimized-bin'
 def play(bin_path, script):
@@ -146,7 +146,7 @@ ref_save = play(ref, save_script)
 opt_save = play(opt, save_script)
 if ref_save != opt_save:
     raise SystemExit('Release 1279 save transcripts diverge')
-if not (cwd / 'r1279.sav').is_file():
+if not (build / 'r1279.sav').is_file():
     raise SystemExit('Release 1279 did not write a save file')
 ref_rest = play(ref, restore_script)
 opt_rest = play(opt, restore_script)

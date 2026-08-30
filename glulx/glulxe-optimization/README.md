@@ -22,6 +22,8 @@ Interpreter pins match the 1278 workflow: Glulxe `56ab8743bab565de307bd892c555d8
 
 Qualify copies Glulxe out of `.tooling/glulxe` into isolated build trees. Those copies have no sibling `../cheapglk`, so `build-glulxe.sh` must pass `GLKINCLUDEDIR` on **every** `make` invocation, including `clean`. Do not `make -C` a copied Glulxe tree without that directory.
 
+CheapGlk writes `r1279.sav` next to the story file. The save/restore gate must use that directory as cwd.
+
 Merges go to `acrinym/zork1` `master` only.
 
 See `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`.
