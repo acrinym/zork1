@@ -59,9 +59,7 @@ cp -a "$ROOT/.tooling/glulxe" "$REF_SRC"
 cp -a "$ROOT/.tooling/glulxe" "$OPT_SRC"
 cp -a "$ROOT/.tooling/glulxe" "$PROF_SRC"
 cp -a "$ROOT/.tooling/cheapglk" "$GLK_OPT"
-make -C "$REF_SRC" clean
-make -C "$OPT_SRC" clean
-make -C "$PROF_SRC" clean
+# Fresh copies; Glulxe clean is done inside build-glulxe.sh with GLKINCLUDEDIR.
 make -C "$GLK_OPT" clean
 
 python - "$MANIFEST" "$BUILD/flags.env" "$BUILD/pgo-data" <<'PY_OPTS'

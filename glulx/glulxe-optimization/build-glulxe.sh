@@ -5,7 +5,15 @@ SRC="$1"
 GLKDIR="$2"
 OUT_NAME="${3:-glulxe}"
 OPTIONS="$4"
-make -C "$SRC" clean
+# Glulxe's Makefile includes $(GLKINCLUDEDIR)/Make.cheapglk at parse time.
+# Isolated copies under glulx/build/ have no sibling ../cheapglk, so every
+# make invocation — including clean — must pass the CheapGlk directory.
+make -C "$SRC" \
+  GLKINCLUDEDIR="$GLKDIR" \
+  GLKLIBDIR="$GLKDIR" \
+  GLKMAKEFILE=Make.cheapglk \
+  OPTIONS="$OPTIONS" \
+  clean
 make -C "$SRC" \
   GLKINCLUDEDIR="$GLKDIR" \
   GLKLIBDIR="$GLKDIR" \

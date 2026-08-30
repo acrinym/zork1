@@ -20,6 +20,8 @@ Locked Release 1278 story:
 
 Interpreter pins match the 1278 workflow: Glulxe `56ab8743bab565de307bd892c555d8d8897ed517`, CheapGlk `14d8aaf6e4150669762bd4646a5368e75c1eeee6`.
 
+Qualify copies Glulxe out of `.tooling/glulxe` into isolated build trees. Those copies have no sibling `../cheapglk`, so `build-glulxe.sh` must pass `GLKINCLUDEDIR` on **every** `make` invocation, including `clean`. Do not `make -C` a copied Glulxe tree without that directory.
+
 Merges go to `acrinym/zork1` `master` only.
 
 See `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`.
