@@ -5,8 +5,8 @@
   "replacements": [
     {
       "expected_count": 1,
-      "old": "      (WEST \"You would need a machete to go further west.\")\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)>",
-      "new": "      (WEST \"You would need a machete to go further west.\")\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST FOREST-SUNLIGHT)>"
+      "old": "      (WEST PER WILDERNESS-FOREST-WEST-EXIT)\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST FOREST-NEEDLES FOREST-CANOPY)>",
+      "new": "      (WEST PER WILDERNESS-FOREST-WEST-EXIT)\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST FOREST-NEEDLES FOREST-CANOPY FOREST-SUNLIGHT)>"
     }
   ]
 }
