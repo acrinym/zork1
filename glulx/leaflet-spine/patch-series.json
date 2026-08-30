@@ -6,8 +6,8 @@
   "base_manifest": "../living-collection/patch-series.json",
   "base_artifact_sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b",
   "base_source_sha256": {
-    "production": "",
-    "dev": ""
+    "production": "611f2c19372d5828623647c4a4d624c0be07d4274c6dc4408025b4b763b80d55",
+    "dev": "f76537d8a8f69175b2c97600ce738ad087b15adc114f3c269075158379a241ea"
   },
   "patches": [
     "patches/001-release-1296-identity.json",

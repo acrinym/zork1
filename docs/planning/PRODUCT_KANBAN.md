@@ -19,6 +19,7 @@ This board is the human operating surface for the active Zork product queue. The
 - **CURRENT** contains at most one actively implemented product train and may be empty between trains.
 - **NEXT** is ordered and contains concrete player-facing work, not cleanup placeholders.
 - Preserve canonical Zork solutions and exact object/state authority while layering physically credible alternatives.
+- **Described world is law:** if room prose named a noun, the parser must treat it as real (`docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`).
 - Natural player commands are the product qualification surface.
 - No universal crafting grid, arbitrary object-pair matrix, generic physics simulator, generic creature brain, recursive audit machinery, TODO-only slice, stub, or no-op scaffolding.
 - Difficulty must never become a parser-phrasing tax or enemy-health multiplier masquerading as puzzle difficulty.
@@ -51,9 +52,9 @@ Walk the reachable map; ledger every prose/parser lie.
 ### 3. Release 1303 — Empire Noun Honesty
 Close every census row on a flagless production play.
 
-## FUTURE — remaining companionship (Living Collection is live **1304**)
+## FUTURE — remaining companionship (Living Collection is **DONE** as live **1304**)
 
-Parser-native. No photographs, DRAW, illustrated frontend, or other GUI. The 1287–1292 capabilities are CURRENT as Release 1304; see `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`.
+Parser-native. No photographs, DRAW, illustrated frontend, or other GUI. Planning ids 1287–1292 shipped as Release 1304 (PR #91); see `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`.
 
 Also remaining:
 
@@ -155,7 +156,7 @@ Also remaining:
 - `docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md`
 
 - `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`
-
+- `docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`
 - `docs/ADVENTURER_GUIDE.md`
 
 The live shape at this refresh: Releases 1278–1286, 1293–1295, and 1304 are merged on `acrinym/zork1` `master` (`71c4a83`, PR #91). CURRENT is 1296–1300 leaflet-hour noun honesty. Never merge to `historicalsource/zork1`.

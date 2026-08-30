@@ -8,17 +8,17 @@ Historical Release 119, repository Optimized Release 120, early Expanded Release
 
 ## Current lineage
 
-**Merged production frontier:** Release 1294 — Forest That Answers Back, merged through PR #89 at `691926c5b4f91106ed5534b293cbaff4df82630f`.
+**Merged production frontier:** Release 1304 — Living Collection and Companionship, merged through PR #91 at `71c4a831b956184fd0bd811be498c61724987d56`. Runtime foundation 1280–1286 shipped on the same merge; the player `.ulx` is the locked 1304 story.
 
-Locked 1294 production artifact:
+Locked 1304 production artifact:
 
-- `zork1-glulx-forest-answers-back.ulx`
+- `zork1-glulx-living-collection.ulx`
 - Glulx `0x00030103`
-- SHA-256 `20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831`
+- SHA-256 `6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b`
 
-**Open current train:** Release 1295 — West-of-House Described Nouns (grass, silence, honest leaflet), on `acrinym/zork1` only. Does not steal 1280–1292.
+**Open current train:** Releases 1296–1300 — Leaflet Hour Noun Honesty ([PR #92](https://github.com/acrinym/zork1/pull/92)), on `acrinym/zork1` only. Stages locked 1304. Does not steal 1280–1292.
 
-See [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/), [`glulxe-optimization/`](glulxe-optimization/), [`honest-system-recap/`](honest-system-recap/), [`forest-answers-back/`](forest-answers-back/), and [`west-of-house-nouns/`](west-of-house-nouns/). Releases 1267 and 1268 are merged history; their locked artifacts remain in those train directories.
+See [`living-collection/`](living-collection/), [`runtime-foundation/`](runtime-foundation/), [`leaflet-spine/`](leaflet-spine/), [`west-of-house-nouns/`](west-of-house-nouns/), [`forest-answers-back/`](forest-answers-back/), [`honest-system-recap/`](honest-system-recap/), [`glulxe-optimization/`](glulxe-optimization/), and [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/).
 
 ## What “release train” means here
 
@@ -145,5 +145,7 @@ Current product sequencing lives under [`../docs/planning/`](../docs/planning/),
 - [`../docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md`](../docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md)
 - [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 - [`../docs/planning/product-kanban.json`](../docs/planning/product-kanban.json)
+- [`../docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`](../docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md)
+- [`../docs/ADVENTURER_GUIDE.md`](../docs/ADVENTURER_GUIDE.md)
 
 For player-facing orientation, return to [`../expanded/README.md`](../expanded/README.md).

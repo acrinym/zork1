@@ -20,6 +20,7 @@
     "CURRENT contains at most one actively implemented product train and may be empty between trains.",
     "NEXT is ordered and contains substantial player-facing work.",
     "Preserve canonical Zork solutions and exact object/state authority while layering physically credible alternatives.",
+    "Described world is law: if room prose named a noun, the parser must treat it as real.",
     "Qualify product behavior through natural player commands.",
     "Mara remains one authored person; no approval/love meter, generic follower framework, skill tree, or omniscient companion AI.",
     "No universal crafting/physics/creature machinery, recursive audit machinery, TODO-only slices, stubs, or no-op scaffolding.",
