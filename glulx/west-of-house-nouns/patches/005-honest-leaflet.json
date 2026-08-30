@@ -1,0 +1,12 @@
+{
+  "id": "005-honest-leaflet",
+  "path": "1dungeon.zil",
+  "description": "Keep the Infocom advertisement. Add one honest Highly Extended sentence. Not a walkthrough.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t(TEXT\n\"\\\"WELCOME TO ZORK!|\n|\nZORK is a game of adventure, danger, and low cunning. In it you\nwill explore some of the most amazing territory ever seen by mortals.\nNo computer should be without one!\\\"\")",
+      "new": "\t(TEXT\n\"\\\"WELCOME TO ZORK!|\n|\nZORK is a game of adventure, danger, and low cunning. In it you\nwill explore some of the most amazing territory ever seen by mortals.\nNo computer should be without one!|\n|\nThis copy is Highly Extended Zork. What a place describes, you can\nusually examine. Recap only names what you have already earned. The\nwhite house is not a safe inn.\\\"\")"
+    }
+  ]
+}

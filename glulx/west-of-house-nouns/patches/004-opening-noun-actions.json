@@ -1,0 +1,12 @@
+{
+  "id": "004-opening-noun-actions",
+  "path": "reactive_surface.zil",
+  "description": "Authored examine replies for the named opening grass and silence.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE HOUSE-FOUNDATION-STONE-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"Old foundation stone shows where the painted wall gives way to weeds and the darker edge of the forest. It is part of the house, not a loose rock.\" CR>)\n\t      (<VERB? TAKE>\n\t       <TELL \"The foundation is still doing the work of holding the house up.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE SURFACE-SONGBIRD-F ()",
+      "new": "<ROUTINE HOUSE-FOUNDATION-STONE-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"Old foundation stone shows where the painted wall gives way to weeds and the darker edge of the forest. It is part of the house, not a loose rock.\" CR>)\n\t      (<VERB? TAKE>\n\t       <TELL \"The foundation is still doing the work of holding the house up.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE FIELD-GRASS-F ()\n\t<COND (<VERB? EXAMINE>\n\t       <TELL \"The grass has gone a little wild around the house. It is ordinary field grass, not a path and not a hiding place.\" CR>)\n\t      (<VERB? TAKE>\n\t       <TELL \"A handful of grass comes up and means nothing. The field stays.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE FIELD-SILENCE-F ()\n\t<COND (<VERB? EXAMINE LISTEN>\n\t       <TELL \"The silence has the settled quality of a place left alone too long. It is the field, not an object you can pocket.\" CR>)\n\t      (<VERB? TAKE>\n\t       <TELL \"Silence is not a takeable thing.\" CR>)\n\t      (T <RFALSE>)>>\n\n<ROUTINE SURFACE-SONGBIRD-F ()"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1295-identity",
+  "path": "zork1.zil",
+  "description": "Advance the staged story identity from locked Release 1294 to Release 1295.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 FOREST THAT ANSWERS BACK GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 WEST-OF-HOUSE DESCRIBED NOUNS GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Forest That Answers Back.\n  Release 1294 makes trees, needles, canopy, undergrowth, and old foundation stone\n  parser-real where room prose already names them, without a scenery engine.\"",
+      "new": ";\"Repository-local West-of-House Described Nouns.\n  Release 1295 makes the opening field grass and settled silence parser-real, and\n  the mailbox leaflet names Highly Extended honesty without a scenery engine.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1294>",
+      "new": "<CONSTANT RELEASEID 1295>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Forest That Answers Back Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"West-of-House Described Nouns Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

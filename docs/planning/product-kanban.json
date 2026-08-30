@@ -4,12 +4,12 @@
   "updated_on": "2026-08-30",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "080ba3a3d35f8f61da23f264ba088a6d59991b21",
-    "latest_merged_release": 1278,
-    "latest_merged_release_title": "Honest Playthrough Records, Rest Syntax, House Jar",
-    "latest_merged_pr": 86,
-    "open_pr_count_when_refreshed": 3,
-    "open_pr_when_refreshed": "87-88-and-1294-forest-answers-back"
+    "master_head_when_updated": "691926c5b4f91106ed5534b293cbaff4df82630f",
+    "latest_merged_release": 1294,
+    "latest_merged_release_title": "Forest That Answers Back",
+    "latest_merged_pr": 89,
+    "open_pr_count_when_refreshed": 1,
+    "open_pr_when_refreshed": "1295-west-of-house-nouns"
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -36,19 +36,20 @@
     "runtime_foundation_queue": "docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md",
     "playtest_honesty_gaps": "docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md",
     "playtest_1278_system_recap": "docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md",
-    "playtest_1293_system_recap": "docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md"
+    "playtest_1293_system_recap": "docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md",
+    "adventurer_guide": "docs/ADVENTURER_GUIDE.md"
   },
   "stacked_predecessor": null,
   "lanes": {
     "current": [
       {
-        "release": 1294,
-        "train_id": "zork-forest-that-answers-back-1294",
-        "title": "Forest That Answers Back",
+        "release": 1295,
+        "train_id": "zork-west-of-house-described-nouns-1295",
+        "title": "West-of-House Described Nouns",
         "status": "current-in-pr",
-        "planning_document": "docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md",
-        "outcome": "EXAMINE TREE at North of House reaches the trees the room already names. Needles, canopy, undergrowth, and old foundation stone answer where prose already claims them.",
-        "boundary": "Does not steal 1280-1292. No GUI. No AI. No scenery engine. Forest Path climbable tree stays."
+        "planning_document": "docs/ADVENTURER_GUIDE.md",
+        "outcome": "EXAMINE GRASS and EXAMINE SILENCE at West of House reach the field the look text already names. Boards still answer. Leaflet keeps the Infocom ad and names Highly Extended honesty.",
+        "boundary": "Does not steal 1280-1292. No GUI. No AI. No scenery engine. Mailbox and boarded door stay."
       }
     ],
     "next": [
@@ -111,28 +112,9 @@
       {"release": 1291, "train_id": "zork-specimen-custody-return-1291", "title": "Specimen Custody & Return", "status": "future-after-1286"},
       {"release": 1292, "train_id": "zork-mara-agreed-field-errands-1292", "title": "Mara Agreed Field Errands", "status": "future-after-1286"},
       {"train_id": "zork-mara-earned-romance-partnership", "title": "Mara Earned Romance & Partnership", "status": "future-explicit-authored-relationship-arc"},
-      {"release": 1295, "train_id": "zork-west-of-house-described-nouns-1295", "title": "West-of-House nouns the opening already describes", "status": "next-after-1294", "note": "Grass, boards, and silence as examinable locals without a scenery engine. No GUI. No AI."},
       {"train_id": "zork-time-weather-disaster-arc", "title": "Time, Weather & Disaster Arc", "status": "future-arc"}
     ],
     "parked": [
-      {
-        "release": 1279,
-        "train_id": "zork-glulxe-optimization-1279",
-        "title": "Glulxe Optimization",
-        "status": "parallel-runtime-in-pr",
-        "pr": 87,
-        "planning_document": "docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md",
-        "note": "Runtime-only; story file unchanged. Not CURRENT because CURRENT is 1294. Kanban allows one current train."
-      },
-      {
-        "release": 1293,
-        "train_id": "zork-honest-system-recap-1293",
-        "title": "Honest System Recap",
-        "status": "parallel-story-in-pr",
-        "pr": 88,
-        "planning_document": "docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md",
-        "note": "Locked hosted identity on PR #88. Not CURRENT because CURRENT is 1294."
-      },
       {"train_id": "zork-illustrated-draw-gui", "title": "Illustrated Zork / DRAW / external scene rendering", "status": "parked-far-horizon", "planning_document": "docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md"},
       {"train_id": "stalker-glulx-separate-lane", "title": "S.T.A.L.K.E.R. Glulx Game", "status": "parked-separate-product"},
       {"train_id": "infocom-protected-artifact-expansion", "title": "Protected Corpus Acquisition", "status": "parked-rights-dependent"}
@@ -180,7 +162,10 @@
       {"release": 1268, "title": "Clue Chains & Knowledge-Gated Interpretation", "pr": 73, "merge_commit": "2e16f6cebbfb5a7892feac08d9e6461e6bb9313b", "artifact_sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16", "qualification_run": 32052058707},
       {"release_range": "1269-1276", "title": "Structural difficulty through Mara field guidance", "proof": "merged on acrinym/zork1 master before PR #85"},
       {"release": 1277, "title": "Mundane Objects, Field Caching & House Spatial Agency", "pr": 85, "merge_commit": "42c110095cb99c9aff6ef83956c391b437c76bef", "artifact_sha256": "582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599"},
-      {"release": 1278, "title": "Honest Playthrough Records, Rest Syntax, House Jar", "pr": 86, "merge_commit": "080ba3a3d35f8f61da23f264ba088a6d59991b21", "artifact_sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1"}
+      {"release": 1278, "title": "Honest Playthrough Records, Rest Syntax, House Jar", "pr": 86, "merge_commit": "080ba3a3d35f8f61da23f264ba088a6d59991b21", "artifact_sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1"},
+      {"release": 1279, "title": "Glulxe Optimization", "pr": 87, "merge_commit": "0e8ad864b644a7351cd795e43e402b59bc058dc8", "note": "Runtime only; 1278 story file unchanged."},
+      {"release": 1293, "title": "Honest System Recap", "pr": 88, "merge_commit": "983bb03f4f193eb056533e3aec65e1c57f59db53", "artifact_sha256": "79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641"},
+      {"release": 1294, "title": "Forest That Answers Back", "pr": 89, "merge_commit": "691926c5b4f91106ed5534b293cbaff4df82630f", "artifact_sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831"}
     ]
   }
 }

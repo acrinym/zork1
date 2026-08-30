@@ -1,0 +1,12 @@
+{
+  "id": "003-west-of-house-globals",
+  "path": "1dungeon.zil",
+  "description": "Expose grass and silence at West of House where the look text already names them. BOARD stays.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (ACTION WEST-HOUSE)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL WHITE-HOUSE BOARD FOREST)>",
+      "new": "      (ACTION WEST-HOUSE)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL WHITE-HOUSE BOARD FOREST FIELD-GRASS FIELD-SILENCE)>"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 # Agent memory
 
-- 2026-08-30 — Release 1294 Forest That Answers Back is CURRENT on `agent/1294-forest-answers-back`. Stages locked 1293. `EXAMINE TREE` at North of House, needles/canopy/undergrowth, and Behind House foundation stone. No GUI. No AI.
+- 2026-08-30 — Release 1295 West-of-House nouns in progress: grass and silence parser-real, honest leaflet postscript, player guide `docs/ADVENTURER_GUIDE.md`. Stages locked 1294. No GUI. No AI.
+- 2026-08-30 — Merged 1279 PR #87, 1293 PR #88, 1294 PR #89. Locked 1294 SHA-256 `20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831`.
 - 2026-08-30 — Release 1293 locked hosted identity: SHA-256 `79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641`, checksum `0xb8e24a15`, 548864 bytes. Qualify `33304925760`. Live Windows playtest confirmed honest fresh and window RECAP; `EXAMINE TREE` at North of House remains 1294.
 - 2026-08-30 — Recorded `cursor_zork_honest_system_recap` (Release 1293, in progress), `cursor_zork_forest_answers_back` (1294, planned), and `cursor_zork_west_of_house_nouns` (1295, planned). Live numbers skip 1280–1292. No GUI. No AI. Writable repo remains `acrinym/zork1` only.
 - 2026-07-19 — Completed coupled trains `onyx_zork_reactive_world` and `onyx_zork_living_underground` on PR #1. Added separately identified Zork I Expanded Release 121 (`260719`) beside preserved Release 119 and optimized Release 120. Release 121 compiles, verifies, runs its expanded opening transcript, and includes world reactivity, assistance, optional songbird discovery, alternate troll/cyclops/thief interactions, ritual and dam depth, object affordances, memory, documentation, and independent artifacts.

@@ -5,7 +5,7 @@ description = """
 Where room prose already names trees, needles, canopy, and undergrowth, those nouns become stateful parser objects. Forest Path already has a climbable tree; North of House must not say you cannot see any tree. No GUI. No AI. No generic scenery engine.
 """
 created     = "2026-08-30"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "north-trees"
