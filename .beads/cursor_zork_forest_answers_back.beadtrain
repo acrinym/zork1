@@ -1,0 +1,46 @@
+[train]
+name        = "cursor_zork_forest_answers_back"
+title       = "Release 1294 Forest That Answers Back"
+description = """
+Where room prose already names trees, needles, canopy, and undergrowth, those nouns become stateful parser objects. Forest Path already has a climbable tree; North of House must not say you cannot see any tree. No GUI. No AI. No generic scenery engine.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "north-trees"
+bead = "zork1-1294-001"
+title = "Trees exist where North of House names them"
+parallel_start = true
+depends_on = []
+summary = "EXAMINE TREE at North of House reaches the trees the room already describes."
+
+[[cars]]
+id = "forest-nouns"
+bead = "zork1-1294-002"
+title = "Named wilderness nouns stay local and physical"
+parallel_start = true
+depends_on = ["north-trees"]
+summary = "Needles, canopy, undergrowth, and foundation stone answer examination without a scenery registry."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1294-003"
+title = "Forest answers-back qualification"
+parallel_start = false
+depends_on = ["forest-nouns"]
+summary = "Natural commands prove tree presence at North of House and preserve the Forest Path climbable tree."
+
+[[couplers]]
+id = "to-west-of-house-nouns"
+from_train = "cursor_zork_forest_answers_back"
+from_car = "capstone"
+to_train = "cursor_zork_west_of_house_nouns"
+to_car = "opening-nouns"
+mode = "after"
+note = "1295 stages locked 1294. Same no-GUI no-AI parser-world rule."
+
+[meta]
+one_liner = "If the room names a tree, EXAMINE TREE works."
+couples_with = ["cursor_zork_honest_system_recap", "cursor_zork_west_of_house_nouns"]
+watch = ["docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md"]

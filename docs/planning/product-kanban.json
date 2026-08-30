@@ -8,8 +8,8 @@
     "latest_merged_release": 1278,
     "latest_merged_release_title": "Honest Playthrough Records, Rest Syntax, House Jar",
     "latest_merged_pr": 86,
-    "open_pr_count_when_refreshed": 1,
-    "open_pr_when_refreshed": "1279-glulxe-optimization"
+    "open_pr_count_when_refreshed": 2,
+    "open_pr_when_refreshed": "87-and-1293-honest-system-recap"
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -34,19 +34,20 @@
     "environmental_mechanisms_1274": "docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md",
     "living_collection_after_1286": "docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md",
     "runtime_foundation_queue": "docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md",
-    "playtest_honesty_gaps": "docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md"
+    "playtest_honesty_gaps": "docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md",
+    "playtest_1278_system_recap": "docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md"
   },
   "stacked_predecessor": null,
   "lanes": {
     "current": [
       {
-        "release": 1279,
-        "train_id": "zork-glulxe-optimization-1279",
-        "title": "Glulxe Optimization",
+        "release": 1293,
+        "train_id": "zork-honest-system-recap-1293",
+        "title": "Honest System Recap",
         "status": "current-in-pr",
-        "planning_document": "docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md",
-        "outcome": "Faster native Glulxe for the locked 1278 story via -O3, LTO, and PGO; identical transcripts; save/restore/undo preserved; reference -O2 binary kept.",
-        "boundary": "No Glulx semantic fork, no story-specific opcode cheats, VERIFY_MEMORY_ACCESS stays on, .ulx unchanged."
+        "planning_document": "docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md",
+        "outcome": "A fresh RECAP does not dump House-of-Records architecture; window and forest-sleep facts remain earned.",
+        "boundary": "Does not steal 1280-1292. No GUI. No AI."
       }
     ],
     "next": [
@@ -109,10 +110,20 @@
       {"release": 1291, "train_id": "zork-specimen-custody-return-1291", "title": "Specimen Custody & Return", "status": "future-after-1286"},
       {"release": 1292, "train_id": "zork-mara-agreed-field-errands-1292", "title": "Mara Agreed Field Errands", "status": "future-after-1286"},
       {"train_id": "zork-mara-earned-romance-partnership", "title": "Mara Earned Romance & Partnership", "status": "future-explicit-authored-relationship-arc"},
-      {"train_id": "zork-forest-that-answers-back", "title": "Forest That Answers Back / Described World = Interactive World", "status": "future-promotion-candidate"},
+      {"release": 1294, "train_id": "zork-forest-that-answers-back-1294", "title": "Forest That Answers Back / Described World = Interactive World", "status": "next-after-1293", "note": "Playtest: EXAMINE TREE fails at North of House while prose names trees. No GUI. No AI."},
+      {"release": 1295, "train_id": "zork-west-of-house-described-nouns-1295", "title": "West-of-House nouns the opening already describes", "status": "next-after-1294", "note": "Grass, boards, and silence as examinable locals without a scenery engine. No GUI. No AI."},
       {"train_id": "zork-time-weather-disaster-arc", "title": "Time, Weather & Disaster Arc", "status": "future-arc"}
     ],
     "parked": [
+      {
+        "release": 1279,
+        "train_id": "zork-glulxe-optimization-1279",
+        "title": "Glulxe Optimization",
+        "status": "parallel-runtime-in-pr",
+        "pr": 87,
+        "planning_document": "docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md",
+        "note": "Runtime-only; story file unchanged. Not CURRENT because CURRENT is 1293. Kanban allows one current train."
+      },
       {"train_id": "zork-illustrated-draw-gui", "title": "Illustrated Zork / DRAW / external scene rendering", "status": "parked-far-horizon", "planning_document": "docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md"},
       {"train_id": "stalker-glulx-separate-lane", "title": "S.T.A.L.K.E.R. Glulx Game", "status": "parked-separate-product"},
       {"train_id": "infocom-protected-artifact-expansion", "title": "Protected Corpus Acquisition", "status": "parked-rights-dependent"}

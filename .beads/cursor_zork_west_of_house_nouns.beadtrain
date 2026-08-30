@@ -1,0 +1,29 @@
+[train]
+name        = "cursor_zork_west_of_house_nouns"
+title       = "Release 1295 West-of-House described nouns"
+description = """
+The opening already describes wild grass, weathered boards, and settled silence. Those nouns become examinable locals. No GUI. No AI. No scenery engine.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "opening-nouns"
+bead = "zork1-1295-001"
+title = "Grass, boards, and silence answer examination"
+parallel_start = true
+depends_on = []
+summary = "EXAMINE GRASS, EXAMINE BOARDS, and EXAMINE SILENCE from West of House reach authored replies."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1295-002"
+title = "Opening-noun qualification"
+parallel_start = false
+depends_on = ["opening-nouns"]
+summary = "A fresh West of House playtest proves the described nouns without changing mailbox, stone, or boarded-door authority."
+
+[meta]
+one_liner = "The first room's prose is also its parser."
+couples_with = ["cursor_zork_forest_answers_back"]
+watch = ["docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md"]

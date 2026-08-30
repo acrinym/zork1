@@ -1,0 +1,12 @@
+{
+  "id": "004-cellar-recap-requires-cellar-visit",
+  "path": "house_cellar_threshold.zil",
+  "description": "Cellar threshold, staging, and intrusion recap waits for an actual Cellar visit.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE CELLAR-RECAP (\"AUX\" (SEEN <>))\n    <COND (<CELLAR-GET ,CS-EVENT-STAGING>",
+      "new": "<ROUTINE CELLAR-RECAP (\"AUX\" (SEEN <>))\n    <COND (<NOT <FSET? ,CELLAR ,TOUCHBIT>>\n           <RFALSE>)>\n    <COND (<CELLAR-GET ,CS-EVENT-STAGING>"
+    }
+  ]
+}

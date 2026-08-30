@@ -4,7 +4,7 @@
 **Board data:** `docs/planning/product-kanban.json`  
 **Current merged production frontier:** Release `1278` — Honest Playthrough Records, Rest Syntax, House Jar  
 **Live `master` observed before this refresh:** `080ba3a3d35f8f61da23f264ba088a6d59991b21` (PR #86)  
-**Open PRs observed before this refresh:** Release 1279 Glulxe optimization (this train)
+**Open PRs observed before this refresh:** Release 1279 Glulxe optimization (PR #87); Release 1293 Honest System Recap
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -34,11 +34,13 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-### Release 1279 — Glulxe Optimization
+### Release 1293 — Honest System Recap
 
-Ship a faster native Glulxe for the locked Release 1278 story: `-O3`, LTO, and PGO trained on representative HOE play, with an `-O2` reference binary retained. Transcripts, save/restore, and undo must match. VERIFY_MEMORY_ACCESS stays on. The `.ulx` is unchanged.
+A live 1278 playtest still dumped House-of-Records architecture on a fresh `RECAP`. 1293 stages locked 1278 and recaps only visited places and earned events. No GUI. No AI. Does not steal 1280–1292.
 
-Planning: `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`.
+Planning: `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`. Train: `glulx/honest-system-recap/`. PR #88.
+
+Release 1279 Glulxe Optimization remains a parallel runtime PR (#87): story file unchanged, parked as `parallel-runtime-in-pr` so CURRENT stays one train.
 
 ## NEXT — explicit queued product trains
 
@@ -81,11 +83,12 @@ Parser-native whole trains. No photographs, DRAW, illustrated frontend, or other
 Also remaining (not numbered until 1286 lands):
 
 - **Mara Earned Romance & Partnership** — explicit mutual choice; no approval/love meter.
-- **Forest That Answers Back** — promote selected existing wilderness nouns into stateful objects.
+- **Forest That Answers Back** — live **1294**. Promote selected existing wilderness nouns into stateful objects. Playtest: `EXAMINE TREE` at North of House fails while the prose names trees.
 - **Time, Weather & Disaster Arc** — authored conditions on real geography; no climate simulator.
 
 ## PARKED / SEPARATE
 
+- **1279 Glulxe Optimization** — PR #87. Runtime-only; parked here only because CURRENT is 1293. Not abandoned.
 - **Illustrated Zork / DRAW / external scene rendering** — `docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md`. Not in the product queue. Justin excluded photo/graphic and GUI work from the post-1286 program.
 - **1277 instant photographs** stay as the already-shipped in-world camera. Do not grow them into a gallery UI or illustrated frontend.
 - **S.T.A.L.K.E.R. Glulx** remains a separate product lane.
@@ -164,4 +167,6 @@ Also remaining (not numbered until 1286 lands):
 - `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`
 - `docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md`
 
-The live shape at this refresh: Release 1278 is merged on `acrinym/zork1` `master`; Release 1279 is CURRENT (Glulxe optimization); runtime foundation continues 1280–1285; chronicle export is 1286; Living Collection & Companionship is 1287–1292 after that. Never merge to `historicalsource/zork1`.
+- `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`
+
+The live shape at this refresh: Release 1278 is merged on `acrinym/zork1` `master`; Release 1279 (runtime) is PR #87; Release 1293 (story honesty) is in CURRENT and does not steal 1280–1292; runtime foundation remains 1280–1285; chronicle export is 1286; Living Collection is 1287–1292 after that. Never merge to `historicalsource/zork1`.

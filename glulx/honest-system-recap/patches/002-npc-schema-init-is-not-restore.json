@@ -1,0 +1,12 @@
+{
+  "id": "002-npc-schema-init-is-not-restore",
+  "path": "attic_npc_dossiers.zil",
+  "description": "Schema initialization is not a restore event and must not recap dossier persistence on a fresh game.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<NOT <EQUAL? <NPC-GET ,NS-VERSION> ,NPC-SCHEMA>>\n           <NPC-PUT ,NS-VERSION ,NPC-SCHEMA>\n           <NPC-PUT ,NS-EVENT-RESTORE T>\n           <COND (<LOC ,NPC-TROLL-DOSSIER>",
+      "new": "    <COND (<NOT <EQUAL? <NPC-GET ,NS-VERSION> ,NPC-SCHEMA>>\n           <NPC-PUT ,NS-VERSION ,NPC-SCHEMA>\n           <COND (<LOC ,NPC-TROLL-DOSSIER>"
+    }
+  ]
+}

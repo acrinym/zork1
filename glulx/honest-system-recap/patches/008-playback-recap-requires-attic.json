@@ -1,0 +1,12 @@
+{
+  "id": "008-playback-recap-requires-attic",
+  "path": "attic_playback.zil",
+  "description": "Playback machinery recap waits for an actual Attic visit.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE PLAYBACK-RECAP (\"AUX\" (SEEN <>))\n    <COND (<PLAYBACK-GET ,PB-SLOT-EVENT-CAPTURE>",
+      "new": "<ROUTINE PLAYBACK-RECAP (\"AUX\" (SEEN <>))\n    <COND (<NOT <FSET? ,ATTIC ,TOUCHBIT>>\n           <RFALSE>)>\n    <COND (<PLAYBACK-GET ,PB-SLOT-EVENT-CAPTURE>"
+    }
+  ]
+}
