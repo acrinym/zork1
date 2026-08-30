@@ -6,8 +6,8 @@
   "base_manifest": "../west-of-house-nouns/patch-series.json",
   "base_artifact_sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b",
   "base_source_sha256": {
-    "production": "",
-    "dev": ""
+    "production": "2bac3083f957eb5f4704443c705c6964f0c58f9ac09b592b9a0973b2f2f66d1a",
+    "dev": "2741b36c9b0a75cbca0fda5669a4e8a803f524b6a7f911aeee63ac722b6ebc19"
   },
   "patches": [
     "patches/001-release-1304-identity.json",
