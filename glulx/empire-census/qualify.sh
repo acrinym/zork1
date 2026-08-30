@@ -127,18 +127,20 @@ cat > "$BUILD/flagless-empire.txt" <<'EOF_EMPIRE'
 west
 examine sunlight
 east
+south
+south
 north
 west
 south
 east
 open window
 west
-take lamp
-turn on lamp
 up
 examine stairway
 down
 west
+take lamp
+turn on lamp
 move rug
 open trap door
 down
