@@ -34,19 +34,13 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-1279 is runtime-only (story file unchanged). 1293 is story honesty from the locked-1278 playtest and does not steal 1280–1292.
-
-### Release 1279 — Glulxe Optimization
-
-Ship a faster native Glulxe for the locked Release 1278 story: `-O3`, LTO, and PGO. Transcripts, save/restore, and undo must match. VERIFY_MEMORY_ACCESS stays on. The `.ulx` is unchanged.
-
-Planning: `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`. PR #87.
-
 ### Release 1293 — Honest System Recap
 
-A live 1278 playtest still dumped House-of-Records architecture on a fresh `RECAP`. 1293 stages locked 1278 and recaps only visited places and earned events. No GUI. No AI.
+A live 1278 playtest still dumped House-of-Records architecture on a fresh `RECAP`. 1293 stages locked 1278 and recaps only visited places and earned events. No GUI. No AI. Does not steal 1280–1292.
 
-Planning: `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`. Train: `glulx/honest-system-recap/`.
+Planning: `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`. Train: `glulx/honest-system-recap/`. PR #88.
+
+Release 1279 Glulxe Optimization remains a parallel runtime PR (#87): story file unchanged, parked as `parallel-runtime-in-pr` so CURRENT stays one train.
 
 ## NEXT — explicit queued product trains
 
@@ -94,6 +88,7 @@ Also remaining (not numbered until 1286 lands):
 
 ## PARKED / SEPARATE
 
+- **1279 Glulxe Optimization** — PR #87. Runtime-only; parked here only because CURRENT is 1293. Not abandoned.
 - **Illustrated Zork / DRAW / external scene rendering** — `docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md`. Not in the product queue. Justin excluded photo/graphic and GUI work from the post-1286 program.
 - **1277 instant photographs** stay as the already-shipped in-world camera. Do not grow them into a gallery UI or illustrated frontend.
 - **S.T.A.L.K.E.R. Glulx** remains a separate product lane.

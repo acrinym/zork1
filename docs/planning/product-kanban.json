@@ -41,15 +41,6 @@
   "lanes": {
     "current": [
       {
-        "release": 1279,
-        "train_id": "zork-glulxe-optimization-1279",
-        "title": "Glulxe Optimization",
-        "status": "current-in-pr",
-        "planning_document": "docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md",
-        "outcome": "Faster native Glulxe for the locked 1278 story via -O3, LTO, and PGO; identical transcripts; save/restore/undo preserved; reference -O2 binary kept.",
-        "boundary": "No Glulx semantic fork, no story-specific opcode cheats, VERIFY_MEMORY_ACCESS stays on, .ulx unchanged."
-      },
-      {
         "release": 1293,
         "train_id": "zork-honest-system-recap-1293",
         "title": "Honest System Recap",
@@ -124,6 +115,15 @@
       {"train_id": "zork-time-weather-disaster-arc", "title": "Time, Weather & Disaster Arc", "status": "future-arc"}
     ],
     "parked": [
+      {
+        "release": 1279,
+        "train_id": "zork-glulxe-optimization-1279",
+        "title": "Glulxe Optimization",
+        "status": "parallel-runtime-in-pr",
+        "pr": 87,
+        "planning_document": "docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md",
+        "note": "Runtime-only; story file unchanged. Not CURRENT because CURRENT is 1293. Kanban allows one current train."
+      },
       {"train_id": "zork-illustrated-draw-gui", "title": "Illustrated Zork / DRAW / external scene rendering", "status": "parked-far-horizon", "planning_document": "docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md"},
       {"train_id": "stalker-glulx-separate-lane", "title": "S.T.A.L.K.E.R. Glulx Game", "status": "parked-separate-product"},
       {"train_id": "infocom-protected-artifact-expansion", "title": "Protected Corpus Acquisition", "status": "parked-rights-dependent"}
