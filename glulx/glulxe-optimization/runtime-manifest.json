@@ -1,0 +1,26 @@
+{
+  "edition": "Glulxe Optimization",
+  "release": 1279,
+  "kind": "runtime",
+  "base_release": 1278,
+  "base_story_file": "zork1-glulx-honest-playthrough-perilous-house.ulx",
+  "base_story_sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1",
+  "glulxe_commit": "56ab8743bab565de307bd892c555d8d8897ed517",
+  "cheapglk_commit": "14d8aaf6e4150669762bd4646a5368e75c1eeee6",
+  "rng_seed": 123456,
+  "timing_runs": 3,
+  "max_optimized_over_reference_ratio": 0.94,
+  "reference_glulxe_options": "-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM",
+  "optimized_glulxe_generate_options": "-O3 -flto=auto -fprofile-generate -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM",
+  "optimized_glulxe_use_options": "-O3 -flto=auto -fprofile-use -fprofile-correction -Wno-coverage-mismatch -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM",
+  "profile_glulxe_options": "-O2 -DVM_PROFILING=1 -D_DEFAULT_SOURCE -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM",
+  "optimized_cheapglk_cflags": "-O3 -flto=auto -fPIC",
+  "player_outcomes": [
+    "the locked Release 1278 story file is unchanged",
+    "representative HOE command histories produce identical transcripts on the reference and optimized Glulxe builds",
+    "save, restore, and undo remain available and round-trip the same visible room state",
+    "the optimized interpreter is measurably faster than the current HOE -O2 Glulxe on those histories",
+    "an unoptimized/reference Glulxe binary is retained for differential debugging",
+    "compiler flags, PGO corpus, and runtime source identity are recorded in the qualification receipt"
+  ]
+}

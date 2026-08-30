@@ -4,12 +4,12 @@
   "updated_on": "2026-08-30",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "42c110095cb99c9aff6ef83956c391b437c76bef",
-    "latest_merged_release": 1277,
-    "latest_merged_release_title": "Mundane Objects, Field Caching & House Spatial Agency",
-    "latest_merged_pr": 85,
+    "master_head_when_updated": "080ba3a3d35f8f61da23f264ba088a6d59991b21",
+    "latest_merged_release": 1278,
+    "latest_merged_release_title": "Honest Playthrough Records, Rest Syntax, House Jar",
+    "latest_merged_pr": 86,
     "open_pr_count_when_refreshed": 1,
-    "open_pr_when_refreshed": 86
+    "open_pr_when_refreshed": "1279-glulxe-optimization"
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -40,24 +40,16 @@
   "lanes": {
     "current": [
       {
-        "release": 1278,
-        "train_id": "zork-honest-playthrough-perilous-house-1278",
-        "title": "Honest Playthrough Records, Rest Syntax, House Jar",
-        "status": "current-in-pr",
-        "planning_document": "docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md",
-        "outcome": "A fresh playthrough recaps only earned facts; LIE/LIE DOWN sleep; DRINK FROM SINK works; the field jar can be shattered with a sword or axe.",
-        "boundary": "No generic smash engine, recap-on-boot architecture dump, or player-visible qualification telemetry."
-      }
-    ],
-    "next": [
-      {
         "release": 1279,
         "train_id": "zork-glulxe-optimization-1279",
         "title": "Glulxe Optimization",
-        "status": "next-1-planned",
+        "status": "current-in-pr",
         "planning_document": "docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md",
-        "numbering_slide": "Filename keeps 1278 so existing links resolve."
-      },
+        "outcome": "Faster native Glulxe for the locked 1278 story via -O3, LTO, and PGO; identical transcripts; save/restore/undo preserved; reference -O2 binary kept.",
+        "boundary": "No Glulx semantic fork, no story-specific opcode cheats, VERIFY_MEMORY_ACCESS stays on, .ulx unchanged."
+      }
+    ],
+    "next": [
       {
         "release": 1280,
         "train_id": "zork-future-proof-runtime-contract-1280",
@@ -167,7 +159,8 @@
       {"release": 1267, "title": "Semantic Examination & Hidden Structure", "pr": 72, "merge_commit": "90e30d59fcd44a5297d7524f65ee34c72aaff319", "artifact_sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0", "qualification_run": 32046910749},
       {"release": 1268, "title": "Clue Chains & Knowledge-Gated Interpretation", "pr": 73, "merge_commit": "2e16f6cebbfb5a7892feac08d9e6461e6bb9313b", "artifact_sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16", "qualification_run": 32052058707},
       {"release_range": "1269-1276", "title": "Structural difficulty through Mara field guidance", "proof": "merged on acrinym/zork1 master before PR #85"},
-      {"release": 1277, "title": "Mundane Objects, Field Caching & House Spatial Agency", "pr": 85, "merge_commit": "42c110095cb99c9aff6ef83956c391b437c76bef", "artifact_sha256": "582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599"}
+      {"release": 1277, "title": "Mundane Objects, Field Caching & House Spatial Agency", "pr": 85, "merge_commit": "42c110095cb99c9aff6ef83956c391b437c76bef", "artifact_sha256": "582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599"},
+      {"release": 1278, "title": "Honest Playthrough Records, Rest Syntax, House Jar", "pr": 86, "merge_commit": "080ba3a3d35f8f61da23f264ba088a6d59991b21", "artifact_sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1"}
     ]
   }
 }

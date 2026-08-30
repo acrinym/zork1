@@ -5,8 +5,8 @@
 
 ## Order
 
-1. **1278 — Honest Playthrough Records, Rest Syntax, House Jar** (in CURRENT; not a runtime-foundation train)
-2. **1279 — Glulxe Optimization** (was 1278)
+1. **1278 — Honest Playthrough Records, Rest Syntax, House Jar** (merged PR #86)
+2. **1279 — Glulxe Optimization** (CURRENT)
 3. **1280 — Future-Proof Runtime Contract** (was 1279)
 4. **1281 — Extended Globals / Compiler State Scaling** (was 1280)
 5. **1282 — Story-Code Optimization** (was 1281)
@@ -21,7 +21,7 @@ These are product trains, not audit machinery. Each release must produce a concr
 
 ## Ordering contract
 
-Release 1275 remains the hard human-gated slim-locale expansion. Releases 1276 and 1277 remain ahead of this queue. Release 1278 (honesty/jar) is the immediate successor of 1277. No implementation branch for 1279 or later should start until 1278 has reached the normal locked/qualified frontier.
+Release 1275 remains the hard human-gated slim-locale expansion. Releases 1276–1278 remain ahead of this queue. Release 1279 is the immediate runtime-foundation successor of 1278.
 
 Planning these trains does not authorize a merge. Every merge still requires a fresh explicit Justin merge whistle.
 

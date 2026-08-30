@@ -1,0 +1,13 @@
+open window
+enter
+east
+look
+mara, hello
+ask mara about house
+ask mara about rug
+ask mara about me
+examine mara
+west
+exit
+quit
+yes

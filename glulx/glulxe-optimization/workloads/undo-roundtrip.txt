@@ -1,0 +1,9 @@
+look
+north
+undo
+look
+south
+undo
+look
+quit
+yes

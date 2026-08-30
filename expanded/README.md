@@ -8,7 +8,7 @@ This project keeps the original Zork I world and canonical puzzle solutions, the
 
 The technical and reproducibility material is intentionally **after** the player guide.
 
-**Current Highly Extended lineage described here:** through Release `1277` — **Mundane Objects, Field Caching & House Spatial Agency** (PR #85). Release 1278 is open as PR #86 and is not merged until all green.  
+**Current Highly Extended lineage described here:** through Release `1278` — **Honest Playthrough Records, Rest Syntax, House Jar** (PR #86). Release 1279 (Glulxe optimization) is the open CURRENT train and is not merged until all green.  
 **Default branch:** `master`  
 **Live board:** [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 

@@ -2,8 +2,8 @@
 
 **Numbering slide (2026-08-30):** this train was planned as Release 1278. Release 1278 is now Honest Playthrough Records / House Jar. Keep this filename so existing links resolve.
 
-**Queued after:** Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar  
-**Status:** planned product train
+**Queued after:** Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar (merged PR #86)  
+**Status:** CURRENT product train
 
 ## Purpose
 
@@ -32,7 +32,7 @@ This is not a profiler report release. The release must ship measured runtime im
 
 ## Success criteria
 
-A successful Release 1278 must:
+A successful Release 1279 must:
 
 1. demonstrate a reproducible aggregate speed improvement over the locked baseline on representative HOE workloads;
 2. show no player-visible transcript or state divergence on those workloads;

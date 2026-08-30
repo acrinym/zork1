@@ -1,0 +1,6 @@
+look
+save
+r1279.sav
+look
+quit
+yes

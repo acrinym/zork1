@@ -1,9 +1,9 @@
 # Expansion frontier and next trains
 
 **Updated:** August 30, 2026  
-**Current production frontier:** Release `1277` — Mundane Objects, Field Caching & House Spatial Agency  
-**Current `master` head:** `42c110095cb99c9aff6ef83956c391b437c76bef`  
-**Open PR:** #86 — Release 1278 honesty / jar. Do not merge until all green.
+**Current production frontier:** Release `1278` — Honest Playthrough Records, Rest Syntax, House Jar  
+**Current `master` head:** `080ba3a3d35f8f61da23f264ba088a6d59991b21`  
+**Open PR:** Release 1279 Glulxe optimization. Do not merge until all green.
 
 The live operating board is [`../../docs/planning/PRODUCT_KANBAN.md`](../../docs/planning/PRODUCT_KANBAN.md). This file no longer carries an independent next-train queue.
 

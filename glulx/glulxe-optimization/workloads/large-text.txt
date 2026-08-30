@@ -1,0 +1,13 @@
+look
+examine mailbox
+examine house
+examine stone
+examine grass
+examine leaflet
+open mailbox
+read leaflet
+verbose
+look
+examine me
+quit
+yes

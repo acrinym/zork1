@@ -1,0 +1,47 @@
+look
+examine mailbox
+examine house
+examine grass
+examine boards
+examine stone
+open mailbox
+examine leaflet
+read leaflet
+take leaflet
+inventory
+drop leaflet
+take leaflet
+put leaflet in mailbox
+close mailbox
+open mailbox
+take leaflet
+north
+look
+examine trees
+south
+south
+look
+north
+east
+look
+west
+west
+look
+east
+verbose
+look
+brief
+look
+diagnose
+score
+version
+i
+l
+take all
+drop all
+take leaflet
+wave leaflet
+examine me
+inventory
+quit
+yes
