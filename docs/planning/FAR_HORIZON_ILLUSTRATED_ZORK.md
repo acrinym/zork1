@@ -5,6 +5,8 @@
 **Implementation posture:** Do not pull forward ahead of the existing world-state, time/weather, consequence, and renderer-export work.  
 **Network posture:** EXCLUSIVE OPT-IN. No external model call may occur unless the player explicitly enables the feature and invokes it.
 
+> **2026-08-30:** Justin parked photo/graphic and GUI work. This document stays FAR HORIZON. It is not in CURRENT, NEXT, or the 1287–1292 Living Collection program. Release 1286 chronicle export remains a local text side-channel only.
+
 > **2026-08-23 boundary clarification:** Release 1285 — Opt-In Playthrough Chronicle Export promotes only the local truthful scene/event export prerequisite into the active product queue. This far-horizon item remains separate. Release 1285 performs no image generation, provider calls, computer-vision integration, book composition, or other downstream consumption.
 
 ## Vision

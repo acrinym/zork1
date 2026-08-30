@@ -1,7 +1,9 @@
-# Release 1285 - Opt-In Playthrough Chronicle Export
+# Release 1286 - Opt-In Playthrough Chronicle Export
 
+**Live release number (2026-08-30):** 1286  
+**This filename keeps 1285 so existing links resolve.**  
 **Status:** planned product train  
-**Position:** after Release 1284 Portable Runtime Bundle  
+**Position:** after Release 1285 Portable Runtime Bundle  
 **Default behavior:** completely disabled unless explicitly requested at process launch  
 **Network behavior:** none  
 

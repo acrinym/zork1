@@ -42,75 +42,58 @@ Playtest evidence: `docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08
 
 ## NEXT — explicit queued product trains
 
-The former **1278–1284 runtime foundation queue** slides by one after this honesty/destruction repair. See `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`.
+Runtime foundation first. No museum/Mara/fish implementation until 1278 is merged and 1279–1286 have reached the locked frontier. Filenames below keep their original numbers so old links resolve; **live release numbers** are in parentheses.
+
+See `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`.
 
 ### 1. Release 1279 — Glulxe Optimization
+`docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`
 
-**Planning contract:** `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md` (numbering slide: that document is now the 1279 train).
+### 2. Release 1280 — Future-Proof Runtime Contract
+`docs/planning/RELEASE_1279_FUTURE_PROOF_RUNTIME_CONTRACT.md`
 
-### 2. Release 1269 — Structural Difficulty Modes (MERGED; kept here only as historical queue text)
+### 3. Release 1281 — Extended Globals / Compiler State Scaling
+`docs/planning/RELEASE_1280_EXTENDED_GLOBALS_COMPILER_STATE_SCALING.md`
 
-Historical queue text below 1269–1275 remains as the completed post-1268 program. Do not re-open those trains.
+### 4. Release 1282 — Story-Code Optimization
+`docs/planning/RELEASE_1281_STORY_CODE_OPTIMIZATION.md`
 
-Difficulty changes the **structure of problem-solving**, not just numbers.
+### 5. Release 1283 — Cross-Interpreter Compatibility
+`docs/planning/RELEASE_1282_CROSS_INTERPRETER_COMPATIBILITY.md`
 
-- preserve the same underlying world identity across modes;
-- lower-pressure play may expose clearer environmental evidence, redundant resources/substitutes, more recoverable failures, or wider consequence windows;
-- higher-pressure play may rely on subtler but still fair evidence, fewer substitutes, less recovery, and tighter consequence windows;
-- no deliberately obscure parser phrasing;
-- no enemy-health multiplier pretending to be puzzle difficulty;
-- no generic scalar difficulty framework sprayed across unrelated systems;
-- authored differences must be testable through natural commands.
+### 6. Release 1284 — Large-World Scaling
+`docs/planning/RELEASE_1283_LARGE_WORLD_SCALING.md`
 
-### 2. Release 1270 — Causal Death & Failure Feedback
+### 7. Release 1285 — Portable Runtime Bundle
+`docs/planning/RELEASE_1284_PORTABLE_RUNTIME_BUNDLE.md`
 
-Death and near-death should communicate physical cause, ignored evidence, partially sound ideas, and the exact state/action difference that changed the outcome without turning the failure screen into a walkthrough.
+### 8. Release 1286 — Opt-In Playthrough Chronicle Export
+`docs/planning/RELEASE_1285_OPT_IN_PLAYTHROUGH_CHRONICLE_EXPORT.md` — local side-channel export only. Not a GUI, not illustration, not a network feature.
 
-### 3. Release 1271 — Creature Encounters as Systemic Puzzles
+## FUTURE — Living Collection & Companionship (after 1286)
 
-Living beings remain authored situations with distinct motives, senses, capacities, fears, possessions, territory, and memory rather than hit-point-shaped locks. Troll, thief, grue, dragon, Mara, and future creatures must remain meaningfully different; no generic creature AI brain or universal disposition meter.
+Parser-native whole trains. No photographs, DRAW, illustrated frontend, or other GUI. Planning contract: `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`.
 
-### 4. Release 1272 — Shadowgate-Style Macrostructure, Original Zork Region
+1. **1287 — Second Water / Reservoir Fishery** — one authored second species from Reservoir water, using the existing rod and smashable field jar.
+2. **1288 — Mara as Collection Witness** — she only knows catches, releases, and exhibits she actually saw or was told in the world.
+3. **1289 — Living Waters Husbandry** — the circulating case stays a real vessel: dam water, absence, and smashable-jar risk, not an aquarium checklist.
+4. **1290 — Mara House Stewardship** — she uses Kitchen, Bedroom, Attic, and museum as a person living there, not a maid skill tree.
+5. **1291 — Specimen Custody & Return** — real objects move on loan or return the way the songbird feather can return to the nest.
+6. **1292 — Mara Agreed Field Errands** — she travels on a real agreed purpose using 1276 field guidance, not a quest log.
 
-Build a substantial original Zork region composing the preceding design language into one coherent adventure. Roughly 20–30 authored rooms only if the design earns that size. Do not copy Shadowgate source code, maps, prose, art, exact puzzles, spell names, object lists, or expressive sequencing.
+Also remaining (not numbered until 1286 lands):
 
-### 5. Release 1273 — Living Biomes & Wilderness Expansion
-
-Expand actual Zork geography/ecology with genuinely new wilderness identities, including a new forest subregion and a first wholly new climate/biome if the authored design earns them. No procedural biome generator, palette-swapped room factory, universal biome stat sheet, generic climate simulator, or room-count padding.
-
-### 6. Release 1274 — Environmental Mechanisms & Diegetic Puzzle Furniture
-
-**Planning contract:** `docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md`
-
-Interaction grammar: **notice a prose-visible irregularity → examine it → learn a physical fact → manipulate the correct concrete detail → the environment changes**.
-
-No generic secret-switch framework, automatic noun promotion, universal furniture state machine, arbitrary `USE X ON Y` matrix, parser pixel hunt, or copied Resident Evil content.
-
-### 7. Release 1275 — Expand Existing Slim Locales / Locations — with Justin's Explicit Feedback
-
-**Planning contract:** `docs/planning/RELEASE_1275_EXPAND_EXISTING_SLIM_LOCALES_WITH_JUSTIN_FEEDBACK.md`
-
-Release 1275 returns to existing geography and expands only under-realized locations that genuinely benefit from authored growth. **Justin's explicit feedback is required for each expansion target and intended direction before implementation.**
-
-The assistant may inspect candidates, explain why a locale feels slim, surface materially different expansion axes, and show tradeoffs. It must not independently settle which locale grows, which direction it grows, how much is enough, or whether a compact locale needs expansion at all.
-
-No procedural locale expander, generic room generator, room-count quota, palette-swapped filler, or ceremonial after-the-fact approval.
-
-## FUTURE — explicit lanes
-
-- **Mara Earned Romance & Partnership** — mutual attraction, explicit mutual choice, closeness, boundaries, disagreement, initiative, repair, and partnership growing from lived history; no approval/love meter and no compulsory romance.
-- **Forest That Answers Back / Existing-Region Interactivity** — continue promoting selected concrete nouns in existing forest and wilderness prose into targetable stateful world objects.
-- **Time, Weather & Disaster Arc** — authored conditions/disasters layered onto real geography and material state; no generic climate simulator.
-- **Museum & Ecology second expansion** — only where collection creates new field play instead of checklist accumulation.
-- **Cross-IF / RPG Mechanics Adaptation — later inspirations** — rebuild transferable design principles as original Zork-native systems.
-- **Narrative Perspective Experiments** — isolated first-person, third-person, and interactive-storybook editions.
-- **Far-horizon DRAW + multi-agent experiments** — isolated experiments only after the playable product supports them.
+- **Mara Earned Romance & Partnership** — explicit mutual choice; no approval/love meter.
+- **Forest That Answers Back** — promote selected existing wilderness nouns into stateful objects.
+- **Time, Weather & Disaster Arc** — authored conditions on real geography; no climate simulator.
 
 ## PARKED / SEPARATE
 
-- **S.T.A.L.K.E.R. Glulx** remains a separate product lane and never rides inside a Zork gameplay PR.
+- **Illustrated Zork / DRAW / external scene rendering** — `docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md`. Not in the product queue. Justin excluded photo/graphic and GUI work from the post-1286 program.
+- **1277 instant photographs** stay as the already-shipped in-world camera. Do not grow them into a gallery UI or illustrated frontend.
+- **S.T.A.L.K.E.R. Glulx** remains a separate product lane.
 - **Protected Corpus Acquisition** remains rights-dependent.
-- Universal crafting, randomized loot progression, generic physics, and procedural world generation remain out of scope.
+- Universal crafting, randomized loot, generic physics, procedural worlds, and recursive audit machinery remain out of scope.
 
 ## DONE — merged production history
 
@@ -173,13 +156,13 @@ No procedural locale expander, generic room generator, room-count quota, palette
 | 1265 | `59c9e843c4723692a0017e9f189407272b5a284f` | `6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070` | `32034566984` |
 | 1266 | `4425732bfc2fa28347453d9991513aeb28aaa531` | `d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9` | `32042641179` |
 | 1267 | `90e30d59fcd44a5297d7524f65ee34c72aaff319` | `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0` | `32046910749` |
-| 1268 | `2e16f6cebbfb5a7892feac08d9e6461e6bb9313b` | `bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16` | `32052058707` |
+| 1277 | `42c110095cb99c9aff6ef83956c391b437c76bef` | `582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599` | PR #85 |
 
 ## Canonical roadmap
 
 - `docs/planning/POST_1249_PRODUCT_ROADMAP_2026-08-11.md`
-- `docs/planning/SHADOWGATE_TO_PARSER_IF_TRAIN_PROGRAM_2026-08-15.md`
-- `docs/planning/RELEASE_1274_ENVIRONMENTAL_MECHANISMS_DIEGETIC_PUZZLE_FURNITURE.md`
-- `docs/planning/RELEASE_1275_EXPAND_EXISTING_SLIM_LOCALES_WITH_JUSTIN_FEEDBACK.md`
+- `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`
+- `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`
+- `docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md`
 
-The live shape at this refresh: Release 1277 is merged on `acrinym/zork1` `master`; Release 1278 is the honesty/jar train in CURRENT; Glulxe optimization and the rest of the runtime foundation queue begin at 1279. Never merge to `historicalsource/zork1`.
+The live shape at this refresh: Release 1277 is merged on `acrinym/zork1` `master`; Release 1278 is PR #86 in CURRENT (not merged until all green); runtime foundation is 1279–1285; chronicle export is 1286; Living Collection & Companionship is 1287–1292 after that. Never merge to `historicalsource/zork1`.

@@ -1,4 +1,4 @@
-# Post-1277 Runtime Foundation Queue — Releases 1278–1285
+# Post-1277 Runtime Foundation Queue — Releases 1278–1286
 
 **Approved queue:** 2026-08-21  
 **Refresh:** 2026-08-30 — Release **1278** is the honest-playthrough / house-jar repair required by the 1245 live playtest. The runtime foundation trains below slide by one.
@@ -13,6 +13,9 @@
 6. **1283 — Cross-Interpreter Compatibility** (was 1282)
 7. **1284 — Large-World Scaling** (was 1283)
 8. **1285 — Portable Runtime Bundle** (was 1284)
+9. **1286 — Opt-In Playthrough Chronicle Export** (was 1285; local side-channel only, not a GUI)
+
+After 1286, player-facing work resumes with **Living Collection & Companionship** (1287–1292): `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`. Illustrated Zork / DRAW remains parked.
 
 These are product trains, not audit machinery. Each release must produce a concrete capability, runtime improvement, compatibility guarantee, scaling result, or distributable player-facing artifact.
 
@@ -35,4 +38,4 @@ Planning these trains does not authorize a merge. Every merge still requires a f
 
 ## Program outcome
 
-At the end of Release 1285, Highly Extended Zork should have a faster native runtime, a documented portability contract, scalable global/state authoring, cheaper generated story code, verified execution across materially different Glulx implementations, known large-world operating margins, and a practical player runtime bundle while retaining a standalone playable `.ulx` artifact.
+At the end of Release 1285, Highly Extended Zork should have a faster native runtime, a documented portability contract, scalable global/state authoring, cheaper generated story code, verified execution across materially different Glulx implementations, known large-world operating margins, and a practical player runtime bundle while retaining a standalone playable `.ulx` artifact. Release 1286 then adds opt-in local chronicle export. Releases 1287–1292 return to museum, waters, and Mara.

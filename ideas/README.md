@@ -5,7 +5,7 @@
 
 This directory preserves substantial future ideas without retroactively mixing them into the completed House of Records implementation program.
 
-The House of Records closed in Release `1230` with 12 trains and 96/96 beads complete. These files remain **concept lanes**, not hidden sub-beads, not an alternate Kanban, and not claims that implementation has begun. An idea may be promoted into a real product train only when its scope, dependencies, and place in the release lineage are deliberately chosen.
+The House of Records closed in Release `1230` with 12 trains and 96/96 beads complete. These files remain **concept lanes**, not hidden sub-beads. Live product queue: `docs/planning/PRODUCT_KANBAN.md`. Post-1286 museum / Mara / fish: `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`. Illustrated / DRAW work stays parked.
 
 ## The two lanes
 

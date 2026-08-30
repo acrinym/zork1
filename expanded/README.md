@@ -8,8 +8,9 @@ This project keeps the original Zork I world and canonical puzzle solutions, the
 
 The technical and reproducibility material is intentionally **after** the player guide.
 
-**Current Highly Extended lineage described here:** through Release `1263` — **Ablative Protection & Equipment Consequence**  
-**Default branch:** `master`
+**Current Highly Extended lineage described here:** through Release `1277` — **Mundane Objects, Field Caching & House Spatial Agency** (PR #85). Release 1278 is open as PR #86 and is not merged until all green.  
+**Default branch:** `master`  
+**Live board:** [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 
 Release numbers above the original Infocom line are repository-local identities. They are not official Infocom releases.
 

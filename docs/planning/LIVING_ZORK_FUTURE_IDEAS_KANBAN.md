@@ -1,8 +1,11 @@
 # Living Zork future systems Kanban
 
-**Status:** pre-BEADS idea inventory  
+**Status:** historical idea inventory — not the live operating board  
 **Captured:** 2026-07-23  
-**Scope:** concepts discussed after qualified Glulx Release `1216` that are not yet accepted as implementation beads
+**Live queue:** `docs/planning/PRODUCT_KANBAN.md`  
+**Post-1286 museum / Mara / fish:** `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`
+
+Causal death, warnings, dam depth, troll weapons, thief retaliation, and grue ecology on this board have already shipped as Releases 1253–1256 and 1270-era work. Do not re-open them from this inventory. Remaining cards may feed FUTURE trains only after the 1278–1286 queue.
 
 This document exists so high-value ideas do not remain trapped in chat history. It is intentionally a Kanban and design inventory, not a promise that every card will ship. Cards should move into BEADS only after their causal model, canonical boundaries, player-facing value, and qualification route are clear.
 

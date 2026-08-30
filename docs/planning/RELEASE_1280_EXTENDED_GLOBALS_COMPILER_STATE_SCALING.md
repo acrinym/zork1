@@ -1,6 +1,9 @@
 # Release 1280 — Extended Globals / Compiler State Scaling
 
-**Queued after:** Release 1279 — Future-Proof Runtime Contract  
+**Live release number (2026-08-30):** 1281  
+**This filename keeps 1280 so existing links resolve.**  
+**Queued after (live):** Release 1280 — Future-Proof Runtime Contract  
+
 **Status:** planned product train
 
 ## Purpose

@@ -1,9 +1,12 @@
 # Highly Extended Zork — Post-1249 Product Roadmap
 
-**Updated:** August 12, 2026  
-**Current merged production frontier:** Release `1251` — Cross-System Utility Mesh  
-**`master` head when Release 1252 began:** `147236fcc61ac98b993ff1905c6e07c6bfbb6079`  
-**Latest merged product PR:** #56
+**Updated:** August 30, 2026  
+**Current merged production frontier:** Release `1277` — Mundane Objects, Field Caching & House Spatial Agency  
+**Live `master`:** `42c110095cb99c9aff6ef83956c391b437c76bef`  
+**Open product PR:** #86 — Release 1278 honest playthrough / house jar (not merged until all green)  
+**Operating board:** `docs/planning/PRODUCT_KANBAN.md`
+
+This file keeps the post-1249 design laws. **Queue truth lives on the product kanban.** Do not treat the 1252-era “Active” section below as current.
 
 ## Product state
 

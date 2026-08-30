@@ -1,7 +1,11 @@
 # House Expedition Stash and Zork Plus Kanban
 
-**Status:** pre-BEADS addendum  
+**Status:** historical addendum — not the live operating board  
 **Captured:** 2026-07-23  
+**Live queue:** `docs/planning/PRODUCT_KANBAN.md`
+
+Cellar recovery locker (1238), veteran expedition (1237), kitchen laboratory, and house spatial agency (1277) already shipped parts of this inventory. Remaining stash/loadout cards wait until after 1286 unless Justin promotes one as a whole train.
+
 **Related program:** `expanded/docs/HOUSE_OF_RECORDS_PROGRAM.md`  
 **Related idea board:** `docs/planning/LIVING_ZORK_FUTURE_IDEAS_KANBAN.md`
 

@@ -8,30 +8,19 @@ Historical Release 119, repository Optimized Release 120, early Expanded Release
 
 ## Current lineage
 
-**Merged production frontier:** Release 1266 — Learned Magic as Parser Capability, merged through PR #71 at `4425732bfc2fa28347453d9991513aeb28aaa531`.
+**Merged production frontier:** Release 1277 — Mundane Objects, Field Caching & House Spatial Agency, merged through PR #85 at `42c110095cb99c9aff6ef83956c391b437c76bef`.
 
-**Open stacked predecessor:** Release 1267 — Semantic Examination & Hidden Structure, PR #72, reviewed exact head `4c3522a0cfa8194764f52ce2e91930ef89bda1bf`. Its locked production artifact is:
+Locked 1277 production artifact:
 
-- `zork1-glulx-semantic-examination-hidden-structure.ulx`
+- `zork1-glulx-release-1277-mundane-spatial-agency.ulx`
 - Glulx `0x00030103`
-- size `479744` bytes
-- checksum `0x464b20d2`
-- SHA-256 `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0`
+- SHA-256 `582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599`
 
-**Qualified current stacked train:** Release 1268 — Clue Chains & Knowledge-Gated Interpretation, PR #73. Its locked production artifact is:
+**Open current train:** Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar, PR #86 on `acrinym/zork1` only. Not merged until checks are green.
 
-- `zork1-glulx-clue-chains-knowledge-interpretation.ulx`
-- Glulx `0x00030103`
-- size `482816` bytes
-- checksum `0x53de973e`
-- SHA-256 `bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16`
+**Operating board:** [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 
-Release 1268 derives from locked Release 1267 and pins exact staged Release 1267 source identities:
-
-- production: `8b6e2080f34dce6000ec54377649775ad17953063780345db1ad2ad0f49de4e6`
-- development: `d9da3ad47c92abe719c52ea424c17e3066fc6f71253c0117f358325093d34563`
-
-See [`semantic-examination/`](semantic-examination/) and [`clue-chains/`](clue-chains/) for release-specific manifests, implementations, player contracts, tests, staging logic, and qualification scripts.
+See [`mundane-objects-spatial-agency/`](mundane-objects-spatial-agency/) and [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/). Releases 1267 and 1268 are merged history; their locked artifacts remain in those train directories.
 
 ## What “release train” means here
 
