@@ -1,0 +1,29 @@
+[train]
+name        = "cursor_zork_runtime_foundation"
+title       = "Releases 1280-1286 runtime foundation plus honesty playthroughs"
+description = """
+Live 1280-1286: Glulx contract, scaled globals/rooms fixtures, dual-Glulxe transcripts, portable bundle, opt-in chronicle. Then opening playthrough and Mara honesty. Production 1295 .ulx SHA unchanged.
+"""
+created     = "2026-08-30"
+status      = "in_progress"
+
+[[cars]]
+id = "runtime-1280-1286"
+bead = "zork1-1280-001"
+title = "Runtime foundation 1280-1286"
+parallel_start = true
+depends_on = []
+summary = "Contract, scale probe, O2/O3 transcript core, bundle, chronicle opt-in."
+
+[[cars]]
+id = "honesty-playthroughs"
+bead = "zork1-1280-002"
+title = "Opening and Mara honesty playthroughs"
+parallel_start = false
+depends_on = ["runtime-1280-1286"]
+summary = "Natural opening commands plus Mara knowledge-limited dialogue."
+
+[meta]
+one_liner = "The .ulx stays ordinary Glulx; play stays honest."
+couples_with = []
+watch = ["docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md"]

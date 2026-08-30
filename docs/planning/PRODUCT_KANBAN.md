@@ -42,7 +42,7 @@ Planning: `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`. Train: `glul
 
 ## NEXT — explicit queued product trains
 
-Runtime foundation remains queued as 1280–1286 and is **not** stolen by 1304. Filenames below keep their original numbers so old links resolve.
+Runtime foundation **1280–1286** is implemented in `glulx/runtime-foundation/` (same PR lane as 1304). Filenames on disk may still say 1279–1285.
 
 See `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`.
 

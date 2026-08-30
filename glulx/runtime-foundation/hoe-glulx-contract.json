@@ -1,0 +1,37 @@
+{
+  "edition": "HOE Glulx runtime contract",
+  "live_release": 1280,
+  "kind": "runtime-contract",
+  "glulx_version_hex": "0x00030103",
+  "story_format": "Glulx",
+  "ulx_is_ordinary_glulx": true,
+  "forbidden": [
+    "glulx64",
+    "proprietary-story-abi",
+    "mandatory-hoe-opcodes",
+    "silent-single-glk-frontend-dependency"
+  ],
+  "required_capabilities": {
+    "save_restore": true,
+    "undo": true,
+    "rng_seed": true,
+    "utf8_or_latin1_text": true,
+    "file_io_via_glk": true,
+    "startup_prints_release_banner": true
+  },
+  "optional_capabilities": {
+    "vm_profiling": "interpreter-only, never required to play",
+    "chronicle_export": "process launch flag only; default off"
+  },
+  "interpreter_pins": {
+    "glulxe": "56ab8743bab565de307bd892c555d8d8897ed517",
+    "cheapglk": "14d8aaf6e4150669762bd4646a5368e75c1eeee6"
+  },
+  "base_story": {
+    "release": 1295,
+    "file": "zork1-glulx-west-of-house-nouns.ulx",
+    "sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b"
+  },
+  "save_restore_notes": "CheapGlk writes save files next to the story. Restore compares visible room text. RNG seed 123456 is the HOE qualification seed.",
+  "non_hoe_play": "The .ulx must remain playable in any conforming Glulx interpreter that implements the required capabilities. HOE Glulxe is not a hidden gameplay dependency."
+}

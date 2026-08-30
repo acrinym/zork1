@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1281-SCALE-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load test-only scale probe after Mara; never production.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_companion\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"mara_companion\" T>\n<INSERT-FILE \"scale_probe\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}
