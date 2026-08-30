@@ -1,0 +1,12 @@
+{
+  "id": "006-mail-architecture-requires-attic",
+  "path": "house_correspondence_visitors.zil",
+  "description": "Queued-correspondence architecture recap waits for an actual Attic visit; delivered mail facts remain player-facing.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MAIL-RECAP (\"AUX\" (SEEN <>))\n    <COND (<MAIL-GET ,MS-EVENT-QUEUE>\n           <SET SEEN T>\n           <TELL \"- Meaningful house and expedition events queued a small deterministic set of authored correspondence.\" CR>)>\n    <COND (<MAIL-GET ,MS-EVENT-PROVENANCE>\n           <SET SEEN T>\n           <TELL \"- Physical letters and visit records retained sender, trigger, authenticity, delivery location, and filing codes.\" CR>)>",
+      "new": "<ROUTINE MAIL-RECAP (\"AUX\" (SEEN <>))\n    <COND (<AND <FSET? ,ATTIC ,TOUCHBIT> <MAIL-GET ,MS-EVENT-QUEUE>>\n           <SET SEEN T>\n           <TELL \"- Meaningful house and expedition events queued a small deterministic set of authored correspondence.\" CR>)>\n    <COND (<AND <FSET? ,ATTIC ,TOUCHBIT> <MAIL-GET ,MS-EVENT-PROVENANCE>>\n           <SET SEEN T>\n           <TELL \"- Physical letters and visit records retained sender, trigger, authenticity, delivery location, and filing codes.\" CR>)>"
+    }
+  ]
+}

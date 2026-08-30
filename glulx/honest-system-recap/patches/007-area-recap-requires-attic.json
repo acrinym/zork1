@@ -1,0 +1,12 @@
+{
+  "id": "007-area-recap-requires-attic",
+  "path": "attic_area_case_files.zil",
+  "description": "Regional case-file architecture recap waits for an actual Attic visit.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE AREA-RECAP (\"AUX\" (SEEN <>))\n    <COND (<AREA-GET ,AREA-SLOT-EVENT-MODEL>",
+      "new": "<ROUTINE AREA-RECAP (\"AUX\" (SEEN <>))\n    <COND (<NOT <FSET? ,ATTIC ,TOUCHBIT>>\n           <RFALSE>)>\n    <COND (<AREA-GET ,AREA-SLOT-EVENT-MODEL>"
+    }
+  ]
+}

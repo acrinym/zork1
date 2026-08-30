@@ -16,11 +16,14 @@ Locked 1278 production artifact:
 - Glulx `0x00030103`
 - SHA-256 `d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1`
 
-**Open current train:** Release 1279 — Glulxe Optimization, on `acrinym/zork1` only. The 1278 story file does not change. Not merged until checks are green.
+**Open trains on `acrinym/zork1` only:**
+
+- Release 1279 — Glulxe Optimization (runtime; story file unchanged), PR #87
+- Release 1293 — Honest System Recap (story; does not steal 1280–1292)
 
 **Operating board:** [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 
-See [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/) and [`glulxe-optimization/`](glulxe-optimization/). Releases 1267 and 1268 are merged history; their locked artifacts remain in those train directories.
+See [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/), [`glulxe-optimization/`](glulxe-optimization/), and [`honest-system-recap/`](honest-system-recap/). Releases 1267 and 1268 are merged history; their locked artifacts remain in those train directories.
 
 ## What “release train” means here
 

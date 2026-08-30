@@ -1,0 +1,54 @@
+[train]
+name        = "cursor_zork_honest_system_recap"
+title       = "Release 1293 Honest System Recap"
+description = """
+Stop RECAP from dumping House-of-Records architecture on a fresh playthrough. Gate dossier, regional, playback, cellar, and correspondence architecture on actual visits. No GUI. No AI.
+"""
+created     = "2026-08-30"
+status      = "in_progress"
+
+[[cars]]
+id = "attic-architecture"
+bead = "zork1-1293-001"
+title = "Attic-gated NPC, area, and playback recap"
+parallel_start = true
+depends_on = []
+summary = "Schema init is not restore. NPC, regional-file, and playback architecture wait for an Attic visit."
+
+[[cars]]
+id = "cellar-mail"
+bead = "zork1-1293-002"
+title = "Cellar and mail architecture honesty"
+parallel_start = true
+depends_on = ["attic-architecture"]
+summary = "Cellar recap waits for a Cellar visit. Queued correspondence architecture waits for an Attic visit."
+
+[[cars]]
+id = "house-risk"
+bead = "zork1-1293-003"
+title = "Silence generic house-risk architecture"
+parallel_start = true
+depends_on = ["attic-architecture"]
+summary = "An open kitchen window is not fire, water, routes, and ritual-object architecture."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1293-004"
+title = "Natural-command recap qualification"
+parallel_start = false
+depends_on = ["cellar-mail", "house-risk"]
+summary = "Fresh RECAP, window-entry RECAP, and forest LIE DOWN RECAP prove earned facts without architecture dumps."
+
+[[couplers]]
+id = "to-forest-answers"
+from_train = "cursor_zork_honest_system_recap"
+from_car = "capstone"
+to_train = "cursor_zork_forest_answers_back"
+to_car = "north-trees"
+mode = "after"
+note = "1294 stages the locked 1293 story. Do not steal 1280-1292."
+
+[meta]
+one_liner = "RECAP remembers what happened, not the filing system that noticed."
+couples_with = ["cursor_zork_forest_answers_back"]
+watch = ["glulx/honest-system-recap", "docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md"]

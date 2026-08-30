@@ -1,0 +1,12 @@
+{
+  "id": "005-silence-generic-house-risk-architecture",
+  "path": "house_vulnerability_integration.zil",
+  "description": "Do not recap generic fire/water/route architecture merely because the kitchen window is open.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE HOUSE-RISK-RECAP (\"AUX\" (SEEN <>))\n    <HOUSE-RISK-OBSERVE>\n    <COND (<HOUSE-RISK-GET ,RV-EVENT-CONDITION>\n           <SET SEEN T>\n           <TELL \"- Real fire, water, routes, actors, ritual objects, and custody produced bounded authored house conditions.\" CR>)>\n    <COND (<HOUSE-RISK-GET ,RV-EVENT-BURGLARY>",
+      "new": "<ROUTINE HOUSE-RISK-RECAP (\"AUX\" (SEEN <>))\n    <HOUSE-RISK-OBSERVE>\n    <COND (<HOUSE-RISK-GET ,RV-EVENT-BURGLARY>"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 **Board data:** `docs/planning/product-kanban.json`  
 **Current merged production frontier:** Release `1278` — Honest Playthrough Records, Rest Syntax, House Jar  
 **Live `master` observed before this refresh:** `080ba3a3d35f8f61da23f264ba088a6d59991b21` (PR #86)  
-**Open PRs observed before this refresh:** Release 1279 Glulxe optimization (this train)
+**Open PRs observed before this refresh:** Release 1279 Glulxe optimization (PR #87); Release 1293 Honest System Recap
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -34,11 +34,19 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
+1279 is runtime-only (story file unchanged). 1293 is story honesty from the locked-1278 playtest and does not steal 1280–1292.
+
 ### Release 1279 — Glulxe Optimization
 
-Ship a faster native Glulxe for the locked Release 1278 story: `-O3`, LTO, and PGO trained on representative HOE play, with an `-O2` reference binary retained. Transcripts, save/restore, and undo must match. VERIFY_MEMORY_ACCESS stays on. The `.ulx` is unchanged.
+Ship a faster native Glulxe for the locked Release 1278 story: `-O3`, LTO, and PGO. Transcripts, save/restore, and undo must match. VERIFY_MEMORY_ACCESS stays on. The `.ulx` is unchanged.
 
-Planning: `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`.
+Planning: `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`. PR #87.
+
+### Release 1293 — Honest System Recap
+
+A live 1278 playtest still dumped House-of-Records architecture on a fresh `RECAP`. 1293 stages locked 1278 and recaps only visited places and earned events. No GUI. No AI.
+
+Planning: `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`. Train: `glulx/honest-system-recap/`.
 
 ## NEXT — explicit queued product trains
 
@@ -81,7 +89,7 @@ Parser-native whole trains. No photographs, DRAW, illustrated frontend, or other
 Also remaining (not numbered until 1286 lands):
 
 - **Mara Earned Romance & Partnership** — explicit mutual choice; no approval/love meter.
-- **Forest That Answers Back** — promote selected existing wilderness nouns into stateful objects.
+- **Forest That Answers Back** — live **1294**. Promote selected existing wilderness nouns into stateful objects. Playtest: `EXAMINE TREE` at North of House fails while the prose names trees.
 - **Time, Weather & Disaster Arc** — authored conditions on real geography; no climate simulator.
 
 ## PARKED / SEPARATE
@@ -164,4 +172,6 @@ Also remaining (not numbered until 1286 lands):
 - `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`
 - `docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md`
 
-The live shape at this refresh: Release 1278 is merged on `acrinym/zork1` `master`; Release 1279 is CURRENT (Glulxe optimization); runtime foundation continues 1280–1285; chronicle export is 1286; Living Collection & Companionship is 1287–1292 after that. Never merge to `historicalsource/zork1`.
+- `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`
+
+The live shape at this refresh: Release 1278 is merged on `acrinym/zork1` `master`; Release 1279 (runtime) is PR #87; Release 1293 (story honesty) is in CURRENT and does not steal 1280–1292; runtime foundation remains 1280–1285; chronicle export is 1286; Living Collection is 1287–1292 after that. Never merge to `historicalsource/zork1`.

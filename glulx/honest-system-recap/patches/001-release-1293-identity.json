@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1293-identity",
+  "path": "zork1.zil",
+  "description": "Advance the staged story identity from locked Release 1278 to Release 1293.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 HONEST PLAYTHROUGH RECORDS REST SYNTAX AND HOUSE JAR GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 HONEST SYSTEM RECAP GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Honest Playthrough Records, Rest Syntax, and House Jar.\n  Release 1278 stops recap from claiming unearned attic, rug, trap, or garlic facts,\n  keeps rest-record integrity out of player text, restores LIE/LIE DOWN sleep, and\n  lets a sword shatter the museum field jar.\"",
+      "new": ";\"Repository-local Honest System Recap.\n  Release 1293 stops RECAP from dumping House-of-Records architecture, dossier\n  persistence, regional files, playback machinery, generic house-risk conditions,\n  cellar threshold evidence, or queued correspondence until those places and\n  events have actually been visited or earned.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1278>",
+      "new": "<CONSTANT RELEASEID 1293>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Honest Playthrough Records, Rest Syntax and House Jar Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Honest System Recap Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

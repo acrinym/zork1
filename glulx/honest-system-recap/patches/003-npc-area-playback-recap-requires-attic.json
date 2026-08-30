@@ -1,0 +1,12 @@
+{
+  "id": "003-npc-area-playback-recap-requires-attic",
+  "path": "attic_npc_dossiers.zil",
+  "description": "NPC dossier architecture recap waits for an actual Attic visit, matching Release 1278 archive recap.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE NPC-RECAP (\"AUX\" (SEEN <>))\n    <COND (<NPC-GET ,NS-EVENTS>",
+      "new": "<ROUTINE NPC-RECAP (\"AUX\" (SEEN <>))\n    <COND (<NOT <FSET? ,ATTIC ,TOUCHBIT>>\n           <RFALSE>)>\n    <COND (<NPC-GET ,NS-EVENTS>"
+    }
+  ]
+}

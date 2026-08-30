@@ -1,0 +1,43 @@
+{
+  "edition": "Honest System Recap",
+  "release": 1293,
+  "serial": "260830",
+  "base_release": 1278,
+  "base_manifest": "../honest-playthrough-perilous-house/patch-series.json",
+  "base_artifact_sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1",
+  "base_source_sha256": {
+    "production": "42f203d42801fcc787aa1e156f82a6bd11af1d580c3898552bfcdcd82ad3c9db",
+    "dev": "eaa0e2d82d616e0c81e8ef7b94ff31320a932fed23cf58a1f4e79670a3c1cd2b"
+  },
+  "patches": [
+    "patches/001-release-1293-identity.json",
+    "patches/002-npc-schema-init-is-not-restore.json",
+    "patches/003-npc-area-playback-recap-requires-attic.json",
+    "patches/004-cellar-recap-requires-cellar-visit.json",
+    "patches/005-silence-generic-house-risk-architecture.json",
+    "patches/006-mail-architecture-requires-attic.json",
+    "patches/007-area-recap-requires-attic.json",
+    "patches/008-playback-recap-requires-attic.json"
+  ],
+  "expected_changed_paths": [
+    "attic_area_case_files.zil",
+    "attic_npc_dossiers.zil",
+    "attic_playback.zil",
+    "house_cellar_threshold.zil",
+    "house_correspondence_visitors.zil",
+    "house_vulnerability_integration.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-honest-system-recap.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103"
+  },
+  "player_outcomes": [
+    "a fresh West of House RECAP does not claim dossier persistence, actor-memory architecture, regional files, playback machinery, house-risk architecture, cellar threshold evidence, or queued correspondence",
+    "entering through the kitchen window still recaps the open window and using the house as a place, without House-of-Records architecture",
+    "a refused forest LIE DOWN still recaps that unsafe sleep was refused",
+    "House-of-Records architecture recap remains available after an actual Attic visit"
+  ]
+}
