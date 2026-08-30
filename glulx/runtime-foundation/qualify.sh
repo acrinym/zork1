@@ -11,7 +11,8 @@ mkdir -p "$BUILD"
 python -m py_compile glulx/runtime-foundation/validate_contract.py \
   glulx/runtime-foundation/generate_scale_probe.py \
   glulx/runtime-foundation/chronicle.py \
-  glulx/runtime-foundation/pack_bundle.py
+  glulx/runtime-foundation/pack_bundle.py \
+  glulx/runtime-foundation/raise_glulx_global_limit.py
 python glulx/runtime-foundation/validate_contract.py "$CONTRACT"
 
 bash glulx/west-of-house-nouns/qualify.sh
@@ -72,6 +73,9 @@ if 'Release 1295' not in a:
     raise SystemExit('O2 lost release banner')
 print('RELEASE_1282_1283_TRANSCRIPT_CORE_OK')
 PY_EQ
+
+# 1281: lift Z-machine 240 hard-global cap on native Glulx after locked 1295 is already compiled.
+python glulx/runtime-foundation/raise_glulx_global_limit.py "$ROOT"
 
 # 1281/1284 scale probe on a test-only 1295 tree
 SCALE_SRC="$BUILD/scale-src"
