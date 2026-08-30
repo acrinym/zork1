@@ -1,0 +1,12 @@
+{
+  "id": "003-north-of-house-tree",
+  "path": "1dungeon.zil",
+  "description": "North of House already names trees; expose the TREE local-global there and refuse climbing without stealing Forest Path.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (NORTH TO PATH)\n      (SOUTH \"The windows are all boarded.\")\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL BOARDED-WINDOW BOARD WHITE-HOUSE FOREST)>",
+      "new": "      (NORTH TO PATH)\n      (SOUTH \"The windows are all boarded.\")\n      (UP \"There is no tree here suitable for climbing.\")\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL BOARDED-WINDOW BOARD WHITE-HOUSE FOREST TREE)>"
+    }
+  ]
+}

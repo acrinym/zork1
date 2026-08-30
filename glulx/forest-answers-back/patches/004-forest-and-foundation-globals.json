@@ -1,0 +1,22 @@
+{
+  "id": "004-forest-and-foundation-globals",
+  "path": "1dungeon.zil",
+  "description": "Expose needles and canopy in the western pines, needles and undergrowth in the dim eastern pines, and old foundation stone behind the house.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (WEST PER WILDERNESS-FOREST-WEST-EXIT)\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)>",
+      "new": "      (WEST PER WILDERNESS-FOREST-WEST-EXIT)\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST FOREST-NEEDLES FOREST-CANOPY)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (WEST TO PATH)\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)>",
+      "new": "      (WEST TO PATH)\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST FOREST-NEEDLES FOREST-UNDERSTORY)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "      (ACTION EAST-HOUSE)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL WHITE-HOUSE KITCHEN-WINDOW FOREST)>",
+      "new": "      (ACTION EAST-HOUSE)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL WHITE-HOUSE KITCHEN-WINDOW FOREST HOUSE-FOUNDATION-STONE)>"
+    }
+  ]
+}

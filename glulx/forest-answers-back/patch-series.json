@@ -1,0 +1,41 @@
+{
+  "edition": "Forest That Answers Back",
+  "release": 1294,
+  "serial": "260830",
+  "base_release": 1293,
+  "base_manifest": "../honest-system-recap/patch-series.json",
+  "base_artifact_sha256": "79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641",
+  "base_source_sha256": {
+    "production": "0470a2403277df9a6031d6b1e39920f7f01dd74457d756cdc19d1257cc68c103",
+    "dev": "743ad05a9300d92fde55f05a4e5ed9040bac51cd2ea02aeceaa4c5fe3d8141cb"
+  },
+  "patches": [
+    "patches/001-release-1294-identity.json",
+    "patches/002-named-forest-locals.json",
+    "patches/003-north-of-house-tree.json",
+    "patches/004-forest-and-foundation-globals.json",
+    "patches/005-forest-local-actions.json"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "reactive_surface.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-forest-answers-back.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 550400,
+    "checksum_hex": "0xdff0ede6",
+    "sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831"
+  },
+  "player_outcomes": [
+    "EXAMINE TREE at North of House reaches the trees the room already describes",
+    "CLIMB TREE at North of House does not steal the Forest Path climbable tree",
+    "EXAMINE NEEDLES and EXAMINE CANOPY work in the western pine forest that names them",
+    "EXAMINE UNDERGROWTH in the dim eastern pines reaches the undergrowth that room names",
+    "EXAMINE FOUNDATION at Behind House reaches the old foundation stone the room names",
+    "CLIMB TREE on Forest Path still reaches Up a Tree"
+  ]
+}

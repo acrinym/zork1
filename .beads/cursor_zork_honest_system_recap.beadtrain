@@ -5,7 +5,7 @@ description = """
 Stop RECAP from dumping House-of-Records architecture on a fresh playthrough. Gate dossier, regional, playback, cellar, and correspondence architecture on actual visits. No GUI. No AI.
 """
 created     = "2026-08-30"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "attic-architecture"
