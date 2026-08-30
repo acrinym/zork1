@@ -22,10 +22,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-forest-answers-back.ulx",
     "format": "Glulx",
-    "version_hex": "0x00030103"
+    "version_hex": "0x00030103",
+    "size_bytes": 550400,
+    "checksum_hex": "0xdff0ede6",
+    "sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831"
   },
   "player_outcomes": [
     "EXAMINE TREE at North of House reaches the trees the room already describes",
