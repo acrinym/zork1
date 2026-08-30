@@ -150,21 +150,21 @@
 <ROUTINE STUDIO-FIREPLACE-F ()
 	<COND (<VERB? EXAMINE>
 	       <TELL "A dark chimney rises from this fireplace. Paint covers the hearth the way it covers the door." CR>)
-	      (<VERB? ENTER CLIMB>
+	      (<VERB? ENTER CLIMB-FOO CLIMB-UP CLIMB-ON>
 	       <DO-WALK ,P?UP>)
 	      (T <RFALSE>)>>
 
 <ROUTINE BARROW-DOOR-F ()
 	<COND (<VERB? EXAMINE>
 	       <TELL "The east face of the barrow is a huge stone door, standing open on a tomb you still cannot see into." CR>)
-	      (<VERB? ENTER THROUGH>
+	      (<VERB? ENTER>
 	       <TELL "The dark of the tomb does not become a second map." CR>)
 	      (T <RFALSE>)>>
 
 <ROUTINE DAM-TOUR-DOORS-F ()
 	<COND (<VERB? EXAMINE>
 	       <TELL "The north and east doorways are the old tour route into the private maintenance rooms of Dam #3." CR>)
-	      (<VERB? ENTER THROUGH>
+	      (<VERB? ENTER>
 	       <DO-WALK ,P?NORTH>)
 	      (T <RFALSE>)>>
 
@@ -188,7 +188,7 @@
 <ROUTINE ALTAR-FLOOR-HOLE-F ()
 	<COND (<VERB? EXAMINE>
 	       <TELL "A small hole in the floor leads into darkness. Climbing back up it would be a poor plan." CR>)
-	      (<VERB? ENTER THROUGH>
+	      (<VERB? ENTER>
 	       <DO-WALK ,P?DOWN>)
 	      (T <RFALSE>)>>
 
