@@ -29,17 +29,20 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-honest-playthrough-perilous-house.ulx",
     "format": "Glulx",
-    "version_hex": "0x00030103"
+    "version_hex": "0x00030103",
+    "size_bytes": 548864,
+    "checksum_hex": "0xfd84063d",
+    "sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1"
   },
   "player_outcomes": [
     "a fresh playthrough RECAP does not claim attic microfiche, catalog, or archive migration until the Attic has been visited",
     "RECAP names an open kitchen window, a moved rug, and an open trap door as separate facts rather than one OR-list",
     "RECAP names prepared lunch and sliced garlic as separate facts",
     "reading the dream notebook does not print REST-RECORD-INTEGRITY telemetry",
-    "LIE and LIE DOWN reach Bedroom sleep",
+    "LIE, LIE DOWN, and LIE ON BED reach Bedroom sleep",
     "DRINK FROM SINK reaches the Kitchen tap drink instead of the generic How peculiar refusal",
     "BREAK JAR WITH SWORD shatters the real field jar"
   ]
