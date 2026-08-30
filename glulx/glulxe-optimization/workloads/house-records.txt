@@ -1,0 +1,16 @@
+look
+recap
+open window
+enter
+east
+recap
+up
+look
+lie down
+read notebook
+recap
+down
+west
+exit
+quit
+yes

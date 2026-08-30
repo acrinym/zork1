@@ -8,19 +8,19 @@ Historical Release 119, repository Optimized Release 120, early Expanded Release
 
 ## Current lineage
 
-**Merged production frontier:** Release 1277 — Mundane Objects, Field Caching & House Spatial Agency, merged through PR #85 at `42c110095cb99c9aff6ef83956c391b437c76bef`.
+**Merged production frontier:** Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar, merged through PR #86 at `080ba3a3d35f8f61da23f264ba088a6d59991b21`.
 
-Locked 1277 production artifact:
+Locked 1278 production artifact:
 
-- `zork1-glulx-release-1277-mundane-spatial-agency.ulx`
+- `zork1-glulx-honest-playthrough-perilous-house.ulx`
 - Glulx `0x00030103`
-- SHA-256 `582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599`
+- SHA-256 `d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1`
 
-**Open current train:** Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar, PR #86 on `acrinym/zork1` only. Not merged until checks are green.
+**Open current train:** Release 1279 — Glulxe Optimization, on `acrinym/zork1` only. The 1278 story file does not change. Not merged until checks are green.
 
 **Operating board:** [`../docs/planning/PRODUCT_KANBAN.md`](../docs/planning/PRODUCT_KANBAN.md)
 
-See [`mundane-objects-spatial-agency/`](mundane-objects-spatial-agency/) and [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/). Releases 1267 and 1268 are merged history; their locked artifacts remain in those train directories.
+See [`honest-playthrough-perilous-house/`](honest-playthrough-perilous-house/) and [`glulxe-optimization/`](glulxe-optimization/). Releases 1267 and 1268 are merged history; their locked artifacts remain in those train directories.
 
 ## What “release train” means here
 

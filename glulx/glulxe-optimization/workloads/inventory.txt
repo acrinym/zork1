@@ -1,0 +1,16 @@
+open mailbox
+take leaflet
+inventory
+examine leaflet
+drop leaflet
+take leaflet
+put leaflet in mailbox
+take leaflet
+i
+drop leaflet
+take stone
+inventory
+drop stone
+take leaflet
+quit
+yes

@@ -2,9 +2,9 @@
 
 **Updated:** August 30, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1277` — Mundane Objects, Field Caching & House Spatial Agency  
-**Live `master` observed before this refresh:** `42c110095cb99c9aff6ef83956c391b437c76bef` (PR #85)  
-**Open PRs observed before this refresh:** Release 1278 honest-playthrough / house-jar (this train)
+**Current merged production frontier:** Release `1278` — Honest Playthrough Records, Rest Syntax, House Jar  
+**Live `master` observed before this refresh:** `080ba3a3d35f8f61da23f264ba088a6d59991b21` (PR #86)  
+**Open PRs observed before this refresh:** Release 1279 Glulxe optimization (this train)
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -30,44 +30,41 @@ This board is the human operating surface for the active Zork product queue. The
 
 None.
 
-Releases 1269–1277 are merged through PR #85. Writable merges stay on `acrinym/zork1` `master` only.
+Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym/zork1` `master` only.
 
 ## CURRENT
 
-### Release 1278 — Honest Playthrough Records, Rest Syntax, House Jar
+### Release 1279 — Glulxe Optimization
 
-A new playthrough must not recap unearned attic architecture, rug/trap events, or garlic slicing. Rest records must not print qualification telemetry. `LIE` / `LIE DOWN` must put the Adventurer to bed. `DRINK FROM SINK` must reach the tap. A sword or axe can shatter the museum field jar. No generic smash engine.
+Ship a faster native Glulxe for the locked Release 1278 story: `-O3`, LTO, and PGO trained on representative HOE play, with an `-O2` reference binary retained. Transcripts, save/restore, and undo must match. VERIFY_MEMORY_ACCESS stays on. The `.ulx` is unchanged.
 
-Playtest evidence: `docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md`.
+Planning: `docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`.
 
 ## NEXT — explicit queued product trains
 
-Runtime foundation first. No museum/Mara/fish implementation until 1278 is merged and 1279–1286 have reached the locked frontier. Filenames below keep their original numbers so old links resolve; **live release numbers** are in parentheses.
+Runtime foundation continues. No museum/Mara/fish implementation until 1279–1286 have reached the locked frontier. Filenames below keep their original numbers so old links resolve; **live release numbers** are in parentheses.
 
 See `docs/planning/POST_1277_RUNTIME_FOUNDATION_QUEUE_1278_1284_2026-08-21.md`.
 
-### 1. Release 1279 — Glulxe Optimization
-`docs/planning/RELEASE_1278_GLULXE_OPTIMIZATION.md`
-
-### 2. Release 1280 — Future-Proof Runtime Contract
+### 1. Release 1280 — Future-Proof Runtime Contract
 `docs/planning/RELEASE_1279_FUTURE_PROOF_RUNTIME_CONTRACT.md`
 
-### 3. Release 1281 — Extended Globals / Compiler State Scaling
+### 2. Release 1281 — Extended Globals / Compiler State Scaling
 `docs/planning/RELEASE_1280_EXTENDED_GLOBALS_COMPILER_STATE_SCALING.md`
 
-### 4. Release 1282 — Story-Code Optimization
+### 3. Release 1282 — Story-Code Optimization
 `docs/planning/RELEASE_1281_STORY_CODE_OPTIMIZATION.md`
 
-### 5. Release 1283 — Cross-Interpreter Compatibility
+### 4. Release 1283 — Cross-Interpreter Compatibility
 `docs/planning/RELEASE_1282_CROSS_INTERPRETER_COMPATIBILITY.md`
 
-### 6. Release 1284 — Large-World Scaling
+### 5. Release 1284 — Large-World Scaling
 `docs/planning/RELEASE_1283_LARGE_WORLD_SCALING.md`
 
-### 7. Release 1285 — Portable Runtime Bundle
+### 6. Release 1285 — Portable Runtime Bundle
 `docs/planning/RELEASE_1284_PORTABLE_RUNTIME_BUNDLE.md`
 
-### 8. Release 1286 — Opt-In Playthrough Chronicle Export
+### 7. Release 1286 — Opt-In Playthrough Chronicle Export
 `docs/planning/RELEASE_1285_OPT_IN_PLAYTHROUGH_CHRONICLE_EXPORT.md` — local side-channel export only. Not a GUI, not illustration, not a network feature.
 
 ## FUTURE — Living Collection & Companionship (after 1286)
@@ -141,6 +138,7 @@ Also remaining (not numbered until 1286 lands):
 | 1268 | Clue Chains & Knowledge-Gated Interpretation | #73 — merged `2e16f6cebbfb5a7892feac08d9e6461e6bb9313b` |
 | 1269–1276 | Structural difficulty through Mara field guidance | merged on `acrinym/zork1` `master` before #85 |
 | 1277 | Mundane Objects, Field Caching & House Spatial Agency | #85 — merged `42c110095cb99c9aff6ef83956c391b437c76bef` |
+| 1278 | Honest Playthrough Records, Rest Syntax, House Jar | #86 — merged `080ba3a3d35f8f61da23f264ba088a6d59991b21` |
 
 ### Recent locked artifact / qualification receipts
 
@@ -157,6 +155,7 @@ Also remaining (not numbered until 1286 lands):
 | 1266 | `4425732bfc2fa28347453d9991513aeb28aaa531` | `d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9` | `32042641179` |
 | 1267 | `90e30d59fcd44a5297d7524f65ee34c72aaff319` | `828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0` | `32046910749` |
 | 1277 | `42c110095cb99c9aff6ef83956c391b437c76bef` | `582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599` | PR #85 |
+| 1278 | `080ba3a3d35f8f61da23f264ba088a6d59991b21` | `d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1` | PR #86 |
 
 ## Canonical roadmap
 
@@ -165,4 +164,4 @@ Also remaining (not numbered until 1286 lands):
 - `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`
 - `docs/planning/PLAYTEST_1245_DESTRUCTION_HONESTY_GAPS_2026-08-30.md`
 
-The live shape at this refresh: Release 1277 is merged on `acrinym/zork1` `master`; Release 1278 is PR #86 in CURRENT (not merged until all green); runtime foundation is 1279–1285; chronicle export is 1286; Living Collection & Companionship is 1287–1292 after that. Never merge to `historicalsource/zork1`.
+The live shape at this refresh: Release 1278 is merged on `acrinym/zork1` `master`; Release 1279 is CURRENT (Glulxe optimization); runtime foundation continues 1280–1285; chronicle export is 1286; Living Collection & Companionship is 1287–1292 after that. Never merge to `historicalsource/zork1`.

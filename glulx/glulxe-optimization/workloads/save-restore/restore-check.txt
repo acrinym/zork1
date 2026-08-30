@@ -1,0 +1,5 @@
+restore
+r1279.sav
+look
+quit
+yes
