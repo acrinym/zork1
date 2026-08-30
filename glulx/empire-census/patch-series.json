@@ -6,8 +6,8 @@
   "base_manifest": "../leaflet-spine/patch-series.json",
   "base_artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a",
   "base_source_sha256": {
-    "production": "",
-    "dev": ""
+    "production": "f9515f5662bb7f3ae06fa4b330448020c1cb7fdfc1974914f4b324f974262c58",
+    "dev": "e79c44145a19ca6962f386501f4db30dc84f25663a37a33d4c3fa89469cfd6e1"
   },
   "planning_map": {
     "1301": "survey developer flags --no-killing and --no-reset-on-death (test-only)",
