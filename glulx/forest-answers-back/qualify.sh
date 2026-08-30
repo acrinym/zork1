@@ -60,6 +60,7 @@ req('FOREST-NEEDLES' in forest2 and 'FOREST-UNDERSTORY' in forest2,'Release 1294
 req('HOUSE-FOUNDATION-STONE' in east,'Release 1294 Behind House missing foundation stone')
 req('(GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)' in path or 'GLOBAL TREE' in path,'Release 1294 Forest Path lost TREE')
 req('<ROUTINE FOREST-NEEDLES-F' in surface,'Release 1294 missing needle replies')
+req('CLIMB-FOO' in surface and 'NORTH-OF-HOUSE' in surface.split('<ROUTINE SURFACE-TREE-F',1)[1].split('<ROUTINE FOREST-NEEDLES-F',1)[0],'Release 1294 North of House climb still uses generic tree-does-not-lead-upward')
 req('<ROUTINE HOUSE-FOUNDATION-STONE-F' in surface,'Release 1294 missing foundation replies')
 req('<CONSTANT RELEASEID 1294>' in zork,'Release 1294 identity missing')
 for bad in ('SCENERY-REGISTRY','GENERIC-NOUN-TABLE','WORLD-SCANNER'):
