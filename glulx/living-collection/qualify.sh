@@ -122,7 +122,7 @@ ask mara about silverfin
 lctide
 fish
 lckitchen
-ask mara to prepare
+ask mara to supper
 lcerrand
 mara, take jar to dam
 look
@@ -131,15 +131,16 @@ yes
 EOF_LC
 timeout 180s "$GLULXE" --rngseed 123456 --undo 16 "$BUILD/release1304-test.ulx" < "$BUILD/living-collection.txt" > "$BUILD/living-collection-transcript.txt" 2>&1
 F="$BUILD/living-collection-transcript.txt"
-grep -F 'thick-bodied char from quiet water' "$F"
-grep -F 'Different body, different current' "$F"
-grep -F 'A quiet-water reservoir char occupies the vessel.' "$F"
-grep -F 'plaque will record absence' "$F"
-grep -F 'I have not seen that catch' "$F"
-grep -F 'You showed me that catch' "$F"
-grep -F 'drawn down to mud' "$F"
-grep -F 'Mara checks the real stove' "$F"
-grep -F 'I know this water' "$F"
+dump_lc() { echo '--- living collection transcript ---' >&2; cat "$F" >&2; }
+grep -F 'thick-bodied char from quiet water' "$F" || { dump_lc; exit 1; }
+grep -F 'Different body, different current' "$F" || { dump_lc; exit 1; }
+grep -F 'A quiet-water reservoir char occupies the vessel.' "$F" || { dump_lc; exit 1; }
+grep -F 'plaque will record absence' "$F" || { dump_lc; exit 1; }
+grep -F 'I have not seen that catch' "$F" || { dump_lc; exit 1; }
+grep -F 'You showed me that catch' "$F" || { dump_lc; exit 1; }
+grep -F 'drawn down to mud' "$F" || { dump_lc; exit 1; }
+grep -F 'Mara checks the real stove' "$F" || { dump_lc; exit 1; }
+grep -F 'I know this water' "$F" || { dump_lc; exit 1; }
 if grep -F 'I don'\''t know the word "fish"' "$F"; then echo 'Release 1304 lost FISH' >&2; exit 1; fi
 
 python - "$STORY" "$MANIFEST" <<'PY_ID'

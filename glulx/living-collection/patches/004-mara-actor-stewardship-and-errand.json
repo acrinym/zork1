@@ -6,7 +6,7 @@
     {
       "expected_count": 1,
       "old": "          (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? MOVE TAKE>\n                <R1277-REQUESTABLE-OBJECT? ,PRSO>>\n           <R1277-MARA-REQUEST-OBJECT ,PRSO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MARA-FIELD-PACK>>",
-      "new": "          (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? MOVE TAKE>\n                <R1277-REQUESTABLE-OBJECT? ,PRSO>>\n           <R1277-MARA-REQUEST-OBJECT ,PRSO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? LC-TAKE-TO>>\n           <V-LC-TAKE-TO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MARA-FIELD-PACK>>"
+      "new": "          (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? MOVE TAKE>\n                <R1277-REQUESTABLE-OBJECT? ,PRSO>>\n           <R1277-MARA-REQUEST-OBJECT ,PRSO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MUSEUM-FIELD-JAR>\n                <EQUAL? ,PRSI ,DAM ,MARA-DAM-TOPIC ,DAM-BASE>>\n           <V-LC-TAKE-TO>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? TAKE>\n                <EQUAL? ,PRSO ,MARA-FIELD-PACK>>"
     }
   ]
 }

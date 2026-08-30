@@ -26,13 +26,13 @@
 
 <OBJECT LC-HOUSE-PREPARE
     (IN GLOBAL-OBJECTS)
-    (SYNONYM PREPARE COOK MEAL)
+    (SYNONYM SUPPER STEW MEAL)
     (DESC "kitchen work")
     (FLAGS NDESCBIT)>
 
 <OBJECT LC-HOUSE-REST
     (IN GLOBAL-OBJECTS)
-    (SYNONYM REST SLEEP)
+    (SYNONYM REPOSE BEDREST)
     (DESC "rest")
     (FLAGS NDESCBIT)>
 
@@ -298,7 +298,7 @@
            <TELL "You can carry the jar yourself. An errand is a request Mara can accept or refuse." CR>)
           (<NOT <EQUAL? ,PRSO ,MUSEUM-FIELD-JAR>>
            <TELL "The authored Dam errand is for the water-filled field jar, not a general delivery service." CR>)
-          (<NOT <EQUAL? ,PRSI ,DAM ,MARA-DAM-TOPIC ,DAM-BASE>>
+          (<NOT <EQUAL? ,PRSI ,DAM ,MARA-DAM-TOPIC ,DAM-BASE ,DAM-ROOM>>
            <TELL "Mara will not treat an unnamed destination as a route. Name the Dam." CR>)
           (T
            <V-LC-MARA-JAR-ERRAND>)>
