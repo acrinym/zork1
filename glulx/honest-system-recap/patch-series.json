@@ -29,10 +29,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-honest-system-recap.ulx",
     "format": "Glulx",
-    "version_hex": "0x00030103"
+    "version_hex": "0x00030103",
+    "size_bytes": 548864,
+    "checksum_hex": "0xb8e24a15",
+    "sha256": "79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641"
   },
   "player_outcomes": [
     "a fresh West of House RECAP does not claim dossier persistence, actor-memory architecture, regional files, playback machinery, house-risk architecture, cellar threshold evidence, or queued correspondence",

@@ -13,3 +13,11 @@ No GUI. No LLM-in-game. Mara stays one authored person.
 Merges go to `acrinym/zork1` `master` only.
 
 See `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`.
+
+Locked hosted identity (qualify `33304637938`):
+
+- `zork1-glulx-honest-system-recap.ulx`
+- Glulx `0x00030103`
+- size 548864
+- checksum `0xb8e24a15`
+- SHA-256 `79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641`

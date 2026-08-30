@@ -38,6 +38,16 @@ Release 1293 gates those dumps on actual Attic or Cellar visits and removes the 
 - `EXAMINE TREE` at North of House: “You can't see any tree here!” while the room prose mentions trees. Forest Path has a climbable tree. This is **Forest That Answers Back** (live 1294): described wilderness nouns become stateful objects. No GUI. No AI.
 - Mara was not in the living room on first look after a short kitchen visit. She remains one authored person; do not invent an LLM companion to fill the gap.
 
+## Release 1293 locked identity
+
+Hosted qualify `33304637938` completed gameplay, then locked:
+
+- file `zork1-glulx-honest-system-recap.ulx`
+- Glulx `0x00030103`
+- size 548864
+- checksum `0xb8e24a15`
+- SHA-256 `79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641`
+
 ## Follow-on trains (no GUI, no AI)
 
 See `.beads/cursor_zork_honest_playtest_followon.beadtrain`. Live numbers skip 1280–1292.
