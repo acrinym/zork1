@@ -78,9 +78,10 @@ yes
 EOF
 timeout 180s "$GLULXE" --rngseed 123456 --undo 16 "$BUILD/mara-honesty.ulx" < "$BUILD/mara-playthrough.txt" > "$BUILD/mara-playthrough-transcript.txt" 2>&1
 M="$BUILD/mara-playthrough-transcript.txt"
-grep -F 'Mara Tallow' "$M"
-grep -F 'Last Honest Survey' "$M" || grep -F 'joint Dam sheet' "$M" || grep -F 'Flood Control Dam' "$M"
-grep -F 'River Frigid should be observed' "$M" || grep -F 'I have not seen that catch' "$M"
-if grep -F 'I don'\''t see what you'\''re referring to' "$M"; then echo 'Mara topic vanished' >&2; exit 1; fi
-if grep -F 'omniscient' "$M"; then echo 'Mara dumped omniscience' >&2; exit 1; fi
+dump_mara() { echo '--- mara honesty transcript ---' >&2; cat "$M" >&2; }
+grep -F 'Mara Tallow' "$M" || { dump_mara; echo 'playthrough: Mara never appeared' >&2; exit 1; }
+grep -F 'Last Honest Survey' "$M" || grep -F 'joint Dam sheet' "$M" || grep -F 'Flood Control Dam' "$M" || { dump_mara; echo 'playthrough: survey talk missing' >&2; exit 1; }
+grep -F 'River Frigid should be observed' "$M" || grep -F 'I have not seen that catch' "$M" || grep -F 'Mara cannot honestly claim that history yet' "$M" || { dump_mara; echo 'playthrough: Mara silverfin talk was not knowledge-limited' >&2; exit 1; }
+if grep -F 'I don'\''t see what you'\''re referring to' "$M"; then dump_mara; echo 'Mara topic vanished' >&2; exit 1; fi
+if grep -F 'omniscient' "$M"; then dump_mara; echo 'Mara dumped omniscience' >&2; exit 1; fi
 echo 'Honesty playthrough (opening + Mara) passed.'

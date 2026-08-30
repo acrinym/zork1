@@ -12,6 +12,7 @@
     <MARA-PUT ,MARA-SLOT-FISH-WITNESSED 0>
     <MARA-PUT ,MARA-SLOT-FISH-RELEASED 0>
     <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-WAITING>
+    <MOVE ,DAM-SILVERFIN ,GLOBAL-OBJECTS>
     <GOTO ,DAM-BASE>
     <TELL "TEST PRECONDITION: Mara at Dam Base with a joint survey; she has not witnessed a new catch." CR>
     <RTRUE>>
