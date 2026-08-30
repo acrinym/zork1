@@ -62,7 +62,9 @@ req('You prepared the real lunch or sliced the real garlic' not in kitchen,'Rele
 req('<VERB? DRINK DRINK-FROM>' in kitchen,'Release 1278 kitchen sink does not accept DRINK FROM')
 req('REST-RECORD-INTEGRITY' not in rest,'Release 1278 still prints rest-record integrity telemetry to the player')
 req('<SYNTAX LIE = V-HOUSE-SLEEP>' in gsyn,'Release 1278 missing bare LIE sleep syntax')
-req('<SYNTAX LIE DOWN ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>' in gsyn,'Release 1278 missing LIE DOWN ON OBJECT sleep syntax')
+req('<SYNTAX LIE DOWN = V-HOUSE-SLEEP>' in gsyn,'Release 1278 missing LIE DOWN sleep syntax')
+req('<SYNTAX LIE ON OBJECT (ON-GROUND IN-ROOM) = V-HOUSE-SLEEP>' in gsyn,'Release 1278 missing LIE ON OBJECT sleep syntax')
+req('<SYNTAX LIE DOWN ON OBJECT' not in gsyn,'Release 1278 still uses illegal two-preposition LIE DOWN ON OBJECT syntax')
 req('<SYNTAX DRINK FROM OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-DRINK-FROM>' in gsyn,'Release 1278 DRINK FROM still cannot target room fixtures')
 req('The blow reaches the glass.' in jar,'Release 1278 field jar has no authored shatter')
 for bad in ('DURABILITY','ARMOR-CLASS','HIT-POINT','CRAFTING-REGISTRY','MATERIAL-TYPE-REGISTRY','BAD-CHOICE-COUNTER'):
@@ -148,6 +150,16 @@ run_case lie-down; F="$BUILD/lie-down-transcript.txt"
 grep -F 'You settle into the four-poster bed.' "$F"
 if grep -F "That sentence isn't one I recognize." "$F"; then echo 'Release 1278 LIE DOWN still fails to parse' >&2; exit 1; fi
 
+cat > "$BUILD/lie-on-bed.txt" <<'EOF_LIEON'
+hplie
+lie on bed
+quit
+yes
+EOF_LIEON
+run_case lie-on-bed; F="$BUILD/lie-on-bed-transcript.txt"
+grep -F 'You settle into the four-poster bed.' "$F"
+if grep -F "That sentence isn't one I recognize." "$F"; then echo 'Release 1278 LIE ON BED still fails to parse' >&2; exit 1; fi
+
 cat > "$BUILD/drink-from.txt" <<'EOF_DRINK'
 hpdrk
 drink from sink
@@ -196,7 +208,7 @@ ident={'file':story.name,'format':'Glulx','version_hex':r['version_hex'],'size_b
 print('RELEASE_1278_ARTIFACT_IDENTITY='+json.dumps(ident,sort_keys=True))
 if r.get('checksum_valid') is not True: raise SystemExit('Release 1278 artifact checksum invalid')
 (b/'CANDIDATE-IDENTITY.json').write_text(json.dumps(ident,indent=2,sort_keys=True)+'\n')
-e=m['expected_artifact']; rec={'release':1278,'serial':m['serial'],'base_release':1277,'base_artifact_sha256':m['base_artifact_sha256'],'base_source_sha256':m['base_source_sha256'],'histories':['production-smoke','fresh-recap','window-recap','lie','lie-down','drink-from','jar-shatter','lamp-break','notebook']}
+e=m['expected_artifact']; rec={'release':1278,'serial':m['serial'],'base_release':1277,'base_artifact_sha256':m['base_artifact_sha256'],'base_source_sha256':m['base_source_sha256'],'histories':['production-smoke','fresh-recap','window-recap','lie','lie-down','lie-on-bed','drink-from','jar-shatter','lamp-break','notebook']}
 if e.get('locked') is not True:
     rec.update({'artifact_identity_locked':False,'candidate':ident}); (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(rec,indent=2,sort_keys=True)+'\n'); raise SystemExit('Release 1278 candidate completed product gameplay qualification; lock exact artifact identity and rerun.')
 for k in ('file','version_hex','size_bytes','checksum_hex','sha256'):

@@ -21,7 +21,7 @@ This was a live playtest, not a saved game to restore. A **new playthrough** mus
 2. **ARCHIVE-RECAP dumps House-of-Records architecture** (microfiche, catalog, migration) after mailbox mail syncs attic records, even if the Adventurer never entered the Attic.
 3. **KITCHEN-RECAP** says lunch **or** garlic as one fact; garlic was never sliced.
 4. **Dream notebook** prints `REST-RECORD-INTEGRITY:PASS/FAIL` into player text. Qualification may keep the check; players must not see it.
-5. **`LIE DOWN`** is in the 1228 syntax patch and README; the Bedroom rejected the sentence. Bare `LIE` and `LIE DOWN ON BED` need to reach `V-HOUSE-SLEEP`.
+5. **`LIE DOWN`** is in the 1228 syntax patch and README; the Bedroom rejected the sentence. Bare `LIE`, `LIE DOWN`, and `LIE ON BED` need to reach `V-HOUSE-SLEEP`. ZILF cannot compile `LIE DOWN ON OBJECT` (MDL0112: two prepositions).
 6. **`DRINK FROM SINK`** missed the sink action (`How peculiar!`) even though the sink object includes TAP and handles `DRINK`.
 7. **Specimen jar** vs sword: 1264 doctrine, not in the four 1264 objects. Authored shatter with water/fish consequence.
 
