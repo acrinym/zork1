@@ -215,24 +215,39 @@ down
 examine crawlway
 examine passageway
 examine ramp
+north
+examine hole
+examine bloodstains
+south
 south
 examine chasm
 east
 examine paintings
 examine vandals
+north
+examine fireplace
+south
 svymaze
 examine passages
 svytemple
 examine prayer
 examine pillars
+south
+examine hole
+north
 svydamlobby
 examine doorways
+south
+examine walkway
+examine panel
+north
 svymaint
 examine equipment
 svystream
 examine beach
 svyhades
 examine souls
+examine gate
 svybarrow
 examine door
 svyround

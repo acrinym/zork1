@@ -20,10 +20,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-he-absurd-alternates.ulx",
     "format": "Glulx",
-    "version_hex": "0x00030103"
+    "version_hex": "0x00030103",
+    "size_bytes": 563968,
+    "checksum_hex": "0x9087f92d",
+    "sha256": "fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9"
   },
   "player_outcomes": [
     "TRICK TROLL then TIE UP TROLL WITH ROPE binds the living troll on the HE story",
