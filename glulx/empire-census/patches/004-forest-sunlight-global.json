@@ -1,0 +1,12 @@
+{
+  "id": "004-forest-sunlight-global",
+  "path": "1dungeon.zil",
+  "description": "The western forest look names sunlight; expose that noun only there.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "      (WEST PER WILDERNESS-FOREST-WEST-EXIT)\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST FOREST-NEEDLES FOREST-CANOPY)>",
+      "new": "      (WEST PER WILDERNESS-FOREST-WEST-EXIT)\n      (ACTION FOREST-ROOM)\n      (FLAGS RLANDBIT ONBIT SACREDBIT)\n      (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST FOREST-NEEDLES FOREST-CANOPY FOREST-SUNLIGHT)>"
+    }
+  ]
+}

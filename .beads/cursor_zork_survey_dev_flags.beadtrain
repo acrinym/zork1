@@ -5,7 +5,7 @@ description = """
 Developer-only play flags so a census of the whole map can traverse without combat hassle or full-game reset on death. --no-killing and --no-reset-on-death. Never a GUI. Never present in the production story file. No AI. Does not steal 1280-1292.
 """
 created     = "2026-08-30"
-status      = "planned"
+status      = "in_progress"
 
 [[cars]]
 id = "no-killing"

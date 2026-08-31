@@ -5,7 +5,7 @@ description = """
 Planning 1287-1292 as one locked story: reservoir char, Mara witness honesty, waters husbandry, house stewardship, exact custody, Dam jar errands. No GUI. No AI. Does not steal 1280-1292.
 """
 created     = "2026-08-30"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "fishery-witness-husbandry-stewardship-custody-errands"

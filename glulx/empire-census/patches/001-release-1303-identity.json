@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1303-identity",
+  "path": "zork1.zil",
+  "description": "Advance staged identity from locked Release 1296 to Release 1303 empire noun honesty.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 LEAFLET HOUR NOUN HONESTY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 EMPIRE NOUN HONESTY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Leaflet Hour Noun Honesty.\n  Releases 1296-1300: house ring, cellar commitment, Dam #3 as the only factory,\n  score as geography, and unique vanilla set-pieces. Stages locked 1304. No GUI.\"",
+      "new": ";\"Repository-local Empire Noun Honesty.\n  Releases 1301-1303: survey flags (test-only), described-world census, and remaining\n  reachable-map nouns. Stages locked 1296. No GUI. No scenery engine.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1296>",
+      "new": "<CONSTANT RELEASEID 1303>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Leaflet Hour Noun Honesty Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Empire Noun Honesty Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

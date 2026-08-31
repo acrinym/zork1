@@ -5,7 +5,7 @@ description = """
 The rug and trap door are a physical lie: furniture that is also a door. Going down is a commitment. Cellar timber, grating, and the troll-in-a-doorway become parser-real as place and person, not a combat tutorial. No GUI. No AI. No generic enemy. Does not steal 1280-1292.
 """
 created     = "2026-08-30"
-status      = "planned"
+status      = "complete"
 
 [[cars]]
 id = "trap-commitment"

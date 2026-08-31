@@ -5,7 +5,7 @@ description = """
 Flood Control Dam #3 is unique machinery, not a systems engine. Walkway, control panel, gates, and reservoir water become parser-real as the industrial objects the dam already is. Vanilla dam buttons and water authority stay. No GUI. No AI. Does not steal 1280-1292 or the 1287 fishery.
 """
 created     = "2026-08-30"
-status      = "planned"
+status      = "complete"
 
 [[cars]]
 id = "walkway"

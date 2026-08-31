@@ -5,7 +5,7 @@ description = """
 Cyclops is a hunger wearing an actor. The rainbow is a walkable lie. Hades is a ritual, not a keycard. These remain unique geographies, not biomes or a creature engine. No GUI. No AI. Does not steal 1280-1292.
 """
 created     = "2026-08-30"
-status      = "planned"
+status      = "complete"
 
 [[cars]]
 id = "cyclops-hunger"

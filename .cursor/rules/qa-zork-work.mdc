@@ -1,0 +1,21 @@
+---
+description: >-
+  Agent must load .cursor/skills/qa-zork-work/SKILL.md (HTE-Zork) before ZIL,
+  Glulx, beadtrain, qualify, or described-world work. Thin pointer — not the
+  full engineering brain. alwaysApply is false so this attaches via globs only.
+globs: "**/*.zil,glulx/**,**/*.beadtrain,**/patch-series.json,.github/workflows/glulx*.yml,docs/planning/**,docs/engineering/**,.cursor/skills/qa-zork-work/**"
+alwaysApply: false
+---
+
+# QA Zork work — load the skill
+
+This rule is **not** always-on. It fires when a matching file is in context. That is when the agent **must** load the skill.
+
+If this rule attached because you are in Highly Extended Zork source, trains, or planning:
+
+1. **Read** `.cursor/skills/qa-zork-work/SKILL.md` before patching or claiming qualify.
+2. At Depth ≥3 or any release/parser/VM/lock-gate task, also read `docs/engineering/HTE-Zork-Highly-Extended-v1.0.md` (same text as the skill `references/` copy).
+3. **Live** `acrinym/zork1` `master` / PR head beats this rule, READMEs, and the HTE snapshot date.
+4. Skip this rule’s skill load only for a typo in a comment with no behavior change.
+
+Writable product is `acrinym/zork1` only. Never mutate `historicalsource/zork1`.

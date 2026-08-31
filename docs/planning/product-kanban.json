@@ -4,13 +4,13 @@
   "updated_on": "2026-08-30",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "71c4a83",
-    "latest_merged_release": 1304,
-    "latest_merged_release_title": "Living Collection and Companionship",
-    "latest_merged_pr": 91,
-    "open_pr_count_when_refreshed": 1,
-    "open_pr_when_refreshed": "https://github.com/acrinym/zork1/pull/92",
-    "open_pr_merge_ready_when_refreshed": true
+    "master_head_when_updated": "9be10c1",
+    "latest_merged_release": 1296,
+    "latest_merged_release_title": "Leaflet Hour Noun Honesty",
+    "latest_merged_pr": 92,
+    "open_pr_count_when_refreshed": 0,
+    "open_pr_when_refreshed": "1303-empire-noun-honesty-pending",
+    "open_pr_merge_ready_when_refreshed": false
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -40,47 +40,24 @@
     "playtest_1278_system_recap": "docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md",
     "playtest_1293_system_recap": "docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md",
     "described_world_is_law": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
+    "described_world_census": "docs/planning/DESCRIBED_WORLD_CENSUS_1302.md",
     "adventurer_guide": "docs/ADVENTURER_GUIDE.md"
   },
   "stacked_predecessor": null,
   "lanes": {
     "current": [
       {
-        "release": 1296,
-        "train_id": "zork-leaflet-hour-noun-honesty-1296-1300",
-        "title": "Leaflet Hour Noun Honesty",
-        "status": "current-merge-ready",
-        "pr": 92,
-        "qualification_run": 33336057382,
-        "artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a",
-        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
-        "outcome": "House ring, cellar commitment, Dam #3, leaflet-hour containers, and unique vanilla set-pieces answer the nouns those rooms already name.",
-        "boundary": "Stages locked 1304. Does not steal 1280-1292. No GUI. No AI. No scenery engine. Test verbs LSPDAM through LSPTHIEF stay out of production."
-      }
-    ],
-    "next": [
-      {
-        "release": 1301,
-        "train_id": "zork-survey-dev-flags-1301",
-        "title": "Survey Developer Flags",
-        "status": "next-1-planned",
-        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"
-      },
-      {
-        "release": 1302,
-        "train_id": "zork-described-world-census-1302",
-        "title": "Described-World Census",
-        "status": "next-2-planned",
-        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"
-      },
-      {
         "release": 1303,
-        "train_id": "zork-empire-noun-honesty-1303",
-        "title": "Empire Noun Honesty",
-        "status": "next-3-planned",
-        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md"
+        "train_id": "zork-empire-noun-honesty-1301-1303",
+        "title": "Survey flags, census, empire noun honesty",
+        "status": "current-in-pr",
+        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
+        "census_ledger": "docs/planning/DESCRIBED_WORLD_CENSUS_1302.md",
+        "outcome": "Test-only survey flags, published census ledger, remaining described nouns closed on flagless play.",
+        "boundary": "Stages locked 1296. Survey flags never in production .ulx. No GUI. No AI. No scenery engine."
       }
     ],
+    "next": [],
     "future": [
       {"train_id": "zork-mara-earned-romance-partnership", "title": "Mara Earned Romance & Partnership", "status": "future-explicit-authored-relationship-arc"},
       {"train_id": "zork-time-weather-disaster-arc", "title": "Time, Weather & Disaster Arc", "status": "future-arc"}
@@ -139,7 +116,8 @@
       {"release": 1294, "title": "Forest That Answers Back", "pr": 89, "merge_commit": "691926c5b4f91106ed5534b293cbaff4df82630f", "artifact_sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831"},
       {"release": 1295, "title": "West-of-House Described Nouns", "pr": 90, "merge_commit": "f87089e2", "artifact_sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b"},
       {"release_range": "1280-1286", "title": "Runtime foundation", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56"},
-      {"release": 1304, "title": "Living Collection and Companionship", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56", "artifact_sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b"}
+      {"release": 1304, "title": "Living Collection and Companionship", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56", "artifact_sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b"},
+      {"release_range": "1296-1300", "title": "Leaflet Hour Noun Honesty", "pr": 92, "merge_commit": "9be10c1969cbebd30ca82ec219991116b9b58e89", "artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a"}
     ]
   }
 }
