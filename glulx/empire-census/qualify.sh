@@ -168,6 +168,7 @@ surveykill
 surveyrewind
 svycanyon
 jump
+jump
 svymaze
 examine passages
 svytemple
