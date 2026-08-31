@@ -166,23 +166,7 @@ if grep -F "You can't see any crawlway here!" "$E"; then echo 'Release 1303 cell
 cat > "$BUILD/survey-flags.txt" <<'EOF_SURVEY'
 surveykill
 surveyrewind
-north
-west
-south
-east
-open window
-west
-west
-take lamp
-turn on lamp
-move rug
-open trap door
-down
-north
-wait
-wait
-south
-south
+svycanyon
 jump
 svymaze
 examine passages
