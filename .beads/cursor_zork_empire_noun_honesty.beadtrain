@@ -5,7 +5,7 @@ description = """
 After the census, make the entire reachable map keep its own sentences. Close every ledger row on a flagless production play. No scenery engine, no GUI, no AI, no new continent. Does not steal 1280-1292. Leaflet-spine trains 1294-1300 are the same law on the first loop and may close overlapping rows.
 """
 created     = "2026-08-30"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "close-surface"
