@@ -133,12 +133,14 @@ south
 east
 open window
 west
+west
+take lamp
+turn on lamp
+east
 up
 examine stairway
 down
 west
-take lamp
-turn on lamp
 move rug
 open trap door
 down
@@ -170,9 +172,9 @@ south
 east
 open window
 west
+west
 take lamp
 turn on lamp
-west
 move rug
 open trap door
 down

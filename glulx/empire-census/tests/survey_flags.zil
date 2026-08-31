@@ -30,6 +30,7 @@
 	<RTRUE>>
 
 <ROUTINE V-SURVEY-REWIND ()
+	<FSET ,WINNER ,TRYTAKEBIT>
 	<FSET ,PLAYER ,TRYTAKEBIT>
 	<TELL "SURVEY FLAG --no-reset-on-death: a fatal command rewinds in place." CR>
 	<RTRUE>>
