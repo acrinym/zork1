@@ -7,7 +7,8 @@ BASE_SRC="$BASE_BUILD/src"
 BASE_DEV_SRC="$BASE_BUILD/dev-src"
 SRC="$BUILD/src"
 DEV_SRC="$BUILD/dev-src"
-TEST_SRC="$BUILD/test-src"
+TEST_ALT_SRC="$BUILD/test-alt-src"
+TEST_CENSUS_SRC="$BUILD/test-census-src"
 MANIFEST="$ROOT/glulx/he-absurd-1305/patch-series.json"
 rm -rf "$BUILD"; mkdir -p "$BUILD"; cd "$ROOT"
 
@@ -75,21 +76,23 @@ compile_story "$SRC" "$BUILD/release1305.asm" "$STORY" production
 python glulx/tools/verify_ulx.py "$STORY" --json "$BUILD/story-report.json"
 compile_story "$DEV_SRC" "$BUILD/release1305-dev.asm" "$BUILD/release1305-dev.ulx" dev
 
-rm -rf "$TEST_SRC"
-cp -a "$SRC" "$TEST_SRC"
-cp glulx/he-absurd-1305/tests/absurd_alt_test.zil "$TEST_SRC/absurd_alt_test.zil"
-cp glulx/empire-census/tests/survey_flags.zil "$TEST_SRC/survey_flags.zil"
-python - <<'PY_TEST'
+stage_test_story(){
+  local dest="$1" extra_zil="$2" extra_name="$3" patch="$4"
+  rm -rf "$dest"
+  cp -a "$SRC" "$dest"
+  cp "$extra_zil" "$dest/$extra_name"
+  python - "$patch" "$dest" <<'PY_TEST'
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path('glulx/tools').resolve()))
 from stage_release120 import apply_patch
-apply_patch(
-    Path('glulx/he-absurd-1305/tests/001-include-alt-test.json').resolve(),
-    Path('glulx/build/he-absurd-1305/test-src').resolve(),
-)
+apply_patch(Path(sys.argv[1]).resolve(), Path(sys.argv[2]).resolve())
 PY_TEST
-compile_story "$TEST_SRC" "$BUILD/release1305-test.asm" "$BUILD/release1305-test.ulx" test
+}
+stage_test_story "$TEST_ALT_SRC" glulx/he-absurd-1305/tests/absurd_alt_test.zil absurd_alt_test.zil glulx/he-absurd-1305/tests/001-include-alt-test.json
+compile_story "$TEST_ALT_SRC" "$BUILD/release1305-test-alt.asm" "$BUILD/release1305-test-alt.ulx" test-alt
+stage_test_story "$TEST_CENSUS_SRC" glulx/empire-census/tests/survey_flags.zil survey_flags.zil glulx/he-absurd-1305/tests/002-include-survey-flags.json
+compile_story "$TEST_CENSUS_SRC" "$BUILD/release1305-test-census.asm" "$BUILD/release1305-test-census.ulx" test-census
 
 if [[ ! -x "$ROOT/.tooling/glulxe/glulxe" ]]; then make -C "$ROOT/.tooling/cheapglk"; make -C "$ROOT/.tooling/glulxe" OPTIONS="-O2 -Wall -Wmissing-prototypes -Wno-unused -DOS_UNIX -DUNIX_RAND_GETRANDOM"; fi
 GLULXE="$(realpath "$ROOT/.tooling/glulxe/glulxe")"
@@ -173,7 +176,7 @@ untie troll
 quit
 yes
 EOF_TEST
-timeout 180s "$GLULXE" --rngseed 123456 --undo 16 "$BUILD/release1305-test.ulx" < "$BUILD/test-nest-troll.txt" > "$BUILD/test-nest-troll-transcript.txt" 2>&1
+timeout 180s "$GLULXE" --rngseed 123456 --undo 16 "$BUILD/release1305-test-alt.ulx" < "$BUILD/test-nest-troll.txt" > "$BUILD/test-nest-troll-transcript.txt" 2>&1
 N="$BUILD/test-nest-troll-transcript.txt"
 dump_n() { echo '--- test nest/troll transcript ---' >&2; cat "$N" >&2; }
 grep -F 'prepared brown sack' "$N" || grep -F 'lands in the prepared' "$N" || { dump_n; exit 1; }
@@ -241,7 +244,7 @@ examine rocks
 quit
 yes
 EOF_CENSUS
-timeout 180s "$GLULXE" --rngseed 123456 --undo 16 "$BUILD/release1305-test.ulx" < "$BUILD/census-lies.txt" > "$BUILD/census-lies-transcript.txt" 2>&1
+timeout 180s "$GLULXE" --rngseed 123456 --undo 16 "$BUILD/release1305-test-census.ulx" < "$BUILD/census-lies.txt" > "$BUILD/census-lies-transcript.txt" 2>&1
 python - "$BUILD/census-lies-transcript.txt" "$BUILD/CENSUS-LIES.json" <<'PY_LIES'
 import json,re,sys
 from pathlib import Path
