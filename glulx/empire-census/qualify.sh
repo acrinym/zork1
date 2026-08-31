@@ -128,8 +128,6 @@ west
 examine sunlight
 east
 south
-south
-north
 west
 south
 east
