@@ -247,6 +247,7 @@ svystream
 examine beach
 svyhades
 examine souls
+north
 examine gate
 svybarrow
 examine door
