@@ -6,7 +6,7 @@
     {
       "expected_count": 1,
       "old": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
-      "new": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"absurd_alt_test\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+      "new": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"absurd_alt_test\" T>\n<INSERT-FILE \"survey_flags\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
     }
   ]
 }

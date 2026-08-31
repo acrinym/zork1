@@ -6,8 +6,8 @@
   "base_manifest": "../empire-census/patch-series.json",
   "base_artifact_sha256": "4d3761931fcfe69a342e60d074c3ddfe7b6ee8c5a545cd58975158eae162db5c",
   "base_source_sha256": {
-    "production": "",
-    "dev": ""
+    "production": "7d30448fd022bea43dd2880976184392f9047e21efec9dedcacbc950656ec096",
+    "dev": "ff76da42b9a5a04f52f76b575dfb50f74afd93f57a85ca3494855a6bc9888252"
   },
   "planning_map": {
     "1305": "Release 122 / Glulx 1214 absurd outcomes on locked Highly Extended 1303"

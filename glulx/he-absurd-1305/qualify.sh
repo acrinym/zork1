@@ -51,7 +51,7 @@ zork=(s/'zork1.zil').read_text()
 dun=(s/'1dungeon.zil').read_text()
 req('<SYNTAX TRICK OBJECT' in alt,'Release 1305 missing TRICK syntax')
 req('<ROUTINE GLULX-ALT-BIND-TROLL' in alt,'Release 1305 missing bind routine')
-req('<ROUTINE GLULX-ALT-BURN-NEST' in alt,'Release 1305 missing nest-fire routine')
+req('<GLOBAL GLULX-ALT' not in alt,'Release 1305 must not add globals; pack 122 state onto objects')
 req('(ACTION GLULX-ALT-TROLL-F)' in dun,'Release 1305 troll not hooked')
 req('GLULX-ALT-NEST-F' in dun,'Release 1305 nest not hooked')
 req('GLULX-ALT-TREE-F' in dun,'Release 1305 tree not hooked')
@@ -82,6 +82,7 @@ compile_story "$DEV_SRC" "$BUILD/release1305-dev.asm" "$BUILD/release1305-dev.ul
 rm -rf "$TEST_SRC"
 cp -a "$SRC" "$TEST_SRC"
 cp glulx/he-absurd-1305/tests/absurd_alt_test.zil "$TEST_SRC/absurd_alt_test.zil"
+cp glulx/empire-census/tests/survey_flags.zil "$TEST_SRC/survey_flags.zil"
 python - <<'PY_TEST'
 from pathlib import Path
 import sys
@@ -183,6 +184,80 @@ grep -F 'prepared brown sack' "$N" || grep -F 'lands in the prepared' "$N" || { 
 grep -F 'expensive crunch' "$N" || { dump_n; exit 1; }
 grep -F 'You release the final knot' "$N" || { dump_n; exit 1; }
 
+cat > "$BUILD/census-lies.txt" <<'EOF_CENSUS'
+surveykill
+surveyrewind
+examine grass
+examine silence
+examine boards
+west
+examine sunlight
+east
+south
+examine tree
+examine windows
+west
+south
+east
+open window
+west
+examine crumbs
+examine chimney
+west
+examine trophy case
+up
+examine stairway
+examine stairs
+down
+west
+move rug
+open trap door
+down
+examine crawlway
+examine passageway
+examine ramp
+south
+examine chasm
+east
+examine paintings
+examine vandals
+svymaze
+examine passages
+svytemple
+examine prayer
+examine pillars
+svydamlobby
+examine doorways
+svymaint
+examine equipment
+svystream
+examine beach
+svyhades
+examine souls
+svybarrow
+examine door
+svyround
+examine caveins
+svypassage
+examine door
+svyriver
+examine rocks
+quit
+yes
+EOF_CENSUS
+timeout 180s "$GLULXE" --rngseed 123456 --undo 16 "$BUILD/release1305-test.ulx" < "$BUILD/census-lies.txt" > "$BUILD/census-lies-transcript.txt" 2>&1
+python - "$BUILD/census-lies-transcript.txt" "$BUILD/CENSUS-LIES.json" <<'PY_LIES'
+import json,re,sys
+from pathlib import Path
+text=Path(sys.argv[1]).read_text(errors='replace')
+lies=sorted(set(re.findall(r"You can't see any (.+?) here!", text)))
+Path(sys.argv[2]).write_text(json.dumps({'count':len(lies),'nouns':lies},indent=2)+'\n')
+print('RELEASE_1305_CENSUS_LIES='+json.dumps(lies))
+if lies:
+    print(text[-8000:], file=sys.stderr)
+    raise SystemExit('Release 1305 described-world lies remain: '+', '.join(lies)+'. Build those nouns on the HE story.')
+PY_LIES
+
 python - "$STORY" "$MANIFEST" <<'PY_ID'
 import hashlib,json,sys
 from pathlib import Path
@@ -191,7 +266,7 @@ ident={'file':story.name,'format':'Glulx','version_hex':r['version_hex'],'size_b
 print('RELEASE_1305_ARTIFACT_IDENTITY='+json.dumps(ident,sort_keys=True))
 if r.get('checksum_valid') is not True: raise SystemExit('Release 1305 artifact checksum invalid')
 (b/'CANDIDATE-IDENTITY.json').write_text(json.dumps(ident,indent=2,sort_keys=True)+'\n')
-e=m['expected_artifact']; rec={'release':1305,'serial':m['serial'],'base_release':1303,'base_artifact_sha256':m['base_artifact_sha256'],'base_source_sha256':m['base_source_sha256'],'histories':['production-smoke','he-nouns','production-troll','test-nest-troll']}
+e=m['expected_artifact']; rec={'release':1305,'serial':m['serial'],'base_release':1303,'base_artifact_sha256':m['base_artifact_sha256'],'base_source_sha256':m['base_source_sha256'],'histories':['production-smoke','he-nouns','production-troll','test-nest-troll','census-lies']}
 if e.get('locked') is not True:
     rec.update({'artifact_identity_locked':False,'candidate':ident}); (b/'QUALIFICATION-RECEIPT.json').write_text(json.dumps(rec,indent=2,sort_keys=True)+'\n'); raise SystemExit('Release 1305 candidate completed product gameplay qualification; lock exact artifact identity and rerun.')
 for k in ('file','version_hex','size_bytes','checksum_hex','sha256'):
