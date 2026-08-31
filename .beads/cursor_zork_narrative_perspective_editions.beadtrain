@@ -1,0 +1,39 @@
+[train]
+name        = "cursor_zork_narrative_perspective_editions"
+title       = "Narrative Perspective Alternate Editions"
+description = """
+ideas/extended-zork/narrative-perspective-and-storybook-experiments.md remains documentation
+until an isolated alternate edition exists. It must not replace second-person HE master,
+rename the adventurer, or make the parser a speaking possessor. Parked vs primary lineage.
+PR #47 documented the experiments; this train is the unshipped playable alternate edition.
+"""
+created     = "2026-08-30"
+status      = "blocked"
+
+[[cars]]
+id = "isolate-edition"
+bead = "zork1-storybook-001"
+title = "Alternate edition, not default master"
+parallel_start = true
+depends_on = []
+summary = "A separate Glulx story identity stages HE production without relabeling default 1303/1305 as the experiment."
+
+[[cars]]
+id = "keep-roles"
+bead = "zork1-storybook-002"
+title = "Player, parser, and adventurer stay distinct"
+parallel_start = true
+depends_on = ["isolate-edition"]
+summary = "Experimental perspective never collapses Zork-the-parser into the adventurer or invents a canonical personal name."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-storybook-003"
+title = "Edition qualification beside unchanged HE default"
+parallel_start = false
+depends_on = ["keep-roles"]
+summary = "Default production story still plays as ordinary you-adventurer Zork. The experiment qualifies only on its own artifact."
+
+[meta]
+one_liner = "Storybook Zork is a side edition, never a silent rewrite of Highly Extended master."
+watch = ["ideas/extended-zork/narrative-perspective-and-storybook-experiments.md"]

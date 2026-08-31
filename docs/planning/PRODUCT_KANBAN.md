@@ -2,9 +2,10 @@
 
 **Updated:** August 30, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1296` — Leaflet Hour Noun Honesty (1296–1300), on top of merged `1304`  
-**Live `master` observed before this refresh:** `9be10c1` (PR #92 merge commit)  
-**Open PRs observed before this refresh:** Release 1303 Empire Noun Honesty (1301–1303 census program)
+**Current merged production frontier:** Release `1303` — Empire Noun Honesty (1301–1303), staging locked `1296`  
+**Live `master` observed before this refresh:** `c0256aa` (1301–1303 capstone close after PR #93)  
+**Open PRs observed before this refresh:** none  
+**Ideas lane:** `ideas/extended-zork/` (concept sources; not compiled progress)
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
 
@@ -35,31 +36,35 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-### Releases 1301–1303 — Survey flags, census, empire noun honesty
+### Release 1305 — Absurd Alternates on Highly Extended 1303
 
-One locked Glulx story staging **1296**. Survey `--no-killing` / `--no-reset-on-death` are test-only. Census ledger: `docs/planning/DESCRIBED_WORLD_CENSUS_1302.md`. Production closes remaining described nouns. Train: `glulx/empire-census/`.
+In progress on `agent/1305-absurd-on-1303`. Train: `.beads/cursor_zork_absurd_alternates_on_1303.beadtrain`. Staging: `glulx/he-absurd-1305/`. Stages locked **1303**. Capstone stays open until hosted qualify and artifact lock.
 
 ## NEXT — explicit queued product trains
 
-None until 1303 locks. Remaining FUTURE companionship and time/weather stay below.
+None while 1305 is CURRENT. After 1305 locks, FUTURE 1306–1308 remain the backlog.
 
-## FUTURE — remaining companionship (Living Collection is **DONE** as live **1304**)
+## FUTURE — remaining ideas/extended-zork wholes that never shipped as HE product
 
-Parser-native. No photographs, DRAW, illustrated frontend, or other GUI. Planning ids 1287–1292 shipped as Release 1304 (PR #91); see `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`.
+Parser-native. No photographs, DRAW, illustrated frontend, or other GUI. Living Collection **1304**, leaflet-hour **1296–1300**, and empire census **1301–1303** are DONE.
 
-Also remaining:
+Shipped from that folder (do not reopen as new trains): cuisine/hunger **1235**, museum intake **1233**, museum ecology/fishing **1239**, Mara arrival through field capability **1234–1261**, Living Collection **1304**, narrative-perspective **documentation** PR #47.
 
-- **Mara Earned Romance & Partnership** — explicit mutual choice; no approval/love meter.
-- **Forest That Answers Back** — live **1294** (merged PR #89).
-- **West-of-House described nouns** — live **1295** (merged PR #90).
-- **Time, Weather & Disaster Arc** — authored conditions on real geography; no climate simulator.
+Still **not** in the default HE game — trains exist, status planned:
+
+- **Mara Earned Romance & Partnership** (`cursor_zork_mara_earned_romance`, planned **1306**) — `ideas/extended-zork/human-companion-bond-and-love-interest.md`. Explicit mutual choice; no meter.
+- **Time, Weather & Disaster Arc** (`cursor_zork_time_weather_disaster`, planned **1307**) — recovered pre-House geography hazards; no climate simulator.
+- **Second Described-World Census** (`cursor_zork_described_world_second_census`, planned **1308**) — community-wish remainder; 1302 ledger close is not whole-map remaining-noun proof.
+
+`ideas/extended-zork/mara-tallow-implementation-status.md` is a status note, not a missing product. `cuisine-hunger-satiation-and-stamina.md` and `museum-ecology-and-fishing.md` already have merged first trains; do not duplicate them.
 
 ## PARKED / SEPARATE
 
 - **Illustrated Zork / DRAW / external scene rendering** — `docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md`. Not in the product queue. Justin excluded photo/graphic and GUI work from the post-1286 program.
 - **1277 instant photographs** stay as the already-shipped in-world camera. Do not grow them into a gallery UI or illustrated frontend.
 - **S.T.A.L.K.E.R. Glulx** remains a separate product lane.
-- **Protected Corpus Acquisition** remains rights-dependent.
+- **Protected Corpus Acquisition / Infocom Corpus Foundation** (`cursor_zork_infocom_corpus_foundation`, **blocked**) — `ideas/extended-zork/infocom-*.md`. Rights-dependent; no protected dumps in the public tree.
+- **Narrative Perspective Alternate Editions** (`cursor_zork_narrative_perspective_editions`, **blocked**) — playable side edition; must not silently rewrite default HE master. Docs-only proof remains PR #47.
 - Universal crafting, randomized loot, generic physics, procedural worlds, and recursive audit machinery remain out of scope.
 
 ## DONE — merged production history
@@ -116,6 +121,7 @@ Also remaining:
 | 1280–1286 | Runtime foundation (contract, globals, opt, interpreters, scale, bundle, chronicle) | #91 |
 | 1304 | Living Collection and Companionship | #91 |
 | 1296–1300 | Leaflet Hour Noun Honesty | #92 — merged `9be10c1969cbebd30ca82ec219991116b9b58e89` |
+| 1301–1303 | Survey flags, census, empire noun honesty | #93 — merged `f3583c0025893c4bd3f34a00c5465a0976b96f39`; capstones closed `c0256aab9136e834418614dbb4fec365c541ecb5` |
 
 ### Recent locked artifact / qualification receipts
 
@@ -140,6 +146,7 @@ Also remaining:
 | 1280–1286 | `71c4a83` | runtime foundation; production player `.ulx` stayed 1295 until 1304 | PR #91 |
 | 1304 | `71c4a83` | `6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b` | PR #91 |
 | 1296–1300 | `9be10c1` | `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a` | PR #92 |
+| 1301–1303 | `f3583c0` / `c0256aa` | `4d3761931fcfe69a342e60d074c3ddfe7b6ee8c5a545cd58975158eae162db5c` | PR #93 — hosted qualify `33345233547` |
 
 ## Canonical roadmap
 
@@ -153,4 +160,4 @@ Also remaining:
 - `docs/planning/DESCRIBED_WORLD_CENSUS_1302.md`
 - `docs/ADVENTURER_GUIDE.md`
 
-The live shape at this refresh: Releases 1278–1286, 1293–1296, and 1304 are merged on `acrinym/zork1` `master` (`9be10c1`, PR #92). CURRENT is 1301–1303 empire census. Never merge to `historicalsource/zork1`.
+The live shape at this refresh: production frontier **1303** on `c0256aa`. CURRENT is **1305** in progress. FUTURE holds planned 1306–1308. Corpus and storybook editions stay PARKED/blocked. Never merge to `historicalsource/zork1`.

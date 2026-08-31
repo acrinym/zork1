@@ -1,0 +1,50 @@
+{
+  "edition": "Highly Extended Absurd Alternates",
+  "release": 1305,
+  "serial": "260830",
+  "base_release": 1303,
+  "base_manifest": "../empire-census/patch-series.json",
+  "base_artifact_sha256": "4d3761931fcfe69a342e60d074c3ddfe7b6ee8c5a545cd58975158eae162db5c",
+  "base_source_sha256": {
+    "production": "",
+    "dev": ""
+  },
+  "planning_map": {
+    "1305": "Release 122 / Glulx 1214 absurd outcomes on locked Highly Extended 1303"
+  },
+  "patches": [
+    "patches/001-release-1305-identity.json",
+    "patches/002-include-absurd-alternates.json",
+    "patches/003-troll-nest-tree-hooks.json",
+    "patches/004-absurd-recap.json",
+    "patches/005-rope-restraint-grammar.json"
+  ],
+  "added_files": [
+    "absurd_alternates.zil"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "absurd_alternates.zil",
+    "assistance.zil",
+    "gsyntax.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-he-absurd-alternates.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103"
+  },
+  "player_outcomes": [
+    "TRICK TROLL then TIE UP TROLL WITH ROPE binds the living troll on the HE story",
+    "PUT SACK UNDER TREE and BURN NEST WITH TORCH catch the intact egg when prepared",
+    "Unprepared nest fire still invokes canonical BAD-EGG",
+    "1303 empire nouns and 1304 Mara authority remain",
+    "ALTSAFE and other 1214 test verbs never appear in production"
+  ],
+  "semantic_reference": {
+    "z3_layer": "alternate/",
+    "glulx_1214": "glulx/absurd-alternates",
+    "he_frontier": 1303
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "003-troll-nest-tree-hooks",
+  "path": "1dungeon.zil",
+  "description": "Route troll, nest, and tree through HE absurd wrappers. SURFACE-TREE-F remains the 1294 fallback.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t(ACTION TROLL-FCN)",
+      "new": "\t(ACTION GLULX-ALT-TROLL-F)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t(FDESC \"Beside you on the branch is a small bird's nest.\")\n\t(CAPACITY 20)>",
+      "new": "\t(FDESC \"Beside you on the branch is a small bird's nest.\")\n\t(ACTION GLULX-ALT-NEST-F)\n\t(CAPACITY 20)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t(ACTION SURFACE-TREE-F)>",
+      "new": "\t(ACTION GLULX-ALT-TREE-F)>"
+    }
+  ]
+}

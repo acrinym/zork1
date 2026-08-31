@@ -1,0 +1,39 @@
+[train]
+name        = "cursor_zork_time_weather_disaster"
+title       = "Time, Weather, and Disaster Arc"
+description = """
+Authored time-of-day, weather, and disaster conditions on real HE geography (house ring,
+forest, dam, canyon, underground) recovered from ideas/extended-zork/recovered-pre-house-directions.md
+and the product kanban. Not a climate simulator, not a generic physics engine, not GUI radar.
+Canonical dam machinery, reservoir, and score stay authoritative.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "authored-conditions"
+bead = "zork1-1307-001"
+title = "Authored weather and time on real rooms"
+parallel_start = true
+depends_on = []
+summary = "Specific rooms gain authored light, wetness, wind, or time states the parser can examine and that change available actions without a world-clock simulation layer."
+
+[[cars]]
+id = "disaster-geography"
+bead = "zork1-1307-002"
+title = "Disasters use existing dam, canyon, and forest facts"
+parallel_start = true
+depends_on = ["authored-conditions"]
+summary = "At least one authored disaster sequence (flood, fall, fire-smoke, or storm) moves real objects and can injure or kill using existing locations and machinery, with warnings that were actually in the world."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1307-003"
+title = "Weather-disaster natural-play qualification"
+parallel_start = false
+depends_on = ["disaster-geography"]
+summary = "Natural commands traverse fair-weather canonical solutions and the authored disaster path. No generic weather API. Production has no survey flags."
+
+[meta]
+one_liner = "The empire's weather is a place, not a shader."
+watch = ["ideas/extended-zork/recovered-pre-house-directions.md"]

@@ -1,0 +1,80 @@
+[train]
+name        = "cursor_zork_absurd_alternates_on_1303"
+title       = "Release 1305 Absurd Alternates on Highly Extended 1303"
+description = """
+Port the earned Release 122 / Glulx 1214 absurd outcomes onto the live Highly Extended
+production frontier (locked 1303), not onto Shadow Logic 1213 and not into alternate/ as a .z3.
+TRICK TROLL, living rope restraint, UNTIE, PUT SACK UNDER TREE, BURN NEST WITH TORCH, and
+canonical BAD-EGG remain physically real. Canonical troll combat and broken-egg treasure stay.
+No GUI. No AI. No generic joke engine. Does not steal 1280-1292 or reopen 1214's old base.
+"""
+created     = "2026-08-30"
+status      = "in_progress"
+
+[[cars]]
+id = "stage-1303"
+bead = "zork1-1305-001"
+title = "Stage locked 1303 as the only predecessor"
+parallel_start = true
+depends_on = []
+summary = "Glulx patch-series stages exact locked 1303 production source. Release 1214 remains historical parity on 1213. alternate/ stays the Z3 122 layer and is not the player binary."
+
+[[cars]]
+id = "trick"
+bead = "zork1-1305-002"
+title = "One-use troll deception on the HE story"
+parallel_start = true
+depends_on = ["stage-1303"]
+summary = "TRICK TROLL works once while the living unbound troll is present. Delay or leaving restores guard. Repeat after he learned it is a different rejection."
+
+[[cars]]
+id = "bind"
+bead = "zork1-1305-003"
+title = "Living real-rope restraint"
+parallel_start = false
+depends_on = ["trick"]
+summary = "TIE UP TROLL WITH ROPE requires the real carried rope and genuine vulnerability. Alert armed troll refuses. Success keeps him alive, drops the real axe only if he carries it, and opens TROLL-FLAG passages."
+
+[[cars]]
+id = "recover"
+bead = "zork1-1305-004"
+title = "UNTIE restores danger"
+parallel_start = false
+depends_on = ["bind"]
+summary = "UNTIE TROLL returns the real rope, restores fight state, and makes another alert restraint dangerous again."
+
+[[cars]]
+id = "catcher"
+bead = "zork1-1305-005"
+title = "Deliberate brown-sack catcher"
+parallel_start = true
+depends_on = ["stage-1303"]
+summary = "PUT SACK UNDER TREE at Forest Path or Up a Tree requires the carried brown sack and counts as preparation only when deliberately placed."
+
+[[cars]]
+id = "nest-fire"
+bead = "zork1-1305-006"
+title = "Ivory-torch nest fire and egg outcomes"
+parallel_start = false
+depends_on = ["catcher"]
+summary = "BURN NEST WITH TORCH with held lit ivory torch, nest still up the tree, player beside it. Prepared sack catches the intact egg. Without preparation, canonical BAD-EGG. Other burning stays V-BURN."
+
+[[cars]]
+id = "he-authority"
+bead = "zork1-1305-007"
+title = "1303 nouns, 1304 Mara, and survey seal survive"
+parallel_start = true
+depends_on = ["recover", "nest-fire"]
+summary = "Flagless production still examines 1303 empire nouns. Mara living-collection authority is unchanged. No SURVEYKILL, SVY*, or survey flags in the production .ulx."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1305-008"
+title = "Natural-play 1305 qualification"
+parallel_start = false
+depends_on = ["he-authority"]
+summary = "Natural commands prove trick, bind, untie, sack, torch-nest, BAD-EGG, and canonical troll lethality. Lock expected_artifact. Hosted qualify on exact head. Player story is the HE .ulx, not alternate/zork1-absurd-alternates.z3."
+
+[meta]
+one_liner = "The ridiculous routes live on the Highly Extended 1303 story."
+watch = ["alternate", "glulx/absurd-alternates", "glulx/he-absurd-1305", "glulx/empire-census", "ideas/extended-zork"]

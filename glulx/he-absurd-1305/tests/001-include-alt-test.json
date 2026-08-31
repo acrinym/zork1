@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1305-TEST-INCLUDE",
+  "path": "zork1.zil",
+  "description": "Load 1214-style nest/troll setup verbs only on the qualification test story.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"absurd_alt_test\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}

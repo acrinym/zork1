@@ -1,0 +1,27 @@
+{
+  "id": "001-release-1305-identity",
+  "path": "zork1.zil",
+  "description": "Advance staged identity from locked Release 1303 to Release 1305 HE absurd alternates.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 EMPIRE NOUN HONESTY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 HE ABSURD ALTERNATES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Empire Noun Honesty.\n  Releases 1301-1303: survey flags (test-only), described-world census, and remaining\n  reachable-map nouns. Stages locked 1296. No GUI. No scenery engine.\"",
+      "new": ";\"Repository-local Highly Extended absurd alternates.\n  Release 1305: Release 122 / Glulx 1214 troll-restraint and prepared nest-fire on locked 1303.\n  No GUI. Test verbs stay out of production.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1303>",
+      "new": "<CONSTANT RELEASEID 1305>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Empire Noun Honesty Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Highly Extended Absurd Alternates Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+[train]
+name        = "cursor_zork_mara_earned_romance"
+title       = "Mara Earned Romance and Partnership"
+description = """
+Finish the unshipped remainder of ideas/extended-zork/human-companion-bond-and-love-interest.md:
+explicit mutual romantic or partnership choice after shared HE history. Mara stays one authored
+person. No approval meter, love meter, dating sim, gift grind, or omniscient companion AI.
+Friendship without romance remains a complete ending. Stages the live HE production story
+(1303, or 1305 if that train has locked). No GUI.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "mutual-choice"
+bead = "zork1-1306-001"
+title = "Explicit mutual choice is parser-real"
+parallel_start = true
+depends_on = []
+summary = "Both people can offer, accept, refuse, or postpone partnership in natural commands. Refusal is honored. No hidden score unlocks romance."
+
+[[cars]]
+id = "partnership-world"
+bead = "zork1-1306-002"
+title = "Partnership changes custody, camp, and danger"
+parallel_start = true
+depends_on = ["mutual-choice"]
+summary = "Accepted partnership changes exact location, entrusted objects, joint actions, and what leaving costs, using existing Mara custody and rooms rather than a follower framework."
+
+[[cars]]
+id = "no-meter"
+bead = "zork1-1306-003"
+title = "No romance or approval meter"
+parallel_start = true
+depends_on = ["partnership-world"]
+summary = "Production play never exposes or consults a love/approval/trust bar as the reason a choice happens. Named witnessed events remain the cause."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1306-004"
+title = "Romance and friendship both qualify"
+parallel_start = false
+depends_on = ["no-meter"]
+summary = "Natural plays prove: friendship-only complete arc; mutual yes; one-sided refusal without trapping the player. Canonical puzzles still solve solo."
+
+[meta]
+one_liner = "Two people choose each other, or they do not, and the empire still works."
+watch = ["ideas/extended-zork/human-companion-bond-and-love-interest.md"]
