@@ -29,10 +29,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-empire-noun-honesty.ulx",
     "format": "Glulx",
-    "version_hex": "0x00030103"
+    "version_hex": "0x00030103",
+    "size_bytes": 563968,
+    "checksum_hex": "0x9085f92d",
+    "sha256": "4d3761931fcfe69a342e60d074c3ddfe7b6ee8c5a545cd58975158eae162db5c"
   },
   "player_outcomes": [
     "Gallery PAINTINGS and VANDALS answer the stolen-gallery look",
