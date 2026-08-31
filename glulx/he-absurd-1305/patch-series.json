@@ -10,23 +10,13 @@
     "dev": "ff76da42b9a5a04f52f76b575dfb50f74afd93f57a85ca3494855a6bc9888252"
   },
   "planning_map": {
-    "1305": "Release 122 / Glulx 1214 absurd outcomes on locked Highly Extended 1303"
+    "1305": "Qualify 122/1214 routes already present on locked 1303; census remaining described-world lies"
   },
   "patches": [
-    "patches/001-release-1305-identity.json",
-    "patches/002-include-absurd-alternates.json",
-    "patches/003-troll-nest-tree-hooks.json",
-    "patches/004-absurd-recap.json",
-    "patches/005-rope-restraint-grammar.json"
+    "patches/001-release-1305-identity.json"
   ],
-  "added_files": [
-    "absurd_alternates.zil"
-  ],
+  "added_files": [],
   "expected_changed_paths": [
-    "1dungeon.zil",
-    "absurd_alternates.zil",
-    "assistance.zil",
-    "gsyntax.zil",
     "zork1.zil"
   ],
   "expected_artifact": {
@@ -39,10 +29,10 @@
     "TRICK TROLL then TIE UP TROLL WITH ROPE binds the living troll on the HE story",
     "PUT SACK UNDER TREE and BURN NEST WITH TORCH catch the intact egg when prepared",
     "Unprepared nest fire still invokes canonical BAD-EGG",
-    "1303 empire nouns and 1304 Mara authority remain",
-    "ALTSAFE and other 1214 test verbs never appear in production"
+    "Survey census fails closed on You can't see any for remaining described nouns"
   ],
   "semantic_reference": {
+    "note": "Locked 1303 already loads absurd_alternates.zil from the Glulx 1214 stack. 1305 does not re-hook 1dungeon.",
     "z3_layer": "alternate/",
     "glulx_1214": "glulx/absurd-alternates",
     "he_frontier": 1303
