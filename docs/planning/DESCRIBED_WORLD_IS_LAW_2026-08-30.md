@@ -12,6 +12,8 @@
 
 Leaflet-spine trains 1294–1300 are the same law on the 1980 first loop. They do not replace the census. Later honesty trains close census rows; they do not invent a new continent.
 
+Release **1305** (PR #94) re-walked the 1302 ledger on the HE 122/1214 story. That walk was empty. A second census of remaining HE rooms is planned **1308**.
+
 ## `--no-killing`
 
 Developer/qualify flag only. During survey, lethal combat and unnecessary enemy obstruction must not stop traversal (troll, thief, cyclops, grue, and similar). Canonical puzzles remain in the production story. The flag does not exist as a player-facing menu.

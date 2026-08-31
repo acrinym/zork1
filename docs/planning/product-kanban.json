@@ -1,16 +1,16 @@
 {
   "schema_version": "2.1",
   "board_id": "highly-extended-zork-product-kanban",
-  "updated_on": "2026-08-30",
+  "updated_on": "2026-08-31",
   "frontier": {
     "default_branch": "master",
     "master_head_when_updated": "c0256aab9136e834418614dbb4fec365c541ecb5",
     "latest_merged_release": 1303,
     "latest_merged_release_title": "Empire Noun Honesty",
     "latest_merged_pr": 93,
-    "open_pr_count_when_refreshed": 0,
-    "open_pr_when_refreshed": null,
-    "open_pr_merge_ready_when_refreshed": false
+    "open_pr_count_when_refreshed": 1,
+    "open_pr_when_refreshed": 94,
+    "open_pr_merge_ready_when_refreshed": true
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -41,6 +41,7 @@
     "playtest_1293_system_recap": "docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md",
     "described_world_is_law": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
     "described_world_census": "docs/planning/DESCRIBED_WORLD_CENSUS_1302.md",
+    "release_1305": "docs/planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md",
     "adventurer_guide": "docs/ADVENTURER_GUIDE.md",
     "highly_extended_ideas": "ideas/extended-zork/README.md"
   },
@@ -51,12 +52,18 @@
         "release": 1305,
         "train_id": "cursor_zork_absurd_alternates_on_1303",
         "title": "Absurd Alternates on Highly Extended 1303",
-        "status": "in_progress",
+        "status": "locked_awaiting_merge",
+        "pr": 94,
         "beadtrain": ".beads/cursor_zork_absurd_alternates_on_1303.beadtrain",
         "staging": "glulx/he-absurd-1305",
         "semantic_reference": "alternate/ (Release 122 Z3) and glulx/absurd-alternates (Release 1214 on 1213)",
         "outcome": "122/1214 player routes exist on the locked 1303 HE Glulx story. Player binary is not alternate/*.z3.",
-        "boundary": "Stages 1303 only. Canonical troll combat and BAD-EGG remain. No GUI. No joke engine."
+        "boundary": "Stages 1303 only. Canonical troll combat and BAD-EGG remain. No GUI. No joke engine.",
+        "artifact_sha256": "fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9",
+        "checksum_hex": "0x9087f92d",
+        "qualification_run": 33352160781,
+        "story_file": "zork1-glulx-he-absurd-alternates.ulx",
+        "census_lies": []
       }
     ],
     "next": [],
@@ -66,7 +73,7 @@
       {"release": 1308, "train_id": "cursor_zork_described_world_second_census", "title": "Second Described-World Census on Live HE", "status": "planned", "beadtrain": ".beads/cursor_zork_described_world_second_census.beadtrain", "ideas": "ideas/extended-zork/community-wishes-and-lost-ideas.md"}
     ],
     "parked": [
-      {"train_id": "zork-illustrated-draw-gui", "title": "Illustrated Zork / DRAW / external scene rendering", "status": "parked-far-horizon", "planning_document": "docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md"},
+      {"train_id": "codex-world-truth-sidebar", "title": "World-truth / interaction-audit system (Codex sidebar)", "status": "not-pr-94", "note": "Full-world extraction, vocabulary, state-aware coverage, contradiction and missing-response reports. Not an HE story release."},
       {"train_id": "stalker-glulx-separate-lane", "title": "S.T.A.L.K.E.R. Glulx Game", "status": "parked-separate-product"},
       {"train_id": "cursor_zork_infocom_corpus_foundation", "title": "Infocom Corpus Foundation", "status": "blocked-rights-dependent", "beadtrain": ".beads/cursor_zork_infocom_corpus_foundation.beadtrain", "ideas": "ideas/extended-zork/infocom-linguistic-corpus-and-document-markdown.md"},
       {"train_id": "cursor_zork_narrative_perspective_editions", "title": "Narrative Perspective Alternate Editions", "status": "blocked-not-default-master", "beadtrain": ".beads/cursor_zork_narrative_perspective_editions.beadtrain", "ideas": "ideas/extended-zork/narrative-perspective-and-storybook-experiments.md"}

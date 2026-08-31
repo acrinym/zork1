@@ -1,10 +1,10 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** August 30, 2026  
+**Updated:** August 31, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1303` — Empire Noun Honesty (1301–1303), staging locked `1296`  
-**Live `master` observed before this refresh:** `c0256aa` (1301–1303 capstone close after PR #93)  
-**Open PRs observed before this refresh:** none  
+**Current merged production frontier:** Release `1303` — Empire Noun Honesty (1301–1303) on `master` `c0256aa`  
+**Open PR:** [#94](https://github.com/acrinym/zork1/pull/94) — Release **1305** locked, merge-ready, awaiting whistle  
+**Lock receipt:** `docs/planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md`  
 **Ideas lane:** `ideas/extended-zork/` (concept sources; not compiled progress)
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
@@ -38,11 +38,11 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ### Release 1305 — Absurd Alternates on Highly Extended 1303
 
-In progress on `agent/1305-absurd-on-1303`. Train: `.beads/cursor_zork_absurd_alternates_on_1303.beadtrain`. Staging: `glulx/he-absurd-1305/`. Stages locked **1303**. Capstone stays open until hosted qualify and artifact lock.
+Hosted lock is done on PR #94. Train: `.beads/cursor_zork_absurd_alternates_on_1303.beadtrain`. Staging: `glulx/he-absurd-1305/`. Production SHA-256 `fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9`, checksum `0x9087f92d`. Capstone stays open until merge. Do not merge without a whistle.
 
 ## NEXT — explicit queued product trains
 
-None while 1305 is CURRENT. After 1305 locks, FUTURE 1306–1308 remain the backlog.
+None while 1305 is CURRENT. After merge, FUTURE 1306–1308 remain the backlog.
 
 ## FUTURE — remaining ideas/extended-zork wholes that never shipped as HE product
 
@@ -65,7 +65,7 @@ Still **not** in the default HE game — trains exist, status planned:
 - **S.T.A.L.K.E.R. Glulx** remains a separate product lane.
 - **Protected Corpus Acquisition / Infocom Corpus Foundation** (`cursor_zork_infocom_corpus_foundation`, **blocked**) — `ideas/extended-zork/infocom-*.md`. Rights-dependent; no protected dumps in the public tree.
 - **Narrative Perspective Alternate Editions** (`cursor_zork_narrative_perspective_editions`, **blocked**) — playable side edition; must not silently rewrite default HE master. Docs-only proof remains PR #47.
-- Universal crafting, randomized loot, generic physics, procedural worlds, and recursive audit machinery remain out of scope.
+- Universal crafting, randomized loot, generic physics, procedural worlds, and recursive audit machinery remain out of the HE story queue. A Codex sidebar world-truth / interaction-audit system is **not** PR #94 and is **not** Release 1305.
 
 ## DONE — merged production history
 
@@ -147,6 +147,7 @@ Still **not** in the default HE game — trains exist, status planned:
 | 1304 | `71c4a83` | `6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b` | PR #91 |
 | 1296–1300 | `9be10c1` | `05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a` | PR #92 |
 | 1301–1303 | `f3583c0` / `c0256aa` | `4d3761931fcfe69a342e60d074c3ddfe7b6ee8c5a545cd58975158eae162db5c` | PR #93 — hosted qualify `33345233547` |
+| 1305 | PR #94 (unmerged) | `fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9` | hosted qualify `33352160781` |
 
 ## Canonical roadmap
 
@@ -158,6 +159,7 @@ Still **not** in the default HE game — trains exist, status planned:
 - `docs/planning/PLAYTEST_1278_HONEST_SYSTEM_RECAP_2026-08-30.md`
 - `docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md`
 - `docs/planning/DESCRIBED_WORLD_CENSUS_1302.md`
+- `docs/planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md`
 - `docs/ADVENTURER_GUIDE.md`
 
-The live shape at this refresh: production frontier **1303** on `c0256aa`. CURRENT is **1305** in progress. FUTURE holds planned 1306–1308. Corpus and storybook editions stay PARKED/blocked. Never merge to `historicalsource/zork1`.
+The live shape at this refresh: merged frontier **1303** on `c0256aa`. CURRENT is **1305** locked on [#94](https://github.com/acrinym/zork1/pull/94). FUTURE holds planned 1306–1308. Corpus and storybook editions stay PARKED/blocked. Never merge to `historicalsource/zork1`.

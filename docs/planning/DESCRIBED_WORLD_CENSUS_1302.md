@@ -41,3 +41,5 @@ Each row is a described noun the parser must treat as real. Closed means EXAMINE
 | Water | Land of the Dead | lost souls | EXAMINE SOULS | 1303 |
 
 Survey play uses test-only `--no-killing` and `--no-reset-on-death` so combat and death do not stop the walk. Those flags are not a player menu and are not present in production.
+
+**1305 re-walk (PR #94):** the same rows were examined on Highly Extended Absurd Alternates. Hosted census was empty. `EXAMINE GATE` is in scope at Entrance to Hades, not in the Land of the Living Dead. Remaining HE rooms (museum, kitchen laboratory, Mara) belong to planned **1308**.

@@ -4,7 +4,8 @@ This is the player document **outside the game**. It is not a map and not a walk
 
 The in-game leaflet in the mailbox is still an advertisement. It now also names this edition honestly. For how to play a parser game at all, start with [`expanded/README.md`](../expanded/README.md). For what the current story file actually is, use this page.
 
-**Current locked story on `master`:** Release 1296 — Leaflet Hour Noun Honesty, merge `9be10c1` / PR #92 (stages locked 1304 Living Collection). Open CURRENT train: Releases 1301–1303 survey flags, census, and empire noun honesty.
+**Current locked story on `master`:** Release 1303 — Empire Noun Honesty, merge `f3583c0` / PR #93.  
+**Open CURRENT train:** Release 1305 Highly Extended Absurd Alternates — PR #94, hosted lock `33352160781`, SHA-256 `fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9`. Not merged until a whistle. Lock receipt: [`docs/planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md`](planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md).
 
 **Play the Glulx story**, not a random `.z3` in the historical collection, unless you mean to play original Infocom Zork I.
 
