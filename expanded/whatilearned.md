@@ -28,3 +28,4 @@ Breaks found in play, and the fix that closed them. This is not an audit of audi
 | Qualify banned the substring `MARA-SLOT-TRUST` | Comment named the slot; check `MARA-GET` instead |
 | `ASK OBJECT TO STAY` is illegal ZILF syntax | `ASK MARA TO STAY` rides `ASK OBJECT TO OBJECT` plus a STAY act noun |
 | `REFUSE MARA` hit House mail REFUSE | Route `MAIL-REFUSE` on Mara through partnership refusal |
+| Friendship test left partnership accepted | `ROMFRIEND` clears accepted before refused |
