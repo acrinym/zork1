@@ -9,7 +9,7 @@ Friendship without romance remains a complete ending. Stages the live HE product
 (1303, or 1305 if that train has locked). No GUI.
 """
 created     = "2026-08-30"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "mutual-choice"

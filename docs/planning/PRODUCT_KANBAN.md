@@ -2,9 +2,9 @@
 
 **Updated:** September 4, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1305` — HE Absurd Alternates on `master` (PR #94)  
-**Open work:** Release **1306** Mara Earned Romance on `agent/1306-mara-earned-romance`  
-**Lock receipt:** `docs/planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md`  
+**Current merged production frontier:** Release `1306` — Mara Earned Romance on `master` (PR #97)  
+**Open work:** none in CURRENT; next is 1309 wardrobe  
+**Lock receipt:** `docs/planning/RELEASE_1306_MARA_EARNED_ROMANCE.md`  
 **Ideas lane:** `ideas/extended-zork/` (concept sources; not compiled progress)
 
 This board is the human operating surface for the active Zork product queue. The JSON board remains the tooling surface.
@@ -36,27 +36,25 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-### Release 1306 — Mara Earned Romance and Partnership
-
-Train: `.beads/cursor_zork_mara_earned_romance.beadtrain`. Staging: `glulx/mara-earned-romance/`. Stages locked 1305. No love meter. Not merged.
+Empty between trains. 1306 is merged.
 
 ## NEXT — explicit queued product trains
 
-1. **1309 Adventurer body, clothing, House wardrobe** — `.beads/cursor_zork_adventurer_body_wardrobe.beadtrain` (coupler after 1306 capstone)
-2. **1308 Second described-world census on live HE** — `.beads/cursor_zork_described_world_second_census.beadtrain` (coupler after wardrobe; whole HE map, not original rooms only)
+1. **1309 Adventurer body, clothing, House wardrobe** — `.beads/cursor_zork_adventurer_body_wardrobe.beadtrain` (coupler after 1306 capstone; 1306 is locked)
+2. **1308 Second described-world census on live HE** — `.beads/cursor_zork_described_world_second_census.beadtrain` (coupler after wardrobe; whole HE map)
 3. **1307 Time, Weather & Disaster** — remains queued, does not skip wardrobe/census
 
 ## FUTURE — remaining ideas/extended-zork wholes that never shipped as HE product
 
 Parser-native. No photographs, DRAW, illustrated frontend, or other GUI. Living Collection **1304**, leaflet-hour **1296–1300**, and empire census **1301–1303** are DONE.
 
-Shipped from that folder (do not reopen as new trains): cuisine/hunger **1235**, museum intake **1233**, museum ecology/fishing **1239**, Mara arrival through field capability **1234–1261**, Living Collection **1304**, narrative-perspective **documentation** PR #47.
+Shipped from that folder (do not reopen as new trains): cuisine/hunger **1235**, museum intake **1233**, museum ecology/fishing **1239**, Mara arrival through field capability **1234–1261**, Living Collection **1304**, Mara earned romance **1306**, narrative-perspective **documentation** PR #47.
 
 Still **not** in the default HE game — trains exist, status planned:
 
-- **Mara Earned Romance & Partnership** (`cursor_zork_mara_earned_romance`, planned **1306**) — `ideas/extended-zork/human-companion-bond-and-love-interest.md`. Explicit mutual choice; no meter.
-- **Time, Weather & Disaster Arc** (`cursor_zork_time_weather_disaster`, planned **1307**) — recovered pre-House geography hazards; no climate simulator.
-- **Second Described-World Census** (`cursor_zork_described_world_second_census`, planned **1308**) — community-wish remainder; 1302 ledger close is not whole-map remaining-noun proof.
+- **Adventurer body / House wardrobe** (`cursor_zork_adventurer_body_wardrobe`, planned **1309**)
+- **Time, Weather & Disaster Arc** (`cursor_zork_time_weather_disaster`, planned **1307**)
+- **Second Described-World Census** (`cursor_zork_described_world_second_census`, planned **1308**)
 
 `ideas/extended-zork/mara-tallow-implementation-status.md` is a status note, not a missing product. `cuisine-hunger-satiation-and-stamina.md` and `museum-ecology-and-fishing.md` already have merged first trains; do not duplicate them.
 
@@ -124,6 +122,8 @@ Still **not** in the default HE game — trains exist, status planned:
 | 1304 | Living Collection and Companionship | #91 |
 | 1296–1300 | Leaflet Hour Noun Honesty | #92 — merged `9be10c1969cbebd30ca82ec219991116b9b58e89` |
 | 1301–1303 | Survey flags, census, empire noun honesty | #93 — merged `f3583c0025893c4bd3f34a00c5465a0976b96f39`; capstones closed `c0256aab9136e834418614dbb4fec365c541ecb5` |
+| 1305 | HE Absurd Alternates | #94 |
+| 1306 | Mara Earned Romance and Partnership | #97 — locked `76871675af153c55440ee472fde4aec25408c3f160a33f963e32ad2cf4e466c5` |
 
 ### Recent locked artifact / qualification receipts
 
