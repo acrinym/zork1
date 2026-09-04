@@ -1,0 +1,48 @@
+[train]
+name        = "cursor_zork_described_world_second_census"
+title       = "Second Described-World Census on Live HE"
+description = """
+Community-wish remainder from ideas/extended-zork/community-wishes-and-lost-ideas.md:
+room prose must keep naming things the parser treats as real. 1302/1303 closed one ledger,
+not a proof that every remaining 1303 sentence is honest. Walk the full reachable map on
+the live HE story (1303, or 1305 if locked), publish a new ledger, close every new row on
+flagless play. No scenery engine. No GUI.
+"""
+created     = "2026-08-30"
+status      = "planned"
+
+[[cars]]
+id = "walk"
+bead = "zork1-1308-001"
+title = "Walk the entire reachable HE map"
+parallel_start = true
+depends_on = []
+summary = "Survey-flag test story may be used to traverse. Production story is never the survey binary."
+
+[[cars]]
+id = "ledger"
+bead = "zork1-1308-002"
+title = "Ledger every described noun the parser still refuses"
+parallel_start = true
+depends_on = ["walk"]
+summary = "Publish a new census markdown with room, quoted prose, refused command, and owner object. Empty ledger is an allowed honest result if the walk finds none."
+
+[[cars]]
+id = "close"
+bead = "zork1-1308-003"
+title = "Close every new ledger row on flagless play"
+parallel_start = true
+depends_on = ["ledger"]
+summary = "Each remaining row gets a real local noun or an authored honest correction of the prose. Canonical puzzles unchanged."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1308-004"
+title = "Second-census qualification"
+parallel_start = false
+depends_on = ["close"]
+summary = "Flagless production revisits every new ledger room. No remaining listed noun refuses EXAMINE. Survey tokens absent from production .ulx."
+
+[meta]
+one_liner = "The next sentences of the empire are also true."
+watch = ["ideas/extended-zork/community-wishes-and-lost-ideas.md", "docs/planning/DESCRIBED_WORLD_CENSUS_1302.md"]

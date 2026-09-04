@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1305-TEST-INCLUDE-SURVEY",
+  "path": "zork1.zil",
+  "description": "Load 1303 survey flags only on the census test story. Do not stack with ALT* verbs: the Glulx action table is already at 255.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"empire_nouns\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>",
+      "new": "<INSERT-FILE \"empire_nouns\" T>\n<INSERT-FILE \"survey_flags\" T>\n<INSERT-FILE \"cuisine_hunger_stamina\" T>"
+    }
+  ]
+}

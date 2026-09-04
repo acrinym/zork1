@@ -1,0 +1,47 @@
+[train]
+name        = "cursor_zork_infocom_corpus_foundation"
+title       = "Infocom Corpus Foundation"
+description = """
+ideas/extended-zork Infocom linguistic corpus and document markdown. Rights-gated.
+Does not copy protected manuals into the public repo. Does not flatten all voices into
+one narrator. Blocked until Justin has a verified rights basis. Not a substitute for
+human authorship of HE prose.
+"""
+created     = "2026-08-30"
+status      = "blocked"
+
+[[cars]]
+id = "rights-ledger"
+bead = "zork1-corpus-001"
+title = "Rights and provenance ledger"
+parallel_start = true
+depends_on = []
+summary = "Public schema for artifact identity, edition, rights status, and local-vs-repo separation. No protected text in acrinym/zork1."
+
+[[cars]]
+id = "zork1-extract"
+bead = "zork1-corpus-002"
+title = "Zork I in-repo string classification"
+parallel_start = true
+depends_on = ["rights-ledger"]
+summary = "Classify already-public Zork I source strings by surface (room, parser, death, Mara) without ingesting third-party protected OCR dumps."
+
+[[cars]]
+id = "receipts"
+bead = "zork1-corpus-003"
+title = "Style receipts for new HE prose families"
+parallel_start = true
+depends_on = ["zork1-extract"]
+summary = "New substantial prose families carry a receipt: authorities used, excluded voices, originality check. No generic Infocom-style prompt as the process."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-corpus-004"
+title = "Corpus foundation qualification"
+parallel_start = false
+depends_on = ["receipts"]
+summary = "Reviewers can trace a new plaque or death line to its receipt. Protected files remain off the public tree."
+
+[meta]
+one_liner = "Voice has evidence, or it does not ship."
+watch = ["ideas/extended-zork/infocom-linguistic-corpus-and-document-markdown.md", "ideas/extended-zork/infocom-document-corpus-manifest.md"]

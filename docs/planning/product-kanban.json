@@ -1,16 +1,16 @@
 {
   "schema_version": "2.1",
   "board_id": "highly-extended-zork-product-kanban",
-  "updated_on": "2026-08-30",
+  "updated_on": "2026-08-31",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "9be10c1",
-    "latest_merged_release": 1296,
-    "latest_merged_release_title": "Leaflet Hour Noun Honesty",
-    "latest_merged_pr": 92,
-    "open_pr_count_when_refreshed": 0,
-    "open_pr_when_refreshed": "1303-empire-noun-honesty-pending",
-    "open_pr_merge_ready_when_refreshed": false
+    "master_head_when_updated": "c0256aab9136e834418614dbb4fec365c541ecb5",
+    "latest_merged_release": 1303,
+    "latest_merged_release_title": "Empire Noun Honesty",
+    "latest_merged_pr": 93,
+    "open_pr_count_when_refreshed": 1,
+    "open_pr_when_refreshed": 94,
+    "open_pr_merge_ready_when_refreshed": true
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -41,31 +41,42 @@
     "playtest_1293_system_recap": "docs/planning/PLAYTEST_1293_HONEST_SYSTEM_RECAP_2026-08-30.md",
     "described_world_is_law": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
     "described_world_census": "docs/planning/DESCRIBED_WORLD_CENSUS_1302.md",
-    "adventurer_guide": "docs/ADVENTURER_GUIDE.md"
+    "release_1305": "docs/planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md",
+    "adventurer_guide": "docs/ADVENTURER_GUIDE.md",
+    "highly_extended_ideas": "ideas/extended-zork/README.md"
   },
   "stacked_predecessor": null,
   "lanes": {
     "current": [
       {
-        "release": 1303,
-        "train_id": "zork-empire-noun-honesty-1301-1303",
-        "title": "Survey flags, census, empire noun honesty",
-        "status": "current-in-pr",
-        "planning_document": "docs/planning/DESCRIBED_WORLD_IS_LAW_2026-08-30.md",
-        "census_ledger": "docs/planning/DESCRIBED_WORLD_CENSUS_1302.md",
-        "outcome": "Test-only survey flags, published census ledger, remaining described nouns closed on flagless play.",
-        "boundary": "Stages locked 1296. Survey flags never in production .ulx. No GUI. No AI. No scenery engine."
+        "release": 1305,
+        "train_id": "cursor_zork_absurd_alternates_on_1303",
+        "title": "Absurd Alternates on Highly Extended 1303",
+        "status": "locked_awaiting_merge",
+        "pr": 94,
+        "beadtrain": ".beads/cursor_zork_absurd_alternates_on_1303.beadtrain",
+        "staging": "glulx/he-absurd-1305",
+        "semantic_reference": "alternate/ (Release 122 Z3) and glulx/absurd-alternates (Release 1214 on 1213)",
+        "outcome": "122/1214 player routes exist on the locked 1303 HE Glulx story. Player binary is not alternate/*.z3.",
+        "boundary": "Stages 1303 only. Canonical troll combat and BAD-EGG remain. No GUI. No joke engine.",
+        "artifact_sha256": "fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9",
+        "checksum_hex": "0x9087f92d",
+        "qualification_run": 33352160781,
+        "story_file": "zork1-glulx-he-absurd-alternates.ulx",
+        "census_lies": []
       }
     ],
     "next": [],
     "future": [
-      {"train_id": "zork-mara-earned-romance-partnership", "title": "Mara Earned Romance & Partnership", "status": "future-explicit-authored-relationship-arc"},
-      {"train_id": "zork-time-weather-disaster-arc", "title": "Time, Weather & Disaster Arc", "status": "future-arc"}
+      {"release": 1306, "train_id": "cursor_zork_mara_earned_romance", "title": "Mara Earned Romance & Partnership", "status": "planned", "beadtrain": ".beads/cursor_zork_mara_earned_romance.beadtrain", "ideas": "ideas/extended-zork/human-companion-bond-and-love-interest.md"},
+      {"release": 1307, "train_id": "cursor_zork_time_weather_disaster", "title": "Time, Weather & Disaster Arc", "status": "planned", "beadtrain": ".beads/cursor_zork_time_weather_disaster.beadtrain", "ideas": "ideas/extended-zork/recovered-pre-house-directions.md"},
+      {"release": 1308, "train_id": "cursor_zork_described_world_second_census", "title": "Second Described-World Census on Live HE", "status": "planned", "beadtrain": ".beads/cursor_zork_described_world_second_census.beadtrain", "ideas": "ideas/extended-zork/community-wishes-and-lost-ideas.md"}
     ],
     "parked": [
-      {"train_id": "zork-illustrated-draw-gui", "title": "Illustrated Zork / DRAW / external scene rendering", "status": "parked-far-horizon", "planning_document": "docs/planning/FAR_HORIZON_ILLUSTRATED_ZORK.md"},
+      {"train_id": "codex-world-truth-sidebar", "title": "World-truth / interaction-audit system (Codex sidebar)", "status": "not-pr-94", "note": "Full-world extraction, vocabulary, state-aware coverage, contradiction and missing-response reports. Not an HE story release."},
       {"train_id": "stalker-glulx-separate-lane", "title": "S.T.A.L.K.E.R. Glulx Game", "status": "parked-separate-product"},
-      {"train_id": "infocom-protected-artifact-expansion", "title": "Protected Corpus Acquisition", "status": "parked-rights-dependent"}
+      {"train_id": "cursor_zork_infocom_corpus_foundation", "title": "Infocom Corpus Foundation", "status": "blocked-rights-dependent", "beadtrain": ".beads/cursor_zork_infocom_corpus_foundation.beadtrain", "ideas": "ideas/extended-zork/infocom-linguistic-corpus-and-document-markdown.md"},
+      {"train_id": "cursor_zork_narrative_perspective_editions", "title": "Narrative Perspective Alternate Editions", "status": "blocked-not-default-master", "beadtrain": ".beads/cursor_zork_narrative_perspective_editions.beadtrain", "ideas": "ideas/extended-zork/narrative-perspective-and-storybook-experiments.md"}
     ],
     "done": [
       {"release_range": "1219-1230", "title": "House of Records", "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"},
@@ -117,7 +128,8 @@
       {"release": 1295, "title": "West-of-House Described Nouns", "pr": 90, "merge_commit": "f87089e2", "artifact_sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b"},
       {"release_range": "1280-1286", "title": "Runtime foundation", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56"},
       {"release": 1304, "title": "Living Collection and Companionship", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56", "artifact_sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b"},
-      {"release_range": "1296-1300", "title": "Leaflet Hour Noun Honesty", "pr": 92, "merge_commit": "9be10c1969cbebd30ca82ec219991116b9b58e89", "artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a"}
+      {"release_range": "1296-1300", "title": "Leaflet Hour Noun Honesty", "pr": 92, "merge_commit": "9be10c1969cbebd30ca82ec219991116b9b58e89", "artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a"},
+      {"release_range": "1301-1303", "title": "Survey flags, census, empire noun honesty", "pr": 93, "merge_commit": "f3583c0025893c4bd3f34a00c5465a0976b96f39", "capstone_commit": "c0256aab9136e834418614dbb4fec365c541ecb5", "artifact_sha256": "4d3761931fcfe69a342e60d074c3ddfe7b6ee8c5a545cd58975158eae162db5c", "qualification_run": 33345233547, "story_file": "zork1-glulx-empire-noun-honesty.ulx"}
     ]
   }
 }

@@ -1,0 +1,12 @@
+{
+  "id": "Z1-GLULX-1305-TEST-INCLUDE-ALT",
+  "path": "zork1.zil",
+  "description": "Load nest/troll setup verbs only on the alt-qualification test story.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"dam_mechanisms\" T>",
+      "new": "<INSERT-FILE \"absurd_alternates\" T>\n<INSERT-FILE \"absurd_alt_test\" T>\n<INSERT-FILE \"dam_mechanisms\" T>"
+    }
+  ]
+}
