@@ -12,15 +12,27 @@
   "patches": [
     "patches/001-include-wardrobe.json",
     "patches/002-examine-self.json",
-    "patches/003-release-1309-identity.json"
+    "patches/003-release-1309-identity.json",
+    "patches/004-include-boundary-continuity.json",
+    "patches/005-mara-coat-boundary.json",
+    "patches/006-boundary-rupture-conversation.json",
+    "patches/007-boundary-intimacy-refusal.json",
+    "patches/008-mara-boundary-presence-and-autonomy.json",
+    "patches/009-house-stay-ration-custody.json"
   ],
   "added_files": [
-    "adventurer_body_wardrobe.zil"
+    "adventurer_body_wardrobe.zil",
+    "mara_boundary_continuity.zil"
   ],
   "expected_changed_paths": [
     "adventurer_body_wardrobe.zil",
     "gglobals.zil",
+    "mara_boundary_continuity.zil",
     "mara_companion.zil",
+    "mara_companion_actions.zil",
+    "mara_companion_actor.zil",
+    "mara_earned_romance.zil",
+    "mara_lived_feeling.zil",
     "zork1.zil"
   ],
   "expected_artifact": {
@@ -30,8 +42,12 @@
   },
   "player_outcomes": [
     "EXAMINE ME names a body and worn clothes",
-    "House wardrobe, dresser, basin, and clothesline are physical",
-    "Mara keeps custody of her coat",
-    "Canonical puzzles do not require a clothing minigame"
+    "House wardrobe, dresser, basin, washroot, and clothesline are physical",
+    "Mara keeps custody of her coat; a first taking attempt states a boundary and a knowingly repeated attempt can open the existing rupture",
+    "Mara's House field ration is one physical owned object; taking it can be noticed, returned, and can escalate through the same rupture authority",
+    "Repeated addressed attempts to make independently acting Mara wait can become an autonomy-boundary rupture instead of an obedience loop",
+    "Open nonviolent boundary rupture blocks KISS and STAY through Release 1306 without falsely rewriting the event as an attack",
+    "Apology does not reset rupture: actual space plus materially corrected behavior is required before Mara can choose ordinary proximity again",
+    "Canonical puzzles do not require a clothing or relationship minigame"
   ]
 }
