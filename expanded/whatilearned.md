@@ -26,3 +26,4 @@ Breaks found in play, and the fix that closed them. This is not an audit of audi
 | 1306 pinned 1303 predecessor hashes as 1305 source identity | Hosted 1305 trees are `45cb204…` / `2747f12…` |
 | `BEHIND-HOUSE` is not a Glulx HE room | Partnership rooms use `EAST-OF-HOUSE` |
 | Qualify banned the substring `MARA-SLOT-TRUST` | Comment named the slot; check `MARA-GET` instead |
+| `ASK OBJECT TO STAY` is illegal ZILF syntax | `ASK MARA TO STAY` rides `ASK OBJECT TO OBJECT` plus a STAY act noun |

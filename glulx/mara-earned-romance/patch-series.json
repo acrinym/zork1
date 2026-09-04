@@ -14,12 +14,14 @@
     "patches/002-mara-romance-state.json",
     "patches/003-mara-romance-actor.json",
     "patches/004-release-1306-identity.json",
-    "patches/005-mara-romance-movement.json"
+    "patches/005-mara-romance-movement.json",
+    "patches/006-mara-ask-to-stay.json"
   ],
   "added_files": [
     "mara_earned_romance.zil"
   ],
   "expected_changed_paths": [
+    "living_collection.zil",
     "mara_companion.zil",
     "mara_companion_actor.zil",
     "mara_companion_movement.zil",
