@@ -1,0 +1,17 @@
+{
+  "id": "008-mara-boundary-presence-and-autonomy",
+  "path": "mara_companion_actor.zil",
+  "description": "Notice unresolved physical food custody when Mara is actually present, and treat repeated addressed WAIT during her independent choice as autonomy-boundary pressure.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-FCN ()\n    <MARA-ENSURE>\n    <COND (<AND <NOT <EQUAL? ,WINNER ,MARA>>",
+      "new": "<ROUTINE MARA-FCN ()\n    <MARA-ENSURE>\n    <MARA-BOUNDARY-PRESENCE-HOOK>\n    <COND (<AND <NOT <EQUAL? ,WINNER ,MARA>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<AND <EQUAL? ,WINNER ,MARA> <VERB? WAIT>>\n           <MARA-WAIT-HERE>)",
+      "new": "          (<AND <EQUAL? ,WINNER ,MARA> <VERB? WAIT>>\n           <COND (<MARA-BOUNDARY-AUTONOMY-CONTEXT?>\n                  <MARA-BOUNDARY-AUTONOMY-ATTEMPT>)\n                 (T <MARA-WAIT-HERE>)>)"
+    }
+  ]
+}
