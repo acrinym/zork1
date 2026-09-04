@@ -34,7 +34,7 @@
 
 <ROUTINE MARA-PLACE-FOR-CHOICE? ()
     <COND (<EQUAL? ,HERE ,WEST-OF-HOUSE ,NORTH-OF-HOUSE ,SOUTH-OF-HOUSE
-                        ,EAST-OF-HOUSE ,BEHIND-HOUSE ,LIVING-ROOM
+                        ,EAST-OF-HOUSE ,LIVING-ROOM
                         ,KITCHEN ,ATTIC ,DAM-ROOM ,DAM-BASE ,DAM-LOBBY>
            <RTRUE>)>
     <RFALSE>>

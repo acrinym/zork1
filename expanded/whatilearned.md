@@ -23,3 +23,5 @@ Breaks found in play, and the fix that closed them. This is not an audit of audi
 | PARTNER synonym collision | Romance topic is LOVE/ROMANCE; company topic after history |
 | Postpone blocked later yes | Accept when meal + reciprocal danger are true |
 | Schema migrate would wipe anticipation | Schema 9 zeros only romance slots |
+| 1306 pinned 1303 predecessor hashes as 1305 source identity | Hosted 1305 trees are `45cb204…` / `2747f12…` |
+| `BEHIND-HOUSE` is not a Glulx HE room | Partnership rooms use `EAST-OF-HOUSE` |
