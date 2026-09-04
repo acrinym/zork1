@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://extended-zork.example/schemas/world-model.schema.json",
+  "title": "Extended Zork World Truth Model",
+  "type": "object",
+  "required": ["format_version", "source_root", "entrypoint", "source_files", "entities", "grammar", "routines", "vocabulary", "duplicate_entities", "prose_references", "interactions", "findings"],
+  "properties": {
+    "format_version": {"const": "1.0"},
+    "source_root": {"type": "string"},
+    "entrypoint": {"type": "string"},
+    "source_files": {"type": "array", "items": {"type": "object", "required": ["path", "sha256", "bytes"]}},
+    "entities": {"type": "array", "items": {"$ref": "#/$defs/entity"}},
+    "grammar": {"type": "array", "items": {"type": "object"}},
+    "routines": {"type": "array", "items": {"type": "object"}},
+    "vocabulary": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "string"}}},
+    "duplicate_entities": {"type": "array", "items": {"type": "object", "required": ["id", "kind", "previous", "replacement"]}},
+    "prose_references": {"type": "array", "items": {"type": "object", "required": ["room", "word", "match_key", "phrase", "part_of_speech", "mapped_entities", "status", "source_entity", "location"]}},
+    "interactions": {"type": "array", "items": {"$ref": "#/$defs/interaction"}},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+  },
+  "$defs": {
+    "entity": {
+      "type": "object",
+      "required": ["id", "kind", "synonyms", "adjectives", "flags", "globals", "exits", "location"],
+      "properties": {"id": {"type": "string"}, "kind": {"enum": ["room", "object", "pseudo"]}}
+    },
+    "interaction": {
+      "type": "object",
+      "required": ["room", "subject", "word", "verb", "kind", "status", "visibility", "basis", "state"],
+      "properties": {
+        "kind": {"enum": ["object", "two-object", "conversation", "actor-command"]},
+        "status": {"enum": ["explicit", "generic-afforded", "parser-recognized", "expected-missing", "described-unmapped"]},
+        "visibility": {"enum": ["direct", "room-global", "contained-visible", "contained-occluded", "initially-hidden", "authored-state", "described"]}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["code", "severity", "message", "evidence", "fingerprint", "baseline"],
+      "properties": {"severity": {"enum": ["error", "warning", "candidate", "info"]}, "fingerprint": {"pattern": "^[0-9a-f]{20}$"}}
+    }
+  }
+}

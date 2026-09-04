@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://extended-zork.example/schemas/probe-plan.schema.json",
+  "title": "Extended Zork Runtime Probe Plan",
+  "type": "object",
+  "required": ["format_version", "probes"],
+  "properties": {
+    "format_version": {"const": "1.0"},
+    "probes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "state", "room", "subject", "verb", "kind", "word", "subject_terms", "setup", "command", "allowed", "basis", "required_output"],
+        "properties": {
+          "setup": {"type": "array", "items": {"type": "string"}},
+          "subject_terms": {"type": "array", "items": {"type": "string"}},
+          "required_output": {"type": "array", "items": {"type": "string"}},
+          "allowed": {"type": "array", "items": {"enum": ["recognized-specific", "recognized-generic", "subject-refusal", "generic-refusal", "not-visible", "unknown-word", "not-understood", "no-response"]}}
+        }
+      }
+    }
+  }
+}

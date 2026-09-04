@@ -1,0 +1,316 @@
+format_version = 1
+
+[policy]
+law = "If player-facing prose says a thing exists, the parser and world model must answer honestly."
+candidate_findings_are_debt = true
+runtime_probes_are_isolated = true
+probe_inferred_interactions = true
+start_room = "WEST-OF-HOUSE"
+required_staging_receipt = true
+required_includes = ["empire_nouns"]
+probe_default_allowed = ["recognized-specific", "subject-refusal", "generic-refusal"]
+runtime_required_output = ["ZORK I: The Great Underground Empire"]
+forbidden_setup_prefixes = ["survey", "svy", "alt"]
+
+[[probe_rules]]
+verbs = ["EXAMINE", "LOOK", "READ"]
+allowed = ["recognized-specific", "subject-refusal"]
+
+[[probe_rules]]
+verbs = ["TAKE", "OPEN"]
+flags_any = ["NDESCBIT", "TRYTAKEBIT"]
+allowed = ["recognized-specific", "subject-refusal"]
+
+[[probe_rules]]
+verbs = ["TIE", "PUT", "ASK", "TELL", "GIVE"]
+kinds = ["two-object", "conversation", "actor-command"]
+allowed = ["recognized-specific", "subject-refusal"]
+
+[[probe_rules]]
+verbs = ["TAKE", "OPEN", "CLOSE", "ENTER", "CLIMB", "PUSH", "PULL", "ATTACK", "WEAR", "DRINK", "EAT", "BURN", "LIGHT", "EXTINGUISH", "TOUCH", "BOARD", "DISEMBARK", "HELLO", "LISTEN"]
+allowed = ["recognized-specific", "subject-refusal", "generic-refusal"]
+
+# Authored states are arrival recipes and variants (dark attic, bound troll).
+# Every other room is auto-reached along unconditional TO exits from start_room.
+
+[[states]]
+id = "opening"
+room = "WEST-OF-HOUSE"
+setup = []
+expected_title = "West of House"
+light = "lit"
+
+[[states]]
+id = "north-house"
+room = "NORTH-OF-HOUSE"
+setup = ["north"]
+expected_title = "North of House"
+light = "lit"
+
+[[states]]
+id = "south-house"
+room = "SOUTH-OF-HOUSE"
+setup = ["south"]
+expected_title = "South of House"
+light = "lit"
+
+[[states]]
+id = "forest-west"
+room = "FOREST-1"
+setup = ["west"]
+expected_title = "Forest"
+light = "lit"
+
+[[states]]
+id = "forest-path"
+room = "PATH"
+setup = ["north", "north"]
+expected_title = "Forest Path"
+light = "lit"
+
+[[states]]
+id = "kitchen"
+room = "KITCHEN"
+setup = ["north", "west", "south", "east", "open window", "west"]
+expected_title = "Kitchen"
+light = "lit"
+
+[[states]]
+id = "living-room"
+room = "LIVING-ROOM"
+setup = ["north", "west", "south", "east", "open window", "west", "west"]
+expected_title = "Living Room"
+light = "lit"
+
+[[states]]
+id = "attic-dark"
+room = "ATTIC"
+setup = ["north", "west", "south", "east", "open window", "west", "up"]
+expected_title = "Darkness"
+light = "dark"
+
+[[states]]
+id = "attic-lit"
+room = "ATTIC"
+setup = ["north", "west", "south", "east", "open window", "west", "west", "take lamp", "turn on lamp", "east", "up"]
+expected_title = "Attic"
+light = "lit"
+inventory = ["LAMP"]
+
+[[states]]
+id = "cellar-lit"
+room = "CELLAR"
+setup = ["north", "west", "south", "east", "open window", "west", "west", "take lamp", "turn on lamp", "move rug", "open trap door", "down"]
+expected_title = "Cellar"
+light = "lit"
+inventory = ["LAMP"]
+open = ["TRAP-DOOR"]
+
+[[states]]
+id = "troll-lit"
+room = "TROLL-ROOM"
+setup = ["north", "west", "south", "east", "open window", "west", "west", "take lamp", "turn on lamp", "east", "up", "take rope", "down", "west", "move rug", "open trap door", "down", "north"]
+expected_title = "The Troll Room"
+light = "lit"
+inventory = ["LAMP", "ROPE"]
+visible = ["TROLL", "TROLL-HOLE", "TROLL-STAINS"]
+
+[[states]]
+id = "troll-distracted"
+room = "TROLL-ROOM"
+setup = ["north", "west", "south", "east", "open window", "west", "west", "take lamp", "turn on lamp", "east", "up", "take rope", "down", "west", "move rug", "open trap door", "down", "north", "trick troll", "tie up troll with rope"]
+expected_title = "The Troll Room"
+light = "lit"
+inventory = ["LAMP", "ROPE"]
+visible = ["TROLL"]
+
+[[states]]
+id = "east-chasm-lit"
+room = "EAST-OF-CHASM"
+setup = ["north", "west", "south", "east", "open window", "west", "west", "take lamp", "turn on lamp", "move rug", "open trap door", "down", "south"]
+expected_title = "East of Chasm"
+light = "lit"
+inventory = ["LAMP"]
+
+[[states]]
+id = "gallery-lit"
+room = "GALLERY"
+setup = ["north", "west", "south", "east", "open window", "west", "west", "take lamp", "turn on lamp", "move rug", "open trap door", "down", "south", "east"]
+expected_title = "Gallery"
+light = "lit"
+inventory = ["LAMP"]
+
+[[states]]
+id = "studio-lit"
+room = "STUDIO"
+setup = ["north", "west", "south", "east", "open window", "west", "west", "take lamp", "turn on lamp", "move rug", "open trap door", "down", "south", "east", "north"]
+expected_title = "Studio"
+light = "lit"
+inventory = ["LAMP"]
+
+[[states]]
+id = "nest-catcher-ready"
+room = "PATH"
+setup = ["north", "west", "south", "east", "open window", "west", "take sack", "east", "north", "north"]
+expected_title = "Forest Path"
+light = "lit"
+inventory = ["SANDWICH-BAG"]
+visible = ["TREE"]
+
+[[expectations]]
+room = "WEST-OF-HOUSE"
+subject = "WHITE-HOUSE"
+state = "opening"
+verbs = ["EXAMINE"]
+rationale = "The opening description makes the white house the world's first concrete subject."
+required_response = ["recognized-specific"]
+
+[[expectations]]
+room = "WEST-OF-HOUSE"
+subject = "FIELD-GRASS"
+state = "opening"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the opening field grass."
+
+[[expectations]]
+room = "WEST-OF-HOUSE"
+subject = "FIELD-SILENCE"
+state = "opening"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the settled silence."
+
+[[expectations]]
+room = "WEST-OF-HOUSE"
+subject = "BOARD"
+state = "opening"
+verbs = ["EXAMINE"]
+rationale = "The opening exit refusal names the boards, so they must remain parser-real."
+required_response = ["recognized-specific"]
+
+[[expectations]]
+room = "FOREST-1"
+subject = "FOREST-SUNLIGHT"
+state = "forest-west"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 describes sunlight in the west-pines forest."
+
+[[expectations]]
+room = "NORTH-OF-HOUSE"
+subject = "TREE"
+state = "north-house"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 describes trees north of the house."
+
+[[expectations]]
+room = "NORTH-OF-HOUSE"
+subject = "BOARDED-WINDOW"
+state = "north-house"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the boarded windows."
+
+[[expectations]]
+room = "KITCHEN"
+subject = "KITCHEN-CRUMBS"
+state = "kitchen"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the crumbs in the kitchen."
+
+[[expectations]]
+room = "KITCHEN"
+subject = "CHIMNEY"
+state = "kitchen"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the kitchen chimney."
+
+[[expectations]]
+room = "LIVING-ROOM"
+subject = "TROPHY-CASE"
+state = "living-room"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the trophy case."
+
+[[expectations]]
+room = "ATTIC"
+subject = "STAIRS"
+state = "attic-lit"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the attic stairway; the lit state makes parser scope real."
+required_response = ["recognized-specific", "subject-refusal"]
+
+[[expectations]]
+room = "CELLAR"
+subject = "CELLAR-CRAWLWAY"
+state = "cellar-lit"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the cellar crawlway and passageway."
+
+[[expectations]]
+room = "CELLAR"
+subject = "SLIDE"
+state = "cellar-lit"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the cellar ramp."
+
+[[expectations]]
+room = "TROLL-ROOM"
+subject = "TROLL-HOLE"
+state = "troll-lit"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the forbidding hole in the Troll Room."
+
+[[expectations]]
+room = "TROLL-ROOM"
+subject = "TROLL-STAINS"
+state = "troll-lit"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the Troll Room bloodstains and scratches."
+
+[[expectations]]
+room = "EAST-OF-CHASM"
+subject = "EAST-OF-CHASM::PSEUDO::CHASM-PSEUDO"
+state = "east-chasm-lit"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 requires the vanilla local chasm PSEUDO to remain room-correct."
+
+[[expectations]]
+room = "GALLERY"
+subject = "GALLERY-PAINTINGS"
+state = "gallery-lit"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the missing paintings and vandals in the Gallery."
+
+[[expectations]]
+room = "STUDIO"
+subject = "STUDIO-FIREPLACE"
+state = "studio-lit"
+verbs = ["EXAMINE"]
+rationale = "Release 1302 names the Studio fireplace."
+
+[[expectations]]
+room = "TROLL-ROOM"
+subject = "TROLL"
+other_subject = "ROPE"
+kind = "two-object"
+command_template = "tie up {object} with {other}"
+state = "troll-distracted"
+verbs = ["TIE"]
+rationale = "Release 1305's production troll route must accept the real troll and real rope."
+required_response = ["recognized-specific", "subject-refusal"]
+
+[[expectations]]
+room = "PATH"
+subject = "SANDWICH-BAG"
+other_subject = "TREE"
+kind = "two-object"
+command_template = "put {object} under {other}"
+state = "nest-catcher-ready"
+verbs = ["PUT"]
+rationale = "Release 1305's nest route must put the real sack beneath the real tree."
+required_response = ["recognized-specific", "subject-refusal"]
+
+# Ignores are exact, reviewable contracts. Add room/subject/word whenever possible.
+# [[ignores]]
+# code = "described-noun-unmapped"
+# room = "EXAMPLE-ROOM"
+# word = "example"
+# rationale = "Adjective misclassified as a noun; reviewed 2026-08-31."
