@@ -1,0 +1,22 @@
+{
+  "id": "002-mara-romance-state",
+  "path": "mara_companion_state.zil",
+  "description": "Zero partnership propositions on reset and migrate old saves without consulting TRUST as romance.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <MARA-PUT ,MARA-SLOT-PROTECTIVE-PREPARATION 0>\n    <RTRUE>>",
+      "new": "    <MARA-PUT ,MARA-SLOT-PROTECTIVE-PREPARATION 0>\n    <MARA-PUT ,MARA-SLOT-PLAYER-OFFERED 0>\n    <MARA-PUT ,MARA-SLOT-MARA-OFFERED 0>\n    <MARA-PUT ,MARA-SLOT-PARTNERSHIP-ACCEPTED 0>\n    <MARA-PUT ,MARA-SLOT-PARTNERSHIP-REFUSED 0>\n    <MARA-PUT ,MARA-SLOT-PARTNERSHIP-POSTPONED 0>\n    <MARA-PUT ,MARA-SLOT-EXAMINE-COUNT 0>\n    <MARA-PUT ,MARA-SLOT-LOOKED-BACK 0>\n    <MARA-PUT ,MARA-SLOT-MARA-LOOKED 0>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<COND (<MARA-FIELD-GUIDANCE-ABOUT .TOPIC> <RTRUE>)",
+      "new": "<COND (<MARA-EARNED-ROMANCE-ABOUT .TOPIC> <RTRUE>)\n          (<MARA-FIELD-GUIDANCE-ABOUT .TOPIC> <RTRUE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<COND (<EQUAL? <GET ,MARA-STATE 0> ,MARA-PREVIOUS-SCHEMA>",
+      "new": "<COND (<EQUAL? <GET ,MARA-STATE 0> 9>\n           <PUT ,MARA-STATE 0 ,MARA-SCHEMA>\n           <MARA-PUT ,MARA-SLOT-PLAYER-OFFERED 0>\n           <MARA-PUT ,MARA-SLOT-MARA-OFFERED 0>\n           <MARA-PUT ,MARA-SLOT-PARTNERSHIP-ACCEPTED 0>\n           <MARA-PUT ,MARA-SLOT-PARTNERSHIP-REFUSED 0>\n           <MARA-PUT ,MARA-SLOT-PARTNERSHIP-POSTPONED 0>\n           <MARA-PUT ,MARA-SLOT-EXAMINE-COUNT 0>\n           <MARA-PUT ,MARA-SLOT-LOOKED-BACK 0>\n           <MARA-PUT ,MARA-SLOT-MARA-LOOKED 0>)\n          (<EQUAL? <GET ,MARA-STATE 0> 8>"
+    }
+  ]
+}

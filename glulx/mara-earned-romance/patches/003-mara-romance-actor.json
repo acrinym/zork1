@@ -1,0 +1,12 @@
+{
+  "id": "003-mara-romance-actor",
+  "path": "mara_companion_actor.zil",
+  "description": "EXAMINE, KISS, and HOLD Mara go through earned partnership before the older coat/kiss clauses.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-FCN ()\n    <MARA-ENSURE>\n    <COND (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? CLIMB-DOWN CLIMB-FOO>\n                <EQUAL? ,PRSO ,DAM-MAINTENANCE-LADDER>>\n           <MARA-LADDER-ATTEMPT>)",
+      "new": "<ROUTINE MARA-FCN ()\n    <MARA-ENSURE>\n    <COND (<AND <NOT <EQUAL? ,WINNER ,MARA>>\n                <EQUAL? ,PRSO ,MARA>\n                <VERB? EXAMINE KISS RUB>>\n           <MARA-EARNED-ROMANCE-FCN>)\n          (<AND <EQUAL? ,WINNER ,MARA>\n                <VERB? CLIMB-DOWN CLIMB-FOO>\n                <EQUAL? ,PRSO ,DAM-MAINTENANCE-LADDER>>\n           <MARA-LADDER-ATTEMPT>)"
+    }
+  ]
+}

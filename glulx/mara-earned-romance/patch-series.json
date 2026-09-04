@@ -1,0 +1,42 @@
+{
+  "edition": "Mara Earned Romance and Partnership",
+  "release": 1306,
+  "serial": "260904",
+  "base_release": 1305,
+  "base_manifest": "../he-absurd-1305/patch-series.json",
+  "base_artifact_sha256": "fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9",
+  "base_source_sha256": {
+    "production": "7d30448fd022bea43dd2880976184392f9047e21efec9dedcacbc950656ec096",
+    "dev": "ff76da42b9a5a04f52f76b575dfb50f74afd93f57a85ca3494855a6bc9888252"
+  },
+  "patches": [
+    "patches/001-mara-romance-schema.json",
+    "patches/002-mara-romance-state.json",
+    "patches/003-mara-romance-actor.json",
+    "patches/004-release-1306-identity.json",
+    "patches/005-mara-romance-movement.json"
+  ],
+  "added_files": [
+    "mara_earned_romance.zil"
+  ],
+  "expected_changed_paths": [
+    "mara_companion.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_movement.zil",
+    "mara_companion_state.zil",
+    "mara_earned_romance.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-mara-earned-romance.ulx",
+    "format": "Glulx"
+  },
+  "player_outcomes": [
+    "EXAMINE MARA is a person, then a boundary, and she can look back",
+    "ASK MARA TO STAY can postpone, refuse, or accept from named history, never a hidden score",
+    "KISS MARA while rupture is open is refused",
+    "Friendship remains available after a refused partnership",
+    "Canonical solo puzzles still exist"
+  ]
+}

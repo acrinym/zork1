@@ -1,0 +1,27 @@
+{
+  "id": "003-release-1309-identity",
+  "path": "zork1.zil",
+  "description": "Advance staged identity from locked Release 1306 to Release 1309 body and wardrobe.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 MARA EARNED ROMANCE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 ADVENTURER BODY WARDROBE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Mara Earned Romance and Partnership.\n  Release 1306: mutual choice after named HE history. No love meter. Stages locked 1305.\"",
+      "new": ";\"Repository-local adventurer body and House wardrobe.\n  Release 1309: clothes are objects. Stages locked 1306. No clothing RPG.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1306>",
+      "new": "<CONSTANT RELEASEID 1309>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Mara Earned Romance Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Adventurer Body and Wardrobe Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

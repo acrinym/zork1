@@ -1,0 +1,12 @@
+{
+  "id": "001-include-wardrobe",
+  "path": "mara_companion.zil",
+  "description": "Load body and House wardrobe after earned romance so partnership privacy exists first.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_earned_romance\" T>\n<INSERT-FILE \"mara_field_guidance\" T>",
+      "new": "<INSERT-FILE \"mara_earned_romance\" T>\n<INSERT-FILE \"adventurer_body_wardrobe\" T>\n<INSERT-FILE \"mara_field_guidance\" T>"
+    }
+  ]
+}

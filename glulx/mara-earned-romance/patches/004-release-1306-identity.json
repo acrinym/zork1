@@ -1,0 +1,27 @@
+{
+  "id": "004-release-1306-identity",
+  "path": "zork1.zil",
+  "description": "Advance staged identity from locked Release 1305 to Release 1306 Mara earned romance.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 HE ABSURD ALTERNATES GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 MARA EARNED ROMANCE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Highly Extended absurd alternates.\n  Release 1305: Release 122 / Glulx 1214 troll-restraint and prepared nest-fire on locked 1303.\n  No GUI. Test verbs stay out of production.\"",
+      "new": ";\"Repository-local Mara Earned Romance and Partnership.\n  Release 1306: mutual choice after named HE history. No love meter. Stages locked 1305.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1305>",
+      "new": "<CONSTANT RELEASEID 1306>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Highly Extended Absurd Alternates Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Mara Earned Romance Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

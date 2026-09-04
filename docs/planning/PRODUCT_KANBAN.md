@@ -1,9 +1,9 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** August 31, 2026  
+**Updated:** September 4, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
-**Current merged production frontier:** Release `1303` — Empire Noun Honesty (1301–1303) on `master` `c0256aa`  
-**Open PR:** [#94](https://github.com/acrinym/zork1/pull/94) — Release **1305** locked, merge-ready, awaiting whistle  
+**Current merged production frontier:** Release `1305` — HE Absurd Alternates on `master` (PR #94)  
+**Open work:** Release **1306** Mara Earned Romance on `agent/1306-mara-earned-romance`  
 **Lock receipt:** `docs/planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md`  
 **Ideas lane:** `ideas/extended-zork/` (concept sources; not compiled progress)
 
@@ -36,13 +36,15 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-### Release 1305 — Absurd Alternates on Highly Extended 1303
+### Release 1306 — Mara Earned Romance and Partnership
 
-Hosted lock is done on PR #94. Train: `.beads/cursor_zork_absurd_alternates_on_1303.beadtrain`. Staging: `glulx/he-absurd-1305/`. Production SHA-256 `fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9`, checksum `0x9087f92d`. Capstone stays open until merge. Do not merge without a whistle.
+Train: `.beads/cursor_zork_mara_earned_romance.beadtrain`. Staging: `glulx/mara-earned-romance/`. Stages locked 1305. No love meter. Not merged.
 
 ## NEXT — explicit queued product trains
 
-None while 1305 is CURRENT. After merge, FUTURE 1306–1308 remain the backlog.
+1. **1309 Adventurer body, clothing, House wardrobe** — `.beads/cursor_zork_adventurer_body_wardrobe.beadtrain` (coupler after 1306 capstone)
+2. **1308 Second described-world census on live HE** — `.beads/cursor_zork_described_world_second_census.beadtrain` (coupler after wardrobe; whole HE map, not original rooms only)
+3. **1307 Time, Weather & Disaster** — remains queued, does not skip wardrobe/census
 
 ## FUTURE — remaining ideas/extended-zork wholes that never shipped as HE product
 

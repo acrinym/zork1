@@ -45,4 +45,5 @@ summary = "Flagless production revisits every new ledger room. No remaining list
 
 [meta]
 one_liner = "The next sentences of the empire are also true."
+couples_with = ["cursor_zork_adventurer_body_wardrobe"]
 watch = ["ideas/extended-zork/community-wishes-and-lost-ideas.md", "docs/planning/DESCRIBED_WORLD_CENSUS_1302.md"]

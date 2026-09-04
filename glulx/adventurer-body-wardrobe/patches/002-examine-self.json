@@ -1,0 +1,12 @@
+{
+  "id": "002-examine-self",
+  "path": "gglobals.zil",
+  "description": "EXAMINE ME describes the adventurer's body and clothes instead of prehensile-eye joke as the only answer.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE CRETIN-FCN ()\n\t <COND (<VERB? TELL>",
+      "new": "<ROUTINE CRETIN-FCN ()\n\t <COND (<VERB? EXAMINE>\n\t\t<ADV-EXAMINE-SELF>\n\t\t<RTRUE>)\n\t       (<VERB? TELL>"
+    }
+  ]
+}
