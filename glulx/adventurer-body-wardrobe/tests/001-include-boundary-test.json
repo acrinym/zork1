@@ -1,0 +1,12 @@
+{
+  "id": "001-include-boundary-test",
+  "path": "mara_companion.zil",
+  "description": "Load Release 1309 boundary setup verbs only into the qualification test story.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_boundary_continuity\" T>\n<INSERT-FILE \"mara_field_guidance\" T>",
+      "new": "<INSERT-FILE \"mara_boundary_continuity\" T>\n<INSERT-FILE \"mara_boundary_test\" T>\n<INSERT-FILE \"mara_field_guidance\" T>"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "009-house-stay-ration-custody",
+  "path": "mara_companion_actions.zil",
+  "description": "When Mara chooses the Attic as a base, place one physical field ration there with her pack so food ownership can be violated, returned, and remembered without inventing remote inventory.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "           <MOVE ,MARA-FIELD-PACK ,ATTIC>\n           <TELL \"Mara tests the Attic floorboards",
+      "new": "           <MOVE ,MARA-FIELD-PACK ,ATTIC>\n           <MOVE ,MARA-FIELD-RATION ,ATTIC>\n           <TELL \"Mara tests the Attic floorboards"
+    }
+  ]
+}

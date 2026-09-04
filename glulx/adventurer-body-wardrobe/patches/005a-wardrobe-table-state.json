@@ -1,0 +1,36 @@
+{
+  "id": "005a-wardrobe-table-state",
+  "path": "adventurer_body_wardrobe.zil",
+  "description": "Move all Release 1309 garment/basin mutable state into one saveable table so the wardrobe organ consumes zero legacy VM globals.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<GLOBAL ADV-SHIRT-WET 0>\n<GLOBAL ADV-SHIRT-MUD 0>\n<GLOBAL ADV-SHIRT-TEAR 0>\n<GLOBAL ADV-COAT-WET 0>\n<GLOBAL ADV-COAT-MUD 0>\n<GLOBAL ADV-COAT-SCORCH 0>\n<GLOBAL ADV-BOOTS-MUD 0>\n<GLOBAL ADV-TROUSERS-MUD 0>\n<GLOBAL ADV-TROUSERS-WET 0>\n<GLOBAL ADV-SLEEVE-ROLLED 0>\n<GLOBAL HOUSE-BASIN-WATER 0>\n<GLOBAL HOUSE-BASIN-SOAP 0>",
+      "new": "; Release 1309 cannot spend legacy VM globals on garment condition.\n; Mutable wardrobe state lives in one saveable table.\n<CONSTANT ADV-SHIRT-WET 0>\n<CONSTANT ADV-SHIRT-MUD 1>\n<CONSTANT ADV-SHIRT-TEAR 2>\n<CONSTANT ADV-COAT-WET 3>\n<CONSTANT ADV-COAT-MUD 4>\n<CONSTANT ADV-COAT-SCORCH 5>\n<CONSTANT ADV-BOOTS-MUD 6>\n<CONSTANT ADV-TROUSERS-MUD 7>\n<CONSTANT ADV-TROUSERS-WET 8>\n<CONSTANT ADV-SLEEVE-ROLLED 9>\n<CONSTANT HOUSE-BASIN-WATER 10>\n<CONSTANT HOUSE-BASIN-SOAP 11>\n<CONSTANT ADV-WARDROBE-STATE <TABLE 0 0 0 0 0 0 0 0 0 0 0 0>>\n\n<ROUTINE ADV-WARDROBE-GET (SLOT)\n    <GET ,ADV-WARDROBE-STATE .SLOT>>\n\n<ROUTINE ADV-WARDROBE-PUT (SLOT VALUE)\n    <PUT ,ADV-WARDROBE-STATE .SLOT .VALUE>>"
+    },
+    {"expected_count": 3, "old": ",ADV-SHIRT-WET", "new": "<ADV-WARDROBE-GET ,ADV-SHIRT-WET>"},
+    {"expected_count": 3, "old": ",ADV-SHIRT-MUD", "new": "<ADV-WARDROBE-GET ,ADV-SHIRT-MUD>"},
+    {"expected_count": 3, "old": ",ADV-SHIRT-TEAR", "new": "<ADV-WARDROBE-GET ,ADV-SHIRT-TEAR>"},
+    {"expected_count": 2, "old": ",ADV-COAT-WET", "new": "<ADV-WARDROBE-GET ,ADV-COAT-WET>"},
+    {"expected_count": 2, "old": ",ADV-COAT-MUD", "new": "<ADV-WARDROBE-GET ,ADV-COAT-MUD>"},
+    {"expected_count": 2, "old": ",ADV-COAT-SCORCH", "new": "<ADV-WARDROBE-GET ,ADV-COAT-SCORCH>"},
+    {"expected_count": 1, "old": ",ADV-BOOTS-MUD", "new": "<ADV-WARDROBE-GET ,ADV-BOOTS-MUD>"},
+    {"expected_count": 1, "old": ",ADV-TROUSERS-MUD", "new": "<ADV-WARDROBE-GET ,ADV-TROUSERS-MUD>"},
+    {"expected_count": 1, "old": ",ADV-TROUSERS-WET", "new": "<ADV-WARDROBE-GET ,ADV-TROUSERS-WET>"},
+    {"expected_count": 1, "old": ",ADV-SLEEVE-ROLLED", "new": "<ADV-WARDROBE-GET ,ADV-SLEEVE-ROLLED>"},
+    {"expected_count": 3, "old": ",HOUSE-BASIN-WATER", "new": "<ADV-WARDROBE-GET ,HOUSE-BASIN-WATER>"},
+    {"expected_count": 1, "old": ",HOUSE-BASIN-SOAP", "new": "<ADV-WARDROBE-GET ,HOUSE-BASIN-SOAP>"},
+    {"expected_count": 1, "old": "<SETG ADV-SHIRT-WET 0>", "new": "<ADV-WARDROBE-PUT ,ADV-SHIRT-WET 0>"},
+    {"expected_count": 2, "old": "<SETG ADV-SHIRT-WET 1>", "new": "<ADV-WARDROBE-PUT ,ADV-SHIRT-WET 1>"},
+    {"expected_count": 1, "old": "<SETG ADV-SHIRT-MUD 0>", "new": "<ADV-WARDROBE-PUT ,ADV-SHIRT-MUD 0>"},
+    {"expected_count": 1, "old": "<SETG ADV-COAT-WET 0>", "new": "<ADV-WARDROBE-PUT ,ADV-COAT-WET 0>"},
+    {"expected_count": 2, "old": "<SETG ADV-COAT-WET 1>", "new": "<ADV-WARDROBE-PUT ,ADV-COAT-WET 1>"},
+    {"expected_count": 1, "old": "<SETG ADV-COAT-MUD 0>", "new": "<ADV-WARDROBE-PUT ,ADV-COAT-MUD 0>"},
+    {"expected_count": 1, "old": "<SETG ADV-TROUSERS-MUD 0>", "new": "<ADV-WARDROBE-PUT ,ADV-TROUSERS-MUD 0>"},
+    {"expected_count": 1, "old": "<SETG ADV-TROUSERS-WET 0>", "new": "<ADV-WARDROBE-PUT ,ADV-TROUSERS-WET 0>"},
+    {"expected_count": 2, "old": "<SETG ADV-TROUSERS-WET 1>", "new": "<ADV-WARDROBE-PUT ,ADV-TROUSERS-WET 1>"},
+    {"expected_count": 1, "old": "<SETG ADV-SLEEVE-ROLLED 1>", "new": "<ADV-WARDROBE-PUT ,ADV-SLEEVE-ROLLED 1>"},
+    {"expected_count": 1, "old": "<SETG HOUSE-BASIN-WATER 1>", "new": "<ADV-WARDROBE-PUT ,HOUSE-BASIN-WATER 1>"},
+    {"expected_count": 1, "old": "<SETG HOUSE-BASIN-SOAP 1>", "new": "<ADV-WARDROBE-PUT ,HOUSE-BASIN-SOAP 1>"}
+  ]
+}
