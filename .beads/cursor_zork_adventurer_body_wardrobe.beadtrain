@@ -1,11 +1,13 @@
 [train]
 name        = "cursor_zork_adventurer_body_wardrobe"
-title       = "Adventurer body, clothing, and House wardrobe"
+title       = "Adventurer body, clothing, House wardrobe, and lived boundaries"
 description = """
 Whole clothing and embodiment organ from the 2026-09-03 catalog: inspectable adventurer
 appearance, House dresser/wardrobe/mirror as real furniture, clothing as objects with
-condition, GUE-native wash and dry, Mara's own clothes and privacy, reciprocal looking.
-No GUI. No clothing RPG. Couples after Mara earned romance. No scenery engine.
+condition, GUE-native wash and dry, Mara's own clothes and privacy, reciprocal looking,
+and property/autonomy boundaries composed with the existing 1260/1306 rupture history.
+No GUI. No clothing RPG. No second relationship system. Couples after Mara earned romance.
+No scenery engine.
 """
 created     = "2026-09-04"
 status      = "planned"
@@ -37,21 +39,21 @@ summary = "Wear, remove, damage, repair, wet, dry. Laundry is GUE-native, not a 
 [[cars]]
 id = "mara-wardrobe"
 bead = "zork1-1309-004"
-title = "Mara clothes, custody, and privacy"
+title = "Mara clothes, custody, privacy, and lived boundaries"
 parallel_start = true
 depends_on = ["clothing-objects"]
-summary = "Mara has her own garments and can refuse undressing. Repeated EXAMINE MARA keeps the 1306 looking boundary."
+summary = "Mara has her own garments and field ration. Repeated EXAMINE keeps 1306's looking boundary; repeated knowing clothing, food, or independent-choice violations compose into the existing 1260 rupture rather than a second relationship score."
 
 [[cars]]
 id = "capstone"
 bead = "zork1-1309-005"
-title = "Wardrobe natural-play qualification"
+title = "Wardrobe and boundary natural-play qualification"
 parallel_start = false
 depends_on = ["mara-wardrobe"]
-summary = "Natural commands dress, wash, and respect privacy. Solo canonical puzzles still work without clothing minigames."
+summary = "Natural commands dress, wash, test and respect privacy/property/autonomy, prove KISS/STAY see the same open rupture, prove apology is not reset, and prove solo canonical puzzles still work without clothing or relationship minigames."
 
 [meta]
-one_liner = "Clothes are objects. The House is where you change them."
+one_liner = "Clothes are objects. Boundaries are history. The House is where you change them."
 couples_with = ["cursor_zork_mara_earned_romance", "cursor_zork_described_world_second_census"]
 watch = ["ideas/extended-zork/POST_1305_FUTURE_PRODUCT_ORGANS_CATALOG_2026-09-03.md"]
 
@@ -62,4 +64,4 @@ from_car = "capstone"
 to_train = "cursor_zork_described_world_second_census"
 to_car = "walk"
 mode = "after"
-note = "Walk Highly Extended after body and clothing are parser-real, not a second original-map census."
+note = "Walk Highly Extended after body, clothing, property, and ordinary social consequences are parser-real, not a second original-map census."
