@@ -30,9 +30,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-mara-earned-romance.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 568320,
+    "checksum_hex": "0xbfa4ec0a",
+    "sha256": "76871675af153c55440ee472fde4aec25408c3f160a33f963e32ad2cf4e466c5"
   },
   "player_outcomes": [
     "EXAMINE MARA is a person, then a boundary, and she can look back",
