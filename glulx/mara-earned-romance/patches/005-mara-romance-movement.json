@@ -1,0 +1,12 @@
+{
+  "id": "005-mara-romance-movement",
+  "path": "mara_companion_movement.zil",
+  "description": "Partnership names the dark cellar as a real shared danger, not a flavor line.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-AFTER-PLAYER-MOVE (FROM TO)\n    <MARA-ENSURE>\n    <MARA-CAUSAL-AFTER-MOVE .FROM .TO>",
+      "new": "<ROUTINE MARA-AFTER-PLAYER-MOVE (FROM TO)\n    <MARA-ENSURE>\n    <MARA-CAUSAL-AFTER-MOVE .FROM .TO>\n    <COND (<EQUAL? .TO ,CELLAR> <MARA-PARTNERSHIP-DANGER-HOOK>)>"
+    }
+  ]
+}

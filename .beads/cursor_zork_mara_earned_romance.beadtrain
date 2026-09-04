@@ -9,7 +9,7 @@ Friendship without romance remains a complete ending. Stages the live HE product
 (1303, or 1305 if that train has locked). No GUI.
 """
 created     = "2026-08-30"
-status      = "planned"
+status      = "in_progress"
 
 [[cars]]
 id = "mutual-choice"
@@ -45,4 +45,14 @@ summary = "Natural plays prove: friendship-only complete arc; mutual yes; one-si
 
 [meta]
 one_liner = "Two people choose each other, or they do not, and the empire still works."
+couples_with = ["cursor_zork_adventurer_body_wardrobe"]
 watch = ["ideas/extended-zork/human-companion-bond-and-love-interest.md"]
+
+[[couplers]]
+id = "romance-to-wardrobe"
+from_train = "cursor_zork_mara_earned_romance"
+from_car = "capstone"
+to_train = "cursor_zork_adventurer_body_wardrobe"
+to_car = "body"
+mode = "after"
+note = "Wardrobe and clothing need partnership and personhood already parser-real."

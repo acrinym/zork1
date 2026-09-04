@@ -1,0 +1,12 @@
+{
+  "id": "001-include-romance-test",
+  "path": "mara_companion.zil",
+  "description": "Load romance test verbs only on the test story.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_earned_romance\" T>",
+      "new": "<INSERT-FILE \"mara_earned_romance\" T>\n<INSERT-FILE \"mara_earned_romance_test\" T>"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "006-mara-ask-to-stay",
+  "path": "living_collection.zil",
+  "description": "ASK MARA TO STAY uses the existing ASK OBJECT TO OBJECT grammar, not an illegal extra preposition.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-LC-ASK-TO ()\n    <COND (<EQUAL? ,PRSI ,LC-HOUSE-FILE>\n           <V-LC-ASK-FILE>)",
+      "new": "<ROUTINE V-LC-ASK-TO ()\n    <COND (<EQUAL? ,PRSI ,MARA-STAY-ACT>\n           <V-MARA-ASK-STAY>)\n          (<EQUAL? ,PRSI ,LC-HOUSE-FILE>\n           <V-LC-ASK-FILE>)"
+    }
+  ]
+}

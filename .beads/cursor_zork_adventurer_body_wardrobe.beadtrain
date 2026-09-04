@@ -1,0 +1,65 @@
+[train]
+name        = "cursor_zork_adventurer_body_wardrobe"
+title       = "Adventurer body, clothing, and House wardrobe"
+description = """
+Whole clothing and embodiment organ from the 2026-09-03 catalog: inspectable adventurer
+appearance, House dresser/wardrobe/mirror as real furniture, clothing as objects with
+condition, GUE-native wash and dry, Mara's own clothes and privacy, reciprocal looking.
+No GUI. No clothing RPG. Couples after Mara earned romance. No scenery engine.
+"""
+created     = "2026-09-04"
+status      = "planned"
+
+[[cars]]
+id = "body"
+bead = "zork1-1309-001"
+title = "Inspectable adventurer body"
+parallel_start = true
+depends_on = []
+summary = "EXAMINE ME / hands / scars names real body parts the parser can treat as present. Age and injury only from authored events."
+
+[[cars]]
+id = "house-furniture"
+bead = "zork1-1309-002"
+title = "Wardrobe, dresser, drawers, and mirror"
+parallel_start = true
+depends_on = ["body"]
+summary = "House rooms gain real changing furniture. OPEN, LOOK IN, and EXAMINE MIRROR are physical, not a paper-doll UI."
+
+[[cars]]
+id = "clothing-objects"
+bead = "zork1-1309-003"
+title = "Clothing as objects with condition"
+parallel_start = true
+depends_on = ["house-furniture"]
+summary = "Wear, remove, damage, repair, wet, dry. Laundry is GUE-native, not a generic washing-machine engine."
+
+[[cars]]
+id = "mara-wardrobe"
+bead = "zork1-1309-004"
+title = "Mara clothes, custody, and privacy"
+parallel_start = true
+depends_on = ["clothing-objects"]
+summary = "Mara has her own garments and can refuse undressing. Repeated EXAMINE MARA keeps the 1306 looking boundary."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1309-005"
+title = "Wardrobe natural-play qualification"
+parallel_start = false
+depends_on = ["mara-wardrobe"]
+summary = "Natural commands dress, wash, and respect privacy. Solo canonical puzzles still work without clothing minigames."
+
+[meta]
+one_liner = "Clothes are objects. The House is where you change them."
+couples_with = ["cursor_zork_mara_earned_romance", "cursor_zork_described_world_second_census"]
+watch = ["ideas/extended-zork/POST_1305_FUTURE_PRODUCT_ORGANS_CATALOG_2026-09-03.md"]
+
+[[couplers]]
+id = "wardrobe-to-second-census"
+from_train = "cursor_zork_adventurer_body_wardrobe"
+from_car = "capstone"
+to_train = "cursor_zork_described_world_second_census"
+to_car = "walk"
+mode = "after"
+note = "Walk Highly Extended after body and clothing are parser-real, not a second original-map census."

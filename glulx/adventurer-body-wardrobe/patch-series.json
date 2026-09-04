@@ -1,0 +1,37 @@
+{
+  "edition": "Adventurer Body, Clothing, and House Wardrobe",
+  "release": 1309,
+  "serial": "260904",
+  "base_release": 1306,
+  "base_manifest": "../mara-earned-romance/patch-series.json",
+  "base_artifact_sha256": "76871675af153c55440ee472fde4aec25408c3f160a33f963e32ad2cf4e466c5",
+  "base_source_sha256": {
+    "production": "0411c7d8a533c1392df09d32d9ccde859feb6f651c88277d9fea7f89a09ccc8a",
+    "dev": "2b36fb532d8bf5daf182512b94ce9adfb8186cce4f2064396345c15bcd068944"
+  },
+  "patches": [
+    "patches/001-include-wardrobe.json",
+    "patches/002-examine-self.json",
+    "patches/003-release-1309-identity.json"
+  ],
+  "added_files": [
+    "adventurer_body_wardrobe.zil"
+  ],
+  "expected_changed_paths": [
+    "adventurer_body_wardrobe.zil",
+    "gglobals.zil",
+    "mara_companion.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-adventurer-body-wardrobe.ulx",
+    "format": "Glulx"
+  },
+  "player_outcomes": [
+    "EXAMINE ME names a body and worn clothes",
+    "House wardrobe, dresser, basin, and clothesline are physical",
+    "Mara keeps custody of her coat",
+    "Canonical puzzles do not require a clothing minigame"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "001-mara-romance-schema",
+  "path": "mara_companion.zil",
+  "description": "Advance Mara to schema 10 with named partnership propositions. No love meter.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SCHEMA 9>\n<CONSTANT MARA-PREVIOUS-SCHEMA 8>\n<CONSTANT MARA-ANTICIPATION-SCHEMA 9>",
+      "new": "<CONSTANT MARA-SCHEMA 10>\n<CONSTANT MARA-PREVIOUS-SCHEMA 9>\n<CONSTANT MARA-ANTICIPATION-SCHEMA 9>\n<CONSTANT MARA-ROMANCE-SCHEMA 10>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SLOT-PROTECTIVE-PREPARATION 62>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>",
+      "new": "<CONSTANT MARA-SLOT-PROTECTIVE-PREPARATION 62>\n<CONSTANT MARA-SLOT-PLAYER-OFFERED 63>\n<CONSTANT MARA-SLOT-MARA-OFFERED 64>\n<CONSTANT MARA-SLOT-PARTNERSHIP-ACCEPTED 65>\n<CONSTANT MARA-SLOT-PARTNERSHIP-REFUSED 66>\n<CONSTANT MARA-SLOT-PARTNERSHIP-POSTPONED 67>\n<CONSTANT MARA-SLOT-EXAMINE-COUNT 68>\n<CONSTANT MARA-SLOT-LOOKED-BACK 69>\n<CONSTANT MARA-SLOT-MARA-LOOKED 70>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_anticipation\" T>\n<INSERT-FILE \"mara_field_guidance\" T>",
+      "new": "<INSERT-FILE \"mara_anticipation\" T>\n<INSERT-FILE \"mara_earned_romance\" T>\n<INSERT-FILE \"mara_field_guidance\" T>"
+    }
+  ]
+}
