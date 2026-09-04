@@ -1,0 +1,12 @@
+{
+  "id": "005-mara-coat-boundary",
+  "path": "adventurer_body_wardrobe.zil",
+  "description": "Route attempts to take or remove Mara's coat through remembered clothing-boundary escalation rather than replaying a stateless refusal.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-COAT-F ()\n    <COND (<AND <VERB? TAKE REMOVE> <IN? ,MARA-TRAVEL-COAT ,MARA>>\n           <COND (<MARA-PARTNERSHIP-ON?>\n                  <TELL \"Mara's hand closes on the coat first. Partnership is not a license to undress me, she says.\" CR>)\n                 (T\n                  <TELL \"Mara steps back and keeps the coat. That is mine, she says. She turns toward another room rather than becoming a doll.\" CR>\n                  <COND (<AND <MARA-HERE?> <NOT <EQUAL? ,HERE ,KITCHEN>>>\n                         <MOVE ,MARA ,KITCHEN>\n                         <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-WAITING>\n                         <TELL \"She leaves for the Kitchen, and her location is the Kitchen.\" CR>)>)>\n           <RTRUE>)\n          (<VERB? EXAMINE>\n           <TELL \"Mara's field coat is weathered, hers, and currently in her custody unless she moved it.\" CR>\n           <RTRUE>)>\n    <RFALSE>>",
+      "new": "<ROUTINE MARA-COAT-F ()\n    <COND (<VERB? TAKE REMOVE>\n           <MARA-BOUNDARY-CLOTHING-ATTEMPT>\n           <RTRUE>)\n          (<VERB? EXAMINE>\n           <TELL \"Mara's field coat is weathered, hers, and currently in her custody unless she moved it.\" CR>\n           <RTRUE>)>\n    <RFALSE>>"
+    }
+  ]
+}
