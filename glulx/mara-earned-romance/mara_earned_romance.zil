@@ -1,7 +1,7 @@
 "MARA EARNED ROMANCE AND PARTNERSHIP for Release 1306"
 
 ; "Named witnessed events decide whether two people may choose each other.
-   MARA-SLOT-TRUST / RESPECT / SAFETY are never read here. Friendship without
+   Companionship numeric regard slots are never read here. Friendship without
    romance remains complete. Refusal is honored. No meter, dating sim, or
    gift grind."
 
