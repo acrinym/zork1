@@ -30,7 +30,7 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 - NPC answers derive from actual knowledge; no generic answer where specific knowledge should exist.
 - Initial core roster: **12 named NPCs**, bound to real fair locations and daily schedules.
 - Secondary roster: **8 additional named NPCs**, bringing the planning roster to **20 substantial named people**.
-- Secondary cast identities now locked for planning: **Kester Vane** (shell/cup operator), **Hettie Bramm** (maintenance), **Sella Birch** (artisan), **Pella Wren** and **Tobin Wren** (family continuity), **Lysa Marr** and **Tavin Roe** (recurring adult couple), and **Cassa Reed** (rival angler).
+- Secondary cast identities are locked for planning: **Kester Vane**, **Hettie Bramm**, **Sella Birch**, **Pella Wren**, **Tobin Wren**, **Lysa Marr**, **Tavin Roe**, and **Cassa Reed**.
 - Kester Vane's initial cheating mechanism is physical and inspectable: a tack-wax cup/pea state rather than hidden author-side answer changing.
 - No dedicated fair constable is required in the initial named roster; add one only if a real authority gap appears.
 - Daily operation uses nine semantic phases from PREOPEN through AFTER-HOURS.
@@ -40,16 +40,20 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 - Games Row has eight mechanically distinct initial activities rather than one RNG roll reskinned.
 - Fishing has a full optional hobby/derby planning loop with positions, bait/gear, real catches, junk, records and Mara competition.
 - First story web contains nine interconnected miniquests/incidents.
-- **Mara's fair-specific character authority is now stable for planning**: authored attraction/game/fishing/food preferences, phase-sensitive initiative, refusal/annoyance behavior, competition and semantic repeat-fair memory are defined in `FAIR_MARA_EXPERIENCE.md`.
+- **Mara's fair-specific character authority is stable for planning**: authored attraction/game/fishing/food preferences, phase-sensitive initiative, refusal/annoyance behavior, competition and semantic repeat-fair memory are defined in `FAIR_MARA_EXPERIENCE.md`.
 - Mara's strongest attraction preference is the Observation Wheel at dusk/evening; dragon is her baseline carousel mount; fishing is a genuine low-intensity preference; she favors the apple-topped elephant ear, pear-lime fizz by day and hot spiced cider in cooler evening conditions.
 - Mara can beat the Adventurer and Cassa Reed, refuse repetitive or suspect play, and remember prior fair experiences without a fair-specific relationship meter.
+- **Adult evening venue:** **The Lantern Table**, an evening supper-and-drink service zone inside the existing Dance Pavilion rather than a seventeenth room.
+- **Tomas Quince** shifts from Food Row to The Lantern Table at DUSK and operates its evening service; this focused authority supersedes his older all-evening Food Row placeholder until `FAIR_DAILY_OPERATIONS.md` is consolidated before implementation.
+- Lantern Table ordinary access is free, with no drink minimum; its initial menu reuses existing fair products/prices and does not require alcohol/intoxication mechanics.
+- Dance Pavilion privacy remains contextual: counter/music side is highly public, communal tables are social/public, edge tables are quieter public, and real privacy comes from actual geography such as the wheel carriage or Pond Path.
+- Lysa Marr and Tavin Roe give the venue adult continuity independent of Mara and the Adventurer.
 - **No duplicate fair historical archive.** The existing upstairs/Attic Hall/House of Records remains the durable documentary authority.
 - Fairground location #15 is **Fair Office & Prize Hall**, not `Prize & Records Hall`.
 - Ada Vellum is current fair registrar/office clerk; durable historical records graduate to the existing House of Records.
 - Fair records have three layers: current Fair Office paperwork, durable House of Records documentary history, and personal lived memory.
 - Existing archive provenance/confidence/verification/contradiction/redaction semantics should be reused for fair history where applicable.
 - Private Mara/Adventurer memories are not automatically institutional records.
-- Adult social/romantic/intimate life is first-class while broader consent/autonomy authority remains sovereign.
 - Controlled RNG is welcome for optional fair play, never required canonical progression.
 - Canonical Zork routes and solutions remain authoritative.
 - No Gato analogue, no Crono/Marle reenactment, no GUI, no generic carnival framework, no generated-content soup.
@@ -76,7 +80,7 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 | `FAIR_SECONDARY_CAST.md` | STABLE FOR PLANNING | 8-person secondary roster, named story/system bindings, secondary schedules and knowledge boundaries |
 | `FAIR_DIALOGUE_AND_CONTEXTUAL_KNOWLEDGE.md` | DESIGNING | who can say what, and why |
 | `FAIR_MARA_EXPERIENCE.md` | STABLE FOR PLANNING | Mara-specific attraction/game/fishing/food preferences, initiative, refusal, competition and memory |
-| `FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` | DESIGNING | adult social and relationship space |
+| `FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` | STABLE FOR PLANNING | Lantern Table identity/service, adult-social topology, dancing/affection context and privacy boundaries |
 | `FAIR_FOOD_AND_CONCESSIONS.md` | STABLE FOR PLANNING | food, drink, elephant ears, pear-lime example |
 | `FAIR_MINIQUESTS_INCIDENTS_AND_RUMORS.md` | STABLE FOR FIRST STORY-WEB PLANNING | nine small stories, evidence/provenance seams |
 | `FAIR_REWARDS_PRIZES_AND_COLLECTIBLES.md` | DESIGNING | tickets, prizes, annual objects |
@@ -100,15 +104,16 @@ The fair must compose rather than duplicate these live product organs:
 
 ## Current planning frontier
 
-The fair now has identity, map attachment, economy, products, a named **20-person core+secondary cast**, full operating geography/day, first deep attractions/games/fishing, a first story web, a clean House-of-Records integration, and concrete Mara fair character authority.
+The fair now has identity, map attachment, economy, products, a named **20-person core+secondary cast**, full operating geography/day, first deep attractions/games/fishing, a first story web, a clean House-of-Records integration, concrete Mara authority, and a locked adult evening venue/service model.
 
-The next highest-leverage work is **the adult evening venue and social/private behavior seam**:
+The next highest-leverage work is **RNG and save/restore semantics**:
 
-1. lock the public identity, physical service model and closing behavior of the evening food/drink venue in or around Dance Pavilion;
-2. bind it to Lysa Marr / Tavin Roe, Mara, Orin Bell and ordinary adult visitors without making it a romance room;
-3. resolve RNG/save semantics far enough for future qualification;
+1. inspect the actual ZIL/interpreter random/save/restore mechanics used by this repository before locking fair seeding rules;
+2. determine which fair outcomes are day/event commitments versus action-time draws;
+3. ensure save/restore reproduces world state rather than becoming an exploit-driven reroll contract by accident;
 4. tighten prize/record/archive graduation details around actual contest outputs without duplicating the House of Records;
-5. re-evaluate the implementation gate only after those authorities are coherent.
+5. consolidate the Tomas DUSK/EVENING schedule cell into `FAIR_DAILY_OPERATIONS.md` before any future implementation decomposition;
+6. re-evaluate the implementation gate only after these authorities are coherent.
 
 ## Gate before implementation
 

@@ -38,13 +38,13 @@ The following are no longer open:
 - **Secondary cast day expectations:** locked for planning in `FAIR_SECONDARY_CAST.md`.
 - **Closing model:** sequential, not one global shutdown tick.
 - **Back Lane function:** real service/staff route and bounded after-hours activity.
-- **Mara attraction preferences:** stable fair-specific baselines now defined in `FAIR_MARA_EXPERIENCE.md`.
-- **Mara game preferences:** stable fair-specific baselines now defined, including skepticism/refusal behavior for Kester's shell game.
-- **Mara fishing style:** genuine low-intensity preference with shaded-bank / pond-path-bend bias, independent derby participation and no romance-protection rigging.
-- **Mara food/drink baseline:** apple-topped elephant ear favorite, pear-lime fizz as daytime preference after identification, hot spiced cider as cooler dusk/evening preference.
-- **Mara phase-sensitive initiative:** defined from OPENING through CLOSING without a date mode or attraction-optimization loop.
-- **Mara repetition/refusal law:** persistent repetition after a clear refusal composes broader autonomy/annoyance authority rather than a fair-specific meter.
-- **Mara fair memory:** semantic event memory and recurrence behavior are defined; private lived memory remains separate from institutional records.
+- **Mara fair-specific preferences, initiative, refusal, competition and memory:** stable for planning in `FAIR_MARA_EXPERIENCE.md`.
+- **Adult evening venue:** **The Lantern Table**, located as an evening service zone inside the existing Dance Pavilion rather than a new major room.
+- **Lantern Table operator:** Tomas Quince shifts from Food Row to Dance Pavilion at DUSK for evening service.
+- **Lantern Table access:** ordinary pavilion/social access remains free, with no drink minimum.
+- **Lantern Table initial menu:** reuses existing fair-price products including hot spiced cider, pear-lime fizz, simple drink, roasted nuts, savory hand pie, meat pie and pie slice.
+- **Lantern Table alcohol boundary:** alcohol/intoxication is not required or silently introduced; any future alcoholic product must come from broader product/intoxication authority.
+- **Adult-social privacy model:** counter/music side highly public, communal tables public/social, edge tables quieter public, and more private contexts come from real geography such as the wheel or Pond Path.
 - **Historical archive ownership:** the existing upstairs/Attic Hall/House of Records remains the durable documentary authority.
 - **Fair Office records scope:** current-fair administration, entries/results, permits, lost-and-found and incident intake.
 - **Ada Vellum:** current fair registrar/office clerk, not omniscient historian/master archivist.
@@ -99,27 +99,24 @@ Do not reopen the question of creating a separate Fair Historical Archive.
 - Exact wheel carriage count/cycle semantics only if mechanically useful.
 - Which attractions are association-owned, independent or Frobozz-operated.
 
-## Adult social life still open
+## Adult social life still open only at broader-composition level
 
-This is now the **next planning frontier**.
+The venue/product identity pass is complete enough for planning.
 
 Still open:
 
-- exact public name/product identity of the evening adult food/drink service in/near Dance Pavilion;
-- whether the service is physically inside the pavilion, attached to it, or immediately adjacent without creating a seventeenth major room;
-- its food/drink roster and whether alcohol exists at all under broader world/product authority;
-- who operates it and whether that person belongs in the existing 20-person named roster or remains an unnamed/background service role;
-- exact service hours across DUSK / EVENING / CLOSING;
-- seating/standing/social topology and how it composes the real privacy gradient;
-- exact composition seams into existing intimacy/privacy authorities without duplicating them;
-- exact long-horizon continuity arc for Lysa Marr and Tavin Roe; their identity, separateness and baseline preferences are already resolved.
+- whether broader GUE product authority eventually defines an alcoholic cider or other alcoholic product;
+- any intoxication semantics only if a broader non-fair system owns them;
+- exact long-horizon continuity arc for Lysa Marr and Tavin Roe beyond their already-authored separate preferences/attendance behavior;
+- exact relationship/intimacy composition where future shipped Mara authority exposes a seam not already covered by contextual privacy.
+
+Do not reopen The Lantern Table into a seventeenth room, nightclub engine or romance venue.
 
 ## Food still open
 
 - Exact sign/business name of Mabel Rusk's elephant-ear concession.
 - Detailed recipes/ingredient sets beyond baseline products.
 - Additional signature savory food and yearly limited products.
-- Adult-evening service food/drink identity, owned by the Adult Social authority pass above.
 
 ## NPCs still open
 
@@ -130,10 +127,19 @@ Still open:
 - whether any worker needs an authored substitute/helper rather than simply closing during a break;
 - which named vendors are guaranteed recurring annual presences versus merely frequent returners;
 - one or more transient merchant/performer identities only if a concrete future story/system requires them;
-- any future safety/constable role only if broader consequence or crowd authority exposes an actual gap;
-- whether the adult-evening service needs a new persistent named operator or can be coherently handled without expanding the roster.
+- any future safety/constable role only if broader consequence or crowd authority exposes an actual gap.
 
-Do not reopen the 20-person roster merely to add names.
+The Lantern Table does **not** require a 21st named operator; Tomas Quince owns the service transition.
+
+## Schedule consolidation still open
+
+`FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` now owns one focused correction to Tomas Quince's day:
+
+- at **DUSK**, Tomas transitions from Food Row toward Dance Pavilion;
+- at **EVENING**, he operates The Lantern Table in Dance Pavilion;
+- at **CLOSING**, he closes/clears the Lantern Table before ordinary cleanup/departure.
+
+`FAIR_DAILY_OPERATIONS.md` still contains the older placeholder that keeps Tomas in Food Row through evening. Consolidate that cell before implementation decomposition. Do not treat the older placeholder as a competing product decision.
 
 ## Games and story-web still open
 
@@ -141,13 +147,6 @@ Do not reopen the 20-person roster merely to add names.
 - Exact association sanction/escalation procedure after F-04 evidence is accepted.
 - Exact future continuity beats for the Wren family beyond the first F-02 configuration.
 - Exact archival evidence available for F-03/F-09 after the existing House of Records contents are mapped in implementation planning.
-
-The following identities are no longer open:
-
-- F-02 young visitor: Pella Wren;
-- F-02 family anchor: Tobin Wren;
-- F-04 suspicious operator: Kester Vane;
-- F-05 maintenance specialist: Hettie Bramm.
 
 ## Mara still open only where broader authority is required
 
@@ -162,10 +161,15 @@ Remaining Mara questions are dependency/composition questions, not blank charact
 
 Do not reopen her fair-specific likes/dislikes into RNG.
 
-## RNG still open
+## RNG / save-restore — next planning frontier
 
-- Exact fair-day seeding mechanics under ZIL/interpreter save/restore behavior.
-- Which outcomes are fixed at fair opening versus rolled at action time.
+- Exact fair-day seeding mechanics under actual ZIL/interpreter save/restore behavior.
+- Which outcomes are fixed at fair opening versus committed at event setup versus drawn at action time.
+- Whether existing interpreter RNG state is fully restored by SAVE/RESTORE in the repository's supported toolchain.
+- How to prevent accidental save-scumming from becoming the design contract for races, fishing, raffles or minor incidents without creating an anti-save punishment system.
+- How deterministic qualification fixtures should control optional fair RNG without leaking production cheat verbs or test-only state.
+
+Do not lock these from assumption. Inspect the actual repository/toolchain mechanics first.
 
 ## Dependencies still open
 
