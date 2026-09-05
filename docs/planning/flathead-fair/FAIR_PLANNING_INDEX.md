@@ -30,10 +30,12 @@ The fair must feel native to Zork and remain optional to canonical progression.
 - Players can ask vendors, Mara, and other NPCs meaningful questions about products.
 - NPC answers are contextual to actual knowledge. No generic response is acceptable when a character reasonably knows the answer.
 - Initial core population now has **12 working named NPCs** with job/knowledge boundaries.
+- Core named commerce anchors are bound to the price/stock/refund model rather than a universal shop menu.
 - Mara has agency. She may buy, suggest, refuse, wander, compete, eat, fish, dance, remember, and initiate.
 - Adult romance, dating, affection, privacy, and intimacy are part of fair life, governed by broader relationship/consent authorities rather than a carnival-specific romance minigame.
 - Controlled RNG belongs at the fair, but required progression must never depend on arbitrary random outcomes.
 - The fair recurs and changes over time. Records, memories, objects, and some NPC histories can persist.
+- The future natural-play contract now explicitly covers the additive Clearing approach, free entry, zorkmid commerce, pear-lime identification, elephant ears, contextual NPC knowledge, Mara agency, weather/refund behavior, and RNG/save semantics.
 - Canonical Zork routes and solutions remain authoritative.
 - No Gato analogue, no Crono/Marle reenactment, no GUI, no generic carnival framework, and no generated-content soup.
 
@@ -41,7 +43,7 @@ The fair must feel native to Zork and remain optional to canonical progression.
 
 | Document | Status | Owns |
 |---|---|---|
-| `FAIR_PRODUCT_BIBLE.md` | DESIGNING | North star, boundaries, product definition |
+| `FAIR_PRODUCT_BIBLE.md` | DESIGNING | North star, locked product identity, boundaries |
 | `FAIR_NAME_AND_LORE.md` | STABLE FOR PLANNING | Locked public name, regional origin, fair-association/Frobozz relationship |
 | `FAIR_SITE_SELECTION.md` | LOCKED FOR PLANNING | Canonical map evidence and selected attachment seam |
 | `FAIR_GEOGRAPHY.md` | DESIGNING | Locked attachment plus district/room plan |
@@ -49,7 +51,7 @@ The fair must feel native to Zork and remain optional to canonical progression.
 | `FAIR_PRODUCTS_AND_ZORKMID_ECONOMY.md` | STABLE FOR PLANNING | Zorkmid purchasing power, free admission, commerce laws |
 | `FAIR_PRICE_BOOK.md` | DESIGNING | Initial concrete zorkmid prices and redemption bands |
 | `FAIR_PRODUCT_KNOWLEDGE_AND_QUESTIONS.md` | STABLE FOR PLANNING | Partial identification, contextual questions, first acceptance case |
-| `FAIR_VENDOR_AND_COMMERCE_DESIGN.md` | DESIGNING | Merchants, stalls, stock, expertise |
+| `FAIR_VENDOR_AND_COMMERCE_DESIGN.md` | DESIGNING | Named merchant seams, stock, payment/refund behavior |
 | `FAIR_ATTRACTIONS_CATALOG.md` | DESIGNING | Rides and destination attractions |
 | `FAIR_GAMES_COMPETITIONS_AND_RECORDS.md` | DESIGNING | Midway play, records, contests |
 | `FAIR_FISHING.md` | DESIGNING | Fishing hobby and derby |
@@ -63,12 +65,12 @@ The fair must feel native to Zork and remain optional to canonical progression.
 | `FAIR_REWARDS_PRIZES_AND_COLLECTIBLES.md` | DESIGNING | Tickets, prizes, annual objects |
 | `FAIR_PERSISTENCE_AND_MEMORY.md` | DESIGNING | What survives visits and years |
 | `FAIR_WEATHER_AND_ENVIRONMENT.md` | DESIGNING | Time/weather integration |
-| `FAIR_NATURAL_PLAY_ACCEPTANCE.md` | DESIGNING | Future qualification contract |
+| `FAIR_NATURAL_PLAY_ACCEPTANCE.md` | DESIGNING | Future qualification contract tied to locked decisions |
 | `FAIR_OPEN_QUESTIONS.md` | OPEN | Decisions still deliberately unresolved |
 
 ## Current planning frontier
 
-The load-bearing identity, site, annual recurrence, everyday money scale, free admission, signature food, first product-identification case, and initial core NPC roster now exist.
+The load-bearing identity, site, annual recurrence, everyday money scale, free admission, signature food, first product-identification case, initial core NPC roster, commerce behavior, and initial acceptance routes now exist.
 
 The next highest-leverage planning work is **fair operation as a day of play**:
 
