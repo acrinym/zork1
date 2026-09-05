@@ -16,7 +16,7 @@ The fair is not static scenery. One operating day uses nine authored phases:
 6. `DUSK` — lighting and evening transition;
 7. `EVENING` — dancing, lit rides, adult social period;
 8. `CLOSING` — sequential shutdown and visitor departure;
-9. `AFTER-HOURS` — bounded staff cleanup, repair and storage activity.
+9. `AFTER-HOURS` — bounded staff cleanup, repair, storage and current-office closeout.
 
 These are semantic world phases, not imported modern clock hours. A broader GUE time authority may later map exact times onto them.
 
@@ -33,6 +33,7 @@ Changes are authored by actor/location:
 - performers move from rehearsal to performance;
 - prize redemption remains open late enough to redeem newly earned tickets;
 - staff move through real adjacent geography where movement matters;
+- Ada closes out current Fair Office paperwork rather than transforming the fair office into the historical archive;
 - closing remains legible through announcements, shutters, queues and crowd behavior.
 
 ## Event lifecycle
@@ -46,6 +47,7 @@ A complete cycle can include:
 - several public fair days;
 - a closing night;
 - teardown;
+- current Fair Office closeout and selection of durable archival candidates;
 - an off-season period in which the physical grounds still exist;
 - the next annual return.
 
@@ -95,12 +97,23 @@ The stable planning order is:
 4. fishing rental/weigh-in ends;
 5. daytime food stalls reduce toward late vendors;
 6. final ride cycles complete;
-7. Prize & Records Hall gives a final redemption call;
+7. **Fair Office & Prize Hall** gives a final redemption call;
 8. Dance Pavilion ends the final piece;
 9. visitors drain through Fair Entrance/Fair Road;
-10. Back Lane remains active for workers.
+10. Back Lane remains active for workers while Ada can finish bounded current-office closeout.
 
 No paid rider is dumped out because the phase changed, and no attraction closure can block the pedestrian route home.
+
+## Records lifecycle boundary
+
+Closing a fair day or fair cycle does not make all paperwork permanent history.
+
+- current entries/results, lost-and-found and incident intake remain Fair Office state while operationally relevant;
+- selected annual summaries, major records, historical changes and significant adjudicated incidents may become candidates for the existing upstairs Hall/House of Records;
+- routine paperwork may expire/reset;
+- personal Mara/NPC memories remain personal-memory state rather than archival paperwork.
+
+See `FAIR_HALL_OF_RECORDS_INTEGRATION.md` and `FAIR_PERSISTENCE_AND_MEMORY.md`.
 
 ## Long-term continuity
 
@@ -116,4 +129,4 @@ Later annual fairs may change:
 - Mara and Adventurer memories;
 - physical fairground condition.
 
-Variation is authored and stateful, not procedurally generated content.
+Variation is authored and stateful, not procedurally generated content. Documentary continuity composes the existing Hall/House of Records rather than a fair-only history system.
