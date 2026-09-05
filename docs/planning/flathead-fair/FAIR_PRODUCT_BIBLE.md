@@ -22,6 +22,8 @@ The fair is a **place**, not a menu of minigames.
 - Ordinary commerce: **zorkmids**.
 - Prize tickets: earned midway redemption only, never a replacement for ordinary money.
 - Initial footprint: about **16 dense functional locations**.
+- Fairground records/service room: **Fair Office & Prize Hall**, not a second historical archive.
+- Durable documentary fair history: the existing upstairs/Attic **Hall/House of Records** authority.
 - Initial core population: **12 working named NPCs**, plus authored crowd population.
 - Signature food: elephant ears; cinnamon-sugar baseline **5 zm**.
 - First partial-identification acceptance object: `large drink` = **pear-lime fizz, 4 zm**.
@@ -30,18 +32,18 @@ The fair is a **place**, not a menu of minigames.
 
 1. **Optionality.** Canonical Zork remains solvable without attending.
 2. **Density.** Fair rooms exist because several meaningful things happen there. Avoid corridor rooms whose only purpose is traversal.
-3. **Parser reality.** Food, prizes, drinks, tickets, merchandise, fish, gifts, and fair objects are real objects where practical.
+3. **Parser reality.** Food, prizes, drinks, tickets, merchandise, fish, gifts, records, and fair objects are real objects where practical.
 4. **Contextual knowledge.** `ASK`, `EXAMINE`, `SMELL`, `TASTE`, `LISTEN`, `BUY`, `GIVE`, and related verbs reveal authored information rather than collapsing into generic replies.
 5. **Adult social life.** Couples, dates, dancing, private conversations, affection, evening venues, and established relationships belong naturally in the fair.
 6. **Mara agency.** Mara is a participant, not a romance vending machine.
 7. **Recurring life.** The fair opens, changes through the day, closes, tears down, and later returns with continuity and variation.
 8. **Controlled chance.** Fishing, races, raffles, incidental encounters, stock, and similar activities may vary, but required content must remain fair and recoverable.
-9. **Persistent history.** Records, prizes, memorable incidents, vendor relationships, and Mara memories can survive a visit and sometimes a later fair.
+9. **Persistent history with provenance.** Current Fair Office paperwork, durable House of Records evidence, physical objects, and personal memories remain distinct while still composing a coherent history.
 10. **Zork voice.** Bureaucratic absurdity, physical comedy, confident narration, odd products, real consequences, and exact object identity matter more than carnival cliché.
 
 ## Why this organ exists
 
-Highly Extended Zork already contains danger, treasure, consequence, survival, relationship, property, environmental, and memory work. The fair adds a different kind of density: **recreational life**.
+Highly Extended Zork already contains danger, treasure, consequence, survival, relationship, property, environmental, memory, and archival work. The fair adds a different kind of density: **recreational life**.
 
 It should create reasons to:
 
@@ -54,7 +56,8 @@ It should create reasons to:
 - dance;
 - ride something twice;
 - stay until closing;
-- return another year and discover that the world remembers.
+- return another year and discover that the world remembers;
+- compare what people remember with what old records actually say.
 
 ## Structural inspiration boundary
 
@@ -106,9 +109,21 @@ It is not exclusively a children's attraction and does not become a fair-specifi
 
 RNG belongs in optional play such as fishing, races, raffles, stock variation, and incidents. Required canonical progress does not depend on arbitrary rolls.
 
-### Persistence
+### Persistence and records
 
-Records, annual objects, purchases, gifts, vendor relationships, Mara memories, fair incidents, and some NPC histories can survive beyond a single visit when broader persistence supports them.
+The fair uses **three distinct persistence authorities**:
+
+1. **Fair Office & Prize Hall** for current-event administration: schedules, current permits, entries/results, lost-and-found, current incident/complaint intake and current notices.
+2. **Existing upstairs Hall/House of Records** for selected durable documentary history: old programs, historical maps, major results, historically meaningful concession records, attraction changes and significant adjudicated incidents.
+3. **Personal/world memory** for lived continuity: Mara memories, Adventurer memories, vendor recognition, NPC opinions and relationship history.
+
+These layers may cross-reference each other, but they do not collapse into one database.
+
+The archive preserves provenance, confidence/verification, contradiction and redaction where existing archive authority supports them. A current pamphlet, an old program, Ephraim's memory and a Frobozz claim may disagree without the game inventing a magic `TRUE VERSION` flag.
+
+Private Mara/Adventurer experiences are not automatically institutional records.
+
+See `FAIR_HALL_OF_RECORDS_INTEGRATION.md` and `FAIR_PERSISTENCE_AND_MEMORY.md`.
 
 ### Real time and weather
 
@@ -128,6 +143,7 @@ The fair is additive. It does not steal House/Canyon exits, relocate required tr
 - not a romance meter arcade;
 - not a GUI attraction selector;
 - not an economy simulator that forces bookkeeping;
+- not a second historical archive beside the existing House of Records;
 - not an excuse to rewrite canonical routes.
 
 ## Interaction-density rule
@@ -140,7 +156,7 @@ The fair may have records, prizes, ribbons, fish, rare objects, and discoverable
 
 ## Relationship to existing Highly Extended Zork
 
-The fair should compose existing authorities instead of duplicating them: time/weather, world-state persistence, material/object identity, Mara relationship and autonomy, clothing/property, NPC memory, darkness/light, and natural-play qualification.
+The fair should compose existing authorities instead of duplicating them: time/weather, world-state persistence, material/object identity, Mara relationship and autonomy, clothing/property, NPC memory, darkness/light, Hall/House of Records archival authority, and natural-play qualification.
 
 Where a needed authority does not yet exist, the fair plan must name the dependency rather than silently inventing a parallel system.
 
@@ -148,4 +164,4 @@ Where a needed authority does not yet exist, the fair plan must name the depende
 
 Planning remains ahead of code.
 
-No implementation train should begin until the load-bearing authorities called out in `FAIR_PLANNING_INDEX.md` are stable enough to answer what the fair is, where it is, how money/products/people work, how Mara/autonomy behaves, what randomness may do, what persists, and how canonical play will be protected.
+No implementation train should begin until the load-bearing authorities called out in `FAIR_PLANNING_INDEX.md` are stable enough to answer what the fair is, where it is, how money/products/people work, how Mara/autonomy behaves, what randomness may do, what persists, how current records graduate into durable archival history, and how canonical play will be protected.
