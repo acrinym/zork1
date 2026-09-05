@@ -19,9 +19,8 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 - Older regional fair association plus later Frobozz-branded presence; not corporate monoculture.
 - New **NE spur from canonical `CLEARING`**; every existing canonical exit/barrier remains.
 - Fairground is real persistent meadow/field geography.
-- **16 major fair locations**, now with a locked planning connection graph.
-- Graph is a mesh with multiple pedestrian loops, not hub-and-dead-end spokes.
-- **General admission is free.**
+- **16 major fair locations** with a locked mesh connection graph.
+- General admission is free.
 - Ordinary commerce uses **zorkmids** under an authored everyday purchasing-power scale.
 - Original Zork I `VALUE/TVALUE` is not a money conversion.
 - Prize tickets are earned midway redemption currency only.
@@ -29,10 +28,20 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 - First product-identification case: `large drink` -> **pear-lime fizz, 4 zm**.
 - Product identity and player knowledge are separate world state.
 - NPC answers derive from actual knowledge; no generic answer where specific knowledge should exist.
-- Initial core roster: **12 named NPCs**, now bound to real fair locations and daily schedules.
+- Initial core roster: **12 named NPCs**, bound to real fair locations and daily schedules.
 - Daily operation uses nine semantic phases from PREOPEN through AFTER-HOURS.
 - Closing is sequential: queues stop, active rides finish, redemption remains available, visitors drain naturally, staff continue cleanup.
 - Back Lane is the real service/staff seam.
+- Core attractions have first full planning passes: Observation Wheel, Carousel, Flying Chairs, Scenic GUE ride and five-node House of Mirrors.
+- Games Row has eight mechanically distinct initial activities rather than one RNG roll reskinned.
+- Fishing has a full optional hobby/derby planning loop with positions, bait/gear, real catches, junk, records and Mara competition.
+- First story web contains nine interconnected miniquests/incidents.
+- **No duplicate fair historical archive.** The existing upstairs/Attic Hall/House of Records remains the durable documentary authority.
+- Fairground location #15 is **Fair Office & Prize Hall**, not `Prize & Records Hall`.
+- Ada Vellum is current fair registrar/office clerk; durable historical records graduate to the existing House of Records.
+- Fair records have three layers: current Fair Office paperwork, durable House of Records documentary history, and personal lived memory.
+- Existing archive provenance/confidence/verification/contradiction/redaction semantics should be reused for fair history where applicable.
+- Private Mara/Adventurer memories are not automatically institutional records.
 - Mara has independent fair agency and is not assigned a fixed NPC-worker schedule.
 - Adult social/romantic/intimate life is first-class while broader consent/autonomy authority remains sovereign.
 - Controlled RNG is welcome for optional fair play, never required canonical progression.
@@ -46,8 +55,8 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 | `FAIR_PRODUCT_BIBLE.md` | DESIGNING | North star, product identity, boundaries |
 | `FAIR_NAME_AND_LORE.md` | STABLE FOR PLANNING | Public name, regional origin, governance/Frobozz relationship |
 | `FAIR_SITE_SELECTION.md` | LOCKED FOR PLANNING | Canonical map evidence and attachment seam |
-| `FAIR_GEOGRAPHY.md` | STABLE FOR PLANNING | 16-location graph, movement/privacy/service topology |
-| `FAIR_DAILY_OPERATIONS.md` | STABLE FOR PLANNING | phase-by-phase room operation, NPC schedule, closing/after-hours |
+| `FAIR_GEOGRAPHY.md` | STABLE FOR PLANNING | 16-location graph, Fair Office & Prize Hall, movement/privacy/service topology |
+| `FAIR_DAILY_OPERATIONS.md` | STABLE FOR PLANNING | phase-by-phase operation, NPC schedule, current-office closeout, closing/after-hours |
 | `FAIR_TIME_SCHEDULE_AND_SEASON.md` | STABLE FOR PLANNING | annual recurrence and semantic daily lifecycle |
 | `FAIR_PRODUCTS_AND_ZORKMID_ECONOMY.md` | STABLE FOR PLANNING | purchasing power, free admission, commerce laws |
 | `FAIR_PRICE_BOOK.md` | DESIGNING | concrete initial prices and redemption bands |
@@ -57,30 +66,43 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 | `FAIR_GAMES_COMPETITIONS_AND_RECORDS.md` | DESIGNING | midway play, records, contests |
 | `FAIR_FISHING.md` | DESIGNING | fishing hobby and derby |
 | `FAIR_RNG_CONTRACT.md` | DESIGNING | controlled randomness and reproducibility |
-| `FAIR_NPC_ROSTER.md` | STABLE FOR INITIAL CORE PLANNING | 12 named people, roles, locations, knowledge boundaries |
+| `FAIR_NPC_ROSTER.md` | STABLE FOR INITIAL CORE PLANNING | core people, Ada/Fair Office boundary, roles/locations/knowledge |
 | `FAIR_DIALOGUE_AND_CONTEXTUAL_KNOWLEDGE.md` | DESIGNING | who can say what, and why |
 | `FAIR_MARA_EXPERIENCE.md` | DESIGNING | Mara-specific agency, preferences, memory |
 | `FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` | DESIGNING | adult social and relationship space |
 | `FAIR_FOOD_AND_CONCESSIONS.md` | STABLE FOR PLANNING | food, drink, elephant ears, pear-lime example |
-| `FAIR_MINIQUESTS_INCIDENTS_AND_RUMORS.md` | DESIGNING | small stories and discovered objectives |
+| `FAIR_MINIQUESTS_INCIDENTS_AND_RUMORS.md` | STABLE FOR FIRST STORY-WEB PLANNING | nine small stories, evidence/provenance seams |
 | `FAIR_REWARDS_PRIZES_AND_COLLECTIBLES.md` | DESIGNING | tickets, prizes, annual objects |
-| `FAIR_PERSISTENCE_AND_MEMORY.md` | DESIGNING | what survives visits and years |
+| `FAIR_PERSISTENCE_AND_MEMORY.md` | STABLE FOR PLANNING | current vs documentary vs personal persistence |
+| `FAIR_HALL_OF_RECORDS_INTEGRATION.md` | STABLE FOR PLANNING | reuse of existing attic/House of Records, archival graduation/provenance/privacy |
 | `FAIR_WEATHER_AND_ENVIRONMENT.md` | DESIGNING | time/weather integration |
 | `FAIR_NATURAL_PLAY_ACCEPTANCE.md` | DESIGNING | future qualification contract |
 | `FAIR_OPEN_QUESTIONS.md` | OPEN | intentionally unresolved decisions |
 
+## Existing archive authority consumed by the fair
+
+The fair must compose rather than duplicate these live product organs:
+
+- `glulx/attic-archive-core/`;
+- `glulx/attic-area-case-files/`;
+- `glulx/attic-npc-dossiers/` where appropriate;
+- `glulx/attic-playback/` where supported;
+- `glulx/completed-expedition-archive/`, explicitly the House of Records capstone.
+
+`FAIR_HALL_OF_RECORDS_INTEGRATION.md` owns this seam.
+
 ## Current planning frontier
 
-The fair now has identity, map attachment, economy, products, core people, a full 16-location graph and an operating day.
+The fair now has identity, map attachment, economy, products, core people, full operating geography/day, first deep attractions/games/fishing, a first story web, and a clean integration with the existing House of Records.
 
-The next highest-leverage work is **make the attractions and stories real enough to live in**:
+Next highest-leverage work is **secondary cast + character/system tightening**:
 
-1. deepen the Observation Wheel, Ride Court, House of Mirrors and scenic ride into complete parser attractions;
-2. lock an initial Games Row roster with genuinely different mechanics and ticket/record behavior;
-3. deepen Fishing Pond into a complete hobby/derby loop;
-4. weave the first miniquests/incidents through the real NPC schedules and geography;
-5. then tighten Mara/adult-social/persistence/RNG authorities against those concrete activities.
+1. name/bind the dubious game operator, repair specialist, artisan, child/family story characters, recurring couple(s) and rival angler;
+2. tighten Mara's fair behavior against concrete rides, games, fishing, food and stories;
+3. lock the adult evening venue identity and social/private behavior seams;
+4. resolve RNG/save semantics far enough for future qualification;
+5. tighten prize/record/archive graduation details around actual contest outputs without duplicating the House of Records.
 
 ## Gate before implementation
 
-Do not create implementation beads/trains until at minimum the Product Bible, Name/Lore, Geography, Products/Economy, Product Knowledge, Mara Experience, Adult Social, RNG, Persistence and Natural-Play documents have explicit stable decisions. Planning may grow; coding must not outrun authority.
+Do not create implementation beads/trains until at minimum the Product Bible, Name/Lore, Geography, Products/Economy, Product Knowledge, Mara Experience, Adult Social, RNG, Persistence, Hall-of-Records integration and Natural-Play documents have explicit stable decisions. Planning may grow; coding must not outrun authority.
