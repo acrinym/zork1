@@ -22,12 +22,18 @@ The following are no longer open:
 - **Elephant-ear baseline:** cinnamon-sugar 5 zm.
 - **First partial-identification drink:** `large drink` = pear-lime fizz, 4 zm.
 - **Initial named core roster:** 12 named NPCs with explicit knowledge boundaries.
-- **Initial major geography:** 16 locations.
-- **Detailed 16-location graph:** locked in `FAIR_GEOGRAPHY.md`.
+- **Initial major geography:** 16 locations with locked mesh graph.
+- **Fairground room #15:** **Fair Office & Prize Hall**, not a second records hall.
 - **Daily phase model:** PREOPEN, OPENING, LATE-MORNING, MIDDAY, AFTERNOON, DUSK, EVENING, CLOSING, AFTER-HOURS.
 - **Core NPC day schedule:** locked for planning in `FAIR_DAILY_OPERATIONS.md`.
 - **Closing model:** sequential, not one global shutdown tick.
-- **Back Lane function:** real service/staff route and bounded after-hours activity, not a magic backstage teleport.
+- **Back Lane function:** real service/staff route and bounded after-hours activity.
+- **Historical archive ownership:** the existing upstairs/Attic Hall/House of Records remains the durable documentary authority.
+- **Fair Office records scope:** current-fair administration, entries/results, permits, lost-and-found and incident intake.
+- **Ada Vellum:** current fair registrar/office clerk, not omniscient historian/master archivist.
+- **Record layers:** current Fair Office paperwork, durable House of Records documentary history, and personal lived memory remain distinct.
+- **Archive semantics:** reuse existing provenance/confidence/verification/contradiction/redaction and physical-record concepts where applicable.
+- **Privacy boundary:** private Mara/Adventurer memories do not automatically become institutional records.
 
 See owning authorities rather than re-deriving these decisions from this ledger.
 
@@ -40,7 +46,7 @@ See owning authorities rather than re-deriving these decisions from this ledger.
 ## Geography still open
 
 - Which observation-wheel components remain standing off-season versus partial disassembly.
-- Exact House of Mirrors internal footprint/sub-map.
+- Final House of Mirrors internal physical footprint/sub-map details.
 - Exact restricted doors/storage boundaries along Back Lane.
 - Fine physical scale/walking-time semantics once broader movement/time authority can express them honestly.
 
@@ -57,10 +63,22 @@ See owning authorities rather than re-deriving these decisions from this ledger.
 - Exact prize-ticket award rates per game and final redemption catalog.
 - Which premium performances/events, if any, charge separate admission.
 
+## Archive / records still open
+
+The **ownership boundary is resolved**. Only implementation-level archival policy remains open:
+
+- exact point in the fair lifecycle when selected current records are transferred/eligible for upstairs filing;
+- exact annual-summary document set;
+- which contest/derby thresholds qualify as durable archive material versus routine current-office paperwork;
+- which significant incident categories generate durable case files after adjudication;
+- how existing attic playback/dossier authority should compose with a small subset of fair records where genuinely useful.
+
+Do not reopen the question of creating a separate Fair Historical Archive.
+
 ## Attractions still open
 
-- Final initial ride roster beyond the already planned observation wheel, carousel, flying chairs/swings, scenic GUE-history ride and House of Mirrors.
-- Exact House of Mirrors authored topology and anomaly set.
+- Any additions/reductions to the initial ride roster beyond observation wheel, carousel, flying chairs/swings, scenic GUE-history ride and House of Mirrors.
+- Final authored anomaly set inside the House of Mirrors.
 - Exact wheel carriage count/cycle semantics only if mechanically useful.
 - Which attractions are association-owned, independent or Frobozz-operated.
 
@@ -82,13 +100,14 @@ See owning authorities rather than re-deriving these decisions from this ledger.
 - Additional roles: dubious game operator, repair worker, artisan, child/family stories, recurring couples, rival anglers.
 - Whether any worker needs an authored substitute/helper rather than simply closing during a break.
 
-## Games and miniquests still open
+## Games and story-web still open
 
-- Exact first game roster, ticket awards and record mechanics.
-- First suspicious/rigged-game investigation and its operator.
-- First mundane lost-item/help story.
-- First House-of-Mirrors mystery.
-- First recurring couple/family continuity arc.
+- Final exact ticket awards/record thresholds for the eight initial games.
+- Name/personality of the suspicious shell-game operator.
+- Named child/family cast for the 39-ticket and lost-property stories.
+- Maintenance specialist for ride/mirror incidents.
+- Recurring couple/family continuity arc.
+- Exact archival evidence available for F-03/F-09 after the existing House of Records contents are mapped in implementation planning.
 
 ## RNG still open
 
@@ -99,3 +118,4 @@ See owning authorities rather than re-deriving these decisions from this ledger.
 
 - Which post-1307 time/weather authority becomes stable enough to consume.
 - Which Mara autonomy/memory, wardrobe/property, money-container and calendar systems must land before fair implementation.
+- Exact implementation seam into the existing attic archive modules once a fair implementation train is eventually authorized.
