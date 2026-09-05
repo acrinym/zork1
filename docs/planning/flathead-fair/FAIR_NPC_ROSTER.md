@@ -1,64 +1,51 @@
 # Flathead Fair NPC roster
 
-**Status:** DESIGNING  
+**Status:** STABLE FOR INITIAL CORE PLANNING  
 **Initial core roster:** 12 named characters  
-**Names:** working but intentionally concrete enough to design dialogue, schedules, and knowledge
+**Daily schedule authority:** `FAIR_DAILY_OPERATIONS.md`
 
 ## Population model
 
 Use two layers:
 
-1. **authored crowd population** for scale, motion, sound, incidental reactions, families, couples, children, and background activity;
-2. **named NPCs** for persistent schedules, knowledge, inventory, motives, dialogue, quests, relationships, and repeat visits.
+1. **authored crowd population** for scale, motion, sound, incidental reactions, families, couples, children and background activity;
+2. **named NPCs** for persistent schedules, knowledge, inventory, motives, dialogue, quests, relationships and repeat visits.
 
 Long-term target remains roughly **15–25 substantial named fair NPCs**, but the first implementation should not require all of them.
+
+Named people are not permanently nailed behind counters. Their day-phase locations are now defined in `FAIR_DAILY_OPERATIONS.md`.
 
 ## Core roster
 
 ### 1. Berrin Vale — fair steward
 
+**Primary spaces:** Fair Entrance, Central Midway, Grand Pavilion, Prize & Records Hall, Back Lane.
+
 **Role:** senior on-site representative of the Flathead Fair Association; practical grounds manager rather than monarch of the fair.
 
-Knows:
+Knows grounds layout, concession assignments, daily schedule, reported ride shutdowns, association rules, complaints/incidents and broad fair history.
 
-- grounds layout;
-- concession assignments;
-- daily schedule;
-- opening/closing decisions;
-- ride shutdowns reported to the office;
-- association rules;
-- complaints and incidents;
-- broad fair history.
+Does not automatically know secret recipes, exact fish behavior, every visitor's personal history, or faults nobody has reported.
 
-Does not automatically know:
-
-- secret vendor recipes;
-- exact fish behavior;
-- every customer's personal history;
-- hidden mechanical faults that have not been reported.
-
-Useful interactions: directions, complaints, lost-property escalation, weather closures, vendor disputes, historical questions, larger incidents.
+Useful interactions: directions, complaints, lost-property escalation, weather closures, vendor disputes, historical questions and larger incidents.
 
 ### 2. Ada Vellum — records and fair-office clerk
 
-**Role:** keeper of records, old programs, contest entries, permits, ribbons, lost-and-found paperwork, and the kind of documents nobody else wants to organize.
+**Primary spaces:** Prize & Records Hall; Grand Pavilion when an official result/event requires her.
 
-Knows:
+**Role:** keeper of records, old programs, contest entries, permits, ribbons, lost-and-found paperwork and the documents nobody else wants to organize.
 
-- past winners and records available to the office;
-- fair schedules/programs;
-- concession paperwork;
-- lost-and-found intake;
-- official histories and their wording;
-- prize/contest procedures.
+Knows past winners/records held by the office, schedules/programs, concession paperwork, lost-and-found intake, official history wording and prize/contest procedure.
 
-Personality direction: dry, precise, capable of identifying when Frobozz promotional language has quietly rewritten something in the archive.
+Personality direction: dry, precise and capable of noticing when Frobozz promotional language has quietly rewritten the archive.
 
-Potential long-term value: one of the strongest anchors for annual continuity.
+Long-term value: one of the strongest anchors for annual continuity.
 
 ### 3. Mabel Rusk — elephant-ear concessioner
 
-**Role:** independent recurring food vendor and owner/operator of the fair's signature elephant-ear stall.
+**Primary spaces:** Food Row; Back Lane during setup/cleanup and one authored break.
+
+**Role:** independent recurring owner/operator of the fair's signature elephant-ear stall.
 
 Primary products:
 
@@ -67,210 +54,184 @@ Primary products:
 - apple-topped — 6 zm;
 - honey-nut — 7 zm;
 - oversized sharing version — 12 zm;
-- possible Frobozz-branded deluxe product only if commercial arrangement makes sense.
+- Frobozz-deluxe product only if the commercial arrangement makes sense.
 
-Knows:
+Knows ingredients, preparation, frying condition, prices, serving sizes, ingredient warnings, sales patterns and preferences she has actually learned.
 
-- ingredients;
-- preparation;
-- oil/frying condition;
-- price;
-- serving sizes;
-- ingredient warnings;
-- what's selling well;
-- regular-customer preferences she has actually learned.
-
-Mabel should be able to answer an unreasonable number of reasonable elephant-ear questions without sounding like a database.
+Mabel should answer an unreasonable number of reasonable elephant-ear questions without sounding like a database.
 
 ### 4. Tomas Quince — cold-drink seller
+
+**Primary spaces:** Food Row; Back Lane during setup/cleanup.
 
 **Role:** proprietor/operator of the drink stand used for the first product-identification acceptance case.
 
 Primary known product:
 
-- initially describable as `large drink`;
+- initial presentation: `large drink`;
 - actual identity: **pear-lime fizz**;
 - price: **4 zm**;
-- ordinary flavor answer: **"Pear and lime. Mostly pear."**
+- ordinary flavor answer: **“Pear and lime. Mostly pear.”**
 
 Also sells simple drinks and souvenir fair mugs/refills.
 
-Knows his recipes, ingredients, stock, prices, cup sizes, freshness, and which products customers keep asking for.
-
-He does not know whether Mara likes a drink until she has actually expressed or demonstrated a preference he could know about.
+Knows his recipes, ingredients, stock, prices, cup sizes and freshness. He does not know whether Mara likes something until she has actually expressed/demonstrated a preference he could know about.
 
 ### 5. Silas Dace — fishing master and weigh-in official
 
-**Role:** pond authority, derby official, experienced angler, and keeper/judge of catches during competition.
+**Primary spaces:** Fishing Pond; Grand Pavilion / Prize & Records Hall only when derby judging/results require it; Pond Path when off duty and still present.
 
-Knows:
+Knows pond rules, common fish, bait/lure advice, weigh-in procedure, current derby records, relevant weather/time conditions and which anglers habitually exaggerate.
 
-- pond rules;
-- common fish;
-- bait/lure advice;
-- weigh-in procedure;
-- current derby records;
-- weather/time conditions relevant to fishing;
-- which anglers habitually exaggerate.
+Does not reveal rare-catch tables as a walkthrough.
 
-Does not reveal every rare catch table as a walkthrough.
-
-Silas can become a friendly rival/mentor figure without becoming a fishing-stat dispenser.
+Silas can be a friendly rival/mentor without becoming a fishing-stat dispenser.
 
 ### 6. Nell Harrow — prize counter clerk
 
-**Role:** runs the main prize counter and understands the fair's ticket redemption system.
+**Primary space:** Prize & Records Hall.
 
-Knows:
+Knows current prize stock, exact ticket costs, sold-out items, annual variants, valid ticket sources and obvious counterfeits.
 
-- current prize stock;
-- exact ticket costs;
-- sold-out items;
-- annual prize variants;
-- which booths issue valid tickets;
-- obvious counterfeit/invalid tickets;
-- when a child has been staring at the same stuffed grue for twenty minutes.
+Potential comedy: professionally immune to arguments that 39 tickets are “basically 40.”
 
-Potential comedy: professionally immune to people trying to argue that 39 tickets are "basically 40."
+Her counter stays open later than most game booths during closing so recently earned tickets are not stranded by schedule design.
 
 ### 7. Emery Wicks — observation-wheel operator
 
-**Role:** runs the wheel, boards riders, watches weather, and is responsible for deciding whether operation remains safe under authored conditions.
+**Primary spaces:** Observation Wheel; Back Lane after shutdown or during substantial repair.
 
-Knows:
+Knows fare/boarding rules, carriage state, operating schedule, ordinary mechanical noises, wind/weather limits and whether a temporary stop is routine or unusual.
 
-- ride price and boarding rules;
-- carriage state;
-- operating schedule;
-- ordinary mechanical noises;
-- wind/weather limits relevant to the wheel;
-- whether a temporary stop is routine or actually unusual.
-
-Does not know intimate details of conversations inside closed carriages merely because he operates the ride.
+Does **not** know private conversations inside closed carriages merely because he operates the wheel.
 
 ### 8. Tilda Fen — Ride Court operator
 
-**Role:** experienced amusement operator responsible for the carousel and/or smaller Ride Court machinery.
+**Primary spaces:** Ride Court; Back Lane during setup/repair/shutdown.
 
-Knows:
+Responsible for carousel and smaller Ride Court machinery.
 
-- carousel figures;
-- ride rules;
-- operating state;
-- basic maintenance symptoms;
-- which mount children constantly fight over;
-- which machinery is genuinely old versus merely painted to look old.
+Knows carousel figures, ride rules, operating state, basic maintenance symptoms, which mount children fight over and which machinery is genuinely old versus merely painted old.
 
-Tilda should have actual opinions about Frobozz-made replacement parts.
+Tilda has actual opinions about Frobozz-made replacement parts.
 
 ### 9. Jonas Pell — honest midway game operator
 
-**Role:** runs one of the fair's genuinely skill-based games and explains the rules plainly.
+**Primary space:** Games Row.
 
-Design purpose:
+Runs a genuinely skill-based game and explains its rules plainly.
 
-- establish that not every midway booth is a con;
-- provide a baseline against which suspicious games can later be compared;
-- give the player a place where improved performance follows understandable mechanics.
+Design purposes:
 
-Knows his game's rules, equipment, records, common mistakes, and prize schedule.
+- prove not every booth is a con;
+- give a baseline against which suspicious games can later be compared;
+- let improved performance follow understandable mechanics.
+
+Knows his rules, equipment, records, common mistakes and prize/ticket schedule.
 
 ### 10. Vera Tallow — curiosity merchant
 
-**Role:** temporary/returning dealer in old mechanisms, odd tools, lenses, puzzle boxes, dubious antiquities, strange keys, and objects that may be more or less interesting than advertised.
+**Primary spaces:** Market Row; Back Lane during setup/packing; occasionally Dance Pavilion as an off-duty visitor on selected evenings.
 
-Knowledge rule:
+Deals in old mechanisms, odd tools, lenses, puzzle boxes, dubious antiquities, strange keys and objects that may be more or less interesting than advertised.
 
-Vera knows what she knows, suspects what she suspects, and repeats provenance claims she has been told. Those are three different categories.
+Knowledge rule: Vera distinguishes what she **knows**, what she **suspects**, and what someone **claimed to her**. She may be wrong. She is not a supernatural identification oracle.
 
-She may be wrong. She should not be a supernatural item-identification oracle.
-
-Potential signature stock includes the crooked brass object/compass concept and other physically real curiosities.
+Potential signature stock includes the crooked brass compass concept and other physically real curiosities.
 
 ### 11. Orin Bell — musician and dance-pavilion bandleader
 
-**Role:** recurring performer who helps make the fair's evening social life an actual scheduled place rather than scenery.
+**Primary spaces:** Grand Pavilion during daytime program/rehearsal; Dance Pavilion at dusk/evening; Back Lane while arriving/packing.
 
-Knows:
+Knows performance schedule, repertoire, musicians, dance customs he has observed, recurring attendees he recognizes and practical pavilion gossip.
 
-- performance schedule;
-- songs/repertoire;
-- other musicians;
-- dance customs he has actually observed;
-- recurring attendees he recognizes;
-- practical gossip from being in the pavilion night after night.
-
-He can take song requests where repertoire supports it and may remember a couple's recurring song without turning that into a global romance database.
+He can take song requests where repertoire supports it and may remember a couple's recurring song without becoming a global romance database.
 
 ### 12. Ephraim Peake — elderly recurring fairgoer
 
-**Role:** long-time attendee who exists primarily as a visitor, not an employee.
+**Primary route:** Entrance/Food Row -> Grand/Market -> Exhibition/Pond Path -> Central/wheel vicinity -> Dance Pavilion/stroll, varying by day and events.
 
-Knows:
+He is a visitor, not staff.
 
-- his own memories of earlier fairs;
-- old prices;
-- former vendors/attractions he actually remembers;
-- local stories and arguments about fair history;
-- what he personally likes/dislikes now.
+Knows his own memories of earlier fairs, old prices, former vendors/attractions he remembers, local stories and his present likes/dislikes.
 
 He is deliberately **not always objectively correct**. His value is lived continuity.
 
-Expected lines of thought include things like:
+Expected opinions include:
 
 - elephant ears used to cost two zorkmids;
-- a ride was better before somebody "improved" it;
+- a ride was better before somebody “improved” it;
 - an old concession stood somewhere else;
-- the official pamphlet has the date wrong, according to him.
+- an official pamphlet has the date wrong, according to him.
 
 ## Knowledge-boundary law
 
-Every named NPC should eventually get a small authority table covering:
+Every named NPC ultimately has a compact authority table covering:
 
-- what they know by job;
-- what they know by observation;
-- what they know from personal history;
-- what they merely believe;
-- what they do not know;
-- what they will refuse to discuss even if they know it.
+- job knowledge;
+- witnessed/observed knowledge;
+- personal-history knowledge;
+- beliefs/hearsay;
+- explicit unknowns;
+- things they will not discuss even when known.
 
-This is how the fair avoids generic responses without pretending every NPC is an LLM.
+This prevents generic responses without pretending every NPC is an infinite conversational model.
 
 ## Schedule law
 
-Named NPCs do not stand at one coordinate forever.
+The core schedule is now locked for planning in `FAIR_DAILY_OPERATIONS.md` across:
 
-At minimum, core staff/vendors need authored states for:
+- PREOPEN;
+- OPENING;
+- LATE-MORNING;
+- MIDDAY;
+- AFTERNOON;
+- DUSK;
+- EVENING;
+- CLOSING;
+- AFTER-HOURS.
 
-- before opening;
-- working period;
-- break/meal if relevant;
-- evening or departure;
-- closing;
-- exceptional closure/weather state.
+Not every NPC wanders every turn. A schedule changes the character's authored location/state at meaningful phase boundaries and may include visible movement through adjacent fair geography.
 
-Not every NPC needs to wander every turn. Schedules are authored world behavior, not background pathfinding for its own sake.
+### Breaks
+
+A worker may take an authored break. The world explains it with a sign, neighboring NPC, visible movement or a stated return condition. Paid interactions do not accept money while the responsible service is unavailable.
+
+Breaks are valuable because they let the player meet a vendor as a person somewhere other than behind a counter.
+
+## Weather schedule override
+
+Named operators respond according to expertise:
+
+- Emery controls wheel suspension for wind;
+- Tilda controls Ride Court machinery;
+- Silas controls fishing/derby guidance;
+- Berrin coordinates serious grounds response;
+- vendors protect/close their own stock according to conditions.
+
+No omniscient global weather puppeteer replaces character decisions.
 
 ## Mara relation
 
-Mara may independently know, like, dislike, remember, or form opinions about these people. A vendor can remember Mara separately from remembering the Adventurer where events justify it.
+Mara may independently know, like, dislike, remember or form opinions about these people. A vendor can remember Mara separately from remembering the Adventurer where events justify it.
+
+Mara is not given a fixed fair-worker schedule. Her movement comes from current companionship, independent choices, preferences, crowd tolerance, hunger/tiredness, activities and relationship state.
 
 The fair should not model every NPC primarily as a conduit for the Adventurer/Mara relationship.
 
 ## Still-missing long-term roles
 
-Likely later additions include:
+Later additions remain valuable:
 
 - dubious/possibly rigged game operator;
-- dedicated repair/maintenance worker;
-- performer beyond Orin's group;
-- artisan/craft seller;
-- child/family characters for mundane discovered stories;
-- recurring couple(s) whose own relationship changes over fairs;
-- fair safety/constable role if genuinely needed;
+- repair/maintenance specialist;
+- dedicated artisan/craft seller;
+- child/family characters for mundane stories;
+- recurring couple(s) whose own relationship changes;
+- fair safety/constable role only if genuinely needed;
 - rival anglers beyond Silas's official role;
-- transient vendors who appear only certain years.
+- transient vendors appearing only in selected years.
 
 ## Roster law
 
-Do not create dozens of interchangeable named people. Named NPCs exist because they have knowledge, behavior, continuity, or a useful story role.
+Do not create dozens of interchangeable names. A named NPC exists because they have knowledge, behavior, continuity or a useful story role.
