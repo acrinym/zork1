@@ -1,7 +1,7 @@
 # Flathead Fair planning index
 
 **Status:** DESIGNING  
-**Working name:** Flathead Fair  
+**Public name:** **Flathead Fair** — LOCKED  
 **Scope:** product planning only; no implementation train is authorized by this packet  
 **Base frontier:** `master` at `767364f6b1de5ff45278f8f0d66508524e3f9b19`
 
@@ -13,7 +13,13 @@ The fair must feel native to Zork and remain optional to canonical progression.
 
 ## Decisions already established
 
-- Working name: **Flathead Fair**. The final lore pass may still refine the formal title.
+- Public/common name: **Flathead Fair**.
+- Canonical name anchor: the **Flathead Mountains** named from `CANYON-VIEW` in `1dungeon.zil`.
+- The event is an **annual regional fair** in world fiction, with real multi-year recurrence deferred until global calendar/aging authority supports it.
+- The fair predates modern Frobozz-branded involvement; independent vendors and a regional fair association remain first-class.
+- Physical attachment is through a new **northeast spur from canonical `CLEARING`**, preserving every existing exit and explicit forest/canyon barrier.
+- Fairgrounds occupy new meadow/field geography beyond the existing forest screen and continue to exist off-season.
+- Initial geography targets about **16 dense functional locations**, not dozens of transit rooms.
 - Ordinary purchases use **zorkmids**.
 - A separate prize-ticket currency may exist for midway rewards only; it must not replace ordinary money.
 - **Elephant ears are a signature fair staple.**
@@ -32,9 +38,10 @@ The fair must feel native to Zork and remain optional to canonical progression.
 | Document | Status | Owns |
 |---|---|---|
 | `FAIR_PRODUCT_BIBLE.md` | DESIGNING | North star, boundaries, product definition |
-| `FAIR_NAME_AND_LORE.md` | DESIGNING | Name, cultural role, Frobozz/Flathead framing |
-| `FAIR_GEOGRAPHY.md` | OPEN | Physical placement and dense room plan |
-| `FAIR_TIME_SCHEDULE_AND_SEASON.md` | DESIGNING | Daily and recurring fair lifecycle |
+| `FAIR_NAME_AND_LORE.md` | STABLE FOR PLANNING | Locked public name, regional origin, fair-association/Frobozz relationship |
+| `FAIR_SITE_SELECTION.md` | LOCKED FOR PLANNING | Canonical map evidence and selected attachment seam |
+| `FAIR_GEOGRAPHY.md` | DESIGNING | Locked attachment plus district/room plan |
+| `FAIR_TIME_SCHEDULE_AND_SEASON.md` | DESIGNING | Locked annual recurrence plus daily/event lifecycle |
 | `FAIR_PRODUCTS_AND_ZORKMID_ECONOMY.md` | DESIGNING | Prices, money, merchandise, purchasing power |
 | `FAIR_PRODUCT_KNOWLEDGE_AND_QUESTIONS.md` | DESIGNING | Partial identification and question answering |
 | `FAIR_VENDOR_AND_COMMERCE_DESIGN.md` | DESIGNING | Merchants, stalls, stock, expertise |
@@ -53,6 +60,16 @@ The fair must feel native to Zork and remain optional to canonical progression.
 | `FAIR_WEATHER_AND_ENVIRONMENT.md` | DESIGNING | Time/weather integration |
 | `FAIR_NATURAL_PLAY_ACCEPTANCE.md` | DESIGNING | Future qualification contract |
 | `FAIR_OPEN_QUESTIONS.md` | OPEN | Decisions still deliberately unresolved |
+
+## Next planning frontier
+
+The next highest-leverage unresolved authority is **money and admission**:
+
+1. establish a coherent zorkmid purchasing-power scale against existing Zork money/treasure references;
+2. decide whether grounds entry is free, paid, or mixed;
+3. separate normal zorkmid commerce from prize-ticket redemption;
+4. give the first product roster actual stable prices;
+5. then build the first named vendor/NPC roster around those economics.
 
 ## Gate before implementation
 
