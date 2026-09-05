@@ -29,15 +29,7 @@ Natural play should prove:
 
 ## Free-entry acceptance
 
-A player with insufficient or zero spendable zorkmids must still be able to:
-
-- enter the grounds;
-- walk public routes;
-- talk to NPCs;
-- watch ordinary public activity;
-- accompany Mara;
-- inspect products/menus/signage;
-- leave safely.
+A player with insufficient or zero spendable zorkmids must still be able to enter grounds, walk public routes, talk to NPCs, watch ordinary public activity, accompany Mara, inspect products/menus/signage and leave safely.
 
 They may correctly be unable to buy products or paid services.
 
@@ -90,6 +82,51 @@ Qualification should eventually sample:
 
 Not every NPC needs every test in every release; each promoted organ needs deterministic representative routes.
 
+## Fair Office / Hall of Records acceptance
+
+The fair must prove the difference between **current administration** and **durable historical archive**.
+
+Representative future qualification should cover:
+
+1. reach the **Fair Office & Prize Hall** and ask Ada Vellum about a current fair schedule, permit, entry/result, lost property or current incident;
+2. receive a useful answer from the current Fair Office when Ada plausibly has the material;
+3. ask Ada for an older historical fact whose evidence lives upstairs;
+4. have Ada identify/direct toward the older archive source rather than magically returning the contents of a remote file;
+5. travel/use the existing upstairs Hall/House of Records authority where the relevant archive is accessible;
+6. review/show/cross-reference a physical archive record through existing archive semantics rather than a fair-only history UI;
+7. preserve provenance when an old program, current program, Ephraim memory and Frobozz claim disagree;
+8. allow the result to remain a documented contradiction when evidence does not resolve it.
+
+### Current incident -> durable record path
+
+For a representative significant incident such as proven shell-game cheating:
+
+- evidence/complaint begins as current Fair Office material;
+- Berrin/association procedure adjudicates it where designed;
+- only then can a meaningful report become a candidate for durable House of Records filing;
+- the historical archive must not contain future/current incidents before they have occurred and been filed.
+
+Routine lost-property or trivial daily paperwork should not automatically generate permanent archive files.
+
+### Physical evidence remains physical
+
+For the old pond-token path:
+
+- the token remains the same physical object;
+- an archived program/map/concession roll may provide context;
+- filing/cross-referencing does not replace the token with an abstract archive flag;
+- Vera/Ephraim/Ada/archive sources may disagree and retain source identity.
+
+### Privacy acceptance
+
+Qualification must explicitly prevent institutional memory from becoming surveillance:
+
+- Mara remembering a private wheel ride, kiss, conversation or elephant-ear dispute does not create Fair Office or House of Records paperwork by itself;
+- private NPC thoughts/preferences do not appear in archive records unless independently documented through an authored public/documentary event;
+- the archive cannot answer private relationship questions merely because it persists world history.
+
+See `FAIR_HALL_OF_RECORDS_INTEGRATION.md` and `FAIR_PERSISTENCE_AND_MEMORY.md`.
+
 ## Mara acceptance
 
 Mara remains autonomous at the fair.
@@ -102,7 +139,7 @@ Tests must include cases where she can:
 - remember a shared event where memory authority exists;
 - avoid relationship behavior not supported by current context/consent/state.
 
-There is no hidden fair-only romance override.
+There is no hidden fair-only romance override and no automatic institutional recording of private Mara events.
 
 ## Fair-life acceptance
 
@@ -117,7 +154,9 @@ Representative natural-play histories should ultimately cover:
 - a scheduled performance/event;
 - dusk/night transition;
 - closing/exit;
-- Mara agency and refusal/initiative.
+- Mara agency and refusal/initiative;
+- one current Fair Office interaction;
+- one historical cross-reference into the existing Hall/House of Records when appropriate.
 
 A later multi-year history is required only when the broader calendar can honestly support a later fair.
 
@@ -135,18 +174,20 @@ When fair time/weather integration lands:
 
 Before RNG-dependent fair play ships, qualification must prove the chosen seeding/save contract intentionally.
 
-It must be clear which outcomes are:
-
-- fixed for a fair day;
-- rolled at action time;
-- persisted after the roll;
-- allowed to differ after restore, if any.
+It must be clear which outcomes are fixed for a fair day, rolled at action time, persisted after the roll, and allowed to differ after restore, if any.
 
 Save-scumming behavior should be a known design decision, not an accident.
 
 ## Persistence acceptance
 
-Where the broader calendar permits a later fair, prove that selected records, owned prizes, vendor/NPC memories, and Mara memories survive while temporary stock/crowds reset according to their own authority.
+Where the broader calendar permits a later fair, prove separately that:
+
+- selected **documentary** records persist through the existing House of Records authority;
+- owned prizes remain physical property;
+- vendor/NPC memories persist through personal/world memory authority;
+- Mara memories persist through Mara memory authority;
+- temporary stock/crowds/routine current-office paperwork reset according to their own lifecycle;
+- documentary and personal memory do not silently collapse into one storage model.
 
 ## No cheat leakage
 
@@ -154,4 +195,4 @@ Test-only setup verbs/state helpers must never appear in production parser space
 
 ## No completion requirement
 
-Qualification does not require exhausting every prize, fish, NPC, product, or miniquest. The fair is a place to revisit, not a `100%` checklist.
+Qualification does not require exhausting every prize, fish, NPC, product or miniquest. The fair is a place to revisit, not a `100%` checklist.
