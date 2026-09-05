@@ -40,13 +40,15 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 - Games Row has eight mechanically distinct initial activities rather than one RNG roll reskinned.
 - Fishing has a full optional hobby/derby planning loop with positions, bait/gear, real catches, junk, records and Mara competition.
 - First story web contains nine interconnected miniquests/incidents.
+- **Mara's fair-specific character authority is now stable for planning**: authored attraction/game/fishing/food preferences, phase-sensitive initiative, refusal/annoyance behavior, competition and semantic repeat-fair memory are defined in `FAIR_MARA_EXPERIENCE.md`.
+- Mara's strongest attraction preference is the Observation Wheel at dusk/evening; dragon is her baseline carousel mount; fishing is a genuine low-intensity preference; she favors the apple-topped elephant ear, pear-lime fizz by day and hot spiced cider in cooler evening conditions.
+- Mara can beat the Adventurer and Cassa Reed, refuse repetitive or suspect play, and remember prior fair experiences without a fair-specific relationship meter.
 - **No duplicate fair historical archive.** The existing upstairs/Attic Hall/House of Records remains the durable documentary authority.
 - Fairground location #15 is **Fair Office & Prize Hall**, not `Prize & Records Hall`.
 - Ada Vellum is current fair registrar/office clerk; durable historical records graduate to the existing House of Records.
 - Fair records have three layers: current Fair Office paperwork, durable House of Records documentary history, and personal lived memory.
 - Existing archive provenance/confidence/verification/contradiction/redaction semantics should be reused for fair history where applicable.
 - Private Mara/Adventurer memories are not automatically institutional records.
-- Mara has independent fair agency and is not assigned a fixed NPC-worker schedule.
 - Adult social/romantic/intimate life is first-class while broader consent/autonomy authority remains sovereign.
 - Controlled RNG is welcome for optional fair play, never required canonical progression.
 - Canonical Zork routes and solutions remain authoritative.
@@ -73,7 +75,7 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 | `FAIR_NPC_ROSTER.md` | STABLE FOR INITIAL CORE PLANNING | 12-person core people, Ada/Fair Office boundary, roles/locations/knowledge |
 | `FAIR_SECONDARY_CAST.md` | STABLE FOR PLANNING | 8-person secondary roster, named story/system bindings, secondary schedules and knowledge boundaries |
 | `FAIR_DIALOGUE_AND_CONTEXTUAL_KNOWLEDGE.md` | DESIGNING | who can say what, and why |
-| `FAIR_MARA_EXPERIENCE.md` | DESIGNING | Mara-specific agency, preferences, memory |
+| `FAIR_MARA_EXPERIENCE.md` | STABLE FOR PLANNING | Mara-specific attraction/game/fishing/food preferences, initiative, refusal, competition and memory |
 | `FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` | DESIGNING | adult social and relationship space |
 | `FAIR_FOOD_AND_CONCESSIONS.md` | STABLE FOR PLANNING | food, drink, elephant ears, pear-lime example |
 | `FAIR_MINIQUESTS_INCIDENTS_AND_RUMORS.md` | STABLE FOR FIRST STORY-WEB PLANNING | nine small stories, evidence/provenance seams |
@@ -98,14 +100,12 @@ The fair must compose rather than duplicate these live product organs:
 
 ## Current planning frontier
 
-The fair now has identity, map attachment, economy, products, core people, **a named 20-person core+secondary cast**, full operating geography/day, first deep attractions/games/fishing, a first story web, and a clean integration with the existing House of Records.
+The fair now has identity, map attachment, economy, products, a named **20-person core+secondary cast**, full operating geography/day, first deep attractions/games/fishing, a first story web, a clean House-of-Records integration, and concrete Mara fair character authority.
 
-The highest-leverage secondary-cast placeholders are now resolved without adding filler population.
+The next highest-leverage work is **the adult evening venue and social/private behavior seam**:
 
-Next highest-leverage work is **Mara tightening against the concrete fair roster and activities**:
-
-1. bind Mara's stable preferences, initiative, refusals and remembered reactions to the actual ride/game/fishing/food roster;
-2. lock the adult evening venue identity and social/private behavior seams;
+1. lock the public identity, physical service model and closing behavior of the evening food/drink venue in or around Dance Pavilion;
+2. bind it to Lysa Marr / Tavin Roe, Mara, Orin Bell and ordinary adult visitors without making it a romance room;
 3. resolve RNG/save semantics far enough for future qualification;
 4. tighten prize/record/archive graduation details around actual contest outputs without duplicating the House of Records;
 5. re-evaluate the implementation gate only after those authorities are coherent.

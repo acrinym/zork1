@@ -38,6 +38,13 @@ The following are no longer open:
 - **Secondary cast day expectations:** locked for planning in `FAIR_SECONDARY_CAST.md`.
 - **Closing model:** sequential, not one global shutdown tick.
 - **Back Lane function:** real service/staff route and bounded after-hours activity.
+- **Mara attraction preferences:** stable fair-specific baselines now defined in `FAIR_MARA_EXPERIENCE.md`.
+- **Mara game preferences:** stable fair-specific baselines now defined, including skepticism/refusal behavior for Kester's shell game.
+- **Mara fishing style:** genuine low-intensity preference with shaded-bank / pond-path-bend bias, independent derby participation and no romance-protection rigging.
+- **Mara food/drink baseline:** apple-topped elephant ear favorite, pear-lime fizz as daytime preference after identification, hot spiced cider as cooler dusk/evening preference.
+- **Mara phase-sensitive initiative:** defined from OPENING through CLOSING without a date mode or attraction-optimization loop.
+- **Mara repetition/refusal law:** persistent repetition after a clear refusal composes broader autonomy/annoyance authority rather than a fair-specific meter.
+- **Mara fair memory:** semantic event memory and recurrence behavior are defined; private lived memory remains separate from institutional records.
 - **Historical archive ownership:** the existing upstairs/Attic Hall/House of Records remains the durable documentary authority.
 - **Fair Office records scope:** current-fair administration, entries/results, permits, lost-and-found and incident intake.
 - **Ada Vellum:** current fair registrar/office clerk, not omniscient historian/master archivist.
@@ -94,15 +101,25 @@ Do not reopen the question of creating a separate Fair Historical Archive.
 
 ## Adult social life still open
 
-- Exact public name/product identity of the evening adult food/drink service in/near Dance Pavilion.
-- Exact composition seams into existing intimacy/privacy authorities without duplicating them.
-- Exact long-horizon continuity arc for Lysa Marr and Tavin Roe; their identity, separateness and baseline preferences are already resolved.
+This is now the **next planning frontier**.
+
+Still open:
+
+- exact public name/product identity of the evening adult food/drink service in/near Dance Pavilion;
+- whether the service is physically inside the pavilion, attached to it, or immediately adjacent without creating a seventeenth major room;
+- its food/drink roster and whether alcohol exists at all under broader world/product authority;
+- who operates it and whether that person belongs in the existing 20-person named roster or remains an unnamed/background service role;
+- exact service hours across DUSK / EVENING / CLOSING;
+- seating/standing/social topology and how it composes the real privacy gradient;
+- exact composition seams into existing intimacy/privacy authorities without duplicating them;
+- exact long-horizon continuity arc for Lysa Marr and Tavin Roe; their identity, separateness and baseline preferences are already resolved.
 
 ## Food still open
 
 - Exact sign/business name of Mabel Rusk's elephant-ear concession.
 - Detailed recipes/ingredient sets beyond baseline products.
 - Additional signature savory food and yearly limited products.
+- Adult-evening service food/drink identity, owned by the Adult Social authority pass above.
 
 ## NPCs still open
 
@@ -113,7 +130,8 @@ Still open:
 - whether any worker needs an authored substitute/helper rather than simply closing during a break;
 - which named vendors are guaranteed recurring annual presences versus merely frequent returners;
 - one or more transient merchant/performer identities only if a concrete future story/system requires them;
-- any future safety/constable role only if broader consequence or crowd authority exposes an actual gap.
+- any future safety/constable role only if broader consequence or crowd authority exposes an actual gap;
+- whether the adult-evening service needs a new persistent named operator or can be coherently handled without expanding the roster.
 
 Do not reopen the 20-person roster merely to add names.
 
@@ -131,17 +149,18 @@ The following identities are no longer open:
 - F-04 suspicious operator: Kester Vane;
 - F-05 maintenance specialist: Hettie Bramm.
 
-## Mara still open
+## Mara still open only where broader authority is required
 
-- Concrete preference ordering across the actual ride roster.
-- Which games she enjoys, dislikes, refuses, repeats or becomes competitive about.
-- Her ordinary food/drink preferences and willingness to share versus buy her own items.
-- Her fishing style, risk tolerance, rivalry response and independent derby behavior beyond the already-locked ability to enter and beat the Adventurer.
-- Phase-sensitive initiative: what she is likely to suggest at morning, dusk, evening and closing.
-- Concrete annoyance/boredom thresholds for repetitive fair behavior without creating a fair-specific relationship meter.
-- Which prior-fair experiences become personal memories and how they alter later suggestions/reactions.
+The fair-specific preference/initiative pass is complete enough for planning.
 
-These decisions belong in `FAIR_MARA_EXPERIENCE.md` and are the next planning frontier.
+Remaining Mara questions are dependency/composition questions, not blank character-design questions:
+
+- exact money-container/custody semantics for her independent purchases;
+- exact relationship-rupture/autonomy composition once the broader shipped authority is chosen;
+- exact wardrobe/weather interactions for rides and evening conditions where broader clothing authority lands;
+- exact recurrence timing once broader calendar/aging authority exists.
+
+Do not reopen her fair-specific likes/dislikes into RNG.
 
 ## RNG still open
 
