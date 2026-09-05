@@ -1,0 +1,12 @@
+{
+  "id": "001-weather-turn-hook",
+  "description": "Advance the authored Release 1307 weather arc once per turn after existing material and fire consequences.",
+  "path": "shadow_logic.zil",
+  "replacements": [
+    {
+      "old": "\t<FIRE-STRUCTURAL-ADVANCE>\n",
+      "new": "\t<FIRE-STRUCTURAL-ADVANCE>\n\t<WEATHER-DISASTER-ADVANCE>\n",
+      "expected_count": 1
+    }
+  ]
+}

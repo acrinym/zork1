@@ -1,0 +1,32 @@
+{
+  "id": "002-release-1307",
+  "description": "Advance the locked Release 1306 source to Release 1307 and include the authored weather authority after existing fire consequences.",
+  "path": "zork1.zil",
+  "replacements": [
+    {
+      "old": "\"ZORK1 MARA EARNED ROMANCE GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 AUTHORED TIME WEATHER DISASTER GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "expected_count": 1
+    },
+    {
+      "old": ";\"Repository-local Mara Earned Romance and Partnership.\n  Release 1306: mutual choice after named HE history. No love meter. Stages locked 1305.\"",
+      "new": ";\"Repository-local Authored Time, Weather & Disaster Arc.\n  Release 1307: deterministic warned storm over real forest, canyon, and Flood Control Dam #3 geography.\n  Fair weather preserves canonical play; no climate engine. Stages locked 1306.\"",
+      "expected_count": 1
+    },
+    {
+      "old": "<CONSTANT RELEASEID 1306>",
+      "new": "<CONSTANT RELEASEID 1307>",
+      "expected_count": 1
+    },
+    {
+      "old": "<PRINC \"Mara Earned Romance Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Authored Time Weather Disaster Glulx ZORK I: The Great Underground Empire\n \">",
+      "expected_count": 1
+    },
+    {
+      "old": "<INSERT-FILE \"fire_structural\" T>\n",
+      "new": "<INSERT-FILE \"fire_structural\" T>\n<INSERT-FILE \"weather_disaster\" T>\n",
+      "expected_count": 1
+    }
+  ]
+}
