@@ -186,7 +186,7 @@ Rules:
 Awards may include:
 
 - ribbon;
-- record entry;
+- current record entry;
 - direct prize;
 - modest tickets where appropriate;
 - reputation/dialogue/memory.
@@ -224,17 +224,41 @@ The design should not require detailed cruelty/injury simulation. The pond/fair 
 
 ## Records
 
-Ada Vellum's records authority may store significant derby/pond records after Silas verifies them.
+Fishing records use the same three-layer records architecture as the rest of the fair.
 
-Persist:
+### Current Fair Office record
+
+After Silas verifies a derby or standing result, Ada Vellum may enter the **current fair's** official result at the Fair Office & Prize Hall.
+
+Current record state may include:
 
 - record holder;
 - species;
 - verified measurement;
-- fair-year identity only when calendar authority supports it;
-- later record replacement history if useful.
+- fair/date identity when calendar authority supports it;
+- current standing or replacement result.
+
+### Durable House of Records history
+
+Historically meaningful annual derby summaries, long-standing records, major record replacements, or unusual documented pond findings may later graduate into the existing upstairs Hall/House of Records under `FAIR_HALL_OF_RECORDS_INTEGRATION.md`.
+
+Ada's current desk is not itself the historical archive.
 
 Do not persist every minnow ever caught.
+
+### Physical evidence remains physical
+
+A fish, ribbon, trophy, old token, or other recovered object remains the real physical object. An archive record may document it; the record does not replace it.
+
+The old stamped pond token can therefore be:
+
+- physically caught;
+- shown to Silas, Ada, Ephraim, Vera or Mara;
+- compared against current Fair Office material;
+- cross-referenced against old programs/maps/concession records upstairs;
+- retained, given, sold or otherwise handled under ordinary object/property authority.
+
+The House of Records supplies documentary context, not magical identification.
 
 ## Social fishing
 
@@ -271,10 +295,11 @@ Future natural-play qualification should include:
 4. catch an ordinary fish;
 5. catch junk in a deterministic test route;
 6. weigh a derby-eligible fish;
-7. verify record logic;
-8. show that Mara can independently enter/compete where supported;
-9. prove save/RNG behavior is intentional;
-10. prove no rare catch is required for canonical progression.
+7. verify current Fair Office record logic;
+8. prove a durable archived record, where present, uses the existing House of Records rather than a fair-only history store;
+9. show that Mara can independently enter/compete where supported;
+10. prove save/RNG behavior is intentional;
+11. prove no rare catch is required for canonical progression.
 
 ## Boundaries
 
@@ -283,3 +308,4 @@ Future natural-play qualification should include:
 - No rare RNG gate for romance/canonical progress.
 - No generated species/prose.
 - No inventory duplication when a fish is weighed/released.
+- No duplicate fishing-history archive.
