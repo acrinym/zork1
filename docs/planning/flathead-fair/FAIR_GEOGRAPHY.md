@@ -37,7 +37,7 @@ The fairground is deliberately a **mesh rather than a single hub with dead-end s
                                    |                |                    |
                               EXHIBITION-YARD ---- GRAND-PAVILION ---- DANCE-PAVILION
                                    |                |                    |
-                                BACK-LANE ------ MARKET-ROW          PRIZE-RECORDS-HALL ---- RIDE-COURT
+                                BACK-LANE ------ MARKET-ROW       FAIR-OFFICE-PRIZE-HALL ---- RIDE-COURT
                                    |                |                    |                     |
                                    +------------ FOOD-ROW -- CENTRAL-MIDWAY -- GAMES-ROW -----+
                                                                   |
@@ -75,7 +75,7 @@ Purpose: free-entry policy, handbills, meeting point, rules and directional help
 - E -> `GAMES-ROW`
 - N -> `GRAND-PAVILION`
 - NW -> `MARKET-ROW`
-- NE -> `PRIZE-RECORDS-HALL`
+- NE -> `FAIR-OFFICE-PRIZE-HALL`
 
 Purpose: orientation, crowd density, incidental encounters, visible signs toward every major district.
 
@@ -89,7 +89,7 @@ Purpose: Mabel Rusk, Tomas Quince, other food stalls, eating/sharing, smell as n
 
 ### 5. `GAMES-ROW`
 - W -> `CENTRAL-MIDWAY`
-- N -> `PRIZE-RECORDS-HALL`
+- N -> `FAIR-OFFICE-PRIZE-HALL`
 - NE -> `RIDE-COURT`
 - SW -> `FAIR-ENTRANCE`
 
@@ -106,7 +106,7 @@ Purpose: Vera Tallow, artisans, books, clothing, crafts, temporary merchants and
 ### 7. `GRAND-PAVILION`
 - S -> `CENTRAL-MIDWAY`
 - W -> `MARKET-ROW`
-- E -> `PRIZE-RECORDS-HALL`
+- E -> `FAIR-OFFICE-PRIZE-HALL`
 - NW -> `EXHIBITION-YARD`
 - NE -> `DANCE-PAVILION`
 - N -> `FISHING-POND`
@@ -115,14 +115,14 @@ Purpose: performances, judging, civic announcements, indoor/covered weather fall
 
 ### 8. `DANCE-PAVILION`
 - SW -> `GRAND-PAVILION`
-- S -> `PRIZE-RECORDS-HALL`
+- S -> `FAIR-OFFICE-PRIZE-HALL`
 - N -> `OBSERVATION-WHEEL`
 - E -> `HOUSE-OF-MIRRORS`
 
 Purpose: daytime seating/social use, Orin Bell, evening music/dancing, adult social life, covered bad-weather activity.
 
 ### 9. `RIDE-COURT`
-- W -> `PRIZE-RECORDS-HALL`
+- W -> `FAIR-OFFICE-PRIZE-HALL`
 - SW -> `GAMES-ROW`
 - N -> `HOUSE-OF-MIRRORS`
 
@@ -168,14 +168,20 @@ This is a public path, not a romance flag.
 
 Purpose: craft/agricultural/mechanical exhibits, judging overflow, temporary demonstrations and fair-history texture.
 
-### 15. `PRIZE-RECORDS-HALL`
+### 15. `FAIR-OFFICE-PRIZE-HALL` — Fair Office & Prize Hall
 - S -> `GAMES-ROW`
 - W -> `GRAND-PAVILION`
 - E -> `RIDE-COURT`
 - N -> `DANCE-PAVILION`
 - SW -> `CENTRAL-MIDWAY`
 
-Purpose: Nell Harrow prize counter, Ada Vellum records/office work, ribbons, old programs, lost-and-found and persistent records.
+Purpose: **current fair administration and current prize redemption**, not durable historical archiving.
+
+- Ada Vellum handles current schedules/programs, permits, contest entries/results, lost-and-found, incident/complaint intake and current office records.
+- Nell Harrow handles current prize stock and ticket redemption.
+- Older programs, historical maps, durable case files and provenance-bearing long-term records belong to the existing upstairs Hall/House of Records under `FAIR_HALL_OF_RECORDS_INTEGRATION.md`.
+
+The room name deliberately avoids colliding with the existing House/Hall of Records.
 
 ### 16. `BACK-LANE`
 - E -> `MARKET-ROW`
@@ -216,7 +222,7 @@ Every major location carries several interaction families:
 | Fishing Pond | fishing, derby, gear, fish/junk objects, NPC anglers |
 | Pond Path | walking, alternate fishing positions, quiet talk, night texture |
 | Exhibition Yard | exhibits, judging, animals/machinery/crafts, incidents |
-| Prize & Records Hall | prizes, records, old fair history, lost/found |
+| Fair Office & Prize Hall | current office records/intake, entries/results, lost/found, prizes |
 | Back Lane | deliveries, repair, staff knowledge, after-hours activity |
 
 ## Privacy gradient
@@ -224,7 +230,7 @@ Every major location carries several interaction families:
 The graph deliberately supports:
 
 - **high public density:** Central Midway, Food Row, Games Row;
-- **public but seated/structured:** Grand Pavilion, Ride Court, Prize Hall;
+- **public but seated/structured:** Grand Pavilion, Ride Court, Fair Office & Prize Hall;
 - **adult/social:** Dance Pavilion;
 - **semi-private:** observation-wheel carriage;
 - **quiet public:** Pond Path;
@@ -239,7 +245,7 @@ Relationship behavior must use actual context, crowd, time and broader autonomy/
 - Fair Road and entrance works;
 - Fishing Pond and Pond Path;
 - Grand Pavilion;
-- Prize & Records Hall / office;
+- Fair Office & Prize Hall;
 - Back Lane and storage/service infrastructure;
 - Dance Pavilion shell;
 - observation-wheel foundations/major structure, subject to final mechanical design.
@@ -250,6 +256,12 @@ Relationship behavior must use actual context, crowd, time and broader autonomy/
 - carousel and smaller Ride Court machinery;
 - House of Mirrors installation;
 - tents, signs, decorations, lighting and prize displays.
+
+## Hall of Records relationship
+
+The fairground office is deliberately **not** the historical archive. Durable documentary fair history composes the existing upstairs Hall/House of Records authority: physical records, provenance, contradiction/verification semantics and archive review/cross-reference behavior.
+
+See `FAIR_HALL_OF_RECORDS_INTEGRATION.md`.
 
 ## Off-season
 
