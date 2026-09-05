@@ -19,27 +19,40 @@ Named people are not permanently nailed behind counters. Their day-phase locatio
 
 ### 1. Berrin Vale — fair steward
 
-**Primary spaces:** Fair Entrance, Central Midway, Grand Pavilion, Prize & Records Hall, Back Lane.
+**Primary spaces:** Fair Entrance, Central Midway, Grand Pavilion, Fair Office & Prize Hall, Back Lane.
 
 **Role:** senior on-site representative of the Flathead Fair Association; practical grounds manager rather than monarch of the fair.
 
 Knows grounds layout, concession assignments, daily schedule, reported ride shutdowns, association rules, complaints/incidents and broad fair history.
 
-Does not automatically know secret recipes, exact fish behavior, every visitor's personal history, or faults nobody has reported.
+Does not automatically know secret recipes, exact fish behavior, every visitor's personal history, faults nobody has reported, or the contents of old House of Records files he has not reviewed.
 
 Useful interactions: directions, complaints, lost-property escalation, weather closures, vendor disputes, historical questions and larger incidents.
 
-### 2. Ada Vellum — records and fair-office clerk
+### 2. Ada Vellum — current fair registrar and office clerk
 
-**Primary spaces:** Prize & Records Hall; Grand Pavilion when an official result/event requires her.
+**Primary spaces:** Fair Office & Prize Hall; Grand Pavilion when an official current-fair result/event requires her.
 
-**Role:** keeper of records, old programs, contest entries, permits, ribbons, lost-and-found paperwork and the documents nobody else wants to organize.
+**Role:** keeper of the **current fair's** paperwork, not the master historical archivist.
 
-Knows past winners/records held by the office, schedules/programs, concession paperwork, lost-and-found intake, official history wording and prize/contest procedure.
+Ada handles:
 
-Personality direction: dry, precise and capable of noticing when Frobozz promotional language has quietly rewritten the archive.
+- current schedule/program and grounds maps;
+- current contest/derby entries and results;
+- current concession permits/rolls;
+- current lost-and-found intake;
+- current incident/complaint intake;
+- current official notices and paperwork;
+- authorized copies/extracts of current office records;
+- preparation/transfer of selected durable records to the existing upstairs Hall/House of Records.
 
-Long-term value: one of the strongest anchors for annual continuity.
+Ada can know that an older program, historical map, case file or archived record exists upstairs and can direct the Adventurer there. She does **not** remotely summon old files, replace the physical archive, or become an omniscient historical terminal.
+
+Personality direction: dry, precise and capable of noticing when a current Frobozz promotional claim conflicts with current office paperwork or with older wording she has legitimately reviewed.
+
+Long-term value: institutional continuity **through the existing House of Records seam**, not through a duplicate fair archive.
+
+See `FAIR_HALL_OF_RECORDS_INTEGRATION.md`.
 
 ### 3. Mabel Rusk — elephant-ear concessioner
 
@@ -79,7 +92,7 @@ Knows his recipes, ingredients, stock, prices, cup sizes and freshness. He does 
 
 ### 5. Silas Dace — fishing master and weigh-in official
 
-**Primary spaces:** Fishing Pond; Grand Pavilion / Prize & Records Hall only when derby judging/results require it; Pond Path when off duty and still present.
+**Primary spaces:** Fishing Pond; Grand Pavilion / Fair Office & Prize Hall only when derby judging/results require it; Pond Path when off duty and still present.
 
 Knows pond rules, common fish, bait/lure advice, weigh-in procedure, current derby records, relevant weather/time conditions and which anglers habitually exaggerate.
 
@@ -89,7 +102,7 @@ Silas can be a friendly rival/mentor without becoming a fishing-stat dispenser.
 
 ### 6. Nell Harrow — prize counter clerk
 
-**Primary space:** Prize & Records Hall.
+**Primary space:** Fair Office & Prize Hall.
 
 Knows current prize stock, exact ticket costs, sold-out items, annual variants, valid ticket sources and obvious counterfeits.
 
@@ -137,6 +150,8 @@ Deals in old mechanisms, odd tools, lenses, puzzle boxes, dubious antiquities, s
 
 Knowledge rule: Vera distinguishes what she **knows**, what she **suspects**, and what someone **claimed to her**. She may be wrong. She is not a supernatural identification oracle.
 
+The House of Records may sometimes corroborate or contradict a provenance claim, but Vera does not gain archive authority simply because the archive exists.
+
 Potential signature stock includes the crooked brass compass concept and other physically real curiosities.
 
 ### 11. Orin Bell — musician and dance-pavilion bandleader
@@ -164,6 +179,8 @@ Expected opinions include:
 - an old concession stood somewhere else;
 - an official pamphlet has the date wrong, according to him.
 
+His memory is a provenance-bearing human source. It may agree with, complicate or contradict physical records upstairs without either side becoming automatic truth.
+
 ## Knowledge-boundary law
 
 Every named NPC ultimately has a compact authority table covering:
@@ -176,6 +193,8 @@ Every named NPC ultimately has a compact authority table covering:
 - things they will not discuss even when known.
 
 This prevents generic responses without pretending every NPC is an infinite conversational model.
+
+The existence of the House of Records does not make fair NPCs omniscient. They know archive contents only if they plausibly reviewed or were told those contents.
 
 ## Schedule law
 
@@ -216,6 +235,8 @@ No omniscient global weather puppeteer replaces character decisions.
 Mara may independently know, like, dislike, remember or form opinions about these people. A vendor can remember Mara separately from remembering the Adventurer where events justify it.
 
 Mara is not given a fixed fair-worker schedule. Her movement comes from current companionship, independent choices, preferences, crowd tolerance, hunger/tiredness, activities and relationship state.
+
+Her private memories and relationship events are **not automatically filed into the House of Records**. Documentary public facts and personal lived memory remain separate authorities.
 
 The fair should not model every NPC primarily as a conduit for the Adventurer/Mara relationship.
 
