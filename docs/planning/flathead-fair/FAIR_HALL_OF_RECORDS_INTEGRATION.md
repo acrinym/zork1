@@ -1,7 +1,8 @@
 # Flathead Fair ↔ Hall of Records integration
 
 **Status:** STABLE FOR PLANNING  
-**Decision:** the Flathead Fair reuses the existing upstairs/Attic House of Records authority instead of creating a second historical archive.
+**Decision:** the Flathead Fair reuses the existing upstairs/Attic House of Records authority instead of creating a second historical archive.  
+**Graduation policy:** LOCKED FOR PLANNING
 
 ## Existing authority
 
@@ -13,198 +14,449 @@ Highly Extended Zork already has a substantial archive organ under `glulx/`:
 - `attic-playback/` — playback/review authority where a record supports it;
 - `completed-expedition-archive/` — explicitly the House of Records capstone for durable completed-expedition evidence.
 
-The fair must compose those authorities. It must not invent a competing `FairHistoryDatabase`, detached archive menu, or omniscient records NPC.
+The fair composes those authorities. It does not invent a `FairHistoryDatabase`, detached archive menu, second records hall, omniscient records NPC or private-life surveillance feed.
 
 ## Three record layers
 
 ### 1. Fair Office: current operational records
 
-The fair's local office handles **current-event administration**, including:
+The Fair Office & Prize Hall handles current-fair administration:
 
-- current fair schedule/program;
-- current-year concession list and permits;
-- contest/derby entries and current results;
-- current prize/redemption procedures;
-- current lost-and-found intake;
-- current incident/complaint intake;
-- current grounds maps and handbills;
-- current weather/closure notices;
-- current staff-facing paperwork.
+- current program/schedule;
+- current concession roll and permits;
+- contest/derby entries and results;
+- prize/redemption procedures;
+- lost-and-found intake;
+- complaint/incident intake;
+- grounds maps and handbills;
+- weather/closure notices;
+- staff-facing working paperwork.
 
-These records are useful now. They do not make the Fair Office the master historical archive.
+This layer is allowed to be messy, provisional, corrected and temporary. It is the desk where the current fair is actually administered.
 
 ### 2. House of Records upstairs: durable documentary history
 
-Selected records can graduate into the existing House of Records when they become historically/documentarily meaningful.
+Selected records graduate only after they become historically/documentarily meaningful.
 
-Candidate archival materials include:
-
-- annual fair programs;
-- historical grounds maps;
-- fishing-derby registers and major records;
-- major contest/competition ledgers;
-- ribbons/trophy/record evidence where existing archive semantics support it;
-- concession rolls and historically meaningful permits;
-- adjudicated/significant incident reports;
-- attraction retirement/replacement records;
-- notable vendor or association records;
-- annual results;
-- historically useful menus, price sheets, advertisements and handbills.
-
-These should become physical folders/cards/records using the existing archive conventions rather than invisible flags or a universal history UI.
+The durable layer preserves evidence about what the fair **was**, what officially happened, what materially changed and which claims remain disputed.
 
 ### 3. Personal memory: lived history
 
-Personal memories remain distinct from institutional records.
+Mara, the Adventurer and NPCs may remember semantic lived experience.
 
 Examples:
 
-- Mara remembering a wheel ride;
-- the Adventurer and Mara arguing about who ate most of an elephant ear;
-- a vendor remembering a repeat customer;
-- Ephraim remembering how the fair used to look;
-- private conversations, affection or arguments.
+- a wheel ride;
+- an elephant-ear dispute;
+- who won a private challenge;
+- a dance/song;
+- a conversation after the derby;
+- Ephraim's recollection of an older fair.
 
-Those facts do **not** automatically become House of Records material.
+Personal memory is not automatically an institutional record.
 
-A private relationship event only enters documentary history if an independent public/documentary fact genuinely exists, and even then the record stores that documentary fact rather than mind-reading the participants.
+## Graduation principle
 
-## Provenance law
+**The House of Records preserves historical signal, not administrative exhaust.**
 
-The archive must preserve **who or what claims a fact**.
+A record graduates because at least one of these is true:
 
-The following may disagree without the game flattening them into one magic truth:
+1. it is the official annual/cycle summary of a public institution or competition;
+2. it establishes or changes a standing public record;
+3. it documents a material change to fair geography, attraction identity, ownership, association rules or concession history;
+4. it is a formally adjudicated incident with lasting consequence, precedent or unresolved documentary significance;
+5. it bears important provenance for an object/place/story already significant to fair history;
+6. it preserves a historically useful issued artifact such as an official program or grounds map.
 
-- a current official fair pamphlet;
-- an old archived program;
-- Ada Vellum's current ledger;
-- Ephraim Peake's memory;
-- a Frobozz promotional history;
-- a witness statement;
-- a physical token/sign/object;
-- an adjudicated association report.
+`It existed on Ada's desk` is not sufficient reason for permanent archival status.
 
-Use the existing House of Records provenance, confidence/verification, contradiction and redaction semantics where they fit.
+## Closeout and transfer lifecycle
 
-`THE ARCHIVE SAYS X` is not enough when the actual state is `an archived program printed X, while another source claims Y`.
+The planning-level lifecycle is now locked:
 
-## Ada Vellum's institutional seam
+### During the fair
 
-Ada is the **current fair registrar / office clerk**, not the keeper of all fair history.
+Current material remains under Fair Office authority.
 
-She handles:
+Ada may correct, annotate, receive statements, verify results and prepare likely archival candidates, but the active working file remains current-office material.
 
-- current entries/results;
-- current permits and concession paperwork;
-- current lost-and-found;
-- current incident intake;
-- current programs/maps;
-- authorized extracts/copies of current office records;
-- transfer/filing preparation for records that are destined for the House of Records.
+### At fair closeout
 
-Ada may know that an older record exists upstairs and can direct the Adventurer there. She does not remotely summon the old file or replace the physical archive.
+After public operation ends and the relevant results/incidents have reached their official current status, Ada prepares a **closeout transfer packet** containing only archival candidates.
 
-Her dry precision remains useful: she can notice that a current Frobozz pamphlet conflicts with older wording without pretending she personally remembers the historical event.
+This does not require the transfer to happen at one magic CLOSING tick. Staff can complete closeout during legitimate post-public administrative time.
 
-## Fair Office room identity
+### After adjudication where required
 
-The fairground location formerly called **Prize & Records Hall** is renamed:
+A disputed result or incident does not graduate as settled truth merely because the fair ended.
 
-**Fair Office & Prize Hall**
+If adjudication remains open:
 
-It combines two current-service functions:
+- the current file can remain pending;
+- a durable file may later preserve the dispute as unresolved if the unresolved dispute itself becomes historically significant;
+- any later ruling is appended with provenance rather than silently rewriting earlier evidence.
 
-- **Ada Vellum:** current administration, records intake, lost-and-found, entries/results, complaints;
-- **Nell Harrow:** current prize-ticket redemption and prize stock.
+### House of Records intake
 
-The name deliberately avoids colliding with the upstairs Hall/House of Records.
+The existing House of Records receives the durable material through its own filing/review authority.
 
-## Story integration
+The fair does not need to simulate courier logistics or invent a global year counter. The product requirement is simply that durable history appears only after a legitimate closeout/filing path, not instant omniscient synchronization.
 
-### F-03 — historical-date dispute
+## Graduation matrix
 
-This becomes a first-class archive/provenance story:
+### Official annual program — DURABLE
 
-1. Ephraim claims the current fair-history date is wrong.
-2. Ada can show/explain what the **current fair office copy** says.
-3. An older physical program, map or case file may exist upstairs in the House of Records.
-4. Frobozz material may use a different date.
-5. The player can compare sources rather than ask Ada for omniscient truth.
+Preserve one issued/final official program for each authored fair cycle that becomes historically accessible.
 
-Possible result: the discrepancy is resolved, partially explained, or remains a documented contradiction.
+Materially different corrected editions may both survive when the difference itself matters. Tiny typo-only working drafts need not.
 
-### F-09 — old pond token
+### Historical grounds map — DURABLE
 
-The physical token can be cross-referenced against:
+Preserve an official map when it documents the fair's actual layout for that cycle or a meaningful geography change.
 
-- archived site maps;
-- old programs;
+This is especially important when attractions later move, retire, expand or disappear.
+
+### Annual public results summary — DURABLE
+
+Preserve a concise official summary of the fair's meaningful public competition/exhibition results.
+
+This summary may include:
+
+- derby winner;
+- featured contest winners;
+- exhibition/judging winners;
+- standing-record changes;
+- notable race-series result if the race board has an official annual championship/history role.
+
+It should **not** contain every paid booth attempt.
+
+### Ring Stand ordinary attempts — CURRENT/TEMPORARY
+
+Routine throws and ordinary ticket awards remain booth/current-office state.
+
+A clean sweep may enter the current results board. It graduates only if it becomes a featured annual result or changes a standing fair record.
+
+### Bottle Knockdown — USUALLY TEMPORARY
+
+Ordinary clears and efficient clears do not need durable history.
+
+A specifically authored championship/standing-record case may graduate through the annual results summary.
+
+### Bell Striker — STANDING-RECORD CHANGES DURABLE
+
+The current fair can track best results.
+
+Durable history records:
+
+- the annual featured winner where officially recognized;
+- a new standing fair record;
+- later correction/overturn of that standing record.
+
+It does not preserve every strike.
+
+### Clockwork Target Gallery — STANDING-RECORD CHANGES DURABLE
+
+Daily/current high scores remain Fair Office/current attraction state.
+
+Annual winner and any new standing record can graduate.
+
+### Horseshoes / Ringed Stakes — FEATURED MATCHES DURABLE
+
+Casual paid rounds are temporary.
+
+Named/scheduled featured matches, annual finals and standing records can enter the annual public-results summary.
+
+### What's Missing? — USUALLY TEMPORARY
+
+Ordinary memory-table rounds are ephemeral fair play.
+
+Only a specifically authored featured championship/perfect annual result needs durable treatment.
+
+### Shell / Cup Game — INCIDENT-DRIVEN
+
+Ordinary rounds are not historical records.
+
+F-04 can graduate only through a real current incident/adjudication path.
+
+A durable case is warranted when the adjudication has lasting significance, for example:
+
+- sanction/suspension of Kester Vane's booth;
+- a permit consequence;
+- documented restitution/refund policy;
+- rule/equipment standard change;
+- significant unresolved contradiction preserved as a case.
+
+A single unsupported complaint is not automatically a permanent case file.
+
+### Clockwork Critter Race — OFFICIAL SERIES RESULTS DURABLE, ROUTINE HEATS CURRENT
+
+Individual ordinary heats may remain current/routine unless the race board itself treats them as part of an official series.
+
+Durable material should prefer:
+
+- annual series/championship result;
+- standing record or unusual officially recognized result;
+- adjudicated race incident if historically significant.
+
+Betting slips, if broader gambling authority ever exists, are not automatically historical records.
+
+## Fishing graduation
+
+### Ordinary catch — PERSONAL/CURRENT
+
+A normal fish caught for recreation is not House of Records material.
+
+Silas may know or verify it in current context, and the Adventurer/Mara/Cassa may remember it.
+
+### Derby entry/weigh-in sheet — CURRENT
+
+Routine entry and weigh-in paperwork remains Fair Office/current derby administration during the fair.
+
+### Derby winner — DURABLE
+
+The official derby winner belongs in the annual public-results summary.
+
+### Standing-record fish — DURABLE
+
+A verified specimen that sets a standing species/overall fair record graduates with:
+
+- species;
+- verified measurement(s) actually used by fair authority;
+- angler identity if public under the contest rules;
+- Silas's verification/current result provenance;
+- correction history if later overturned.
+
+The record does not replace the physical fish, trophy, ribbon or personal memory.
+
+### Record-class specimen that does not win — CONDITIONAL
+
+If the fair officially recognizes species records or exceptional verified specimens, that result may graduate even without overall derby victory.
+
+If it is merely `a very large fish somebody caught`, personal memory/current paperwork is enough.
+
+## Exhibition graduation
+
+Durable annual history may include:
+
+- judged class winners;
+- best-of-fair/featured award;
+- new standing exhibition record where such a category exists;
+- a historically significant object/provenance case.
+
+Routine entry forms, losing entries and ordinary judging notes remain current unless later evidence makes a specific item historically important.
+
+## Concessions and commerce
+
+### Annual concession roll — DURABLE
+
+A concise official list of participating concessions/vendors is historically useful because it documents who was present and how the institution changed.
+
+### Routine individual permit paperwork — CURRENT
+
+Do not archive every duplicate form and renewal merely because paper existed.
+
+A permit becomes durable when it documents a meaningful first/last year, ownership transfer, sanction, unusual concession right or other historical change.
+
+### Menus and price sheets — SELECTIVE DURABLE SAMPLES
+
+Historically useful official/menu artifacts may be preserved when they establish meaningful price/product history or a story/provenance question.
+
+Do not archive every daily stock sheet, correction scrap or sold-out note.
+
+### Purchases — PRIVATE/TRANSIENT BY DEFAULT
+
+The House of Records does not contain a ledger of everything the Adventurer, Mara or ordinary visitors bought.
+
+## Attraction history
+
+The following are strong durable candidates:
+
+- opening/introduction of a major attraction;
+- relocation on the grounds;
+- major rebuild;
+- retirement/removal;
+- ownership/operator transfer when institutionally meaningful;
+- safety-related permanent modification after adjudicated evidence;
+- historically important closure/reopening.
+
+Routine ride cycles, queue counts and temporary maintenance notes do not graduate.
+
+Hettie Bramm's maintenance finding becomes durable only when it bears on a lasting attraction-history or significant incident file.
+
+## Weather and closures
+
+Routine weather notices are current operational material.
+
+Durable annual history may mention weather when it materially changed the fair, for example:
+
+- a major wind closure of a signature attraction;
+- significant rain relocation affecting the program;
+- a closure that caused lasting schedule/grounds/attraction consequences.
+
+`It rained for an hour` does not require a permanent case file.
+
+## Lost and found
+
+Ordinary lost-and-found intake expires/returns under current-office authority.
+
+It does not graduate merely because an item was lost.
+
+A lost object may become a historical/provenance case only when the **object itself** proves significant for a separate reason, and privacy-sensitive owner information should not be preserved beyond what the documentary purpose actually requires.
+
+## Incident graduation
+
+A complaint is not the same thing as a finding.
+
+Durable case files should preserve the evidence chain:
+
+1. complaint/intake provenance;
+2. physical evidence or witness statements actually supplied;
+3. operator/association response;
+4. verification/confidence status;
+5. contradiction/redaction where applicable;
+6. adjudication or explicit unresolved status;
+7. lasting consequence if one occurred.
+
+Strong durable candidates include:
+
+- F-04 if cheating is formally established/sanctioned or remains a significant unresolved dispute;
+- a major attraction safety incident that causes lasting operational change;
+- a provenance dispute central to fair history;
+- significant fraud, ownership or rules controversy.
+
+Minor complaints, queue arguments and ordinary customer dissatisfaction remain current/routine.
+
+## Corrections, reversals and contested records
+
+The archive never silently rewrites history.
+
+If a result is corrected, disqualified, overturned or remeasured:
+
+- retain the original claim/result with its source;
+- attach the correcting authority/evidence;
+- mark the prior result as superseded, disqualified, disputed or corrected as appropriate;
+- make `CROSSREF`/review capable of exposing the relationship where existing archive authority supports it.
+
+Example:
+
+`Ada's closing result sheet listed X; the later adjudication disqualified X after equipment evidence; the official annual summary lists Y.`
+
+That is better than mutating one boolean into `Y WAS ALWAYS THE WINNER`.
+
+## F-03 — Ephraim says the date is wrong
+
+The story remains a first-class provenance conflict:
+
+1. Ephraim makes a lived-memory claim.
+2. Ada exposes the current office wording/source.
+3. an older physical program/map/file may exist upstairs;
+4. Frobozz promotional material may make another claim;
+5. the player compares evidence rather than querying an omniscient truth service.
+
+The result may resolve the discrepancy, explain why sources use different dates, or preserve a documented contradiction.
+
+## F-09 — the pond gives back something old
+
+The old stamped token can be cross-referenced against:
+
+- historical maps;
+- annual programs;
 - concession rolls;
-- earlier fair records;
+- old price/product material;
 - Ephraim's memory;
-- Vera's material/provenance opinion.
+- Vera/Sella material observations;
+- other physical provenance evidence.
 
 The House of Records supplies documentary context, not magical item identification.
 
-### F-04 — shell-game cheating
+## Ada Vellum's institutional seam
 
-A current complaint/evidence trail begins at the Fair Office. If the association adjudicates a meaningful incident, the resulting report can later become a durable House of Records receipt.
+Ada handles:
 
-### Retired/replaced attractions
+- current entries/results;
+- permits/concession paperwork;
+- lost-and-found;
+- incident intake;
+- current programs/maps;
+- authorized extracts/copies;
+- closeout preparation and transfer candidate labeling.
 
-Old grounds maps, programs and association records can establish that an attraction formerly stood somewhere else, changed ownership, was rebuilt, or disappeared.
+She can say an older file exists upstairs and direct the Adventurer there. She does not remotely summon old documents or become the master historian.
 
-This gives later annual fairs historical depth without procedural lore generation.
+## Existing archive verbs/concepts
 
-## Archive graduation law
+Reuse existing authority where appropriate:
 
-Not every piece of fair paperwork deserves permanent archival status.
+- physical records;
+- `FILE`;
+- `REVIEW`;
+- `SHOW`;
+- `CROSSREF`;
+- provenance;
+- confidence/verification;
+- contradiction;
+- redaction.
 
-Candidate rules:
+Do not create fair-only equivalents.
 
-1. **Routine and temporary** material can expire/reset according to ordinary fair administration.
-2. **Official annual summaries/results** are strong archive candidates.
-3. **Historically significant incidents/changes** are strong archive candidates.
-4. **Private memories** do not graduate automatically.
-5. **Physical evidence** keeps its provenance; filing a description of an object does not replace the object itself.
-6. **Contradictory evidence** remains contradictory until supported evidence actually resolves it.
+## Attic playback boundary
 
-The exact transfer timing can remain implementation-dependent, but the institutional boundary is stable.
+`attic-playback` is reused only where its existing authority genuinely supports a documentary record.
 
-## Parser/use boundary
+Do not use playback to reconstruct:
 
-The fair should benefit from existing archive interaction concepts such as physical records, `FILE`, `REVIEW`, `SHOW`, `CROSSREF` and indexed retrieval where those authorities already support them.
+- private Mara conversations;
+- unrecorded kisses/arguments;
+- every game attempt;
+- every NPC movement;
+- guessed events from a result sheet.
 
-Do not duplicate those verbs or invent a fair-only records language.
+A document proving `Mara won the derby` does not imply a surveillance replay of what she said afterward.
 
-The Fair Office may create/intake current material. The House of Records is where durable historical research happens.
+## NPC-dossier boundary
+
+Fair attendance alone does not cause a permanent dossier.
+
+A durable NPC-oriented record is justified only when existing dossier authority and actual documentary significance support it, such as a notable official role, adjudicated case or historically important association record.
+
+Pella Wren winning a prize does not automatically create `PELLA WREN DOSSIER`.
+
+## Physical evidence law
+
+A file about an object does not replace the object.
+
+- old pond token remains physical;
+- ribbon/trophy remains property;
+- historical program is itself a physical source;
+- sanction report can describe the tack-wax cup but does not make the cup cease to matter as evidence.
 
 ## Privacy boundary
 
-The archive is not surveillance.
-
-It does not automatically record:
+Do not automatically archive:
 
 - private Mara/Adventurer conversations;
-- kisses/affection;
+- affection;
 - private arguments;
-- unreported thoughts/preferences;
-- every purchase simply because it happened;
-- every NPC movement.
+- thoughts/preferences;
+- every purchase;
+- every visitor movement;
+- private meaning attached to a public result.
 
-A public contest result, permit, report or purchased commemorative item may have documentary evidence. A private lived moment remains memory.
+A public result can be documented. The lived experience around it remains personal memory.
 
 ## Qualification implications
 
 Future natural-play qualification should eventually prove:
 
-- Ada answers a current-year/current-fair records question locally;
-- an older historical question points to the upstairs archive instead of being answered magically;
-- a physical archived record can be reviewed/cross-referenced through existing archive authority;
-- conflicting sources preserve provenance;
-- a significant current fair incident can produce a later durable record only through an authored filing/adjudication path;
-- Mara's private memories do not leak into institutional records.
+- Ada answers a current-fair question locally;
+- an older historical question points upstairs rather than being answered magically;
+- a routine booth attempt remains routine and does not create permanent history;
+- a standing record/annual winner can graduate through closeout;
+- a significant adjudicated incident can produce a durable case;
+- corrections preserve old and new claims with provenance;
+- a physical archived record can be reviewed/cross-referenced through existing authority;
+- Mara's private memories do not leak into records.
 
 ## Boundary
 
-This integration is planning only. It authorizes reuse/composition of the existing Hall/House of Records when the fair is eventually implemented; it does not authorize a fair implementation train or a new archive train.
+This is planning authority only. It authorizes reuse/composition of the existing House of Records when the fair is eventually implemented. It does **not** authorize a fair implementation train or a new archive train.

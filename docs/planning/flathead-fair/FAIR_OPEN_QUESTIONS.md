@@ -8,40 +8,27 @@ This file deliberately contains uncertainty. Do not convert an unresolved item i
 
 The following are no longer open:
 
-- **Public/common name:** The Flathead Fair.
-- **Canonical name anchor:** Flathead Mountains at `CANYON-VIEW`.
-- **Physical attachment:** new northeast spur from canonical `CLEARING` through `FAIR-ROAD` / `FAIR-ENTRANCE`.
-- **Existing surface barriers:** preserved.
-- **Off-season ground:** physically persists.
-- **Recurrence in world fiction:** annual.
-- **Institutional shape:** older regional fair association plus later Frobozz sponsorship/concessions.
-- **General admission:** free.
-- **Everyday zorkmid scale:** authored Highly Extended purchasing-power bands; original treasure values are not currency conversion.
-- **Prize tickets:** earned redemption only; not money.
-- **Elephant-ear baseline:** cinnamon-sugar 5 zm.
-- **First partial-identification drink:** `large drink` = pear-lime fizz, 4 zm.
-- **Named planning roster:** 20 people, including the eight resolved secondary roles in `FAIR_SECONDARY_CAST.md`.
-- **F-04 cheating:** Kester Vane uses physically inspectable tack-wax cup/pea state; no hidden author-side answer changing.
-- **Dedicated fair constable:** not required unless a real authority gap appears.
-- **Initial major geography:** 16 locations with locked mesh graph; room #15 is Fair Office & Prize Hall, not a second records hall.
-- **Daily phase model:** PREOPEN, OPENING, LATE-MORNING, MIDDAY, AFTERNOON, DUSK, EVENING, CLOSING, AFTER-HOURS.
-- **Closing:** sequential, with real Back Lane staff/service continuity.
-- **Mara fair-specific preferences/initiative/refusal/competition/memory:** stable for planning in `FAIR_MARA_EXPERIENCE.md`.
-- **Adult evening venue:** The Lantern Table inside the existing Dance Pavilion; Tomas Quince shifts there at DUSK; free ordinary access; no drink minimum; no required alcohol/intoxication engine.
-- **Adult-social privacy:** contextual gradient inside the pavilion plus real geography for stronger privacy; no ROMANTIC-ROOM flag.
-- **Active RNG target:** Highly Extended Glulx 3.1.3 with pinned Glulxe `56ab8743bab565de307bd892c555d8d8897ed517`.
-- **Player SAVE/RESTORE RNG law:** Glulx RNG internal state is not part of player-managed saved-game state.
-- **Committed random facts:** once a fair outcome becomes world truth, it is stored in ordinary saveable story state and does not reroll on LOOK/re-entry/restore.
-- **Production reseeding:** the fair does not globally reseed the VM RNG during ordinary play.
-- **Save-scumming boundary:** a chance event not yet committed before a player save is not promised to replay identically after restore; the fair does not punish save use or maintain hidden anti-save state.
-- **Deterministic qualification:** the exact pinned Glulxe supports process-level `--rngseed`; no new fair-specific seed verb is required.
-- **RNG scope:** fair-cycle/day commitments, event-setup commitments and small action-time draws are distinct.
-- **Historical archive ownership:** the existing upstairs/Attic Hall/House of Records remains the durable documentary authority.
-- **Fair Office records:** current-fair administration, results, permits, lost-and-found and incident intake.
-- **Ada Vellum:** current registrar/office clerk, not omniscient historian/master archivist.
-- **Record layers:** current Fair Office paperwork, durable House of Records documentary history and personal lived memory remain distinct.
-- **Archive semantics:** reuse existing provenance/confidence/verification/contradiction/redaction and physical-record concepts where applicable.
-- **Privacy:** private Mara/Adventurer memories do not automatically become institutional records.
+- Flathead Fair name, Flathead Mountains naming anchor, annual-fiction recurrence and older-regional-institution + later-Frobozz identity.
+- NE attachment from canonical `CLEARING`, preserved canonical exits/barriers and persistent 16-location fairground mesh.
+- Free general admission, zorkmid commerce, prize-ticket boundary, baseline elephant-ear/drink identities.
+- 20-person named planning roster and the focused secondary-cast identities.
+- Kester Vane's physically inspectable tack-wax cheating mechanism.
+- Nine-phase daily model, sequential closing and Back Lane staff/service function.
+- Mara's fair-specific attraction/game/fishing/food preferences, initiative, refusal/annoyance behavior, competition and semantic memory.
+- The Lantern Table inside Dance Pavilion, Tomas Quince's DUSK transition, free social access, contextual privacy and no required alcohol/intoxication engine.
+- Active RNG target: Highly Extended Glulx 3.1.3 with pinned Glulxe `56ab8743bab565de307bd892c555d8d8897ed517`.
+- Player SAVE/RESTORE does not save Glulx RNG internal state.
+- Committed random fair facts live in ordinary saveable story state; production fair code does not globally reseed the VM.
+- Pre-commit chance may differ after restore; no anti-save punishment state.
+- Deterministic qualification may use pinned Glulxe `--rngseed`; no new fair-specific seed verb is required.
+- No duplicate fair archive: Fair Office current administration, upstairs House of Records durable documentary history, personal memory separate.
+- Archive graduation principle and matrix: historical signal rather than administrative exhaust.
+- Official annual/cycle program, meaningful historical grounds maps, annual public-results summary, standing-record changes, significant attraction/concession changes and significant adjudicated incidents are durable baseline candidates.
+- Routine booth attempts, ordinary catches, routine weigh-in sheets, queue/service paperwork, routine permits, ordinary lost-and-found and private purchases do not automatically graduate.
+- Derby winner and verified standing-record fish graduate; routine catches do not.
+- Shell-game history graduates only through evidence/adjudication with lasting significance or a historically significant unresolved case.
+- Archive corrections/disqualifications preserve original provenance and append supersession rather than silently rewriting history.
+- Private Mara/Adventurer life is not institutionally archived merely because it happened at the fair.
 
 See owning authorities rather than re-deriving these decisions from this ledger.
 
@@ -51,9 +38,11 @@ See owning authorities rather than re-deriving these decisions from this ledger.
 - Exact opening/closing traditions residents regard as customary.
 - Exact calendar terminology for the late favorable-season period.
 
+These are flavor/continuity questions unless another authority demonstrates they block implementation decomposition.
+
 ## Geography still open
 
-- Which observation-wheel components remain standing off-season versus partial disassembly.
+- Which Observation Wheel components remain standing off-season versus partial disassembly.
 - Final House of Mirrors internal physical footprint/sub-map details.
 - Exact restricted doors/storage boundaries along Back Lane.
 - Fine physical scale/walking-time semantics once broader movement/time authority can express them honestly.
@@ -65,41 +54,39 @@ See owning authorities rather than re-deriving these decisions from this ledger.
 - Exact day/month names only if broader GUE calendar authority defines them.
 - Exact clock-time mapping for semantic day phases, if global time eventually supports it.
 
+Do not invent a fake global year counter to close these questions.
+
 ## Economy still open
 
 - Physical zorkmid denominations / money-container representation if broader money authority requires them.
-- Exact prize-ticket award rates per game and final redemption catalog.
-- Which premium performances/events, if any, charge separate admission.
+- Exact final prize-ticket redemption catalog.
+- Whether any genuinely premium performance/event charges separate admission.
 
-## Archive / records — next planning frontier
+## Archive / records — product policy resolved
 
-The ownership boundary is resolved. The next pass should lock the **graduation policy** rather than invent another archive.
+The institutional ownership and graduation policy are now locked in `FAIR_HALL_OF_RECORDS_INTEGRATION.md`.
 
-Still open:
+Only implementation-detail questions remain deferred:
 
-- exact point in the fair lifecycle when selected current records become eligible for upstairs filing;
-- exact annual-summary document set;
-- which game/derby/exhibition thresholds qualify as durable historical record versus routine Fair Office paperwork;
-- which formally adjudicated incident categories qualify for durable case-file preservation;
-- how corrections/overturned results remain visible rather than silently rewriting history;
-- how old annual programs/maps and current office material cross-reference through existing `FILE`, `REVIEW`, `SHOW`, `CROSSREF`, provenance, confidence and contradiction concepts;
-- whether any small subset genuinely belongs in existing attic playback/dossier systems.
+- exact variable/object/file representation of closeout transfer candidates;
+- exact point/tick at which a qualified implementation makes already-closed archival material visible upstairs;
+- exact parser-object arrangement for annual summaries/correction notices under existing archive modules.
 
-Do not reopen the question of creating a separate Fair Historical Archive.
+Do not reopen a separate Fair Historical Archive.
 
 ## Attractions still open
 
-- Any additions/reductions to the initial ride roster beyond observation wheel, carousel, flying chairs/swings, scenic GUE-history ride and House of Mirrors.
-- Final authored anomaly set inside the House of Mirrors.
+- Any additions/reductions to the initial ride roster beyond Observation Wheel, Carousel, Flying Chairs, Scenic GUE ride and House of Mirrors.
+- Final authored anomaly set inside House of Mirrors.
 - Exact wheel carriage count/cycle semantics only if mechanically useful.
 - Which attractions are association-owned, independent or Frobozz-operated.
 
 ## Adult social life still open only at broader-composition level
 
-- whether broader GUE product authority eventually defines an alcoholic cider or another alcoholic product;
-- any intoxication semantics only if a broader non-fair system owns them;
-- exact long-horizon continuity arc for Lysa Marr and Tavin Roe;
-- exact relationship/intimacy composition where future shipped Mara authority exposes a seam not already covered by contextual privacy.
+- Whether broader GUE product authority eventually defines an alcoholic cider or another alcoholic product.
+- Any intoxication semantics only if a broader non-fair system owns them.
+- Exact long-horizon continuity arc for Lysa Marr and Tavin Roe.
+- Exact relationship/intimacy composition where future shipped Mara authority exposes a seam not already covered by contextual privacy.
 
 Do not reopen The Lantern Table into a seventeenth room, nightclub engine or romance venue.
 
@@ -111,51 +98,70 @@ Do not reopen The Lantern Table into a seventeenth room, nightclub engine or rom
 
 ## NPCs still open
 
-- whether any worker needs an authored substitute/helper rather than simply closing during a break;
-- which named vendors are guaranteed recurring annual presences versus merely frequent returners;
-- one or more transient merchant/performer identities only if a concrete future story/system requires them;
-- any future safety/constable role only if broader consequence or crowd authority exposes an actual gap.
+- Whether any worker needs an authored substitute/helper rather than simply closing during a break.
+- Which named vendors are guaranteed recurring annual presences versus merely frequent returners.
+- One or more transient merchant/performer identities only if a concrete future story/system requires them.
+- Any future safety/constable role only if broader consequence/crowd authority exposes an actual gap.
 
-The Lantern Table does not require a 21st named operator; Tomas Quince owns the service transition.
+Do not reopen the 20-person roster merely to add names.
 
-## Schedule consolidation still open
+## Schedule consolidation — active planning cleanup
 
-`FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` owns one focused correction to Tomas Quince's day:
+`FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` supersedes one old Tomas Quince schedule placeholder:
 
-- at DUSK, Tomas transitions from Food Row toward Dance Pavilion;
-- at EVENING, he operates The Lantern Table;
-- at CLOSING, he closes/clears it before cleanup/departure.
+- DUSK: transition from Food Row toward Dance Pavilion;
+- EVENING: operate The Lantern Table;
+- CLOSING: close/clear Lantern Table before cleanup/departure.
 
-`FAIR_DAILY_OPERATIONS.md` still contains the older all-evening Food Row placeholder. Consolidate that cell before implementation decomposition.
+`FAIR_DAILY_OPERATIONS.md` still needs that focused decision consolidated into its schedule matrix before implementation decomposition.
 
 ## Games and story-web still open
 
-- Final exact ticket awards/record thresholds for the eight initial games.
+- Final exact ticket awards/record thresholds where existing bands are not yet final.
 - Exact association sanction/escalation procedure after F-04 evidence is accepted.
 - Exact future continuity beats for the Wren family beyond the first F-02 configuration.
-- Exact durable archival thresholds for public results/incidents, owned by the archive-graduation pass above.
+
+Durable-history classification for results/incidents is no longer open; use `FAIR_HALL_OF_RECORDS_INTEGRATION.md`.
 
 ## Mara still open only where broader authority is required
 
-- exact money-container/custody semantics for her independent purchases;
-- exact relationship-rupture/autonomy composition once the broader shipped authority is chosen;
-- exact wardrobe/weather interactions for rides and evening conditions where broader clothing authority lands;
-- exact recurrence timing once broader calendar/aging authority exists.
+- Exact money-container/custody semantics for her independent purchases.
+- Exact relationship-rupture/autonomy composition once the broader shipped authority is chosen.
+- Exact wardrobe/weather interactions for rides/evening conditions where broader clothing authority lands.
+- Exact recurrence timing once broader calendar/aging authority exists.
 
 Do not reopen her fair-specific likes/dislikes into RNG.
 
 ## RNG implementation details intentionally deferred
 
-The product contract is resolved. Implementation-only questions remain deferred until a future authorized implementation train:
+The product contract is resolved. Deferred implementation-only questions:
 
-- exact globals/tables used to store committed outcomes;
-- whether any local deterministic derivation helper is useful, versus explicit committed outcomes;
-- exact instrumentation for deterministic qualification fixtures.
+- exact globals/tables for committed outcomes;
+- whether any local deterministic derivation helper is useful versus explicit committed outcomes;
+- exact qualification instrumentation beyond pinned interpreter seeding and authored fixtures.
 
-These are not reasons to reopen the product decision that player SAVE/RESTORE does not rewind Glulx RNG state.
+These do not reopen the SAVE/RNG product decision.
+
+## Product-gate review — next frontier
+
+After schedule consolidation, re-read:
+
+- `FAIR_PRODUCT_BIBLE.md`;
+- `FAIR_NATURAL_PLAY_ACCEPTANCE.md`;
+- this open-question ledger;
+- the now-stable Mara, Adult Social, RNG, Persistence and House-of-Records authorities.
+
+Classify every remaining item as one of:
+
+1. **implementation-gate blocker** — product behavior is genuinely undefined;
+2. **dependency blocker** — broader Zork authority must land first;
+3. **implementation detail** — may be deferred without changing product behavior;
+4. **future expansion** — explicitly not required for the first fair implementation program.
+
+Do not begin implementation merely because the gate review becomes favorable.
 
 ## Dependencies still open
 
 - Which post-1307 time/weather authority becomes stable enough to consume.
 - Which Mara autonomy/memory, wardrobe/property, money-container and calendar systems must land before fair implementation.
-- Exact implementation seam into the existing attic archive modules once a fair implementation train is eventually authorized.
+- Exact implementation seam into existing attic archive modules once a fair implementation train is eventually authorized.
