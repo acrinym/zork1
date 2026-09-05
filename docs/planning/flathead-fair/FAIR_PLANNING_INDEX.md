@@ -29,6 +29,10 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 - Product identity and player knowledge are separate world state.
 - NPC answers derive from actual knowledge; no generic answer where specific knowledge should exist.
 - Initial core roster: **12 named NPCs**, bound to real fair locations and daily schedules.
+- Secondary roster: **8 additional named NPCs**, bringing the planning roster to **20 substantial named people**.
+- Secondary cast identities now locked for planning: **Kester Vane** (shell/cup operator), **Hettie Bramm** (maintenance), **Sella Birch** (artisan), **Pella Wren** and **Tobin Wren** (family continuity), **Lysa Marr** and **Tavin Roe** (recurring adult couple), and **Cassa Reed** (rival angler).
+- Kester Vane's initial cheating mechanism is physical and inspectable: a tack-wax cup/pea state rather than hidden author-side answer changing.
+- No dedicated fair constable is required in the initial named roster; add one only if a real authority gap appears.
 - Daily operation uses nine semantic phases from PREOPEN through AFTER-HOURS.
 - Closing is sequential: queues stop, active rides finish, redemption remains available, visitors drain naturally, staff continue cleanup.
 - Back Lane is the real service/staff seam.
@@ -56,7 +60,7 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 | `FAIR_NAME_AND_LORE.md` | STABLE FOR PLANNING | Public name, regional origin, governance/Frobozz relationship |
 | `FAIR_SITE_SELECTION.md` | LOCKED FOR PLANNING | Canonical map evidence and attachment seam |
 | `FAIR_GEOGRAPHY.md` | STABLE FOR PLANNING | 16-location graph, Fair Office & Prize Hall, movement/privacy/service topology |
-| `FAIR_DAILY_OPERATIONS.md` | STABLE FOR PLANNING | phase-by-phase operation, NPC schedule, current-office closeout, closing/after-hours |
+| `FAIR_DAILY_OPERATIONS.md` | STABLE FOR PLANNING | phase-by-phase operation, core NPC schedule, current-office closeout, closing/after-hours |
 | `FAIR_TIME_SCHEDULE_AND_SEASON.md` | STABLE FOR PLANNING | annual recurrence and semantic daily lifecycle |
 | `FAIR_PRODUCTS_AND_ZORKMID_ECONOMY.md` | STABLE FOR PLANNING | purchasing power, free admission, commerce laws |
 | `FAIR_PRICE_BOOK.md` | DESIGNING | concrete initial prices and redemption bands |
@@ -66,7 +70,8 @@ The Flathead Fair must feel native to Zork and remain optional to canonical prog
 | `FAIR_GAMES_COMPETITIONS_AND_RECORDS.md` | DESIGNING | midway play, records, contests |
 | `FAIR_FISHING.md` | DESIGNING | fishing hobby and derby |
 | `FAIR_RNG_CONTRACT.md` | DESIGNING | controlled randomness and reproducibility |
-| `FAIR_NPC_ROSTER.md` | STABLE FOR INITIAL CORE PLANNING | core people, Ada/Fair Office boundary, roles/locations/knowledge |
+| `FAIR_NPC_ROSTER.md` | STABLE FOR INITIAL CORE PLANNING | 12-person core people, Ada/Fair Office boundary, roles/locations/knowledge |
+| `FAIR_SECONDARY_CAST.md` | STABLE FOR PLANNING | 8-person secondary roster, named story/system bindings, secondary schedules and knowledge boundaries |
 | `FAIR_DIALOGUE_AND_CONTEXTUAL_KNOWLEDGE.md` | DESIGNING | who can say what, and why |
 | `FAIR_MARA_EXPERIENCE.md` | DESIGNING | Mara-specific agency, preferences, memory |
 | `FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` | DESIGNING | adult social and relationship space |
@@ -93,15 +98,17 @@ The fair must compose rather than duplicate these live product organs:
 
 ## Current planning frontier
 
-The fair now has identity, map attachment, economy, products, core people, full operating geography/day, first deep attractions/games/fishing, a first story web, and a clean integration with the existing House of Records.
+The fair now has identity, map attachment, economy, products, core people, **a named 20-person core+secondary cast**, full operating geography/day, first deep attractions/games/fishing, a first story web, and a clean integration with the existing House of Records.
 
-Next highest-leverage work is **secondary cast + character/system tightening**:
+The highest-leverage secondary-cast placeholders are now resolved without adding filler population.
 
-1. name/bind the dubious game operator, repair specialist, artisan, child/family story characters, recurring couple(s) and rival angler;
-2. tighten Mara's fair behavior against concrete rides, games, fishing, food and stories;
-3. lock the adult evening venue identity and social/private behavior seams;
-4. resolve RNG/save semantics far enough for future qualification;
-5. tighten prize/record/archive graduation details around actual contest outputs without duplicating the House of Records.
+Next highest-leverage work is **Mara tightening against the concrete fair roster and activities**:
+
+1. bind Mara's stable preferences, initiative, refusals and remembered reactions to the actual ride/game/fishing/food roster;
+2. lock the adult evening venue identity and social/private behavior seams;
+3. resolve RNG/save semantics far enough for future qualification;
+4. tighten prize/record/archive graduation details around actual contest outputs without duplicating the House of Records;
+5. re-evaluate the implementation gate only after those authorities are coherent.
 
 ## Gate before implementation
 

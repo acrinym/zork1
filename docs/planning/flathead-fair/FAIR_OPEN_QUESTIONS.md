@@ -22,10 +22,20 @@ The following are no longer open:
 - **Elephant-ear baseline:** cinnamon-sugar 5 zm.
 - **First partial-identification drink:** `large drink` = pear-lime fizz, 4 zm.
 - **Initial named core roster:** 12 named NPCs with explicit knowledge boundaries.
+- **Initial named secondary roster:** 8 additional named NPCs, bringing the current planning roster to 20.
+- **Dubious shell-game operator:** Kester Vane.
+- **Initial F-04 cheating mechanism:** physically inspectable tack-wax cup/pea state; no hidden author-side answer changing.
+- **Maintenance/repair specialist:** Hettie Bramm.
+- **Dedicated artisan/craft seller:** Sella Birch.
+- **F-02 child/family cast:** Pella Wren and Tobin Wren.
+- **Recurring adult couple:** Lysa Marr and Tavin Roe, modeled as separate people rather than one couple-state object.
+- **Rival angler:** Cassa Reed.
+- **Dedicated fair constable/security role:** not required in the initial named roster; add only if a real authority gap appears.
 - **Initial major geography:** 16 locations with locked mesh graph.
 - **Fairground room #15:** **Fair Office & Prize Hall**, not a second records hall.
 - **Daily phase model:** PREOPEN, OPENING, LATE-MORNING, MIDDAY, AFTERNOON, DUSK, EVENING, CLOSING, AFTER-HOURS.
 - **Core NPC day schedule:** locked for planning in `FAIR_DAILY_OPERATIONS.md`.
+- **Secondary cast day expectations:** locked for planning in `FAIR_SECONDARY_CAST.md`.
 - **Closing model:** sequential, not one global shutdown tick.
 - **Back Lane function:** real service/staff route and bounded after-hours activity.
 - **Historical archive ownership:** the existing upstairs/Attic Hall/House of Records remains the durable documentary authority.
@@ -86,6 +96,7 @@ Do not reopen the question of creating a separate Fair Historical Archive.
 
 - Exact public name/product identity of the evening adult food/drink service in/near Dance Pavilion.
 - Exact composition seams into existing intimacy/privacy authorities without duplicating them.
+- Exact long-horizon continuity arc for Lysa Marr and Tavin Roe; their identity, separateness and baseline preferences are already resolved.
 
 ## Food still open
 
@@ -95,19 +106,42 @@ Do not reopen the question of creating a separate Fair Historical Archive.
 
 ## NPCs still open
 
-- Which working core names become final without revision.
-- Which vendors return every year versus selected years.
-- Additional roles: dubious game operator, repair worker, artisan, child/family stories, recurring couples, rival anglers.
-- Whether any worker needs an authored substitute/helper rather than simply closing during a break.
+The high-value secondary-role identities are resolved in `FAIR_SECONDARY_CAST.md`.
+
+Still open:
+
+- whether any worker needs an authored substitute/helper rather than simply closing during a break;
+- which named vendors are guaranteed recurring annual presences versus merely frequent returners;
+- one or more transient merchant/performer identities only if a concrete future story/system requires them;
+- any future safety/constable role only if broader consequence or crowd authority exposes an actual gap.
+
+Do not reopen the 20-person roster merely to add names.
 
 ## Games and story-web still open
 
 - Final exact ticket awards/record thresholds for the eight initial games.
-- Name/personality of the suspicious shell-game operator.
-- Named child/family cast for the 39-ticket and lost-property stories.
-- Maintenance specialist for ride/mirror incidents.
-- Recurring couple/family continuity arc.
+- Exact association sanction/escalation procedure after F-04 evidence is accepted.
+- Exact future continuity beats for the Wren family beyond the first F-02 configuration.
 - Exact archival evidence available for F-03/F-09 after the existing House of Records contents are mapped in implementation planning.
+
+The following identities are no longer open:
+
+- F-02 young visitor: Pella Wren;
+- F-02 family anchor: Tobin Wren;
+- F-04 suspicious operator: Kester Vane;
+- F-05 maintenance specialist: Hettie Bramm.
+
+## Mara still open
+
+- Concrete preference ordering across the actual ride roster.
+- Which games she enjoys, dislikes, refuses, repeats or becomes competitive about.
+- Her ordinary food/drink preferences and willingness to share versus buy her own items.
+- Her fishing style, risk tolerance, rivalry response and independent derby behavior beyond the already-locked ability to enter and beat the Adventurer.
+- Phase-sensitive initiative: what she is likely to suggest at morning, dusk, evening and closing.
+- Concrete annoyance/boredom thresholds for repetitive fair behavior without creating a fair-specific relationship meter.
+- Which prior-fair experiences become personal memories and how they alter later suggestions/reactions.
+
+These decisions belong in `FAIR_MARA_EXPERIENCE.md` and are the next planning frontier.
 
 ## RNG still open
 
