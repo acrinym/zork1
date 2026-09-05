@@ -1,48 +1,69 @@
 # Flathead Fair name and lore
 
-**Status:** DESIGNING  
-**Current working public name:** **The Flathead Fair**
+**Status:** STABLE FOR PLANNING  
+**Public name:** **The Flathead Fair**  
+**Public-name decision:** LOCKED
 
-## Naming goal
+## Canonical name anchor
 
-The name should sound like something residents of the Great Underground Empire would naturally say: `Are you going to the Flathead Fair this year?`
+`Flathead` is not imported carnival flavor. Canonical `1dungeon.zil` already identifies the mountain range seen from `CANYON-VIEW` as the **Flathead Mountains**, and the `MOUNTAIN-RANGE` object accepts `FLATHEAD` as an adjective.
 
-`Flathead` is preferred because it immediately feels native to Zork rather than imported from modern amusement-park language. The exact ceremonial/formal title remains open.
+The fair therefore takes its common name from the surrounding Flathead region/mountain landmark. This does **not** require the fair to be a personal celebration of a particular Flathead ruler.
 
-## Working institutional model
+Residents should naturally say:
 
-The Flathead Fair is a recurring civic/commercial fair with a mixture of:
+> Are you going to the Flathead Fair this year?
 
-- independent vendors and artisans;
-- food concessions;
-- games and competitions;
-- rides and mechanical amusements;
-- agricultural or craft exhibitions where culturally appropriate;
-- performances;
-- temporary merchants;
-- Frobozz-branded sponsorship, services, or concessions where that improves Zork tone.
+That short name is authoritative even if official signs use a longer bureaucratic title.
 
-The fair should not become an all-Frobozz corporate monoculture. Independent vendors need room to disagree with, undercut, mock, resent, or simply coexist with larger commercial operators.
+## Authored Highly Extended lore
 
-## Cultural purpose
+The following is new Highly Extended Zork lore, not claimed as original Infocom canon.
 
-Exact origin remains open, but the event should have an in-world reason to recur: civic anniversary, harvest/market tradition, imperial commemoration, regional gathering, or a historical fair whose original purpose has accumulated layers of commerce and entertainment.
+The Flathead Fair began as a recurring regional trade, craft, produce, livestock, and exhibition gathering near the end of the favorable traveling season. Entertainment accumulated around the market: competitions, food, music, mechanical amusements, games, and eventually larger rides.
 
-The lore pass must answer:
+This history explains why the modern fair can comfortably contain both old-fashioned fair institutions and ridiculous commercial amusements without feeling like a theme park dropped into Zork.
 
-1. why the fair began;
-2. why it still recurs;
-3. who owns or controls the grounds;
-4. who grants concessions;
-5. whether the fair predates current Frobozz involvement;
-6. what traditions residents would recognize;
-7. how outsiders describe it;
-8. what changes from year to year.
+## Recurrence
 
-## Tone opportunities
+The fair is an **annual regional event** in world fiction. Its exact calendar implementation depends on the broader Highly Extended calendar/aging authority; do not invent a fake year counter merely to make repeat fairs happen.
 
-Official histories may be pompous, self-serving, contradictory, or bureaucratically absurd. Vendor and local oral histories may disagree. The game should preserve the distinction between official claim and established world fact.
+A single save may initially experience one authored fair cycle. Multi-year returns become active only when elapsed-year authority is real.
+
+## Governance model
+
+The fair predates its modern Frobozz-branded commercial presence.
+
+A local/regional fair association controls the grounds and grants concessions. Frobozz interests may sponsor infrastructure, operate particular rides or stalls, sell branded goods, publish hilariously self-serving histories, and attempt to make themselves appear responsible for the entire institution.
+
+They are **not** the whole fair.
+
+Independent vendors, artisans, farmers, performers, anglers, merchants, and operators must remain common enough to disagree with, compete with, mock, resent, or simply ignore the larger commercial presence.
+
+## Official-title joke space
+
+A pompous expanded title may appear on permits, banners, guidebooks, and Frobozz paperwork, but the exact wording is not load-bearing and remains open. Candidates can lean toward absurd forms such as an Agricultural, Mercantile, Mechanical, Recreational, and Cultural Exhibition.
+
+Whatever bureaucracy eventually prints, characters still call it **the Flathead Fair**.
+
+## Cultural continuity
+
+The fair should have recognizable traditions across years:
+
+- recurring food staples, especially elephant ears;
+- ribbons, records, and annual competitions;
+- returning vendors and families;
+- a fishing derby;
+- evening music/dancing;
+- commemorative yearly merchandise;
+- particular opening/closing customs to be authored later;
+- old-timers comparing present prices and attractions to earlier fairs.
+
+Official history, local memory, and vendor folklore may contradict each other. Those contradictions are allowed when the game preserves who is making the claim.
 
 ## Hard boundaries
 
-Do not reproduce Chrono Trigger names, plot beats, mascot fights, royal-incognito scenes, or fair-specific story incidents. Inspiration is structural only.
+- Do not reproduce Chrono Trigger names, plot beats, mascot fights, royal-incognito scenes, or fair-specific story incidents.
+- Do not turn the fair into an all-Frobozz corporate monoculture.
+- Do not claim new Highly Extended lore was present in original Infocom canon.
+- Do not rename the public event away from **Flathead Fair** without an explicit later planning decision.
