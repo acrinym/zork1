@@ -1,23 +1,39 @@
 # Flathead Fair time, schedule, and season
 
-**Status:** DESIGNING  
-**Recurrence:** LOCKED IN FICTION — annual regional fair
+**Status:** STABLE FOR PLANNING  
+**Recurrence:** LOCKED IN FICTION — annual regional fair  
+**Operating-day authority:** `FAIR_DAILY_OPERATIONS.md`
 
 ## Daily lifecycle
 
-The fair is not static scenery. Its authored daily states should include:
+The fair is not static scenery. One operating day uses nine authored phases:
 
-1. setup / pre-opening;
-2. opening morning;
-3. late morning;
-4. midday crowd peak;
-5. afternoon contests and performances;
-6. dusk / lighting transition;
-7. evening social period;
-8. closing sequence;
-9. after-hours / mostly empty grounds.
+1. `PREOPEN` — setup, delivery, inspection;
+2. `OPENING` — public opening and staged startup;
+3. `LATE-MORNING` — full market/family activity;
+4. `MIDDAY` — crowd/food/game peak;
+5. `AFTERNOON` — judging, derby and featured events;
+6. `DUSK` — lighting and evening transition;
+7. `EVENING` — dancing, lit rides, adult social period;
+8. `CLOSING` — sequential shutdown and visitor departure;
+9. `AFTER-HOURS` — bounded staff cleanup, repair and storage activity.
 
-Different stalls, performers, crowds, rides, NPC schedules, and dialogue may change by state.
+These are semantic world phases, not imported modern clock hours. A broader GUE time authority may later map exact times onto them.
+
+`FAIR_DAILY_OPERATIONS.md` owns the location-by-location operating matrix and the core NPC schedule.
+
+## Phase-transition law
+
+A phase transition does **not** teleport every NPC or close every business on one tick.
+
+Changes are authored by actor/location:
+
+- operators finish active ride cycles;
+- vendors may make a last sale or close earlier/later than neighbors;
+- performers move from rehearsal to performance;
+- prize redemption remains open late enough to redeem newly earned tickets;
+- staff move through real adjacent geography where movement matters;
+- closing remains legible through announcements, shutters, queues and crowd behavior.
 
 ## Event lifecycle
 
@@ -33,7 +49,7 @@ A complete cycle can include:
 - an off-season period in which the physical grounds still exist;
 - the next annual return.
 
-The exact number of public days remains open until the calendar authority and event-density plan are reconciled. Do not pick a number merely because real-world fairs often last a week.
+The exact number of public days remains open until the broader calendar and event-density plan are reconciled. Do not pick a number merely because real-world fairs often last a week.
 
 ## Calendar implementation boundary
 
@@ -41,7 +57,7 @@ Annual recurrence is a lore/product decision, not permission to bolt on a fake `
 
 If the broader game does not yet support meaningful elapsed years, the first fair implementation may expose one full fair cycle only. Later annual returns activate when calendar/aging authority can support them honestly.
 
-This prevents the fair from becoming the system that secretly invents global time semantics for the rest of Highly Extended Zork.
+This prevents the fair from secretly inventing global time semantics for the rest of Highly Extended Zork.
 
 ## Seasonal character
 
@@ -51,14 +67,40 @@ Exact month names, calendar terminology, harvest labels, or holidays remain depe
 
 ## Scheduling rules
 
-- Missing a performance must not break required progression.
-- A contest may recur at a later scheduled time/day.
-- Closing must be legible to the player.
-- Shops should close individually where appropriate rather than every actor disappearing on one global tick.
-- Evening should have authored content, not merely darker descriptions.
-- After-hours grounds should be materially quieter and potentially stranger.
-- Weather may alter schedules where the attraction/vendor has an authored reason to respond.
-- Fair time may inconvenience optional fair plans; it may not silently destroy canonical Zork progress.
+- Missing a performance never breaks required progression.
+- A contest may recur at a later scheduled phase/day.
+- Closing is legible to the player.
+- Shops close individually where appropriate rather than every actor disappearing simultaneously.
+- Evening has authored content, not merely darker descriptions.
+- After-hours grounds are materially quieter and staffed differently.
+- Weather alters schedules only where an attraction/vendor has an authored reason to respond.
+- Fair time may inconvenience optional plans; it may not silently destroy canonical Zork progress.
+- A worker's break must be observable/understandable and cannot create a tiny untelegraphed mandatory window.
+
+## Weather composition
+
+Weather overrides specific operations rather than setting one generic `FAIR-CLOSED` flag.
+
+Examples include wind suspending the observation wheel, Tilda Fen stopping wind-sensitive machinery, Grand Pavilion absorbing supported events, Food Row deploying covers, or Silas Dace changing derby/fishing guidance.
+
+Paid-but-unused services follow the authored refund/credit rules.
+
+## Closing sequence
+
+The stable planning order is:
+
+1. long attractions stop admitting new customers;
+2. featured game attempts stop opening;
+3. Market Row begins closing;
+4. fishing rental/weigh-in ends;
+5. daytime food stalls reduce toward late vendors;
+6. final ride cycles complete;
+7. Prize & Records Hall gives a final redemption call;
+8. Dance Pavilion ends the final piece;
+9. visitors drain through Fair Entrance/Fair Road;
+10. Back Lane remains active for workers.
+
+No paid rider is dumped out because the phase changed, and no attraction closure can block the pedestrian route home.
 
 ## Long-term continuity
 
