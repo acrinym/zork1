@@ -4,6 +4,7 @@
 <SYNTAX WXDAMOPEN = V-WX-DAM-OPEN>
 <SYNTAX WXDAMCLOSED = V-WX-DAM-CLOSED>
 <SYNTAX WXLOW = V-WX-CANYON-BOTTOM>
+<SYNTAX WXBASE = V-WX-DAM-BASE>
 
 <ROUTINE WX-RESET ()
     <WEATHER-DISASTER-PUT ,WD-STAGE ,WEATHER-FAIR>
@@ -39,3 +40,7 @@
 <ROUTINE V-WX-CANYON-BOTTOM ()
     <GOTO ,CANYON-BOTTOM>
     <TELL "[TEST] Positioned at Canyon Bottom without changing Release 1307 weather state." CR>>
+
+<ROUTINE V-WX-DAM-BASE ()
+    <GOTO ,DAM-BASE>
+    <TELL "[TEST] Positioned at Dam Base without changing Release 1307 weather state." CR>>
