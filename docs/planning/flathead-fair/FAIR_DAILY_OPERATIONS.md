@@ -63,7 +63,8 @@ A phase transition changes schedules and world presentation. It does not telepor
 - PREOPEN: deliveries and preparation through Back Lane.
 - OPENING through MIDDAY: full food service.
 - AFTERNOON: continued service, possible batch shortages.
-- DUSK/EVENING: hot drinks/evening food become more prominent; some daytime stalls close.
+- DUSK: hot drinks/evening food become more prominent; some daytime stalls close; Tomas Quince closes his ordinary cold-drink stand and transitions selected stock/equipment toward Dance Pavilion.
+- EVENING: remaining designated food vendors continue according to their own hours; Tomas operates The Lantern Table in Dance Pavilion rather than his daytime Food Row stand.
 - CLOSING: limited last sales; leftovers follow vendor-specific policy.
 
 ### Games Row
@@ -86,10 +87,13 @@ A phase transition changes schedules and world presentation. It does not telepor
 - EVENING: limited public programs, seating/rest depending schedule.
 
 ### Dance Pavilion
-- OPENING through AFTERNOON: seating, lessons/rehearsals, occasional daytime music.
-- DUSK: Orin Bell and musicians prepare; evening service/social use activates.
-- EVENING: principal dance/adult-social venue.
-- CLOSING: last piece, explicit final call, lights reduce gradually rather than instant despawn.
+- OPENING through AFTERNOON: seating, lessons/rehearsals, occasional daytime music; The Lantern Table is not yet operating as evening service.
+- DUSK: Orin Bell and musicians prepare while Tomas Quince transitions from Food Row and opens The Lantern Table in stages; lamps, hot/evening drinks and supper/social seating become active.
+- EVENING: principal dance/adult-social venue with full Lantern Table service. Free ordinary pavilion access does not require a purchase or drink minimum.
+- CLOSING: Tomas makes the service last call before/around Orin's final program beat; existing food/drink may be finished; Orin ends the last piece; service and lights reduce gradually rather than instant despawn.
+- AFTER-HOURS: Lantern Table is closed; legitimate staff cleanup may continue, but the pavilion does not become an automatic private after-hours venue.
+
+See `FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` for the focused Lantern Table menu, privacy gradient and adult-social authority.
 
 ### Ride Court
 - PREOPEN: Tilda Fen inspects/starts machinery.
@@ -136,9 +140,9 @@ A phase transition changes schedules and world presentation. It does not telepor
 - OPENING through AFTERNOON: current entries/results, permits/notices, lost-and-found, incident intake and prize redemption.
 - EVENING: prize redemption remains open later than many games; office service reduces to defined current-fair needs.
 - CLOSING: final redemption call is explicit; ordinary current-office functions close separately from emergency lost-person handling.
-- AFTER-HOURS: Ada may close out current paperwork and prepare selected materials for later archival transfer. This does not turn the room into the historical archive.
+- AFTER-HOURS: Ada closes current paperwork and prepares only qualified archival candidates for a later House of Records closeout/filing path. This does not turn the room into the historical archive.
 
-Older programs, historical maps and durable case files live in the existing upstairs Hall/House of Records and require that archive's physical retrieval/review authority. See `FAIR_HALL_OF_RECORDS_INTEGRATION.md`.
+Older programs, historical maps and durable case files live in the existing upstairs Hall/House of Records and require that archive's physical retrieval/review authority. Graduation follows `FAIR_HALL_OF_RECORDS_INTEGRATION.md`.
 
 ### Back Lane
 - PREOPEN: busiest for deliveries and staff setup.
@@ -153,9 +157,9 @@ This matrix defines **where a character is expected**, not continuous pathfindin
 | NPC | PREOPEN | OPENING | LATE-MORNING | MIDDAY | AFTERNOON | DUSK | EVENING | CLOSING / AFTER-HOURS |
 |---|---|---|---|---|---|---|---|---|
 | Berrin Vale | Back Lane inspection | Entrance | Central Midway | roving Central/Grand | Grand/Fair Office incidents | Ride/grounds inspection | Central/Dance oversight | Entrance then Back Lane |
-| Ada Vellum | Fair Office & Prize Hall | Fair Office & Prize Hall | same | Grand Pavilion for current official results as needed | Fair Office / event records | Fair Office | reduced current-office desk | closes current records, prepares archival candidates |
+| Ada Vellum | Fair Office & Prize Hall | Fair Office & Prize Hall | same | Grand Pavilion for current official results as needed | Fair Office / event records | Fair Office | reduced current-office desk | closes current records, prepares qualified archival candidates |
 | Mabel Rusk | Food Row prep via Back Lane | Food Row | Food Row | Food Row | Food Row; one authored break | Food Row | Food Row until product close | cleanup/Back Lane |
-| Tomas Quince | Food Row prep | Food Row | Food Row | Food Row | Food Row | Food Row | Food Row, later than some daytime stalls | cleanup/Back Lane |
+| Tomas Quince | Food Row prep | Food Row | Food Row | Food Row | Food Row | closes cold-drink stand; transitions to Dance Pavilion / Lantern Table setup | Dance Pavilion — Lantern Table | last service, counter clear, cleanup/Back Lane |
 | Silas Dace | Fishing Pond | Fishing Pond | Fishing Pond | Fishing Pond | Pond / Grand or Fair Office for weigh-in result | closes rental/weigh-in | Pond Path or departs unless event | off duty |
 | Nell Harrow | Prize Hall setup | Fair Office & Prize Hall | same | same | same | same | late redemption | final count/close |
 | Emery Wicks | Wheel inspection | Observation Wheel | Observation Wheel | Observation Wheel | Observation Wheel | Observation Wheel | Observation Wheel | final cycle, then Back Lane |
@@ -164,6 +168,8 @@ This matrix defines **where a character is expected**, not continuous pathfindin
 | Vera Tallow | Market setup | Market Row | Market Row | Market Row | Market Row | Market Row | selected late Market hours or Dance Pavilion as visitor | packs through Back Lane |
 | Orin Bell | arrival/setup Grand/Back Lane | Grand Pavilion prep | Grand performance/rehearsal | Grand Pavilion | Grand / rest | Dance Pavilion setup | Dance Pavilion bandleader | last piece, pack-down |
 | Ephraim Peake | usually absent | Entrance/Food Row | Grand/Market | Food/Grand | Pond Path/Exhibitions | Central or wheel vicinity | Dance Pavilion / strolling | leaves before/during closing depending day |
+
+Secondary-cast expected phase locations remain in `FAIR_SECONDARY_CAST.md` unless later consolidated here. They must obey the same no-teleport, visible-transition and closing rules.
 
 ## Break law
 
@@ -182,15 +188,16 @@ A break may create character moments, including encountering a vendor somewhere 
 
 Mara is not assigned a vendor-style schedule. Her movement derives from accompanying/independent behavior, preferences, relationship, crowd tolerance, hunger/tiredness and chosen activities.
 
-She may suggest movement because of phase changes, for example:
+Her focused fair authority now supplies concrete phase-sensitive behavior. Examples include:
 
-- wanting food as Food Row becomes busy;
-- preferring the wheel near dusk;
-- noticing music starting at Dance Pavilion;
-- wanting a quieter Pond Path after too much Midway crowd;
-- deciding she is ready to leave before official closing.
+- quieter fishing/Market wandering early;
+- food or crowd recovery around MIDDAY;
+- derby/competition interest in AFTERNOON;
+- strong Observation Wheel / lights / hot-cider / music interest at DUSK;
+- Dance Pavilion, wheel or Pond Path possibilities in EVENING;
+- willingness to leave before official close rather than optimize every remaining attraction.
 
-She is not compelled to maximize attractions before the clock advances.
+She is not compelled to maximize attractions before the phase changes, and a refusal remains a refusal under broader autonomy authority.
 
 Her private fair experiences are personal-memory state, not automatic Fair Office paperwork or House of Records entries.
 
@@ -203,6 +210,7 @@ Examples:
 - Emery suspends wheel boarding for unsafe wind;
 - Tilda pauses wind-sensitive Ride Court machinery;
 - Grand Pavilion absorbs supported performances/exhibits;
+- Dance Pavilion may become denser under ordinary rain rather than closing by default;
 - Food Row deploys awnings/covers;
 - Silas changes fishing advice/derby status where weather matters;
 - Berrin coordinates serious safety response.
@@ -217,14 +225,14 @@ Closing is a sequence:
 2. games stop opening new featured attempts;
 3. Market Row begins closing;
 4. fishing rental/weigh-in ends;
-5. food reduces to late vendors;
+5. Food Row reduces to remaining late vendors while Tomas is already operating The Lantern Table;
 6. final ride cycles complete;
 7. Fair Office & Prize Hall gives final redemption call;
-8. Dance Pavilion ends the last piece;
-9. visitors drain toward Entrance/Fair Road;
-10. Back Lane and current-office closeout remain active for workers.
+8. Tomas gives Lantern Table's last paid-order call and Orin ends the last Dance Pavilion piece;
+9. visitors with existing food/drink finish naturally and drain toward Entrance/Fair Road;
+10. Back Lane, pavilion cleanup and current-office closeout remain active for workers.
 
-No character vanishes at one magic tick, no paid rider is dumped off a ride, and no player is trapped because business hours changed.
+No character vanishes at one magic tick, no paid rider is dumped off a ride, no active customer is forced to discard a legitimate purchase because the register closed, and no player is trapped because business hours changed.
 
 ## After-hours law
 
@@ -237,9 +245,9 @@ It can contain:
 - stored objects;
 - exhausted vendors;
 - current records being closed out;
-- selected records being marked/prepared for later archival transfer;
+- qualified archival candidates being marked/prepared for later transfer;
 - dim ride structures;
 - wind and distant mechanical sounds;
 - rare authored incidents.
 
-Closed attractions remain closed unless a specific story provides legitimate access. The House of Records does not teleport into the fairgrounds after closing.
+Closed attractions and The Lantern Table remain closed unless a specific story provides legitimate access. The House of Records does not teleport into the fairgrounds after closing.
