@@ -1,0 +1,47 @@
+{
+  "edition": "Authored Time, Weather & Disaster Arc",
+  "release": 1307,
+  "serial": "260904",
+  "base_release": 1306,
+  "base_manifest": "../mara-earned-romance/patch-series.json",
+  "base_artifact_sha256": "76871675af153c55440ee472fde4aec25408c3f160a33f963e32ad2cf4e466c5",
+  "base_source_sha256": {
+    "production": "0411c7d8a533c1392df09d32d9ccde859feb6f651c88277d9fea7f89a09ccc8a",
+    "dev": "2b36fb532d8bf5daf182512b94ce9adfb8186cce4f2064396345c15bcd068944"
+  },
+  "patches": [
+    "patches/001-weather-turn-hook.json",
+    "patches/002-release-1307.json"
+  ],
+  "added_files": [
+    "weather_disaster.zil"
+  ],
+  "expected_changed_paths": [
+    "shadow_logic.zil",
+    "weather_disaster.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-time-weather-disaster.ulx",
+    "format": "Glulx"
+  },
+  "player_outcomes": [
+    "fair weather leaves the opening and canonical solo puzzle routes unchanged",
+    "EXAMINE SKY reports authored expedition time and current weather instead of random flavor",
+    "reaching the real canyon or dam geography deterministically arms a warned storm arc",
+    "the player receives distinct building-weather and first-rain warnings before the destructive surge",
+    "the existing Flood Control Dam #3 sluice state changes how the surge is narrated and whether loose objects on the dam are swept",
+    "real loose bottle and brown-sack objects left at Canyon View can be washed to Canyon Bottom, while carried objects are never stolen",
+    "with the dam gates shut, the same recoverable loose objects left on top of the dam can be swept to Dam Base",
+    "storm aftermath persists: moved objects stay moved and the weather does not rewind the world"
+  ],
+  "boundaries": [
+    "no random weather rolls, climate engine, procedural forecast, or generic environmental simulator",
+    "no new globals; compact authored state lives in the Release 1307 table",
+    "no carried-item theft, treasure deletion, canonical route deletion, or weather-only scoring",
+    "no alternate dam-water authority: canonical GATES-OPEN and LOW-TIDE remain authoritative",
+    "no GUI and no production cheat verb",
+    "no recursive audit or meta-test machinery"
+  ]
+}
