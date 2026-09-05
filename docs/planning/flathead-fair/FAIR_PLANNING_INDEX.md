@@ -20,14 +20,18 @@ The fair must feel native to Zork and remain optional to canonical progression.
 - Physical attachment is through a new **northeast spur from canonical `CLEARING`**, preserving every existing exit and explicit forest/canyon barrier.
 - Fairgrounds occupy new meadow/field geography beyond the existing forest screen and continue to exist off-season.
 - Initial geography targets about **16 dense functional locations**, not dozens of transit rooms.
-- Ordinary purchases use **zorkmids**.
-- A separate prize-ticket currency may exist for midway rewards only; it must not replace ordinary money.
-- **Elephant ears are a signature fair staple.**
-- Products have concrete identities even when the Adventurer initially knows them only as `large drink`, `red stuff`, `fried thing`, and similar partial descriptions.
+- **General admission is free.** Walking, talking, public social life, and accompanying Mara are not cash-gated.
+- Ordinary purchases use **zorkmids** under a stable Highly Extended everyday purchasing-power scale.
+- Original Zork I treasure `VALUE/TVALUE` is not treated as a zorkmid exchange rate.
+- Prize tickets are earned midway redemption currency only; they do not replace zorkmids or convert back into money.
+- **Elephant ears are a signature fair staple**, with cinnamon-sugar at **5 zm**.
+- The first locked partial-identification case is **`large drink` -> pear-lime fizz, 4 zm**.
+- Products have concrete identities even when the Adventurer initially knows them only through partial descriptions.
 - Players can ask vendors, Mara, and other NPCs meaningful questions about products.
 - NPC answers are contextual to actual knowledge. No generic response is acceptable when a character reasonably knows the answer.
+- Initial core population now has **12 working named NPCs** with job/knowledge boundaries.
 - Mara has agency. She may buy, suggest, refuse, wander, compete, eat, fish, dance, remember, and initiate.
-- Adult romance, dating, affection, privacy, and intimacy are part of fair life, governed by the broader relationship/consent authorities rather than a carnival-specific romance minigame.
+- Adult romance, dating, affection, privacy, and intimacy are part of fair life, governed by broader relationship/consent authorities rather than a carnival-specific romance minigame.
 - Controlled RNG belongs at the fair, but required progression must never depend on arbitrary random outcomes.
 - The fair recurs and changes over time. Records, memories, objects, and some NPC histories can persist.
 - Canonical Zork routes and solutions remain authoritative.
@@ -42,18 +46,19 @@ The fair must feel native to Zork and remain optional to canonical progression.
 | `FAIR_SITE_SELECTION.md` | LOCKED FOR PLANNING | Canonical map evidence and selected attachment seam |
 | `FAIR_GEOGRAPHY.md` | DESIGNING | Locked attachment plus district/room plan |
 | `FAIR_TIME_SCHEDULE_AND_SEASON.md` | DESIGNING | Locked annual recurrence plus daily/event lifecycle |
-| `FAIR_PRODUCTS_AND_ZORKMID_ECONOMY.md` | DESIGNING | Prices, money, merchandise, purchasing power |
-| `FAIR_PRODUCT_KNOWLEDGE_AND_QUESTIONS.md` | DESIGNING | Partial identification and question answering |
+| `FAIR_PRODUCTS_AND_ZORKMID_ECONOMY.md` | STABLE FOR PLANNING | Zorkmid purchasing power, free admission, commerce laws |
+| `FAIR_PRICE_BOOK.md` | DESIGNING | Initial concrete zorkmid prices and redemption bands |
+| `FAIR_PRODUCT_KNOWLEDGE_AND_QUESTIONS.md` | STABLE FOR PLANNING | Partial identification, contextual questions, first acceptance case |
 | `FAIR_VENDOR_AND_COMMERCE_DESIGN.md` | DESIGNING | Merchants, stalls, stock, expertise |
 | `FAIR_ATTRACTIONS_CATALOG.md` | DESIGNING | Rides and destination attractions |
 | `FAIR_GAMES_COMPETITIONS_AND_RECORDS.md` | DESIGNING | Midway play, records, contests |
 | `FAIR_FISHING.md` | DESIGNING | Fishing hobby and derby |
 | `FAIR_RNG_CONTRACT.md` | DESIGNING | Controlled randomness and reproducibility |
-| `FAIR_NPC_ROSTER.md` | OPEN | Named population and crowd model |
+| `FAIR_NPC_ROSTER.md` | DESIGNING | Initial 12 named people, roles, knowledge boundaries |
 | `FAIR_DIALOGUE_AND_CONTEXTUAL_KNOWLEDGE.md` | DESIGNING | Who can say what, and why |
 | `FAIR_MARA_EXPERIENCE.md` | DESIGNING | Mara-specific agency, preferences, memory |
 | `FAIR_ADULT_SOCIAL_ROMANCE_AND_INTIMACY.md` | DESIGNING | Adult social and relationship space |
-| `FAIR_FOOD_AND_CONCESSIONS.md` | DESIGNING | Food, drink, sharing, elephant ears |
+| `FAIR_FOOD_AND_CONCESSIONS.md` | STABLE FOR PLANNING | Food, drink, sharing, elephant ears, pear-lime example |
 | `FAIR_MINIQUESTS_INCIDENTS_AND_RUMORS.md` | DESIGNING | Small stories and discovered objectives |
 | `FAIR_REWARDS_PRIZES_AND_COLLECTIBLES.md` | DESIGNING | Tickets, prizes, annual objects |
 | `FAIR_PERSISTENCE_AND_MEMORY.md` | DESIGNING | What survives visits and years |
@@ -61,15 +66,17 @@ The fair must feel native to Zork and remain optional to canonical progression.
 | `FAIR_NATURAL_PLAY_ACCEPTANCE.md` | DESIGNING | Future qualification contract |
 | `FAIR_OPEN_QUESTIONS.md` | OPEN | Decisions still deliberately unresolved |
 
-## Next planning frontier
+## Current planning frontier
 
-The next highest-leverage unresolved authority is **money and admission**:
+The load-bearing identity, site, annual recurrence, everyday money scale, free admission, signature food, first product-identification case, and initial core NPC roster now exist.
 
-1. establish a coherent zorkmid purchasing-power scale against existing Zork money/treasure references;
-2. decide whether grounds entry is free, paid, or mixed;
-3. separate normal zorkmid commerce from prize-ticket redemption;
-4. give the first product roster actual stable prices;
-5. then build the first named vendor/NPC roster around those economics.
+The next highest-leverage planning work is **fair operation as a day of play**:
+
+1. lock the detailed 16-location connection graph;
+2. assign the core NPCs to those spaces and schedules;
+3. lock the initial ride/game roster and operating prices;
+4. define the observation wheel, House of Mirrors, and fishing pond deeply enough to qualify as full attractions rather than labels;
+5. then build the first miniquest/incident graph through those real people and places.
 
 ## Gate before implementation
 
