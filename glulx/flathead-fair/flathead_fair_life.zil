@@ -83,27 +83,28 @@
     (SYNONYM BERRIN VALE STEWARD)
     (ADJECTIVE FAIR)
     (DESC "Berrin Vale")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION BERRIN-FCN)>
 
 <ROUTINE BERRIN-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Berrin Vale, fair steward: practical, not ornamental." CR>)
-          (<OR <VERB? TELL FAIR-ASK HELLO>>
-           <TELL "Free admission, he says. Complaints and ride shutdowns come to him. He does not know Mabel's recipes or Silas's fish tables. Older files live upstairs, not in his pocket." CR>)>
-    <RTRUE>>
+          (<VERB? TELL HELLO>
+           <TELL "Free admission, he says. Complaints and ride shutdowns come to him. He does not know Mabel's recipes or Silas's fish tables. Older files live upstairs, not in his pocket." CR>
+           <RTRUE>)>
+    <RFALSE>>
 
 <OBJECT ADA-VELLUM
     (IN FAIR-OFFICE-PRIZE-HALL)
     (SYNONYM ADA VELLUM CLERK REGISTRAR)
     (DESC "Ada Vellum")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION ADA-FCN)>
 
 <ROUTINE ADA-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Ada Vellum keeps the current fair's paperwork with a dry precision." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Current program, current permits, current lost-and-found, current incidents. ">
            <COND (<NOT <ZERO? ,FAIR-ADA-INCIDENT>>
                   <TELL "Kester Vane's booth is on the incident blotter: tack-wax, evidence presented, booth closed.">)
@@ -116,13 +117,13 @@
     (IN FOOD-ROW)
     (SYNONYM MABEL RUSK)
     (DESC "Mabel Rusk")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION MABEL-FCN)>
 
 <ROUTINE MABEL-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Mabel Rusk works hot oil as if it were a civic duty." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Cinnamon-sugar elephant ears are 5 zm, apple-topped 6, honey-nut 7, sharing 12. ">
            <COND (<ZERO? ,FAIR-CRATE>
                   <TELL "She is short one marked sugar crate. It went to the wrong load in the Exhibition Yard.">)
@@ -135,7 +136,7 @@
     (IN FOOD-ROW)
     (SYNONYM TOMAS QUINCE)
     (DESC "Tomas Quince")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION TOMAS-FCN)>
 
 <ROUTINE TOMAS-FCN ()
@@ -150,13 +151,13 @@
     (IN FISHING-POND)
     (SYNONYM SILAS DACE)
     (DESC "Silas Dace")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION SILAS-FCN)>
 
 <ROUTINE SILAS-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Silas Dace, fishing master and the only official weigh-in." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Rod rental 3 zm, bait 1 zm, derby entry 5 zm. He will not recite catch tables. Cassa is a rival, not the verifier. Ordinary fish do not graduate to the House of Records." CR>)>
     <RTRUE>>
 
@@ -164,13 +165,13 @@
     (IN FAIR-OFFICE-PRIZE-HALL)
     (SYNONYM NELL HARROW)
     (DESC "Nell Harrow")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION NELL-FCN)>
 
 <ROUTINE NELL-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Nell Harrow is professionally immune to almost-enough tickets." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Redemption: prize candy 5 tickets, whistle 12, stuffed grue 40, carved dragon 80. Thirty-nine is not forty. She stays open later than the booths." CR>)>
     <RTRUE>>
 
@@ -178,7 +179,7 @@
     (IN OBSERVATION-WHEEL)
     (SYNONYM EMERY WICKS)
     (DESC "Emery Wicks")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION EMERY-FCN)>
 
 <ROUTINE EMERY-FCN ()
@@ -186,7 +187,7 @@
            <TELL "Emery Wicks watches wind more carefully than conversation." CR>)
           (<G? ,FAIR-WIND 1>
            <TELL "No boarding. The wind is past his limit. Unused fares are refunded." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Three zorkmids. Association wheel. He does not overhear carriage talk." CR>)>
     <RTRUE>>
 
@@ -194,13 +195,13 @@
     (IN RIDE-COURT)
     (SYNONYM TILDA FEN)
     (DESC "Tilda Fen")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION TILDA-FCN)>
 
 <ROUTINE TILDA-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Tilda Fen keeps carousel and chairs as independent machinery under Association permit." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Carousel 2 zm. Flying chairs 2 zm, more wind-sensitive. Scenic GUE ride 3 zm is a Frobozz concession and a liar in gilt. Children fight over the grue mount. Mara's dragon is usually free." CR>)>
     <RTRUE>>
 
@@ -208,13 +209,13 @@
     (IN GAMES-ROW)
     (SYNONYM JONAS PELL)
     (DESC "Jonas Pell")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION JONAS-FCN)>
 
 <ROUTINE JONAS-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Jonas Pell runs a ring stand that can be understood." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Two zorkmids. Near pegs are honest. Far pegs pay more. He does not alter equipment. Kester's cups are not his booth." CR>)>
     <RTRUE>>
 
@@ -222,13 +223,13 @@
     (IN MARKET-ROW)
     (SYNONYM VERA TALLOW)
     (DESC "Vera Tallow")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION VERA-FCN)>
 
 <ROUTINE VERA-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Vera Tallow sells things that may be older than her pitch." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "She distinguishes what she knows, what she suspects, and what a previous owner claimed. A stamped pond token would interest her as metal, not as certified history." CR>)>
     <RTRUE>>
 
@@ -236,7 +237,7 @@
     (IN GRAND-PAVILION)
     (SYNONYM ORIN BELL)
     (DESC "Orin Bell")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION ORIN-FCN)>
 
 <ROUTINE ORIN-FCN ()
@@ -244,7 +245,7 @@
            <TELL "Orin Bell, bandleader. Requests are possible; omniscience is not." CR>)
           (<ZERO? ,FAIR-SHEET>
            <TELL "A set sheet blew toward Pond Path. He can play without it, but the intended order would be better." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "The sheet came back. The evening program is the one he meant." CR>)>
     <RTRUE>>
 
@@ -252,13 +253,13 @@
     (IN FOOD-ROW)
     (SYNONYM EPHRAIM PEAKE)
     (DESC "Ephraim Peake")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION EPHRAIM-FCN)>
 
 <ROUTINE EPHRAIM-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Ephraim Peake remembers earlier fairs at a volume the documents may not match." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Elephant ears used to cost two zorkmids, he says. The current program's founding date is wrong. Ada's copy is current office paper. The older program is upstairs. He may be mistaken. That is the point." CR>)>
     <RTRUE>>
 
@@ -266,7 +267,7 @@
     (IN GAMES-ROW)
     (SYNONYM KESTER VANE)
     (DESC "Kester Vane")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION KESTER-FCN)>
 
 <ROUTINE KESTER-FCN ()
@@ -274,7 +275,7 @@
            <TELL "Kester Vane is personable about the difference between difficult and unfair." CR>)
           (<NOT <ZERO? ,FAIR-KESTER-CLOSED>>
            <TELL "The booth is closed pending Association sanction. He calls it a misunderstanding." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "One zorkmid a round. Watch the pea. He will not volunteer the tack-wax under one cup's lip." CR>)>
     <RTRUE>>
 
@@ -282,13 +283,13 @@
     (IN RIDE-COURT)
     (SYNONYM HETTIE BRAMM)
     (DESC "Hettie Bramm")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION HETTIE-FCN)>
 
 <ROUTINE HETTIE-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Hettie Bramm diagnoses machinery. She is not the boss of Emery or Tilda." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "If a reflection lagged, she can inspect frame, glass, and lamps. No mechanical cause is a bounded finding, not proof of the impossible." CR>)>
     <RTRUE>>
 
@@ -296,13 +297,13 @@
     (IN MARKET-ROW)
     (SYNONYM SELLA BIRCH)
     (DESC "Sella Birch")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION SELLA-FCN)>
 
 <ROUTINE SELLA-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Sella Birch sells current craft, including a small carved dragon." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "She can speak to tool marks on an old token without certifying its year. Carved dragon, 8 zm. Mara has been seen looking at it." CR>)>
     <RTRUE>>
 
@@ -310,13 +311,13 @@
     (IN GAMES-ROW)
     (SYNONYM PELLA WREN)
     (DESC "Pella Wren")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION PELLA-FCN)>
 
 <ROUTINE PELLA-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Pella Wren holds " N ,PELLA-TICKETS " tickets and a specific opinion about a stuffed grue." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "The grue is forty tickets. She has thirty-nine. Nell will not round. Pella can change her mind; the count is state, not a speech." CR>)>
     <RTRUE>>
 
@@ -324,13 +325,13 @@
     (IN GAMES-ROW)
     (SYNONYM TOBIN WREN)
     (DESC "Tobin Wren")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION TOBIN-FCN)>
 
 <ROUTINE TOBIN-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Tobin Wren is Pella's father, tired in a fair-specific way." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "He will not bully Nell, and he will not buy the problem away unless the world actually offers that sale." CR>)>
     <RTRUE>>
 
@@ -338,13 +339,13 @@
     (IN FOOD-ROW)
     (SYNONYM LYSA MARR)
     (DESC "Lysa Marr")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION LYSA-FCN)>
 
 <ROUTINE LYSA-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Lysa Marr likes dancing and is skeptical of cups." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Tavin may be at the wheel or the pond. They are two people, not a COUPLE object." CR>)>
     <RTRUE>>
 
@@ -352,13 +353,13 @@
     (IN FISHING-POND)
     (SYNONYM TAVIN ROE)
     (DESC "Tavin Roe")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION TAVIN-FCN)>
 
 <ROUTINE TAVIN-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Tavin Roe prefers the wheel and the pond path to crowded dancing, and still dances sometimes." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "He will not narrate Lysa's private thoughts." CR>)>
     <RTRUE>>
 
@@ -366,13 +367,13 @@
     (IN FISHING-POND)
     (SYNONYM CASSA REED)
     (DESC "Cassa Reed")
-    (FLAGS ACTORBIT NARTICLEBIT)
+    (FLAGS ACTORBIT TRYTAKEBIT)
     (ACTION CASSA-FCN)>
 
 <ROUTINE CASSA-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Cassa Reed fishes to beat people, including you and Mara." CR>)
-          (T
+          (<VERB? TELL HELLO>
            <TELL "Shaded bank, patience, cheap bait. She cannot verify her own record. Silas remains official." CR>)>
     <RTRUE>>
 
@@ -546,13 +547,6 @@
     (DESC "observation wheel")
     (FLAGS NDESCBIT)
     (ACTION FAIR-WHEEL-FCN)>
-
-<OBJECT MIRROR-GLASS
-    (IN LOCAL-GLOBALS)
-    (SYNONYM MIRROR GLASS REFLECTION)
-    (DESC "mirror")
-    (FLAGS NDESCBIT)
-    (ACTION MIRROR-GLASS-FCN)>
 
 <OBJECT RENTAL-ROD
     (IN FISHING-POND)
@@ -906,6 +900,18 @@
           (<EQUAL? ,PRSO ,SHELL-BOOTH> <SHELL-BOOTH-FCN>)
           (T <TELL "Play a specific booth." CR>)>
     <RTRUE>>
+
+<ROUTINE V-PLAY ()
+    <COND (<AND <FAIR-HERE?>
+                <OR <EQUAL? ,PRSO ,RING-STAND ,BOTTLE-STACK ,BELL-STRIKER>
+                    <EQUAL? ,PRSO ,TARGET-GALLERY ,HORSESHOE-PIT ,MISSING-TABLE>
+                    <EQUAL? ,PRSO ,SHELL-BOOTH ,CRITTER-BOARD ,CAROUSEL>>>
+           <V-FAIR-PLAY>)
+          (<FSET? ,PRSO ,ACTORBIT>
+           <TELL "You become so engrossed in the role of the " D ,PRSO " that
+you kill yourself, just as he might have done!" CR>
+           <JIGS-UP "">)
+          (T <TELL "That's silly!" CR>)>>
 
 <ROUTINE V-FAIR-RIDE ()
     <COND (<EQUAL? ,PRSO ,CAROUSEL> <CAROUSEL-FCN>)

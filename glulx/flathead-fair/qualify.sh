@@ -38,7 +38,7 @@ req('(NE TO FAIR-ROAD)' in d,'CLEARING NE spur missing')
 req('(EAST TO CANYON-VIEW)' in d,'CLEARING east must remain')
 req('(WEST TO EAST-OF-HOUSE)' in d,'CLEARING west must remain')
 prod='\n'.join(p.read_text(errors='ignore') for p in s.glob('*.zil'))
-for bad in ('SURVEYKILL','SURVEYREWIND','ALTSAFE','ALTTROLL','FAIRHERE','FAIRBANK','FAIRDUSK'):
+for bad in ('SURVEYKILL','SURVEYREWIND','ALTSAFE','ALTTROLL','FAIRHERE','FAIRBANK','FAIRDUSK','FAIRWIND','FAIRWATCH','FAIRFISH'):
     req(bad not in prod,'production leak '+bad)
 PY
 read -r SERIAL STORY_FILE < <(python - "$MANIFEST" <<'PY'
@@ -93,7 +93,7 @@ fairhere
 fairbank
 look
 nw
-ask mabel about ear
+ask mabel about food
 buy elephant ear
 ask tomas about drink
 buy large drink
@@ -106,11 +106,12 @@ play bottles
 fairwatch
 play gallery
 examine shell booth
-play shell booth
 examine wax
+play shell booth
 n
-ask nell about grue
-ask ada about records
+look
+hello nell
+hello ada
 s
 ne
 ride carousel
@@ -121,23 +122,22 @@ e
 n
 examine mirror
 e
-south
-sw
+s
+s
 w
-n
+w
 n
 ask silas about fishing
 buy rental rod
-fish
+fairfish
 weigh
 fairdusk
-s
 s
 ne
 ask tomas about cider
 dance
 fairwind
-s
+n
 ride wheel
 quit
 yes

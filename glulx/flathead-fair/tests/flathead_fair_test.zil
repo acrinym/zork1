@@ -5,6 +5,7 @@
 <SYNTAX FAIRDUSK = V-FAIR-DUSK>
 <SYNTAX FAIRWIND = V-FAIR-WIND-SET>
 <SYNTAX FAIRWATCH = V-FAIR-GALLERY-SET>
+<SYNTAX FAIRFISH = V-FAIR-FISH-SET>
 
 <ROUTINE V-FAIR-HERE ()
     <SETG HERE ,FAIR-ENTRANCE>
@@ -32,3 +33,7 @@
 <ROUTINE V-FAIR-GALLERY-SET ()
     <SETG FAIR-GALLERY 2>
     <TELL "[TEST] Gallery cycle 2." CR>>
+
+<ROUTINE V-FAIR-FISH-SET ()
+    <SETG FAIR-CATCH 1>
+    <TELL "A redfin bream. Ordinary, real, and not a legendary class. Committed." CR>>
