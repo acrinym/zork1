@@ -1,0 +1,12 @@
+{
+  "id": "001-include-fair-test",
+  "path": "mara_companion.zil",
+  "description": "Include fair test verbs in the test story only.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"flathead_fair_life\" T>",
+      "new": "<INSERT-FILE \"flathead_fair_life\" T>\n<INSERT-FILE \"flathead_fair_test\" T>"
+    }
+  ]
+}

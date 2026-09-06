@@ -1,0 +1,17 @@
+{
+  "id": "002-clearing-northeast-spur",
+  "path": "1dungeon.zil",
+  "description": "Additive NE road from canonical CLEARING to FAIR-ROAD. Existing N/E/S/W exits unchanged.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROOM CLEARING\n        (IN ROOMS)\n        (LDESC\n\"You are in a small clearing in a well marked forest path that\n  extends to the east and west.\")\n        (DESC \"Clearing\")\n        (UP \"There is no tree here suitable for climbing.\")\n        (EAST TO CANYON-VIEW)\n        (NORTH TO FOREST-2)\n        (SOUTH TO FOREST-3)\n        (WEST TO EAST-OF-HOUSE)\n        (ACTION FOREST-ROOM)\n        (FLAGS RLANDBIT ONBIT SACREDBIT)\n        (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)>",
+      "new": "<ROOM CLEARING\n        (IN ROOMS)\n        (LDESC\n\"You are in a small clearing in a well marked forest path that\n  extends to the east and west. A packed public road leaves northeast\n  toward meadow ground used in fair season.\")\n        (DESC \"Clearing\")\n        (UP \"There is no tree here suitable for climbing.\")\n        (EAST TO CANYON-VIEW)\n        (NORTH TO FOREST-2)\n        (SOUTH TO FOREST-3)\n        (WEST TO EAST-OF-HOUSE)\n        (NE TO FAIR-ROAD)\n        (ACTION FOREST-ROOM)\n        (FLAGS RLANDBIT ONBIT SACREDBIT)\n        (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t<QUEUE I-LANTERN 200>\n\t<PUTP ,INFLATED-BOAT ,P?VTYPE ,NONLANDBIT>",
+      "new": "\t<QUEUE I-LANTERN 200>\n\t<ENABLE <QUEUE I-FAIR -1>>\n\t<PUTP ,INFLATED-BOAT ,P?VTYPE ,NONLANDBIT>"
+    }
+  ]
+}

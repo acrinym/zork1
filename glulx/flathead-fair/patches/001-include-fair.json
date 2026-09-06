@@ -1,0 +1,12 @@
+{
+  "id": "001-include-fair",
+  "path": "mara_companion.zil",
+  "description": "Load Flathead Fair syntax then geography and life after earned romance. SYNTAX first so V?FAIR-BUY exists.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"mara_anticipation\" T>\n<INSERT-FILE \"mara_earned_romance\" T>\n<INSERT-FILE \"mara_field_guidance\" T>",
+      "new": "<INSERT-FILE \"mara_anticipation\" T>\n<INSERT-FILE \"mara_earned_romance\" T>\n<INSERT-FILE \"flathead_fair_syntax\" T>\n<INSERT-FILE \"flathead_fair\" T>\n<INSERT-FILE \"flathead_fair_life\" T>\n<INSERT-FILE \"mara_field_guidance\" T>"
+    }
+  ]
+}
