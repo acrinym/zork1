@@ -5,7 +5,7 @@
   engine. No DATE MODE. RNG commits into saveable globals."
 
 <ROUTINE FAIR-PLACE-CAST ()
-    <COND (<EQUAL? ,FAIR-PHASE ,FAIR-PREOPEN>
+    <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-PREOPEN>
            <MOVE ,BERRIN-VALE ,BACK-LANE>
            <MOVE ,ADA-VELLUM ,FAIR-OFFICE-PRIZE-HALL>
            <MOVE ,MABEL-RUSK ,FOOD-ROW>
@@ -26,7 +26,7 @@
            <MOVE ,LYSA-MARR ,GLOBAL-OBJECTS>
            <MOVE ,TAVIN-ROE ,GLOBAL-OBJECTS>
            <MOVE ,CASSA-REED ,GLOBAL-OBJECTS>)
-          (<L=? ,FAIR-PHASE ,FAIR-AFTERNOON>
+          (<L=? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-AFTERNOON>
            <MOVE ,BERRIN-VALE ,CENTRAL-MIDWAY>
            <MOVE ,ADA-VELLUM ,FAIR-OFFICE-PRIZE-HALL>
            <MOVE ,MABEL-RUSK ,FOOD-ROW>
@@ -47,7 +47,7 @@
            <MOVE ,LYSA-MARR ,FOOD-ROW>
            <MOVE ,TAVIN-ROE ,FISHING-POND>
            <MOVE ,CASSA-REED ,FISHING-POND>)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-DUSK>
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-DUSK>
            <MOVE ,BERRIN-VALE ,RIDE-COURT>
            <MOVE ,TOMAS-QUINCE ,DANCE-PAVILION>
            <MOVE ,ORIN-BELL ,DANCE-PAVILION>
@@ -57,7 +57,7 @@
            <MOVE ,PELLA-WREN ,FAIR-OFFICE-PRIZE-HALL>
            <MOVE ,TOBIN-WREN ,FAIR-OFFICE-PRIZE-HALL>
            <MOVE ,CASSA-REED ,POND-PATH>)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-EVENING>
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-EVENING>
            <MOVE ,BERRIN-VALE ,DANCE-PAVILION>
            <MOVE ,TOMAS-QUINCE ,DANCE-PAVILION>
            <MOVE ,ORIN-BELL ,DANCE-PAVILION>
@@ -74,7 +74,7 @@
            <MOVE ,ORIN-BELL ,BACK-LANE>
            <MOVE ,MABEL-RUSK ,BACK-LANE>
            <MOVE ,KESTER-VANE ,GAMES-ROW>)>
-    <COND (<NOT <ZERO? ,FAIR-KESTER-CLOSED>>
+    <COND (<NOT <ZERO? <FAIR-GET ,FAIR-SLOT-KESTER-CLOSED>>>
            <MOVE ,KESTER-VANE ,BACK-LANE>)>
     <RTRUE>>
 
@@ -106,7 +106,7 @@
            <TELL "Ada Vellum keeps the current fair's paperwork with a dry precision." CR>)
           (<VERB? TELL HELLO>
            <TELL "Current program, current permits, current lost-and-found, current incidents. ">
-           <COND (<NOT <ZERO? ,FAIR-ADA-INCIDENT>>
+           <COND (<NOT <ZERO? <FAIR-GET ,FAIR-SLOT-ADA-INCIDENT>>>
                   <TELL "Kester Vane's booth is on the incident blotter: tack-wax, evidence presented, booth closed.">)
                  (T
                   <TELL "She will not summon House of Records files from this desk. If Ephraim disputes a date, the older program is upstairs.">)>
@@ -125,7 +125,7 @@
            <TELL "Mabel Rusk works hot oil as if it were a civic duty." CR>)
           (<VERB? TELL HELLO>
            <TELL "Cinnamon-sugar elephant ears are 5 zm, apple-topped 6, honey-nut 7, sharing 12. ">
-           <COND (<ZERO? ,FAIR-CRATE>
+           <COND (<ZERO? <FAIR-GET ,FAIR-SLOT-CRATE>>
                   <TELL "She is short one marked sugar crate. It went to the wrong load in the Exhibition Yard.">)
                  (T
                   <TELL "The sugar crate is back. She remembers who returned it.">)>
@@ -143,7 +143,7 @@
     <COND (<VERB? EXAMINE>
            <TELL "Tomas Quince: drinks by day, Lantern Table at dusk." CR>)
           (T
-           <SETG FAIR-DRINK-KNOWN 1>
+           <FAIR-PUT ,FAIR-SLOT-DRINK-KNOWN 1>
            <TELL "The large drink is pear-lime fizz. Pear and lime. Mostly pear. Four zorkmids. At dusk he runs The Lantern Table: hot spiced cider at 3 zm, no drink minimum." CR>)>
     <RTRUE>>
 
@@ -185,7 +185,7 @@
 <ROUTINE EMERY-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Emery Wicks watches wind more carefully than conversation." CR>)
-          (<G? ,FAIR-WIND 1>
+          (<G? <FAIR-GET ,FAIR-SLOT-WIND> 1>
            <TELL "No boarding. The wind is past his limit. Unused fares are refunded." CR>)
           (<VERB? TELL HELLO>
            <TELL "Three zorkmids. Association wheel. He does not overhear carriage talk." CR>)>
@@ -243,7 +243,7 @@
 <ROUTINE ORIN-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Orin Bell, bandleader. Requests are possible; omniscience is not." CR>)
-          (<ZERO? ,FAIR-SHEET>
+          (<ZERO? <FAIR-GET ,FAIR-SLOT-SHEET>>
            <TELL "A set sheet blew toward Pond Path. He can play without it, but the intended order would be better." CR>)
           (<VERB? TELL HELLO>
            <TELL "The sheet came back. The evening program is the one he meant." CR>)>
@@ -273,7 +273,7 @@
 <ROUTINE KESTER-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Kester Vane is personable about the difference between difficult and unfair." CR>)
-          (<NOT <ZERO? ,FAIR-KESTER-CLOSED>>
+          (<NOT <ZERO? <FAIR-GET ,FAIR-SLOT-KESTER-CLOSED>>>
            <TELL "The booth is closed pending Association sanction. He calls it a misunderstanding." CR>)
           (<VERB? TELL HELLO>
            <TELL "One zorkmid a round. Watch the pea. He will not volunteer the tack-wax under one cup's lip." CR>)>
@@ -316,7 +316,7 @@
 
 <ROUTINE PELLA-FCN ()
     <COND (<VERB? EXAMINE>
-           <TELL "Pella Wren holds " N ,PELLA-TICKETS " tickets and a specific opinion about a stuffed grue." CR>)
+           <TELL "Pella Wren holds " N <FAIR-GET ,FAIR-SLOT-PELLA> " tickets and a specific opinion about a stuffed grue." CR>)
           (<VERB? TELL HELLO>
            <TELL "The grue is forty tickets. She has thirty-nine. Nell will not round. Pella can change her mind; the count is state, not a speech." CR>)>
     <RTRUE>>
@@ -589,7 +589,7 @@
 <ROUTINE ELEPHANT-EAR-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Hot fried dough, cinnamon sugar. Five zorkmids. Signature baseline." CR>)
-          (<VERB? BUY FAIR-BUY>
+          (<VERB? FAIR-BUY>
            <COND (<NOT <FAIR-PAY 5>> <RTRUE>)>
            <MOVE ,ELEPHANT-EAR ,WINNER>
            <FCLEAR ,ELEPHANT-EAR ,NDESCBIT>
@@ -606,7 +606,7 @@
 <ROUTINE APPLE-EAR-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Apple-topped, 6 zm. Sticky. Mara's baseline favorite once she has a choice." CR>)
-          (<VERB? BUY FAIR-BUY>
+          (<VERB? FAIR-BUY>
            <COND (<NOT <FAIR-PAY 6>> <RTRUE>)>
            <MOVE ,APPLE-EAR ,WINNER>
            <FCLEAR ,APPLE-EAR ,NDESCBIT>
@@ -621,25 +621,25 @@
 
 <ROUTINE LARGE-DRINK-FCN ()
     <COND (<VERB? EXAMINE>
-           <COND (<ZERO? ,FAIR-DRINK-KNOWN>
+           <COND (<ZERO? <FAIR-GET ,FAIR-SLOT-DRINK-KNOWN>>
                   <TELL "A large drink in a waxed cup. Four zorkmids. The flavor is not printed." CR>)
                  (T
                   <TELL "Pear-lime fizz. Pear and lime. Mostly pear. Four zm." CR>)>)
-          (<VERB? BUY FAIR-BUY>
+          (<VERB? FAIR-BUY>
            <COND (<NOT <FAIR-PAY 4>> <RTRUE>)>
            <MOVE ,LARGE-DRINK ,WINNER>
            <FCLEAR ,LARGE-DRINK ,NDESCBIT>
            <TELL "You buy the large drink." CR>)
-          (<VERB? SMELL TASTE DRINK>
-           <SETG FAIR-DRINK-KNOWN 1>
+          (<VERB? SMELL DRINK>
+           <FAIR-PUT ,FAIR-SLOT-DRINK-KNOWN 1>
            <TELL "Pear and lime. Mostly pear." CR>)>
     <RTRUE>>
 
 <ROUTINE HOT-CIDER-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Hot spiced cider, 3 zm. Tomas serves it at The Lantern Table from dusk." CR>)
-          (<VERB? BUY FAIR-BUY>
-           <COND (<L? ,FAIR-PHASE ,FAIR-DUSK>
+          (<VERB? FAIR-BUY>
+           <COND (<L? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-DUSK>
                   <TELL "The Lantern Table is not yet open." CR>)
                  (<NOT <FAIR-PAY 3>> <RTRUE>)
                  (T
@@ -649,7 +649,7 @@
 <ROUTINE CARVED-DRAGON-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Sella's current work. Eight zorkmids. Meaningful if you keep it, not because it is expensive." CR>)
-          (<VERB? BUY FAIR-BUY>
+          (<VERB? FAIR-BUY>
            <COND (<NOT <FAIR-PAY 8>> <RTRUE>)>
            <MOVE ,CARVED-DRAGON ,WINNER>
            <FCLEAR ,CARVED-DRAGON ,NDESCBIT>
@@ -661,7 +661,7 @@
            <TELL "Stenciled for Mabel Rusk, Food Row. Misdelivered, not stolen." CR>)
           (<AND <VERB? GIVE> <EQUAL? ,PRSI ,MABEL-RUSK>>
            <MOVE ,SUGAR-CRATE ,GLOBAL-OBJECTS>
-           <SETG FAIR-CRATE 1>
+           <FAIR-PUT ,FAIR-SLOT-CRATE 1>
            <TELL "Mabel checks the marks. \"That's mine.\" She sends over a cinnamon-sugar ear without charging you." CR>
            <MOVE ,ELEPHANT-EAR ,WINNER>
            <FCLEAR ,ELEPHANT-EAR ,NDESCBIT>)>
@@ -672,7 +672,7 @@
            <TELL "A visiting purse: a handkerchief initialed M.K. and 8 zorkmids. Ada will take it as current lost property. Keeping it is ordinary property consequence, not a morality meter." CR>)
           (<AND <VERB? GIVE> <EQUAL? ,PRSI ,ADA-VELLUM>>
            <MOVE ,LOST-PURSE ,GLOBAL-OBJECTS>
-           <SETG FAIR-PURSE 1>
+           <FAIR-PUT ,FAIR-SLOT-PURSE 1>
            <TELL "Ada logs current lost property. This will not become a House of Records file." CR>
            <RTRUE>)>
     <RFALSE>>
@@ -682,7 +682,7 @@
            <TELL "Orin Bell's intended order, wind-displaced." CR>)
           (<AND <VERB? GIVE> <EQUAL? ,PRSI ,ORIN-BELL>>
            <MOVE ,ORIN-SHEET ,GLOBAL-OBJECTS>
-           <SETG FAIR-SHEET 1>
+           <FAIR-PUT ,FAIR-SLOT-SHEET 1>
            <TELL "Orin nods. The evening will use the intended piece, not the substitute." CR>
            <RTRUE>)>
     <RFALSE>>
@@ -690,14 +690,14 @@
 <ROUTINE RING-STAND-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Near pegs and far pegs. Rings that teach how they fall." CR>)
-          (<VERB? PLAY FAIR-PLAY THROW>
+          (<VERB? PLAY THROW>
            <COND (<NOT <FAIR-PAY 2>> <RTRUE>)>
-           <SETG FAIR-RING-WINS <+ ,FAIR-RING-WINS 1>>
-           <COND (<EQUAL? ,FAIR-RING-WINS 1>
-                  <SETG FAIR-TICKETS <+ ,FAIR-TICKETS 2>>
+           <FAIR-PUT ,FAIR-SLOT-RING-WINS <+ <FAIR-GET ,FAIR-SLOT-RING-WINS> 1>>
+           <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-RING-WINS> 1>
+                  <FAIR-PUT ,FAIR-SLOT-TICKETS <+ <FAIR-GET ,FAIR-SLOT-TICKETS> 2>>
                   <TELL "The near peg takes the ring. Two tickets. Jonas does not hide the lesson." CR>)
                  (T
-                  <SETG FAIR-TICKETS <+ ,FAIR-TICKETS 1>>
+                  <FAIR-PUT ,FAIR-SLOT-TICKETS <+ <FAIR-GET ,FAIR-SLOT-TICKETS> 1>>
                   <TELL "Another near hit. Repeat awards diminish. Far pegs still pay more if you earn them." CR>)>)>
     <RTRUE>>
 
@@ -705,10 +705,10 @@
     <COND (<VERB? EXAMINE>
            <TELL "The base bottles take the force. Hitting the top first wastes a throw." CR>
            <FSET ,BOTTLE-STACK ,TOUCHBIT>)
-          (<VERB? PLAY FAIR-PLAY>
+          (<VERB? PLAY>
            <COND (<NOT <FAIR-PAY 2>> <RTRUE>)>
            <COND (<FSET? ,BOTTLE-STACK ,TOUCHBIT>
-                  <SETG FAIR-TICKETS <+ ,FAIR-TICKETS 5>>
+                  <FAIR-PUT ,FAIR-SLOT-TICKETS <+ <FAIR-GET ,FAIR-SLOT-TICKETS> 5>>
                   <TELL "You take the base. Clean knockdown. Five tickets." CR>)
                  (T
                   <TELL "The top bottles dance and the base stays. Zero tickets. The stack is still readable." CR>)>)>
@@ -716,88 +716,88 @@
 
 <ROUTINE BELL-STRIKER-FCN ()
     <COND (<VERB? EXAMINE>
-           <TELL "A strength tester with GUE grades instead of carnival cliche. Best today: " N ,FAIR-BELL-BEST "." CR>)
-          (<VERB? PLAY FAIR-PLAY>
+           <TELL "A strength tester with GUE grades instead of carnival cliche. Best today: " N <FAIR-GET ,FAIR-SLOT-BELL-BEST> "." CR>)
+          (<VERB? PLAY>
            <COND (<NOT <FAIR-PAY 2>> <RTRUE>)>
-           <SETG FAIR-BELL-BEST 4>
-           <SETG FAIR-TICKETS <+ ,FAIR-TICKETS 3>>
+           <FAIR-PUT ,FAIR-SLOT-BELL-BEST 4>
+           <FAIR-PUT ,FAIR-SLOT-TICKETS <+ <FAIR-GET ,FAIR-SLOT-TICKETS> 3>>
            <TELL "The striker reaches provincial-grade. Three tickets. No STR stat is invented for this booth." CR>)>
     <RTRUE>>
 
 <ROUTINE TARGET-GALLERY-FCN ()
-    <COND (<VERB? EXAMINE WATCH FAIR-WATCH>
-           <TELL "Targets cycle 0-3. Cycle is now " N ,FAIR-GALLERY ". Shoot when it is 2." CR>)
-          (<VERB? PLAY FAIR-PLAY>
+    <COND (<VERB? EXAMINE FAIR-WATCH>
+           <TELL "Targets cycle 0-3. Cycle is now " N <FAIR-GET ,FAIR-SLOT-GALLERY> ". Shoot when it is 2." CR>)
+          (<VERB? PLAY>
            <COND (<NOT <FAIR-PAY 3>> <RTRUE>)>
-           <COND (<EQUAL? ,FAIR-GALLERY 2>
-                  <SETG FAIR-TICKETS <+ ,FAIR-TICKETS 8>>
+           <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-GALLERY> 2>
+                  <FAIR-PUT ,FAIR-SLOT-TICKETS <+ <FAIR-GET ,FAIR-SLOT-TICKETS> 8>>
                   <TELL "The mechanism is where you waited for it. Eight tickets." CR>)
                  (T
                   <TELL "Wrong phase. The gallery is deterministic after you watch it. Two tickets of pity." CR>
-                  <SETG FAIR-TICKETS <+ ,FAIR-TICKETS 2>>)>)>
+                  <FAIR-PUT ,FAIR-SLOT-TICKETS <+ <FAIR-GET ,FAIR-SLOT-TICKETS> 2>>)>)>
     <RTRUE>>
 
 <ROUTINE HORSESHOE-PIT-FCN ()
     <COND (<VERB? EXAMINE>
-           <TELL "Skill with bounded chance. Last committed result: " N ,FAIR-SHOE-LAST "." CR>)
-          (<VERB? PLAY FAIR-PLAY>
+           <TELL "Skill with bounded chance. Last committed result: " N <FAIR-GET ,FAIR-SLOT-SHOE-LAST> "." CR>)
+          (<VERB? PLAY>
            <COND (<NOT <FAIR-PAY 2>> <RTRUE>)>
-           <COND (<ZERO? ,FAIR-SHOE-LAST>
-                  <SETG FAIR-SHOE-LAST <RANDOM 4>>
-                  <COND (<EQUAL? ,FAIR-SHOE-LAST 0> <SETG FAIR-SHOE-LAST 1>)>)>
-           <SETG FAIR-TICKETS <+ ,FAIR-TICKETS ,FAIR-SHOE-LAST>>
-           <TELL "The shoes land. Result band " N ,FAIR-SHOE-LAST " is now a world fact." CR>)>
+           <COND (<ZERO? <FAIR-GET ,FAIR-SLOT-SHOE-LAST>>
+                  <FAIR-PUT ,FAIR-SLOT-SHOE-LAST <RANDOM 4>>
+                  <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-SHOE-LAST> 0> <FAIR-PUT ,FAIR-SLOT-SHOE-LAST 1>)>)>
+           <FAIR-PUT ,FAIR-SLOT-TICKETS <+ <FAIR-GET ,FAIR-SLOT-TICKETS> <FAIR-GET ,FAIR-SLOT-SHOE-LAST>>>
+           <TELL "The shoes land. Result band " N <FAIR-GET ,FAIR-SLOT-SHOE-LAST> " is now a world fact." CR>)>
     <RTRUE>>
 
 <ROUTINE MISSING-TABLE-FCN ()
     <COND (<VERB? EXAMINE>
-           <SETG FAIR-MISSING 1>
+           <FAIR-PUT ,FAIR-SLOT-MISSING 1>
            <TELL "Whistle, ribbon, carved beetle, folded handbill, brass button. Then a cloth. After the cloth, the whistle is gone." CR>)
-          (<VERB? PLAY FAIR-PLAY>
+          (<VERB? PLAY>
            <COND (<NOT <FAIR-PAY 2>> <RTRUE>)>
-           <COND (<EQUAL? ,FAIR-MISSING 1>
-                  <SETG FAIR-TICKETS <+ ,FAIR-TICKETS 3>>
+           <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-MISSING> 1>
+                  <FAIR-PUT ,FAIR-SLOT-TICKETS <+ <FAIR-GET ,FAIR-SLOT-TICKETS> 3>>
                   <TELL "The whistle. Three tickets. Mara would have beaten you on a second round." CR>)
                  (T
                   <TELL "You did not look. Guessing is not the mechanic." CR>)>)>
     <RTRUE>>
 
 <ROUTINE SHELL-BOOTH-FCN ()
-    <COND (<NOT <ZERO? ,FAIR-KESTER-CLOSED>>
+    <COND (<NOT <ZERO? <FAIR-GET ,FAIR-SLOT-KESTER-CLOSED>>>
            <TELL "The booth is closed under Association sanction." CR>
            <RTRUE>)
           (<VERB? EXAMINE>
            <TELL "Three cups. One has a slightly heavier lip. Kester's hands are faster when money is down." CR>)
-          (<VERB? PLAY FAIR-PLAY>
+          (<VERB? PLAY>
            <COND (<NOT <FAIR-PAY 1>> <RTRUE>)>
            <TELL "You track the pea to the middle cup. Kester lifts the left. Empty. The pea is not on the table; it adhered to tack-wax under a lip. The answer did not move in the author's head. It moved on equipment." CR>
-           <SETG FAIR-PEA 0>)>
+           <FAIR-PUT ,FAIR-SLOT-PEA 0>)>
     <RTRUE>>
 
 <ROUTINE WAX-CUP-FCN ()
-    <COND (<VERB? EXAMINE LOOK-INSIDE TOUCH>
+    <COND (<VERB? EXAMINE LOOK-INSIDE RUB>
            <TELL "A thin tack-wax patch under the inner lip. Residue would match the pea. This is evidence, not a CHEATING flag." CR>
            <RTRUE>)
-          (<AND <VERB? GIVE SHOW> <EQUAL? ,PRSI ,BERRIN-VALE ,ADA-VELLUM>>
-           <SETG FAIR-KESTER-CLOSED 1>
-           <SETG FAIR-ADA-INCIDENT 1>
-           <SETG FAIR-ZORKMIDS <+ ,FAIR-ZORKMIDS 1>>
+          (<AND <VERB? GIVE MARA-SHOW> <EQUAL? ,PRSI ,BERRIN-VALE ,ADA-VELLUM>>
+           <FAIR-PUT ,FAIR-SLOT-KESTER-CLOSED 1>
+           <FAIR-PUT ,FAIR-SLOT-ADA-INCIDENT 1>
+           <FAIR-PUT ,FAIR-SLOT-ZORKMIDS <+ <FAIR-GET ,FAIR-SLOT-ZORKMIDS> 1>>
            <MOVE ,KESTER-VANE ,BACK-LANE>
            <TELL "Berrin orders the booth closed. Ada files a current incident. One zm restitution. This blotter does not automatically become House of Records history." CR>
            <RTRUE>)>
     <RFALSE>>
 
 <ROUTINE CRITTER-BOARD-FCN ()
-    <COND (<VERB? EXAMINE WATCH FAIR-WATCH>
-           <COND (<ZERO? ,FAIR-RACE-WIN>
-                  <SETG FAIR-RACE-WIN 3>)>
+    <COND (<VERB? EXAMINE FAIR-WATCH>
+           <COND (<ZERO? <FAIR-GET ,FAIR-SLOT-RACE-WIN>>
+                  <FAIR-PUT ,FAIR-SLOT-RACE-WIN 3>)>
            <TELL "Watching is free. Number 3, the brass newt, is committed as today's winner. Betting is not required for tickets or Zork." CR>)>
     <RTRUE>>
 
 <ROUTINE CAROUSEL-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Carved grue, cyclops, dragon, sea serpent, unicorn, giant songbird, and a dignified pack-beast. Mara's baseline is the dragon." CR>)
-          (<VERB? RIDE FAIR-RIDE PLAY>
+          (<VERB? FAIR-RIDE PLAY>
            <COND (<NOT <FAIR-PAY 2>> <RTRUE>)>
            <TELL "You take a mount. The dragon waits if Mara wants it. No stats are granted." CR>)>
     <RTRUE>>
@@ -805,8 +805,8 @@
 <ROUTINE FLYING-CHAIRS-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "More wind-sensitive than the carousel." CR>)
-          (<VERB? RIDE FAIR-RIDE>
-           <COND (<G? ,FAIR-WIND 0>
+          (<VERB? FAIR-RIDE>
+           <COND (<G? <FAIR-GET ,FAIR-SLOT-WIND> 0>
                   <TELL "Tilda has the chairs closed for wind. The carousel can still run." CR>)
                  (<NOT <FAIR-PAY 2>> <RTRUE>)
                  (T
@@ -816,7 +816,7 @@
 <ROUTINE SCENIC-RIDE-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Frobozz concession. A cleaned-up empire. Dam #3 looks like a civic garden." CR>)
-          (<VERB? RIDE FAIR-RIDE>
+          (<VERB? FAIR-RIDE>
            <COND (<NOT <FAIR-PAY 3>> <RTRUE>)>
            <TELL "The plaques congratulate Frobozz. If you have seen the Dam, the ride is wrong on purpose." CR>)>
     <RTRUE>>
@@ -824,17 +824,17 @@
 <ROUTINE FAIR-WHEEL-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Fare 3 zm. Dusk is when Mara prefers it." CR>)
-          (<VERB? RIDE FAIR-RIDE BOARD>
-           <COND (<G? ,FAIR-WIND 1>
-                  <COND (<NOT <ZERO? ,FAIR-WHEEL-PAID>>
-                         <SETG FAIR-WHEEL-PAID 0>
-                         <SETG FAIR-ZORKMIDS <+ ,FAIR-ZORKMIDS 3>>
+          (<VERB? FAIR-RIDE BOARD>
+           <COND (<G? <FAIR-GET ,FAIR-SLOT-WIND> 1>
+                  <COND (<NOT <ZERO? <FAIR-GET ,FAIR-SLOT-WHEEL-PAID>>>
+                         <FAIR-PUT ,FAIR-SLOT-WHEEL-PAID 0>
+                         <FAIR-PUT ,FAIR-SLOT-ZORKMIDS <+ <FAIR-GET ,FAIR-SLOT-ZORKMIDS> 3>>
                          <TELL "Emery refunds the unused fare. Wind closed the wheel." CR>)
                         (T
                          <TELL "No sale. The wind is already past his limit." CR>)>)
                  (<NOT <FAIR-PAY 3>> <RTRUE>)
                  (T
-                  <SETG FAIR-WHEEL-PAID 1>
+                  <FAIR-PUT ,FAIR-SLOT-WHEEL-PAID 1>
                   <SETG HERE ,WHEEL-CARRIAGE>
                   <MOVE ,WINNER ,WHEEL-CARRIAGE>
                   <TELL "Emery boards you. The carriage rises." CR>
@@ -847,7 +847,7 @@
            <RFALSE>)
           (<VERB? EXAMINE LOOK-INSIDE>
            <COND (<EQUAL? ,HERE ,CROSSED-REFLECTIONS>
-                  <SETG FAIR-LATE-MIRROR 1>
+                  <FAIR-PUT ,FAIR-SLOT-LATE-MIRROR 1>
                   <TELL "Your reflection finishes the last gesture a beat late, then catches up. Authored, repeatable, not a portal." CR>)
                  (T
                   <TELL "Mundane optics. Distortion is construction." CR>)>)
@@ -858,7 +858,7 @@
 <ROUTINE RENTAL-ROD-FCN ()
     <COND (<VERB? EXAMINE>
            <TELL "Silas rents these for 3 zm. Fishing does not require a legendary spawn class." CR>)
-          (<VERB? BUY FAIR-BUY TAKE>
+          (<VERB? FAIR-BUY TAKE>
            <COND (<NOT <FAIR-PAY 3>> <RTRUE>)>
            <MOVE ,RENTAL-ROD ,WINNER>
            <FCLEAR ,RENTAL-ROD ,NDESCBIT>
@@ -929,19 +929,19 @@ you kill yourself, just as he might have done!" CR>
           (<NOT <IN? ,RENTAL-ROD ,WINNER>>
            <TELL "Silas will rent a rod. Fishing without one is just watching water." CR>
            <RTRUE>)>
-    <COND (<ZERO? ,FAIR-CATCH>
+    <COND (<ZERO? <FAIR-GET ,FAIR-SLOT-CATCH>>
            <SET ROLL <RANDOM 6>>
            <COND (<EQUAL? ,HERE ,POND-PATH> <SET ROLL <+ .ROLL 1>>)>
            <COND (<G? .ROLL 5>
-                  <SETG FAIR-CATCH 2>
+                  <FAIR-PUT ,FAIR-SLOT-CATCH 2>
                   <MOVE ,POND-TOKEN ,WINNER>
-                  <SETG FAIR-TOKEN 1>
+                  <FAIR-PUT ,FAIR-SLOT-TOKEN 1>
                   <TELL "You snag not a fish but an old stamped fair token. The catch is committed." CR>)
                  (<G? .ROLL 3>
-                  <SETG FAIR-CATCH 1>
+                  <FAIR-PUT ,FAIR-SLOT-CATCH 1>
                   <TELL "A redfin bream. Ordinary, real, and not a legendary class. Committed." CR>)
                  (T
-                  <SETG FAIR-CATCH 3>
+                  <FAIR-PUT ,FAIR-SLOT-CATCH 3>
                   <TELL "A rusted prize whistle, junk fixture of this pond. Committed." CR>)>)
           (T
            <TELL "The last catch remains the last catch until you weigh, release, or keep it. It does not reroll because you looked again." CR>)>
@@ -950,10 +950,10 @@ you kill yourself, just as he might have done!" CR>
 <ROUTINE V-FAIR-WEIGH ()
     <COND (<NOT <IN? ,SILAS-DACE ,HERE>>
            <TELL "Silas has to be present to verify." CR>)
-          (<EQUAL? ,FAIR-CATCH 1>
-           <SETG FAIR-RECORD-FISH 1>
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-CATCH> 1>
+           <FAIR-PUT ,FAIR-SLOT-RECORD-FISH 1>
            <TELL "Silas records a current-fair ordinary bream. It is not automatic archive material." CR>)
-          (<EQUAL? ,FAIR-CATCH 2>
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-CATCH> 2>
            <TELL "Silas knows tokens have come up before. Current office can look at the stamp. History is upstairs." CR>)
           (T
            <TELL "Nothing derby-eligible is on the line." CR>)>
@@ -962,7 +962,7 @@ you kill yourself, just as he might have done!" CR>
 <ROUTINE V-FAIR-DANCE ()
     <COND (<NOT <EQUAL? ,HERE ,DANCE-PAVILION>>
            <TELL "The Dance Pavilion is the place." CR>)
-          (<L? ,FAIR-PHASE ,FAIR-DUSK>
+          (<L? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-DUSK>
            <TELL "Orin is not yet running the evening program." CR>)
           (T
            <TELL "Ordinary pavilion access is free. You dance. Mara may accept or refuse according to her own state, not a DATE MODE." CR>
@@ -1006,19 +1006,19 @@ you kill yourself, just as he might have done!" CR>
     <COND (<NOT <IN? ,NELL-HARROW ,HERE>>
            <TELL "Nell handles redemption at the Prize Hall." CR>
            <RTRUE>)>
-    <COND (<AND <EQUAL? ,PRSO ,STUFFED-GRUE> <G=? ,FAIR-TICKETS 40>>
-           <SETG FAIR-TICKETS <- ,FAIR-TICKETS 40>>
+    <COND (<AND <EQUAL? ,PRSO ,STUFFED-GRUE> <G=? <FAIR-GET ,FAIR-SLOT-TICKETS> 40>>
+           <FAIR-PUT ,FAIR-SLOT-TICKETS <- <FAIR-GET ,FAIR-SLOT-TICKETS> 40>>
            <MOVE ,STUFFED-GRUE ,WINNER>
            <FCLEAR ,STUFFED-GRUE ,NDESCBIT>
            <TELL "Nell counts to forty and stops. The stuffed grue is yours." CR>)
-          (<AND <EQUAL? ,PRSO ,PRIZE-WHISTLE> <G=? ,FAIR-TICKETS 12>>
-           <SETG FAIR-TICKETS <- ,FAIR-TICKETS 12>>
+          (<AND <EQUAL? ,PRSO ,PRIZE-WHISTLE> <G=? <FAIR-GET ,FAIR-SLOT-TICKETS> 12>>
+           <FAIR-PUT ,FAIR-SLOT-TICKETS <- <FAIR-GET ,FAIR-SLOT-TICKETS> 12>>
            <TELL "A whistle. Twelve tickets. 39 would not have been enough for the grue." CR>)
-          (<AND <EQUAL? ,PRSO ,PRIZE-CANDY> <G=? ,FAIR-TICKETS 5>>
-           <SETG FAIR-TICKETS <- ,FAIR-TICKETS 5>>
+          (<AND <EQUAL? ,PRSO ,PRIZE-CANDY> <G=? <FAIR-GET ,FAIR-SLOT-TICKETS> 5>>
+           <FAIR-PUT ,FAIR-SLOT-TICKETS <- <FAIR-GET ,FAIR-SLOT-TICKETS> 5>>
            <TELL "Prize candy. Five tickets." CR>)
           (T
-           <TELL "Nell does not round. You have " N ,FAIR-TICKETS " tickets." CR>)>
+           <TELL "Nell does not round. You have " N <FAIR-GET ,FAIR-SLOT-TICKETS> " tickets." CR>)>
     <RTRUE>>
 
 <ROUTINE FAIR-MARA-ASK ()
@@ -1026,10 +1026,10 @@ you kill yourself, just as he might have done!" CR>
     <COND (<NOT <IN? ,MARA ,HERE>>
            <TELL "Mara is not here." CR>
            <RTRUE>)>
-    <COND (<G=? ,FAIR-PHASE ,FAIR-DUSK>
+    <COND (<G=? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-DUSK>
            <TELL "Mara wants the observation wheel while the lamps are coming up, and hot cider if Tomas has the Table open. She is not a DATE MODE." CR>)
           (<EQUAL? ,HERE ,GAMES-ROW>
-           <COND (<NOT <ZERO? ,FAIR-KESTER-CLOSED>>
+           <COND (<NOT <ZERO? <FAIR-GET ,FAIR-SLOT-KESTER-CLOSED>>>
                   <TELL "She will not pay Kester again. The waxed cup was enough." CR>)
                  (T
                   <TELL "She likes What's Missing and Jonas's honest rings. She will beat you if the table is fair." CR>)>)
@@ -1045,7 +1045,7 @@ you kill yourself, just as he might have done!" CR>
     <COND (<IN? ,MARA ,HERE>
            <COND (<MARA-RUPTURE-OPEN?>
                   <TELL "Mara does not dance around an open rupture." CR>)
-                 (<G? ,FAIR-MARA-REFUSE 1>
+                 (<G? <FAIR-GET ,FAIR-SLOT-MARA-REFUSE> 1>
                   <TELL "She already refused. Repeating the same invitation is now ordinary annoyance, not a hidden meter." CR>)
                  (T
                   <TELL "Mara accepts one piece, then looks toward the wheel or the pond path." CR>)>)>

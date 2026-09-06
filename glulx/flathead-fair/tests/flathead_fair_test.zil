@@ -17,23 +17,23 @@
     <V-LOOK>>
 
 <ROUTINE V-FAIR-BANK ()
-    <SETG FAIR-ZORKMIDS 80>
-    <SETG FAIR-TICKETS 12>
+    <FAIR-PUT ,FAIR-SLOT-ZORKMIDS 80>
+    <FAIR-PUT ,FAIR-SLOT-TICKETS 12>
     <TELL "[TEST] 80 zm and 12 tickets." CR>>
 
 <ROUTINE V-FAIR-DUSK ()
-    <SETG FAIR-PHASE ,FAIR-DUSK>
+    <FAIR-PUT ,FAIR-SLOT-PHASE ,FAIR-DUSK>
     <FAIR-ON-PHASE>
     <TELL "[TEST] Dusk." CR>>
 
 <ROUTINE V-FAIR-WIND-SET ()
-    <SETG FAIR-WIND 2>
+    <FAIR-PUT ,FAIR-SLOT-WIND 2>
     <TELL "[TEST] Unsafe wind." CR>>
 
 <ROUTINE V-FAIR-GALLERY-SET ()
-    <SETG FAIR-GALLERY 2>
+    <FAIR-PUT ,FAIR-SLOT-GALLERY 2>
     <TELL "[TEST] Gallery cycle 2." CR>>
 
 <ROUTINE V-FAIR-FISH-SET ()
-    <SETG FAIR-CATCH 1>
+    <FAIR-PUT ,FAIR-SLOT-CATCH 1>
     <TELL "A redfin bream. Ordinary, real, and not a legendary class. Committed." CR>>

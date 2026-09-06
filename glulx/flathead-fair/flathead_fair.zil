@@ -14,34 +14,42 @@
 <CONSTANT FAIR-CLOSING 7>
 <CONSTANT FAIR-AFTER 8>
 
-<GLOBAL FAIR-PHASE 1>
-<GLOBAL FAIR-TURN 0>
-<GLOBAL FAIR-ZORKMIDS 0>
-<GLOBAL FAIR-TICKETS 0>
-<GLOBAL FAIR-WIND 0>
-<GLOBAL FAIR-GALLERY 0>
-<GLOBAL FAIR-SHOE-LAST 0>
-<GLOBAL FAIR-RACE-WIN 0>
-<GLOBAL FAIR-CATCH 0>
-<GLOBAL FAIR-PEA 2>
-<GLOBAL FAIR-KESTER-WARN 0>
-<GLOBAL FAIR-KESTER-CLOSED 0>
-<GLOBAL FAIR-CRATE 0>
-<GLOBAL FAIR-PURSE 0>
-<GLOBAL FAIR-SHEET 0>
-<GLOBAL FAIR-LATE-MIRROR 0>
-<GLOBAL FAIR-DRINK-KNOWN 0>
-<GLOBAL FAIR-MARA-REFUSE 0>
-<GLOBAL FAIR-WHEEL-PAID 0>
-<GLOBAL FAIR-RING-WINS 0>
-<GLOBAL PELLA-TICKETS 39>
-<GLOBAL FAIR-DERBY 0>
-<GLOBAL FAIR-RECORD-FISH 0>
-<GLOBAL FAIR-ADA-INCIDENT 0>
-<GLOBAL FAIR-TOKEN 0>
-<GLOBAL FAIR-STRIP 0>
-<GLOBAL FAIR-MISSING 0>
-<GLOBAL FAIR-BELL-BEST 0>
+<CONSTANT FAIR-SLOT-PHASE 0>
+<CONSTANT FAIR-SLOT-TURN 1>
+<CONSTANT FAIR-SLOT-ZORKMIDS 2>
+<CONSTANT FAIR-SLOT-TICKETS 3>
+<CONSTANT FAIR-SLOT-WIND 4>
+<CONSTANT FAIR-SLOT-GALLERY 5>
+<CONSTANT FAIR-SLOT-SHOE-LAST 6>
+<CONSTANT FAIR-SLOT-RACE-WIN 7>
+<CONSTANT FAIR-SLOT-CATCH 8>
+<CONSTANT FAIR-SLOT-PEA 9>
+<CONSTANT FAIR-SLOT-KESTER-WARN 10>
+<CONSTANT FAIR-SLOT-KESTER-CLOSED 11>
+<CONSTANT FAIR-SLOT-CRATE 12>
+<CONSTANT FAIR-SLOT-PURSE 13>
+<CONSTANT FAIR-SLOT-SHEET 14>
+<CONSTANT FAIR-SLOT-LATE-MIRROR 15>
+<CONSTANT FAIR-SLOT-DRINK-KNOWN 16>
+<CONSTANT FAIR-SLOT-MARA-REFUSE 17>
+<CONSTANT FAIR-SLOT-WHEEL-PAID 18>
+<CONSTANT FAIR-SLOT-RING-WINS 19>
+<CONSTANT FAIR-SLOT-PELLA 20>
+<CONSTANT FAIR-SLOT-DERBY 21>
+<CONSTANT FAIR-SLOT-RECORD-FISH 22>
+<CONSTANT FAIR-SLOT-ADA-INCIDENT 23>
+<CONSTANT FAIR-SLOT-TOKEN 24>
+<CONSTANT FAIR-SLOT-STRIP 25>
+<CONSTANT FAIR-SLOT-MISSING 26>
+<CONSTANT FAIR-SLOT-BELL-BEST 27>
+
+<CONSTANT FAIR-STATE <TABLE 1 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 39 0 0 0 0 0 0 0>>
+
+<ROUTINE FAIR-GET (SLOT)
+    <GET ,FAIR-STATE .SLOT>>
+
+<ROUTINE FAIR-PUT (SLOT VALUE)
+    <PUT ,FAIR-STATE .SLOT .VALUE>>
 
 <OBJECT MIRROR-GLASS
     (IN LOCAL-GLOBALS)
@@ -76,56 +84,56 @@
     <RFALSE>>
 
 <ROUTINE FAIR-OPEN? ()
-    <COND (<AND <G=? ,FAIR-PHASE ,FAIR-OPENING>
-                <L=? ,FAIR-PHASE ,FAIR-CLOSING>>
+    <COND (<AND <G=? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-OPENING>
+                <L=? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-CLOSING>>
            <RTRUE>)>
     <RFALSE>>
 
 <ROUTINE FAIR-PUBLIC? ()
-    <COND (<L? ,FAIR-PHASE ,FAIR-AFTER> <RTRUE>)>
+    <COND (<L? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-AFTER> <RTRUE>)>
     <RFALSE>>
 
 <ROUTINE FAIR-PAY (N)
-    <COND (<L? ,FAIR-ZORKMIDS .N>
+    <COND (<L? <FAIR-GET ,FAIR-SLOT-ZORKMIDS> .N>
            <TELL "You haven't enough zorkmids. The price is " N .N " zm." CR>
            <RFALSE>)>
-    <SETG FAIR-ZORKMIDS <- ,FAIR-ZORKMIDS .N>>
+    <FAIR-PUT ,FAIR-SLOT-ZORKMIDS <- <FAIR-GET ,FAIR-SLOT-ZORKMIDS> .N>>
     <RTRUE>>
 
 <ROUTINE FAIR-PHASE-NAME ()
-    <COND (<EQUAL? ,FAIR-PHASE ,FAIR-PREOPEN> <TELL "before opening">)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-OPENING> <TELL "opening">)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-LATE> <TELL "late morning">)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-MIDDAY> <TELL "midday">)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-AFTERNOON> <TELL "afternoon">)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-DUSK> <TELL "dusk">)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-EVENING> <TELL "evening">)
-          (<EQUAL? ,FAIR-PHASE ,FAIR-CLOSING> <TELL "closing">)
+    <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-PREOPEN> <TELL "before opening">)
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-OPENING> <TELL "opening">)
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-LATE> <TELL "late morning">)
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-MIDDAY> <TELL "midday">)
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-AFTERNOON> <TELL "afternoon">)
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-DUSK> <TELL "dusk">)
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-EVENING> <TELL "evening">)
+          (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-CLOSING> <TELL "closing">)
           (T <TELL "after hours">)>>
 
 <ROUTINE FAIR-ON-PHASE ()
     <FAIR-PLACE-CAST>
-    <COND (<EQUAL? ,FAIR-PHASE ,FAIR-DUSK>
+    <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-DUSK>
            <MOVE ,TOMAS-QUINCE ,DANCE-PAVILION>
            <MOVE ,ORIN-BELL ,DANCE-PAVILION>)>
-    <COND (<EQUAL? ,FAIR-PHASE ,FAIR-EVENING>
+    <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-EVENING>
            <MOVE ,TOMAS-QUINCE ,DANCE-PAVILION>
            <MOVE ,ORIN-BELL ,DANCE-PAVILION>)>
-    <COND (<AND <EQUAL? ,FAIR-PHASE ,FAIR-AFTERNOON>
-                <ZERO? ,FAIR-WIND>>
-           <SETG FAIR-WIND 0>)>
+    <COND (<AND <EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-AFTERNOON>
+                <ZERO? <FAIR-GET ,FAIR-SLOT-WIND>>>
+           <FAIR-PUT ,FAIR-SLOT-WIND 0>)>
     <RTRUE>>
 
 <ROUTINE I-FAIR ()
     <COND (<NOT <FAIR-HERE?>> <RFALSE>)>
-    <SETG FAIR-TURN <+ ,FAIR-TURN 1>>
+    <FAIR-PUT ,FAIR-SLOT-TURN <+ <FAIR-GET ,FAIR-SLOT-TURN> 1>>
     <COND (<EQUAL? ,HERE ,GAMES-ROW>
-           <SETG FAIR-GALLERY <+ ,FAIR-GALLERY 1>>
-           <COND (<G? ,FAIR-GALLERY 3> <SETG FAIR-GALLERY 0>)>)>
-    <COND (<G? ,FAIR-TURN 8>
-           <SETG FAIR-TURN 0>
-           <COND (<L? ,FAIR-PHASE ,FAIR-AFTER>
-                  <SETG FAIR-PHASE <+ ,FAIR-PHASE 1>>
+           <FAIR-PUT ,FAIR-SLOT-GALLERY <+ <FAIR-GET ,FAIR-SLOT-GALLERY> 1>>
+           <COND (<G? <FAIR-GET ,FAIR-SLOT-GALLERY> 3> <FAIR-PUT ,FAIR-SLOT-GALLERY 0>)>)>
+    <COND (<G? <FAIR-GET ,FAIR-SLOT-TURN> 8>
+           <FAIR-PUT ,FAIR-SLOT-TURN 0>
+           <COND (<L? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-AFTER>
+                  <FAIR-PUT ,FAIR-SLOT-PHASE <+ <FAIR-GET ,FAIR-SLOT-PHASE> 1>>
                   <FAIR-ON-PHASE>
                   <TELL CR "The fair day moves into " >
                   <FAIR-PHASE-NAME>
@@ -147,7 +155,7 @@
            <TELL "The pouch holds ordinary zorkmids, not prize tickets and not treasure. Twelve coins remain." CR>
            <RTRUE>)
           (<VERB? TAKE>
-           <SETG FAIR-ZORKMIDS <+ ,FAIR-ZORKMIDS 12>>
+           <FAIR-PUT ,FAIR-SLOT-ZORKMIDS <+ <FAIR-GET ,FAIR-SLOT-ZORKMIDS> 12>>
            <MOVE ,FAIR-POUCH ,GLOBAL-OBJECTS>
            <TELL "You take the pouch. Twelve zorkmids are now yours to spend at the fair, or to ignore." CR>
            <RTRUE>)>
@@ -166,9 +174,9 @@
 <ROUTINE FAIR-ROAD-FCN (RARG)
     <COND (<EQUAL? .RARG ,M-LOOK>
            <TELL "A packed public road leaves the clearing toward a meadow. ">
-           <COND (<EQUAL? ,FAIR-PHASE ,FAIR-PREOPEN>
+           <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-PREOPEN>
                   <TELL "Wagons and canvas wait ahead; the grounds are not yet public.">)
-                 (<EQUAL? ,FAIR-PHASE ,FAIR-AFTER>
+                 (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-AFTER>
                   <TELL "Lanterns are out. A few service lamps mark the way back.">)
                  (T
                   <TELL "Music, frying oil, and painted signs reach you from the north. Admission, the nearest bill says, is free.">)>
@@ -207,11 +215,11 @@
 <ROUTINE CENTRAL-MIDWAY-FCN (RARG)
     <COND (<EQUAL? .RARG ,M-LOOK>
            <TELL "The packed center of the grounds. Signs point to food, games, the Grand Pavilion, market stalls, and the Fair Office & Prize Hall. ">
-           <COND (<EQUAL? ,FAIR-PHASE ,FAIR-MIDDAY>
+           <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-MIDDAY>
                   <TELL "Crowd density is at its worst and most useful.">)
-                 (<EQUAL? ,FAIR-PHASE ,FAIR-DUSK>
+                 (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-DUSK>
                   <TELL "Lamps are being lit along the guy-ropes.">)
-                 (<EQUAL? ,FAIR-PHASE ,FAIR-CLOSING>
+                 (<EQUAL? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-CLOSING>
                   <TELL "Last calls drain people toward the entrance.">)
                  (T
                   <TELL "The crowd has an authored density, not an engine.">)>
@@ -233,7 +241,7 @@
 <ROUTINE FOOD-ROW-FCN (RARG)
     <COND (<EQUAL? .RARG ,M-LOOK>
            <TELL "Oil, sugar, and yeast. Mabel Rusk's elephant-ear stall dominates the row. ">
-           <COND (<L=? ,FAIR-PHASE ,FAIR-AFTERNOON>
+           <COND (<L=? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-AFTERNOON>
                   <TELL "Tomas Quince sells cold drinks from a painted cart.">)
                  (T
                   <TELL "Tomas's cold-drink cart is shuttered; a note points to The Lantern Table in the Dance Pavilion.">)>
@@ -253,7 +261,7 @@
 
 <ROUTINE GAMES-ROW-FCN (RARG)
     <COND (<EQUAL? .RARG ,M-LOOK>
-           <TELL "Midway games with different rules, not eight costumes on one roll. Jonas Pell's Ring Stand is honest. Kester Vane's cups are a separate booth. A clockwork gallery ticks through a visible cycle (" N ,FAIR-GALLERY ")." CR>
+           <TELL "Midway games with different rules, not eight costumes on one roll. Jonas Pell's Ring Stand is honest. Kester Vane's cups are a separate booth. A clockwork gallery ticks through a visible cycle (" N <FAIR-GET ,FAIR-SLOT-GALLERY> ")." CR>
            <RTRUE>)>
     <RFALSE>>
 
@@ -304,8 +312,8 @@
 <ROUTINE DANCE-PAVILION-FCN (RARG)
     <COND (<EQUAL? .RARG ,M-LOOK>
            <TELL "A boarded floor and a low stage. Ordinary entry is free. ">
-           <COND (<G=? ,FAIR-PHASE ,FAIR-DUSK>
-                  <COND (<L? ,FAIR-PHASE ,FAIR-AFTER>
+           <COND (<G=? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-DUSK>
+                  <COND (<L? <FAIR-GET ,FAIR-SLOT-PHASE> ,FAIR-AFTER>
                          <TELL "The Lantern Table is in service: supper, hot drinks, and conversation without a drink minimum. Orin Bell has the band.">)
                         (T
                          <TELL "The Lantern Table is closed. Cleanup lamps only.">)>)
@@ -435,7 +443,7 @@
 <ROUTINE CROSSED-REFLECTIONS-FCN (RARG)
     <COND (<EQUAL? .RARG ,M-LOOK>
            <TELL "Sightlines cross. You may see someone around a corner before you meet them. ">
-           <COND (<EQUAL? ,FAIR-LATE-MIRROR 1>
+           <COND (<EQUAL? <FAIR-GET ,FAIR-SLOT-LATE-MIRROR> 1>
                   <TELL "One reflection is still finishing a previous movement.">)
                  (T
                   <TELL "Tonight the glass is only clever.">)>
