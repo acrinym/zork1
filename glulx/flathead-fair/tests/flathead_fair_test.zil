@@ -31,8 +31,8 @@
     <TELL "[TEST] Unsafe wind." CR>>
 
 <ROUTINE V-FAIR-GALLERY-SET ()
-    <FAIR-PUT ,FAIR-SLOT-GALLERY 2>
-    <TELL "[TEST] Gallery cycle 2." CR>>
+    <FAIR-PUT ,FAIR-SLOT-GALLERY 1>
+    <TELL "[TEST] Gallery cycle will be 2 after this turn's clock." CR>>
 
 <ROUTINE V-FAIR-FISH-SET ()
     <FAIR-PUT ,FAIR-SLOT-CATCH 1>
