@@ -1,9 +1,9 @@
 # Highly Extended Zork — Product Kanban
 
-**Updated:** September 4, 2026  
+**Updated:** September 6, 2026  
 **Board data:** `docs/planning/product-kanban.json`  
 **Current merged production frontier:** Release `1306` — Mara Earned Romance on `master` (PR #97)  
-**Open work:** none in CURRENT; next is 1309 wardrobe  
+**Open work:** CURRENT **1310 Flathead Fair**  
 **Lock receipt:** `docs/planning/RELEASE_1306_MARA_EARNED_ROMANCE.md`  
 **Ideas lane:** `ideas/extended-zork/` (concept sources; not compiled progress)
 
@@ -36,7 +36,7 @@ Releases 1269–1278 are merged through PR #86. Writable merges stay on `acrinym
 
 ## CURRENT
 
-Empty between trains. 1306 is merged.
+**1310 Flathead Fair** — `.beads/cursor_zork_flathead_fair.beadtrain`, stages locked 1306. Sixteen-location parser-first fair organ. Independent of draft 1307/1309 until those lock.
 
 ## NEXT — explicit queued product trains
 

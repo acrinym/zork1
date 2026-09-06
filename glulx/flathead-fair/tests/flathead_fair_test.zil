@@ -1,0 +1,39 @@
+"FLATHEAD FAIR TEST VERBS — test story only"
+
+<SYNTAX FAIRHERE = V-FAIR-HERE>
+<SYNTAX FAIRBANK = V-FAIR-BANK>
+<SYNTAX FAIRDUSK = V-FAIR-DUSK>
+<SYNTAX FAIRWIND = V-FAIR-WIND-SET>
+<SYNTAX FAIRWATCH = V-FAIR-GALLERY-SET>
+<SYNTAX FAIRFISH = V-FAIR-FISH-SET>
+
+<ROUTINE V-FAIR-HERE ()
+    <SETG HERE ,FAIR-ENTRANCE>
+    <MOVE ,WINNER ,FAIR-ENTRANCE>
+    <MARA-ENSURE>
+    <MOVE ,MARA ,HERE>
+    <FAIR-PLACE-CAST>
+    <TELL "[TEST] Fair Entrance, Mara present." CR>
+    <V-LOOK>>
+
+<ROUTINE V-FAIR-BANK ()
+    <FAIR-PUT ,FAIR-SLOT-ZORKMIDS 80>
+    <FAIR-PUT ,FAIR-SLOT-TICKETS 12>
+    <TELL "[TEST] 80 zm and 12 tickets." CR>>
+
+<ROUTINE V-FAIR-DUSK ()
+    <FAIR-PUT ,FAIR-SLOT-PHASE ,FAIR-DUSK>
+    <FAIR-ON-PHASE>
+    <TELL "[TEST] Dusk." CR>>
+
+<ROUTINE V-FAIR-WIND-SET ()
+    <FAIR-PUT ,FAIR-SLOT-WIND 2>
+    <TELL "[TEST] Unsafe wind." CR>>
+
+<ROUTINE V-FAIR-GALLERY-SET ()
+    <FAIR-PUT ,FAIR-SLOT-GALLERY 1>
+    <TELL "[TEST] Gallery cycle will be 2 after this turn's clock." CR>>
+
+<ROUTINE V-FAIR-FISH-SET ()
+    <FAIR-PUT ,FAIR-SLOT-CATCH 1>
+    <TELL "A redfin bream. Ordinary, real, and not a legendary class. Committed." CR>>

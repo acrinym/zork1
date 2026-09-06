@@ -1,0 +1,47 @@
+[train]
+name        = "cursor_zork_story_mode_presentation"
+title       = "Storybook presentation edition"
+description = """
+Complete optional storybook/CYOA presentation of the live Highly Extended game.
+Numbered obvious affordances execute the same parser and the same Glulx state.
+Default master play remains a blank prompt. No Twine product, no GUI, no second plot.
+Depends on locked Fair 1310 only as current world; does not restack 1307/1309.
+"""
+created     = "2026-09-06"
+status      = "planned"
+
+[[cars]]
+id = "mode-switch"
+bead = "zork1-story-001"
+title = "Off-switchable story presentation"
+parallel_start = true
+depends_on = []
+summary = "A command turns numbered obvious options on and off. Default boot is the ordinary parser. SAVE/RESTORE/UNDO are the same files."
+
+[[cars]]
+id = "authored-beats"
+bead = "zork1-story-002"
+title = "West of House through Fair beats"
+parallel_start = true
+depends_on = ["mode-switch"]
+summary = "Authored option lists for opening house ring, cellar threshold, and Fair Entrance use only currently obvious physical commands. No maze answer key."
+
+[[cars]]
+id = "mara-honesty"
+bead = "zork1-story-003"
+title = "Mara and Fair options stay earned"
+parallel_start = true
+depends_on = ["authored-beats"]
+summary = "Partnership and Fair choices appear only when the world already makes them timely. No DATE MODE list. No love meter."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-story-004"
+title = "Hosted story-mode qualification"
+parallel_start = false
+depends_on = ["mara-honesty"]
+summary = "Production has no story-test verbs. Transcript proves numbered choice 1 equals OPEN MAILBOX. Turning the mode off restores the blank prompt. Artifact lock."
+
+[meta]
+one_liner = "Numbered lines are the parser, not a second Zork."
+watch = ["ideas/extended-zork/POST_1306_TEXT_ONLY_FUTURE_ORGANS_2026-09-04.md", "ideas/extended-zork/POST_1310_AFTER_FAIR.md"]

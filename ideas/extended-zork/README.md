@@ -4,6 +4,8 @@
 
 Concept lane. Live product work is on `docs/planning/PRODUCT_KANBAN.md`. Post-1286 museum / Mara / fish is `docs/planning/POST_1286_MUSEUM_MARA_AQUATIC_PROGRAM.md`. This directory does not add beads to the closed House of Records program.
 
+**Fair organ:** Release **1310** is the complete Flathead Fair on locked 1306. See [flathead-fair.md](flathead-fair.md) and [POST_1310_AFTER_FAIR.md](POST_1310_AFTER_FAIR.md). Do not treat this folder as qualify evidence.
+
 ## Core direction
 
 Extend Zork I into a much larger persistent interactive-fiction world while preserving the original game's places, objects, actors, puzzles, score authority, humor, danger, and consequences.
