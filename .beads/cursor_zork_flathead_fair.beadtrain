@@ -9,7 +9,7 @@ participant, Lantern Table, Fair Office versus House of Records. No carnival
 engine, GUI, DATE MODE, or Gato.
 """
 created     = "2026-09-06"
-status      = "in_progress"
+status      = "complete"
 
 [[cars]]
 id = "geography"
