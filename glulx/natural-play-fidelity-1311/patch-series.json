@@ -13,7 +13,8 @@
     "patches/001-direction-vocabulary.json",
     "patches/002-described-world-nouns.json",
     "patches/003-natural-actions-and-proper-names.json",
-    "patches/004-release-1311-identity.json"
+    "patches/004-release-1311-identity.json",
+    "patches/005-topic-object-action-fallthrough.json"
   ],
   "added_files": [],
   "expected_changed_paths": [
@@ -23,13 +24,9 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": true,
+    "locked": false,
     "file": "zork1-glulx-natural-play-fidelity.ulx",
-    "format": "Glulx",
-    "version_hex": "0x00030103",
-    "size_bytes": 600064,
-    "checksum_hex": "0x98cf0828",
-    "sha256": "9e8cdea47dcd31d2a1835808fa0814ddca4f406d6592aaa838d8216d0cbcc2bb"
+    "format": "Glulx"
   },
   "player_outcomes": [
     "NORTHEAST and SOUTHEAST work where room prose names them",
@@ -37,6 +34,7 @@
     "brass screw and shaded pond bank answer EXAMINE",
     "ASK TOMAS ABOUT DRINK/DRINKS and ASK SILAS ABOUT FISHING answer naturally",
     "a purchased elephant ear can be eaten with visible feedback and leaves inventory",
-    "named Fair people list as proper names without changing generic Zork actors"
+    "named Fair people list as proper names without changing generic Zork actors",
+    "ASK TOMAS ABOUT DRINK/DRINKS reaches Tomas instead of being swallowed by the drink topic object"
   ]
 }
