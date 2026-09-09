@@ -24,9 +24,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-natural-play-fidelity.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 600064,
+    "checksum_hex": "0x97cf0828",
+    "sha256": "93bc73857758f82ee0434a44fa575be486a130d1736d610bc6f14abb959cb1fd"
   },
   "player_outcomes": [
     "NORTHEAST and SOUTHEAST work where room prose names them",
