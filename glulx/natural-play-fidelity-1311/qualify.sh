@@ -18,7 +18,8 @@ python .beads/beadtrains/scripts/validate_beadtrain.py "$TRAIN"
 python glulx/natural-play-fidelity-1311/stage.py --base-source "$BASE_SRC" --destination "$SRC" --manifest "$MANIFEST"
 python glulx/natural-play-fidelity-1311/stage.py --base-source "$BASE_DEV_SRC" --destination "$DEV_SRC" --manifest "$MANIFEST"
 python optimized/tools/zil_smell_check.py --source "$SRC" --json "$BUILD/smell-report.json"
-python optimized/tools/zil_smell_check.py --source "$DEV_SRC" --json "$BUILD/dev-smell-report.json"python - <<'PY'
+python optimized/tools/zil_smell_check.py --source "$DEV_SRC" --json "$BUILD/dev-smell-report.json"
+python - <<'PY'
 import json
 from pathlib import Path
 def req(c, m):
