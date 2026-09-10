@@ -1,0 +1,79 @@
+[train]
+name        = "onyx_zork_natural_play_fidelity_1311"
+title       = "Release 1311 Natural-Play Fidelity Repairs"
+description = """
+Repair the exact parser and described-world seams exposed by Onyx's 89-move
+natural Release 1310 play session. Stage strictly from locked 1310, preserve
+the Fair and canonical Zork spine, and make the words and nouns taught by the
+prose work in ordinary production play. No Fair redesign, generic conversation
+engine, parser rewrite, DATE MODE, or mutation of the 1310 lock.
+"""
+created     = "2026-09-08"
+status      = "in_progress"
+
+[protocol]
+version = "3.0"
+repository = "acrinym/zork1"
+branch_policy = "one-pr-per-train"
+default_lease_minutes = 45
+
+[[cars]]
+id = "directions"
+bead = "zork1-1311-001"
+title = "Full diagonal direction vocabulary"
+parallel_start = true
+depends_on = []
+summary = "Accept NORTHEAST and SOUTHEAST while preserving NE/SE and legacy truncated compatibility words."
+
+[[cars]]
+id = "described_nouns"
+bead = "zork1-1311-002"
+title = "Fair described nouns become real"
+parallel_start = true
+depends_on = []
+summary = "Make the entrance steward notice, Crooked Gallery brass screw, and shaded fishing bank examinable without lying about Berrin's location."
+
+[[cars]]
+id = "conversation_topics"
+bead = "zork1-1311-003"
+title = "Natural Fair conversation topics"
+parallel_start = true
+depends_on = []
+summary = "Make ASK TOMAS ABOUT DRINK/DRINKS and ASK SILAS ABOUT FISHING resolve through ordinary parser conversation."
+
+[[cars]]
+id = "food_consumption"
+bead = "zork1-1311-004"
+title = "Fair food consumption feedback"
+parallel_start = true
+depends_on = []
+summary = "Ensure purchased elephant ears answer EAT visibly and leave inventory rather than swallowing the command."
+
+[[cars]]
+id = "proper_names"
+bead = "zork1-1311-005"
+title = "Proper-name room listing grammar"
+parallel_start = true
+depends_on = []
+summary = "Give the twenty named Fair people authored room listing text without changing generic Zork actor articles."
+
+[[cars]]
+id = "natural_play_regression"
+bead = "zork1-1311-006"
+title = "89-move natural-play regression"
+parallel_start = false
+depends_on = ["directions", "described_nouns", "conversation_topics", "food_consumption", "proper_names"]
+summary = "Run production-only player commands that reproduce and prove the repaired 1310 seams, with no test verbs or state shortcuts."
+
+[[cars]]
+id = "hosted_capstone"
+bead = "zork1-1311-007"
+title = "Hosted Release 1311 qualification"
+parallel_start = false
+depends_on = ["natural_play_regression"]
+summary = "Stage from locked 1310, compile exact-head production, preserve 1310 behavior, lock the 1311 artifact identity, and rerun hosted qualification."
+
+[meta]
+one_liner = "The Fair answers the words and nouns its own prose teaches the player."
+prior_car = "cursor_zork_flathead_fair"
+watch = "Do not mutate Release 1310, broaden into a generic parser/conversation engine, or let test-only verbs qualify production behavior."

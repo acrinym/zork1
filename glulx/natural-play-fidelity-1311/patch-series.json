@@ -1,0 +1,44 @@
+{
+  "edition": "Natural-Play Fidelity Repairs",
+  "release": 1311,
+  "serial": "260908",
+  "base_release": 1310,
+  "base_manifest": "../flathead-fair/patch-series.json",
+  "base_artifact_sha256": "9dff67054b2a48ba4bbb135e0b986a7d40dc8c6f942a36f04ed3d688a9c36aa4",
+  "base_source_sha256": {
+    "production": "0418b855f2ca396eb4b4e28c601b36aacf5304a15b7dc45d9862d9b0bde23bfb",
+    "dev": "1c5043d3eaf24b6d3836b1dc02010964253f5ec6812c3d48a105216ec259a3ea"
+  },
+  "patches": [
+    "patches/001-direction-vocabulary.json",
+    "patches/002-described-world-nouns.json",
+    "patches/003-natural-actions-and-proper-names.json",
+    "patches/004-release-1311-identity.json",
+    "patches/005-topic-object-action-fallthrough.json"
+  ],
+  "added_files": [],
+  "expected_changed_paths": [
+    "flathead_fair.zil",
+    "flathead_fair_life.zil",
+    "gsyntax.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-natural-play-fidelity.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 600064,
+    "checksum_hex": "0x97cf0828",
+    "sha256": "93bc73857758f82ee0434a44fa575be486a130d1736d610bc6f14abb959cb1fd"
+  },
+  "player_outcomes": [
+    "NORTHEAST and SOUTHEAST work where room prose names them",
+    "Fair Entrance no longer implies absent Berrin is physically present",
+    "brass screw and shaded pond bank answer EXAMINE",
+    "ASK TOMAS ABOUT DRINK/DRINKS and ASK SILAS ABOUT FISHING answer naturally",
+    "a purchased elephant ear can be eaten with visible feedback and leaves inventory",
+    "named Fair people list as proper names without changing generic Zork actors",
+    "ASK TOMAS ABOUT DRINK/DRINKS reaches Tomas instead of being swallowed by the drink topic object"
+  ]
+}

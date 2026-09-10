@@ -1,0 +1,27 @@
+{
+  "id": "004-release-1311-identity",
+  "path": "zork1.zil",
+  "description": "Advance the staged product identity from locked Release 1310 to the natural-play fidelity repair release.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\"ZORK1 FLATHEAD FAIR GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\"",
+      "new": "\"ZORK1 NATURAL PLAY FIDELITY GLULX for\n  Zork I: The Great Underground Empire\n  (c) Copyright 1983 Infocom, Inc. All Rights Reserved.\""
+    },
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Flathead Fair.\n  Release 1310: recurring parser-first fair organ on locked 1306. No carnival engine. No GUI.\"",
+      "new": ";\"Repository-local Natural-Play Fidelity Repairs.\n  Release 1311: player-found parser and described-world repairs on locked 1310. No Fair redesign.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1310>",
+      "new": "<CONSTANT RELEASEID 1311>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Flathead Fair Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Natural-Play Fidelity Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}
