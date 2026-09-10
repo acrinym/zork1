@@ -1,0 +1,12 @@
+{
+  "id": "013-full-inflate-vocabulary",
+  "path": "gsyntax.zil",
+  "description": "Accept natural INFLATE BOAT WITH PUMP while preserving the legacy INFLAT vocabulary entry.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNTAX INFLAT OBJECT WITH\n\tOBJECT (FIND TOOLBIT) (ON-GROUND IN-ROOM HELD CARRIED) = V-INFLATE>",
+      "new": "<SYNTAX INFLAT OBJECT WITH\n\tOBJECT (FIND TOOLBIT) (ON-GROUND IN-ROOM HELD CARRIED) = V-INFLATE>\n<SYNONYM INFLAT INFLATE>"
+    }
+  ]
+}

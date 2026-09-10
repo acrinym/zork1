@@ -1,0 +1,72 @@
+south
+east
+open window
+enter
+west
+take lantern
+take sword
+take fishing rod
+take field jar
+move rug
+open trap door
+turn on lantern
+east
+up
+take rope
+down
+west
+down
+north
+attack troll with sword
+attack troll with sword
+attack troll with sword
+east
+east
+north
+ne
+east
+down
+look
+talk to mara
+ask mara about survey
+mara, follow me
+show lantern to mara
+up
+examine control panel
+north
+north
+take wrench
+take tube
+open tube
+take putty
+mara, push yellow button
+mara, follow me
+south
+south
+mara, brace control panel
+turn bolt with wrench
+survey control panel with mara
+thank mara
+south
+sw
+south
+west
+west
+south
+unbar threshold with mara
+up
+east
+east
+east
+east
+look
+mara, jump
+secure rope
+examine canyon rim
+mara, jump
+recover
+mara, jump
+look
+ask mara about survey
+quit
+yes

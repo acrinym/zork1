@@ -1,0 +1,12 @@
+{
+  "id": "016-directed-comma-homonym-verb-precedence",
+  "path": "gparser.zil",
+  "description": "After a directed actor separator, do not consume a verb/object homonym as another noun before the existing comma-to-THEN verb/direction branch can reinterpret it.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t\t     (<WT? .WRD ,PS?OBJECT>\n\t\t\t      <COND",
+      "new": "\t\t\t     (<AND <WT? .WRD ,PS?OBJECT>\n\t\t\t\t   <NOT <AND .ANDFLG\n\t\t\t\t             <ZERO? <GET ,P-ITBL ,P-VERB>>\n\t\t\t\t             <OR <WT? .WRD ,PS?DIRECTION>\n\t\t\t\t                 <WT? .WRD ,PS?VERB>>>>>\n\t\t\t      <COND"
+    }
+  ]
+}

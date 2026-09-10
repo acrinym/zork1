@@ -1,0 +1,12 @@
+{
+  "id": "006-mara-pack-grammar",
+  "path": "mara_companion.zil",
+  "description": "Give Mara's pack a neutral generic descriptor while preserving authored ownership prose.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Mara's waxed field pack\")",
+      "new": "    (DESC \"waxed field pack\")"
+    }
+  ]
+}

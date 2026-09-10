@@ -1,0 +1,63 @@
+{
+  "edition": "Mara World Integrity",
+  "release": 1312,
+  "serial": "260909",
+  "base_release": 1311,
+  "base_manifest": "../natural-play-fidelity-1311/patch-series.json",
+  "base_artifact_sha256": "93bc73857758f82ee0434a44fa575be486a130d1736d610bc6f14abb959cb1fd",
+  "base_source_sha256": {
+    "production": "25bc6cc4932158123e64f8daf5027cedc2fe6170c7b4eca2b9b4f1e433b98534",
+    "dev": "3d71f01da5dfef2d34b656d74d44307057e6d484a0c20666fbe41ee2186e1424"
+  },
+  "patches": [
+    "patches/001-mara-engine-personhood.json",
+    "patches/002-directed-actor-room.json",
+    "patches/003-mara-nested-scope-and-mine-route.json",
+    "patches/004-mara-follow-and-grue-causality.json",
+    "patches/005-mara-actor-intent.json",
+    "patches/006-mara-pack-grammar.json",
+    "patches/007-mara-dead-state-pulse.json",
+    "patches/008-mara-ladder-and-boat-integrity.json",
+    "patches/009-mara-canyon-autonomy.json",
+    "patches/010-mara-canyon-history-schema.json",
+    "patches/011-mara-canyon-history-migration.json",
+    "patches/012-mara-evidence-truthfulness.json",
+    "patches/013-full-inflate-vocabulary.json",
+    "patches/014-magic-boat-launch-dispatch.json",
+    "patches/015-release-1312-identity.json",
+    "patches/016-directed-comma-homonym-verb-precedence.json"
+  ],
+  "added_files": [],
+  "expected_changed_paths": [
+    "1actions.zil",
+    "gparser.zil",
+    "gsyntax.zil",
+    "gverbs.zil",
+    "mara_companion.zil",
+    "mara_companion_actions.zil",
+    "mara_companion_actor.zil",
+    "mara_companion_movement.zil",
+    "mara_companion_state.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-mara-world-integrity.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 602880,
+    "checksum_hex": "0x66da1193",
+    "sha256": "34adc364ab2c1918cd5eff7783d882ae6e383c57e0f2272ab2985a9c7f6e91f1"
+  },
+  "player_outcomes": [
+    "Mara retains proper-name personhood through containers, vehicles, movement, and possessive prose",
+    "directed Mara commands resolve against her containing room and move Mara rather than the Adventurer",
+    "hostile projectiles aimed at Mara use intentional-harm semantics and Mara's Dam ladder uses Mara's hazard logic",
+    "INFLATE BOAT WITH PUMP and LAUNCH BOAT reach the canonical magic-boat mechanics",
+    "puncturing the magic boat evacuates every occupant instead of deleting nested actors",
+    "arbitrary junk shown to Mara cannot become survey evidence or award evidence trust",
+    "earned mine travel can expose Mara to the grue colony; darkness can kill Mara without routing through player JIGS-UP",
+    "earned trust plus the physically secured canyon rope can persuade Mara into one remembered controlled canyon jump",
+    "directed actor commands preserve verb/object homonyms such as BOARD by letting the existing comma/AND separator branch recognize the verb before CLAUSE consumes it as another noun"
+  ]
+}

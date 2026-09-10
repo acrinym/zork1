@@ -1,0 +1,12 @@
+{
+  "id": "005-mara-actor-intent",
+  "path": "mara_companion_actor.zil",
+  "description": "Classify thrown objects aimed at Mara as intentional harm instead of generic person handling.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MUNG ATTACK>>\n           <MARA-INTENTIONAL-HARM-ATTEMPT>)",
+      "new": "          (<AND <EQUAL? ,PRSO ,MARA> <VERB? MUNG ATTACK>>\n           <MARA-INTENTIONAL-HARM-ATTEMPT>)\n          (<AND <EQUAL? ,PRSI ,MARA> <VERB? THROW>>\n           <MARA-INTENTIONAL-HARM-ATTEMPT>)"
+    }
+  ]
+}

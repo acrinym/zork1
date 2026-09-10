@@ -1,0 +1,22 @@
+{
+  "id": "015-release-1312-identity",
+  "path": "zork1.zil",
+  "description": "Advance the repository-local story identity from locked Release 1311 to Mara World Integrity Release 1312.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Natural-Play Fidelity Repairs.\n  Release 1311: player-found parser and described-world repairs on locked 1310. No Fair redesign.\"",
+      "new": ";\"Repository-local Mara World Integrity.\n  Release 1312: adversarial actor, vehicle, evidence, and environmental consequence repairs on locked 1311.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1311>",
+      "new": "<CONSTANT RELEASEID 1312>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Natural-Play Fidelity Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Mara World Integrity Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

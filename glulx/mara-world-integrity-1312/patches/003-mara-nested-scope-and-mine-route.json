@@ -1,0 +1,27 @@
+{
+  "id": "003-mara-nested-scope-and-mine-route",
+  "path": "mara_companion_state.zil",
+  "description": "Preserve Mara scope through containment, prevent post-death equipment resurrection, and extend earned field travel into the mine.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<NOT <LOC ,MARA-FIELD-ROPE>> <MOVE ,MARA-FIELD-ROPE ,MARA>)>\n    <COND (<NOT <LOC ,MARA-FIELD-LANTERN>> <MOVE ,MARA-FIELD-LANTERN ,MARA>)>",
+      "new": "    <COND (<AND <LOC ,MARA> <NOT <LOC ,MARA-FIELD-ROPE>>> <MOVE ,MARA-FIELD-ROPE ,MARA>)>\n    <COND (<AND <LOC ,MARA> <NOT <LOC ,MARA-FIELD-LANTERN>>> <MOVE ,MARA-FIELD-LANTERN ,MARA>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-HERE? ()\n    <COND (<EQUAL? <LOC ,MARA> ,HERE> <RTRUE>)>\n    <RFALSE>>",
+      "new": "<ROUTINE MARA-HERE? ()\n    <COND (<AND <LOC ,MARA> <EQUAL? <META-LOC ,MARA> ,HERE>> <RTRUE>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-CAN-ENTER? (RM)",
+      "new": "<ROUTINE MARA-MINE-ROUTE? (RM)\n    <COND (<EQUAL? .RM ,RESERVOIR ,RESERVOIR-NORTH ,ATLANTIS-ROOM ,SMALL-CAVE> <RTRUE>)\n          (<EQUAL? .RM ,MIRROR-ROOM-1 ,COLD-PASSAGE ,SLIDE-ROOM ,MINE-ENTRANCE> <RTRUE>)\n          (<EQUAL? .RM ,SQUEEKY-ROOM ,BAT-ROOM ,SHAFT-ROOM ,SMELLY-ROOM> <RTRUE>)\n          (<EQUAL? .RM ,GAS-ROOM ,MINE-1 ,MINE-2 ,MINE-3> <RTRUE>)\n          (<EQUAL? .RM ,MINE-4 ,LADDER-TOP ,LADDER-BOTTOM ,DEAD-END-5> <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE MARA-CAN-ENTER? (RM)"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<AND <MARA-GET ,MARA-SLOT-DAM-SURVEY>\n                <MARA-HOUSE-ROUTE? .RM>>\n           <RTRUE>)",
+      "new": "          (<AND <MARA-GET ,MARA-SLOT-DAM-SURVEY>\n                <MARA-HOUSE-ROUTE? .RM>>\n           <RTRUE>)\n          (<AND <MARA-GET ,MARA-SLOT-DAM-SURVEY>\n                <MARA-MINE-ROUTE? .RM>>\n           <RTRUE>)"
+    }
+  ]
+}
