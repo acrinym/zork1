@@ -1,0 +1,27 @@
+{
+  "id": "004-mara-follow-and-grue-causality",
+  "path": "mara_companion_movement.zil",
+  "description": "Let nested Mara resume following, track contained movement honestly, and give the grue colony an NPC-causal death path.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-REQUEST-FOLLOW ()",
+      "new": "<ROUTINE MARA-REQUEST-FOLLOW (\"AUX\" C)"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (T\n           <COND (<ZERO? <MARA-GET ,MARA-SLOT-MET>> <MARA-MEET>)>",
+      "new": "          (T\n           <SET C <LOC ,MARA>>\n           <COND (<AND .C <FSET? .C ,VEHBIT> <EQUAL? <META-LOC ,MARA> ,HERE>>\n                  <TELL \"Mara Tallow steps out of the \" D .C \" before settling the route between you again.\" CR>\n                  <MOVE ,MARA ,HERE>)>\n           <COND (<ZERO? <MARA-GET ,MARA-SLOT-MET>> <MARA-MEET>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "                <EQUAL? <LOC ,MARA> .FROM>>",
+      "new": "                <EQUAL? <META-LOC ,MARA> .FROM>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ACTION-HOOK ()",
+      "new": "<ROUTINE MARA-GRUE-COLONY-DARK? (\"AUX\" OW OH L?)\n    <COND (<NOT <AND <LOC ,MARA> <EQUAL? <META-LOC ,MARA> ,DEAD-END-5>>> <RFALSE>)>\n    <SET OW ,WINNER>\n    <SET OH ,HERE>\n    <SETG WINNER ,MARA>\n    <SETG HERE ,DEAD-END-5>\n    <SET L? <LIT? ,DEAD-END-5>>\n    <SETG WINNER .OW>\n    <SETG HERE .OH>\n    <COND (.L? <RFALSE>) (T <RTRUE>)>>\n\n<ROUTINE MARA-GRUE-COLONY-DEATH ()\n    <COND (<NOT <MARA-GRUE-COLONY-DARK?>> <RFALSE>)>\n    <COND (<EQUAL? ,HERE ,DEAD-END-5>\n           <TELL \"The last useful light goes out around Mara. Something scrapes inside one fissure, then several others answer. Mara gets as far as, Wait-- before the dark closes from more than one direction. A moment later her field gear strikes the stone. Mara Tallow has been eaten by a grue.\" CR>)\n          (T\n           <TELL \"Behind you, the light you carried away leaves the mine dead end black. Mara gets as far as, Wait-- before several fissures answer at once. There is a short violent scramble, then the clatter of field gear on stone. Mara Tallow has been eaten by a grue.\" CR>)>\n    <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-INDEPENDENT>\n    <MOVE-ALL ,MARA ,DEAD-END-5>\n    <REMOVE ,MARA>\n    <RTRUE>>\n\n<ROUTINE MARA-ACTION-HOOK ()"
+    }
+  ]
+}

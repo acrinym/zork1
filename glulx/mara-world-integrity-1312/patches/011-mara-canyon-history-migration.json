@@ -1,0 +1,22 @@
+{
+  "id": "011-mara-canyon-history-migration",
+  "path": "mara_companion_state.zil",
+  "description": "Initialize the canyon-jump fact on reset and migrate schema-10 saves without erasing established Mara history.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <MARA-PUT ,MARA-SLOT-MARA-LOOKED 0>\n    <RTRUE>>",
+      "new": "    <MARA-PUT ,MARA-SLOT-MARA-LOOKED 0>\n    <MARA-PUT ,MARA-SLOT-CANYON-JUMP 0>\n    <RTRUE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ENSURE ()\n    ;\"Only schemas older than Release 1261",
+      "new": "<ROUTINE MARA-ENSURE ()\n    <COND (<L? <GET ,MARA-STATE 0> ,MARA-SCHEMA>\n           <MARA-PUT ,MARA-SLOT-CANYON-JUMP 0>)>\n    ;\"Only schemas older than Release 1261"
+    },
+    {
+      "expected_count": 1,
+      "old": "    <COND (<EQUAL? <GET ,MARA-STATE 0> 9>\n",
+      "new": "    <COND (<EQUAL? <GET ,MARA-STATE 0> ,MARA-PREVIOUS-SCHEMA>\n           <PUT ,MARA-STATE 0 ,MARA-SCHEMA>)\n          (<EQUAL? <GET ,MARA-STATE 0> 9>\n"
+    }
+  ]
+}

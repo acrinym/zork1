@@ -1,0 +1,17 @@
+{
+  "id": "009-mara-canyon-autonomy",
+  "path": "mara_companion_actor.zil",
+  "description": "Keep Canyon View leaps inside Mara's own decision logic; only earned trust plus the physically anchored canonical canyon rope can persuade her into a controlled jump.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE PRE-MARA-SEND-AFTER ()",
+      "new": "<ROUTINE MARA-CANYON-LEAP-DECISION ()\n    <MARA-ENSURE>\n    <COND (<NOT <EQUAL? ,HERE ,CANYON-VIEW>>\n           <TELL \"Mara glances at the ground. Jump where, exactly?\" CR>)\n          (<MARA-RUPTURE-OPEN?>\n           <TELL \"Mara does not even look toward the edge. No, she says. You do not get to spend damaged trust as authority over my body.\" CR>)\n          (<L? <MARA-GET ,MARA-SLOT-TRUST> 3>\n           <TELL \"Mara looks over the Great Canyon, then back at you. You have not given me a reason to trust your judgment with my life, she says. Find a route instead of a command.\" CR>)\n          (<MARA-GET ,MARA-SLOT-CANYON-JUMP>\n           <TELL \"Mara looks from you to the canyon and then to the rope. We already have that measurement, she says. One experiment meant one. Repeating a controlled fall until it stops being controlled would be bad fieldwork.\" CR>)\n          (<NOT <IN? ,ROPE ,LIVING-CANYON-EDGE>>\n           <TELL \"Mara toes a piece of loose shale over the rim and listens to the long silence below. No, she says. If you want me to test a fall, prepare something in the world that can arrest one. Trust is not a substitute for rope.\" CR>)\n          (T\n           <TELL \"Mara crouches at the rim and tests the anchored rope herself: knot, stone, braid, then her full weight. She looks at you. You are asking for a controlled fall, not faith, she says. Fine. One experiment.\" CR>\n           <TELL \"She takes the working line around her body, steps backward to the lip, and jumps. Shale breaks away beneath her boots. The prepared rope goes hard against the west wall and arrests the fall with Mara below the rim instead of below the canyon. A moment later one hand appears over the edge, then the other, and she hauls herself back onto solid ground.\" CR>\n           <TELL \"Mara lies on her back for three breaths. That was idiotic, she says. It was also measurable. Do not confuse those facts.\" CR>\n           <MARA-PUT ,MARA-SLOT-CANYON-JUMP 1>\n           <MARA-INCREASE ,MARA-SLOT-RESPECT 3>)>\n    <RTRUE>>\n\n<ROUTINE PRE-MARA-SEND-AFTER ()"
+    },
+    {
+      "expected_count": 1,
+      "old": "          (<AND <EQUAL? ,WINNER ,MARA> <VERB? ATTACK STAB>>\n           <MARA-COMBAT-ORDER-REFUSAL>)",
+      "new": "          (<AND <EQUAL? ,WINNER ,MARA>\n                <EQUAL? ,HERE ,CANYON-VIEW>\n                <VERB? LEAP>>\n           <MARA-CANYON-LEAP-DECISION>)\n          (<AND <EQUAL? ,WINNER ,MARA> <VERB? ATTACK STAB>>\n           <MARA-COMBAT-ORDER-REFUSAL>)"
+    }
+  ]
+}

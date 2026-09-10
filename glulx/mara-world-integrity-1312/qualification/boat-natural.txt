@@ -1,0 +1,84 @@
+south
+east
+open window
+enter
+west
+take lantern
+take sword
+take fishing rod
+take field jar
+move rug
+open trap door
+turn on lantern
+east
+up
+take rope
+down
+west
+down
+north
+attack troll with sword
+attack troll with sword
+attack troll with sword
+east
+east
+north
+ne
+east
+down
+look
+talk to mara
+ask mara about survey
+mara, follow me
+up
+examine control panel
+north
+north
+take wrench
+take tube
+open tube
+take putty
+mara, push yellow button
+mara, follow me
+south
+south
+mara, brace control panel
+turn bolt with wrench
+survey control panel with mara
+thank mara
+west
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+north
+north
+drop fishing rod
+drop field jar
+drop wrench
+drop tube
+drop putty
+take pump
+south
+south
+east
+tie rope to ladder
+climb down ladder
+look
+show lantern to mara
+inflate boat with pump
+look
+mara, board boat
+look
+ask mara about survey
+drop sword
+board boat
+look
+launch boat
+look
+quit
+yes
