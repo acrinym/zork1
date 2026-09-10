@@ -41,9 +41,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-mara-world-integrity.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 602880,
+    "checksum_hex": "0x66da1193",
+    "sha256": "34adc364ab2c1918cd5eff7783d882ae6e383c57e0f2272ab2985a9c7f6e91f1"
   },
   "player_outcomes": [
     "Mara retains proper-name personhood through containers, vehicles, movement, and possessive prose",
