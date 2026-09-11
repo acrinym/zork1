@@ -1,16 +1,28 @@
 {
   "schema_version": "2.1",
   "board_id": "highly-extended-zork-product-kanban",
-  "updated_on": "2026-08-31",
+  "updated_on": "2026-09-07",
   "frontier": {
     "default_branch": "master",
-    "master_head_when_updated": "c0256aab9136e834418614dbb4fec365c541ecb5",
-    "latest_merged_release": 1303,
-    "latest_merged_release_title": "Empire Noun Honesty",
-    "latest_merged_pr": 93,
-    "open_pr_count_when_refreshed": 1,
-    "open_pr_when_refreshed": 94,
-    "open_pr_merge_ready_when_refreshed": true
+    "master_head_when_updated": "1903437d5591b48f27bd362c5c6b7ed78884b742",
+    "latest_merged_release": 1310,
+    "latest_merged_release_title": "Flathead Fair",
+    "latest_merged_pr": 101,
+    "open_pr_count_when_refreshed": 3,
+    "open_pr_when_refreshed": null,
+    "open_pr_merge_ready_when_refreshed": false,
+    "latest_merge_commit_sha": "20dab719f253c682f6ca7dd48e6400e61c89a246",
+    "open_prs_when_refreshed": [
+      98,
+      99,
+      100
+    ],
+    "open_pr_heads_when_refreshed": {
+      "98": "8784e0b2c89eeb13c5acf23cf220aded13aa4b1b",
+      "99": "ce22b636bcb08d08a88c31bc4ccca680c6a97427",
+      "100": "e998b040bb937f5614aa3e92b0b87886898c8f8a"
+    },
+    "all_open_prs_merge_ready_when_refreshed": false
   },
   "repository_boundary": {
     "writable": "acrinym/zork1",
@@ -27,7 +39,8 @@
     "No universal crafting/physics/creature machinery, recursive audit machinery, TODO-only slices, stubs, or no-op scaffolding.",
     "Difficulty may change authored evidence redundancy, recoverability, substitutes/resources, and consequence windows, but not parser phrasing or generic enemy health.",
     "DONE requires merged or otherwise immutable proof.",
-    "Do not merge without a fresh explicit Justin merge whistle."
+    "Do not merge without a fresh explicit Justin merge whistle.",
+    "SHA receipts: merged trains record the exact PR merge commit; active implementation PRs record their current head SHA; planning-only trains record `not created`. SHAs are provenance, not merge authorization."
   ],
   "planning_documents": {
     "human_board": "docs/planning/PRODUCT_KANBAN.md",
@@ -43,93 +56,512 @@
     "described_world_census": "docs/planning/DESCRIBED_WORLD_CENSUS_1302.md",
     "release_1305": "docs/planning/RELEASE_1305_HE_ABSURD_ALTERNATES.md",
     "adventurer_guide": "docs/ADVENTURER_GUIDE.md",
-    "highly_extended_ideas": "ideas/extended-zork/README.md"
+    "highly_extended_ideas": "ideas/extended-zork/README.md",
+    "post_1310_after_fair": "ideas/extended-zork/POST_1310_AFTER_FAIR.md"
   },
   "stacked_predecessor": null,
   "lanes": {
     "current": [
       {
-        "release": 1305,
-        "train_id": "cursor_zork_absurd_alternates_on_1303",
-        "title": "Absurd Alternates on Highly Extended 1303",
-        "status": "locked_awaiting_merge",
-        "pr": 94,
-        "beadtrain": ".beads/cursor_zork_absurd_alternates_on_1303.beadtrain",
-        "staging": "glulx/he-absurd-1305",
-        "semantic_reference": "alternate/ (Release 122 Z3) and glulx/absurd-alternates (Release 1214 on 1213)",
-        "outcome": "122/1214 player routes exist on the locked 1303 HE Glulx story. Player binary is not alternate/*.z3.",
-        "boundary": "Stages 1303 only. Canonical troll combat and BAD-EGG remain. No GUI. No joke engine.",
-        "artifact_sha256": "fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9",
-        "checksum_hex": "0x9087f92d",
-        "qualification_run": 33352160781,
-        "story_file": "zork1-glulx-he-absurd-alternates.ulx",
-        "census_lies": []
+        "release": 1310,
+        "train_id": "cursor_zork_flathead_fair",
+        "title": "Flathead Fair",
+        "status": "complete",
+        "pr": 101,
+        "merge_commit_sha": "20dab719f253c682f6ca7dd48e6400e61c89a246",
+        "capstone_commit_sha": "1903437d5591b48f27bd362c5c6b7ed78884b742",
+        "beadtrain": ".beads/cursor_zork_flathead_fair.beadtrain",
+        "lock_status": "identity_locked_and_merged",
+        "outcome": "Sixteen-location parser-first fair organ is complete on master.",
+        "boundary": "No GUI. Independent of draft 1307/1309 until those lock."
       }
     ],
-    "next": [],
-    "future": [
-      {"release": 1306, "train_id": "cursor_zork_mara_earned_romance", "title": "Mara Earned Romance & Partnership", "status": "planned", "beadtrain": ".beads/cursor_zork_mara_earned_romance.beadtrain", "ideas": "ideas/extended-zork/human-companion-bond-and-love-interest.md"},
-      {"release": 1307, "train_id": "cursor_zork_time_weather_disaster", "title": "Time, Weather & Disaster Arc", "status": "planned", "beadtrain": ".beads/cursor_zork_time_weather_disaster.beadtrain", "ideas": "ideas/extended-zork/recovered-pre-house-directions.md"},
-      {"release": 1308, "train_id": "cursor_zork_described_world_second_census", "title": "Second Described-World Census on Live HE", "status": "planned", "beadtrain": ".beads/cursor_zork_described_world_second_census.beadtrain", "ideas": "ideas/extended-zork/community-wishes-and-lost-ideas.md"}
+    "next": [
+      {
+        "release": 1309,
+        "train_id": "cursor_zork_adventurer_body_wardrobe",
+        "title": "Adventurer body, clothing, House wardrobe",
+        "status": "open_draft",
+        "pr": 98,
+        "head_sha": "8784e0b2c89eeb13c5acf23cf220aded13aa4b1b",
+        "qualification_status": "dedicated qualification currently fails",
+        "beadtrain": ".beads/cursor_zork_adventurer_body_wardrobe.beadtrain"
+      },
+      {
+        "release": 1308,
+        "train_id": "cursor_zork_described_world_second_census",
+        "title": "Second Described-World Census on Live HE",
+        "status": "planned_no_implementation",
+        "pr": null,
+        "head_sha": null,
+        "beadtrain": ".beads/cursor_zork_described_world_second_census.beadtrain"
+      },
+      {
+        "release": 1307,
+        "train_id": "cursor_zork_time_weather_disaster",
+        "title": "Time, Weather & Disaster Arc",
+        "status": "open_draft",
+        "pr": 99,
+        "head_sha": "ce22b636bcb08d08a88c31bc4ccca680c6a97427",
+        "qualification_status": "dedicated qualification currently fails",
+        "beadtrain": ".beads/cursor_zork_time_weather_disaster.beadtrain"
+      }
     ],
+    "future": [],
     "parked": [
-      {"train_id": "codex-world-truth-sidebar", "title": "World-truth / interaction-audit system (Codex sidebar)", "status": "not-pr-94", "note": "Full-world extraction, vocabulary, state-aware coverage, contradiction and missing-response reports. Not an HE story release."},
-      {"train_id": "stalker-glulx-separate-lane", "title": "S.T.A.L.K.E.R. Glulx Game", "status": "parked-separate-product"},
-      {"train_id": "cursor_zork_infocom_corpus_foundation", "title": "Infocom Corpus Foundation", "status": "blocked-rights-dependent", "beadtrain": ".beads/cursor_zork_infocom_corpus_foundation.beadtrain", "ideas": "ideas/extended-zork/infocom-linguistic-corpus-and-document-markdown.md"},
-      {"train_id": "cursor_zork_narrative_perspective_editions", "title": "Narrative Perspective Alternate Editions", "status": "blocked-not-default-master", "beadtrain": ".beads/cursor_zork_narrative_perspective_editions.beadtrain", "ideas": "ideas/extended-zork/narrative-perspective-and-storybook-experiments.md"}
+      {
+        "train_id": "codex-world-truth-sidebar",
+        "title": "World-truth / interaction-audit system (Codex sidebar)",
+        "status": "not-pr-94",
+        "note": "Full-world extraction, vocabulary, state-aware coverage, contradiction and missing-response reports. Not an HE story release."
+      },
+      {
+        "train_id": "stalker-glulx-separate-lane",
+        "title": "S.T.A.L.K.E.R. Glulx Game",
+        "status": "parked-separate-product"
+      },
+      {
+        "train_id": "cursor_zork_infocom_corpus_foundation",
+        "title": "Infocom Corpus Foundation",
+        "status": "blocked-rights-dependent",
+        "beadtrain": ".beads/cursor_zork_infocom_corpus_foundation.beadtrain",
+        "ideas": "ideas/extended-zork/infocom-linguistic-corpus-and-document-markdown.md"
+      },
+      {
+        "train_id": "cursor_zork_narrative_perspective_editions",
+        "title": "Narrative Perspective Alternate Editions",
+        "status": "blocked-not-default-master",
+        "beadtrain": ".beads/cursor_zork_narrative_perspective_editions.beadtrain",
+        "ideas": "ideas/extended-zork/narrative-perspective-and-storybook-experiments.md"
+      }
     ],
     "done": [
-      {"release_range": "1219-1230", "title": "House of Records", "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"},
-      {"release": 1231, "title": "Corpus-Coupled Causal Warning", "pr": 34},
-      {"release": 1232, "title": "Parser Comprehension and Deep Affordances", "pr": 35},
-      {"release": 1233, "title": "Museum Intake and First Gallery", "pr": 36},
-      {"release": 1234, "title": "Mara Arrival and Evidence Memory", "pr": 37},
-      {"release": 1235, "title": "Cuisine, Hunger, and Stamina", "pr": 38},
-      {"release": 1236, "title": "Great Canyon Living Consequences", "pr": 39},
-      {"release": 1237, "title": "Zork Plus Veteran Survey Expedition", "pr": 40},
-      {"release": 1238, "title": "Cellar Expedition Recovery Locker", "pr": 41},
-      {"release": 1239, "title": "Museum Ecology and Dam Fishing", "pr": 42},
-      {"release": 1240, "title": "Museum Songbird Correspondence", "pr": 43},
-      {"release": 1241, "title": "Museum Troll Provenance", "pr": 44},
-      {"release": 1242, "title": "Natural-Play Regression Repair", "pr": 45},
-      {"release": 1243, "title": "Mara Companion Expedition Foundation", "pr": 46},
-      {"title": "Narrative Perspective Experiments", "pr": 47, "type": "documentation lane"},
-      {"release": 1244, "title": "Mara House Company", "pr": 48},
-      {"release": 1245, "title": "Creative Natural Play", "pr": 49},
-      {"release": 1246, "title": "Environmental Destruction", "pr": 50},
-      {"release": 1247, "title": "Narrative Physicality", "pr": 51},
-      {"release": 1248, "title": "Forest Consequence Physicality", "pr": 52},
-      {"release": 1249, "title": "Underground Sensory Physicality", "pr": 53},
-      {"release": 1250, "title": "Player Ingenuity / Systemic Workarounds", "pr": 55},
-      {"release": 1251, "title": "Cross-System Utility Mesh", "pr": 56},
-      {"release": 1252, "title": "Earned Sequence Breaks & Route Mastery", "pr": 57},
-      {"release": 1253, "title": "Dam Survival & Prepared Rescue", "pr": 58, "artifact_sha256": "232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff"},
-      {"release": 1254, "title": "Troll Disarm & Stolen Weapons", "pr": 59, "artifact_sha256": "86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0"},
-      {"release": 1255, "title": "Thief Retaliation & Sabotage", "pr": 60, "artifact_sha256": "03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be"},
-      {"release": 1256, "title": "Grue Ecology & Colony Reveal", "pr": 61, "artifact_sha256": "59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975"},
-      {"release": 1257, "title": "Fire, Smoke & Structural Consequences", "pr": 62, "artifact_sha256": "d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444"},
-      {"release": 1258, "title": "Mara Causal Biography & Shared Danger", "pr": 63, "merge_commit": "e50e81ddfd356cb13c60d61c641d3e7ce1225685", "artifact_sha256": "cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263", "qualification_run": 31929719820},
-      {"release": 1259, "title": "Mara Field Capability Discovery", "pr": 64, "merge_commit": "2cb9fd6ef66914c64c8c57d6b9b51767595c664c", "artifact_sha256": "e3a1adc99a6849b4703a3fe4338310a12c8d38c6d94b1aeab762199bb8e43d77", "qualification_run": 31828682046},
-      {"release": 1260, "title": "Mara Lived Feeling, Rupture & Repair", "pr": 65, "merge_commit": "2fe55b412818b2eabd9207fa91ed48f20b32ca41", "artifact_sha256": "81f686a1cd792b61f219e167fc0427e890151020d5b02f127cbd83d247c209c2", "qualification_run": 31886864766},
-      {"release": 1261, "title": "Mara Anticipation, Worry & Protective Initiative", "pr": 66, "merge_commit": "56772b585f6a6f87e2a7365e5ca813af5b59beb8", "artifact_sha256": "bc6f86c43803994143e5e188b8256d5ac681b51f1ab7711aeed27bbd4c6208a4", "qualification_run": 31927382213},
-      {"release": 1262, "title": "Hostile Rooms & Reactive Threats / Dragon & Hoard", "pr": 67, "merge_commit": "32ddee571a686411f672235aecffeab6b614bbb6", "artifact_sha256": "2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9", "qualification_run": 31928781090},
-      {"release": 1263, "title": "Ablative Protection & Equipment Consequence", "pr": 68, "merge_commit": "565d24d910e75ac6b28f1ce9d57de1506a642b62", "artifact_sha256": "a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997", "qualification_run": 31929398064},
-      {"release": 1264, "title": "Perilous Affordances / Let the Player Be Wrong", "pr": 69, "merge_commit": "cdc8f51b08721756c796904d7132587ec40026f1", "artifact_sha256": "04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d", "qualification_run": 31949574481},
-      {"release": 1265, "title": "Consumable Light & Graduated Darkness", "pr": 70, "merge_commit": "59c9e843c4723692a0017e9f189407272b5a284f", "artifact_sha256": "6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070", "qualification_run": 32034566984},
-      {"release": 1266, "title": "Learned Magic as Parser Capability", "pr": 71, "merge_commit": "4425732bfc2fa28347453d9991513aeb28aaa531", "artifact_sha256": "d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9", "qualification_run": 32042641179},
-      {"release": 1267, "title": "Semantic Examination & Hidden Structure", "pr": 72, "merge_commit": "90e30d59fcd44a5297d7524f65ee34c72aaff319", "artifact_sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0", "qualification_run": 32046910749},
-      {"release": 1268, "title": "Clue Chains & Knowledge-Gated Interpretation", "pr": 73, "merge_commit": "2e16f6cebbfb5a7892feac08d9e6461e6bb9313b", "artifact_sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16", "qualification_run": 32052058707},
-      {"release_range": "1269-1276", "title": "Structural difficulty through Mara field guidance", "proof": "merged on acrinym/zork1 master before PR #85"},
-      {"release": 1277, "title": "Mundane Objects, Field Caching & House Spatial Agency", "pr": 85, "merge_commit": "42c110095cb99c9aff6ef83956c391b437c76bef", "artifact_sha256": "582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599"},
-      {"release": 1278, "title": "Honest Playthrough Records, Rest Syntax, House Jar", "pr": 86, "merge_commit": "080ba3a3d35f8f61da23f264ba088a6d59991b21", "artifact_sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1"},
-      {"release": 1279, "title": "Glulxe Optimization", "pr": 87, "merge_commit": "0e8ad864b644a7351cd795e43e402b59bc058dc8", "note": "Runtime only; 1278 story file unchanged."},
-      {"release": 1293, "title": "Honest System Recap", "pr": 88, "merge_commit": "983bb03f4f193eb056533e3aec65e1c57f59db53", "artifact_sha256": "79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641"},
-      {"release": 1294, "title": "Forest That Answers Back", "pr": 89, "merge_commit": "691926c5b4f91106ed5534b293cbaff4df82630f", "artifact_sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831"},
-      {"release": 1295, "title": "West-of-House Described Nouns", "pr": 90, "merge_commit": "f87089e2", "artifact_sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b"},
-      {"release_range": "1280-1286", "title": "Runtime foundation", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56"},
-      {"release": 1304, "title": "Living Collection and Companionship", "pr": 91, "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56", "artifact_sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b"},
-      {"release_range": "1296-1300", "title": "Leaflet Hour Noun Honesty", "pr": 92, "merge_commit": "9be10c1969cbebd30ca82ec219991116b9b58e89", "artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a"},
-      {"release_range": "1301-1303", "title": "Survey flags, census, empire noun honesty", "pr": 93, "merge_commit": "f3583c0025893c4bd3f34a00c5465a0976b96f39", "capstone_commit": "c0256aab9136e834418614dbb4fec365c541ecb5", "artifact_sha256": "4d3761931fcfe69a342e60d074c3ddfe7b6ee8c5a545cd58975158eae162db5c", "qualification_run": 33345233547, "story_file": "zork1-glulx-empire-noun-honesty.ulx"}
+      {
+        "release_range": "1219-1230",
+        "title": "House of Records",
+        "proof": "completed 12-train / 96-bead program; Release 1230 merged through PR #32"
+      },
+      {
+        "release": 1231,
+        "title": "Corpus-Coupled Causal Warning",
+        "pr": 34,
+        "merge_commit_sha": "28b90fe93a472087e64afcd0fb0e8776f80157f3"
+      },
+      {
+        "release": 1232,
+        "title": "Parser Comprehension and Deep Affordances",
+        "pr": 35,
+        "merge_commit_sha": "ce5be325a0d0f762edaa23362e5227d4788953d6"
+      },
+      {
+        "release": 1233,
+        "title": "Museum Intake and First Gallery",
+        "pr": 36,
+        "merge_commit_sha": "f0bdd696d447cdb727b82229b218abf7a6905f91"
+      },
+      {
+        "release": 1234,
+        "title": "Mara Arrival and Evidence Memory",
+        "pr": 37,
+        "merge_commit_sha": "76f1e451a4fb70dcf6ea1d41cb8705f2ad5236d4"
+      },
+      {
+        "release": 1235,
+        "title": "Cuisine, Hunger, and Stamina",
+        "pr": 38,
+        "merge_commit_sha": "e2e5c9c3e269d8e18bb3ed1c75dd72baacbd495a"
+      },
+      {
+        "release": 1236,
+        "title": "Great Canyon Living Consequences",
+        "pr": 39,
+        "merge_commit_sha": "eaf92ed19156088954ce5e0ab828a8d021f0920d"
+      },
+      {
+        "release": 1237,
+        "title": "Zork Plus Veteran Survey Expedition",
+        "pr": 40,
+        "merge_commit_sha": "325e5b7779f677febb02581dd934a2eae7bca1aa"
+      },
+      {
+        "release": 1238,
+        "title": "Cellar Expedition Recovery Locker",
+        "pr": 41,
+        "merge_commit_sha": "0480813d4c9a95e5a29af45b956285cb86ad74dc"
+      },
+      {
+        "release": 1239,
+        "title": "Museum Ecology and Dam Fishing",
+        "pr": 42,
+        "merge_commit_sha": "c025b2d98004183f76adb3db92d24a11f65b8bec"
+      },
+      {
+        "release": 1240,
+        "title": "Museum Songbird Correspondence",
+        "pr": 43,
+        "merge_commit_sha": "d476ab8a9a7f9a78d8c460e56776e788c02553fc"
+      },
+      {
+        "release": 1241,
+        "title": "Museum Troll Provenance",
+        "pr": 44,
+        "merge_commit_sha": "3ce83f2fe70eeb38e17e032db249c857dffba978"
+      },
+      {
+        "release": 1242,
+        "title": "Natural-Play Regression Repair",
+        "pr": 45,
+        "merge_commit_sha": "8f80c7d8004e3e4d5c2d546df5b82d4d330457e2"
+      },
+      {
+        "release": 1243,
+        "title": "Mara Companion Expedition Foundation",
+        "pr": 46,
+        "merge_commit_sha": "e7367c4d433f2f555db08014b9dc629b93ef841b"
+      },
+      {
+        "title": "Narrative Perspective Experiments",
+        "pr": 47,
+        "type": "documentation lane",
+        "merge_commit_sha": "cd1788e07b1aed568d0df81967ce933e02b9c740"
+      },
+      {
+        "release": 1244,
+        "title": "Mara House Company",
+        "pr": 48,
+        "merge_commit_sha": "dcd65a623ec53fd34631c828b5e997dc8aef90d7"
+      },
+      {
+        "release": 1245,
+        "title": "Creative Natural Play",
+        "pr": 49,
+        "merge_commit_sha": "5fad5cc0b018823226fdaae7894e830e600090f1"
+      },
+      {
+        "release": 1246,
+        "title": "Environmental Destruction",
+        "pr": 50,
+        "merge_commit_sha": "816be4d8763a5b728be15e1e0e06719d1dc50d75"
+      },
+      {
+        "release": 1247,
+        "title": "Narrative Physicality",
+        "pr": 51,
+        "merge_commit_sha": "0bf3b96587e703e59fae14f9304fef37eea7ff14"
+      },
+      {
+        "release": 1248,
+        "title": "Forest Consequence Physicality",
+        "pr": 52,
+        "merge_commit_sha": "032fda633c8faacc5db5900a5c2812d336d1d4a6"
+      },
+      {
+        "release": 1249,
+        "title": "Underground Sensory Physicality",
+        "pr": 53,
+        "merge_commit_sha": "bacb1a358f0ee126ee6ae629b589c3d3a0269ee9"
+      },
+      {
+        "release": 1250,
+        "title": "Player Ingenuity / Systemic Workarounds",
+        "pr": 55,
+        "merge_commit_sha": "cd6a918795196b6918a2a5c5600b56c1c0d6e20b"
+      },
+      {
+        "release": 1251,
+        "title": "Cross-System Utility Mesh",
+        "pr": 56,
+        "merge_commit_sha": "79b87248d567962fff2181e4996d1cf424cdcac0"
+      },
+      {
+        "release": 1252,
+        "title": "Earned Sequence Breaks & Route Mastery",
+        "pr": 57,
+        "merge_commit_sha": "43a253a83a7349c9d3838e07488a90233f92410b"
+      },
+      {
+        "release": 1253,
+        "title": "Dam Survival & Prepared Rescue",
+        "pr": 58,
+        "artifact_sha256": "232baaa8255f4b95ab5f90e13e6669874bcd42c66744d8173f360169ffb499ff",
+        "merge_commit_sha": "f5b1f1a3e7f65ff11db06f344580f83c3ed191b1"
+      },
+      {
+        "release": 1254,
+        "title": "Troll Disarm & Stolen Weapons",
+        "pr": 59,
+        "artifact_sha256": "86fe8c6be4d377299ec66ae08801510303232d03a7dd5d5d42dc77357a51e6e0",
+        "merge_commit_sha": "7b99869d8cb2e6db93243432fd8140a937205f44"
+      },
+      {
+        "release": 1255,
+        "title": "Thief Retaliation & Sabotage",
+        "pr": 60,
+        "artifact_sha256": "03dde8995474368119597a6b4ba87e35feeb4147a8f1ff1327574a7af34820be",
+        "merge_commit_sha": "8ad53ebc2ec2ce2a454ce6951d919bb1a2025937"
+      },
+      {
+        "release": 1256,
+        "title": "Grue Ecology & Colony Reveal",
+        "pr": 61,
+        "artifact_sha256": "59a457cc4aeb17e3d1d1b4e219be82156302f982804310c996cd928f03b79975",
+        "merge_commit_sha": "14d1be667db3110d532b0e2c28f00b92371693fc"
+      },
+      {
+        "release": 1257,
+        "title": "Fire, Smoke & Structural Consequences",
+        "pr": 62,
+        "artifact_sha256": "d5080468723731018db587bcb5320cb88bb0a0b7585ee1c83156497dfb7fc444",
+        "merge_commit_sha": "8b6a390f959b5156876faf9d421c345a74e54423"
+      },
+      {
+        "release": 1258,
+        "title": "Mara Causal Biography & Shared Danger",
+        "pr": 63,
+        "merge_commit": "e50e81ddfd356cb13c60d61c641d3e7ce1225685",
+        "artifact_sha256": "cfbe0e05ea2b70101aee2103bf07b80993ba479a41a905ad882102e6415d7263",
+        "qualification_run": 31929719820,
+        "merge_commit_sha": "e50e81ddfd356cb13c60d61c641d3e7ce1225685"
+      },
+      {
+        "release": 1259,
+        "title": "Mara Field Capability Discovery",
+        "pr": 64,
+        "merge_commit": "2cb9fd6ef66914c64c8c57d6b9b51767595c664c",
+        "artifact_sha256": "e3a1adc99a6849b4703a3fe4338310a12c8d38c6d94b1aeab762199bb8e43d77",
+        "qualification_run": 31828682046,
+        "merge_commit_sha": "2cb9fd6ef66914c64c8c57d6b9b51767595c664c"
+      },
+      {
+        "release": 1260,
+        "title": "Mara Lived Feeling, Rupture & Repair",
+        "pr": 65,
+        "merge_commit": "2fe55b412818b2eabd9207fa91ed48f20b32ca41",
+        "artifact_sha256": "81f686a1cd792b61f219e167fc0427e890151020d5b02f127cbd83d247c209c2",
+        "qualification_run": 31886864766,
+        "merge_commit_sha": "2fe55b412818b2eabd9207fa91ed48f20b32ca41"
+      },
+      {
+        "release": 1261,
+        "title": "Mara Anticipation, Worry & Protective Initiative",
+        "pr": 66,
+        "merge_commit": "56772b585f6a6f87e2a7365e5ca813af5b59beb8",
+        "artifact_sha256": "bc6f86c43803994143e5e188b8256d5ac681b51f1ab7711aeed27bbd4c6208a4",
+        "qualification_run": 31927382213,
+        "merge_commit_sha": "56772b585f6a6f87e2a7365e5ca813af5b59beb8"
+      },
+      {
+        "release": 1262,
+        "title": "Hostile Rooms & Reactive Threats / Dragon & Hoard",
+        "pr": 67,
+        "merge_commit": "32ddee571a686411f672235aecffeab6b614bbb6",
+        "artifact_sha256": "2c0f63695388732af365d0b72b014348c7f1fb438dde0c5b49616ae8fdb81cf9",
+        "qualification_run": 31928781090,
+        "merge_commit_sha": "32ddee571a686411f672235aecffeab6b614bbb6"
+      },
+      {
+        "release": 1263,
+        "title": "Ablative Protection & Equipment Consequence",
+        "pr": 68,
+        "merge_commit": "565d24d910e75ac6b28f1ce9d57de1506a642b62",
+        "artifact_sha256": "a29a94fe607130c6bc2f86c140b6d3a2d7c065c9ceb80263a5dbfb51db3b3997",
+        "qualification_run": 31929398064,
+        "merge_commit_sha": "565d24d910e75ac6b28f1ce9d57de1506a642b62"
+      },
+      {
+        "release": 1264,
+        "title": "Perilous Affordances / Let the Player Be Wrong",
+        "pr": 69,
+        "merge_commit": "cdc8f51b08721756c796904d7132587ec40026f1",
+        "artifact_sha256": "04216477fb50deeb04f833122d5874c602277b2b4522cbf72420f2b987b52a1d",
+        "qualification_run": 31949574481,
+        "merge_commit_sha": "cdc8f51b08721756c796904d7132587ec40026f1"
+      },
+      {
+        "release": 1265,
+        "title": "Consumable Light & Graduated Darkness",
+        "pr": 70,
+        "merge_commit": "59c9e843c4723692a0017e9f189407272b5a284f",
+        "artifact_sha256": "6908e60a4dc191e1f74353055aa3dce11e72172edb96557a0f66d069327c1070",
+        "qualification_run": 32034566984,
+        "merge_commit_sha": "59c9e843c4723692a0017e9f189407272b5a284f"
+      },
+      {
+        "release": 1266,
+        "title": "Learned Magic as Parser Capability",
+        "pr": 71,
+        "merge_commit": "4425732bfc2fa28347453d9991513aeb28aaa531",
+        "artifact_sha256": "d26e66c95db2df733f4d2f0e8080650b4ec9ae4b5aa11082e6760835cb955fa9",
+        "qualification_run": 32042641179,
+        "merge_commit_sha": "4425732bfc2fa28347453d9991513aeb28aaa531"
+      },
+      {
+        "release": 1267,
+        "title": "Semantic Examination & Hidden Structure",
+        "pr": 72,
+        "merge_commit": "90e30d59fcd44a5297d7524f65ee34c72aaff319",
+        "artifact_sha256": "828383a78549cce45d26f888d14eb37838c74ce5b44588423eb8eca036ef77f0",
+        "qualification_run": 32046910749,
+        "merge_commit_sha": "90e30d59fcd44a5297d7524f65ee34c72aaff319"
+      },
+      {
+        "release": 1268,
+        "title": "Clue Chains & Knowledge-Gated Interpretation",
+        "pr": 73,
+        "merge_commit": "2e16f6cebbfb5a7892feac08d9e6461e6bb9313b",
+        "artifact_sha256": "bd663f335fb1500f809e797c92cc571a7828e5f410aebd2a1878298d65141f16",
+        "qualification_run": 32052058707,
+        "merge_commit_sha": "2e16f6cebbfb5a7892feac08d9e6461e6bb9313b"
+      },
+      {
+        "release_range": "1269-1276",
+        "title": "Structural difficulty through Mara field guidance",
+        "proof": "merged on acrinym/zork1 master; PRs #75, #77–#82, and #84",
+        "prs": [
+          75,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          84
+        ],
+        "merge_commit_shas": {
+          "75": "5497b71cfe37032952ac9ecea3e966ef2f10c4fe",
+          "77": "6525bbdabb98c170f341f6507440e9e8822eadee",
+          "78": "c5301e9761e836684c94d67d305e0c3c760ce281",
+          "79": "c41144d2d77fa8354726fd3abbbbd2eacd3575fa",
+          "80": "ba90c6d9be03e9609dbcbaeed0fb7c8e709f0828",
+          "81": "85ab3e3684982fa9b35342a229bfc32e205c89e7",
+          "82": "4cb99d6c67d4f798b35fbd7d005831f744d2f1e0",
+          "84": "8839ffd91f47d69685e140d15c5cbf93a1f2daff"
+        }
+      },
+      {
+        "release": 1277,
+        "title": "Mundane Objects, Field Caching & House Spatial Agency",
+        "pr": 85,
+        "merge_commit": "42c110095cb99c9aff6ef83956c391b437c76bef",
+        "artifact_sha256": "582c86d1878c89a8e7f76d8e97c68fcb9b0fc061ecd38a67888cfdd7de5e5599",
+        "merge_commit_sha": "42c110095cb99c9aff6ef83956c391b437c76bef"
+      },
+      {
+        "release": 1278,
+        "title": "Honest Playthrough Records, Rest Syntax, House Jar",
+        "pr": 86,
+        "merge_commit": "080ba3a3d35f8f61da23f264ba088a6d59991b21",
+        "artifact_sha256": "d1d5e7487a792079135e014dcdcfa0af73219307c12fbab2ef41d6af2b5f53f1",
+        "merge_commit_sha": "080ba3a3d35f8f61da23f264ba088a6d59991b21"
+      },
+      {
+        "release": 1279,
+        "title": "Glulxe Optimization",
+        "pr": 87,
+        "merge_commit": "0e8ad864b644a7351cd795e43e402b59bc058dc8",
+        "note": "Runtime only; 1278 story file unchanged.",
+        "merge_commit_sha": "0e8ad864b644a7351cd795e43e402b59bc058dc8"
+      },
+      {
+        "release": 1293,
+        "title": "Honest System Recap",
+        "pr": 88,
+        "merge_commit": "983bb03f4f193eb056533e3aec65e1c57f59db53",
+        "artifact_sha256": "79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641",
+        "merge_commit_sha": "983bb03f4f193eb056533e3aec65e1c57f59db53"
+      },
+      {
+        "release": 1294,
+        "title": "Forest That Answers Back",
+        "pr": 89,
+        "merge_commit": "691926c5b4f91106ed5534b293cbaff4df82630f",
+        "artifact_sha256": "20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831",
+        "merge_commit_sha": "691926c5b4f91106ed5534b293cbaff4df82630f"
+      },
+      {
+        "release": 1295,
+        "title": "West-of-House Described Nouns",
+        "pr": 90,
+        "merge_commit": "f87089e2",
+        "artifact_sha256": "a239f515902e77a35ffdb3d00557aca9d22c2d14d5c25f75f36b9543c5814a8b",
+        "merge_commit_sha": "f87089e2f4a4a3d7ec65204a9df750d9c1e188d2"
+      },
+      {
+        "release_range": "1280-1286",
+        "title": "Runtime foundation",
+        "pr": 91,
+        "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56",
+        "merge_commit_sha": "71c4a831b956184fd0bd811be498c61724987d56"
+      },
+      {
+        "release": 1304,
+        "title": "Living Collection and Companionship",
+        "pr": 91,
+        "merge_commit": "71c4a831b956184fd0bd811be498c61724987d56",
+        "artifact_sha256": "6e66dbd09897b829670d145c1340775de2a66fc82712bcdecf4a4bb008a9726b",
+        "merge_commit_sha": "71c4a831b956184fd0bd811be498c61724987d56"
+      },
+      {
+        "release_range": "1296-1300",
+        "title": "Leaflet Hour Noun Honesty",
+        "pr": 92,
+        "merge_commit": "9be10c1969cbebd30ca82ec219991116b9b58e89",
+        "artifact_sha256": "05119257f303dc77383f8ab51e799233076e1dc7e3b20e08f1c439868aea361a",
+        "merge_commit_sha": "9be10c1969cbebd30ca82ec219991116b9b58e89"
+      },
+      {
+        "release_range": "1301-1303",
+        "title": "Survey flags, census, empire noun honesty",
+        "pr": 93,
+        "merge_commit": "f3583c0025893c4bd3f34a00c5465a0976b96f39",
+        "capstone_commit": "c0256aab9136e834418614dbb4fec365c541ecb5",
+        "artifact_sha256": "4d3761931fcfe69a342e60d074c3ddfe7b6ee8c5a545cd58975158eae162db5c",
+        "qualification_run": 33345233547,
+        "story_file": "zork1-glulx-empire-noun-honesty.ulx",
+        "merge_commit_sha": "f3583c0025893c4bd3f34a00c5465a0976b96f39",
+        "capstone_commit_sha": "c0256aab9136e834418614dbb4fec365c541ecb5"
+      },
+      {
+        "release": 1305,
+        "title": "HE Absurd Alternates",
+        "pr": 94,
+        "merge_commit_sha": "482bb787d0bb585c7af473d18911e220fa970fb3",
+        "artifact_sha256": "fbdb8232c2cd219ba1640cd3bd4f65e9162f3ec4f6f38a449b065745636a3dd9",
+        "qualification_run": 33352160781
+      },
+      {
+        "release": 1306,
+        "title": "Mara Earned Romance and Partnership",
+        "pr": 97,
+        "merge_commit_sha": "a79b50bb02466b3bfb3b0faaacc952ac6b034e08",
+        "artifact_sha256": "76871675af153c55440ee472fde4aec25408c3f160a33f963e32ad2cf4e466c5"
+      },
+      {
+        "release": 1310,
+        "title": "Flathead Fair",
+        "pr": 101,
+        "merge_commit_sha": "20dab719f253c682f6ca7dd48e6400e61c89a246",
+        "capstone_commit_sha": "1903437d5591b48f27bd362c5c6b7ed78884b742",
+        "beadtrain": ".beads/cursor_zork_flathead_fair.beadtrain",
+        "status": "complete"
+      }
     ]
-  }
+  },
+  "sha_policy": {
+    "merged_train": "record the exact PR merge commit SHA",
+    "active_implementation_pr": "record the current PR head SHA",
+    "planning_only_train": "record `not created` when no implementation PR exists",
+    "purpose": "provenance only; never merge authorization"
+  },
+  "concept_lane": [
+    {
+      "id": "mara-fair-stuffed-animal-and-adventurer-name",
+      "title": "Mara Fair stuffed-animal keepsake and the Adventurer's proper name",
+      "status": "unsequenced",
+      "source": "ideas/extended-zork/POST_1310_AFTER_FAIR.md#8",
+      "requirement": "Mara can win a stuffed animal through an authored Fair path, and/or the player can win or acquire one and offer it to Mara.",
+      "identity_requirement": "The Adventurer should receive a proper name; exact name and naming mechanism remain unresolved.",
+      "boundaries": "Physical authored object and custody consequences only. No generic gift economy, approval meter, or omniscient companion behavior."
+    }
+  ]
 }
