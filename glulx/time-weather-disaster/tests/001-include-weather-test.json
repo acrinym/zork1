@@ -1,0 +1,12 @@
+{
+  "id": "001-include-weather-test",
+  "path": "zork1.zil",
+  "description": "Load Release 1307 setup verbs only in the dedicated test story.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"weather_disaster\" T>",
+      "new": "<INSERT-FILE \"weather_disaster\" T>\n<INSERT-FILE \"weather_disaster_test\" T>"
+    }
+  ]
+}
