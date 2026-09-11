@@ -37,8 +37,13 @@ def validate_base_source(src: Path, manifest: dict[str, Any]) -> dict[str, Any]:
         raise RuntimeError("base source is not staged Release 1310")
     profile = "dev" if bool(receipt.get("dev_mode")) else "production"
     actual = source_identity(src)
-    expected = (manifest.get("base_source_sha256") or {}).get(profile)
-    if isinstance(expected, str) and expected and actual != expected:
+    expected_hashes = manifest.get("base_source_sha256")
+    if not isinstance(expected_hashes, dict):
+        raise RuntimeError("Release 1311 must declare base source identities")
+    expected = expected_hashes.get(profile)
+    if not isinstance(expected, str) or not expected:
+        raise RuntimeError(f"Release 1311 must declare a {profile} base source identity")
+    if actual != expected:
         raise RuntimeError(f"Release 1310 {profile} source identity drift: expected {expected}, got {actual}")
     return receipt
 
@@ -58,20 +63,32 @@ def main() -> int:
     base_receipt = validate_base_source(base_src, manifest)
     base_id = source_identity(base_src)
     before = inventory(base_src)
-    shutil.copytree(base_src, destination)
-    applied = [apply_patch((manifest_path.parent / name).resolve(), destination) for name in manifest.get("patches") or []]
-    for name in manifest.get("added_files") or []:
-        rel = Path(name)
-        source = (manifest_path.parent / rel).resolve()
-        target = (destination / rel.name).resolve()
-        if rel.is_absolute() or ".." in rel.parts or target.exists() or not source.is_file():
-            raise RuntimeError(f"invalid Release 1311 added file: {name}")
-        shutil.copy2(source, target)
-    after = inventory(destination)
-    changed = {path for path in set(before) | set(after) if before.get(path) != after.get(path)}
-    expected = set(manifest.get("expected_changed_paths") or [])
-    if changed != expected:
-        raise RuntimeError(f"changed-path mismatch: expected {sorted(expected)}, got {sorted(changed)}")
+    try:
+        shutil.copytree(base_src, destination)
+        applied = [apply_patch((manifest_path.parent / name).resolve(), destination) for name in manifest.get("patches") or []]
+        for name in manifest.get("added_files") or []:
+            rel = Path(name)
+            if rel.is_absolute() or ".." in rel.parts:
+                raise RuntimeError(f"invalid Release 1311 added file: {name}")
+            source = (manifest_path.parent / rel).resolve()
+            target = (destination / rel).resolve()
+            try:
+                target.relative_to(destination)
+            except ValueError as exc:
+                raise RuntimeError(f"invalid Release 1311 added file: {name}") from exc
+            if target.exists() or not source.is_file():
+                raise RuntimeError(f"invalid Release 1311 added file: {name}")
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
+        after = inventory(destination)
+        changed = {path for path in set(before) | set(after) if before.get(path) != after.get(path)}
+        expected = set(manifest.get("expected_changed_paths") or [])
+        if changed != expected:
+            raise RuntimeError(f"changed-path mismatch: expected {sorted(expected)}, got {sorted(changed)}")
+    except Exception:
+        if destination.exists():
+            shutil.rmtree(destination)
+        raise
     receipt = {
         "edition": manifest.get("edition"),
         "release": 1311,
