@@ -1,0 +1,17 @@
+{
+  "id": "001-direction-vocabulary",
+  "path": "gsyntax.zil",
+  "description": "Accept the full diagonal words that HE room prose teaches while preserving existing abbreviations and legacy truncated aliases.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<SYNONYM NE NORTHE>",
+      "new": "<SYNONYM NE NORTHE NORTHEAST>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<SYNONYM SE SOUTHE>",
+      "new": "<SYNONYM SE SOUTHE SOUTHEAST>"
+    }
+  ]
+}

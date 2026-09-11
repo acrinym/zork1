@@ -1,0 +1,91 @@
+south
+east
+open window
+enter
+take sack
+open sack
+take garlic
+drop sack
+west
+take lantern
+take sword
+take fishing rod
+take field jar
+move rug
+open trap door
+turn on lantern
+east
+up
+take rope
+down
+west
+down
+north
+attack troll with sword
+attack troll with sword
+attack troll with sword
+east
+east
+north
+ne
+east
+down
+look
+talk to mara
+ask mara about survey
+mara, follow me
+up
+examine control panel
+north
+north
+take wrench
+take tube
+open tube
+take putty
+mara, push yellow button
+mara, follow me
+south
+south
+mara, brace control panel
+turn bolt with wrench
+survey control panel with mara
+thank mara
+west
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+north
+north
+north
+up
+north
+north
+west
+north
+west
+north
+east
+north
+down
+east
+ne
+se
+sw
+down
+down
+south
+look
+mara, wait
+north
+look
+wait
+south
+look
+ask mara about survey
+quit
+yes

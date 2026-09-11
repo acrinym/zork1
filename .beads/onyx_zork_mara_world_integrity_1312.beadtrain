@@ -1,0 +1,91 @@
+[train]
+name        = "onyx_zork_mara_world_integrity_1312"
+title       = "Release 1312 Mara World Integrity"
+description = """
+Repair the actor/world integrity failures exposed by adversarial natural play after Release 1311. Mara remains a person rather than a movable object: directed actions belong to her body and containing room, vehicles preserve occupants, hostile intent cannot bypass relationship state, evidence must be earned from real provenance, and environmental danger acts on the body actually exposed. Stage strictly from locked Release 1311. No debug verbs qualify production behavior.
+"""
+created     = "2026-09-09"
+status      = "in_progress"
+
+[protocol]
+version = "3.0"
+repository = "acrinym/zork1"
+branch_policy = "one-pr-per-train"
+default_lease_minutes = 45
+
+[[cars]]
+id = "personhood"
+bead = "zork1-1312-001"
+title = "Mara personhood and grammar"
+parallel_start = true
+depends_on = []
+summary = "Remove generic-object articles and possessive corruption from Mara and her field pack across listings, movement, and vehicle prose."
+
+[[cars]]
+id = "actor_scope"
+bead = "zork1-1312-002"
+title = "Directed actor physical scope"
+parallel_start = true
+depends_on = []
+summary = "Resolve HERE through Mara's containing room, preserve nested scope, and make BOARD/DISEMBARK act on Mara rather than the Adventurer."
+
+[[cars]]
+id = "intent_dispatch"
+bead = "zork1-1312-003"
+title = "Hazard and hostile-intent dispatch"
+parallel_start = true
+depends_on = []
+summary = "THROW AT MARA is intentional harm; directed Dam ladder commands reach Mara's authored peril logic instead of player survival handling."
+
+[[cars]]
+id = "boat_integrity"
+bead = "zork1-1312-004"
+title = "Magic boat lifecycle integrity"
+parallel_start = true
+depends_on = []
+summary = "Expose natural INFLATE and LAUNCH commands, preserve directed boarding, and evacuate every nested occupant when the boat punctures."
+
+[[cars]]
+id = "evidence_truth"
+bead = "zork1-1312-005"
+title = "Mara evidence truthfulness"
+parallel_start = true
+depends_on = []
+summary = "Arbitrary carried junk cannot become survey evidence, change LAST-EVIDENCE, or award first-evidence trust; recognized provenance still can."
+
+[[cars]]
+id = "environmental_agency"
+bead = "zork1-1312-006"
+title = "Environmental agency and grue causality"
+parallel_start = false
+depends_on = ["actor_scope", "intent_dispatch"]
+summary = "Earned mine travel can expose waiting Mara to the grue colony; her darkness is evaluated from her body, her gear remains, and player death machinery is never borrowed."
+
+[[cars]]
+id = "canyon_autonomy"
+bead = "zork1-1312-007"
+title = "Canyon autonomy and remembered risk"
+parallel_start = false
+depends_on = ["personhood", "actor_scope", "evidence_truth"]
+summary = "Mara refuses faith-based jumping, accepts one physically arrested controlled fall after earned trust, and remembers the experiment across state schema 11."
+
+[[cars]]
+id = "adversarial_regression"
+bead = "zork1-1312-008"
+title = "Production adversarial natural-play regression"
+parallel_start = false
+depends_on = ["personhood", "actor_scope", "intent_dispatch", "boat_integrity", "evidence_truth", "environmental_agency", "canyon_autonomy"]
+summary = "Prove the repaired seams through ordinary production commands with no teleport, state injection, test verbs, or actor puppeteering shortcuts."
+
+[[cars]]
+id = "hosted_capstone"
+bead = "zork1-1312-009"
+title = "Hosted stacked Release 1312 qualification"
+parallel_start = false
+depends_on = ["adversarial_regression"]
+summary = "Require exact locked 1311 ancestry, compile exact pushed production, produce candidate identity, lock it separately, and rerun hosted qualification."
+
+[meta]
+one_liner = "Mara's body, choices, custody, evidence, and danger remain physically hers."
+prior_car = "onyx_zork_natural_play_fidelity_1311"
+watch = "Do not turn trust into obedience, borrow player JIGS-UP for Mara, delete nested occupants, or qualify with dev/test state shortcuts."

@@ -1,0 +1,127 @@
+{
+  "id": "003-natural-actions-and-proper-names",
+  "path": "flathead_fair_life.zil",
+  "description": "Repair natural Fair topics, food fallback behavior, and proper-name room listing without a generic engine rewrite.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE FAIR-PLACE-CAST ()",
+      "new": "<OBJECT FAIR-FISHING-TOPIC\n    (IN GLOBAL-OBJECTS)\n    (SYNONYM FISHING ANGLING DERBY)\n    (ADJECTIVE POND FISH)\n    (DESC \"fishing\")\n    (FLAGS NDESCBIT)>\n\n<ROUTINE FAIR-PERSON-DESC-FCN (\"OPTIONAL\" (RARG <>))\n    <COND (<EQUAL? .RARG ,M-OBJDESC>\n           <TELL D ,DESC-OBJECT \" is here.\" CR>\n           <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE FAIR-PLACE-CAST ()"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Berrin Vale\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Berrin Vale\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Ada Vellum\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Ada Vellum\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Mabel Rusk\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Mabel Rusk\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Tomas Quince\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Tomas Quince\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Silas Dace\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Silas Dace\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Nell Harrow\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Nell Harrow\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Emery Wicks\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Emery Wicks\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Tilda Fen\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Tilda Fen\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Jonas Pell\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Jonas Pell\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Vera Tallow\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Vera Tallow\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Orin Bell\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Orin Bell\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Ephraim Peake\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Ephraim Peake\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Kester Vane\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Kester Vane\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Hettie Bramm\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Hettie Bramm\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Sella Birch\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Sella Birch\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Pella Wren\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Pella Wren\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Tobin Wren\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Tobin Wren\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Lysa Marr\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Lysa Marr\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Tavin Roe\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Tavin Roe\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (DESC \"Cassa Reed\")\n    (FLAGS ACTORBIT TRYTAKEBIT)",
+      "new": "    (DESC \"Cassa Reed\")\n    (DESCFCN FAIR-PERSON-DESC-FCN)\n    (FLAGS ACTORBIT TRYTAKEBIT)"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (SYNONYM DRINK FIZZ)",
+      "new": "    (SYNONYM DRINK DRINKS FIZZ)"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE ELEPHANT-EAR-FCN ()\n    <COND (<VERB? EXAMINE>\n           <TELL \"Hot fried dough, cinnamon sugar. Five zorkmids. Signature baseline.\" CR>)\n          (<VERB? FAIR-BUY>\n           <COND (<NOT <FAIR-PAY 5>> <RTRUE>)>\n           <MOVE ,ELEPHANT-EAR ,WINNER>\n           <FCLEAR ,ELEPHANT-EAR ,NDESCBIT>\n           <TELL \"Mabel wraps a cinnamon-sugar elephant ear. Five zm.\" CR>)\n          (<VERB? EAT>\n           <COND (<IN? ,ELEPHANT-EAR ,WINNER>\n                  <MOVE ,ELEPHANT-EAR ,FOOD-ROW>\n                  <FSET ,ELEPHANT-EAR ,NDESCBIT>\n                  <TELL \"Sugar, oil, and a fair that does not require this to finish Zork.\" CR>)\n                 (T\n                  <TELL \"Buy it first.\" CR>)>)>\n    <RTRUE>>",
+      "new": "<ROUTINE ELEPHANT-EAR-FCN ()\n    <COND (<VERB? EXAMINE>\n           <TELL \"Hot fried dough, cinnamon sugar. Five zorkmids. Signature baseline.\" CR>\n           <RTRUE>)\n          (<VERB? FAIR-BUY>\n           <COND (<NOT <FAIR-PAY 5>> <RTRUE>)>\n           <MOVE ,ELEPHANT-EAR ,WINNER>\n           <FCLEAR ,ELEPHANT-EAR ,NDESCBIT>\n           <TELL \"Mabel wraps a cinnamon-sugar elephant ear. Five zm.\" CR>\n           <RTRUE>)\n          (<VERB? EAT>\n           <COND (<IN? ,ELEPHANT-EAR ,WINNER>\n                  <MOVE ,ELEPHANT-EAR ,FOOD-ROW>\n                  <FSET ,ELEPHANT-EAR ,NDESCBIT>\n                  <TELL \"Sugar, oil, and a fair that does not require this to finish Zork.\" CR>)\n                 (T\n                  <TELL \"Buy it first.\" CR>)>\n           <RTRUE>)>\n    <RFALSE>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE APPLE-EAR-FCN ()\n    <COND (<VERB? EXAMINE>\n           <TELL \"Apple-topped, 6 zm. Sticky. Mara's baseline favorite once she has a choice.\" CR>)\n          (<VERB? FAIR-BUY>\n           <COND (<NOT <FAIR-PAY 6>> <RTRUE>)>\n           <MOVE ,APPLE-EAR ,WINNER>\n           <FCLEAR ,APPLE-EAR ,NDESCBIT>\n           <TELL \"Apple-topped elephant ear. Mara may want this more than you do.\" CR>)\n          (<VERB? EAT>\n           <COND (<IN? ,APPLE-EAR ,WINNER>\n                  <MOVE ,APPLE-EAR ,FOOD-ROW>\n                  <FSET ,APPLE-EAR ,NDESCBIT>\n                  <TELL \"Sticky. Worth the 6 zm if you meant it.\" CR>)\n                 (T <TELL \"Buy it first.\" CR>)>)>\n    <RTRUE>>",
+      "new": "<ROUTINE APPLE-EAR-FCN ()\n    <COND (<VERB? EXAMINE>\n           <TELL \"Apple-topped, 6 zm. Sticky. Mara's baseline favorite once she has a choice.\" CR>\n           <RTRUE>)\n          (<VERB? FAIR-BUY>\n           <COND (<NOT <FAIR-PAY 6>> <RTRUE>)>\n           <MOVE ,APPLE-EAR ,WINNER>\n           <FCLEAR ,APPLE-EAR ,NDESCBIT>\n           <TELL \"Apple-topped elephant ear. Mara may want this more than you do.\" CR>\n           <RTRUE>)\n          (<VERB? EAT>\n           <COND (<IN? ,APPLE-EAR ,WINNER>\n                  <MOVE ,APPLE-EAR ,FOOD-ROW>\n                  <FSET ,APPLE-EAR ,NDESCBIT>\n                  <TELL \"Sticky. Worth the 6 zm if you meant it.\" CR>)\n                 (T <TELL \"Buy it first.\" CR>)>\n           <RTRUE>)>\n    <RFALSE>>"
+    }
+  ]
+}

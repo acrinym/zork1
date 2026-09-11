@@ -1,0 +1,37 @@
+{
+  "id": "001-mara-engine-personhood",
+  "path": "gverbs.zil",
+  "description": "Make generic vehicle, containment, and departure prose preserve Mara as a person.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t <TELL \"You are now in the \" D ,PRSO \".\" CR>\n\t <MOVE ,WINNER ,PRSO>",
+      "new": "\t <COND (<EQUAL? ,WINNER ,MARA>\n\t\t<TELL \"Mara Tallow steps into the \" D ,PRSO \".\" CR>)\n\t       (T <TELL \"You are now in the \" D ,PRSO \".\" CR>)>\n\t <MOVE ,WINNER ,PRSO>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t       (<FSET? ,HERE ,RLANDBIT>\n\t\t<TELL \"You are on your own feet again.\" CR>\n\t\t<MOVE ,WINNER ,HERE>)",
+      "new": "\t       (<FSET? ,HERE ,RLANDBIT>\n\t\t<COND (<EQUAL? ,WINNER ,MARA>\n\t\t       <TELL \"Mara Tallow steps out of the \" D ,PRSO \" and back onto solid ground.\" CR>)\n\t\t      (T <TELL \"You are on your own feet again.\" CR>)>\n\t\t<MOVE ,WINNER ,HERE>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t       <SETG HERE <LOC ,WINNER>>)",
+      "new": "\t\t       <SETG HERE <META-LOC ,WINNER>>)"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t<TELL \"A \" D .OBJ>",
+      "new": "\t\t<COND (<EQUAL? .OBJ ,MARA> <TELL D .OBJ>)\n\t\t      (T <TELL \"A \" D .OBJ>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t\t<TELL \"a \" D .F>",
+      "new": "\t\t\t<COND (<EQUAL? .F ,MARA> <TELL D .F>)\n\t\t\t      (T <TELL \"a \" D .F>)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t       <TELL \"The \" D ,WINNER \" leaves the room.\" CR>)",
+      "new": "\t\t       <COND (<EQUAL? ,WINNER ,MARA>\n\t\t\t      <TELL \"Mara Tallow leaves the room.\" CR>)\n\t\t\t     (T <TELL \"The \" D ,WINNER \" leaves the room.\" CR>)>)"
+    }
+  ]
+}

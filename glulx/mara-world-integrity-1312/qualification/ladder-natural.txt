@@ -1,0 +1,37 @@
+south
+east
+open window
+enter
+west
+take lantern
+take sword
+take fishing rod
+take field jar
+move rug
+open trap door
+turn on lantern
+east
+up
+take rope
+down
+west
+down
+north
+attack troll with sword
+attack troll with sword
+attack troll with sword
+east
+east
+north
+ne
+east
+down
+look
+talk to mara
+ask mara about survey
+mara, follow me
+up
+mara, climb down ladder
+look
+quit
+yes

@@ -1,0 +1,47 @@
+{
+  "edition": "Flathead Fair",
+  "release": 1310,
+  "serial": "260906",
+  "base_release": 1306,
+  "base_manifest": "../mara-earned-romance/patch-series.json",
+  "base_artifact_sha256": "76871675af153c55440ee472fde4aec25408c3f160a33f963e32ad2cf4e466c5",
+  "base_source_sha256": {
+    "production": "0411c7d8a533c1392df09d32d9ccde859feb6f651c88277d9fea7f89a09ccc8a",
+    "dev": "2b36fb532d8bf5daf182512b94ce9adfb8186cce4f2064396345c15bcd068944"
+  },
+  "patches": [
+    "patches/001-include-fair.json",
+    "patches/002-clearing-northeast-spur.json",
+    "patches/003-release-1310-identity.json"
+  ],
+  "added_files": [
+    "flathead_fair_syntax.zil",
+    "flathead_fair.zil",
+    "flathead_fair_life.zil"
+  ],
+  "expected_changed_paths": [
+    "1dungeon.zil",
+    "flathead_fair.zil",
+    "flathead_fair_life.zil",
+    "flathead_fair_syntax.zil",
+    "mara_companion.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": true,
+    "file": "zork1-glulx-flathead-fair.ulx",
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 598272,
+    "checksum_hex": "0xc092ab80",
+    "sha256": "9dff67054b2a48ba4bbb135e0b986a7d40dc8c6f942a36f04ed3d688a9c36aa4"
+  },
+  "player_outcomes": [
+    "CLEARING still leads west/east/north/south as before; NE is an additive fair road",
+    "General admission is free",
+    "large drink is pear-lime fizz at 4 zm once Tomas is asked",
+    "Eight Games Row booths use distinct mechanics",
+    "Kester's tack-wax cup is inspectable evidence",
+    "Canonical Zork remains solvable without attending"
+  ]
+}

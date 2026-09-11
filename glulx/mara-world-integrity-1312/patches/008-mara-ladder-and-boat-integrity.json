@@ -1,0 +1,22 @@
+{
+  "id": "008-mara-ladder-and-boat-integrity",
+  "path": "1actions.zil",
+  "description": "Keep player-only Dam ladder survival out of Mara dispatch and evacuate all occupants when the magic boat punctures.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t      (<AND <EQUAL? ,PRSO ,DAM-MAINTENANCE-LADDER>\n\t            <VERB? CLIMB-DOWN CLIMB-UP CLIMB-FOO>>",
+      "new": "\t      (<AND <EQUAL? ,WINNER ,ADVENTURER>\n\t            <EQUAL? ,PRSO ,DAM-MAINTENANCE-LADDER>\n\t            <VERB? CLIMB-DOWN CLIMB-UP CLIMB-FOO>>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t  <REMOVE-CAREFULLY ,INFLATED-BOAT>\n\t\t  <MOVE ,PUNCTURED-BOAT ,HERE>\n\t\t  <ROB ,INFLATED-BOAT ,HERE>\n\t\t  <MOVE ,WINNER ,HERE>",
+      "new": "\t\t  <MOVE-ALL ,INFLATED-BOAT ,HERE>\n\t\t  <REMOVE-CAREFULLY ,INFLATED-BOAT>\n\t\t  <MOVE ,PUNCTURED-BOAT ,HERE>"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t  <REMOVE-CAREFULLY ,INFLATED-BOAT>\n\t\t  <MOVE ,PUNCTURED-BOAT ,HERE>\n\t\t  <THIS-IS-IT ,PUNCTURED-BOAT>",
+      "new": "\t\t  <MOVE-ALL ,INFLATED-BOAT ,HERE>\n\t\t  <REMOVE-CAREFULLY ,INFLATED-BOAT>\n\t\t  <MOVE ,PUNCTURED-BOAT ,HERE>\n\t\t  <THIS-IS-IT ,PUNCTURED-BOAT>"
+    }
+  ]
+}

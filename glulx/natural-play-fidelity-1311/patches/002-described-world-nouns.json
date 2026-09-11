@@ -1,0 +1,37 @@
+{
+  "id": "002-described-world-nouns",
+  "path": "flathead_fair.zil",
+  "description": "Make player-visible Fair nouns physically referable without pretending phase-moving people are present.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE FAIR-ROAD-FCN (RARG)\n    <COND (<EQUAL? .RARG ,M-LOOK>\n           <TELL \"A packed public road leaves the clearing toward a meadow. \">",
+      "new": "<OBJECT FAIR-ENTRANCE-NOTICE\n    (IN LOCAL-GLOBALS)\n    (SYNONYM NOTICE SIGN STEWARD)\n    (ADJECTIVE PAINTED FAIR MEETING)\n    (DESC \"painted steward notice\")\n    (FLAGS NDESCBIT)\n    (ACTION FAIR-ENTRANCE-NOTICE-FCN)>\n\n<ROUTINE FAIR-ENTRANCE-NOTICE-FCN ()\n    <COND (<VERB? EXAMINE READ>\n           <TELL \"A painted notice, signed Berrin Vale, Fair Steward, marks this as a meeting point and says general admission is free.\" CR>\n           <RTRUE>)>\n    <RFALSE>>\n\n<OBJECT FAIR-MIRROR-SCREW\n    (IN CROOKED-GALLERY)\n    (SYNONYM SCREW FASTENER)\n    (ADJECTIVE BRASS EAST FRAME)\n    (DESC \"brass frame screw\")\n    (FLAGS NDESCBIT TRYTAKEBIT)\n    (ACTION FAIR-MIRROR-SCREW-FCN)>\n\n<ROUTINE FAIR-MIRROR-SCREW-FCN ()\n    <COND (<VERB? EXAMINE>\n           <TELL \"The brass screw sits firmly in the east mirror frame. Its worn slot is a real construction mark, not an opening or a maze switch.\" CR>\n           <RTRUE>)\n          (<VERB? TAKE TURN MUNG>\n           <TELL \"The screw is seated firmly in the frame. Casual handling will not free it.\" CR>\n           <RTRUE>)>\n    <RFALSE>>\n\n<OBJECT FAIR-POND-BANK\n    (IN LOCAL-GLOBALS)\n    (SYNONYM BANK SHORE)\n    (ADJECTIVE SHADED POND)\n    (DESC \"shaded pond bank\")\n    (FLAGS NDESCBIT)\n    (ACTION FAIR-POND-BANK-FCN)>\n\n<ROUTINE FAIR-POND-BANK-FCN ()\n    <COND (<VERB? EXAMINE>\n           <TELL \"Grass and packed earth slope gently to the working pond. The shade is deeper here, useful for waiting with a rod or getting out of the fair's busiest paths.\" CR>\n           <RTRUE>)>\n    <RFALSE>>\n\n<ROUTINE FAIR-ROAD-FCN (RARG)\n    <COND (<EQUAL? .RARG ,M-LOOK>\n           <TELL \"A packed public road leaves the clearing toward a meadow. \">"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROOM FAIR-ENTRANCE\n    (IN ROOMS)\n    (DESC \"Fair Entrance\")\n    (SOUTH TO FAIR-ROAD)\n    (NORTH TO CENTRAL-MIDWAY)\n    (NW TO FOOD-ROW)\n    (NE TO GAMES-ROW)\n    (ACTION FAIR-ENTRANCE-FCN)\n    (FLAGS RLANDBIT ONBIT SACREDBIT)>",
+      "new": "<ROOM FAIR-ENTRANCE\n    (IN ROOMS)\n    (DESC \"Fair Entrance\")\n    (SOUTH TO FAIR-ROAD)\n    (NORTH TO CENTRAL-MIDWAY)\n    (NW TO FOOD-ROW)\n    (NE TO GAMES-ROW)\n    (ACTION FAIR-ENTRANCE-FCN)\n    (FLAGS RLANDBIT ONBIT SACREDBIT)\n    (GLOBAL FAIR-ENTRANCE-NOTICE)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<TELL \"The Flathead Fair Association charges no general admission. Handbills sit in a crate. Paths lead north to the midway, northwest toward food, and northeast toward games. Berrin Vale treats this as a meeting point, not a toll gate.\" CR>",
+      "new": "<TELL \"The Flathead Fair Association charges no general admission. Handbills sit in a crate. Paths lead north to the midway, northwest toward food, and northeast toward games. A painted steward notice marks this as a meeting point, not a toll gate.\" CR>"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (FLAGS RLANDBIT ONBIT SACREDBIT)\n    (GLOBAL MIRROR-GLASS)>\n\n<ROUTINE CROOKED-GALLERY-FCN",
+      "new": "    (FLAGS RLANDBIT ONBIT SACREDBIT)\n    (GLOBAL MIRROR-GLASS FAIR-MIRROR-SCREW)>\n\n<ROUTINE CROOKED-GALLERY-FCN"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ACTION FISHING-POND-FCN)\n    (FLAGS RLANDBIT ONBIT SACREDBIT)>",
+      "new": "    (ACTION FISHING-POND-FCN)\n    (FLAGS RLANDBIT ONBIT SACREDBIT)\n    (GLOBAL FAIR-POND-BANK)>"
+    },
+    {
+      "expected_count": 1,
+      "old": "    (ACTION POND-PATH-FCN)\n    (FLAGS RLANDBIT ONBIT SACREDBIT)>",
+      "new": "    (ACTION POND-PATH-FCN)\n    (FLAGS RLANDBIT ONBIT SACREDBIT)\n    (GLOBAL FAIR-POND-BANK)>"
+    }
+  ]
+}

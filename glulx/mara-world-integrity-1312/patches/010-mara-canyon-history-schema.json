@@ -1,0 +1,17 @@
+{
+  "id": "010-mara-canyon-history-schema",
+  "path": "mara_companion.zil",
+  "description": "Advance Mara save-state schema with one dedicated remembered controlled-canyon-jump fact.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SCHEMA 10>\n<CONSTANT MARA-PREVIOUS-SCHEMA 9>",
+      "new": "<CONSTANT MARA-SCHEMA 11>\n<CONSTANT MARA-PREVIOUS-SCHEMA 10>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT MARA-SLOT-MARA-LOOKED 70>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>",
+      "new": "<CONSTANT MARA-SLOT-MARA-LOOKED 70>\n<CONSTANT MARA-SLOT-CANYON-JUMP 71>\n<CONSTANT MARA-STATE <TABLE MARA-SCHEMA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>>"
+    }
+  ]
+}

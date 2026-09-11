@@ -1,0 +1,12 @@
+{
+  "id": "005-topic-object-action-fallthrough",
+  "path": "flathead_fair_life.zil",
+  "description": "Let the large-drink topic fall through on unrelated verbs so ASK/TELL ABOUT reaches the addressed actor instead of being silently consumed as PRSI.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE LARGE-DRINK-FCN ()\n    <COND (<VERB? EXAMINE>\n           <COND (<ZERO? <FAIR-GET ,FAIR-SLOT-DRINK-KNOWN>>\n                  <TELL \"A large drink in a waxed cup. Four zorkmids. The flavor is not printed.\" CR>)\n                 (T\n                  <TELL \"Pear-lime fizz. Pear and lime. Mostly pear. Four zm.\" CR>)>)\n          (<VERB? FAIR-BUY>\n           <COND (<NOT <FAIR-PAY 4>> <RTRUE>)>\n           <MOVE ,LARGE-DRINK ,WINNER>\n           <FCLEAR ,LARGE-DRINK ,NDESCBIT>\n           <TELL \"You buy the large drink.\" CR>)\n          (<VERB? SMELL DRINK>\n           <FAIR-PUT ,FAIR-SLOT-DRINK-KNOWN 1>\n           <TELL \"Pear and lime. Mostly pear.\" CR>)>\n    <RTRUE>>",
+      "new": "<ROUTINE LARGE-DRINK-FCN ()\n    <COND (<VERB? EXAMINE>\n           <COND (<ZERO? <FAIR-GET ,FAIR-SLOT-DRINK-KNOWN>>\n                  <TELL \"A large drink in a waxed cup. Four zorkmids. The flavor is not printed.\" CR>)\n                 (T\n                  <TELL \"Pear-lime fizz. Pear and lime. Mostly pear. Four zm.\" CR>)>\n           <RTRUE>)\n          (<VERB? FAIR-BUY>\n           <COND (<NOT <FAIR-PAY 4>> <RTRUE>)>\n           <MOVE ,LARGE-DRINK ,WINNER>\n           <FCLEAR ,LARGE-DRINK ,NDESCBIT>\n           <TELL \"You buy the large drink.\" CR>\n           <RTRUE>)\n          (<VERB? SMELL DRINK>\n           <FAIR-PUT ,FAIR-SLOT-DRINK-KNOWN 1>\n           <TELL \"Pear and lime. Mostly pear.\" CR>\n           <RTRUE>)>\n    <RFALSE>>"
+    }
+  ]
+}
