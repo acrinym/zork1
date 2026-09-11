@@ -44,4 +44,4 @@ The storm is not armed during the opening or ordinary fair-weather exploration. 
 
 Test-only positioning verbs exist only in the dedicated test story. The production qualification fails if any of those helpers leak into the shipped source.
 
-The release remains intentionally artifact-unlocked until GitHub Actions compiles the exact candidate and emits its deterministic Glulx identity. That identity is then locked into `patch-series.json` and the full qualification is rerun.
+The exact GitHub Actions candidate identity is locked in `patch-series.json`; qualification must reproduce that Glulx artifact byte-for-byte before Release 1307 is accepted.

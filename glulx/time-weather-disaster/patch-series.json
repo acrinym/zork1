@@ -22,9 +22,13 @@
     "zork1.zil"
   ],
   "expected_artifact": {
-    "locked": false,
+    "locked": true,
     "file": "zork1-glulx-time-weather-disaster.ulx",
-    "format": "Glulx"
+    "format": "Glulx",
+    "version_hex": "0x00030103",
+    "size_bytes": 571904,
+    "checksum_hex": "0xb0bd5993",
+    "sha256": "4a26c95c3b0dfd64972a93abdf2fff279fc6e56e5aa7e1c7731fbd46521d073f"
   },
   "player_outcomes": [
     "fair weather leaves the opening and canonical solo puzzle routes unchanged",
