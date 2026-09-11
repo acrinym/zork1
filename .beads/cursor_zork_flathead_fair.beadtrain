@@ -1,0 +1,88 @@
+[train]
+name        = "cursor_zork_flathead_fair"
+title       = "Flathead Fair"
+description = """
+Finish the Flathead Fair as a recurring parser-first Highly Extended world organ on
+locked Release 1306. Sixteen-location mesh northeast of CLEARING, free admission,
+zorkmid commerce, twenty named people, eight distinct games, fishing, Mara as
+participant, Lantern Table, Fair Office versus House of Records. No carnival
+engine, GUI, DATE MODE, or Gato.
+"""
+created     = "2026-09-06"
+status      = "complete"
+
+[[cars]]
+id = "geography"
+bead = "zork1-1310-001"
+title = "Sixteen-location fair mesh"
+parallel_start = true
+depends_on = []
+summary = "Additive NE from CLEARING. 16 rooms plus mirror sub-map and wheel carriage. Canonical N/E/S/W unchanged."
+
+[[cars]]
+id = "commerce"
+bead = "zork1-1310-002"
+title = "Zorkmids, food, drinks, prizes"
+parallel_start = true
+depends_on = ["geography"]
+summary = "Free admission. Elephant ears, pear-lime fizz, tickets versus money, locked Prize Hall catalog."
+
+[[cars]]
+id = "people"
+bead = "zork1-1310-003"
+title = "Twenty named fair people"
+parallel_start = true
+depends_on = ["geography"]
+summary = "Core and secondary cast with bounded knowledge and phase locations. No omniscient terminals."
+
+[[cars]]
+id = "attractions"
+bead = "zork1-1310-004"
+title = "Rides and House of Mirrors"
+parallel_start = true
+depends_on = ["commerce"]
+summary = "Wheel, carousel, chairs, Scenic GUE, five-node mirrors with authored late reflection. Wind refunds."
+
+[[cars]]
+id = "games"
+bead = "zork1-1310-005"
+title = "Eight distinct Games Row booths"
+parallel_start = true
+depends_on = ["commerce"]
+summary = "Ring, bottles, bell, gallery, horseshoes, memory table, tack-wax shell game, race board. Not one RNG in eight signs."
+
+[[cars]]
+id = "fishing"
+bead = "zork1-1310-006"
+title = "Pond, derby, token"
+parallel_start = true
+depends_on = ["people"]
+summary = "Silas verifies. Cassa competes. Committed catches. Rare stamped token is a physical object."
+
+[[cars]]
+id = "incidents"
+bead = "zork1-1310-007"
+title = "F-01 through F-09 story web"
+parallel_start = true
+depends_on = ["games", "fishing", "attractions"]
+summary = "Crate, 39 tickets, Ephraim date, shell sanction, late reflection, purse, Orin sheet, wind closure, pond token."
+
+[[cars]]
+id = "mara"
+bead = "zork1-1310-008"
+title = "Mara as fair participant"
+parallel_start = true
+depends_on = ["people"]
+summary = "Wheel at dusk, dragon mount, apple ear, cider, refusals. No DATE MODE. Romance ASK ABOUT still reaches 1306."
+
+[[cars]]
+id = "capstone"
+bead = "zork1-1310-009"
+title = "Hosted 1310 qualification"
+parallel_start = false
+depends_on = ["incidents", "mara"]
+summary = "Production compile, natural approach from CLEARING, fair-test transcript, no production test-verb leak, lock artifact identity."
+
+[meta]
+one_liner = "The fair is a place you can spend a day, not a minigame menu."
+watch = ["docs/planning/flathead-fair/FAIR_PRODUCT_BIBLE.md", "glulx/flathead-fair"]

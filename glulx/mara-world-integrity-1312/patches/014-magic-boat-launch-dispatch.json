@@ -1,0 +1,12 @@
+{
+  "id": "014-magic-boat-launch-dispatch",
+  "path": "gverbs.zil",
+  "description": "Let LAUNCH BOAT reach the canonical RBOAT-FUNCTION instead of being rejected by generic vehicle launch handling.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE V-LAUNCH ()\n\t <COND (<FSET? ,PRSO ,VEHBIT>\n\t\t<TELL \"You can't launch that by saying \\\"launch\\\"!\" CR>)\n\t       (T\n\t\t<TELL \"That's pretty weird.\" CR>)>>",
+      "new": "<ROUTINE V-LAUNCH ()\n\t <COND (<EQUAL? ,PRSO ,INFLATED-BOAT>\n\t\t<RBOAT-FUNCTION>)\n\t       (<FSET? ,PRSO ,VEHBIT>\n\t\t<TELL \"You can't launch that by saying \\\"launch\\\"!\" CR>)\n\t       (T\n\t\t<TELL \"That's pretty weird.\" CR>)>>"
+    }
+  ]
+}

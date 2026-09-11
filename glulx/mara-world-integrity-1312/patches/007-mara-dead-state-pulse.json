@@ -1,0 +1,17 @@
+{
+  "id": "007-mara-dead-state-pulse",
+  "path": "mara_companion_movement.zil",
+  "description": "Stop Mara subsystems after physical death and evaluate grue-colony darkness before ordinary companion advancement.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ACTION-HOOK ()\n    <MARA-ENSURE>\n    <R1277-PROMISE-TICK>",
+      "new": "<ROUTINE MARA-ACTION-HOOK ()\n    <MARA-ENSURE>\n    <COND (<NOT <LOC ,MARA>> <RFALSE>)>\n    <R1277-PROMISE-TICK>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ADVANCE ()\n    <MARA-ENSURE>\n    <MARA-CAUSAL-ADVANCE>",
+      "new": "<ROUTINE MARA-ADVANCE ()\n    <MARA-ENSURE>\n    <COND (<NOT <LOC ,MARA>> <RFALSE>)>\n    <COND (<MARA-GRUE-COLONY-DEATH> <RTRUE>)>\n    <MARA-CAUSAL-ADVANCE>"
+    }
+  ]
+}

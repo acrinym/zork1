@@ -1,0 +1,12 @@
+{
+  "id": "002-directed-actor-room",
+  "path": "gparser.zil",
+  "description": "Resolve directed actor commands against the actor's containing room rather than a nested vehicle.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "\t\t      <SETG HERE <LOC ,WINNER>>)>",
+      "new": "\t\t      <SETG HERE <META-LOC ,WINNER>>)>"
+    }
+  ]
+}

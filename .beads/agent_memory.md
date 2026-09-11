@@ -1,5 +1,6 @@
 # Agent memory
 
+- 2026-09-06 — Release 1310 Flathead Fair in progress on `agent/1310-flathead-fair`: 16-location mesh NE of CLEARING, twenty named people, eight distinct games, fishing, Mara participant, Lantern Table, Fair Office vs House of Records. Stages locked 1306. Train `cursor_zork_flathead_fair`. No GUI. Capstone open until hosted lock.
 - 2026-08-30 — Release 1295 West-of-House nouns in progress: grass and silence parser-real, honest leaflet postscript, player guide `docs/ADVENTURER_GUIDE.md`. Stages locked 1294. No GUI. No AI.
 - 2026-08-30 — Merged 1279 PR #87, 1293 PR #88, 1294 PR #89. Locked 1294 SHA-256 `20322d784cc97a50be9d49a32bfa6149bac73c327753a4192760548656523831`.
 - 2026-08-30 — Release 1293 locked hosted identity: SHA-256 `79196c07694bda604c283ae2b1da19dfad77aaef5b72b035ff4a99f2f237d641`, checksum `0xb8e24a15`, 548864 bytes. Qualify `33304925760`. Live Windows playtest confirmed honest fresh and window RECAP; `EXAMINE TREE` at North of House remains 1294.
