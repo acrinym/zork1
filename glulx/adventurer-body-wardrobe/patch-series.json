@@ -15,6 +15,7 @@
     "patches/003-release-1309-identity.json",
     "patches/004-include-boundary-continuity.json",
     "patches/005-mara-coat-boundary.json",
+    "patches/005a-wardrobe-table-state.json",
     "patches/006-boundary-rupture-conversation.json",
     "patches/007-boundary-intimacy-refusal.json",
     "patches/008-mara-boundary-presence-and-autonomy.json",

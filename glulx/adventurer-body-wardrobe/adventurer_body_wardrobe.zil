@@ -302,7 +302,7 @@
     <RFALSE>>
 
 <ROUTINE MARA-COAT-F ()
-    <COND (<AND <VERB? TAKE REMOVE> <IN? ,MARA-TRAVEL-COAT ,MARA>>
+    <COND (<AND <VERB? TAKE> <IN? ,MARA-TRAVEL-COAT ,MARA>>
            <COND (<MARA-PARTNERSHIP-ON?>
                   <TELL "Mara's hand closes on the coat first. Partnership is not a license to undress me, she says." CR>)
                  (T

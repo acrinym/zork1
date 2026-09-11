@@ -10,12 +10,21 @@
 <CONSTANT MARA-BOUNDARY-FOOD 2>
 <CONSTANT MARA-BOUNDARY-AUTONOMY 3>
 
-<GLOBAL MARA-BOUNDARY-RUPTURE-KIND 0>
-<GLOBAL MARA-CLOTHING-BOUNDARY-COUNT 0>
-<GLOBAL MARA-FOOD-BOUNDARY-COUNT 0>
-<GLOBAL MARA-AUTONOMY-BOUNDARY-COUNT 0>
-<GLOBAL MARA-RATION-STOLEN 0>
-<GLOBAL MARA-RATION-CONSUMED 0>
+; Release 1309 must not consume legacy VM global slots.
+; Boundary/property state is one saveable table instead.
+<CONSTANT MARA-BOUNDARY-RUPTURE-KIND 0>
+<CONSTANT MARA-CLOTHING-BOUNDARY-COUNT 1>
+<CONSTANT MARA-FOOD-BOUNDARY-COUNT 2>
+<CONSTANT MARA-AUTONOMY-BOUNDARY-COUNT 3>
+<CONSTANT MARA-RATION-STOLEN 4>
+<CONSTANT MARA-RATION-CONSUMED 5>
+<CONSTANT MARA-BOUNDARY-STATE <TABLE 0 0 0 0 0 0>>
+
+<ROUTINE MARA-BOUNDARY-GET (SLOT)
+    <GET ,MARA-BOUNDARY-STATE .SLOT>>
+
+<ROUTINE MARA-BOUNDARY-PUT (SLOT VALUE)
+    <PUT ,MARA-BOUNDARY-STATE .SLOT .VALUE>>
 
 <OBJECT MARA-FIELD-RATION
     (SYNONYM RATION FOOD LUNCH BISCUIT BISCUITS)
@@ -27,33 +36,33 @@
 
 <ROUTINE MARA-BOUNDARY-RUPTURE? ()
     <COND (<AND <MARA-RUPTURE-OPEN?>
-                <NOT <ZERO? ,MARA-BOUNDARY-RUPTURE-KIND>>>
+                <NOT <ZERO? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND>>>>
            <RTRUE>)>
     <RFALSE>>
 
 <ROUTINE MARA-BOUNDARY-COUNT (KIND)
     <COND (<EQUAL? .KIND ,MARA-BOUNDARY-CLOTHING>
-           <RETURN ,MARA-CLOTHING-BOUNDARY-COUNT>)
+           <RETURN <MARA-BOUNDARY-GET ,MARA-CLOTHING-BOUNDARY-COUNT>>)
           (<EQUAL? .KIND ,MARA-BOUNDARY-FOOD>
-           <RETURN ,MARA-FOOD-BOUNDARY-COUNT>)
+           <RETURN <MARA-BOUNDARY-GET ,MARA-FOOD-BOUNDARY-COUNT>>)
           (<EQUAL? .KIND ,MARA-BOUNDARY-AUTONOMY>
-           <RETURN ,MARA-AUTONOMY-BOUNDARY-COUNT>)>
+           <RETURN <MARA-BOUNDARY-GET ,MARA-AUTONOMY-BOUNDARY-COUNT>>)>
     <RETURN 0>>
 
 <ROUTINE MARA-BOUNDARY-INCREASE (KIND "AUX" N)
     <SET N <+ <MARA-BOUNDARY-COUNT .KIND> 1>>
     <COND (<EQUAL? .KIND ,MARA-BOUNDARY-CLOTHING>
-           <SETG MARA-CLOTHING-BOUNDARY-COUNT .N>)
+           <MARA-BOUNDARY-PUT ,MARA-CLOTHING-BOUNDARY-COUNT .N>)
           (<EQUAL? .KIND ,MARA-BOUNDARY-FOOD>
-           <SETG MARA-FOOD-BOUNDARY-COUNT .N>)
+           <MARA-BOUNDARY-PUT ,MARA-FOOD-BOUNDARY-COUNT .N>)
           (<EQUAL? .KIND ,MARA-BOUNDARY-AUTONOMY>
-           <SETG MARA-AUTONOMY-BOUNDARY-COUNT .N>)>
+           <MARA-BOUNDARY-PUT ,MARA-AUTONOMY-BOUNDARY-COUNT .N>)>
     <RETURN .N>>
 
 <ROUTINE MARA-OPEN-BOUNDARY-RUPTURE (KIND)
     <COND (<MARA-RUPTURE-OPEN?>
            <RTRUE>)>
-    <SETG MARA-BOUNDARY-RUPTURE-KIND .KIND>
+    <MARA-BOUNDARY-PUT ,MARA-BOUNDARY-RUPTURE-KIND .KIND>
     <MARA-PUT ,MARA-SLOT-RUPTURE-OPEN 1>
     <MARA-PUT ,MARA-SLOT-RUPTURE-REPAIRED 0>
     <MARA-PUT ,MARA-SLOT-APOLOGY-ACKNOWLEDGED 0>
@@ -95,22 +104,22 @@
                   <MARA-BOUNDARY-STRIKE ,MARA-BOUNDARY-FOOD>
                   <RTRUE>)
                  (T
-                  <SETG MARA-RATION-STOLEN 1>
+                  <MARA-BOUNDARY-PUT ,MARA-RATION-STOLEN 1>
                   <RFALSE>)>)
           (<VERB? EAT>
            <COND (<MARA-HERE?>
                   <MARA-BOUNDARY-STRIKE ,MARA-BOUNDARY-FOOD>
                   <RTRUE>)
                  (T
-                  <SETG MARA-RATION-STOLEN 1>
-                  <SETG MARA-RATION-CONSUMED 1>
+                  <MARA-BOUNDARY-PUT ,MARA-RATION-STOLEN 1>
+                  <MARA-BOUNDARY-PUT ,MARA-RATION-CONSUMED 1>
                   <RFALSE>)>)
           (<AND <VERB? GIVE> <EQUAL? ,PRSI ,MARA>>
            <COND (<NOT <HELD? ,MARA-FIELD-RATION>>
                   <TELL "You are not holding Mara's ration." CR>)
                  (T
                   <MOVE ,MARA-FIELD-RATION ,MARA>
-                  <SETG MARA-RATION-STOLEN 0>
+                  <MARA-BOUNDARY-PUT ,MARA-RATION-STOLEN 0>
                   <COND (<MARA-BOUNDARY-RUPTURE?>
                          <TELL "Mara takes the ration back. Returning property is a real action, she says. It is not by itself the same thing as repairing why I had to ask." CR>)
                         (T
@@ -119,7 +128,7 @@
     <RFALSE>>
 
 <ROUTINE MARA-BOUNDARY-PRESENCE-HOOK ()
-    <COND (<AND ,MARA-RATION-STOLEN
+    <COND (<AND <MARA-BOUNDARY-GET ,MARA-RATION-STOLEN>
                 <MARA-HERE?>
                 <HELD? ,MARA-FIELD-RATION>
                 <NOT <AND <VERB? GIVE> <EQUAL? ,PRSO ,MARA-FIELD-RATION>>>
@@ -139,9 +148,9 @@
     <RTRUE>>
 
 <ROUTINE MARA-PHYSICAL-BOUNDARY-REFUSAL ()
-    <COND (<EQUAL? ,MARA-BOUNDARY-RUPTURE-KIND ,MARA-BOUNDARY-CLOTHING>
+    <COND (<EQUAL? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND> ,MARA-BOUNDARY-CLOTHING>
            <TELL "Mara steps out of reach. You do not get to turn ignoring what I said about my body and clothes into affection." CR>)
-          (<EQUAL? ,MARA-BOUNDARY-RUPTURE-KIND ,MARA-BOUNDARY-FOOD>
+          (<EQUAL? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND> ,MARA-BOUNDARY-FOOD>
            <TELL "Mara steps out of reach. Food is not the point now, she says. The point is that I said mine and you treated the word as optional. Affection does not overwrite that." CR>)
           (T
            <TELL "Mara steps out of reach. You do not get to keep overruling my choices and then use affection as the reset button." CR>)>
@@ -151,7 +160,7 @@
     <COND (<NOT <MARA-BOUNDARY-RUPTURE?>> <RFALSE>)
           (<ZERO? <MARA-GET ,MARA-SLOT-APOLOGY-ACKNOWLEDGED>> <RFALSE>)
           (<ZERO? <MARA-GET ,MARA-SLOT-BOUNDARY-RESPECTED>> <RFALSE>)
-          (<AND <EQUAL? ,MARA-BOUNDARY-RUPTURE-KIND ,MARA-BOUNDARY-FOOD>
+          (<AND <EQUAL? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND> ,MARA-BOUNDARY-FOOD>
                 <HELD? ,MARA-FIELD-RATION>>
            <RFALSE>)>
     <RTRUE>>
@@ -160,12 +169,12 @@
     <MARA-PUT ,MARA-SLOT-RUPTURE-OPEN 0>
     <MARA-PUT ,MARA-SLOT-RUPTURE-REPAIRED 1>
     <MARA-PUT ,MARA-SLOT-MODE ,MARA-MODE-INDEPENDENT>
-    <COND (<EQUAL? ,MARA-BOUNDARY-RUPTURE-KIND ,MARA-BOUNDARY-FOOD>
-           <COND (,MARA-RATION-CONSUMED
+    <COND (<EQUAL? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND> ,MARA-BOUNDARY-FOOD>
+           <COND (<MARA-BOUNDARY-GET ,MARA-RATION-CONSUMED>
                   <TELL "Mara is quiet for a moment. You could not return what you ate, she says. But you named the taking, gave me the space I asked for, and stopped pretending the boundary was a joke. I am willing to work at ordinary distance again. The loss is still part of what happened." CR>)
                  (T
                   <TELL "Mara nods once. You returned what was mine, apologized without demanding a reset, and actually gave me space. I am willing to work at ordinary distance again. I still remember why the distance happened." CR>)>)
-          (<EQUAL? ,MARA-BOUNDARY-RUPTURE-KIND ,MARA-BOUNDARY-CLOTHING>
+          (<EQUAL? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND> ,MARA-BOUNDARY-CLOTHING>
            <TELL "Mara studies you, then relaxes one degree. You stopped testing the boundary, named what you were doing, and gave me the space I asked for. I am willing to work at ordinary distance again. My clothes are still mine." CR>)
           (T
            <TELL "Mara considers the silence you actually gave her. You stopped issuing the order, apologized, and let my choice cost you something, she says. I am willing to work at ordinary distance again. My choices are still mine." CR>)>
@@ -179,15 +188,15 @@
            <TELL "Mara does not pretend the old boundary vanished. The rupture is repaired, not deleted from history." CR>
            <RTRUE>)
           (<ZERO? <MARA-GET ,MARA-SLOT-APOLOGY-ACKNOWLEDGED>>
-           <COND (<EQUAL? ,MARA-BOUNDARY-RUPTURE-KIND ,MARA-BOUNDARY-CLOTHING>
+           <COND (<EQUAL? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND> ,MARA-BOUNDARY-CLOTHING>
                   <TELL "I told you my clothes were mine and you tried again, Mara says. I am not calling that an attack, and I am not calling it harmless. Distance is the current answer." CR>)
-                 (<EQUAL? ,MARA-BOUNDARY-RUPTURE-KIND ,MARA-BOUNDARY-FOOD>
+                 (<EQUAL? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND> ,MARA-BOUNDARY-FOOD>
                   <TELL "You treated my food as yours after I made the ownership plain, Mara says. That is not violence. It is still a fact about whether my no survives inconvenience. Distance is the current answer." CR>)
                  (T
                   <TELL "I told you I was choosing for myself and you kept trying to substitute your order for my answer, Mara says. That is the rupture. Distance is the current answer." CR>)>)
           (<ZERO? <MARA-GET ,MARA-SLOT-BOUNDARY-RESPECTED>>
            <TELL "I heard the apology, Mara says. Hearing it is not the same as repairing it. I asked for space. What you do with that request is the next fact." CR>)
-          (<AND <EQUAL? ,MARA-BOUNDARY-RUPTURE-KIND ,MARA-BOUNDARY-FOOD>
+          (<AND <EQUAL? <MARA-BOUNDARY-GET ,MARA-BOUNDARY-RUPTURE-KIND> ,MARA-BOUNDARY-FOOD>
                 <HELD? ,MARA-FIELD-RATION>>
            <TELL "You apologized and you gave me space, Mara says. You are still holding my food. Put the physical fact right before asking me to call the history repaired." CR>)
           (T
