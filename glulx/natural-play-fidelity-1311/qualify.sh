@@ -76,6 +76,7 @@ n
 examine notice
 northwest
 look
+ask tomas about drink
 ask tomas about drinks
 buy elephant ear
 inventory
@@ -105,7 +106,9 @@ dump(){ echo '--- Release 1311 natural play ---' >&2; cat "$R" >&2; }
 grep -F 'Release 1311' "$R" || { dump; exit 1; }
 grep -F 'painted notice, signed Berrin Vale' "$R" || { dump; exit 1; }
 grep -F 'Ephraim Peake is here.' "$R" || { dump; exit 1; }
+! grep -F 'Berrin Vale is here.' "$R" || { dump; exit 1; }
 grep -F 'large drink is pear-lime fizz' "$R" || { dump; exit 1; }
+test "$(grep -Fc 'large drink is pear-lime fizz' "$R")" -ge 2 || { dump; echo 'singular/plural Tomas drink coverage incomplete' >&2; exit 1; }
 grep -F 'Sugar, oil, and a fair that does not require this to finish Zork.' "$R" || { dump; exit 1; }
 grep -F 'The brass screw sits firmly in the east mirror frame.' "$R" || { dump; exit 1; }
 grep -F 'Grass and packed earth slope gently to the working pond.' "$R" || { dump; exit 1; }
@@ -113,6 +116,7 @@ grep -F 'Rod rental 3 zm, bait 1 zm, derby entry 5 zm.' "$R" || { dump; exit 1; 
 ! grep -F 'There is a Ephraim Peake here.' "$R" || { dump; exit 1; }
 ! grep -F 'I don'"'"'t know the word "northeast".' "$R" || { dump; exit 1; }
 ! grep -F 'I don'"'"'t know the word "southeast".' "$R" || { dump; exit 1; }
+! grep -F 'I don'"'"'t know the word "drink".' "$R" || { dump; exit 1; }
 ! grep -F 'I don'"'"'t know the word "drinks".' "$R" || { dump; exit 1; }
 python - "$R" <<'PY'
 from pathlib import Path
