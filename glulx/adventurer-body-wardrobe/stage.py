@@ -59,7 +59,10 @@ def main() -> int:
     base_id = source_identity(base_src)
     before = inventory(base_src)
     shutil.copytree(base_src, destination)
-    applied = [apply_patch((manifest_path.parent / name).resolve(), destination) for name in manifest.get("patches") or []]
+
+    # Release 1309 owns new source modules. Copy them before applying the patch
+    # series so later patches can deliberately extend those added modules as well
+    # as inherited Release 1306 files.
     for name in manifest.get("added_files") or []:
         rel = Path(name)
         source = (manifest_path.parent / rel).resolve()
@@ -67,6 +70,8 @@ def main() -> int:
         if rel.is_absolute() or ".." in rel.parts or target.exists() or not source.is_file():
             raise RuntimeError(f"invalid Release 1309 added file: {name}")
         shutil.copy2(source, target)
+
+    applied = [apply_patch((manifest_path.parent / name).resolve(), destination) for name in manifest.get("patches") or []]
     after = inventory(destination)
     changed = {path for path in set(before) | set(after) if before.get(path) != after.get(path)}
     expected = set(manifest.get("expected_changed_paths") or [])

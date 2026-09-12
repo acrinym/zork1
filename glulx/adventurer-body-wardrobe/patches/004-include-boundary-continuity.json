@@ -1,0 +1,12 @@
+{
+  "id": "004-include-boundary-continuity",
+  "path": "mara_companion.zil",
+  "description": "Load Mara property/autonomy boundary continuity beside the Release 1309 wardrobe organ.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<INSERT-FILE \"adventurer_body_wardrobe\" T>\n<INSERT-FILE \"mara_field_guidance\" T>",
+      "new": "<INSERT-FILE \"adventurer_body_wardrobe\" T>\n<INSERT-FILE \"mara_boundary_continuity\" T>\n<INSERT-FILE \"mara_field_guidance\" T>"
+    }
+  ]
+}

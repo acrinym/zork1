@@ -1,0 +1,12 @@
+{
+  "id": "006-boundary-rupture-conversation",
+  "path": "mara_lived_feeling.zil",
+  "description": "Let the existing rupture topic describe Release 1309 property/autonomy causes without falsely calling them physical attacks.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<ROUTINE MARA-ABOUT-RUPTURE ()\n    <COND (<ZERO? <MARA-GET ,MARA-SLOT-INTENTIONAL-HARM>>",
+      "new": "<ROUTINE MARA-ABOUT-RUPTURE ()\n    <COND (<MARA-BOUNDARY-RUPTURE?>\n           <MARA-ABOUT-BOUNDARY-RUPTURE>\n           <RTRUE>)\n          (<ZERO? <MARA-GET ,MARA-SLOT-INTENTIONAL-HARM>>"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "007-boundary-intimacy-refusal",
+  "path": "mara_earned_romance.zil",
+  "description": "Keep Release 1306's open-rupture intimacy boundary while using Release 1309 cause-specific wording for nonviolent property/autonomy ruptures.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "    <COND (<MARA-RUPTURE-OPEN?>\n           <TELL \"Mara steps out of reach. You do not get to rewrite an attack as affection.\" CR>)",
+      "new": "    <COND (<MARA-RUPTURE-OPEN?>\n           <COND (<MARA-BOUNDARY-RUPTURE?>\n                  <MARA-PHYSICAL-BOUNDARY-REFUSAL>)\n                 (T\n                  <TELL \"Mara steps out of reach. You do not get to rewrite an attack as affection.\" CR>)>)"
+    }
+  ]
+}
