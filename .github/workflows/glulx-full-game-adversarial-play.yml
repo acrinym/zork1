@@ -1,0 +1,226 @@
+name: Zork I Full Game Adversarial Play
+
+on:
+  push:
+    branches: [ci/full-game-adversarial-runner]
+    paths:
+      - "glulx/**"
+      - "optimized/tools/**"
+      - ".beads/**"
+      - ".github/workflows/glulx-full-game-adversarial-play.yml"
+  pull_request:
+    branches: [master]
+    paths:
+      - "glulx/**"
+      - "optimized/tools/**"
+      - ".beads/**"
+      - ".github/workflows/glulx-full-game-adversarial-play.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: full-game-adversarial-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  QUALIFY_REF: ${{ github.event.pull_request.head.sha || github.sha }}
+  ZORK_GLULX_COMMIT: 1ada70e58ac4933446b907d67949d9cab3119c0e
+  GLULX_ZILF_COMMIT: 45c60f1e37651f266ac92d49ae01748bb4909fa5
+  GLAZER_SOURCE_URL: https://gitlab.com/andwj/glazer/-/archive/v1.2.0/glazer-v1.2.0.tar.gz
+  GLAZER_SOURCE_SHA256: a45edadb140111b5df44a3f49ca4e2b8ec0550d63a6cdee7c93bec93a79ed482
+  GLULXE_COMMIT: 56ab8743bab565de307bd892c555d8d8897ed517
+  CHEAPGLK_COMMIT: 14d8aaf6e4150669762bd4646a5368e75c1eeee6
+  ZWALKER_COMMIT: 63327e700b1436c835645c6bbc8ba846df5be073
+
+jobs:
+  play-entire-game:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    steps:
+      - name: Check out exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.QUALIFY_REF }}
+          persist-credentials: false
+
+      - name: Verify candidate identity
+        run: '[[ "$(git rev-parse HEAD)" == "$QUALIFY_REF" ]]'
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12.13"
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1
+        with:
+          dotnet-version: "10.0.302"
+
+      - name: Check out pinned upstream Zork source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: taradinoc/zork1
+          ref: ${{ env.ZORK_GLULX_COMMIT }}
+          path: .upstream/zork1-glulx
+          persist-credentials: false
+
+      - name: Check out pinned ZILF
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: taradinoc/zilf
+          ref: ${{ env.GLULX_ZILF_COMMIT }}
+          path: .tooling/zilf-glulx
+          persist-credentials: false
+
+      - name: Check out pinned Glulxe
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/glulxe
+          ref: ${{ env.GLULXE_COMMIT }}
+          path: .tooling/glulxe
+          persist-credentials: false
+
+      - name: Check out pinned CheapGlk
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: erkyrath/cheapglk
+          ref: ${{ env.CHEAPGLK_COMMIT }}
+          path: .tooling/cheapglk
+          persist-credentials: false
+
+      - name: Check out pinned verified full-game route
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: avwohl/zwalker
+          ref: ${{ env.ZWALKER_COMMIT }}
+          path: .audit/zwalker
+          persist-credentials: false
+
+      - name: Install build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev curl
+
+      - name: Prepare pinned Glazer
+        run: |
+          set -euxo pipefail
+          mkdir -p .tooling/glazer-source
+          curl --fail --location --silent --show-error "$GLAZER_SOURCE_URL" --output glazer.tar.gz
+          echo "$GLAZER_SOURCE_SHA256  glazer.tar.gz" | sha256sum --check
+          tar -xf glazer.tar.gz --strip-components=1 -C .tooling/glazer-source
+          make -C .tooling/glazer-source
+
+      - name: Build and qualify current locked game
+        shell: bash
+        run: |
+          set +e
+          set -o pipefail
+          bash glulx/mara-world-integrity-1312/qualify.sh 2>&1 | tee full-game-release-build.log
+          rc=${PIPESTATUS[0]}
+          echo "QUALIFY_RC=$rc" >> "$GITHUB_ENV"
+          echo "Release qualification exit code: $rc"
+          exit 0
+
+      - name: Prepare deterministic complete-game command stream
+        run: |
+          mkdir -p glulx/build/full-game-audit
+          python glulx/full-game-audit/prepare_commands.py \
+            --source .audit/zwalker/walkthroughs/zork1_verified_350.txt \
+            --output glulx/build/full-game-audit/full-game.commands
+          wc -l glulx/build/full-game-audit/full-game.commands
+
+      - name: Play the entire game and hunt for breakage
+        shell: bash
+        run: |
+          set +e
+          OUT=glulx/build/full-game-audit
+          STORY=glulx/build/mara-world-integrity-1312/zork1-glulx-mara-world-integrity.ulx
+          GLULXE=.tooling/glulxe/glulxe
+          COMMANDS="$OUT/full-game.commands"
+
+          if [[ ! -f "$STORY" ]]; then
+            echo "Compiled story missing: $STORY" | tee "$OUT/runner-infrastructure-failure.txt"
+            echo "FULL_GAME_RC=90" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          if [[ ! -x "$GLULXE" ]]; then
+            echo "Glulxe missing after qualification: $GLULXE" | tee "$OUT/runner-infrastructure-failure.txt"
+            echo "FULL_GAME_RC=91" >> "$GITHUB_ENV"
+            exit 0
+          fi
+
+          overall=0
+          for seed in 1 2 3 4 5; do
+            transcript="$OUT/transcript-seed-${seed}.txt"
+            json="$OUT/findings-seed-${seed}.json"
+            md="$OUT/findings-seed-${seed}.md"
+            echo "===== RNG seed $seed ====="
+            timeout 900s "$GLULXE" --rngseed "$seed" --undo 64 "$STORY" \
+              < "$COMMANDS" > "$transcript" 2>&1
+            irc=$?
+            python glulx/full-game-audit/analyze_transcript.py \
+              --transcript "$transcript" \
+              --commands "$COMMANDS" \
+              --seed "$seed" \
+              --interpreter-exit "$irc" \
+              --json "$json" \
+              --markdown "$md"
+            arc=$?
+            cat "$md" >> "$GITHUB_STEP_SUMMARY"
+            printf '\n' >> "$GITHUB_STEP_SUMMARY"
+            if [[ "$seed" == "3" && "$arc" != "0" ]]; then
+              overall=1
+            fi
+          done
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          out = Path('glulx/build/full-game-audit')
+          reports = [json.loads(p.read_text()) for p in sorted(out.glob('findings-seed-*.json'))]
+          critical = sum(r['counts']['critical'] for r in reports)
+          exploratory_wins = [r['seed'] for r in reports if r['ending_complete']]
+          summary = {
+              'seeds': [r['seed'] for r in reports],
+              'ending_complete_seeds': exploratory_wins,
+              'critical_findings': critical,
+              'golden_seed_3_complete': next((r['ending_complete'] for r in reports if r['seed'] == 3), False),
+          }
+          (out / 'audit-index.json').write_text(json.dumps(summary, indent=2, sort_keys=True) + '\n')
+          print(json.dumps(summary, sort_keys=True))
+          if critical:
+              raise SystemExit(2)
+          PY
+          aggregate_rc=$?
+          if [[ "$aggregate_rc" != "0" ]]; then overall=1; fi
+          echo "FULL_GAME_RC=$overall" >> "$GITHUB_ENV"
+          exit 0
+
+      - name: Publish audit verdict
+        if: always()
+        shell: bash
+        run: |
+          echo "## Runner verdict" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Candidate: \`$QUALIFY_REF\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Release qualification exit: \`${QUALIFY_RC:-missing}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Full-game audit exit: \`${FULL_GAME_RC:-missing}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Command source: avwohl/zwalker@${ZWALKER_COMMIT}" >> "$GITHUB_STEP_SUMMARY"
+          test "${QUALIFY_RC:-99}" = "0" || exit 1
+          test "${FULL_GAME_RC:-99}" = "0" || exit 1
+
+      - name: Upload complete play evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-game-adversarial-${{ env.QUALIFY_REF }}
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            full-game-release-build.log
+            glulx/build/full-game-audit/
+            glulx/build/mara-world-integrity-1312/QUALIFICATION-RECEIPT.json
+            glulx/build/mara-world-integrity-1312/CANDIDATE-IDENTITY.json
+            glulx/build/mara-world-integrity-1312/story-report.json
