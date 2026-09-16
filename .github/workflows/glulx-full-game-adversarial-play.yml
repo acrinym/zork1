@@ -117,7 +117,7 @@ jobs:
         run: |
           set +e
           set -o pipefail
-          bash glulx/mara-world-integrity-1312/qualify.sh 2>&1 | tee full-game-release-build.log
+          bash glulx/full-game-regression-1314/qualify.sh 2>&1 | tee full-game-release-build.log
           rc=${PIPESTATUS[0]}
           echo "QUALIFY_RC=$rc" >> "$GITHUB_ENV"
           echo "Release qualification exit code: $rc"
@@ -136,7 +136,7 @@ jobs:
         run: |
           set +e
           OUT=glulx/build/full-game-audit
-          STORY=glulx/build/mara-world-integrity-1312/zork1-glulx-mara-world-integrity.ulx
+          STORY=glulx/build/full-game-regression-1314/zork1-glulx-full-game-regression-1314.ulx
           GLULXE=.tooling/glulxe/glulxe
           COMMANDS="$OUT/full-game.commands"
 
@@ -221,6 +221,6 @@ jobs:
           path: |
             full-game-release-build.log
             glulx/build/full-game-audit/
-            glulx/build/mara-world-integrity-1312/QUALIFICATION-RECEIPT.json
-            glulx/build/mara-world-integrity-1312/CANDIDATE-IDENTITY.json
-            glulx/build/mara-world-integrity-1312/story-report.json
+            glulx/build/full-game-regression-1314/QUALIFICATION-RECEIPT.json
+            glulx/build/full-game-regression-1314/CANDIDATE-IDENTITY.json
+            glulx/build/full-game-regression-1314/story-report.json

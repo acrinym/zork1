@@ -1,0 +1,10 @@
+south
+east
+open window
+enter window
+west
+take lamp
+put lamp in case
+look in case
+take lamp from case
+put lamp in forest case

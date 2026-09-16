@@ -1,0 +1,22 @@
+{
+  "id": "002-release-1314-identity",
+  "path": "zork1.zil",
+  "description": "Advance the repository-local story identity from locked Release 1312 to Full Game Regression Repair Release 1314.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": ";\"Repository-local Mara World Integrity.\n  Release 1312: adversarial actor, vehicle, evidence, and environmental consequence repairs on locked 1311.\"",
+      "new": ";\"Repository-local Full Game Regression Repair.\n  Release 1314: canonical parser compatibility and full-game audit repairs on locked 1312.\""
+    },
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT RELEASEID 1312>",
+      "new": "<CONSTANT RELEASEID 1314>"
+    },
+    {
+      "expected_count": 1,
+      "old": "<PRINC \"Mara World Integrity Glulx ZORK I: The Great Underground Empire\n \">",
+      "new": "<PRINC \"Full Game Regression Repair Glulx ZORK I: The Great Underground Empire\n \">"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[train]
+name        = "onyx_zork_full_game_regression_1314"
+title       = "Release 1314 Full Game Regression Repair"
+description = """
+Repair the first root causes exposed by the asynchronous 437-command whole-game audit without rewriting locked Release 1312. Preserve canonical command semantics while keeping Highly Extended additions addressable, then rerun the exact golden route before treating downstream notices as independent defects.
+"""
+created     = "2026-09-15"
+status      = "in_progress"
+
+[protocol]
+version = "3.0"
+repository = "acrinym/zork1"
+branch_policy = "one-pr-per-train"
+default_lease_minutes = 45
+
+[[cars]]
+id = "canonical_case"
+bead = "zork1-fgr-001"
+title = "Restore canonical bare CASE resolution"
+parallel_start = true
+depends_on = []
+summary = "When the trophy case and HE museum cases are simultaneously in scope, bare CASE resolves to the canonical trophy case while qualified museum case names remain available."
+
+[[cars]]
+id = "golden_route"
+bead = "zork1-fgr-002"
+title = "Requalify the verified 350-point route"
+parallel_start = false
+depends_on = ["canonical_case"]
+summary = "Replay the pinned zwalker 437-command stream at golden seed 3 and identify only the first remaining semantic divergence after CASE compatibility is restored."
+[[cars]]
+id = "runtime_fatal"
+bead = "zork1-fgr-003"
+title = "Trace residual interpreter corruption"
+parallel_start = false
+depends_on = ["golden_route"]
+summary = "After route semantics are repaired, reproduce any remaining non-string Glulxe fatal from its earliest corrupt output and repair the actual producer rather than the final room that prints it."
+
+[[cars]]
+id = "hosted_capstone"
+bead = "zork1-fgr-004"
+title = "Hosted full-game capstone"
+parallel_start = false
+depends_on = ["golden_route", "runtime_fatal"]
+summary = "Lock the exact Release 1314 artifact identity and require the hosted full-game audit to pass its golden-route and runtime-fatal gates with complete evidence uploaded."
+
+[meta]
+one_liner = "Fix first divergence, rerun, and let the cascade collapse before naming more bugs."
+prior_car = "onyx_zork_mara_world_integrity_1312"
+watch = "Do not mutate locked 1312, paper over parser ambiguity in the walkthrough, or classify cascade notices as independent defects before the golden route is replayed."

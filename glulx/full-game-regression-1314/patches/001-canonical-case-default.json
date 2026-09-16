@@ -1,0 +1,17 @@
+{
+  "id": "001-canonical-case-default",
+  "path": "gparser.zil",
+  "description": "Preserve canonical bare CASE behavior when later museum cases are also in scope.",
+  "replacements": [
+    {
+      "expected_count": 1,
+      "old": "<CONSTANT SHAVE 2>\n\n<ROUTINE GET-OBJECT",
+      "new": "<CONSTANT SHAVE 2>\n\n<ROUTINE PREFER-TROPHY-CASE (TBL TLEN LEN \"AUX\" POS LAST OBJ)\n\t <SET POS <+ .TLEN 1>>\n\t <SET LAST <+ .TLEN .LEN>>\n\t <REPEAT ()\n\t\t <SET OBJ <GET .TBL .POS>>\n\t\t <COND (<EQUAL? .OBJ ,TROPHY-CASE>\n\t\t\t<PUT .TBL <+ .TLEN 1> ,TROPHY-CASE>\n\t\t\t<PUT .TBL ,P-MATCHLEN <+ .TLEN 1>>\n\t\t\t<RTRUE>)>\n\t\t <COND (<EQUAL? .POS .LAST> <RFALSE>)>\n\t\t <SET POS <+ .POS 1>>>>\n\n<ROUTINE GET-OBJECT"
+    },
+    {
+      "expected_count": 1,
+      "old": "\t\t      <PUT .TBL ,P-MATCHLEN 1>)\n\t\t     (<OR <G? .LEN 1>",
+      "new": "\t\t      <PUT .TBL ,P-MATCHLEN 1>)\n\t\t     (<AND <G? .LEN 1>\n\t\t\t   ,P-NAM\n\t\t\t   <NOT ,P-ADJ>\n\t\t\t   <PREFER-TROPHY-CASE .TBL .TLEN .LEN>>\n\t\t      <SET LEN 1>)\n\t\t     (<OR <G? .LEN 1>"
+    }
+  ]
+}

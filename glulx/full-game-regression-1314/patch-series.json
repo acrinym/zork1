@@ -1,0 +1,26 @@
+{
+  "edition": "Full Game Regression Repair",
+  "release": 1314,
+  "serial": "260916",
+  "base_release": 1312,
+  "base_manifest": "../mara-world-integrity-1312/patch-series.json",
+  "base_artifact_sha256": "34adc364ab2c1918cd5eff7783d882ae6e383c57e0f2272ab2985a9c7f6e91f1",
+  "patches": [
+    "patches/001-canonical-case-default.json",
+    "patches/002-release-1314-identity.json"
+  ],
+  "expected_changed_paths": [
+    "gparser.zil",
+    "zork1.zil"
+  ],
+  "expected_artifact": {
+    "locked": false,
+    "file": "zork1-glulx-full-game-regression-1314.ulx",
+    "format": "Glulx"
+  },
+  "player_outcomes": [
+    "bare CASE keeps the canonical Zork meaning when the trophy case is in scope",
+    "qualified museum case names remain parser-real and addressable",
+    "the verified 350-point route can bank treasures without museum-case ambiguity"
+  ]
+}
