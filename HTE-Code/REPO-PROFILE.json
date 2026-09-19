@@ -1,0 +1,109 @@
+{
+  "schema": "hte-code-repo-profile/1.0",
+  "id": "acrinym__zork1",
+  "repo": "D:\\github\\zork1",
+  "origin": "https://github.com/acrinym/zork1.git",
+  "head_at_scan": "7eb6fbb8ba2ff397872c1f26fc4fca6bca87493f",
+  "branch_at_scan": "master",
+  "baseline": "hte-code-v2-depth5",
+  "packs": [
+    "language.zil",
+    "language.python",
+    "language.shell",
+    "language.rust",
+    "language.assembly",
+    "language.z-machine-assembly",
+    "compiler.assembler-unspecified",
+    "compiler.rustc",
+    "compiler.zil-compiler-toolchain",
+    "runtime.cpython",
+    "runtime.native",
+    "runtime.posix-shell-runtime",
+    "runtime.z-machine",
+    "toolchain.cargo",
+    "toolchain.github-actions",
+    "toolchain.make",
+    "platform.posix-shell",
+    "interop.python-process-shell",
+    "interop.zil-zmachine",
+    "format.json",
+    "format.markdown",
+    "format.yaml",
+    "format.toml"
+  ],
+  "languages": [
+    {
+      "name": "zil",
+      "files": 184
+    },
+    {
+      "name": "python",
+      "files": 142
+    },
+    {
+      "name": "shell",
+      "files": 92
+    },
+    {
+      "name": "rust",
+      "files": 2
+    },
+    {
+      "name": "assembly",
+      "files": 1
+    },
+    {
+      "name": "z-machine-assembly",
+      "files": 1
+    }
+  ],
+  "frameworks": [],
+  "compilers": [
+    "assembler-unspecified",
+    "rustc",
+    "zil-compiler-toolchain"
+  ],
+  "runtimes": [
+    "cpython",
+    "native",
+    "posix-shell-runtime",
+    "z-machine"
+  ],
+  "toolchains": [
+    "cargo",
+    "github-actions",
+    "make"
+  ],
+  "platforms": [
+    "posix-shell"
+  ],
+  "interop": [
+    "python-process-shell",
+    "zil-zmachine"
+  ],
+  "formats": [
+    {
+      "name": "json",
+      "files": 588
+    },
+    {
+      "name": "markdown",
+      "files": 207
+    },
+    {
+      "name": "yaml",
+      "files": 102
+    },
+    {
+      "name": "toml",
+      "files": 3
+    }
+  ],
+  "protocols": [],
+  "inclusion_reason": [
+    "curated-first-party-or-maintained",
+    "acrinym-origin",
+    "explicit-override:include",
+    "override-evidence:exact-acrinym-remote-head-reconcile"
+  ]
+}

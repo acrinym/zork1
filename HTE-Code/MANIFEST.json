@@ -1,0 +1,484 @@
+{
+  "schema": "hte-code-repo-bundle/1.1",
+  "generated_from": "D:\\github\\HTE-Code",
+  "repo": "D:\\github\\zork1",
+  "origin": "https://github.com/acrinym/zork1.git",
+  "head_at_generation": "7eb6fbb8ba2ff397872c1f26fc4fca6bca87493f",
+  "baseline": {
+    "central_path": "D:\\github\\HTE-Code\\core\\HTE-Code-v2.0-Depth5.md",
+    "sha256": "8499c642f5246003ae6328a8ed3b1543fcd77046ccf81722d000497b86e4e5b4"
+  },
+  "packs": [
+    {
+      "id": "language.zil",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\zil\\CONCERNS.md",
+          "sha256": "4204a1e43f93307b5730d6d43532bde7196f9c3f7524cd5a9a5aa831b65b721c"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\zil\\DEPTH5.md",
+          "sha256": "5e007b6f3c169edb1a17d6597b3f9c3deee75252f7581ebeec76b6ab32e473ca"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\zil\\FULL-COVERAGE.md",
+          "sha256": "ae897eae06a560164b62d62fe646dc72f97fb00f7c89aaa66f79af12037e3454"
+        }
+      ]
+    },
+    {
+      "id": "language.python",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\python\\CONCERNS.md",
+          "sha256": "da9e44b0638e6f801f661b49cec36ba6efbba70c7b9a9b81e5b482693a7f6d7c"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\python\\DEPTH5.md",
+          "sha256": "e54054e63bec40b86e08ff4edf29e6e2a30789c585459121ca0fe91f3da2a2eb"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\python\\FULL-COVERAGE.md",
+          "sha256": "8b57eab5b011ae3d46a0c1b6b1f55af2b20d0129ab8225de24e4ec797d103a97"
+        }
+      ]
+    },
+    {
+      "id": "language.shell",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\shell\\CONCERNS.md",
+          "sha256": "efe1377272720e950256e3cd372a4099cb10d008a37635ef651c58e3a7ce3614"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\shell\\DEPTH5.md",
+          "sha256": "3ab3ee93a55393e3e0aad5bd220a4995f7d59a58d52e93e4f5c06b59a8c663e8"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\shell\\FULL-COVERAGE.md",
+          "sha256": "d3844a67c3bc7853677e52f17a2cf131d9b94215f72c35fe8eccac9d285ef19b"
+        }
+      ]
+    },
+    {
+      "id": "language.rust",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\rust\\CONCERNS.md",
+          "sha256": "e2ed9d12441b171e81e78796bb2704632202d35a0732efacfb65c262c5fe0f86"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\rust\\DEPTH5.md",
+          "sha256": "f9b8035f8dff25e06b5116d42680832385563661e5b895c7123bbd9df67fe981"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\rust\\FULL-COVERAGE.md",
+          "sha256": "c6ffcce4db5c04b5a845e1e6f8ece463f22912d442af62532aab7bffcc9c245e"
+        }
+      ]
+    },
+    {
+      "id": "language.assembly",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\assembly\\CONCERNS.md",
+          "sha256": "e5d06b8f26677cf36c402e76f1f36d5cf88e8b0788ddfa238ff4020a2b4baac2"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\assembly\\DEPTH5.md",
+          "sha256": "02b9f28fad4a423b888c9d7d40ac48a71dbe8ca9129ca8a6222de1aa1b95de9f"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\assembly\\FULL-COVERAGE.md",
+          "sha256": "c8b13b3320974fa69c42849f1b35077a8726e30b58f8353393ca1103a7d42457"
+        }
+      ]
+    },
+    {
+      "id": "language.z-machine-assembly",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\z-machine-assembly\\CONCERNS.md",
+          "sha256": "0671083d8eb5be54a7438c31935d4f9f2ad6158f770ca6fd6d57bacdd54110c9"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\z-machine-assembly\\DEPTH5.md",
+          "sha256": "7f9a188039203686dc8b7f9797ba5b740f23e54dcf444627cb16b918f2bde781"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\languages\\z-machine-assembly\\FULL-COVERAGE.md",
+          "sha256": "f8016e1d9e82c29280da53c00ab88728569feaab37806c36b24e7629e7be5cc0"
+        }
+      ]
+    },
+    {
+      "id": "compiler.assembler-unspecified",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\assembler-unspecified\\CONCERNS.md",
+          "sha256": "f92d207ef4b9f0ed382d5acf05aeb80c6e46a56d0be8b178b77fed5da087156a"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\assembler-unspecified\\DEPTH5.md",
+          "sha256": "a427c11f5968f868155f12aa9017345ce59a6cf702108c1a4b4063bd81cb0b80"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\assembler-unspecified\\FULL-COVERAGE.md",
+          "sha256": "c2100be78c057001656202e16f6494dbd86e9c023d392a38554e30959db55598"
+        }
+      ]
+    },
+    {
+      "id": "compiler.rustc",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\rustc\\CONCERNS.md",
+          "sha256": "8d4068d0a6774f8accc5a1ab1a4f837642666f50c8354a569dcad1900cbc3e65"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\rustc\\DEPTH5.md",
+          "sha256": "388a48c917116ea7311521ddd6b74d13aca8aace9583d15a8285cda099f88dff"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\rustc\\GAPS.md",
+          "sha256": "35316e979ebc59938fddb5a6d0833d69f1f4a4ba4240576755a0bfb860144f14"
+        }
+      ]
+    },
+    {
+      "id": "compiler.zil-compiler-toolchain",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\zil-compiler-toolchain\\CONCERNS.md",
+          "sha256": "3c0ec20fdf8f11bc9765e7f3082184ad9f00e8e7d8df8a61897d73f45728bbe3"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\zil-compiler-toolchain\\DEPTH5.md",
+          "sha256": "bfd9a37b0470fe8ba4a09e17d2b54aec431a54147fa0b81713ca72ade0c58f53"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\compilers\\zil-compiler-toolchain\\FULL-COVERAGE.md",
+          "sha256": "5e84de00ee2159f19fa34d1809163d5ba33b4fbd04dee15374558ee9bcc6b1c1"
+        }
+      ]
+    },
+    {
+      "id": "runtime.cpython",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\cpython\\CONCERNS.md",
+          "sha256": "b2fae74ed8dd9e023fc663d1fe6f01d3530974a5bf514840a69649339bf9e323"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\cpython\\DEPTH5.md",
+          "sha256": "6029e1b48ccb141f0f325ad6c0ed4f937917967478296837fd6c7f31f36e0aa7"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\cpython\\GAPS.md",
+          "sha256": "8d75a64fd89e044c51ecc924ed3ad2f3e797fa62badaf4d5d6cdd1a9031a00a6"
+        }
+      ]
+    },
+    {
+      "id": "runtime.native",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\native\\CONCERNS.md",
+          "sha256": "885c69fd212d752401417a45ad5f67c64b65e2e38b5520ac1f862845f234a72a"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\native\\DEPTH5.md",
+          "sha256": "19d6ed14f9008e4cc4cd23fd33f4496741d3236e064c1081a32a0dc1a18be1af"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\native\\GAPS.md",
+          "sha256": "394930c31f0be34eae92e771f540c41b222aa7e7625df0835adbf6769df32951"
+        }
+      ]
+    },
+    {
+      "id": "runtime.posix-shell-runtime",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\posix-shell-runtime\\CONCERNS.md",
+          "sha256": "f76f4b203363abe101227de3d55f9c66fe934e7b3fc5848947b1897532ffe748"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\posix-shell-runtime\\DEPTH5.md",
+          "sha256": "1459de6b4ad16369c446ebd0a7ead43b125c28f5f66b980d99327b21ad5016a3"
+        }
+      ]
+    },
+    {
+      "id": "runtime.z-machine",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\z-machine\\CONCERNS.md",
+          "sha256": "4b9afd9e41595a662c1d62a3ecf1ed15370d25a3ee477b2ad1ad9c2d4d3fa215"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\z-machine\\DEPTH5.md",
+          "sha256": "4684d8c252106800f027809e9f9fd422e9aba660af87d6b04fa67701708513bd"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\runtimes\\z-machine\\GAPS.md",
+          "sha256": "62548a64e59c6fa107a81d500f27f897ab875de926bb9a8a777d10b963575fed"
+        }
+      ]
+    },
+    {
+      "id": "toolchain.cargo",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\cargo\\CONCERNS.md",
+          "sha256": "2bed4401ae254955ae6bc0b58e0782ea63dda248af530aaa7d8ca5078f7db42b"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\cargo\\DEPTH5.md",
+          "sha256": "d33a05a634b64497498ee0d78fccd9d4193f4c500b5cb87ce2d7d3c085751248"
+        }
+      ]
+    },
+    {
+      "id": "toolchain.github-actions",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\github-actions\\CONCERNS.md",
+          "sha256": "c9c31334428ad64cfd80939517aeab82086fc4dcb95f8509cf531a08bcff8a1f"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\github-actions\\DEPTH5.md",
+          "sha256": "0cd54c884817dc6a8f188fc4fa5ce8c04642352e28c4e7551fb0d82bf1caf366"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\github-actions\\FULL-COVERAGE.md",
+          "sha256": "f301ae5b582c53c668883f9e551e2adea1c1b62bd8950774c3c473a68209cf0f"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\github-actions\\GAPS.md",
+          "sha256": "c97d7743488f992461f00fa32db17b1051d3e374b67ad43fa7424b2dcc428619"
+        }
+      ]
+    },
+    {
+      "id": "toolchain.make",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\make\\CONCERNS.md",
+          "sha256": "1fb1ee4b9b472d336c5fb57aa504f94b5089f9bc04667042de04f9f20282017c"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\make\\DEPTH5.md",
+          "sha256": "ec4d80f58f427fce3063bdbb04ce17a9a3e81242bcdda21809b1e8b8967e1382"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\toolchains\\make\\GAPS.md",
+          "sha256": "76591d7fc6c2c32ac0784df61fc98e248b01074c02fe607a45b8e22f47e5e13d"
+        }
+      ]
+    },
+    {
+      "id": "platform.posix-shell",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\platforms\\posix-shell\\CONCERNS.md",
+          "sha256": "4adee5ea80a828fae4f66c2ee19b3840c6cbea343131029eb3d7309bc3b76f31"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\platforms\\posix-shell\\DEPTH5.md",
+          "sha256": "e495f69c1004164237be8d3677b74ac50d94ed1254b48c3d38abe3d55b83b4ab"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\platforms\\posix-shell\\GAPS.md",
+          "sha256": "7d3294fa00c85da5a7646d53e5db3f52431874da959291a08fc94eaede95fd8c"
+        }
+      ]
+    },
+    {
+      "id": "interop.python-process-shell",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\interop\\python-process-shell\\CONCERNS.md",
+          "sha256": "ef48ece6db4a02ee8f51f0fd6880a989c8c966271487ba662428bc4d7d61e267"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\interop\\python-process-shell\\DEPTH5.md",
+          "sha256": "fbc3367f83f186adb769fe23dbaeb430cddd61a46c0269b7230f1d8241cf7da1"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\interop\\python-process-shell\\FULL-COVERAGE.md",
+          "sha256": "97125f83896bdf3bc1d3541646bddc6bcfd9db390e91c626ad2a2fe2c285dd28"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\interop\\python-process-shell\\GAPS.md",
+          "sha256": "78473be33e44aabe6be0bd59a6c866194aa9af7de2a339512b1f4ca343342ddc"
+        }
+      ]
+    },
+    {
+      "id": "interop.zil-zmachine",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\interop\\zil-zmachine\\CONCERNS.md",
+          "sha256": "ae78c1c4c86ee8ce8960326b09e52765188dbe3968ea468ecb5965edcde61bbc"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\interop\\zil-zmachine\\DEPTH5.md",
+          "sha256": "81008cc65d6565de1ebb14d7349f5a9f09d4cf003420005bdca4d73cc9f3da23"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\interop\\zil-zmachine\\GAPS.md",
+          "sha256": "cf950c7cdd0c2da2e315c58d1eb92919a4b3654fae10715672a034a7680f4917"
+        }
+      ]
+    },
+    {
+      "id": "format.json",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\json\\CONCERNS.md",
+          "sha256": "92d79c2ce94d6dfdf6bde0f8393aa62020a12313a23e7fbdd19d5dd9251072a4"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\json\\DEPTH5.md",
+          "sha256": "3efe12b8c6fca48f648a50ea4ebe9a4dfc317548e379091fab1aee603e8a4df6"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\json\\GAPS.md",
+          "sha256": "b0a3c4e90174242ac2f725fbccc66edcdacafbb4a11b5f484bd61f361594ead7"
+        }
+      ]
+    },
+    {
+      "id": "format.markdown",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\markdown\\CONCERNS.md",
+          "sha256": "3d11d132127e2546450dd409098a98a3099896267c338d201be518812148fe96"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\markdown\\DEPTH5.md",
+          "sha256": "ad09e7392c7463a70cd0326711f2be1de584d95db2549bc6039fd91d47959e99"
+        },
+        {
+          "name": "FULL-COVERAGE.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\markdown\\FULL-COVERAGE.md",
+          "sha256": "4f4d544b048c947c012e18edd7fd6ca0a02f1b2d2b3c97d03d16efa617e61d16"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\markdown\\GAPS.md",
+          "sha256": "e3c52aff1bc3b5d08ff2352211a9a041d25e60d2d62c938ba7e81127520084b8"
+        }
+      ]
+    },
+    {
+      "id": "format.yaml",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\yaml\\CONCERNS.md",
+          "sha256": "789c2dc127c22533517ab834c834364e2a244731215dfe73a8e7cdae7bce44a5"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\yaml\\DEPTH5.md",
+          "sha256": "7ee3a3dc37a89f9829f7832fbdb909a904c7a8c32d14046a620c3ec1b5b6234d"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\yaml\\GAPS.md",
+          "sha256": "8f626bd1e37df5a9c8b666b87051c7221fd9527985372a8d878d7763a5b5815f"
+        }
+      ]
+    },
+    {
+      "id": "format.toml",
+      "documents": [
+        {
+          "name": "CONCERNS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\toml\\CONCERNS.md",
+          "sha256": "e7228c8d12ca5bd0ada50f3a5c4c861ebc270485f2f6fba5071f39e11614c202"
+        },
+        {
+          "name": "DEPTH5.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\toml\\DEPTH5.md",
+          "sha256": "e9c699afe249fadeb14f39781246377cef4e4f38e0456b9a619fe1f3ada07a8b"
+        },
+        {
+          "name": "GAPS.md",
+          "central_path": "D:\\github\\HTE-Code\\packs\\formats\\toml\\GAPS.md",
+          "sha256": "5855c4b542e08a520d57a4cf663a2d8974f1cf746ea28ba8ea4cbd13641c101c"
+        }
+      ]
+    }
+  ],
+  "repo_authorities": [
+    {
+      "path": ".cursor/rules/qa-zork-work.mdc",
+      "sha256": "5db6aab9ba7b638921a432f62637db1337cdcac69e0e7839fe6605a8f4edcabb"
+    }
+  ]
+}

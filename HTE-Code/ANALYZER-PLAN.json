@@ -1,0 +1,413 @@
+{
+  "schema": "hte-code-analyzer-plan/1.0",
+  "repo_profile": "acrinym__zork1",
+  "repo": "D:\\github\\zork1",
+  "head_at_scan": "7eb6fbb8ba2ff397872c1f26fc4fca6bca87493f",
+  "policy": [
+    "Candidates are not automatic execution instructions.",
+    "Repository-local AGENTS/CLAUDE/Cursor rules and build documentation take precedence.",
+    "Resolve exact tool version, configuration, target, and environment before using evidence.",
+    "Prefer repository wrappers and configured analyzers over generic candidate forms.",
+    "Static, compile, and unit-test success do not substitute for runtime/integration qualification.",
+    "Do not install tools, mutate dependencies, launch heavy GUI/emulator workloads, or touch external services merely because a candidate appears here."
+  ],
+  "resolved_languages": [
+    "zil",
+    "python",
+    "shell",
+    "rust",
+    "assembly",
+    "z-machine-assembly"
+  ],
+  "evidence_phases": {
+    "availability_probes": [
+      {
+        "language": "zil",
+        "candidate": "zilf --version"
+      },
+      {
+        "language": "zil",
+        "candidate": "repo ZIL compiler command"
+      },
+      {
+        "language": "python",
+        "candidate": "python --version"
+      },
+      {
+        "language": "shell",
+        "candidate": "sh --version"
+      },
+      {
+        "language": "shell",
+        "candidate": "bash --version"
+      },
+      {
+        "language": "rust",
+        "candidate": "rustc -Vv"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo --version"
+      },
+      {
+        "language": "assembly",
+        "candidate": "nasm -v"
+      },
+      {
+        "language": "assembly",
+        "candidate": "ca65 --version"
+      },
+      {
+        "language": "assembly",
+        "candidate": "vasm 2>&1"
+      },
+      {
+        "language": "assembly",
+        "candidate": "llvm-objdump --version"
+      },
+      {
+        "language": "z-machine-assembly",
+        "candidate": "zapf --version"
+      },
+      {
+        "language": "z-machine-assembly",
+        "candidate": "repo ZAP assembler/disassembler command"
+      }
+    ],
+    "syntax_or_compile": [
+      {
+        "language": "zil",
+        "candidate": "compile ZIL with exact target Z-machine version"
+      },
+      {
+        "language": "python",
+        "candidate": "python -m compileall -q <source-roots>"
+      },
+      {
+        "language": "shell",
+        "candidate": "sh -n <script>"
+      },
+      {
+        "language": "shell",
+        "candidate": "bash -n <script>"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo check --all-targets"
+      },
+      {
+        "language": "assembly",
+        "candidate": "assemble with the repository's exact assembler/CPU/object-format flags"
+      },
+      {
+        "language": "z-machine-assembly",
+        "candidate": "assemble exact ZAP/story target"
+      }
+    ],
+    "static_analysis": [
+      {
+        "language": "zil",
+        "candidate": "inspect compiler diagnostics/intermediate ZAP/maps"
+      },
+      {
+        "language": "python",
+        "candidate": "ruff check ."
+      },
+      {
+        "language": "python",
+        "candidate": "pyright"
+      },
+      {
+        "language": "python",
+        "candidate": "mypy ."
+      },
+      {
+        "language": "python",
+        "candidate": "bandit -r <source-roots>"
+      },
+      {
+        "language": "shell",
+        "candidate": "shellcheck <scripts>"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo clippy --all-targets -- -D warnings"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo fmt --check"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo audit"
+      },
+      {
+        "language": "assembly",
+        "candidate": "disassemble emitted object/binary and compare register/stack/flag/byte contracts"
+      },
+      {
+        "language": "z-machine-assembly",
+        "candidate": "disassemble and validate opcode/version/address forms"
+      }
+    ],
+    "tests": [
+      {
+        "language": "zil",
+        "candidate": "scripted interpreter transcript tests"
+      },
+      {
+        "language": "python",
+        "candidate": "python -m pytest"
+      },
+      {
+        "language": "python",
+        "candidate": "python -m unittest discover"
+      },
+      {
+        "language": "shell",
+        "candidate": "bats tests when configured"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo test --all-targets"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo test --all-features"
+      },
+      {
+        "language": "assembly",
+        "candidate": "emulator/hardware/runtime fixtures"
+      },
+      {
+        "language": "z-machine-assembly",
+        "candidate": "scripted interpreter transcript tests"
+      }
+    ],
+    "dynamic_analysis": [
+      {
+        "language": "zil",
+        "candidate": "multiple interpreter and save/restore edge campaigns"
+      },
+      {
+        "language": "python",
+        "candidate": "coverage run -m pytest"
+      },
+      {
+        "language": "python",
+        "candidate": "tracemalloc / faulthandler / asyncio debug where applicable"
+      },
+      {
+        "language": "shell",
+        "candidate": "target-shell/container execution with temporary fixtures"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo miri test"
+      },
+      {
+        "language": "rust",
+        "candidate": "sanitizers where supported"
+      },
+      {
+        "language": "rust",
+        "candidate": "cargo llvm-cov"
+      },
+      {
+        "language": "assembly",
+        "candidate": "cycle traces, debugger traces, sanitizer coverage only at native callers where applicable"
+      },
+      {
+        "language": "z-machine-assembly",
+        "candidate": "multiple interpreter matrix"
+      }
+    ]
+  },
+  "language_registry": {
+    "zil": {
+      "availability_probes": [
+        "zilf --version",
+        "repo ZIL compiler command"
+      ],
+      "syntax_or_compile": [
+        "compile ZIL with exact target Z-machine version"
+      ],
+      "static_analysis": [
+        "inspect compiler diagnostics/intermediate ZAP/maps"
+      ],
+      "tests": [
+        "scripted interpreter transcript tests"
+      ],
+      "dynamic_analysis": [
+        "multiple interpreter and save/restore edge campaigns"
+      ],
+      "notes": []
+    },
+    "python": {
+      "availability_probes": [
+        "python --version"
+      ],
+      "syntax_or_compile": [
+        "python -m compileall -q <source-roots>"
+      ],
+      "static_analysis": [
+        "ruff check .",
+        "pyright",
+        "mypy .",
+        "bandit -r <source-roots>"
+      ],
+      "tests": [
+        "python -m pytest",
+        "python -m unittest discover"
+      ],
+      "dynamic_analysis": [
+        "coverage run -m pytest",
+        "tracemalloc / faulthandler / asyncio debug where applicable"
+      ],
+      "notes": [
+        "Use only tools/configs present in the repo or explicitly installed for analysis; verify interpreter/venv provenance."
+      ]
+    },
+    "shell": {
+      "availability_probes": [
+        "sh --version",
+        "bash --version"
+      ],
+      "syntax_or_compile": [
+        "sh -n <script>",
+        "bash -n <script>"
+      ],
+      "static_analysis": [
+        "shellcheck <scripts>"
+      ],
+      "tests": [
+        "bats tests when configured"
+      ],
+      "dynamic_analysis": [
+        "target-shell/container execution with temporary fixtures"
+      ],
+      "notes": [
+        "Use the declared target shell; bash -n does not prove POSIX sh portability."
+      ]
+    },
+    "rust": {
+      "availability_probes": [
+        "rustc -Vv",
+        "cargo --version"
+      ],
+      "syntax_or_compile": [
+        "cargo check --all-targets"
+      ],
+      "static_analysis": [
+        "cargo clippy --all-targets -- -D warnings",
+        "cargo fmt --check",
+        "cargo audit"
+      ],
+      "tests": [
+        "cargo test --all-targets",
+        "cargo test --all-features"
+      ],
+      "dynamic_analysis": [
+        "cargo miri test",
+        "sanitizers where supported",
+        "cargo llvm-cov"
+      ],
+      "notes": [
+        "Feature/target matrix matters; Miri does not replace target-native FFI/hardware evidence."
+      ]
+    },
+    "assembly": {
+      "availability_probes": [
+        "nasm -v",
+        "ca65 --version",
+        "vasm 2>&1",
+        "llvm-objdump --version"
+      ],
+      "syntax_or_compile": [
+        "assemble with the repository's exact assembler/CPU/object-format flags"
+      ],
+      "static_analysis": [
+        "disassemble emitted object/binary and compare register/stack/flag/byte contracts"
+      ],
+      "tests": [
+        "emulator/hardware/runtime fixtures"
+      ],
+      "dynamic_analysis": [
+        "cycle traces, debugger traces, sanitizer coverage only at native callers where applicable"
+      ],
+      "notes": [
+        "Assembler/ISA/toolchain identity must be resolved before strong findings."
+      ]
+    },
+    "z-machine-assembly": {
+      "availability_probes": [
+        "zapf --version",
+        "repo ZAP assembler/disassembler command"
+      ],
+      "syntax_or_compile": [
+        "assemble exact ZAP/story target"
+      ],
+      "static_analysis": [
+        "disassemble and validate opcode/version/address forms"
+      ],
+      "tests": [
+        "scripted interpreter transcript tests"
+      ],
+      "dynamic_analysis": [
+        "multiple interpreter matrix"
+      ],
+      "notes": []
+    }
+  },
+  "notes": [
+    {
+      "language": "python",
+      "note": "Use only tools/configs present in the repo or explicitly installed for analysis; verify interpreter/venv provenance."
+    },
+    {
+      "language": "shell",
+      "note": "Use the declared target shell; bash -n does not prove POSIX sh portability."
+    },
+    {
+      "language": "rust",
+      "note": "Feature/target matrix matters; Miri does not replace target-native FFI/hardware evidence."
+    },
+    {
+      "language": "assembly",
+      "note": "Assembler/ISA/toolchain identity must be resolved before strong findings."
+    }
+  ],
+  "unresolved_nonlanguage_surfaces": {
+    "frameworks": [],
+    "compilers": [
+      "assembler-unspecified",
+      "rustc",
+      "zil-compiler-toolchain"
+    ],
+    "runtimes": [
+      "cpython",
+      "native",
+      "posix-shell-runtime",
+      "z-machine"
+    ],
+    "toolchains": [
+      "cargo",
+      "github-actions",
+      "make"
+    ],
+    "platforms": [
+      "posix-shell"
+    ],
+    "interop": [
+      "python-process-shell",
+      "zil-zmachine"
+    ],
+    "formats": [
+      "json",
+      "markdown",
+      "yaml",
+      "toml"
+    ],
+    "protocols": []
+  }
+}
